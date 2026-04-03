@@ -71,3 +71,7 @@ web/.next/cache/
 
 # Docker volumes (local)
 .docker-volumes/
+docker-data/
+
+# Playwright browsers (large binaries)
+web/.playwright-browsers/
