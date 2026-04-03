@@ -1,0 +1,105 @@
+{
+  "_schema_version": "v3.0",
+  "_schema_doc": "龙虾知识库 技能条目 v3 标准格式 | 固定资产+高级填空 | 2026-04-01",
+  "_usage": "本文件是模板，复制后填入具体内容。所有10只龙虾的 skills.json 必须使用此结构新增条目。",
+
+  "skill_entry_template": {
+    "entry_id": "必填 | 唯一ID | 格式：[角色缩写]_[类别]_[序号] | 示例：ink_hook_v3_001",
+    "title": "必填 | 策略/方法标题 | 10字以内 | 示例：抖音竖屏封面公式",
+    "skill_type": "必填 | 枚举值：strategy（策略框架）｜formula（执行公式）｜rule（规则红线）｜checklist（自检清单）｜template（可填空模板）",
+    "source_form": {
+      "type": "必填 | 枚举值：text_case（文字案例）｜visual_sample（视觉样本）｜data_result（数据结论）｜workflow（流程经验）",
+      "description": "必填 | 原始'形'的描述 | 我从什么案例/内容里提炼出这条神",
+      "source_ref": "可选 | 原始来源的链接或文件路径"
+    },
+
+    "fixed_assets": [
+      {
+        "id": "fa_001",
+        "name": "固定资产名称 | 简洁，说明这是什么不变的元素",
+        "value": "具体内容 | 这部分的精确参数/规则/比例/顺序，不需要任何执行决策",
+        "why_fixed": "为什么这部分不变 | 底层逻辑是什么 | 换行业/换平台/换人，为什么这个结论仍然成立"
+      }
+    ],
+
+    "smart_slots": [
+      {
+        "id": "slot_001",
+        "name": "填空槽名称 | 说明这个槽要填什么维度的变量",
+        "slot_type": "枚举值：options（从选项里选一个）｜range（填数值范围内的数）｜text（填文字描述）｜lobster_input（由某只龙虾提供输入）",
+        "options": ["适用 slot_type=options 时填入 | 选项A", "选项B", "选项C"],
+        "range": {
+          "_note": "适用 slot_type=range 时填入",
+          "min": 0,
+          "max": 100,
+          "unit": "单位 | 如 px / % / s / Mbps / 字"
+        },
+        "who_fills": "谁来填这个槽 | 示例：inkwriter根据内容类型判断 / strategist提供brief / 由radar提供数据",
+        "fill_criteria": "填写判断标准 | 根据什么做决策 | 示例：根据主投平台选码率区间；根据账号品类选色调",
+        "example": "示例填法 | 展示一个真实场景下如何填这个槽"
+      }
+    ],
+
+    "execution_sop": [
+      "Step 1: [做什么] | 接收输入（来自谁/什么格式）",
+      "Step 2: [做什么] | 填入固定资产骨架（直接套用，无需判断）",
+      "Step 3: [做什么] | 逐一填入填空槽（按 fill_criteria 决策）",
+      "Step 4: [做什么] | 自检（按 replication_checklist 逐项核查）",
+      "Step 5: [做什么] | 输出并交付给下游龙虾（输出格式/字段要求）"
+    ],
+
+    "replication_checklist": [
+      {
+        "item": "检查项描述",
+        "pass_condition": "什么情况判定为通过",
+        "if_fail": "不通过时的处理方式（重做/降级/报警/联系谁）"
+      }
+    ],
+
+    "known_anti_patterns": [
+      {
+        "pattern": "常见错误模式名称",
+        "description": "执行时容易犯的具体错误",
+        "prevention": "如何避免"
+      }
+    ],
+
+    "status": "枚举值：验证中｜已验证｜已失效｜已废弃",
+    "verified_count": 0,
+    "last_verified": "YYYY-MM-DD",
+    "created_at": "YYYY-MM-DD",
+    "tags": ["标签1", "标签2"],
+    "superseded_by": "null 或 被哪个更新版本替代",
+    "training_ref": "来自哪次训练 | 示例：DEVIL-Q2-SESSION-002-VIS-T002"
+  },
+
+  "lobster_scope_map": {
+    "_note": "各龙虾的 skill_type 推荐范围，非强制，但可以帮助分类",
+    "commander": ["strategy", "checklist", "rule"],
+    "strategist": ["strategy", "formula", "template"],
+    "inkwriter": ["formula", "template", "rule"],
+    "visualizer": ["formula", "template", "checklist"],
+    "radar": ["formula", "checklist", "strategy"],
+    "echoer": ["template", "rule", "formula"],
+    "catcher": ["template", "formula", "rule"],
+    "dispatcher": ["rule", "checklist", "formula"],
+    "abacus": ["formula", "strategy", "checklist"],
+    "followup": ["template", "formula", "rule"]
+  },
+
+  "slot_type_decision_guide": {
+    "_note": "选择 slot_type 的判断指南",
+    "options": "当该变量有明确的离散选项，且选哪个有清楚的判断标准时",
+    "range": "当该变量是数值，且在某个范围内浮动时（如码率、字数、时长）",
+    "text": "当该变量是描述性文字，无法枚举，需要根据场景自由生成时",
+    "lobster_input": "当该变量必须由另一只特定龙虾提供输入，本龙虾不做判断时"
+  },
+
+  "v3_vs_v2_migration_guide": {
+    "_note": "从旧 v2 skills.json 迁移到 v3 schema 的映射指南",
+    "content_field": "原 content 字段 → 拆解为 fixed_assets（不变的结论/参数）+ smart_slots（需要根据场景判断的部分）",
+    "source_field": "原 source + source_ref → 整合到 source_form 结构",
+    "known_failure_patterns": "原 known_failure_patterns → 迁移到每条 skill 的 known_anti_patterns 字段",
+    "backward_compat": "v2 格式条目仍然有效，不强制迁移，但新增条目必须使用 v3 格式"
+  }
+}

@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "SignalBrief",
+  "goal": "Help Commander decide whether to downgrade risky healthcare claims and shift to consultation-first content.",
+  "assumptions": [
+    "Official platform notices should outrank creator gossip.",
+    "Competitor moves matter only if they change operating constraints or opportunity structure."
+  ],
+  "evidence": [
+    "Douyin creator notice from official account on medical claims review.",
+    "Competitor posting pattern change observed across last 7 days."
+  ],
+  "confidence": 0.89,
+  "riskLevel": "L2",
+  "nextAction": "handoff_to_strategist",
+  "signal_summary": "Medical efficacy claim enforcement tightened; competitors are pivoting toward low-risk consultation hooks.",
+  "source_reliability": "official_notice_high; competitor_observation_medium",
+  "impact_level": "high",
+  "recommended_attention": "Prioritize route changes for healthcare content and freeze risky promises."
+}

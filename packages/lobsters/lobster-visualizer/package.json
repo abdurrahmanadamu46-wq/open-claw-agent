@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-visualizer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Visualizer lobster subproject template"
+}

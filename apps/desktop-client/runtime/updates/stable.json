@@ -1,0 +1,13 @@
+﻿{
+  "channel": "stable",
+  "version": "3.2.0",
+  "published_at": "2026-03-20T00:00:00Z",
+  "notes": "Queue-worker sync + multi-objective bandit + signed update chain.",
+  "artifact": {
+    "url": "./VERSION",
+    "sha256": "33bdaf9e2d6bcbde2e4e613e865e403f8fe21fc621078d34c30b0bdc7f68d903"
+  },
+  "keyId": "dev-hmac",
+  "signature_alg": "hmac-sha256",
+  "signature": "uk1qISobi8NGS0mEpVGP1qjHe+61OiIn1kYBsCw1ALw="
+}

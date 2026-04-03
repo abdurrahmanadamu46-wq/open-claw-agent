@@ -1,0 +1,200 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_fastfood_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测快餐店在抖音和美团上的团购与商品表述规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "连锁快餐A",
+          "现炒快餐B"
+        ],
+        "raw_signals": [
+          "抖音本地生活商家公告要求团购页如涉及“现炸现做”“10分钟出餐”“全网最低价”等表述，必须提供可核验依据，违规会降权处理",
+          "美团商家后台通知加强快餐商家食品经营许可证、门店实拍图和后厨卫生抽检",
+          "两家竞品把商品标题从“工作日爆单王套餐 10分钟必出”改成“门店招牌单人餐，出餐时效以门店实时情况为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品标题调整",
+        "需要指出对时效承诺和价格承诺表达边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略资质抽检与审核规则的高可信度"
+      ]
+    },
+    {
+      "id": "radar_fastfood_lunch_peak_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现写字楼商圈快餐店午市履约与需求变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_plus_local_search",
+        "competitor_watchlist": [
+          "便当店C",
+          "轻食快餐D"
+        ],
+        "raw_signals": [
+          "同商圈搜索词、评论和问答集中出现“工作餐”“几分钟出餐”“能否提前预点”“午休来得及吗”",
+          "多个骑手反馈12点前后两家竞品门店出现排队等餐和取餐拥堵",
+          "两家竞品同步上线19到29元午市单人餐，并强调自提快取与保温包装"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "午市需求端信号与竞品动作应被识别为同一窗口下的互证",
+        "需要区分需求上升与履约承压这两类含义",
+        "输出应形成面向 Commander 的机会兼风险提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求咨询和骑手反馈",
+        "把单个门店午市拥堵误判成全行业规则变化"
+      ]
+    },
+    {
+      "id": "radar_fastfood_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测快餐店外卖补贴风险与平台费率变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "盖饭店E"
+        ],
+        "raw_signals": [
+          "同城商家群截图称“平台下周全面取消午市配送补贴并上调抽佣2%”，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，服务商和片区经理说法也不一致",
+          "核心竞品的起送价、配送费和满减结构暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级并隔离观察",
+        "缺少官方通知与竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断快餐外卖利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_fastfood_breakfast_window_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别社区与通勤带快餐店早餐机会窗口",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "早餐加盟店F",
+          "包子快餐G"
+        ],
+        "raw_signals": [
+          "地铁口周边搜索词和问答区集中出现“上班路上早餐”“7点能否出餐”“豆浆是否现做”“能否提前点单自提”",
+          "两家竞品开始提前营业到6点30分，并上新早餐套餐和咖啡加价购",
+          "外地商场型网红汉堡店视频爆火，但内容主要强调拍照感和周末打卡"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地通勤早餐需求应高于跨城打卡热度",
+        "竞品延长营业时间应归类为竞争动作而非平台规则变化",
+        "关注级别应为中到高"
+      ],
+      "mustAvoid": [
+        "因为网红汉堡视频爆火就判定早餐需求转向高客单路线",
+        "忽略本地搜索意图与营业时间调整的互证"
+      ]
+    },
+    {
+      "id": "radar_fastfood_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城快餐连锁的食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“某连锁快餐店门店后厨集体被查封”，仅给出模糊偷拍片段",
+          "该说法被两个营销号转发，但都没有提供执法文书、门店名称或监管通报链接",
+          "未发现市场监管局通报、外卖平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_fastfood_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测快餐竞品门店真实热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "炸鸡快餐H",
+          "便当连锁I"
+        ],
+        "raw_signals": [
+          "竞品发布“午市排队200单”的短视频，但没有给出日期、门店定位或排号系统截图",
+          "地图平台近7天评分与评论量基本持平，未出现明显等餐时长讨论",
+          "周边探店账号与骑手视频未同步拍到排队场景，门店也未新增自提限流提示"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条排队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的爆单表述"
+      ]
+    }
+  ]
+}

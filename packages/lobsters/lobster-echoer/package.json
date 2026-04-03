@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-echoer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Echoer lobster subproject template"
+}

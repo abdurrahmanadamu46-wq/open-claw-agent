@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "lobster": "visualizer",
+    "name": "影子",
+    "level": "L4",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "vis_battle_001：源文件码率低于平台最低要求，发布后画质模糊",
+    "收到文案直接开始做图，没有先确认文案的视觉核心，方向跑偏"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "VIS-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "20min",
+      "sim_time": "不到1天",
+      "mission": "写出一条发布前强制执行的格式自检规则（针对vis_battle_001）",
+      "deliverable": "一张发布前自检清单写入skills.json：码率/分辨率/时长/格式/文件大小，每项有具体数字标准",
+      "pass_criteria": [
+        "每个平台的标准必须填具体数字（不是'符合平台要求'这种废话）",
+        "有'如果不达标怎么处理'的操作步骤"
+      ],
+      "fail_action": "重做，没有具体数字→FAIL",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "VIS-T001",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "收到inkwriter的文案后，必须先用1句话写出'视觉核心'，再开始做图",
+      "deliverable": "视觉核心确认表：文案原文摘要/视觉核心（1句话）/主要画面元素/色调方向/不能出现的元素",
+      "pass_criteria": [
+        "视觉核心必须是inkwriter没有明说但你从文案中读出来的，不是直接抄文案",
+        "inkwriter看完后确认：'对，这就是我想要的方向'"
+      ],
+      "fail_action": "inkwriter说'不是这个方向'→FAIL，重新理解文案",
+      "collab_required": "inkwriter（验证方）"
+    },
+    {
+      "task_id": "VIS-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "找1个封面CTR超过行业均值+25%的真实案例，拆解其封面公式",
+      "deliverable": "封面公式写入skills.json：行业/平台/构图公式（前景/主体/背景/文字区域）/色调/字体类型/为什么点击率高（用户心理）",
+      "pass_criteria": [
+        "必须是真实账号/真实帖子（能查到）",
+        "构图公式具体到'文字放在左上1/3区域，字号大于封面高度的1/4'这种精度",
+        "用户心理说清楚（不是'好看'，是'用户看到这个封面的第一秒产生了什么想法'）"
+      ],
+      "fail_action": "重做，构图描述不精确→FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "VIS-T003",
+      "type": "TYPE-A",
+      "real_time_limit": "45min",
+      "sim_time": "1.5天",
+      "mission": "用AI工具生成1张美妆封面图，达到S级标准（封面CTR预估超行业均值+25%）",
+      "deliverable": "生成的封面图文件 + 生成过程记录（使用了什么工具/提示词/参数/迭代了几次）",
+      "pass_criteria": [
+        "提示词完整记录（必须写入AI提示词库）",
+        "strategist或inkwriter评分：这个封面如果发出去我会点击（≥4/5）",
+        "格式符合目标平台规格（通过VIS-BOOT-001的自检清单）"
+      ],
+      "fail_action": "评分<4→重做，提示词要修改后重试",
+      "collab_required": "strategist/inkwriter（评分）"
+    },
+    {
+      "task_id": "VIS-T004",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "向dispatcher主动确认：下一批视频的目标平台的最新格式规格是什么？",
+      "deliverable": "一份平台规格确认记录：平台名/分辨率/码率/时长限制/字幕要求/字体限制（每项有具体数字）",
+      "pass_criteria": [
+        "必须是从dispatcher那里主动获取的，不是靠自己记忆",
+        "dispatcher确认：这份规格单是最新的，没有遗漏"
+      ],
+      "fail_action": "重做",
+      "collab_required": "dispatcher"
+    },
+    {
+      "task_id": "VIS-T005",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "扩充AI提示词库：针对食品行业，写出3条可复用的Kling视频提示词",
+      "deliverable": "3条写入提示词库的记录：提示词全文/预期效果描述/适用场景/已测试结果（S/A/B级）",
+      "pass_criteria": [
+        "3条提示词必须产生3种不同风格的视频（不能是同一个模板的微调）",
+        "每条有测试结果（必须真实测试过，不能只写预期）",
+        "至少1条达到A级以上效果"
+      ],
+      "fail_action": "重做，没有真实测试结果→FAIL",
+      "collab_required": null
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "VIS-DRILL-001",
+      "description": "从收到视觉brief到交出封面+视频（符合格式规格），全程1小时",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "pass_criteria": [
+        "视觉核心确认完成（VIS-T001流程执行）",
+        "格式自检通过（VIS-BOOT-001清单全部打勾）",
+        "inkwriter/strategist评分≥4/5"
+      ],
+      "evaluation": "inkwriter + dispatcher双方验证"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L4",
+    "to": "L5",
+    "hard_requirements": [
+      "VIS-T001到VIS-T005全部PASS",
+      "连续10次发布，格式自检零错误",
+      "S级作品真实达到≥30%（基于abacus的CTR数据，非主观评估）",
+      "AI提示词库达到≥20条（经过真实测试的）",
+      "VIS-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

@@ -1,0 +1,315 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_business_hotel_late_night_guaranteed_arrival_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔航班延误后的深夜担保订单转成可执行的保留房、实名入住和次晨开票计划",
+        "routing_context": "企业差旅客原定 21:30 到店，现改为 23:50 抵达；订单已做担保并要求次日 07:00 快速退房拿发票，门店仍有对应房型可售库存",
+        "integration_state": {
+          "pms": "healthy",
+          "front_desk": "healthy",
+          "invoice_service": "healthy",
+          "payment_gateway": "healthy",
+          "door_lock": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "担保订单的保留截止时间和夜班前台提醒节点",
+        "实名入住、付款责任和发票资料确认路线",
+        "客人继续延误或失联时的释放与回退规则"
+      ],
+      "mustAvoid": [
+        "把担保订单按普通散客时点提前释放",
+        "未做实名核验就直接预制房卡"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_early_checkin_room_not_ready_002",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一位红眼航班早到客的提前入住需求，但目标房型尚未清扫完成",
+        "routing_context": "客人 08:20 到店并希望立即入住休息，当前同房型仍有 6 间待清扫、2 间待查房，酒店昨晚高入住率导致保洁压力较大，客人可接受寄存行李",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "front_desk": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "可放房库存和保洁 ETA 作为前置依赖",
+        "等房、寄存行李或可售替代房型的分流路线",
+        "不得承诺固定入住房时间前的状态回写"
+      ],
+      "mustAvoid": [
+        "在脏房或待查房状态下直接承诺发房",
+        "忽略保洁负荷继续给所有早到客同样承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_ota_replay_after_paid_not_synced_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放一笔 OTA 支付成功但 PMS 未落单的入住流程，并避免重复保房或重复扣款",
+        "routing_context": "客人已在渠道端支付成功并到店出示订单页，但 PMS 没有对应订单，前台怀疑是渠道回传超时；当前房型还剩最后 1 间",
+        "integration_state": {
+          "ota_channel": "degraded",
+          "pms": "healthy",
+          "payment_gateway": "healthy",
+          "order_replay_service": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号和支付流水做去重补录",
+        "临时保底入住或锁库存的中间态",
+        "渠道恢复后的 replay 和账务回写规则"
+      ],
+      "mustAvoid": [
+        "未经去重就重新建第二张订单",
+        "在支付状态未核验前再次收款"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_meeting_package_split_routing_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔企业培训需求拆成客房、会议室、茶歇和统一结算的执行计划",
+        "routing_context": "客户需要下周三 12 间房、半天会议室、两轮茶歇、停车和离店统一开票，房间名单将分批补齐，销售已确认总体预算",
+        "integration_state": {
+          "pms": "healthy",
+          "meeting_room_scheduler": "healthy",
+          "catering_service": "healthy",
+          "invoice_service": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "客房、会场、茶歇、名单收集和财务开票的拆线任务",
+        "名单未齐时的暂锁与补录规则",
+        "任一资源冲突时的替代会场或房型 fallback"
+      ],
+      "mustAvoid": [
+        "把多资源订单当普通单间预订处理",
+        "在会议室未锁定前就对外确认整单无风险"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_late_checkout_under_high_occupancy_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "评估一位商务客的延迟退房申请，并确保不影响下午同房型集中入住",
+        "routing_context": "客人希望从 12:00 延到 16:00 退房，但今天下午有大型会务团队到店，同房型当前只剩 3 间空房且保洁班次紧张",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "front_desk": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "延退对翻房能力和下午到店履约的影响评估",
+        "付费延退、行李寄存或休息区候用等替代路线",
+        "批准或拒绝结果的前台与客房同步回写"
+      ],
+      "mustAvoid": [
+        "不看满房压力直接默认同意到 16:00",
+        "同意延退后不调整保洁和后续入住承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_corporate_credit_waiting_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔要求协议价月结入住的企业订单，但挂账审批尚未完成",
+        "routing_context": "企业行政要预订 8 间房并要求按旧协议价月结，当前 CRM 显示新年度协议未续签，财务信用审批仍在处理中，客人今晚就会到店",
+        "integration_state": {
+          "crm": "healthy",
+          "approval_center": "healthy",
+          "pms": "healthy",
+          "invoice_service": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "waiting_credit_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停态或改现付路线",
+        "协议价、挂账权限和开票资料的人工确认节点",
+        "审批未过时的保房但不放行挂账策略"
+      ],
+      "mustAvoid": [
+        "在月结权限未确认前直接按协议价挂账入住",
+        "把财务待审订单默认为已批准"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_expo_day_overbooking_007",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在会展日满房且同房型发生超售时建立止损执行计划，保证到店客人有可执行去向",
+        "routing_context": "展会高峰晚间出现 OTA 与人工订单重叠，标准双床房实际缺口 4 间，前台预计 20:00 后会集中到店，周边姊妹店尚有少量库存",
+        "integration_state": {
+          "pms": "healthy",
+          "ota_channel": "degraded",
+          "front_desk": "healthy",
+          "crm": "healthy",
+          "transport_support": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "库存冻结、订单优先级排序和去重节点",
+        "免费升房、改住合作酒店或交通补偿路线",
+        "到店前主动通知和现场接待分流方案"
+      ],
+      "mustAvoid": [
+        "在已知缺口下继续对外销售同房型",
+        "把超售处置完全留给夜班前台临场决定"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_midnight_room_failure_soldout_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一位在住客凌晨投诉空调故障的情况，并在几乎满房的前提下保证可执行兜底",
+        "routing_context": "客人 00:40 投诉房间空调不制冷且有异味，酒店当前仅剩 1 间高一级房型，工程夜班可响应但无法保证 30 分钟内修复，原房需立即停售排查",
+        "integration_state": {
+          "engineering_queue": "healthy",
+          "pms": "healthy",
+          "front_desk": "healthy",
+          "housekeeping_app": "healthy",
+          "compensation_policy": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "问题房停售、工程抢修和值班经理升级节点",
+        "换房或升房优先级及补偿路径",
+        "如本店无同级可售房时的改住 fallback"
+      ],
+      "mustAvoid": [
+        "只建维修工单不处理在住客当晚住宿",
+        "故障房未排查完成就重新放回可售库存"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_real_name_missing_id_009",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理预订人与入住人不一致且其中一位同住人证件暂缺的夜间入住场景",
+        "routing_context": "公司行政代订双床房，22:30 两位客人到店，其中一位有身份证，另一位表示证件在车上稍后补交，希望先拿房卡上楼",
+        "integration_state": {
+          "front_desk": "healthy",
+          "public_security_uploader": "healthy",
+          "pms": "healthy",
+          "door_lock": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "入住人一致性核验和待补证的人工闸门",
+        "实名完成前的限制措施和补录回写",
+        "客人坚持先上楼时的值班经理处理路径"
+      ],
+      "mustAvoid": [
+        "在实名信息不完整时直接发两张房卡",
+        "把证件补录留到第二天再说而不留任何控制"
+      ]
+    },
+    {
+      "id": "dispatcher_business_hotel_night_audit_and_batch_invoice_dependency_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "为一批次日清晨离店的企业客人安排快速退房与统一开票，但夜审尚未完成",
+        "routing_context": "企业团队 6 间房将于明早 06:30 集中退房，要求前台一次性开发票；当前夜审预计延后，且其中两间房昨晚刚发生房型升级和押金调整",
+        "integration_state": {
+          "night_audit": "degraded",
+          "invoice_service": "healthy",
+          "pms": "healthy",
+          "front_desk": "healthy",
+          "finance_console": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "夜审完成作为正式开票和最终结算前置条件",
+        "升级价差、押金调整和发票资料复核节点",
+        "夜审继续延后时的预结算或人工核账 fallback"
+      ],
+      "mustAvoid": [
+        "夜审未完成就直接按旧房价整批开票",
+        "忽略升级和押金变动导致账单与发票不一致"
+      ]
+    }
+  ]
+}

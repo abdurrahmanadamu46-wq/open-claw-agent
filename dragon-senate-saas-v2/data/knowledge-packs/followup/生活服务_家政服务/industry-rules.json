@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+  {"id":"facts_before_slot_commitment","title":"没补齐场景、范围和时间前，本轮目标是锁预约事实，不是先把结果说满","description":"家政服务线索很多从多少钱、能不能来和要不要加项开场，但真正决定能否推进的是场景方向、房型范围、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问场景和房型。","客户只说最近想找家政时，先补时间和范围，再决定如何推进。"],"priority":"high"},
+  {"id":"first_visit_needs_safety_trust_stage","title":"第一次上门和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会约、怕不干净和怕临时加价的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出预约路径。","先讲清工具和边界，再谈时间。"],"priority":"high"},
+  {"id":"seasonal_booking_needs_fast_scope","title":"节前、入住和退租节点线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间、阿姨和场景路线。","examples":["节前线索先确认周几可做和这次最在意什么。","入住线索先锁时间，再讲房型与加项范围。"],"priority":"high"},
+  {"id":"first_visit_and_revisit_split","title":"首次上门跟进和续约维护必须拆开","description":"首单跟进的目标通常是帮助用户安心完成第一次上门，复购维护的目标才是提醒补做节点、周期续约和下一步选择。","examples":["首单更多围绕场景、房型和时间。","复购更多围绕上次服务感受、阿姨偏好和下一步。"],"priority":"high"},
+  {"id":"post_visit_followup_needs_feedback","title":"上门后的跟进要先收感受和完工状态，再决定是否推进下一步","description":"上门后的 FollowUp 不是默认销售时刻，而是先确认这次保洁、整理或开荒是否顺利、有无后续追加。","examples":["深清后先问最在意的区域是否满意。","周期保洁后先问下次是否还按原时段。"],"priority":"high"},
+  {"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体补做或续约理由，不要只催回来","description":"节前节点、来客前、周期保洁和入住后补做等都是合理的回访理由。","examples":["提醒上次做过深清的客户节前窗口到了。","按周保洁周期提醒续约。"],"priority":"medium"}
+]}

@@ -1,0 +1,268 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_hotpot_case_001",
+      "label": "happy_path",
+      "scenario": "商场川渝火锅晚市排队与招牌锅底证明",
+      "input": {
+        "copy_pack": "商场川渝火锅店短视频脚本，核心卖点是牛油红锅够香、晚市等位真实、毛肚黄喉现涮口感直接，适合朋友聚餐和下班来吃。",
+        "brand_assets": [
+          "门头夜景视频",
+          "晚市等位区镜头",
+          "牛油红锅滚沸视频",
+          "毛肚黄喉下锅镜头",
+          "招牌肥牛成片",
+          "调料台特写",
+          "服务员上锅加汤镜头",
+          "顾客避脸围桌用餐画面",
+          "店铺 Logo"
+        ],
+        "reference_styles": [
+          "纪实烟火气",
+          "克制的食欲放大"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2.5,
+          "dinner_service": true,
+          "sauce_bar_access": true,
+          "kitchen_access": "pass_station_only",
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "招牌锅底滚沸开场",
+        "晚市等位或上座状态证明真实餐期",
+        "毛肚黄喉下锅到蘸料入口的连贯动作",
+        "明确列出晚市拍摄窗口和顾客避脸依赖"
+      ],
+      "mustAvoid": [
+        "空店装修和灯光镜头撑满前半段",
+        "外部排队素材冒充本店人气",
+        "过度电影感运镜盖过门店真实性"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把商场川渝火锅脚本转成一条以真实开锅、晚市节奏和围桌食欲为核心的可执行堂食分镜。",
+        "assumptions": [
+          "可在晚市高峰开始前完成门头与等位建立镜头，再在上客后补服务节奏和围桌画面。",
+          "仅能在传菜口和桌边拍锅底与上菜，不能深入后厨长时间调度。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、等位、开锅、下菜、调料和围桌镜头。",
+          "脚本卖点围绕牛油红锅、晚市真实客流和毛肚黄喉口感。"
+        ],
+        "confidence": 0.91,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给牛油红锅滚沸配一筷毛肚出锅，左下角补门头灯箱和小范围等位动作，标题聚焦“晚市排队就为了这锅”。",
+        "shot_list": "1) 门头夜景与等位区交代晚市状态 2) 牛油红锅滚沸开锅建立记忆点 3) 毛肚黄喉下锅到捞起证明涮感 4) 调料台和蘸料搭配补味型差异 5) 服务员加汤上菜与桌面占用证明饭点节奏 6) 围桌避脸互动收束并给到店 CTA",
+        "asset_dependencies": "门头夜景、晚市等位区、牛油红锅滚沸、毛肚黄喉下锅、招牌肥牛成片、调料台、服务员加汤与上锅、顾客避脸围桌镜头、晚市拍摄窗口确认",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_hotpot_case_002",
+      "label": "edge_case",
+      "scenario": "家庭聚餐型火锅店午市平峰，包厢与整桌素材充足但没有排队",
+      "input": {
+        "copy_pack": "家庭聚餐型火锅店视频脚本，重点想讲鸳鸯锅稳、包厢适合带家人、服务细致和整桌分量足，但实际拍摄时间在午市平峰，没有真实排队和爆满素材。",
+        "brand_assets": [
+          "门头白天外景",
+          "迎宾台镜头",
+          "包厢环境视频",
+          "鸳鸯锅上桌镜头",
+          "整桌套餐成片",
+          "调料台镜头",
+          "服务员加汤换盘画面",
+          "家庭聚餐避脸互动",
+          "店铺 Logo"
+        ],
+        "reference_styles": [
+          "克制的家庭聚会纪实",
+          "稳定舒适的堂食体验"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "lunch_service": true,
+          "peak_flow": false,
+          "private_room_access": true,
+          "kitchen_access": false,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确当前不是高峰人气证明场景",
+        "把说服力重心放在包厢整桌、鸳鸯锅和服务细节",
+        "采用避脸或半身互动表达家庭聚餐",
+        "列出午市平峰和后厨不可拍的限制"
+      ],
+      "mustAvoid": [
+        "硬写成排队必吃或爆满人气片",
+        "虚构后厨现切现配大片",
+        "未经授权拍清晰家庭成员正脸"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在午市平峰且后厨不可拍的前提下，把家庭聚餐型火锅脚本转成一条以包厢体验、整桌完整度和服务秩序为核心的可执行分镜。",
+        "assumptions": [
+          "可在开餐前完成包厢整桌和环境镜头，再在就餐中补加汤、换盘和围桌动作。",
+          "整桌套餐已经稳定出品，不需要为拍摄额外复刻大量菜品。"
+        ],
+        "evidence": [
+          "现有素材集中在门头、包厢、整桌套餐、调料台和服务动作。",
+          "脚本核心卖点是家庭友好和服务稳，不是排队人气或后厨表演。"
+        ],
+        "confidence": 0.74,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面以包厢整桌鸳鸯锅和上锅动作做主体，门头 logo 做小窗，标题聚焦“带家人来这家，坐得下也吃得稳”。",
+        "shot_list": "1) 门头和迎宾台交代门店定位 2) 包厢整桌与鸳鸯锅建立家庭聚餐场景 3) 套餐大盘肉菜证明分量与搭配 4) 调料台和服务员加汤换盘补足体验细节 5) 家庭避脸互动表达真实围桌 6) 预订和适用场景 CTA",
+        "asset_dependencies": "门头白天外景、迎宾台、包厢环境、鸳鸯锅上桌、整桌套餐、调料台、服务员加汤换盘、家庭聚餐避脸镜头；缺少排队客流和后厨素材",
+        "execution_feasibility_score": "0.72"
+      }
+    },
+    {
+      "id": "visualizer_hotpot_case_003",
+      "label": "happy_path",
+      "scenario": "潮汕牛肉火锅鲜切台到涮锅入口链路",
+      "input": {
+        "copy_pack": "潮汕牛肉火锅脚本，核心卖点是鲜切吊龙和匙柄现切现涮、锅底清亮、沙茶蘸料对味，想让观众看见从切肉到入口的完整链路。",
+        "brand_assets": [
+          "门头白天外景",
+          "鲜切牛肉台视频",
+          "吊龙与匙柄部位标识近景",
+          "清汤锅滚沸镜头",
+          "牛肉下锅变色与起筷画面",
+          "沙茶调料台镜头",
+          "顾客避脸试吃反馈",
+          "大厅座位区概览",
+          "店铺 Logo"
+        ],
+        "reference_styles": [
+          "干净明亮的纪实餐饮",
+          "可信的鲜切证明"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "lunch_service": true,
+          "cutting_station_access": true,
+          "kitchen_access": false,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "鲜切动作和部位标识作为前段证据",
+        "从切肉到下锅到入口的至少三段链路",
+        "清汤锅底和沙茶蘸料的真实对应",
+        "明确鲜切台和大厅的拍摄权限边界"
+      ],
+      "mustAvoid": [
+        "只拍肉片漂亮特写不落到锅底和入口",
+        "把不同部位混剪成同一卖点",
+        "过度调色让肉色和锅底失真"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把潮汕牛肉火锅脚本转成一条以鲜切证明、锅底清亮和入口反馈为核心的可执行分镜。",
+        "assumptions": [
+          "可在午市前拍鲜切台和部位标识，再在午市开始后补涮锅和用餐反馈。",
+          "鲜切台可拍，但不适合进入后厨深处调度大范围加工镜头。"
+        ],
+        "evidence": [
+          "品牌素材同时具备鲜切台、部位标识、清汤锅、下锅变色和试吃反馈镜头。",
+          "脚本重点是从切肉到入口的完整链路，而不是单纯环境展示。"
+        ],
+        "confidence": 0.89,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给鲜切牛肉台和部位标识，右下角补清汤锅与起筷画面，标题聚焦“鲜切现涮到底差在哪”。",
+        "shot_list": "1) 门头和大厅概览交代门店定位 2) 鲜切台与部位标识证明新鲜和专业度 3) 清汤锅滚沸接牛肉下锅变色 4) 起筷蘸沙茶形成口感反馈 5) 顾客避脸试吃和围桌关系补足堂食感 6) 招牌部位推荐与到店 CTA",
+        "asset_dependencies": "门头白天外景、鲜切牛肉台、吊龙与匙柄标识、清汤锅滚沸、牛肉下锅变色、沙茶调料台、顾客避脸试吃反馈、大厅座位区；需确认鲜切台拍摄时段",
+        "execution_feasibility_score": "0.88"
+      }
+    },
+    {
+      "id": "visualizer_hotpot_case_004",
+      "label": "failure_case",
+      "scenario": "新开火锅品牌未开业，只有效果图和菜单海报却想做爆款探店",
+      "input": {
+        "copy_pack": "新开火锅品牌宣传脚本，希望做出排队探店、围炉烟火气和锅底一开就爆的感觉，但门店尚未开业，没有真实顾客、没有开锅画面，也没有堂食拍摄条件。",
+        "brand_assets": [
+          "装修效果图",
+          "锅底海报",
+          "菜单海报",
+          "品牌 Logo",
+          "试营业通知海报"
+        ],
+        "reference_styles": [
+          "高饱和烟火探店感",
+          "热门排队氛围"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "dine_in_available": false,
+          "hotpot_assets": false,
+          "customer_assets": false,
+          "kitchen_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店未开业且没有真实开锅和围桌证据",
+        "主动降级为开业预告或锅底概念说明",
+        "低可执行性评分和清晰的开业后补拍建议"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实门店环境",
+        "拿外部食客和开锅素材冒充本店探店",
+        "继续设计排队、翻台和真实堂食链路"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在未开业且没有真实开锅、顾客和堂食素材的前提下，输出一条不冒充排队探店的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌风格、锅底方向、菜单信息和试营业时间。",
+          "任何真实堂食、顾客围桌和锅底滚沸镜头都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、锅底海报、菜单海报、Logo 和试营业通知。",
+          "拍摄条件不支持堂食、人流、开锅和后厨任何真实证明。"
+        ],
+        "confidence": 0.62,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，效果图占主画面，标题明确写“新店即将开锅”或“锅底方向抢先看”，避免任何已营业暗示。",
+        "shot_list": "1) 效果图与品牌 Logo 建立新店印象 2) 锅底海报和菜单方向拆解 3) 空间风格与座位类型说明 4) 明确当前没有真实开锅和围桌证据 5) 列出开业后需要补拍的门头、锅底、围桌和餐期素材 6) 试营业时间与到店提醒",
+        "asset_dependencies": "装修效果图、锅底海报、菜单海报、品牌 Logo、试营业通知；缺少门头实景、真实锅底、围桌用餐、顾客反馈、调料台和任何餐期证明",
+        "execution_feasibility_score": "0.28"
+      }
+    }
+  ]
+}

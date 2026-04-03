@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"scene_plus_time_hook","title":"场景加时间同时出现时的高意向钩子","description":"当线索同时出现深清/开荒/周保洁方向和上门时间时，应优先判为高意向候选。","examples":["周六想先做深度保洁。","这周日想先做新房开荒。"],"priority":"high"},
+  {"id":"first_visit_process_hook","title":"首次预约与流程顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心做不干净时，说明其上门意图更具体。","examples":["第一次约阿姨，周末想先看适不适合。","担心厨房做不出来，想先来了解一下。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"节前与入住退租窗口钩子","description":"节前、入住、退租和来客节点如果带着明确时间进入私信，应显著提权。","examples":["节前想先做一次大扫除。","入住前想先把开荒定下来。"],"priority":"high"},
+  {"id":"scope_specific_hook","title":"房型面积与加项细问钩子","description":"当用户明确提到面积、房型、玻璃、油烟机和收纳等范围时，往往意味着真实购买需求已经收窄。","examples":["89 平两居带玻璃。","厨房重油污加卫生间除垢。"],"priority":"high"},
+  {"id":"old_client_restock_hook","title":"老客续约与推荐回流钩子","description":"老客复购、朋友推荐和之前做过又回来问固定阿姨，通常有更高的成交确定性。","examples":["上次在你们家做过，这周想再约。","朋友推荐你们店，说阿姨比较稳定。"],"priority":"medium"},
+  {"id":"price_plus_scope_hook","title":"价格叠加范围钩子","description":"只问价格不一定高意向，但如果同时出现房型、范围和上门时间，质量明显更高。","examples":["这周末想做 89 平深清，大概什么价位。","开荒带玻璃大概怎么收费。"],"priority":"medium"}
+]}

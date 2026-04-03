@@ -1,0 +1,208 @@
+﻿{
+  "schemaVersion": "lobster.routing-weight.patch.v0.2",
+  "generatedAt": "2026-03-30T02:06:38.084Z",
+  "sourceGateVersion": "lobster.shadow-promotion-gate.v0.2",
+  "policyVersion": "lobster.promotion-gate.policy.v0.2",
+  "entries": [
+    {
+      "roleId": "abacus",
+      "priorityTier": "T1",
+      "action": "promote_to_limited_live",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0.15,
+      "rationale": [
+        "source_suggestion=promote_candidate",
+        "truth_linked_assignments=1",
+        "positive_truth=4",
+        "negative_truth=0",
+        "positive_weight=5.4",
+        "negative_weight=0",
+        "net_weight=5.4"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "catcher",
+      "priorityTier": "T1",
+      "action": "promote_to_limited_live",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0.15,
+      "rationale": [
+        "source_suggestion=promote_candidate",
+        "truth_linked_assignments=3",
+        "positive_truth=7",
+        "negative_truth=0",
+        "positive_weight=9.6",
+        "negative_weight=0",
+        "net_weight=9.6"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "dispatcher",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=promote_cautiously",
+        "truth_linked_assignments=4",
+        "positive_truth=8",
+        "negative_truth=2",
+        "positive_weight=8.5",
+        "negative_weight=4.2",
+        "net_weight=4.3",
+        "above_max_negative_truth_weight"
+      ],
+      "driftSignals": [
+        "voice_provider_unstable:degraded",
+        "publish_external:rejected"
+      ],
+      "scopeHints": [
+        {
+          "scopeId": "internal_execute",
+          "recommendedAction": "promote_with_guardrails",
+          "recommendedShadowWeight": 1,
+          "recommendedLiveWeight": 0.05,
+          "truthRecordCount": 8,
+          "positiveTruthWeight": 6.1,
+          "negativeTruthWeight": 0,
+          "netTruthWeight": 6.1,
+          "includedSignals": [
+            "execute-campaign-results_result",
+            "content_execute_task",
+            "content_scene_count",
+            "content_script_generated",
+            "content_post_result",
+            "content_platform_selected",
+            "aoto_cut_render",
+            "replay_completed"
+          ]
+        },
+        {
+          "scopeId": "external_publish",
+          "recommendedAction": "stay_shadow_only",
+          "recommendedShadowWeight": 1,
+          "recommendedLiveWeight": 0,
+          "truthRecordCount": 2,
+          "positiveTruthWeight": 2.4,
+          "negativeTruthWeight": 2.4,
+          "netTruthWeight": 0,
+          "includedSignals": [
+            "publish_external"
+          ]
+        }
+      ]
+    },
+    {
+      "roleId": "echoer",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=1",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "followup",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=1",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "inkwriter",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=0",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "radar",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=0",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "strategist",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=0",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    },
+    {
+      "roleId": "visualizer",
+      "priorityTier": "T1",
+      "action": "stay_shadow_only",
+      "recommendedShadowWeight": 1,
+      "recommendedLiveWeight": 0,
+      "rationale": [
+        "source_suggestion=continue_shadow_collection",
+        "truth_linked_assignments=0",
+        "positive_truth=0",
+        "negative_truth=0",
+        "positive_weight=0",
+        "negative_weight=0",
+        "net_weight=0"
+      ],
+      "driftSignals": [],
+      "scopeHints": []
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "liaoyuan.dto.trace-query.v1",
+  "type": "object",
+  "required": ["traceId"],
+  "properties": {
+    "traceId": { "type": "string", "minLength": 6 },
+    "from": { "type": ["string", "null"], "format": "date-time" },
+    "to": { "type": ["string", "null"], "format": "date-time" },
+    "sourceQueue": { "type": ["string", "null"] },
+    "errorsOnly": { "type": ["boolean", "null"] }
+  },
+  "additionalProperties": false
+}

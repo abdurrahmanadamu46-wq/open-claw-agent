@@ -1,0 +1,128 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "dispatcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "dispatcher_beauty_salon_sensitive_first_visit_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条换季敏感用户的首次预约线索转成可执行的咨询、老师匹配和房间安排计划",
+        "routing_context": "客户说明第一次到店、最近容易泛红刺痛，想约本周六下午",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "咨询判断节点",
+        "老师与房间匹配",
+        "完成后备注回写"
+      ],
+      "mustAvoid": [
+        "直接确认进房开做",
+        "忽略首次到店的风险沟通"
+      ]
+    },
+    {
+      "id": "dispatcher_beauty_salon_pre_event_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条婚礼前两天的急救护理询单转成高时效预约执行计划",
+        "routing_context": "客户说明周六要参加婚礼，希望周四晚做一次状态整理，指定晚间时段",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "时效优先的排期判断",
+        "热门时段保留窗口",
+        "无法满足时的备选时段"
+      ],
+      "mustAvoid": [
+        "在热门档期无确认机制地长时间占位",
+        "忽视时间窗口的紧迫性"
+      ]
+    },
+    {
+      "id": "dispatcher_beauty_salon_lunch_break_003",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "把一条写字楼午休快护理线索转成可执行的短时预约计划",
+        "routing_context": "客户只有工作日 12:20 到 13:10 的空档，希望做一次轻护理",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "优先匹配短流程项目",
+        "严格控制时长",
+        "给出无法满足时的替代方案"
+      ],
+      "mustAvoid": [
+        "把长项目强塞进午休窗口",
+        "忽略到店和返回工位时间"
+      ]
+    },
+    {
+      "id": "dispatcher_beauty_salon_turnover_004",
+      "label": "risk_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理晚间高峰连续预约导致的翻房和用品准备压力",
+        "routing_context": "19:00 到 21:00 同一房间连续有 3 单，且其中两单是首次到店",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "翻房和用品准备节点",
+        "必要的时段顺延或分流动作",
+        "首次到店用户不应被压缩沟通"
+      ],
+      "mustAvoid": [
+        "假设同一房间可以无缝衔接三单",
+        "靠压缩咨询和清洁时间硬接"
+      ]
+    }
+  ]
+}

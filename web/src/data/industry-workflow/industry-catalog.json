@@ -1,0 +1,162 @@
+﻿{
+  "version": "lobster.industry-catalog.v0.1",
+  "categories": [
+    {
+      "id": "food_service",
+      "label": "餐饮服务",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "chinese_restaurant", "label": "中餐馆" },
+        { "id": "hotpot_restaurant", "label": "火锅店" },
+        { "id": "bbq_restaurant", "label": "烧烤店" },
+        { "id": "milk_tea_shop", "label": "奶茶店" },
+        { "id": "coffee_shop", "label": "咖啡店" },
+        { "id": "bakery_shop", "label": "烘焙店" },
+        { "id": "fast_food_shop", "label": "快餐店" }
+      ]
+    },
+    {
+      "id": "hotel_stay",
+      "label": "酒店民宿",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "business_hotel", "label": "商务酒店" },
+        { "id": "resort_hotel", "label": "度假酒店" },
+        { "id": "boutique_homestay", "label": "精品民宿" },
+        { "id": "urban_homestay", "label": "城市民宿" },
+        { "id": "inn", "label": "客栈" },
+        { "id": "apartment_hotel", "label": "公寓酒店" }
+      ]
+    },
+    {
+      "id": "beauty_health",
+      "label": "美业健康",
+      "defaultChannels": ["xiaohongshu", "douyin"],
+      "subindustries": [
+        { "id": "beauty_salon", "label": "美容院" },
+        { "id": "nail_shop", "label": "美甲店" },
+        { "id": "hair_salon", "label": "美发店" },
+        { "id": "light_medical_aesthetics", "label": "轻医美机构" },
+        { "id": "skin_management", "label": "皮肤管理" },
+        { "id": "wellness_center", "label": "养生馆" },
+        { "id": "therapy_center", "label": "理疗馆" }
+      ]
+    },
+    {
+      "id": "education_training",
+      "label": "教育培训",
+      "defaultChannels": ["douyin", "video_account"],
+      "subindustries": [
+        { "id": "vocational_education", "label": "职业教育" },
+        { "id": "language_training", "label": "语言培训" },
+        { "id": "postgraduate_training", "label": "考研培训" },
+        { "id": "art_training", "label": "艺术培训" },
+        { "id": "kids_quality_education", "label": "少儿素质教育" },
+        { "id": "adult_skill_training", "label": "成人技能培训" }
+      ]
+    },
+    {
+      "id": "auto_service",
+      "label": "汽车服务",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "used_car_store", "label": "二手车门店" },
+        { "id": "new_car_dealer", "label": "新车经销" },
+        { "id": "car_beauty", "label": "汽车美容" },
+        { "id": "car_repair", "label": "汽车维修" },
+        { "id": "car_modding", "label": "汽车改装" },
+        { "id": "car_rental", "label": "汽车租赁" }
+      ]
+    },
+    {
+      "id": "home_decor",
+      "label": "家居装修",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "renovation_company", "label": "装修公司" },
+        { "id": "whole_house_custom", "label": "全屋定制" },
+        { "id": "home_building_materials", "label": "家居建材" },
+        { "id": "appliance_store", "label": "家电门店" },
+        { "id": "smart_home", "label": "智能家居" },
+        { "id": "soft_furnishing_design", "label": "软装设计" }
+      ]
+    },
+    {
+      "id": "local_retail",
+      "label": "本地零售",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "fresh_store", "label": "生鲜门店" },
+        { "id": "community_supermarket", "label": "社区超市" },
+        { "id": "maternal_baby_store", "label": "母婴门店" },
+        { "id": "pet_store", "label": "宠物门店" },
+        { "id": "liquor_tobacco_store", "label": "烟酒店" },
+        { "id": "pharmacy", "label": "药店" }
+      ]
+    },
+    {
+      "id": "life_service",
+      "label": "生活服务",
+      "defaultChannels": ["douyin", "video_account"],
+      "subindustries": [
+        { "id": "housekeeping_service", "label": "家政服务" },
+        { "id": "moving_service", "label": "搬家服务" },
+        { "id": "laundry_service", "label": "洗衣洗护" },
+        { "id": "locksmith_service", "label": "开锁服务" },
+        { "id": "pipe_repair", "label": "管道维修" },
+        { "id": "appliance_cleaning", "label": "家电清洗" }
+      ]
+    },
+    {
+      "id": "medical_health",
+      "label": "医疗健康",
+      "defaultChannels": ["xiaohongshu", "douyin"],
+      "subindustries": [
+        { "id": "dental_clinic", "label": "口腔门诊" },
+        { "id": "ophthalmology_clinic", "label": "眼科门诊" },
+        { "id": "checkup_center", "label": "体检中心" },
+        { "id": "rehabilitation_center", "label": "康复中心" },
+        { "id": "tcm_clinic", "label": "中医诊所" },
+        { "id": "psychology_consulting", "label": "心理咨询" }
+      ]
+    },
+    {
+      "id": "enterprise_service",
+      "label": "企业服务",
+      "defaultChannels": ["video_account", "xiaohongshu"],
+      "subindustries": [
+        { "id": "finance_tax_service", "label": "财税服务" },
+        { "id": "legal_service", "label": "法律服务" },
+        { "id": "human_resource", "label": "人力资源" },
+        { "id": "software_service", "label": "软件服务" },
+        { "id": "intellectual_property", "label": "知识产权" },
+        { "id": "consulting_service", "label": "咨询服务" }
+      ]
+    },
+    {
+      "id": "culture_tour_leisure",
+      "label": "文旅休闲",
+      "defaultChannels": ["douyin", "xiaohongshu"],
+      "subindustries": [
+        { "id": "scenic_park", "label": "景区乐园" },
+        { "id": "travel_agency", "label": "旅行社" },
+        { "id": "camping_base", "label": "露营基地" },
+        { "id": "gym", "label": "健身房" },
+        { "id": "yoga_studio", "label": "瑜伽馆" },
+        { "id": "cinema_theater", "label": "影城剧场" }
+      ]
+    },
+    {
+      "id": "crossborder_ecommerce",
+      "label": "电商出海",
+      "defaultChannels": ["video_account", "douyin"],
+      "subindustries": [
+        { "id": "crossborder_ecommerce", "label": "跨境电商" },
+        { "id": "foreign_trade_factory", "label": "外贸工厂" },
+        { "id": "independent_site_ops", "label": "独立站运营" },
+        { "id": "overseas_warehouse_service", "label": "海外仓服务" },
+        { "id": "international_logistics", "label": "国际物流" }
+      ]
+    }
+  ]
+}

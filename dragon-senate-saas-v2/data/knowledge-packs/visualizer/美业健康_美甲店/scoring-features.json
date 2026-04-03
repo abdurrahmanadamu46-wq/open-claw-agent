@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_work_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实作品可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实作品和真实手型放在前排位置，而不是依赖外部手模图或重修图。",
+      "high_score_signals": [
+        "前 3 镜内出现真实作品",
+        "看得出是本店作品",
+        "手型与款式关系清楚"
+      ],
+      "low_score_signals": [
+        "开场是海报和网图",
+        "看不出是否本店作品",
+        "手型信息缺失"
+      ],
+      "score_rule": "真实作品证据越靠前、越清楚，得分越高。"
+    },
+    {
+      "id": "hygiene_and_process_visibility",
+      "metric_group": "trust_building",
+      "feature": "卫生与过程可见度",
+      "weight": 0.17,
+      "definition": "分镜是否把工具准备、工作台、修形和上色步骤串成可信过程，而不是只给成品。",
+      "high_score_signals": [
+        "有工具和台面镜头",
+        "有关键步骤镜头",
+        "过程清楚可感知"
+      ],
+      "low_score_signals": [
+        "只有成品和转场",
+        "卫生感全靠字幕",
+        "流程跳跃"
+      ],
+      "score_rule": "过程越真实、越可见，得分越高。"
+    },
+    {
+      "id": "style_route_distinction",
+      "metric_group": "message_match",
+      "feature": "风格路线区分度",
+      "weight": 0.16,
+      "definition": "通勤短甲、婚礼甲、节日款和高复杂度作品是否都拥有不同的视觉语言，而不是所有视频都长得一样。",
+      "high_score_signals": [
+        "不同路线画面明显不同",
+        "风格与场景一一对应",
+        "镜头和文案同题"
+      ],
+      "low_score_signals": [
+        "所有款都只靠闪片和慢镜",
+        "场景和风格混乱",
+        "看不出适合谁"
+      ],
+      "score_rule": "风格和场景越匹配，得分越高。"
+    },
+    {
+      "id": "truth_gap_control",
+      "metric_group": "brand_safety",
+      "feature": "图实落差控制力",
+      "weight": 0.18,
+      "definition": "视频是否主动通过真实作品、手型和边界说明控制用户预期，而不是制造一比一复刻幻想。",
+      "high_score_signals": [
+        "真实作品替代网图幻想",
+        "手型和长度边界清楚",
+        "不过度夸大复制能力"
+      ],
+      "low_score_signals": [
+        "大量网图感视觉",
+        "看不出做不到的边界",
+        "风格过度理想化"
+      ],
+      "score_rule": "越能控制图实落差，品牌安全得分越高。"
+    },
+    {
+      "id": "booking_path_visibility",
+      "metric_group": "conversion_readiness",
+      "feature": "预约路径可见度",
+      "weight": 0.15,
+      "definition": "内容是否留出预约、甲位、时段或卸甲说明的承接，而不是只拍成品。",
+      "high_score_signals": [
+        "后半段出现预约承接画面",
+        "CTA 与画面一致",
+        "时段或服务范围可感知"
+      ],
+      "low_score_signals": [
+        "没有任何下一步",
+        "只剩作品展示",
+        "CTA 与画面脱节"
+      ],
+      "score_rule": "观众越容易知道如何预约，得分越高。"
+    },
+    {
+      "id": "respectful_hand_representation",
+      "metric_group": "brand_safety",
+      "feature": "手部尊重感",
+      "weight": 0.18,
+      "definition": "分镜是否尊重不同手型、甲床和旧甲状态，不用羞辱式拍法制造焦虑。",
+      "high_score_signals": [
+        "镜头克制",
+        "适配导向而非羞辱导向",
+        "旧甲和卸甲镜头处理得当"
+      ],
+      "low_score_signals": [
+        "放大瑕疵逼单",
+        "羞辱式对比",
+        "吓人卸甲主导画面"
+      ],
+      "score_rule": "越能守住尊重感，品牌安全得分越高。"
+    }
+  ]
+}

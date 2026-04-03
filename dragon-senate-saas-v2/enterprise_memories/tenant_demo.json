@@ -1,0 +1,105 @@
+{
+  "tenant_id": "tenant_demo",
+  "enterprise_name": "Codex Smoke Brand",
+  "industry_l1": "????",
+  "industry_l2": "???",
+  "price_position": "??",
+  "city": "??",
+  "city_tier": "????",
+  "founded_year": 0,
+  "growth_stage": "冷启动",
+  "brand_core_value": "???????????",
+  "brand_personality": [
+    "??",
+    "??"
+  ],
+  "brand_taboo_persona": [
+    "????"
+  ],
+  "founder_story": "",
+  "signature_service": "",
+  "platform_accounts": [],
+  "brand_vocabulary_positive": [],
+  "brand_vocabulary_customer": [],
+  "brand_vocabulary_banned": [],
+  "primary_customer_age": "",
+  "primary_customer_gender": "",
+  "primary_customer_occupation": [],
+  "primary_customer_pain_points": [
+    "???????"
+  ],
+  "primary_customer_motivation": [],
+  "primary_decision_trigger": [
+    "????"
+  ],
+  "staff_total": 0,
+  "content_responsible": "",
+  "filming_capability": "",
+  "monthly_marketing_budget": 0.0,
+  "platform_ads_willing": false,
+  "content_per_week": 2,
+  "peak_busy_periods": [],
+  "main_competitors": [],
+  "market_position": "",
+  "growth_history": [],
+  "memory_entries": [
+    {
+      "key": "initial_diagnosis",
+      "value": {
+        "tenant_id": "tenant_demo",
+        "enterprise_name": "Codex Smoke Brand",
+        "growth_stage": "冷启动",
+        "stage_rationale": "建立账号标签，积累第一批精准粉丝",
+        "primary_lobsters": [
+          "radar",
+          "strategist",
+          "inkwriter"
+        ],
+        "top3_priorities": [
+          {
+            "priority": 1,
+            "title": "垂直内容建立账号标签",
+            "rationale": "账号当前总粉丝0人，处于冷启动期。算法需要时间识别账号定位，前20条内容必须高度垂直",
+            "action": "由 inkwriter + radar 主导，每周2条???垂直内容，优先搜索流量，不追热点",
+            "kpi": "账号标签稳定（系统推荐人群精准），粉丝突破1000"
+          },
+          {
+            "priority": 2,
+            "title": "建立品牌专属词汇体系",
+            "rationale": "三线城市熟人经济，个人IP比品牌更有温度。创始人故事是差异化关键",
+            "action": "用入驻时的品牌基因，建立inkwriter的专属词汇库，确保每条内容都有荣荣美院独特的语言风格",
+            "kpi": "发布10条内容后，评论区开始出现客户用我们的品牌词汇回应"
+          },
+          {
+            "priority": 3,
+            "title": "打通私域-到店转化路径",
+            "rationale": "????微信私域转化率远高于公域，",
+            "action": "每条内容结尾引导到微信，echoer 监控评论区意向信号，catcher 及时承接私信线索",
+            "kpi": "内容→私信咨询转化率>3%"
+          }
+        ],
+        "first_month_goal": "粉丝数突破1000，账号标签稳定",
+        "quick_wins": [],
+        "risks": [
+          "内容生产能力有限（每周2条），需要保证每条质量优先于频率",
+          "三线城市决策周期较一线城市延长7天，不要用一线城市的转化速度衡量效果",
+          ""
+        ],
+        "generated_at": "2026-04-03T05:16:36.831585"
+      },
+      "category": "campaign_result",
+      "expires_days": -1,
+      "memory_id": "mem_20260403051636831585",
+      "metadata": {},
+      "source_lobster": "",
+      "source_task_id": "",
+      "lead_id": "",
+      "session_id": "",
+      "confidence": 1.0,
+      "created_at": "2026-04-03T05:16:36.831585",
+      "updated_at": "2026-04-03T05:16:36.831585"
+    }
+  ],
+  "onboarded_at": "2026-04-03T05:16:36.831080",
+  "last_updated": "2026-04-03T05:16:36.831585"
+}

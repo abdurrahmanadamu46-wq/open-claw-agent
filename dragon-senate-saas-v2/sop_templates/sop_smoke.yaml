@@ -1,0 +1,6 @@
+name: ??SOP
+platform: xiaohongshu
+version: v1
+steps:
+- action: act
+  instruction: ??????

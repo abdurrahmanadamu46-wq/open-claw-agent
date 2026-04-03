@@ -1,0 +1,128 @@
+﻿{
+  "meta": {
+    "sourceProject": "BytePioneer-AI/openclaw-china",
+    "adaptedFor": "dragon-senate-saas-v2",
+    "version": "v0.1",
+    "currentRuntimeSupportedChannels": [
+      "telegram",
+      "feishu",
+      "dingtalk"
+    ],
+    "configOnlyChannels": [
+      "qqbot",
+      "wecom",
+      "wecom-app",
+      "wecom-kf",
+      "wechat-mp"
+    ]
+  },
+  "channels": {
+    "feishu": {
+      "status": "implemented",
+      "enabled": false,
+      "replyMode": "webhook",
+      "verifySignature": false,
+      "approvalChatId": "",
+      "accounts": {
+        "default": {
+          "appId": "",
+          "appSecret": "",
+          "botWebhook": "",
+          "verificationToken": "",
+          "signingSecret": ""
+        }
+      }
+    },
+    "dingtalk": {
+      "status": "implemented",
+      "enabled": false,
+      "replyMode": "webhook",
+      "verifySignature": false,
+      "approvalChatId": "",
+      "accounts": {
+        "default": {
+          "clientId": "",
+          "clientSecret": "",
+          "botWebhook": "",
+          "sessionWebhook": "",
+          "verificationToken": "",
+          "signingSecret": ""
+        }
+      }
+    },
+    "qqbot": {
+      "status": "config-ready",
+      "enabled": false,
+      "markdownSupport": true,
+      "streaming": false,
+      "c2cMarkdownDeliveryMode": "proactive-all",
+      "c2cMarkdownChunkStrategy": "markdown-block",
+      "typingHeartbeatMode": "idle",
+      "typingHeartbeatIntervalMs": 5000,
+      "typingInputSeconds": 60,
+      "autoSendLocalPathMedia": false,
+      "accounts": {
+        "default": {
+          "appId": "",
+          "clientSecret": ""
+        }
+      }
+    },
+    "wecom": {
+      "status": "config-ready",
+      "enabled": false,
+      "mode": "ws",
+      "requireMention": true,
+      "accounts": {
+        "default": {
+          "botId": "",
+          "secret": ""
+        }
+      }
+    },
+    "wecom-app": {
+      "status": "config-ready",
+      "enabled": false,
+      "webhookPath": "/wecom-app",
+      "accounts": {
+        "default": {
+          "token": "",
+          "encodingAESKey": "",
+          "corpId": "",
+          "corpSecret": "",
+          "agentId": ""
+        }
+      }
+    },
+    "wecom-kf": {
+      "status": "config-ready",
+      "enabled": false,
+      "webhookPath": "/wecom-kf",
+      "accounts": {
+        "default": {
+          "token": "",
+          "encodingAESKey": "",
+          "corpId": "",
+          "secret": "",
+          "openKfId": ""
+        }
+      }
+    },
+    "wechat-mp": {
+      "status": "config-ready",
+      "enabled": false,
+      "messageMode": "safe",
+      "replyMode": "passive",
+      "renderMarkdown": true,
+      "activeDeliveryMode": "merged",
+      "accounts": {
+        "default": {
+          "appId": "",
+          "appSecret": "",
+          "token": "",
+          "encodingAESKey": ""
+        }
+      }
+    }
+  }
+}

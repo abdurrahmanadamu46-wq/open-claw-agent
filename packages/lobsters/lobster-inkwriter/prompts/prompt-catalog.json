@@ -1,0 +1,328 @@
+﻿{
+    "lobster_id":  "inkwriter",
+    "version":  "1.0.0",
+    "total_prompts":  20,
+    "categories":  [
+                       {
+                           "category":  "xiaohongshu",
+                           "prompts":  [
+                                           {
+                                               "id":  "inkwriter.xiaohongshu.product-review.v1",
+                                               "file":  "xiaohongshu/product-review.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "mother-baby",
+                                                                  "3c"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-casual",
+                                                                "v1-expert",
+                                                                "v1-story"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.xiaohongshu.lifestyle-share.v1",
+                                               "file":  "xiaohongshu/lifestyle-share.prompt.md",
+                                               "skill_id":  "inkwriter_multiplatform_adapt",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "fashion",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-casual",
+                                                                "v1-softsell"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.xiaohongshu.hook-opening.v1",
+                                               "file":  "xiaohongshu/hook-opening.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "retail"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-pain",
+                                                                "v1-curiosity"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.xiaohongshu.limited-offer.v1",
+                                               "file":  "xiaohongshu/limited-offer.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "beauty",
+                                                                  "hotel"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-deadline",
+                                                                "v1-scarcity"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.xiaohongshu.transformation-story.v1",
+                                               "file":  "xiaohongshu/transformation-story.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "fitness",
+                                                                  "beauty",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-before-after",
+                                                                "v1-diary"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "douyin",
+                           "prompts":  [
+                                           {
+                                               "id":  "inkwriter.douyin.script-hook.v1",
+                                               "file":  "douyin/script-hook.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "food",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-fast",
+                                                                "v1-drama"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.douyin.short-script.v1",
+                                               "file":  "douyin/short-script.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "fitness",
+                                                                  "retail"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-listicle",
+                                                                "v1-problem-solution"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.douyin.comment-reply.v1",
+                                               "file":  "douyin/comment-reply.prompt.md",
+                                               "skill_id":  "inkwriter_dm_script",
+                                               "effectiveness_rating":  3,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "food",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-soft",
+                                                                "v1-bridge"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.douyin.live-room-warmup.v1",
+                                               "file":  "douyin/live-room-warmup.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "retail",
+                                                                  "food"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-countdown",
+                                                                "v1-benefit"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.douyin.urgency-offer.v1",
+                                               "file":  "douyin/urgency-offer.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "hotel",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-urgency",
+                                                                "v1-reminder"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "wechat",
+                           "prompts":  [
+                                           {
+                                               "id":  "inkwriter.wechat.private-chat-opener.v1",
+                                               "file":  "wechat/private-chat-opener.prompt.md",
+                                               "skill_id":  "inkwriter_dm_script",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-soft",
+                                                                "v1-probing"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.wechat.follow-up-warm.v1",
+                                               "file":  "wechat/follow-up-warm.prompt.md",
+                                               "skill_id":  "inkwriter_dm_script",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "retail"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-caring",
+                                                                "v1-progress"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.wechat.consultation-summary.v1",
+                                               "file":  "wechat/consultation-summary.prompt.md",
+                                               "skill_id":  "inkwriter_multiplatform_adapt",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "local-service",
+                                                                  "housekeeping"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-summary",
+                                                                "v1-action-list"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.wechat.moments.soft-sell.v1",
+                                               "file":  "wechat/moments-soft-sell.prompt.md",
+                                               "skill_id":  "inkwriter_multiplatform_adapt",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "retail",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-lifestyle",
+                                                                "v1-proof"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.wechat.reactivation-checkin.v1",
+                                               "file":  "wechat/reactivation-checkin.prompt.md",
+                                               "skill_id":  "inkwriter_dm_script",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "fitness",
+                                                                  "beauty"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-checkin",
+                                                                "v1-resource-share"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "generic",
+                           "prompts":  [
+                                           {
+                                               "id":  "inkwriter.generic.pain-point-mining.v1",
+                                               "file":  "generic/pain-point-mining.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "retail"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-problem",
+                                                                "v1-aspiration"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.generic.urgency-copy.v1",
+                                               "file":  "generic/urgency-copy.prompt.md",
+                                               "skill_id":  "inkwriter_copy_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "hotel",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-deadline",
+                                                                "v1-slot"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.generic.objection-reframe.v1",
+                                               "file":  "generic/objection-reframe.prompt.md",
+                                               "skill_id":  "inkwriter_dm_script",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "local-service",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-price",
+                                                                "v1-trust"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.generic.banned-word-safe-rewrite.v1",
+                                               "file":  "generic/banned-word-safe-rewrite.prompt.md",
+                                               "skill_id":  "inkwriter_banned_word_check",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "health"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-safe",
+                                                                "v1-conservative"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "inkwriter.generic.hashtag-cluster.v1",
+                                               "file":  "generic/hashtag-cluster.prompt.md",
+                                               "skill_id":  "inkwriter_hashtag_gen",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "fashion",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-hot",
+                                                                "v1-longtail"
+                                                            ]
+                                           }
+                                       ]
+                       }
+                   ]
+}

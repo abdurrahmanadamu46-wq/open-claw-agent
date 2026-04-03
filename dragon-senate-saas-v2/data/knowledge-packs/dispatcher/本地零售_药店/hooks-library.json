@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次到店问询触发优先调度","description":"当来单中出现第一次来、想先到店、想先看看药师说明或具体清单问题时，Dispatcher 应优先匹配到店链路。","examples":["客户第一次来，想周末先看家庭常备药。","客户想先看儿童护理路线是否适合自己。"],"priority":"high"},
+  {"id":"seasonal_window_inquiry","title":"季节窗口询单触发时效优先调度","description":"当来单明确说明流感季、返乡和家庭备药节点时，Dispatcher 要立即优先判断热门时段可用性和库存边界。","examples":["客户这周要返乡，想周四晚先到店。","客户说明换季了，希望今晚先来了解。"],"priority":"high"},
+  {"id":"urgent_need_trigger","title":"夜间急用触发时段优先调度","description":"当用户明确今晚急用、发热或咳嗽等时段紧张场景时，Dispatcher 应优先分配夜间链路。","examples":["客户夜里想先备退烧药。","客户说明老人晚上咳得厉害。"],"priority":"high"},
+  {"id":"night_pickup_trigger","title":"夜间自取触发门店时段优先调度","description":"当用户需要今晚拿药或临时备药时，Dispatcher 要优先判断门店时段和交付方式。","examples":["今晚急用想 9 点前拿到退烧药。","临时备药想先留几盒。"],"priority":"medium"},
+  {"id":"refill_trigger","title":"慢病补药触发复购链路","description":"慢病续购一旦出现规格和补货需求，应直接进入标准化复购链路。","examples":["这个月要继续补降压药。","血糖试纸快用完了。"],"priority":"medium"},
+  {"id":"family_stockup_trigger","title":"家庭备药触发整单链路","description":"家庭常备药和返乡备药应优先走清单链路，而不是重新走单品教育流程。","examples":["返乡前想备一套常用药。","家里老人孩子都想补一点常备药。"],"priority":"medium"}
+]}

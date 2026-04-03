@@ -1,0 +1,144 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_beauty_salon_sensitive_skin_001",
+      "label": "happy_path",
+      "scenario_tag": "seasonal_sensitive_skin_growth",
+      "input": {
+        "mission_goal": "在 21 天内为社区美容院新增 180 个换季敏感修护咨询，并把预约到店率提升到 28%。",
+        "signal_brief": "近两周评论和私信中大量出现换季泛红、起皮和屏障修护咨询，周边竞品也开始上新温和修护体验卡。",
+        "tenant_context": {
+          "budget_limit": 6000,
+          "brand_tone": "温和、专业、不过度承诺",
+          "asset_state": "有真实流程素材和顾客常见问题记录",
+          "location_type": "社区加商场混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把敏感修护设为主路线",
+        "强调流程透明和温和边界",
+        "至少一个体验卡后复访的承接动作"
+      ],
+      "mustAvoid": [
+        "同时强推所有项目",
+        "使用医疗化或绝对化表述"
+      ]
+    },
+    {
+      "id": "strategist_beauty_salon_pre_event_002",
+      "label": "happy_path",
+      "scenario_tag": "pre_event_rescue_route",
+      "input": {
+        "mission_goal": "围绕婚礼和拍照档做 14 天单次预约冲刺，为门店新增 90 个节前状态管理预约。",
+        "signal_brief": "本地写真馆和婚纱店开始集中发拍前状态管理内容，门店近期咨询也多与约会、婚礼和节前见人有关。",
+        "tenant_context": {
+          "budget_limit": 5000,
+          "brand_tone": "轻松、稳妥、讲边界",
+          "asset_state": "有单次护理流程和预约时效素材",
+          "location_type": "商场门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把节前急救作为独立路线",
+        "强调预约时效和适用边界",
+        "不能把单次护理写成长效结果"
+      ],
+      "mustAvoid": [
+        "把节前路线和长期疗程混为一谈",
+        "忽略日期临近带来的时效需求"
+      ]
+    },
+    {
+      "id": "strategist_beauty_salon_capacity_003",
+      "label": "edge_case",
+      "scenario_tag": "experience_card_scale_with_capacity_risk",
+      "input": {
+        "mission_goal": "给门店新上的 39.9 清洁体验卡放量，但晚间时段房间和技师已经接近满负荷。",
+        "signal_brief": "咨询上涨明显，但近期差评开始提到等待时间变长和顾问过于着急。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "高效、亲和",
+          "asset_state": "体验卡素材齐全，但预约分流系统弱",
+          "location_type": "写字楼商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "先处理承接能力而不是直接冲量",
+        "至少一个时段分流或预约门槛调整动作",
+        "指出等待和推卡风险"
+      ],
+      "mustAvoid": [
+        "在承接不足时继续放大低价体验",
+        "忽视口碑风险"
+      ]
+    },
+    {
+      "id": "strategist_beauty_salon_repurchase_004",
+      "label": "long_term_case",
+      "scenario_tag": "member_repurchase_route",
+      "input": {
+        "mission_goal": "在 30 天内提升最近 90 天到店老客的二次预约和续卡率。",
+        "signal_brief": "门店新客获客成本上升，但历史老客基数不小，且换季时点临近。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "熟悉、克制、不过度促销",
+          "asset_state": "有基础到店记录和项目历史",
+          "location_type": "社区门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把老客回访作为独立主路线",
+        "按历史问题和周期做分层",
+        "续卡动作要建立在复访和信任上"
+      ],
+      "mustAvoid": [
+        "无差别群发促销",
+        "只靠价格而没有状态理由"
+      ]
+    }
+  ]
+}

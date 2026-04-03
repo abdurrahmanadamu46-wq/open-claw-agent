@@ -1,0 +1,8 @@
+{"industry":"生活服务_管道维修","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"pipe_hook_urgent","title":"急修问题开头模板","description":"适合厨房下水、马桶反水和夜间急修路线。","examples":["很多人卡的不是要不要修，而是这次到底能不能先把堵塞位置和到场时间说清。 ","夜里急修最怕的不是没人接，而是没把问题和时效讲明白。 "],"priority":"high"},
+  {"id":"pipe_hook_detection","title":"查漏检测开头模板","description":"适合墙内渗水、卫生间漏水和热水管查漏路线。","examples":["查漏最怕的不是没人来看，而是漏点、范围和要不要拆修没一起说明白。 ","真正难的不是约师傅，而是先把渗水位置和影响范围说清楚。 "],"priority":"high"},
+  {"id":"pipe_hook_trust","title":"报价信任开头模板","description":"适合首次上门、乱拆乱收费焦虑路线。","examples":["很多人找管道维修第一句不是多少钱，而是这次到底会不会被乱拆、乱收费。 ","想先修得稳，先把报价、检测和边界说清楚，比先问优惠更重要。 "],"priority":"high"},
+  {"id":"pipe_hook_odor","title":"反味治理开头模板","description":"适合反味、返水和长期异味路线。","examples":["反味最怕的不是一时难闻，而是点位、频率和到底是堵还是返水没讲清。 ","真正省事的不是盲目通一下，而是先把场景理顺。 "],"priority":"medium"},
+  {"id":"pipe_hook_peak","title":"高峰时效开头模板","description":"适合夜间高峰、梅雨季和冬季爆管路线。","examples":["临时要修的人，最怕的不是没师傅，而是来不来得及。 ","高峰时段想省心，先把时间和问题位置说清楚会更快。 "],"priority":"medium"},
+  {"id":"pipe_hook_repeat","title":"返修维护开头模板","description":"适合老客返修、物业转介绍和商铺定期维护路线。","examples":["返修这件事很多时候不是重新选，而是先把这次还剩什么问题说清。 ","维护场景更看重周期、位置和恢复营业时间。 "],"priority":"medium"}
+]}

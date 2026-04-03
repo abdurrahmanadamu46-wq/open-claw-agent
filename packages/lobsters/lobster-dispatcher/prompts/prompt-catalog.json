@@ -1,0 +1,81 @@
+{
+  "lobster_id": "dispatcher",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "publish-plan",
+      "prompts": [
+        {
+          "id": "dispatcher.publish-plan.task-split.v1",
+          "file": "publish-plan/task-split.prompt.md",
+          "skill_id": "dispatcher_task_split",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "food", "local-service", "education"],
+          "variants": ["v1-multi-platform", "v1-single-platform", "v1-campaign-burst"]
+        },
+        {
+          "id": "dispatcher.publish-plan.multi-account-rotation.v1",
+          "file": "publish-plan/multi-account-rotation.prompt.md",
+          "skill_id": "dispatcher_multi_account_rotate",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "local-service", "food"],
+          "variants": ["v1-matrix-rotate", "v1-risk-balanced", "v1-peak-load"]
+        },
+        {
+          "id": "dispatcher.publish-plan.execution-checklist.v1",
+          "file": "publish-plan/execution-checklist.prompt.md",
+          "skill_id": "dispatcher_scheduled_publish",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "fashion", "food", "3c"],
+          "variants": ["v1-pre-publish", "v1-post-publish"]
+        },
+        {
+          "id": "dispatcher.publish-plan.emergency-takedown.v1",
+          "file": "publish-plan/emergency-takedown.prompt.md",
+          "skill_id": "dispatcher_emergency_takedown",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "health", "food", "finance", "ecommerce"],
+          "variants": ["v1-compliance-trigger", "v1-reputation-trigger"]
+        }
+      ]
+    },
+    {
+      "category": "time-window",
+      "prompts": [
+        {
+          "id": "dispatcher.time-window.optimal-slot.v1",
+          "file": "time-window/optimal-slot.prompt.md",
+          "skill_id": "dispatcher_scheduled_publish",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "food", "ecommerce", "local-service", "education"],
+          "variants": ["v1-xiaohongshu-peak", "v1-douyin-peak", "v1-wechat-peak"]
+        },
+        {
+          "id": "dispatcher.time-window.campaign-schedule.v1",
+          "file": "time-window/campaign-schedule.prompt.md",
+          "skill_id": "dispatcher_scheduled_publish",
+          "effectiveness_rating": 5,
+          "industries": ["ecommerce", "beauty", "food", "3c", "fashion"],
+          "variants": ["v1-pre-event", "v1-event-day", "v1-post-event"]
+        },
+        {
+          "id": "dispatcher.time-window.frequency-governor.v1",
+          "file": "time-window/frequency-governor.prompt.md",
+          "skill_id": "dispatcher_task_split",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "local-service", "food"],
+          "variants": ["v1-daily-cap", "v1-weekly-spread"]
+        },
+        {
+          "id": "dispatcher.time-window.fallback-plan.v1",
+          "file": "time-window/fallback-plan.prompt.md",
+          "skill_id": "dispatcher_task_split",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "food", "health", "local-service"],
+          "variants": ["v1-platform-down", "v1-content-blocked"]
+        }
+      ]
+    }
+  ]
+}

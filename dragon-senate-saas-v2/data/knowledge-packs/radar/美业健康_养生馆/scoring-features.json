@@ -1,0 +1,69 @@
+﻿{
+  "industry": "美业健康_养生馆",
+  "lobster_id": "radar",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "source_reliability",
+      "title": "来源可信度",
+      "description": "优先给平台后台公告、监管通报、门店后台数据和真实评价更高分；对营销号搬运、群聊截图和无出处截图给低分。",
+      "examples": [
+        "平台后台规则高于同行转述",
+        "真实预约数据高于账号主观判断",
+        "带门店定位和时间的评价高于模糊截图"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "concern_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分信号能明确落到肩颈、睡眠、久坐疲劳、手脚冰凉和节前放松等具体问题，而不是泛泛说想养生和想调理。",
+      "examples": [
+        "高分：肩颈和睡眠问题同时被集中提问",
+        "低分：最近大家都想养生"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "local_booking_relevance",
+      "title": "本地预约相关性",
+      "description": "能反映商圈、门店、预约档期和本地场景需求的信号，应高于全国泛流行信息。",
+      "examples": [
+        "本地换季调理咨询增加",
+        "同商圈门店同时调价或调套餐"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "execution_actionability",
+      "title": "执行可转化度",
+      "description": "高分信号应能直接指导选题、上新、预约排班或风控动作，例如某类问题热度上升、某类投诉集中和某类套餐变化落地。",
+      "examples": [
+        "可执行：睡眠和肩颈咨询升温，可强化问题型路线",
+        "可执行：做后不适投诉集中，可优先排查服务流程"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risk_urgency",
+      "title": "风险紧迫度",
+      "description": "涉及不适反应、售后、合规和误导宣传等风险的信号应显著提权，因为它们直接影响口碑和复购。",
+      "examples": [
+        "不适反应风险高于一般流量变化",
+        "合规风险高于普通价格波动"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "repeatability",
+      "title": "复现度",
+      "description": "单一爆款或偶发吐槽不能直接代表趋势。能跨平台、跨时间重复出现的问题偏好和风险反馈，才应作为重点信号。",
+      "examples": [
+        "同一周评论、私信和本地内容都提到肩颈和睡眠",
+        "多家门店同时出现次卡权益变化"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

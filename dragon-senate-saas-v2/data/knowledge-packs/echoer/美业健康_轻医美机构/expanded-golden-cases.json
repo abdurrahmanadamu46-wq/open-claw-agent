@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "echoer_light_med_first_visit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "It would be my first time and I mainly want to understand what to do about pores this weekend. Do you have time?",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "pushy upsell",
+          "slot guarantee without checking"
+        ],
+        "context_window": [
+          "public comment thread",
+          "first-time clinic inquiry",
+          "concern-based request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge first-time uncertainty",
+        "ask for concern and timing details",
+        "guide toward an easy next step"
+      ],
+      "mustAvoid": [
+        "hard-sell package",
+        "guaranteed slot promise",
+        "appearance shaming"
+      ]
+    },
+    {
+      "id": "echoer_light_med_event_002",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I have a wedding on Saturday. Can I come Thursday night to see what might help me look more refreshed?",
+        "brand_tone": "helpful and reassuring",
+        "negative_patterns": [
+          "guarantee all peak slots",
+          "ignore first-visit or recovery concerns"
+        ],
+        "context_window": [
+          "private message",
+          "event-driven booking",
+          "time-sensitive request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the event timing",
+        "ask for Thursday slot details and concern focus",
+        "carry timing facts forward"
+      ],
+      "mustAvoid": [
+        "magic timing promise",
+        "ignoring first-visit uncertainty",
+        "package push"
+      ]
+    },
+    {
+      "id": "echoer_light_med_price_003",
+      "label": "edge_case",
+      "input": {
+        "user_message": "How much?",
+        "brand_tone": "light and helpful",
+        "negative_patterns": [
+          "menu dump",
+          "defensive tone"
+        ],
+        "context_window": [
+          "public comment thread",
+          "no concern scope yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "light answer without evasion",
+        "one scope question around concern",
+        "natural bridge to next step"
+      ],
+      "mustAvoid": [
+        "cold price wall",
+        "forced off-platform diversion",
+        "instant upsell"
+      ]
+    },
+    {
+      "id": "echoer_light_med_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "user_message": "I came before and might want to come back soon. I want to check what makes sense next.",
+        "brand_tone": "familiar and calm",
+        "negative_patterns": [
+          "treating the client like a stranger",
+          "jumping into hard closing"
+        ],
+        "context_window": [
+          "private message",
+          "returning guest",
+          "possible follow-up path"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the prior visit naturally",
+        "ask what they want to review this time",
+        "guide toward a smooth re-entry step"
+      ],
+      "mustAvoid": [
+        "cold restart tone",
+        "ignoring prior context",
+        "pushing a package too early"
+      ]
+    }
+  ]
+}

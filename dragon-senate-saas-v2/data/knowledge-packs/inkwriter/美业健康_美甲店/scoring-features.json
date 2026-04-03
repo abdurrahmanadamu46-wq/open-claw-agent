@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "nail_score_scene_specificity",
+      "title": "场景与风格清晰度",
+      "description": "高分文案能在前两句就让用户看见明确场景或风格问题，例如通勤短甲、婚礼新娘甲、节日款或复做换款，而不是泛泛说做甲变精致。",
+      "examples": [
+        "高分：开头直接点出上班好看或婚礼前适配。",
+        "低分：一开始只有好看和爆款。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "nail_score_truthfulness",
+      "title": "图实一致感",
+      "description": "高分文案会主动强调真实作品、手型适配和边界，不会暗示任何网图都能一比一复刻。低分文案容易制造图实不符期待。",
+      "examples": [
+        "高分：先看适不适合再看像不像图。",
+        "低分：做出来跟图上一模一样。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "nail_score_price_boundary",
+      "title": "价格边界清晰度",
+      "description": "高分文案会把是否含卸甲、延长、加固和复杂贴饰讲清楚；低分文案只报基础价不讲范围。",
+      "examples": [
+        "高分：说明基础纯色和加项边界。",
+        "低分：99 全包但没有任何范围说明。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "nail_score_first_visit_safety",
+      "title": "首单低压力感",
+      "description": "高分文案会让第一次做甲的人觉得容易开始，不会被复杂款和储值吓退。低分文案过早强调高客单和高复杂度。",
+      "examples": [
+        "高分：先从最稳的方向开始。",
+        "低分：第一次来也直接做最复杂爆款。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "nail_score_respectfulness",
+      "title": "尊重感",
+      "description": "高分文案不会羞辱手型、甲床和旧甲状态，而是站在适配和选择的一侧。低分文案通过焦虑和容貌羞耻逼单。",
+      "examples": [
+        "高分：短甲也有好看的路线。",
+        "低分：指甲短成这样只能做延长。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "nail_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收风格偏好、是否卸甲和预约时间；低分 CTA 只有来做同款或私信了解这种空泛收口。",
+      "examples": [
+        "高分：先发参考方向和想约时间。",
+        "低分：快来做同款。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

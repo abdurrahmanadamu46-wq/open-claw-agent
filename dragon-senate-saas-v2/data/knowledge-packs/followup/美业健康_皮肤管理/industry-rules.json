@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_皮肤管理",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐问题、时间和咨询范围前，本轮目标是锁预约事实，不是先把效果说满",
+      "description": "皮肤管理线索很多从有没有位、多少钱和能不能改善开场，但真正决定能否推进的是问题范围、预约时间、门店和是否第一次咨询。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定有效。",
+      "examples": [
+        "客户只问周末能不能做时，先问问题和是咨询还是护理。",
+        "客户只说最近状态不好时，先补时间和门店，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_safety_trust_stage",
+      "title": "第一次咨询和担心敏感的用户必须先进入信任建立阶段",
+      "description": "第一次来、担心敏感、怕刺痛和怕踩雷的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入信任建立阶段，围绕咨询、适合性和边界做收口。",
+      "examples": [
+        "先确认最担心的是什么，再给出咨询路径。",
+        "先讲清敏感边界和流程，再谈时间。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_booking_needs_fast_scope",
+      "title": "拍照和节日前线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和护理方向。FollowUp 应先确认日期、时段和当前问题，再帮助其进入合适咨询，而不是在时间紧张时展开长篇销售。",
+      "examples": [
+        "拍照线索先确认周几可来和这次最在意什么。",
+        "节前状态管理线索先锁时间，再讲咨询范围。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_revisit_split",
+      "title": "首次预约跟进和复访维护必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心完成一次咨询或护理，复访维护的目标才是提醒周期、反馈状态和下一步选择。两阶段不能共用同一套推进动作。",
+      "examples": [
+        "首单更多围绕问题、时间和风险边界。",
+        "复访更多围绕上次效果、状态变化和下一步。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_reaction_feedback",
+      "title": "做完后的跟进要先收反应和状态变化，再决定是否推进",
+      "description": "做完皮肤管理后的 FollowUp 不是默认销售时刻。应先确认反应、感受、满意度和当前状态，再根据反馈决定是安抚、复访还是下一步建议。",
+      "examples": [
+        "做完后先问有没有刺痛或泛红。",
+        "节前护理后先问状态是否达到预期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老客回访要给具体复访或维护理由，不要只催回来",
+      "description": "复访周期到了、状态回落、节前焕新和上次建议的维护节点，都是合理的回访理由。FollowUp 应用这些具体理由引导老客回来，而不是泛泛问要不要再来。",
+      "examples": [
+        "提醒上次做完护理的老客复访节点到了。",
+        "按节前焕新节奏提醒状态维护。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

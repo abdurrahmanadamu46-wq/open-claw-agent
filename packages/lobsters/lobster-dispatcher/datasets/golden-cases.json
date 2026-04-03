@@ -1,0 +1,97 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "dispatcher",
+  "primaryArtifact": "ExecutionPlan",
+  "cases": [
+    {
+      "id": "dispatcher_content_flow_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Produce and publish a low-risk case-proof video",
+        "routing_context": "Aoto Cut available; approval required before publish",
+        "integration_state": {
+          "aoto_cut": "healthy",
+          "feishu_approval": "healthy"
+        },
+        "approval_state": "pending_first_publish_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "approval checkpoint before publish",
+        "fallback if Aoto Cut fails"
+      ]
+    },
+    {
+      "id": "dispatcher_replay_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Replay failed follow-up execution after provider outage",
+        "routing_context": "voice provider failed earlier; backup SMS exists",
+        "integration_state": {
+          "voice_call": "degraded",
+          "sms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "replay or retry logic",
+        "backup route"
+      ]
+    },
+    {
+      "id": "dispatcher_edge_approval_001",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "Batch follow-up for warm leads",
+        "routing_context": "requires batch messaging and approval is still unresolved",
+        "integration_state": {
+          "messaging": "healthy"
+        },
+        "approval_state": "waiting"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "waiting or paused state",
+        "no direct execution before approval"
+      ]
+    },
+    {
+      "id": "dispatcher_regression_001",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "Critical external action under unstable provider state",
+        "routing_context": "provider flapping and no reliable fallback",
+        "integration_state": {
+          "critical_provider": "unstable"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustAvoid": [
+        "blind direct execution without stop-loss",
+        "no fallback or compensation path"
+      ]
+    }
+  ]
+}

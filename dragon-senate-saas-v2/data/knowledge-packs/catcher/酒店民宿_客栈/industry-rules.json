@@ -1,0 +1,128 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u5ba2\u6808",
+  "lobster_id": "catcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "qualify_by_scenic_area_and_stay_facts",
+      "title": "Qualify with scenic-area and stay facts before calling it high intent",
+      "description": "An inn lead should only be treated as high intent when it includes a specific inn, ancient-town gate, scenic area, riverside block, station, or parking landmark, plus dates, nights, guest count, room type, arrival mode, and a booking action such as reserve, hold, confirm pickup, or confirm parking. Generic questions like do you have rooms near the old town should not be auto-promoted.",
+      "examples": [
+        "Next Friday to Sunday at your Pingyao south-gate inn, 2 twin rooms for 4 adults, train arrival around 9:30 p.m., please confirm pickup and parking notes first.",
+        "Do you have any rooms near the old town this weekend should stay below top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "separate_atmosphere_interest_from_booking_intent",
+      "title": "Do not confuse courtyard, river-view, and photo-style curiosity with booking intent",
+      "description": "Inn leads often start with questions about courtyard aesthetics, river-view photos, tea room mood, rooftop sunsets, cats, coffee, or Hanfu photo spots. Intent should rise only after the conversation moves toward dates, nights, room count, guest structure, arrival plan, budget, or contact ownership.",
+      "examples": [
+        "Does your courtyard look good at night and can we just visit for coffee should remain an interest lead.",
+        "After asking about the river-view room, the guest adds two nights next Saturday, two adults, one child, and a self-drive arrival time."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "require_property_or_scenic_specificity_before_top_tier",
+      "title": "Require property or scenic-area specificity before top-tier escalation",
+      "description": "Stair access, riverside noise, breakfast scope, parking distance, pickup options, pet acceptance, and room views vary sharply by inn. If the lead only says Lijiang, ancient town, or scenic guesthouse without locking a property or at least a clear sub-area, it should usually remain a nurture lead rather than a followup-ready top-tier lead.",
+      "examples": [
+        "One room at your Fenghuang riverside inn near the north gate is much stronger than asking whether you have guesthouses in Fenghuang.",
+        "Without a clear inn or scenic sub-area, do not auto-classify the lead as followup-ready top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "arrival_and_transport_scope_matters",
+      "title": "Pickup, self-drive, and late-arrival language need real schedule scope",
+      "description": "High-speed rail pickup, scenic shuttle, self-drive parking, luggage help, and late check-in requests are strong intent signals only when paired with actual train times, arrival windows, number of cars, parking constraints, or gate locations. Urgency alone should not be treated as complete booking readiness.",
+      "examples": [
+        "We land at 8:50 p.m. and reach the scenic shuttle drop-off around 10:00 p.m. is much stronger than asking whether pickup exists in general.",
+        "Can you pick us up sometime and help with luggage is still too vague for top-tier escalation."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "family_elderly_and_room_distribution_shape_fit",
+      "title": "Family structure, elderly access, and room distribution strongly shape fit",
+      "description": "Inn fit depends heavily on adult and child count, child ages, elderly mobility, need for low-floor rooms, room adjacency, quiet rest needs, and whether guests can handle stairs or uneven stone paths. The clearer the guest structure, the more reliable the fit assessment.",
+      "examples": [
+        "Two adults, one child age eight, and one elderly parent needing one low-floor room is much stronger than a vague family trip.",
+        "A family lead that never clarifies how many rooms or whether elders can use stairs should stay below top confidence."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pet_and_house_rule_compliance_directly_affect_fit",
+      "title": "Pet details and house-rule compliance directly affect fit",
+      "description": "Pet-friendly status, pet size, number of pets, cleaning policy, noise tolerance, and restricted room zones matter a lot for inns. A clear pet plan can strengthen fit, while hiding pets, avoiding deposits, or asking to ignore rules should increase risk and lower fit.",
+      "examples": [
+        "Two adults and one corgi for two nights in a pet-friendly courtyard room is easier to assess and often worth keeping.",
+        "We will bring the dog first and not mention it at check-in is a direct risk signal."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "buyout_and_small_event_leads_need_scope",
+      "title": "Buyout, reunion, retreat, and small-event leads need scoped demand",
+      "description": "Entire-courtyard buyouts, family reunions, study retreats, tea events, small wedding-eve stays, and content gatherings can be high value, but only when room count, nights, dining, tea room, projection, quiet hours, invoice needs, and organizer ownership are scoped. A vague idea to buy out the whole place should not jump straight to the top.",
+      "examples": [
+        "Six rooms for two nights plus dinner, tea room, and invoice is a strong inn group lead.",
+        "We may buy out the whole place sometime if the price is okay should stay in nurture until scope is clearer."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "long_stay_workation_and_healing_need_operational_scope",
+      "title": "Long stay, workation, and healing stays need operational scope",
+      "description": "Seven-night-plus stays for remote work, writing, painting, relocation pause, hospital companion use, or slow travel can be valuable, but only when the lead includes length of stay, Wi-Fi needs, desk needs, laundry, quiet-hour expectations, cleaning rhythm, invoice needs, and budget. Pure monthly discount fishing is not enough.",
+      "examples": [
+        "A 12-night writing stay with stable Wi-Fi, quiet mornings, and weekly invoice needs is worth structured follow-up.",
+        "Can long stay be cheaper, just send the lowest monthly rate should stay below top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_vs_peak_season_view_resource_mismatch",
+      "title": "Lower fit when peak-season view demands are badly mismatched with budget",
+      "description": "If the guest wants holiday dates, the best river-view room, private courtyard, pet access, pickup, parking, breakfast, and absolute quiet but gives a clearly unrealistic budget, that reflects real desire but weak commercial fit. These leads should be preserved carefully rather than over-promoted.",
+      "examples": [
+        "Peak holiday riverside suite with parking and pickup at a clearly unrealistic budget is real intent but weak fit.",
+        "When dates, room type, view category, and budget broadly match the offer range, fit_score should rise."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaints_and_refund_issues_are_service_signals",
+      "title": "Room mismatch, pickup failure, invoice gaps, and refund issues are service signals",
+      "description": "Messages about room mismatch, hygiene issues, riverside noise complaints, pickup no-shows, invoice delays, deposit disputes, and refund problems deserve fast handling, but they should not be mistaken for high-intent commercial leads. They belong in support or service escalation flows.",
+      "examples": [
+        "The pickup never came, the room was different from the photos, and I have the order number should go to support rather than sales.",
+        "The courtyard was too noisy and the invoice still has not arrived is urgent but not a normal booking lead."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "filter_agency_and_content_collab_noise",
+      "title": "Filter agency, creator, photo-shoot, and rate-sheet noise",
+      "description": "Requests for all scenic properties, bottom rates, creator barter, travel-agency cooperation, room photo packs, or filming scouting without real stay facts are usually low-fit channel noise rather than direct inn demand. Preserve only if a concrete compliant stay plan is also present.",
+      "examples": [
+        "Send me all your old-town properties, bottom rates, and creator barter policy is usually not a direct booking lead.",
+        "A filming team that also gives fixed dates, room count, quiet-hour compliance, and invoice details may still deserve structured follow-up."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "rule_bending_and_absolute_promises_raise_risk",
+      "title": "Absolute quiet guarantees, over-occupancy, and rule-bending requests raise risk fast",
+      "description": "Requests for guaranteed best-view rooms, guaranteed silence, free early check-in, no ID registration, hidden guests, outside visitors, late-night barbecue or singing, fireworks, or pets in restricted rooms should sharply increase risk_score. High spending or urgency does not cancel governance risk.",
+      "examples": [
+        "We need the best river-view room, complete quiet all night, and free early check-in or we will not book is a high-pressure risk signal.",
+        "Six adults in one courtyard suite without registering everyone and friends coming over late is clearly high risk."
+      ],
+      "priority": "high"
+    }
+  ]
+}

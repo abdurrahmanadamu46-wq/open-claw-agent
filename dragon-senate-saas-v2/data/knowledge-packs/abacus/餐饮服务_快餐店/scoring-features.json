@@ -1,0 +1,248 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "order_fact_completeness",
+      "feature_name": "下单事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确门店、日期、时间、份数、套餐结构和履约方式；3 分：已有其中 4 项且愿意继续补充；1 分：只有模糊咨询，如今天还排队吗、这款桶餐周末还有吗、附近能送到吗。",
+      "positive_signals": [
+        "门店明确",
+        "日期和时间明确",
+        "份数或人数明确",
+        "自提或配送方式明确"
+      ],
+      "negative_signals": [
+        "只有价格咨询",
+        "没有门店信息",
+        "没有时间和份数",
+        "只在评论区围观"
+      ],
+      "value_guidance": "快餐店的短期价值首先来自可执行的下单事实，而不是公域热度。"
+    },
+    {
+      "id": "payment_and_delivery_slot_commitment_strength",
+      "feature_name": "付款与交付时段承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已付款、愿意付定金或已锁定自提/送达时段；3 分：愿意电话深聊、确认预算或先走标准套餐模板；1 分：只说先看看但没有实际承诺。",
+      "positive_signals": [
+        "愿意支付或付定金",
+        "确认自提或送达时段",
+        "接受标准套餐模板",
+        "确认联系人与发票路径"
+      ],
+      "negative_signals": [
+        "反复比价但不进入下一步",
+        "拒绝任何付款动作",
+        "不愿确认时间或份数",
+        "要求先锁大批量产能"
+      ],
+      "value_guidance": "对 Abacus 来说，付款和锁档比聊天热度更能代表真实交易意图。"
+    },
+    {
+      "id": "batch_execution_and_packaging_certainty",
+      "feature_name": "批量出餐与分装执行确定性",
+      "metric": "short_term_score",
+      "weight": 0.07,
+      "scoring_rule": "5 分：套餐结构、分装规则、饮料搭配和标签要求清晰且门店可稳定执行；3 分：有少量备注但可被标准流程覆盖；1 分：大量复杂备注、分装冲突或执行边界不清。",
+      "positive_signals": [
+        "套餐模板标准化",
+        "分装规则清晰",
+        "饮料与主食匹配稳定",
+        "门店能够稳定执行"
+      ],
+      "negative_signals": [
+        "备注混乱",
+        "多人定制差异过大",
+        "分装与送达要求冲突",
+        "返工风险高"
+      ],
+      "value_guidance": "同样的份数，执行越稳，短期价值和置信度越高。"
+    },
+    {
+      "id": "net_contribution_after_variable_cost",
+      "feature_name": "扣除变动成本后的净贡献质量",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除原料、包装、平台抽佣、优惠券、配送和售后后仍有健康净贡献；3 分：净贡献偏紧但仍为正；1 分：GMV 看起来高但净贡献很薄甚至为负。",
+      "positive_signals": [
+        "主力套餐毛利可控",
+        "抽佣和补贴可接受",
+        "有加购空间",
+        "退款与超时风险低"
+      ],
+      "negative_signals": [
+        "强折扣或高补贴",
+        "包装和配送成本高",
+        "赠品或联名成本高",
+        "售后赔付风险高"
+      ],
+      "value_guidance": "Abacus 不能被单量和台面销售额迷惑，真正的 ROI 来自净贡献。"
+    },
+    {
+      "id": "peak_hour_capacity_and_daypart_fit",
+      "feature_name": "高峰产能与餐段匹配度",
+      "metric": "roi_estimate",
+      "weight": 0.09,
+      "scoring_rule": "5 分：需求与门店午市、晚市、早餐或夜宵档的实际产能匹配，不会明显挤占更优订单；3 分：存在一定挤压但可调度；1 分：明显占用高峰产能或导致翻台、打包和配送失控。",
+      "positive_signals": [
+        "错峰下单",
+        "自提优先",
+        "配送距离适中",
+        "低峰团餐或低峰补给"
+      ],
+      "negative_signals": [
+        "午高峰爆量",
+        "超短时限送达",
+        "远距离配送",
+        "高峰多人复杂定制"
+      ],
+      "value_guidance": "相同收入放在不同产能状态下，真实价值差异会非常大。"
+    },
+    {
+      "id": "selfpickup_delivery_efficiency_mix",
+      "feature_name": "自提与配送履约效率结构",
+      "metric": "roi_estimate",
+      "weight": 0.08,
+      "scoring_rule": "5 分：订单以预点自提、近距离自取或可控半径配送为主；3 分：自提与配送混合但仍可控；1 分：主要依赖远距离配送或复杂楼层送达，履约负担重。",
+      "positive_signals": [
+        "小程序预点自提",
+        "固定取餐点",
+        "近半径配送",
+        "骑手等待时间低"
+      ],
+      "negative_signals": [
+        "远距离配送占比高",
+        "多楼层多批次送达",
+        "到店取餐拥堵严重",
+        "夜间运力波动大"
+      ],
+      "value_guidance": "快餐店的真实回报，很大程度上取决于订单是怎样被送出去的。"
+    },
+    {
+      "id": "repeat_purchase_and_subscription_ltv",
+      "feature_name": "复购频次与订阅型长期价值",
+      "metric": "long_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：客户具备固定复购、按周工作餐、早餐月卡、夜班补给或固定社区团购特征；3 分：主体稳定但频次一般；1 分：明显一次性、低复购或低沉淀空间。",
+      "positive_signals": [
+        "工作日固定工作餐",
+        "通勤早餐预点",
+        "社区夜班补给",
+        "会员月卡或储值"
+      ],
+      "negative_signals": [
+        "纯一次性尝鲜",
+        "只看最低价",
+        "没有后续复购空间",
+        "历史复购极低"
+      ],
+      "value_guidance": "长期分的核心是未来还能不能持续回来，而不是这一单看起来有多热。"
+    },
+    {
+      "id": "membership_profile_reuse_leverage",
+      "feature_name": "会员画像与历史偏好复用杠杆",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：来自老客回访、储值、会员日或历史高频客户，且能调取明确偏好；3 分：有历史消费但标签不完整；1 分：几乎没有可复用历史资产。",
+      "positive_signals": [
+        "历史订单记录完整",
+        "有常购套餐偏好",
+        "常去门店明确",
+        "愿意再次复购或充值"
+      ],
+      "negative_signals": [
+        "历史严重投诉",
+        "偏好数据缺失",
+        "过去多次退款",
+        "仅有一次低黏性购买"
+      ],
+      "value_guidance": "历史资产越可复用，长期价值越容易被低估，需要单独加权。"
+    },
+    {
+      "id": "office_school_community_expandability",
+      "feature_name": "企业、学校与社区场景的扩展潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个联系人可扩展到多部门工作餐、学校活动餐、社区团购或夜班补给；3 分：当前单次明确但后续空间一般；1 分：无法扩展或主体不稳定。",
+      "positive_signals": [
+        "多团队工作餐",
+        "多楼层送餐",
+        "学校活动供餐",
+        "社区团长或夜班团队"
+      ],
+      "negative_signals": [
+        "一次性游客消费",
+        "联系人无决策权",
+        "只能做一场",
+        "难以复制到其他场景"
+      ],
+      "value_guidance": "能否从一单延展成一串后续订单，是快餐店长期价值的重要来源。"
+    },
+    {
+      "id": "attribution_merge_quality",
+      "feature_name": "归因合并与关键推进触点质量",
+      "metric": "reward_signal",
+      "weight": 0.08,
+      "scoring_rule": "5 分：能识别重复线索并找到真正推进付款、锁版或复购的关键触点；3 分：知道主要渠道但归因不够细；1 分：谁最后出现就把 credit 全给谁。",
+      "positive_signals": [
+        "合并小程序和企业微信重复线索",
+        "区分曝光触点和推进触点",
+        "知道哪一步推动了付款或下单",
+        "统一核算渠道成本"
+      ],
+      "negative_signals": [
+        "重复计算同一笔订单价值",
+        "只按最后点击分功",
+        "忽略电话或私域推进",
+        "渠道各自重复算 ROI"
+      ],
+      "value_guidance": "奖励信号必须服务于正确归因，否则团队会被带向错误动作。"
+    },
+    {
+      "id": "engagement_to_paid_action_ratio",
+      "feature_name": "互动向支付动作转化比",
+      "metric": "short_term_score",
+      "weight": 0.05,
+      "scoring_rule": "5 分：评论、私信或团购页互动很快转成留资、付款、预点自提或团餐锁档；3 分：有一定转化；1 分：只有围观、点赞和问价，没有业务推进。",
+      "positive_signals": [
+        "评论后转私信",
+        "私信后提交时间和地址",
+        "团购点击后产生付款",
+        "用户愿意补齐门店和份数"
+      ],
+      "negative_signals": [
+        "只涨点赞不涨订单",
+        "只问最低价",
+        "评论热但无人留资",
+        "围观多于转化"
+      ],
+      "value_guidance": "这是校正项，用来防止 Abacus 把公域热度误判成短期价值。"
+    },
+    {
+      "id": "food_safety_customization_refund_risk",
+      "feature_name": "食安、复杂定制与退款风险",
+      "metric": "reward_signal",
+      "weight": 0.06,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动避开高退款、高投诉和复杂定制执行风险；3 分：存在小幅模糊但可纠正；1 分：忽略过敏、缺件、食安或高风险备注继续推进。",
+      "positive_signals": [
+        "先人工复核再推进",
+        "复杂备注回写清楚",
+        "对过敏和去料保守处理",
+        "严重投诉主动降级"
+      ],
+      "negative_signals": [
+        "忽略疑似食安问题继续营销",
+        "未确认就锁大批量产能",
+        "对复杂定制做绝对承诺",
+        "只追单量不做止损"
+      ],
+      "value_guidance": "快餐店的奖励信号不能只鼓励成交，也要防止坏单、食安和品牌风险被放大。"
+    }
+  ]
+}

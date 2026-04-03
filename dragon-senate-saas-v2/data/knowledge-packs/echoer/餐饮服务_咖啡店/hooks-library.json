@@ -1,0 +1,168 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5496\u5561\u5e97",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_first_order_recommendation",
+      "scene": "public_comment",
+      "intent": "drink_recommendation",
+      "emotion": "open_but_unsure",
+      "hook": "Happy to help you narrow it down without making it complicated.",
+      "bridge": "At a coffee shop, the easiest useful split is usually black or milk-based, hot or iced, and smooth or stronger flavor.",
+      "next_step": "Ask which style they lean toward and whether they want less bitterness.",
+      "handoff_suggestion": "Menu-guidance opportunity if the user replies with preference details."
+    },
+    {
+      "id": "hook_not_too_bitter",
+      "scene": "public_comment",
+      "intent": "beginner_friendly_choice",
+      "emotion": "careful",
+      "hook": "That is a very workable place to start.",
+      "bridge": "If someone wants coffee flavor without too much bite, milk balance and roast feel matter more than a generic bestseller list.",
+      "next_step": "Ask whether they want hot or iced and how coffee-forward they want it.",
+      "handoff_suggestion": "Good engagement signal if the user answers with taste details."
+    },
+    {
+      "id": "hook_pickup_eta",
+      "scene": "comment_or_dm",
+      "intent": "pickup_timing",
+      "emotion": "urgent",
+      "hook": "I get why you want to avoid waiting around.",
+      "bridge": "Ready time can swing with store traffic, order size, and whether it is pickup or delivery.",
+      "next_step": "Ask for the store, order mode, and drink count.",
+      "handoff_suggestion": "Send to a live store or Catcher path quickly."
+    },
+    {
+      "id": "hook_work_table",
+      "scene": "public_comment",
+      "intent": "seat_availability",
+      "emotion": "practical",
+      "hook": "Makes sense to check before you carry your laptop over.",
+      "bridge": "Seats, outlets, and noise level can change a lot by branch and time of day.",
+      "next_step": "Ask which store, what time, and how many people are coming.",
+      "handoff_suggestion": "Route as a live availability check if the user gives fixed details."
+    },
+    {
+      "id": "hook_small_meeting_table",
+      "scene": "comment_or_dm",
+      "intent": "meeting_space",
+      "emotion": "organized",
+      "hook": "A coffee meeting usually works better when the basics are lined up first.",
+      "bridge": "Group size, arrival time, and whether you need a quieter corner all shape the right branch choice.",
+      "next_step": "Ask for branch, time, group size, and whether outlets matter.",
+      "handoff_suggestion": "Business-meeting lead if details are already concrete."
+    },
+    {
+      "id": "hook_seasonal_stock",
+      "scene": "public_comment",
+      "intent": "limited_item_availability",
+      "emotion": "ready_to_order",
+      "hook": "Good call to check before you make the trip.",
+      "bridge": "Seasonal drinks and fresh pastry batches can vary by store and timing more than people expect.",
+      "next_step": "Ask for the store and whether they plan to order now or later today.",
+      "handoff_suggestion": "High-intent availability check."
+    },
+    {
+      "id": "hook_office_bulk_order",
+      "scene": "comment_or_dm",
+      "intent": "bulk_order",
+      "emotion": "coordination_mode",
+      "hook": "That sounds like a real order, not casual browsing.",
+      "bridge": "For a multi-cup coffee run, the key details are usually store, timing, drink count, and delivery versus pickup.",
+      "next_step": "Ask for store, ready time, drink count, and whether invoice is needed.",
+      "handoff_suggestion": "Route as a high-intent operational lead."
+    },
+    {
+      "id": "hook_morning_pastry_preorder",
+      "scene": "comment_or_dm",
+      "intent": "food_preorder",
+      "emotion": "time_sensitive",
+      "hook": "Morning orders are much easier when the timing is clear upfront.",
+      "bridge": "Pastries and breakfast sets often depend on the store and pickup window, not just a quick yes or no.",
+      "next_step": "Ask which store, what food items, and what pickup time they need.",
+      "handoff_suggestion": "Store-confirmation path for timed food orders."
+    },
+    {
+      "id": "hook_invoice_business_meeting",
+      "scene": "comment_or_dm",
+      "intent": "business_order",
+      "emotion": "businesslike",
+      "hook": "That already sounds close to a workable booking.",
+      "bridge": "Once invoice needs and timing are involved, the order is really about logistics rather than a generic menu question.",
+      "next_step": "Ask for store, timing, drink count, and invoice details.",
+      "handoff_suggestion": "High-value office or meeting lead."
+    },
+    {
+      "id": "hook_decaf_low_caffeine",
+      "scene": "comment_or_dm",
+      "intent": "caffeine_check",
+      "emotion": "careful",
+      "hook": "I am glad you asked before deciding on the drink.",
+      "bridge": "Questions about caffeine or suitability depend on the exact drink and what the person is sensitive to.",
+      "next_step": "Ask for the exact drink and what they are trying to avoid.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_allergy_or_milk_alt",
+      "scene": "comment_or_dm",
+      "intent": "ingredient_safety",
+      "emotion": "serious",
+      "hook": "That is the kind of detail worth checking carefully.",
+      "bridge": "Milk alternatives, toppings, and kitchen handling should be confirmed for the exact drink instead of guessed.",
+      "next_step": "Ask for the allergen or ingredient concern, the drink, and the store.",
+      "handoff_suggestion": "Human or store confirmation required."
+    },
+    {
+      "id": "hook_bean_quality_skeptic",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With coffee, people often care about different proof points like roast freshness, bean origin, milk balance, or how sweet the drink tastes.",
+      "next_step": "Invite the user to name the exact quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_member_coupon",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you place the order.",
+      "bridge": "Member perks and coupons often change by store, channel, and time window.",
+      "next_step": "Ask for the store and whether they are ordering in app, in person, or by delivery.",
+      "handoff_suggestion": "Useful bridge into a real order if the user confirms details."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a drink issue is usually the store, order time, and a photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales or store operations."
+    },
+    {
+      "id": "hook_custom_event_catering",
+      "scene": "comment_or_dm",
+      "intent": "special_arrangement",
+      "emotion": "hopeful",
+      "hook": "That kind of coffee setup can work well when it is planned early enough.",
+      "bridge": "Event requests usually depend on date, location, drink count, and whether you need branding or just delivery timing.",
+      "next_step": "Ask for date, city or store, drink count, and the exact setup they want.",
+      "handoff_suggestion": "Needs manager or operations confirmation."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move this forward quickly.",
+      "bridge": "The safest first step is still platform DM so order details do not get scattered in public comments.",
+      "next_step": "Ask for the store plus order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

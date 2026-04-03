@@ -1,0 +1,8 @@
+{"industry":"生活服务_开锁服务","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"unlock_score_scene_specificity","title":"场景指向清晰度","description":"高分文案能在前两句就让用户看见明确场景，例如夜间急开门、换锁换芯、智能锁安装和门禁，而不是只说开锁和优惠。","examples":["高分：开头直接点出夜间急开门。 ","低分：一开始只有低价和爆款。 "],"priority":"high"},
+  {"id":"unlock_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给备案、赔付和流程边界，让用户感到门店不会乱夸口。","examples":["高分：先写场景和边界，再写价格。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+  {"id":"unlock_score_scope_clarity","title":"锁型范围清晰度","description":"高分文案会把锁型、门型和场景拆开，让用户快速判断自己属于哪一档。","examples":["高分：防盗门急开、智能锁安装分开说。 ","低分：所有情况混写。 "],"priority":"medium"},
+  {"id":"unlock_score_cta_quality","title":"CTA 收事实能力","description":"高分 CTA 会收集锁型、时间、位置和是否换锁，不只是催下单。","examples":["高分：先把门型和位置发我。 ","低分：直接私聊下单。 "],"priority":"high"},
+  {"id":"unlock_score_window_fit","title":"节点适配度","description":"文案是否自然承接夜间、返家和交房等时间窗口。","examples":["高分：急单写时效但不制造恐慌。 ","低分：全年都像夜间抢单。 "],"priority":"medium"},
+  {"id":"unlock_score_repurchase_voice","title":"复购语气自然度","description":"复约和后续维护类文案越像真实提醒，越容易形成高分。","examples":["高分：承接上次服务和这次换锁。 ","低分：把熟客也当冷流量重新轰炸。 "],"priority":"medium"}
+]}

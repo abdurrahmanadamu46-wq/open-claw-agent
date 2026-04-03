@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "radar",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "radar_beauty_salon_policy_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测美容院在抖音和美团上的体验卡与功效表述规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_life_plus_short_video",
+        "competitor_watchlist": [
+          "商圈美容院A",
+          "连锁美容院B"
+        ],
+        "raw_signals": [
+          "抖音本地生活新增前后对比图和绝对化功效表述限制",
+          "美团商家后台要求体验卡补充预约说明",
+          "两家竞品同时把深层祛痘改成清洁护理与状态管理"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方规则变化优先于竞品改文案",
+        "需要指出对体验卡和功效表述的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略平台后台规则的高可信度"
+      ]
+    },
+    {
+      "id": "radar_beauty_salon_sensitive_skin_wave_002",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测换季期美容院敏感修护需求变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "xiaohongshu_plus_private_messages",
+        "competitor_watchlist": [
+          "社区美容院C",
+          "写字楼美容院D"
+        ],
+        "raw_signals": [
+          "小红书本地帖子大量出现换季泛红和屏障修护讨论",
+          "门店私信里连续出现敏感期还能做清洁吗",
+          "竞品上新温和修护体验卡"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "问题型需求升温而不是泛美容话题升温",
+        "建议关注修护和温和清洁方向",
+        "本地相关性应判高"
+      ],
+      "mustAvoid": [
+        "把所有需求都理解成深度清洁",
+        "忽略竞品体验卡方向变化"
+      ]
+    },
+    {
+      "id": "radar_beauty_salon_negative_review_003",
+      "label": "risk_case",
+      "input": {
+        "mission_scope": "监测美容院口碑与服务风险",
+        "time_window": "last_10_days",
+        "platform_or_market_context": "map_reviews_plus_public_comments",
+        "competitor_watchlist": [
+          "美容院E"
+        ],
+        "raw_signals": [
+          "近一周地图评论连续提到做完后刺痛泛红",
+          "评论区开始出现被销售连续推卡的吐槽",
+          "门店回复口径前后不一致"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "风险信号应高于一般流量波动",
+        "需要区分服务态度风险和项目后不适风险",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把负面反馈视为个别情绪",
+        "只关注播放和咨询量而忽略风险"
+      ]
+    },
+    {
+      "id": "radar_beauty_salon_collab_window_004",
+      "label": "opportunity_case",
+      "input": {
+        "mission_scope": "监测美容院本地联动机会",
+        "time_window": "last_21_days",
+        "platform_or_market_context": "local_business_content",
+        "competitor_watchlist": [
+          "写真馆F",
+          "婚纱店G"
+        ],
+        "raw_signals": [
+          "写真馆开始频繁发布拍前状态管理建议",
+          "婚礼档临近，本地婚纱店出现新娘护理话题",
+          "周边写字楼账号出现午休轻护理内容"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "联动窗口应被识别为机会信号",
+        "要指出拍前和婚礼档场景的高相关性",
+        "建议级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "把联动场景当成泛流量信息",
+        "忽略本地商圈相关性"
+      ]
+    }
+  ]
+}

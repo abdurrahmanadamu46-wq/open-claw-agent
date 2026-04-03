@@ -1,0 +1,206 @@
+﻿{
+  "industry": "教育培训_职业教育",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_vocational_case_001",
+      "label": "happy_path",
+      "scenario": "考证试听预约的真实教室分镜",
+      "input": {
+        "copy_pack": "职业教育脚本，核心卖点是先判断考证和备考问题，再决定适合性和下一步，不夸张承诺结果。",
+        "brand_assets": [
+          "教室与前台镜头",
+          "试听或讲解镜头",
+          "资料准备镜头",
+          "报名承接画面"
+        ],
+        "reference_styles": [
+          "克制纪实",
+          "信任感优先"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现教室和试听证据",
+        "问题和流程对应",
+        "后半段出现试听路径"
+      ],
+      "mustAvoid": [
+        "只拍口号和成功学海报",
+        "空镜撑满前半段",
+        "没有边界说明"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把问题型试听脚本转成一条真实、克制且能承接试听的分镜。",
+        "assumptions": [
+          "可以拍到本机构教室和试听过程。",
+          "前台与资料允许出镜。"
+        ],
+        "evidence": [
+          "环境和过程素材齐全。",
+          "脚本强调先判断再推进。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_vocational_case_002",
+      "label": "happy_path",
+      "scenario": "报名季窗口的时间分镜",
+      "input": {
+        "copy_pack": "报名季脚本，重点是报名和开班窗口、试听判断和学习边界。",
+        "brand_assets": [
+          "教室镜头",
+          "试听镜头",
+          "报名承接镜头",
+          "时间窗口字幕素材"
+        ],
+        "reference_styles": [
+          "低压力",
+          "时间感明确"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现报名或开班窗口",
+        "试听与报名同在",
+        "不过度承诺结果"
+      ],
+      "mustAvoid": [
+        "拍成高客单广告",
+        "没有时效感",
+        "只有结果没有判断"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把报名季路线拍成高相关、高信任的试听视频。",
+        "assumptions": [
+          "可以通过字幕补足场景。",
+          "机构具备试听和承接镜头。"
+        ],
+        "evidence": [
+          "流程素材完整。",
+          "脚本以时间窗口和边界为主。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_vocational_case_003",
+      "label": "happy_path",
+      "scenario": "首次信任路线的环境与流程分镜",
+      "input": {
+        "copy_pack": "首次试听友好脚本，强调环境、流程和试听判断，不靠夸张逆袭故事。",
+        "brand_assets": [
+          "前台与环境镜头",
+          "资料或细节镜头",
+          "试听流程镜头"
+        ],
+        "reference_styles": [
+          "信任感",
+          "边界感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "环境与流程证据",
+        "流程镜头而非结果幻想",
+        "适合首次试听用户的低压力感"
+      ],
+      "mustAvoid": [
+        "用逆袭故事代替信任证明",
+        "忽略基础和学习边界",
+        "没有任何下一步"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让观众先相信机构可信，再进入试听。",
+        "assumptions": [
+          "环境和流程素材存在。",
+          "资料细节可拍。"
+        ],
+        "evidence": [
+          "环境和资料存在。",
+          "脚本核心是首次信任。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_vocational_case_004",
+      "label": "risk_case",
+      "scenario": "缺少案例时的安全降级拍法",
+      "input": {
+        "copy_pack": "机构信任脚本，强调环境、流程和试听，但当前学员案例素材较少。",
+        "brand_assets": [
+          "环境镜头",
+          "前台镜头",
+          "资料准备镜头"
+        ],
+        "reference_styles": [
+          "降级保真",
+          "环境与流程优先"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确以环境和流程建立可信度",
+        "不硬造外部案例",
+        "保留试听承接画面"
+      ],
+      "mustAvoid": [
+        "拿外部图补素材",
+        "把缺素材伪装成爆款现场",
+        "完全没有流程或环境证据"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在缺少大量案例时，仍用真实环境和流程建立最低可信度。",
+        "assumptions": [
+          "案例授权有限。",
+          "前台与教室可拍。"
+        ],
+        "evidence": [
+          "环境和前台素材存在。",
+          "脚本主卖点是信任。"
+        ]
+      }
+    }
+  ]
+}

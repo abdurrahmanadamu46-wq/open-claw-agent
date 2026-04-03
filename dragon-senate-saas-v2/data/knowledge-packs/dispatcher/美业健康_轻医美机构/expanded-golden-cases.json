@@ -1,0 +1,128 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "dispatcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "dispatcher_light_med_consult_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条首次到店问题型面诊询单转成可执行预约计划",
+        "routing_context": "客户第一次来，想约工作日晚间先咨询毛孔和痘印，不做立即决策",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "咨询优先链路",
+        "房间与顾问安排",
+        "完成后回写复查任务"
+      ],
+      "mustAvoid": [
+        "把首单导向高压成交队列",
+        "忽略首次信任成本"
+      ]
+    },
+    {
+      "id": "dispatcher_light_med_event_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条节前状态管理询单转成可执行计划",
+        "routing_context": "客户周六婚礼，想周四晚先做面诊和节前状态管理判断，已明确门店和时段范围",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "节前时段确认",
+        "扩展咨询时长判断",
+        "热门档期保留窗口"
+      ],
+      "mustAvoid": [
+        "按普通轻量咨询时长去排",
+        "忽略婚礼档期稀缺"
+      ]
+    },
+    {
+      "id": "dispatcher_light_med_multi_concern_003",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "把一条多问题咨询线索转成排班计划",
+        "routing_context": "客户同时提到毛孔、痘印和节前状态，想同一天面诊并判断优先级",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "多问题扩展时长或分阶段安排",
+        "顾问与房间匹配",
+        "备选方案"
+      ],
+      "mustAvoid": [
+        "只按单一轻量咨询安排",
+        "忽略问题复杂度"
+      ]
+    },
+    {
+      "id": "dispatcher_light_med_peak_004",
+      "label": "risk_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理节日前晚高峰连续复杂面诊导致的房间和复查压力",
+        "routing_context": "18:00 到 21:00 同一位核心医生被排了 3 单，其中两单为复杂问题面诊",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "room_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "复杂度分流或顺延动作",
+        "房间重置与准备节点",
+        "避免压缩面诊质量"
+      ],
+      "mustAvoid": [
+        "假设复杂面诊可以无缝衔接三单",
+        "靠压缩判断过程硬接"
+      ]
+    }
+  ]
+}

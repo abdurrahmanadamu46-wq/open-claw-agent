@@ -1,0 +1,15 @@
+# Optional named tunnel config mode (instead of CF_TUNNEL_TOKEN mode).
+# Usage:
+# 1) Create tunnel in Cloudflare Zero Trust.
+# 2) Download credentials json to: ./cloudflared/credentials.json
+# 3) Replace <TUNNEL-UUID> and <PUBLIC-HOSTNAME>.
+# 4) Run cloudflared manually:
+#    cloudflared tunnel --config /etc/cloudflared/config.yml run
+
+tunnel: <TUNNEL-UUID>
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: <PUBLIC-HOSTNAME>
+    service: http://app:8000
+  - service: http_status:404

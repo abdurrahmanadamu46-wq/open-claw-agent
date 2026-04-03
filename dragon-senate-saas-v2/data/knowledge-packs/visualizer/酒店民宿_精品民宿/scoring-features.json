@@ -1,0 +1,170 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u7cbe\u54c1\u6c11\u5bbf",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_property_identity_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "Real property identity visibility",
+      "weight": 0.14,
+      "definition": "Whether the storyboard establishes the real boutique homestay identity early through the gate, sign, facade, reception point, or courtyard entry rather than a context-free styled room.",
+      "high_score_signals": [
+        "Real identity anchors appear within the first three shots",
+        "Entrance identity clearly connects to room and public-space footage",
+        "Viewers can tell the property is specific and real"
+      ],
+      "low_score_signals": [
+        "The opening is only mood decor or bedding closeups",
+        "Property identity exists only in subtitles",
+        "The exterior and interior have no verifiable relationship"
+      ],
+      "score_rule": "Earlier and clearer identity proof earns a higher score."
+    },
+    {
+      "id": "cover_alignment_with_boutique_promise",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "Cover alignment with the boutique-stay promise",
+      "weight": 0.12,
+      "definition": "Whether the cover direction answers the real reason to choose this boutique homestay, such as arrival switch, host warmth, room pause, local connection, or night mood, instead of generic aesthetic softness.",
+      "high_score_signals": [
+        "Title and frame reinforce the same concrete promise",
+        "The cover connects naturally to the first shots",
+        "The reason to stay here is obvious at a glance"
+      ],
+      "low_score_signals": [
+        "The cover is only decor, flowers, bedding, or candles",
+        "The copy promise and cover proof do not match",
+        "The cover promises luxury while the assets only support a simple small-property route"
+      ],
+      "score_rule": "The more clearly the cover answers why this property matters, the higher the score."
+    },
+    {
+      "id": "room_truth_and_liveability",
+      "metric_group": "visual_proof_density",
+      "feature": "Room truth and liveability",
+      "weight": 0.16,
+      "definition": "Whether the storyboard stays anchored to a real bookable hero room and proves bed, window or terrace, table surface, bathroom, and everyday usability rather than just magazine-style composition.",
+      "high_score_signals": [
+        "One room type stays continuous and legible",
+        "Bed, bathroom, window, and table relationships are clear",
+        "Promised room features such as tubs or terraces are directly shown"
+      ],
+      "low_score_signals": [
+        "Multiple room types are mixed into one fake hero room",
+        "Only beautiful corners appear with no practical layout proof",
+        "Aesthetic emphasis hides actual stay conditions"
+      ],
+      "score_rule": "More honest and more usable room proof earns a higher score."
+    },
+    {
+      "id": "host_service_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "Host and service authenticity",
+      "weight": 0.10,
+      "definition": "When the script sells warmth, whether the storyboard includes real host, manager, or service traces such as welcome notes, key handoff, or breakfast prep rather than abstract claims.",
+      "high_score_signals": [
+        "Real receiving or host-led service moments appear",
+        "Host proof connects to room or breakfast flow",
+        "Warmth is shown without violating privacy boundaries"
+      ],
+      "low_score_signals": [
+        "Warmth depends on actors or generic smiles",
+        "The host promise exists only in copy",
+        "Third-party service is misframed as in-house host care"
+      ],
+      "score_rule": "The more concrete and authorized the service evidence, the higher the score."
+    },
+    {
+      "id": "neighborhood_verifiability",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Neighborhood and destination verifiability",
+      "weight": 0.10,
+      "definition": "Whether claims about old streets, riversides, villages, markets, or art districts are grounded in a real route relationship to the property entrance.",
+      "high_score_signals": [
+        "The entrance and local anchor share a believable route link",
+        "Arrival or return movement is understandable",
+        "Location promises map directly to shootable proof"
+      ],
+      "low_score_signals": [
+        "Only pretty local scenery appears",
+        "Maps replace real route footage",
+        "Walkable claims have no physical anchor"
+      ],
+      "score_rule": "More specific, more verifiable location proof earns a higher score."
+    },
+    {
+      "id": "public_space_verifiability",
+      "metric_group": "visual_proof_density",
+      "feature": "Courtyard and public-space verifiability",
+      "weight": 0.08,
+      "definition": "Whether tea rooms, rooftops, courtyards, terraces, and other public areas are shown as real on-site spaces with visible ownership, scale, and access boundaries.",
+      "high_score_signals": [
+        "Whole-space coverage shows scale and relation",
+        "Ownership and open state are clear",
+        "The public-space claim matches the property type and guest scene"
+      ],
+      "low_score_signals": [
+        "Only isolated detail shots appear",
+        "Nearby third-party spaces stand in for property assets",
+        "Access and ownership remain ambiguous"
+      ],
+      "score_rule": "More complete and more attributable public-space proof earns a higher score."
+    },
+    {
+      "id": "light_weather_honesty",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Light and weather honesty",
+      "weight": 0.10,
+      "definition": "Whether mood, season, weather, and night conditions match what is actually available to shoot, and whether the plan downgrades honestly when those conditions are missing.",
+      "high_score_signals": [
+        "Atmosphere matches real weather and time windows",
+        "Night routes include lighting and return logic",
+        "Cloudy or rainy conditions trigger a believable indoor pivot"
+      ],
+      "low_score_signals": [
+        "Weather, season, or time cues contradict each other",
+        "Night mood is promised without night coverage",
+        "Stock or heavily manipulated condition shots drive the mood"
+      ],
+      "score_rule": "The more the mood comes from real conditions and honest downgrade choices, the higher the score."
+    },
+    {
+      "id": "stay_flow_continuity",
+      "metric_group": "storyboard_feasibility",
+      "feature": "Short-stay flow continuity",
+      "weight": 0.12,
+      "definition": "Whether the storyboard creates a believable boutique homestay stay flow from arrival to room pause to breakfast or departure rather than a loose collection of pretty scenes.",
+      "high_score_signals": [
+        "At least three connected stay moments form a clear chain",
+        "Time flow between arrival, stay, and closure is coherent",
+        "The viewer can imagine a real one-night stay"
+      ],
+      "low_score_signals": [
+        "Scenes are only static room or public-space displays",
+        "Day, night, and morning are cut together with no logic",
+        "The chain depends on many missing assets or fake people"
+      ],
+      "score_rule": "More coherent stay logic under real operations earns a higher score."
+    },
+    {
+      "id": "dependency_honesty_for_small_property",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Dependency honesty for a small property",
+      "weight": 0.08,
+      "definition": "Whether the plan clearly lists room access, host availability, breakfast windows, night permission, guest privacy boundaries, and fallback routes instead of hiding operational risk.",
+      "high_score_signals": [
+        "Each key shot maps to a real asset, time, or permission",
+        "Fallback paths and lowered ambition are explicit",
+        "No imagined or external scenes are treated as executable proof"
+      ],
+      "low_score_signals": [
+        "Dependencies are vague or generic",
+        "Feasibility stays high despite large asset gaps",
+        "Risk is pushed downstream without downgrade logic"
+      ],
+      "score_rule": "More specific dependencies and more honest downgrade behavior earn a higher score."
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_city_homestay_metro_citywalk_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We want to stay near your old-town place this Saturday so we can walk to dinner and back. Do you have a two-bedroom or projector room for 4?",
+        "brand_tone": "warm and practical",
+        "negative_patterns": [
+          "generic room dumping",
+          "hard-sell urgency"
+        ],
+        "context_window": [
+          "weekend citywalk scenario",
+          "user already sounds close to booking",
+          "location and room layout both matter"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the easy citywalk intention",
+        "anchor the reply in old-town access plus the 4-person room-fit need",
+        "guide toward the exact property or stay details without overselling"
+      ],
+      "mustAvoid": [
+        "promising availability without live context",
+        "dumping every room option"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_same_day_self_checkin_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "My train gets in around 11:20 tonight. If I book now, can I self check in without trouble?",
+        "brand_tone": "steady and considerate",
+        "negative_patterns": [
+          "guaranteed self check-in",
+          "careless reassurance"
+        ],
+        "context_window": [
+          "same-day arrival",
+          "late-night timing pressure",
+          "property access flow matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the late-arrival stress",
+        "state that access handling depends on the property and booking flow",
+        "guide toward the exact property, arrival window, and booking status"
+      ],
+      "mustAvoid": [
+        "guaranteeing a smooth midnight check-in without verification",
+        "pushing the user to pay first and ask later"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_concert_late_return_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We're 4 friends going to the concert next Friday. Is your place near the arena, and can we get back late without bothering anyone?",
+        "brand_tone": "clear and warm",
+        "negative_patterns": [
+          "blanket approval for late noise",
+          "ignoring guest count"
+        ],
+        "context_window": [
+          "event-night stay",
+          "multi-person occupancy matters",
+          "building boundary risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the late-return event context",
+        "ask for the venue or exact property plus headcount or return-time details",
+        "keep boundaries around access and quiet return calm and natural"
+      ],
+      "mustAvoid": [
+        "encouraging late-night noise",
+        "treating every building as equally event-friendly"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_family_luggage_elevator_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Two adults, our 6-year-old, and two big suitcases. Is the loft room okay, and do you have an elevator?",
+        "brand_tone": "clear and caring",
+        "negative_patterns": [
+          "blanket family-fit promise",
+          "ignoring access concerns"
+        ],
+        "context_window": [
+          "family room-fit question",
+          "child age is known",
+          "stairs and luggage may affect the stay"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the family-fit and arrival-access concern",
+        "ask about the bedding need while noting that loft layout and elevator access matter",
+        "guide toward room-fit clarification instead of a broad yes"
+      ],
+      "mustAvoid": [
+        "guaranteeing the loft works for every family",
+        "skipping the luggage or access issue"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_weekday_exam_laundry_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I need somewhere for 5 nights near the hospital for my mom's follow-up visit. Do you have a washer and a simple kitchen?",
+        "brand_tone": "gentle and practical",
+        "negative_patterns": [
+          "lifestyle fluff",
+          "generic amenity promise"
+        ],
+        "context_window": [
+          "weekday functional stay",
+          "home-style amenities matter",
+          "user needs practical reassurance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the practical family reason for the stay",
+        "mention that washer and kitchen details depend on the exact room or listing",
+        "guide toward the area, dates, and the feature that matters most"
+      ],
+      "mustAvoid": [
+        "turning the stay into a leisure-travel pitch",
+        "saying every room has the same amenities"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_pet_room_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We're bringing a corgi for two nights. Can we stay in the two-bedroom room, and are pets okay?",
+        "brand_tone": "friendly and practical",
+        "negative_patterns": [
+          "blanket pet approval",
+          "ignoring room boundaries"
+        ],
+        "context_window": [
+          "pet-stay planning",
+          "room policy matters",
+          "stay length is known"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the desire to avoid pet-related friction",
+        "ask for the exact property or room plus the pet-rule context if needed",
+        "guide toward policy confirmation without oversimplifying"
+      ],
+      "mustAvoid": [
+        "saying all rooms allow pets",
+        "skipping pet size or building-rule context"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_real_room_photo_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "The loft in your videos looks huge. Is it actually like that, or is it just a wide-angle camera?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "overpromising the room"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but engaged",
+          "real-room accuracy matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite one concrete room detail such as loft space, window, or projector setup",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "bragging about the listing",
+        "guaranteeing an exact match to video content"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_deposit_cleaning_fee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I booked through your link and now you're saying there's a cleaning fee and deposit. If I cancel, can you refund everything?",
+        "brand_tone": "careful and respectful",
+        "negative_patterns": [
+          "instant refund promise",
+          "dismissive policy talk"
+        ],
+        "context_window": [
+          "booking already exists",
+          "fee dispute matters",
+          "user is frustrated"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the frustration around extra fees",
+        "state that refund handling depends on the booking channel and order terms",
+        "guide toward the reservation or fee details for the next step"
+      ],
+      "mustAvoid": [
+        "promising a full refund before checking the booking context",
+        "treating every booking source as identical"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_early_late_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I stay Friday night, can you guarantee early check-in at noon and late checkout on Saturday?",
+        "brand_tone": "steady and realistic",
+        "negative_patterns": [
+          "absolute timing promise",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "timing-flexibility pressure",
+          "city-homestay turnover matters",
+          "user wants certainty"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the schedule concern",
+        "explain that early check-in and late checkout depend on room status or property handling",
+        "guide toward the property and stay-date details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "acting as if timing flexibility is automatic"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_lock_code_noise_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "The door code didn't work, the hall smelled, and it's way noisier than the listing looked.",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "active stay complaint",
+          "expectation mismatch is visible",
+          "user is upset"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request the property and room or booking details through a safer channel",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming the guest publicly",
+        "arguing about the listing in public"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. If the two-bedroom is free, I want to book it now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "replying only with DM me"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "reservation is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move quickly",
+        "use platform DM as the safe bridge",
+        "request the property or stay details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "sounding evasive or robotic"
+      ]
+    },
+    {
+      "id": "echoer_city_homestay_party_boundary_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "We're 6 people, but only 4 will sleep there. Can we still all hang out and make some noise late?",
+        "brand_tone": "calm and firm",
+        "negative_patterns": [
+          "rule-bending encouragement",
+          "casual approval of noise"
+        ],
+        "context_window": [
+          "occupancy boundary push",
+          "building and community risk is visible",
+          "user may still be convertible if handled calmly"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "keep the tone calm rather than confrontational",
+        "make clear that occupancy and quiet-hour rules need to be respected",
+        "guide toward confirming the actual guest count and room or property fit"
+      ],
+      "mustAvoid": [
+        "saying that extra visitors and late noise are fine",
+        "shaming the user"
+      ]
+    }
+  ]
+}

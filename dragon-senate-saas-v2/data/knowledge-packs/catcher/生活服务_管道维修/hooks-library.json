@@ -1,0 +1,7 @@
+{"industry":"生活服务_管道维修","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"scene_plus_time_hook","title":"场景加时间同时出现时的高意向钩子","description":"当线索同时出现疏通/查漏/反味方向和上门时间时，应优先判为高意向候选。","examples":["今晚想先疏通厨房下水。","这周日想先做一次查漏。"],"priority":"high"},
+{"id":"first_visit_process_hook","title":"首次预约与流程顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心乱拆时，说明其上门意图更具体。","examples":["第一次约维修，周末想先看适不适合。","担心卫生间要拆砖，想先来了解一下。"],"priority":"high"},
+{"id":"seasonal_window_hook","title":"夜间与交房返家窗口钩子","description":"夜间、交房、返家和周末节点如果带着明确时间进入私信，应显著提权。","examples":["今晚想先疏通一次。","交房前想先把查漏定下来。"],"priority":"high"},
+{"id":"scope_specific_hook","title":"位置与问题细问钩子","description":"当用户明确提到厨房下水、地漏、马桶、墙面渗水和热水管时，往往意味着真实购买需求已经收窄。","examples":["厨房主管堵塞。","卫生间墙面渗水。"],"priority":"high"},
+{"id":"old_client_restock_hook","title":"老客返修与推荐回流钩子","description":"老客复购、朋友推荐和之前服务过又回来问同路线，通常有更高的成交确定性。","examples":["上次在你们家修过，这周想再约。","朋友推荐你们店，说师傅比较稳。"],"priority":"medium"},
+{"id":"price_plus_scope_hook","title":"价格叠加范围钩子","description":"只问价格不一定高意向，但如果同时出现位置、问题和上门时间，质量明显更高。","examples":["今晚想疏通厨房下水，大概什么价位。","查漏卫生间渗水大概怎么收费。"],"priority":"medium"}]}

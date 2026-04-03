@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_hotpot_proof_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实开锅与围桌证据可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实锅底、下菜动作和围桌用餐放在前排位置，而不是依赖装修空镜、菜单截图或外部美食广告式静物。",
+      "high_score_signals": [
+        "前 3 镜内出现真实锅底滚沸或下菜动作",
+        "锅底、涮品和围桌关系可验证",
+        "观众能快速判断这是本店真实堂食状态"
+      ],
+      "low_score_signals": [
+        "开场长时间只有环境和灯光氛围",
+        "锅底和食材像外部样片或库存素材",
+        "看不出这锅是否真的在售或真的有人吃"
+      ],
+      "score_rule": "真实开锅和围桌证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应火锅店最核心的来店理由，例如招牌锅底、鲜切食材、聚会场景、分量或排队人气，而不是泛泛地拍得热闹。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体卖点",
+        "一眼能知道视频在解决什么火锅选择问题",
+        "封面中的锅底、食材或场景与正文首镜一致"
+      ],
+      "low_score_signals": [
+        "封面只有氛围感没有具体理由",
+        "标题写锅底，画面却是空店装修",
+        "卖点过空，只写烟火气或高级感"
+      ],
+      "score_rule": "越能用真实画面回答“为什么来吃这家火锅”，得分越高。"
+    },
+    {
+      "id": "boiling_heat_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "锅底滚沸与热感真实度",
+      "weight": 0.12,
+      "definition": "镜头是否展示锅底翻滚、蒸汽、下菜、捞菜和蘸料等热感证据，让火锅的现场状态可被感知。",
+      "high_score_signals": [
+        "出现滚沸锅面、下菜和起筷的连续动作",
+        "热感镜头与锅底、食材和入口反馈对应",
+        "热感来自真实桌边状态而不是特效"
+      ],
+      "low_score_signals": [
+        "只拍静态食材却强调刚开锅",
+        "烟雾和热感完全靠后期效果",
+        "锅底状态和后续入口镜头对不上"
+      ],
+      "score_rule": "能让观众明显感到“这锅正在吃”的镜头越多，得分越高。"
+    },
+    {
+      "id": "ingredient_freshness_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "食材新鲜与切配可信度",
+      "weight": 0.12,
+      "definition": "当脚本强调鲜切、现配、手打或招牌食材时，镜头是否给出切配、出盘和下锅对应关系等可见依据。",
+      "high_score_signals": [
+        "出现切配、摆盘、部位标识或手打动作",
+        "食材上桌和下锅反馈之间存在对应关系",
+        "观众能判断这是本店真实可点的食材"
+      ],
+      "low_score_signals": [
+        "只有漂亮肉片特写没有切配信息",
+        "不同部位和不同桌型素材混用",
+        "新鲜主张完全靠字幕或话术"
+      ],
+      "score_rule": "越能让观众放心食材来源、状态和口感预期，得分越高。"
+    },
+    {
+      "id": "dine_in_business_proof_density",
+      "metric_group": "visual_proof_density",
+      "feature": "餐期人气与桌面状态证明密度",
+      "weight": 0.12,
+      "definition": "分镜是否用真实等位、上座、整桌占用、加汤、收空盘和围桌互动证明门店状态，而不是空口描述人气。",
+      "high_score_signals": [
+        "出现等位、带位、围桌、加汤或收空盘等真实节奏",
+        "能区分午市、晚市、夜宵或包厢场景",
+        "人气证明与门头或用餐区镜头有关联"
+      ],
+      "low_score_signals": [
+        "用空桌碎剪伪装高峰期",
+        "人气判断完全依赖旁白或字幕",
+        "顾客镜头和门店空间无法对应"
+      ],
+      "score_rule": "真实餐期和桌面状态越清楚、越可验证，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "餐期限制下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配火锅店常见限制，包括午晚高峰、翻台节奏、桌型预留、顾客出镜、后厨或明档权限、油烟蒸汽和拍摄时长。",
+      "high_score_signals": [
+        "关键镜头与真实餐期窗口匹配",
+        "门头、锅底、调料台、包厢和顾客镜头权限已前置说明",
+        "小团队也能在现有时长内完成拍摄"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计完整排队加多桌调度加后厨切配加夜景收尾",
+        "关键镜头默认顾客一定配合或所有锅底都能复刻",
+        "拍摄动线与营业节奏明显冲突"
+      ],
+      "score_rule": "越能在真实营业状态下直接执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确性",
+      "weight": 0.12,
+      "definition": "分镜是否准确列出火锅店内容所依赖的现有素材、补拍锅底、可拍区域、桌型预留和顾客或员工授权条件。",
+      "high_score_signals": [
+        "封面和关键镜头对应具体锅底、具体菜品或具体区域",
+        "补拍需求写到餐期、桌型和机位层面",
+        "缺失素材有明确替代路线"
+      ],
+      "low_score_signals": [
+        "只写需要门店素材这类空话",
+        "默认所有招牌锅和肉品都能随时复刻",
+        "不写顾客出镜、后厨和调料台权限边界"
+      ],
+      "score_rule": "依赖越具体、假设越少、越方便执行，得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.10,
+      "definition": "当门店缺少客流、锅底或围桌素材时，方案是否诚实降级为锅底版、单桌体验版、空间说明版或开业预告，而不是硬做排队探店片。",
+      "high_score_signals": [
+        "明确标注当前缺口和阶段限制",
+        "分镜和执行分数跟随素材边界调整",
+        "替代路线仍保留火锅店特征和说服力"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高执行分和高人气叙事",
+        "用库存食客或外部火锅镜头冒充本店",
+        "后续执行大概率因权限或餐期失败"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

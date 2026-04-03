@@ -1,0 +1,228 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "reservation_fact_completeness",
+      "feature_name": "预订事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分：已明确门店、日期、到店时间、人数和座位诉求（露台、外摆、大桌、看球位等）；3 分：已明确其中 3 项以上且愿意继续补充；1 分：只有“今晚还有位吗”“排多久”这类模糊提问。",
+      "positive_signals": [
+        "门店明确",
+        "日期和到店时间明确",
+        "人数明确",
+        "座位诉求明确，例如露台、外摆、大桌、看球位"
+      ],
+      "negative_signals": [
+        "只问排队或人均",
+        "没有门店信息",
+        "没有时间和人数",
+        "只在评论区围观"
+      ],
+      "value_guidance": "烧烤店的短期价值首先来自可执行的订位或下单事实，而不是夜宵热闹感。"
+    },
+    {
+      "id": "deposit_and_base_menu_commitment_strength",
+      "feature_name": "定金与首轮菜单承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：已确认定金、首轮肉串和酒水结构或包区规则；3 分：愿意电话深聊、发预算、看套餐或先锁短时档；1 分：只说“先帮我留着”但没有任何实质动作。",
+      "positive_signals": [
+        "愿意支付定金",
+        "确认首轮肉串和酒水结构",
+        "接受最低消费或区域规则",
+        "提前说明忌口、过敏或是否喝酒"
+      ],
+      "negative_signals": [
+        "反复比价却不进入下一步",
+        "拒绝任何付款动作",
+        "不愿确认时间或人数",
+        "只想先占外摆"
+      ],
+      "value_guidance": "对 Abacus 来说，付款和首轮菜单确认比聊天热度更能代表真实交易意愿。"
+    },
+    {
+      "id": "net_margin_after_variable_cost",
+      "feature_name": "扣除变动成本后的净毛利质量",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除食材、酒水、抽佣、分佣、包装、骑手、赠饮和售后后仍有健康净毛利；3 分：净毛利偏紧但仍为正；1 分：GMV 看起来高但净贡献很薄甚至为负。",
+      "positive_signals": [
+        "食材与酒水成本可控",
+        "平台抽佣可接受",
+        "现场加点与加酒空间存在",
+        "投诉与退款风险低"
+      ],
+      "negative_signals": [
+        "强折扣或高补贴",
+        "达人分佣高",
+        "包装和配送成本高",
+        "退单或客诉风险高"
+      ],
+      "value_guidance": "Abacus 不能被账面营业额迷惑，烧烤店真正的 ROI 来自净贡献。"
+    },
+    {
+      "id": "grill_station_and_peak_capacity_impact",
+      "feature_name": "烤位、排烟与高峰产能挤占影响",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分：需求落在可承接时段，不明显挤占黄金晚市烤位、外摆、排烟和服务资源；3 分：有一定高峰压力但可调配；1 分：明显占用高峰稀缺烤位或需要为单桌透支产能。",
+      "positive_signals": [
+        "错峰到店",
+        "夜宵但非最高峰",
+        "室内外座位与烤位有余量",
+        "出串节奏可控"
+      ],
+      "negative_signals": [
+        "周五周六黄金档",
+        "外摆与露台已紧张",
+        "排烟压力接近上限",
+        "单桌点单过于复杂且会拉长翻台"
+      ],
+      "value_guidance": "同样预算的单子，放在不同烤位和排烟压力下，真实价值差异很大。"
+    },
+    {
+      "id": "arrival_time_weather_and_execution_certainty",
+      "feature_name": "到店时点、天气与执行确定性",
+      "metric": "short_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：到店时间、座位区域、天气备选和门店承接能力都清晰；3 分：有目标时段但仍需确认室内外切换或资源细节；1 分：只有焦虑感和催位，没有执行条件。",
+      "positive_signals": [
+        "到店时间明确",
+        "室内外备选明确",
+        "天气影响已考虑",
+        "门店资源与时段匹配"
+      ],
+      "negative_signals": [
+        "只说越快越好",
+        "外摆与露台未确认",
+        "天气风险未处理",
+        "门店承接能力不明"
+      ],
+      "value_guidance": "天气和夜宵窗口只有在可执行时才会放大短期价值，否则只会放大风险。"
+    },
+    {
+      "id": "repeat_purchase_and_group_gathering_ltv",
+      "feature_name": "复购频次与聚餐长期价值",
+      "metric": "long_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分：客户具备固定聚餐、夜宵、企业团建、看球局或社区常客特征；3 分：主体稳定但频次一般；1 分：明显一次性、低复购或低沉淀空间。",
+      "positive_signals": [
+        "企业团建或部门夜宵",
+        "社区常客或看球组织者",
+        "会员或储值客户",
+        "家庭或朋友聚会反复组织者"
+      ],
+      "negative_signals": [
+        "纯一次性薅券",
+        "没有后续复购空间",
+        "只看最低价",
+        "历史留存很低"
+      ],
+      "value_guidance": "长期分的核心是未来还会不会回来，以及会不会带来更多同伴。"
+    },
+    {
+      "id": "organizer_expandability_and_referral",
+      "feature_name": "组织者扩展性与转介绍潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个联系人下可能扩展为多场生日局、团建、看球局、社区活动或多门店合作；3 分：当前单次明确但后续空间一般；1 分：无法扩展或主体不稳定。",
+      "positive_signals": [
+        "企业行政或活动组织者",
+        "社群团长",
+        "经常组织朋友局",
+        "有多场景复制潜力"
+      ],
+      "negative_signals": [
+        "联系人无决策权",
+        "只能做一次",
+        "关系链不可复制",
+        "没有转介绍空间"
+      ],
+      "value_guidance": "能否从一桌烧烤扩展成多次稳定聚餐，是烧烤店长期价值的重要来源。"
+    },
+    {
+      "id": "member_asset_and_local_community_leverage",
+      "feature_name": "会员资产与本地社区杠杆",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：来自生日月、储值、夜宵常客、附近写字楼或社区群，且可调用明确偏好；3 分：有历史消费但标签不完整；1 分：几乎没有可复用历史资产。",
+      "positive_signals": [
+        "历史消费记录完整",
+        "有常点肉串和辣度偏好",
+        "附近社区或办公室反复下单",
+        "愿意再次订位或充值"
+      ],
+      "negative_signals": [
+        "历史投诉严重",
+        "偏好数据缺失",
+        "多次爽约",
+        "只来过一次且体验差"
+      ],
+      "value_guidance": "本地会员和社区资产越可复用，长期价值越容易被低估，需要单独加权。"
+    },
+    {
+      "id": "attribution_merge_quality",
+      "feature_name": "归因合并与关键触点质量",
+      "metric": "reward_signal",
+      "weight": 0.08,
+      "scoring_rule": "5 分：能识别重复线索并找到真正推动订位、定金、到店或复购的关键触点；3 分：知道主要渠道但归因不够细；1 分：谁最后出现就把 credit 全给谁。",
+      "positive_signals": [
+        "合并评论、电话、小程序、团购和企业微信重复线索",
+        "区分曝光触点和推进触点",
+        "知道是哪一步推动了定金或到店",
+        "统一核算渠道成本"
+      ],
+      "negative_signals": [
+        "重复计算同一桌客价值",
+        "只按最后触达分功",
+        "忽略电话或私域推进",
+        "渠道各自重复算 ROI"
+      ],
+      "value_guidance": "奖励信号必须服务于正确归因，否则团队会被带向错误动作。"
+    },
+    {
+      "id": "engagement_to_booking_or_order_ratio",
+      "feature_name": "互动向订位或下单转化比",
+      "metric": "short_term_score",
+      "weight": 0.04,
+      "scoring_rule": "5 分：评论、私信或内容互动很快转成订位、定金、自提或到店；3 分：有一定转化；1 分：只有围观和点赞，没有任何业务推进。",
+      "positive_signals": [
+        "评论后转私信",
+        "私信后补齐订位信息",
+        "内容热度伴随真实订位增长",
+        "用户愿意补充门店与时间"
+      ],
+      "negative_signals": [
+        "只涨点赞不涨订位",
+        "只问最低价",
+        "围观多于转化",
+        "热帖没有留资"
+      ],
+      "value_guidance": "这是校正项，防止 Abacus 把夜宵热度误判成短期价值。"
+    },
+    {
+      "id": "governance_food_safety_alcohol_and_undercooked_risk",
+      "feature_name": "治理、食安、酒水与半熟风险",
+      "metric": "reward_signal",
+      "weight": 0.06,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动避开高食安、高投诉、未成年人酒水和半熟争议风险；3 分：存在小幅模糊但可纠正；1 分：鼓励带病推进、无定金锁资源或忽视严重风险。",
+      "positive_signals": [
+        "先人工复核再推进",
+        "对过敏和未成年人酒水保守处理",
+        "要求定金或正式确认后再投入重资源",
+        "对高投诉风险客户主动降级"
+      ],
+      "negative_signals": [
+        "忽略严重客诉继续营销",
+        "未确认就先锁露台和鲜货",
+        "对食安风险做绝对承诺",
+        "只追订单量不做止损"
+      ],
+      "value_guidance": "烧烤店的奖励信号不能只鼓励成交，也要防止坏单和品牌风险被放大。"
+    }
+  ]
+}

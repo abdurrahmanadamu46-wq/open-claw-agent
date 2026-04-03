@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"problem_specificity","title":"问题方向清晰度","description":"高分信号会明确提到感冒、发烧、肠胃、过敏、常备药或慢病复购等具体方向。","examples":["高分：孩子夜里发烧。","低分：最近想买点药。"],"priority":"high"},
+  {"id":"urgency_clarity","title":"紧急程度清晰度","description":"今晚、周末、返乡前、放学后等时间窗口越清楚，价值越高。","examples":["高分：今晚就要。","低分：有空再看看。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"药师与说明敏感度","description":"当用户高度关注药师在岗、用法说明和能否搭配时，需要提升信号权重与风险识别。","examples":["高分：想先问清楚怎么吃。","低分：只看价格图。"],"priority":"medium"},
+  {"id":"family_scope_defined","title":"家庭备药范围明确度","description":"家庭常备药、返乡备药和多成员需求越明确，后续路线越容易收窄。","examples":["高分：一家三口返乡前备药。","低分：随便看看。"],"priority":"medium"},
+  {"id":"refill_cycle_signal","title":"复购周期强度","description":"慢病续购和耗材补货周期越明确，优先级越高。","examples":["高分：每月固定补药。","低分：偶尔想起来再买。"],"priority":"high"},
+  {"id":"delivery_expectation_strength","title":"时效履约预期强度","description":"夜间送药和即时到家预期越强，越需要提权并同步识别风险。","examples":["高分：今晚尽快送来。","低分：明后天都可以。"],"priority":"medium"}
+]}

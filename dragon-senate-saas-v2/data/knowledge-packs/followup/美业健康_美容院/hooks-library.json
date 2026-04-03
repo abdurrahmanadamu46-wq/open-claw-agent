@@ -1,0 +1,74 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_problem_time_completion",
+      "scene": "dm_followup",
+      "lead_state": "vague_booking_inquiry",
+      "intent": "qualify_concern_and_time",
+      "hook": "这单先别急着把项目讲满，我先帮你把真正决定能不能约上的关键信息锁住。",
+      "bridge": "美容院预约最怕的是问题没讲清、时间没定住，后面怎么聊都会空转。先把问题和时段补齐，推进会稳很多。",
+      "next_step": "请客户确认当前最想解决的问题、想约的时间和方便的门店，目标是尽快进入可预约或待确认状态。",
+      "cadence_hint": "客户刚回复时优先在 15 到 30 分钟内接上；若当轮未补齐信息，当天只保留一次轻提醒。",
+      "approval_guard": "未确认问题和时段前，不承诺具体老师、具体项目结果或黄金档时段。"
+    },
+    {
+      "id": "hook_first_visit_trust",
+      "scene": "trust_followup",
+      "lead_state": "first_visit_cautious",
+      "intent": "reduce_risk_and_build_trust",
+      "hook": "你这单最关键的不是赶紧下决定，而是先把会不会踩雷这件事说清楚。",
+      "bridge": "第一次来美容院的人，很多不是不想做，而是担心刺激、乱推和不透明。先把流程和边界说清楚，下一步才自然。",
+      "next_step": "请客户确认最担心的点，并给出流程、卫生和咨询判断相关说明，目标是推进到愿意预约咨询或体验。",
+      "cadence_hint": "谨慎型线索以低压力、高信息量为主，不连续催单。",
+      "approval_guard": "不能保证零反应，也不能把普通护理讲成诊疗。"
+    },
+    {
+      "id": "hook_pre_event_slot_lock",
+      "scene": "urgent_followup",
+      "lead_state": "before_event_request",
+      "intent": "lock_time_window_fast",
+      "hook": "这单先从你能来的时间窗口下手，比先聊一堆项目更有用。",
+      "bridge": "重要场合前的美容预约，最关键的是日期、时段和适配方案，不是讲得越多越好。",
+      "next_step": "请客户确认事件日期、可来时段和当前问题，目标是快速进入可执行预约。",
+      "cadence_hint": "节前线索以快节奏闭环为主，优先在当前半天内推进关键事实。",
+      "approval_guard": "未核到时段和适配性前，不承诺一定来得及或一定适合做。"
+    },
+    {
+      "id": "hook_experience_aftercare",
+      "scene": "post_visit_followup",
+      "lead_state": "experience_completed",
+      "intent": "collect_feedback_before_next_step",
+      "hook": "这次做完先别急着谈下一张卡，我先想知道你现在的真实感受。",
+      "bridge": "体验后的第一步不是销售，而是确认状态、感受和有没有不适，这样后面的建议才站得住。",
+      "next_step": "先确认本次体验感受、当前状态和是否有不适，目标是决定是做护理建议、回访安抚还是推进复访预约。",
+      "cadence_hint": "在完成后 24 小时内进行第一次轻回访，避免太晚也避免过度频繁。",
+      "approval_guard": "未确认感受前，不要直接强推高客单项目。"
+    },
+    {
+      "id": "hook_returning_client_reason",
+      "scene": "reengagement_followup",
+      "lead_state": "returning_or_sleeping_client",
+      "intent": "reopen_with_specific_reason",
+      "hook": "这次联系你，不是泛泛问一句要不要来，而是想把现在这个刚好的理由说清楚。",
+      "bridge": "对老客来说，真正有效的回访不是打扰，而是用换季、上次问题回潮或复访周期到点这样具体的理由重新接上。",
+      "next_step": "结合历史记录说明这次回访理由，并确认用户最近是否也感受到同样的问题，目标是推进复访判断。",
+      "cadence_hint": "老客复联宜低频高相关，不连续追问。",
+      "approval_guard": "没有具体理由时，不硬造稀缺和紧迫感。"
+    },
+    {
+      "id": "hook_price_to_scope_shift",
+      "scene": "price_recovery_followup",
+      "lead_state": "price_only",
+      "intent": "recover_scope_before_close",
+      "hook": "价格当然重要，但先搞清你是想解决什么，才不会聊半天还是对不上。",
+      "bridge": "美容项目价格差异很大，问题和场景不清时，只聊价格很容易把真正合适的下一步聊丢。",
+      "next_step": "请客户确认是黑头、敏感、节前状态还是其他诉求，目标是把价格咨询转成可承接线索。",
+      "cadence_hint": "价格型线索不要高频追问，优先用一问一答收窄范围。",
+      "approval_guard": "不要用模糊优惠压客户，也不要在范围不清时乱推荐高客单。"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_clarity",
+      "feature_name": "问题清晰度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：明确提到黑头、敏感、暗沉、节前急救等具体问题；3 分：问题大致清楚但仍笼统；1 分：只说想做护理。",
+      "positive_signals": [
+        "问题具体",
+        "描述当前状态",
+        "与项目方向匹配"
+      ],
+      "negative_signals": [
+        "只说变美",
+        "没有问题范围",
+        "诉求过于泛化"
+      ],
+      "value_guidance": "具体问题越清楚，短期价值越容易判断。"
+    },
+    {
+      "id": "booking_time_strength",
+      "feature_name": "预约时间强度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：有明确日期、时段或截止时间；3 分：只说周末或最近；1 分：完全没有时间信息。",
+      "positive_signals": [
+        "具体日期",
+        "具体时段",
+        "节前或场景倒计时"
+      ],
+      "negative_signals": [
+        "有空再来",
+        "完全无时间线索",
+        "时间模糊"
+      ],
+      "value_guidance": "时间越具体，越接近真实预约动作。"
+    },
+    {
+      "id": "trust_barrier_status",
+      "feature_name": "信任门槛状态",
+      "metric": "long_term_score",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首次谨慎用户已愿意咨询或预约；3 分：仍在观望但愿意继续沟通；1 分：只表达担心且无下一步动作。",
+      "positive_signals": [
+        "愿意先咨询",
+        "关注流程和卫生",
+        "继续追问预约可能性"
+      ],
+      "negative_signals": [
+        "只表达害怕",
+        "拒绝任何下一步",
+        "仅停留在围观"
+      ],
+      "value_guidance": "对美容院来说，信任门槛是长期价值的重要来源。"
+    },
+    {
+      "id": "relationship_warmth",
+      "feature_name": "关系温度",
+      "metric": "long_term_score",
+      "weight": 0.15,
+      "scoring_rule": "5 分：老客回流、推荐或明确历史到店；3 分：有弱关系信号；1 分：完全陌生冷线索。",
+      "positive_signals": [
+        "上次来过",
+        "朋友推荐",
+        "历史记录可追踪"
+      ],
+      "negative_signals": [
+        "无关系信号",
+        "无历史上下文",
+        "纯公域冷启动"
+      ],
+      "value_guidance": "关系温度越高，长期 ROI 通常越好。"
+    },
+    {
+      "id": "event_deadline_value",
+      "feature_name": "重要场合价值强度",
+      "metric": "short_term_score",
+      "weight": 0.14,
+      "scoring_rule": "5 分：有明确事件日期和可预约窗口；3 分：只有事件没有时段；1 分：只是泛泛提到近期见人。",
+      "positive_signals": [
+        "婚礼或拍照日期明确",
+        "时段明确",
+        "问题与场景匹配"
+      ],
+      "negative_signals": [
+        "只有焦虑没有日期",
+        "只有日期没有预约动作",
+        "场景不清"
+      ],
+      "value_guidance": "场合型线索的价值核心是时效和可执行性。"
+    },
+    {
+      "id": "unit_economics_health",
+      "feature_name": "单笔经济性健康度",
+      "metric": "roi_estimate",
+      "weight": 0.15,
+      "scoring_rule": "5 分：顾问时间、耗材、房间和技师成本计入后仍有健康利润；3 分：利润较薄但可接受；1 分：高压成交或黄金档占用导致收益失真。",
+      "positive_signals": [
+        "获客成本可控",
+        "时段匹配合理",
+        "投诉退款风险低"
+      ],
+      "negative_signals": [
+        "高压推卡风险",
+        "黄金档被低确认度占用",
+        "退款或投诉概率高"
+      ],
+      "value_guidance": "高客单不天然等于高 ROI，Abacus 要把美容院的时间和房间成本算细。"
+    }
+  ]
+}

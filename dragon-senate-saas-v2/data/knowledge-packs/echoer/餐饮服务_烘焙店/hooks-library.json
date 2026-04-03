@@ -1,0 +1,168 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_first_order_bakery_recommendation",
+      "scene": "public_comment",
+      "intent": "product_recommendation",
+      "emotion": "open_but_unsure",
+      "hook": "Happy to help you narrow it down without making the whole display case feel complicated.",
+      "bridge": "At a bakery, the fastest useful split is usually bread or dessert, sweeter or lighter, and soft texture versus something more layered or flaky.",
+      "next_step": "Ask whether they want bread or dessert first, and whether they prefer less sweet or richer flavor.",
+      "handoff_suggestion": "Menu-guidance opportunity if the user replies with taste details."
+    },
+    {
+      "id": "hook_not_too_sweet_dessert",
+      "scene": "public_comment",
+      "intent": "less_sweet_choice",
+      "emotion": "careful",
+      "hook": "That is a very workable place to start.",
+      "bridge": "With bakery desserts, sweetness level and texture usually matter more than a generic bestseller list.",
+      "next_step": "Ask whether they want a lighter fruit direction, a richer chocolate direction, or something more bread-like and not too creamy.",
+      "handoff_suggestion": "Good engagement signal if the user answers with flavor preference."
+    },
+    {
+      "id": "hook_birthday_cake_size",
+      "scene": "comment_or_dm",
+      "intent": "cake_size_guidance",
+      "emotion": "planning_mode",
+      "hook": "Choosing the cake size is often the part that feels hardest before the details are clear.",
+      "bridge": "For celebration cakes, the headcount and the style you want usually matter more than just picking a number at random.",
+      "next_step": "Ask how many people are sharing, the occasion, and whether they want fruit, chocolate, or a cleaner style.",
+      "handoff_suggestion": "Cake-selection lead if the user provides headcount and style direction."
+    },
+    {
+      "id": "hook_same_day_cake_cutoff",
+      "scene": "comment_or_dm",
+      "intent": "same_day_cake_request",
+      "emotion": "urgent",
+      "hook": "I can see why you want to lock this in quickly.",
+      "bridge": "Same-day cake readiness depends a lot on the branch, the pickup time, and whether you need a simple whole cake or real decoration work.",
+      "next_step": "Ask for store, pickup time, size, and whether writing or custom decoration matters.",
+      "handoff_suggestion": "Send quickly to a live store or Catcher path."
+    },
+    {
+      "id": "hook_cake_writing_and_candles",
+      "scene": "comment_or_dm",
+      "intent": "cake_customization",
+      "emotion": "organized",
+      "hook": "That is exactly the kind of detail worth locking down early.",
+      "bridge": "For cake writing and candles, the exact wording, number detail, and cake size all affect whether it can be arranged cleanly.",
+      "next_step": "Ask for the exact text, candle or topper need, and the cake size they have in mind.",
+      "handoff_suggestion": "Customization-ready once exact wording is confirmed."
+    },
+    {
+      "id": "hook_morning_sellout",
+      "scene": "public_comment",
+      "intent": "bread_availability",
+      "emotion": "ready_to_visit",
+      "hook": "Good call to check before making the trip.",
+      "bridge": "Morning breads and sandwiches can move differently by branch and time because batch rhythm and rush traffic change a lot.",
+      "next_step": "Ask which store they mean and what time they plan to arrive.",
+      "handoff_suggestion": "High-intent availability check."
+    },
+    {
+      "id": "hook_office_pastry_order",
+      "scene": "comment_or_dm",
+      "intent": "bulk_order",
+      "emotion": "coordination_mode",
+      "hook": "That sounds like a real order, not casual browsing.",
+      "bridge": "For a multi-box bakery order, the important details are usually store, date or ready time, quantity, and whether invoice or delivery is needed.",
+      "next_step": "Ask for store, ready time, quantity, and invoice or delivery need.",
+      "handoff_suggestion": "Route as a high-intent operational lead."
+    },
+    {
+      "id": "hook_gift_box_visit",
+      "scene": "comment_or_dm",
+      "intent": "gift_purchase",
+      "emotion": "thoughtful",
+      "hook": "That is a nice occasion to plan around rather than guess at.",
+      "bridge": "Gift boxes work best when we know whether you need a shareable pastry mix, a cookie-style box, or something more celebration-focused.",
+      "next_step": "Ask how many boxes they need, the budget range, and whether it is for gifting or for people to eat right away.",
+      "handoff_suggestion": "Strong gifting lead if the user shares quantity or date."
+    },
+    {
+      "id": "hook_delivery_integrity",
+      "scene": "comment_or_dm",
+      "intent": "delivery_feasibility",
+      "emotion": "protective",
+      "hook": "Makes sense to check that before trusting a cream or decorated cake to the trip.",
+      "bridge": "Cake stability usually depends on type, weather, distance, and whether it is pickup or delivery, not just a simple yes or no.",
+      "next_step": "Ask which cake they want, which store, and whether it needs delivery or self-pickup.",
+      "handoff_suggestion": "Careful store confirmation if the request is time-sensitive or fragile."
+    },
+    {
+      "id": "hook_allergy_or_ingredient",
+      "scene": "comment_or_dm",
+      "intent": "ingredient_safety",
+      "emotion": "serious",
+      "hook": "That is the kind of detail worth checking carefully.",
+      "bridge": "Allergen and ingredient questions should be confirmed on the exact item instead of answered casually from memory.",
+      "next_step": "Ask for the specific allergen or ingredient concern and the product they are asking about.",
+      "handoff_suggestion": "Human or store confirmation required."
+    },
+    {
+      "id": "hook_pregnancy_child_low_sugar",
+      "scene": "comment_or_dm",
+      "intent": "suitability_check",
+      "emotion": "careful",
+      "hook": "I am glad you asked before deciding.",
+      "bridge": "Questions like pregnancy, child suitability, or low-sugar fit depend on the exact product and what the person is trying to avoid.",
+      "next_step": "Ask for the exact product and the concern they want checked.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_quality_skeptic",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With bakeries, people often care about different proof points such as sweetness, butter flavor, bread texture, cream feel, or how fresh something tastes.",
+      "next_step": "Invite the user to name the exact quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_coupon_or_group_buy",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you place the order.",
+      "bridge": "Bakery coupons and group-buy rules often change by store, channel, and the item category involved.",
+      "next_step": "Ask for the store and whether they are ordering in app, in person, or by delivery.",
+      "handoff_suggestion": "Useful bridge into a real order if the user confirms details."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a bakery issue is usually the store, order time, and a photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales or store operations."
+    },
+    {
+      "id": "hook_cheapest_large_order",
+      "scene": "comment_or_dm",
+      "intent": "budget_order",
+      "emotion": "price_focused",
+      "hook": "We can keep this practical without making it vague.",
+      "bridge": "For a larger bakery order, the price range still depends on whether you want simple breads, mixed pastries, or whole cakes.",
+      "next_step": "Ask for quantity, intended use, and whether they care more about filling people up or gifting nicely.",
+      "handoff_suggestion": "Budget-sensitive lead if the user answers with scope."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move this forward quickly.",
+      "bridge": "The safest first step is still platform DM so order details do not get scattered in public comments.",
+      "next_step": "Ask for the store plus order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

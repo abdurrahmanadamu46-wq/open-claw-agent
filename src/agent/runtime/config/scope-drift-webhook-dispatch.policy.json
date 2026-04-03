@@ -1,0 +1,35 @@
+﻿{
+  "version": "lobster.scope-drift-webhook-dispatch.policy.v0.2",
+  "name": "Default Scope Drift Webhook Dispatch Policy",
+  "outboxDirectory": "F:\\openclaw-agent\\run\\scope-drift-webhook-outbox",
+  "processedDirectory": "F:\\openclaw-agent\\run\\scope-drift-webhook-outbox-processed",
+  "failedDirectory": "F:\\openclaw-agent\\run\\scope-drift-webhook-outbox-failed",
+  "requestTimeoutMs": 10000,
+  "maxAttemptsPerTarget": 2,
+  "retryBackoffMs": 400,
+  "targets": [
+    {
+      "id": "generic-webhook",
+      "enabled": true,
+      "payloadMode": "raw_json",
+      "urlEnvVar": "LOBSTER_SCOPE_ALERT_WEBHOOK_URL",
+      "urlEnvFallbacks": [],
+      "secretEnvVar": "LOBSTER_SCOPE_ALERT_WEBHOOK_SECRET",
+      "secretEnvFallbacks": [],
+      "secretHeaderName": "x-lobster-scope-secret"
+    },
+    {
+      "id": "feishu-webhook",
+      "enabled": true,
+      "payloadMode": "feishu_text",
+      "urlEnvVar": "LOBSTER_SCOPE_ALERT_FEISHU_WEBHOOK_URL",
+      "urlEnvFallbacks": [
+        "FEISHU_BOT_WEBHOOK"
+      ],
+      "secretEnvVar": "LOBSTER_SCOPE_ALERT_FEISHU_SIGNING_SECRET",
+      "secretEnvFallbacks": [
+        "FEISHU_SIGNING_SECRET"
+      ]
+    }
+  ]
+}

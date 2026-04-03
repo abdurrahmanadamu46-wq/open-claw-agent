@@ -1,0 +1,8 @@
+{"industry":"医疗健康_心理咨询","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"anxiety_sleep_hook","title":"焦虑失眠钩子","description":"当用户同时提到焦虑、失眠、反复想事情和近期状态变差时，应优先标记为高价值信号。","examples":["最近总睡不着，脑子停不下来。","晚上总惊醒，白天心很慌。"],"priority":"high"},
+  {"id":"relationship_conflict_hook","title":"关系冲突钩子","description":"出现总吵架、沟通崩掉、婚姻紧张和分手创伤时，说明线索更接近真实咨询需求。","examples":["和伴侣总吵架，已经不知道怎么沟通。","分手后一直缓不过来。"],"priority":"high"},
+  {"id":"work_burnout_hook","title":"职场压力钩子","description":"职场高压、倦怠、绩效焦虑和人际压力如果带着明显功能受影响，也应视为更高价值信号。","examples":["上班一想到开会就心慌。","工作压力大到晚上睡不着。"],"priority":"medium"},
+  {"id":"adolescent_parent_hook","title":"青少年与亲子钩子","description":"家长主动提到孩子情绪、厌学、沉默和沟通困难时，说明亲子咨询需求正在收窄。","examples":["孩子最近不愿说话也不想上学。","一说学习就吵，完全沟通不了。"],"priority":"high"},
+  {"id":"crisis_boundary_hook","title":"危机转介钩子","description":"当出现明显危机、失控风险或严重功能受损表达时，需要将其标记为高风险线索并触发人工优先判断。","examples":["最近整个人快撑不住了。","状态已经严重影响基本生活。"],"priority":"high"},
+  {"id":"repeat_consultation_hook","title":"复谈回流钩子","description":"老客复谈、阶段总结和再次匹配咨询师的需求，通常意味着更高的长期价值。","examples":["之前咨询过，最近又有点撑不住。","上次谈完后这周还想继续。"],"priority":"medium"}
+]}

@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "style_clarity",
+      "feature_name": "风格清晰度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：明确提到法式、猫眼、通勤短甲、新娘甲等具体风格；3 分：风格大致清楚但仍笼统；1 分：只说想做个好看的。",
+      "positive_signals": [
+        "风格具体",
+        "描述想要的感觉",
+        "与作品方向匹配"
+      ],
+      "negative_signals": [
+        "只说好看",
+        "没有风格范围",
+        "诉求过于泛化"
+      ],
+      "value_guidance": "风格越清楚，短期价值越容易判断。"
+    },
+    {
+      "id": "booking_time_strength",
+      "feature_name": "预约时间强度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：有明确日期、时段或截止时间；3 分：只说周末或最近；1 分：完全没有时间信息。",
+      "positive_signals": [
+        "具体日期",
+        "具体时段",
+        "节前或场景倒计时"
+      ],
+      "negative_signals": [
+        "有空再来",
+        "完全无时间线索",
+        "时间模糊"
+      ],
+      "value_guidance": "时间越具体，越接近真实预约动作。"
+    },
+    {
+      "id": "service_scope_completeness",
+      "feature_name": "服务范围完整度",
+      "metric": "short_term_score",
+      "weight": 0.15,
+      "scoring_rule": "5 分：已明确是否卸甲、延长、加固和复杂度；3 分：只明确部分；1 分：完全未提。",
+      "positive_signals": [
+        "是否卸甲明确",
+        "复杂度大致明确",
+        "是否重做明确"
+      ],
+      "negative_signals": [
+        "完全不提旧甲状态",
+        "复杂度未知",
+        "服务范围模糊"
+      ],
+      "value_guidance": "服务范围越完整，越能判断真实承接价值。"
+    },
+    {
+      "id": "first_visit_trust_status",
+      "feature_name": "首次信任门槛状态",
+      "metric": "long_term_score",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首次用户已愿意预约或继续确认细节；3 分：仍在观望但愿意沟通；1 分：只表达担心且无下一步动作。",
+      "positive_signals": [
+        "愿意继续确认风格",
+        "关心真实作品和工作台",
+        "继续追问预约可能性"
+      ],
+      "negative_signals": [
+        "只表达犹豫",
+        "拒绝任何下一步",
+        "仅停留在围观"
+      ],
+      "value_guidance": "对美甲店来说，首次信任门槛是长期价值的重要来源。"
+    },
+    {
+      "id": "relationship_warmth",
+      "feature_name": "关系温度",
+      "metric": "long_term_score",
+      "weight": 0.15,
+      "scoring_rule": "5 分：老客回流、朋友推荐或明确历史到店；3 分：有弱关系信号；1 分：完全陌生冷线索。",
+      "positive_signals": [
+        "上次来过",
+        "朋友推荐",
+        "历史记录可追踪"
+      ],
+      "negative_signals": [
+        "无关系信号",
+        "无历史上下文",
+        "纯公域冷启动"
+      ],
+      "value_guidance": "关系温度越高，长期 ROI 通常越好。"
+    },
+    {
+      "id": "unit_economics_health",
+      "feature_name": "单笔经济性健康度",
+      "metric": "roi_estimate",
+      "weight": 0.16,
+      "scoring_rule": "5 分：技师工时、甲位、材料和返修风险计入后仍有健康利润；3 分：利润较薄但可接受；1 分：高压储值或黄金档占用导致收益失真。",
+      "positive_signals": [
+        "获客成本可控",
+        "工时匹配合理",
+        "返修风险低"
+      ],
+      "negative_signals": [
+        "高压储值风险",
+        "黄金档被低确认度占用",
+        "返修概率高"
+      ],
+      "value_guidance": "高客单不天然等于高 ROI，Abacus 要把工时和返修成本算细。"
+    }
+  ]
+}

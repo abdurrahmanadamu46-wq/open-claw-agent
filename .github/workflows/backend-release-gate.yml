@@ -1,0 +1,52 @@
+﻿name: backend-release-gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-gate:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+      JWT_SECRET: github_actions_release_secret_1234567890
+      NEW_API_BASE_URL: http://127.0.0.1:39999
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fleet protocol gate
+        run: npm run test:fleet-protocol
+
+      - name: Activation + device gate
+        run: npm run test:activation-device
+
+      - name: Client update gate
+        run: npm run test:client-update
+
+      - name: Client update chain simulation gate
+        run: npm run test:client-update-chain

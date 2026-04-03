@@ -1,0 +1,174 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "case_similarity_density",
+      "feature_name": "场景案例匹配度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分=有可核验同场景落地案例；3 分=只有近似场景案例；1 分=没有近似案例却直接扩量。",
+      "positive_signals": [
+        "村口对村口",
+        "景区对景区",
+        "学校厂区对学校厂区"
+      ],
+      "negative_signals": [
+        "只有效果图没有落地证明",
+        "用私宅案例强行承接公共项目"
+      ],
+      "route_guidance": "案例越贴近，越适合走咨询承接和高信任路线；案例越弱，越应先验证。"
+    },
+    {
+      "id": "lead_qualification_completeness",
+      "feature_name": "线索资格完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分=已拿到场地照片、尺寸、用途、预算和区域；3 分=只有其中 2 到 3 项；1 分=只有一句模糊询问。",
+      "positive_signals": [
+        "有现场图",
+        "有大概尺寸",
+        "明确项目用途"
+      ],
+      "negative_signals": [
+        "只问多少钱",
+        "没有任何现场条件"
+      ],
+      "route_guidance": "资格信息完整时优先排深度跟进；信息模糊时优先引导补资料，不急着报价。"
+    },
+    {
+      "id": "decision_chain_clarity",
+      "feature_name": "决策链清晰度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分=清楚谁拍板、谁审批、谁负责施工对接；3 分=只知道联系人但不清楚决策关系；1 分=完全未知。",
+      "positive_signals": [
+        "联系人身份明确",
+        "知道村委或景区审批链",
+        "知道甲方和施工方关系"
+      ],
+      "negative_signals": [
+        "联系人只是转介绍",
+        "完全不清楚谁决定预算和方案"
+      ],
+      "route_guidance": "决策链清晰时可投入更多设计与销售资源；不清晰时优先低成本验证。"
+    },
+    {
+      "id": "budget_solution_fit",
+      "feature_name": "预算与方案匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分=预算和目标效果、材质、尺寸相匹配；3 分=预算偏紧但仍可调整；1 分=预算明显不支持目标方案。",
+      "positive_signals": [
+        "预算带明确",
+        "客户接受标准款或分层方案"
+      ],
+      "negative_signals": [
+        "想做高复杂度门楼但预算极低",
+        "坚持低价又要求深度定制"
+      ],
+      "route_guidance": "预算匹配时推定制路径；预算错配时优先降级为标准款、半定制或翻新路线。"
+    },
+    {
+      "id": "delivery_radius_fit",
+      "feature_name": "交付半径与安装可达性",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分=项目在稳定交付半径内且安装能力成熟；3 分=需协同外部安装资源；1 分=明显超出可控范围。",
+      "positive_signals": [
+        "本地或近区域项目",
+        "已有同区域交付经验"
+      ],
+      "negative_signals": [
+        "跨省重安装项目无交付准备",
+        "没有售后和运输方案"
+      ],
+      "route_guidance": "可达性高时可放大投入；可达性低时应转供货、咨询或直接降级优先级。"
+    },
+    {
+      "id": "compliance_readiness",
+      "feature_name": "资质与审批风险清晰度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分=资质边界、施工配合和审批要求清晰；3 分=知道部分要求但仍需核实；1 分=拿不准却做绝对承诺。",
+      "positive_signals": [
+        "清楚验收要求",
+        "清楚材料或施工规范",
+        "明确配合边界"
+      ],
+      "negative_signals": [
+        "审批要求未知",
+        "对外说包过或包验收"
+      ],
+      "route_guidance": "公共项目优先看这一项，分值低时必须先收缩路线并补证据。"
+    },
+    {
+      "id": "material_lifecycle_fit",
+      "feature_name": "材质与寿命诉求一致性",
+      "metric": "route_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分=已根据场景、气候、维护能力匹配材质；3 分=有初步偏好但未核实；1 分=纯看外观忽略寿命和维护。",
+      "positive_signals": [
+        "区分钢结构、石材、铝艺等差异",
+        "考虑户外环境和维护"
+      ],
+      "negative_signals": [
+        "只讲造型不讲材料后果",
+        "默认所有材质都适合所有场景"
+      ],
+      "route_guidance": "这项越清晰，越适合做高质量咨询和案例对照；越模糊，越适合先做教育型内容。"
+    },
+    {
+      "id": "timeline_feasibility",
+      "feature_name": "时间节点可实现性",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分=设计、制作、运输、安装都可倒排且有余量；3 分=时间紧但可切标准化路线；1 分=节点明显不现实还坚持深定制。",
+      "positive_signals": [
+        "目标完工日期明确",
+        "排产和安装可协调"
+      ],
+      "negative_signals": [
+        "节前急单却没有资料",
+        "深定制项目要求极短工期"
+      ],
+      "route_guidance": "时间不现实时优先切到标准款、轻改造或延后路线，不做乐观承诺。"
+    },
+    {
+      "id": "fallback_route_completeness",
+      "feature_name": "备选路线完备度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分=主路线之外至少有一个低风险备选；3 分=有备选但不清晰；1 分=只有单一路线且失败后无退路。",
+      "positive_signals": [
+        "标准款和定制款双路线",
+        "翻新与重建双路线",
+        "供货与全包双路线"
+      ],
+      "negative_signals": [
+        "所有项目都硬推一种打法",
+        "证据弱时仍只给高成本路线"
+      ],
+      "route_guidance": "符合 strategist 的基本要求，证据不足时必须优先补上 fallback。"
+    },
+    {
+      "id": "governance_safe_promise_level",
+      "feature_name": "承诺合规度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分=表达基于案例和可核验流程；3 分=偶有模糊承诺但可纠正；1 分=存在最低价、百分百验收、几天必完工等表述。",
+      "positive_signals": [
+        "用流程和案例代替口号",
+        "明确风险边界"
+      ],
+      "negative_signals": [
+        "全网最低价",
+        "百分百通过",
+        "全国都能做"
+      ],
+      "route_guidance": "这一项过低时应直接降级路线信心，并优先修正话术和治理风险。"
+    }
+  ]
+}

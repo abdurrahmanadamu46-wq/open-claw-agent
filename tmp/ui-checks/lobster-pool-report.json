@@ -1,0 +1,17 @@
+﻿[
+  {
+    "name": "lobster-pool-overview",
+    "url": "http://127.0.0.1:3005/dashboard/lobster-pool",
+    "issues": []
+  },
+  {
+    "name": "lobster-pool-detail",
+    "url": "http://127.0.0.1:3005/dashboard/lobster-pool/radar",
+    "issues": []
+  },
+  {
+    "name": "lobster-pool-scorer",
+    "url": "http://127.0.0.1:3005/dashboard/lobster-pool/scorer",
+    "issues": []
+  }
+]

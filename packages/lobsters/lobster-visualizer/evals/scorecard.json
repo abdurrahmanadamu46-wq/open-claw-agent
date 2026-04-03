@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": "lobster.eval.scorecard.v0.2",
+  "roleId": "visualizer",
+  "primaryArtifact": "StoryboardPack",
+  "metrics": [
+    {
+      "id": "storyboard_feasibility",
+      "weight": 0.35,
+      "order": 1
+    },
+    {
+      "id": "cover_ctr_proxy",
+      "weight": 0.2,
+      "order": 2
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "weight": 0.25,
+      "order": 3
+    },
+    {
+      "id": "visual_proof_density",
+      "weight": 0.2,
+      "order": 4
+    }
+  ],
+  "acceptance": {
+    "artifactSchemaPassRate": 0.99,
+    "benchmarkPassRate": 0.91,
+    "regressionBudgetCeilingRatio": 1.03
+  }
+}

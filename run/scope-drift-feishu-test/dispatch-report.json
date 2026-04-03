@@ -1,0 +1,29 @@
+﻿{
+  "dispatchVersion": "lobster.scope-drift-webhook-dispatch.v0.1",
+  "generatedAt": "2026-03-30T11:50:57.872Z",
+  "policyVersion": "lobster.scope-drift-webhook-dispatch.policy.test.v0.2",
+  "summary": {
+    "outboxCount": 1,
+    "sentCount": 2,
+    "failedCount": 0,
+    "skippedCount": 0
+  },
+  "decisions": [
+    {
+      "outboxPath": "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\outbox\\dispatcher__internal_execute__stale_scope_test.json",
+      "targetId": "generic-webhook",
+      "action": "sent",
+      "responseStatus": 200,
+      "responseBodyPreview": "",
+      "processedPath": "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\processed\\dispatcher__internal_execute__stale_scope_test.json"
+    },
+    {
+      "outboxPath": "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\outbox\\dispatcher__internal_execute__stale_scope_test.json",
+      "targetId": "feishu-webhook",
+      "action": "sent",
+      "responseStatus": 200,
+      "responseBodyPreview": "{\"StatusCode\":0,\"StatusMessage\":\"success\"}",
+      "processedPath": "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\processed\\dispatcher__internal_execute__stale_scope_test.json"
+    }
+  ]
+}

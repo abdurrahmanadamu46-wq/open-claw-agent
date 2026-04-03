@@ -1,0 +1,118 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "office_meeting_coffee_template_hook",
+      "hook_name": "企业会议咖啡付款锁档钩子",
+      "trigger_pattern": "客户主动确认 20 杯以上会议咖啡、培训茶歇或办公室拼单，并愿意补齐送达时间、楼层门禁、热冷占比和付款动作。",
+      "value_hypothesis": "这类线索已经从泛咨询进入真实执行阶段，通常比普通散单更接近成交，也更容易沉淀成固定会议补给关系。",
+      "short_term_score_hint": "可直接上调到高短期分候选，前提是时间、杯数、配送路径和付款动作之间没有明显冲突。",
+      "long_term_score_hint": "如果客户主体是企业行政、培训负责人或联合办公前台，长期分也应保持中高。",
+      "roi_estimate_hint": "把咖啡豆、奶型差价、配送和批量贴标算进去后，只要付款和明细确认足够扎实，ROI 往往仍然健康。",
+      "reward_signal": "奖励付款到账、标准会议模板确认、联系人回填和送达锁档动作。",
+      "caution": "没有付款或定金时，不能把先帮我留一下当成高确定性营收。"
+    },
+    {
+      "id": "commuter_pickup_repeat_hook",
+      "hook_name": "通勤自提高频复购钩子",
+      "trigger_pattern": "用户固定在工作日早上或午后通过小程序预点同一门店自提，连续提到同一时段、同类杯型，并出现常购收藏、月卡或储值行为。",
+      "value_hypothesis": "这类订单单笔金额不高，但履约成本低、频次稳定，往往是门店长期现金流的重要来源。",
+      "short_term_score_hint": "短期分可给中等偏上，因为门店、时间和履约方式都更稳定。",
+      "long_term_score_hint": "长期分应明显高于一次性尝鲜用户，尤其当客户愿意绑定月卡、储值或常购时。",
+      "roi_estimate_hint": "自提模式减少配送、包装和超时损耗，ROI 往往优于同价位远距离外卖。",
+      "reward_signal": "奖励常购收藏、固定时段提醒、储值和早餐搭配加购动作。",
+      "caution": "不要因为客单不高就低估这类高频自提用户。"
+    },
+    {
+      "id": "member_reactivation_usual_order_hook",
+      "hook_name": "老客常购口味复用钩子",
+      "trigger_pattern": "沉默会员收到回访、储值提醒或生日券后主动回复，并提到常去门店、常购咖啡、常用奶型或续充意向。",
+      "value_hypothesis": "老客通常具备更低决策摩擦、更高成单率和更清晰的偏好信息，是典型的高 ROI 机会。",
+      "short_term_score_hint": "如已给出具体门店、时间或续充意向，短期分应高于普通新客。",
+      "long_term_score_hint": "长期分至少保持中高，因为复购、顺带单和办公室拼单都可能同时存在。",
+      "roi_estimate_hint": "更低获客成本、更短转化链路和历史偏好复用应显式算进 ROI。",
+      "reward_signal": "奖励调取历史订单、复用偏好标签、推动复购和储值确认的动作。",
+      "caution": "如果历史上有严重投诉或频繁退款，不能机械沿用高分。"
+    },
+    {
+      "id": "office_pantry_subscription_hook",
+      "hook_name": "办公室咖啡补给订阅钩子",
+      "trigger_pattern": "公司行政询问每周挂耳、咖啡豆、冷萃基底或固定会议咖啡补给，并同步讨论月结、发票和多楼层配送节奏。",
+      "value_hypothesis": "首单试用金额未必大，但只要补给频次和联系人稳定，这类线索往往具备显著长期价值和扩楼层空间。",
+      "short_term_score_hint": "短期分可给中等偏上，尤其当试用周期、配送频率和结算方式已经明确时。",
+      "long_term_score_hint": "长期分应高于多数一次性订单，因为它天然带有订阅和多点扩展属性。",
+      "roi_estimate_hint": "允许为这类线索承担适度方案沟通和上新教育成本，但要把配送和协调成本全部纳入 ROI。",
+      "reward_signal": "奖励确认补给节奏、发票路径、试用周期和跨楼层联系人信息的动作。",
+      "caution": "不能把未来几个月可能发生的订阅收入一次性都算成当期成交。"
+    },
+    {
+      "id": "space_booking_deposit_hook",
+      "hook_name": "低峰包场定金钩子",
+      "trigger_pattern": "客户希望在非高峰时段做读书会、沙龙、品牌分享或小型生日包场，并接受最低消费、设备清单和定金安排。",
+      "value_hypothesis": "这类需求能填补低峰座位与时段，只要最低消费和活动组织能力稳定，就具备单次营收之外的长期复办价值。",
+      "short_term_score_hint": "日期、时段、人数和定金都清楚后，短期分才值得明显上调。",
+      "long_term_score_hint": "如果活动方具备固定社群或月度复办能力，长期分应高于短期分。",
+      "roi_estimate_hint": "ROI 要在最低消费之外，把座位占用、设备准备和清场成本一起算进去。",
+      "reward_signal": "奖励锁定定金、确认设备需求、核对最低消费和拿到下一场活动日期的动作。",
+      "caution": "没有最低消费或定金承诺时，不要把长时间占座误判成高价值活动。"
+    },
+    {
+      "id": "viral_comment_to_private_message_hook",
+      "hook_name": "公域围观转私信钩子",
+      "trigger_pattern": "用户先在评论区问新店、拉花、拍照位或限定饮品，随后愿意转私信补充门店、时间、人数或下单需求。",
+      "value_hypothesis": "公域互动本身不值钱，但一旦能推进到私信和订单事实，就说明线索在从围观转向真实消费。",
+      "short_term_score_hint": "补齐门店、时间和下单动作后，短期分才值得上调；未补齐前应维持低位。",
+      "long_term_score_hint": "长期分通常不高，除非该用户后续进入会员、活动或复购链路。",
+      "roi_estimate_hint": "这类线索的 ROI 主要看转私信和转下单效率，而不是看评论区热闹程度。",
+      "reward_signal": "奖励把评论咨询推进成私信留资、预约自提、活动预订或会员绑定的动作。",
+      "caution": "别把围观和拍照兴趣直接当成真实成交意图。"
+    },
+    {
+      "id": "delivery_coupon_margin_hook",
+      "hook_name": "早餐券单净贡献钩子",
+      "trigger_pattern": "平台早餐券、满减或买一送一带来订单激增，但客单低、抽佣高、包装和骑手补贴一起上升，会员绑定率不明显。",
+      "value_hypothesis": "这类场景经常出现量很大但不赚钱，Abacus 需要先判断净贡献，再决定是否值得继续投入资源。",
+      "short_term_score_hint": "短期分不应因单量上升自动提高，除非已经看到明显加购、复购或会员沉淀。",
+      "long_term_score_hint": "如果促销客有希望转成二次消费、早餐月卡或自提用户，长期分可保留中等；否则应谨慎。",
+      "roi_estimate_hint": "ROI 要从扣除平台抽佣、包装、补贴和售后的净贡献出发，而不是从 GMV 出发。",
+      "reward_signal": "奖励把首单券客转成二单、会员、加价购或错峰自提的动作。",
+      "caution": "不要让低毛利券单挤占门店高峰产能后还被误判成优质增长。"
+    },
+    {
+      "id": "duplicate_channel_merge_hook",
+      "hook_name": "多入口合并归因钩子",
+      "trigger_pattern": "同一家公司、联系人或手机号同时从小程序、电话、企业微信、点评私信等多个入口进入，并指向同一笔会议咖啡或包场需求。",
+      "value_hypothesis": "多渠道活跃可能只是同一个机会在重复出现，真正有价值的是哪个触点把它推进到了付款、模板确认或复购。",
+      "short_term_score_hint": "短期分只能算一次，不能因为入口多就重复上调。",
+      "long_term_score_hint": "长期分应更多看哪个渠道沉淀了可复用的联系人、楼层地址、发票信息和口味模板。",
+      "roi_estimate_hint": "统一核算 merged lead 的总获客和跟进成本，再看净回报。",
+      "reward_signal": "奖励把重复咨询收敛成标准模板、把线索合并清楚并定位关键推进触点的动作。",
+      "caution": "不要让最后一个触点错误拿走全部 credit。"
+    },
+    {
+      "id": "customization_manual_review_hook",
+      "hook_name": "复杂定制人工复核钩子",
+      "trigger_pattern": "订单里同时出现低因、燕麦奶、去奶油、儿童饮用、极端温度或多种奶型备注，且需要门店人工确认执行边界。",
+      "value_hypothesis": "这不是单纯的高客单机会，而是带有执行和投诉风险的订单，需要以安全和准确交付为前提再判断价值。",
+      "short_term_score_hint": "短期分应被执行不确定性封顶，不能只按金额给高分。",
+      "long_term_score_hint": "如果客户是高频会员或稳定企业联系人，长期分可以保留，但前提是本次确认和履约顺畅。",
+      "roi_estimate_hint": "返工、退款、人工复核和替代原料成本必须进入 ROI 计算。",
+      "reward_signal": "奖励人工确认、备注回写、替代方案说明和二次核对动作。",
+      "caution": "不能把高风险定制单当成普通高价值单粗暴推进。"
+    },
+    {
+      "id": "complaint_recovery_hook",
+      "hook_name": "高价值客户诉修复钩子",
+      "trigger_pattern": "高频会员、企业联系人或历史高 LTV 客户因洒漏、温度不符、错杯或延误发起投诉，但仍愿意继续沟通处理。",
+      "value_hypothesis": "当前不是销售机会，但如果修复得当，可能保住长期关系；如果处理失当，价值会迅速归零甚至转负。",
+      "short_term_score_hint": "短期分应压低，重点不在再卖一次，而在止损和信任修复。",
+      "long_term_score_hint": "长期分可保留极低到中等，取决于客户历史价值和修复成功可能性。",
+      "roi_estimate_hint": "ROI 需要纳入退款、补偿、差评扩散和人工处理成本。",
+      "reward_signal": "奖励店长介入、证据留存、批次排查和修复方案确认动作。",
+      "caution": "绝不能把客户诉修复场景当成促销或加售机会。"
+    }
+  ]
+}

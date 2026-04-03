@@ -1,0 +1,8 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+  {"id":"facts_before_slot_commitment","title":"没补齐品类、时间和养宠方向前，本轮目标是锁预约事实，不是先把结果说满","description":"宠物门店线索很多从有没有货、多少钱和能不能送开场，但真正决定能否推进的是品类方向、预约时间、门店、宠物状态和是否第一次来。","examples":["客户只问周末能不能到店时，先问品类和宠物情况。","客户只说最近想给毛孩子买点东西时，先补时间和方向，再决定如何推进。"],"priority":"high"},
+  {"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会选、怕不适口和怕被乱推荐的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是适口性、配料还是预算，再给出到店路径。","先讲清选择思路和边界，再谈时间。"],"priority":"high"},
+  {"id":"seasonal_booking_needs_fast_scope","title":"换季、出行和节礼补货线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间、库存和用品方向。","examples":["出行线索先确认周几可来和这次最在意什么。","节礼线索先锁时间，再讲品类范围。"],"priority":"high"},
+  {"id":"first_visit_and_revisit_split","title":"首次到店跟进和复购维护必须拆开","description":"首单跟进的目标通常是帮助用户安心完成第一次到店，复购维护的目标才是提醒补货节点、库存状态和下一步选择。","examples":["首单更多围绕主粮、猫砂、洗护方向和到店时间。","复购更多围绕上次使用感受、库存消耗和下一次补货。"],"priority":"high"},
+  {"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收使用感受和宠物反应，再决定是否推进下一步","description":"到店后的 FollowUp 不是默认销售时刻，而是先确认用品是否适配、是否需要调整和有没有新的补货节点。","examples":["买完主粮后先问适口性和便便状态变化。","洗护后先问毛孩子反应和下次维护想法。"],"priority":"high"},
+  {"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体补货或节点理由，不要只催回来","description":"断粮、猫砂消耗、驱虫周期、节礼节点和换季护理等都是合理的回访理由。","examples":["提醒上次买粮的客户快到补货周期了。","按驱虫或洗护周期轻提醒下一次安排。"],"priority":"medium"}
+]}

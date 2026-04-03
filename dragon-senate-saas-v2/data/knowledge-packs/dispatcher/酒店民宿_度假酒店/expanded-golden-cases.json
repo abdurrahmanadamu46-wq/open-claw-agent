@@ -1,0 +1,321 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_resort_hotel_family_package_arrival_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔亲子度假套餐订单转成可执行的接站、入住、权益核销和活动预约计划。",
+        "routing_context": "订单包含两晚亲子房、双早、儿童俱乐部一次、双人温泉、欢迎水果和高铁站接站；家庭为两大一小，预计 15:20 到站，酒店当前房态健康且套餐权益库存充足。",
+        "integration_state": {
+          "pms": "healthy",
+          "crm": "healthy",
+          "kids_club_scheduler": "healthy",
+          "hot_spring_reservation": "healthy",
+          "transport_dispatch": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "套餐权益拆线校验与核销顺序",
+        "接站时间窗、司机回执和前台到店准备节点",
+        "儿童俱乐部与温泉预约的并行路由"
+      ],
+      "mustAvoid": [
+        "把套餐当成普通房晚订单只安排前台入住",
+        "未核验活动名额就直接承诺所有权益已锁定"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_early_arrival_villa_not_ready_002",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔家庭客早到但泳池别墅尚未准备好的提前入住需求。",
+        "routing_context": "客人 09:40 到店，订单为两晚泳池别墅并要求婴儿床和欢迎布置；当前别墅仍处于 deep_clean，预计至少 90 分钟后才能完成，客人可接受寄存行李并希望孩子先休息。",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "front_desk": "healthy",
+          "concierge": "healthy",
+          "guest_lounge": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "别墅房态、保洁 ETA 与婴儿床布置作为前置依赖",
+        "候房、行李寄存和公共区休憩的分流路线",
+        "若替代房型可用时的升级或改房 fallback"
+      ],
+      "mustAvoid": [
+        "在 deep_clean 未完成时直接承诺立刻发房",
+        "忽略婴儿床和欢迎布置仍按普通单房流程派发"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_weather_closure_for_outdoor_003",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "重排一笔包含海边晚餐和户外活动的度假订单，在雷暴预警下保证可执行兜底。",
+        "routing_context": "客人预订了海边日落晚餐、篝火活动和第二天桨板体验；但今天下午发布雷暴和大风预警，海边活动需暂停，客人已入住并希望尽量保留体验感。",
+        "integration_state": {
+          "weather_alert_feed": "healthy",
+          "restaurant_scheduler": "healthy",
+          "activity_scheduler": "healthy",
+          "guest_service": "healthy",
+          "finance_console": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "天气安全闸门和户外项目暂停节点",
+        "室内晚餐或室内活动替代路线",
+        "改期、退款或补偿的客人确认与回写逻辑"
+      ],
+      "mustAvoid": [
+        "明知安全预警仍按原计划继续执行户外项目",
+        "只取消活动但不给任何替代体验或财务兜底"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_spa_and_dining_peak_slot_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔蜜月套餐拆成客房、晚餐和 SPA 预约任务，并处理热门时段资源紧张。",
+        "routing_context": "订单包含海景套房、一顿日落餐厅双人晚餐和 60 分钟双人 SPA；客人指定当日 18:30 晚餐和 20:30 SPA，但系统显示这两个时段仅剩少量名额。",
+        "integration_state": {
+          "pms": "healthy",
+          "restaurant_scheduler": "healthy",
+          "spa_scheduler": "healthy",
+          "crm": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "餐厅和 SPA 时段锁定的并行任务",
+        "热门时段不足时的候补或替代时间方案",
+        "客人确认后再最终固化套餐履约"
+      ],
+      "mustAvoid": [
+        "先对客承诺指定时段再让门店自行协调",
+        "未做去重锁位就重复占用餐厅和 SPA 名额"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_holiday_overbooking_seaview_005",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在节假日海景房超售情况下建立止损计划，确保到店家庭客有可执行去向。",
+        "routing_context": "五一假期晚高峰出现 OTA 延迟回传和人工订单重叠，海景双床房实际缺口 3 间；其中两笔是携老人和儿童的家庭客，酒店尚有少量园景套房和一间合作酒店备选房。",
+        "integration_state": {
+          "pms": "healthy",
+          "ota_channel": "degraded",
+          "front_desk": "healthy",
+          "crm": "healthy",
+          "partner_hotel_inventory": "healthy",
+          "transport_support": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "库存冻结、订单优先级排序与去重节点",
+        "园景套房升级或合作酒店改住的 fallback",
+        "到店前主动通知和交通差价补偿方案"
+      ],
+      "mustAvoid": [
+        "在已知超售后继续对外释放同房型库存",
+        "把改住决定完全留给客人到店后现场处理"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_family_identity_and_wristband_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔多人家庭入住，其中一位同行人证件暂缺且需要领取园区手环的夜间场景。",
+        "routing_context": "订单为两间联通房，22:10 两大两小到店，其中一位老人身份证在车上稍后送来；家庭希望先领取房卡和温泉手环去休息，次日上午再补录。",
+        "integration_state": {
+          "front_desk": "healthy",
+          "public_security_uploader": "healthy",
+          "wristband_system": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "入住人一致性和待补证人工闸门",
+        "房卡与手环权限受实名完成状态约束",
+        "值班经理介入时的限制放行或临时处置路径"
+      ],
+      "mustAvoid": [
+        "证件信息不完整时直接发放全部房卡和全权限手环",
+        "把补证任务拖到第二天而没有任何控制和回写"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_transfer_delay_after_last_shuttle_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "重排一笔晚间接站订单，在航班延误导致原接送班次失效后保证客人可到店。",
+        "routing_context": "客人原计划 20:30 落地并使用酒店接机，现航班延误到 23:15；原司机班次已结束，酒店距机场较远，夜间仍可调用备用车队但成本更高，客人是带孩子的家庭客。",
+        "integration_state": {
+          "transport_dispatch": "degraded",
+          "backup_driver_pool": "healthy",
+          "front_desk": "healthy",
+          "crm": "healthy",
+          "concierge": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "原接送任务失效后的重派车或备用交通路线",
+        "司机确认、客人联络和前台到店窗口重算",
+        "若夜间无法接送时的住宿保留和成本审批逻辑"
+      ],
+      "mustAvoid": [
+        "仅记录航班延误而不重排接送资源",
+        "撤销接送后没有同步保留客房和夜间到店信息"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_hot_spring_closure_compensation_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理住中客发现套餐内核心温泉区域临时关闭的异常，并保证补偿方案可执行。",
+        "routing_context": "客人入住两晚温泉套餐，第二天下午主温泉区因设备故障临时停开；客人已经按套餐付费且明确表示此次出行核心诉求就是温泉体验，酒店还有 SPA 和室内汤池可部分替代。",
+        "integration_state": {
+          "engineering_queue": "healthy",
+          "hot_spring_reservation": "degraded",
+          "spa_scheduler": "healthy",
+          "finance_console": "healthy",
+          "guest_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "温泉停开与工程修复的联动节点",
+        "替代权益、改期或退款补偿路线",
+        "客人确认后的权益回写与防重复补偿规则"
+      ],
+      "mustAvoid": [
+        "只通知设施故障而不提供任何可执行替代方案",
+        "替代权益和退款都给到但没有去重控制"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_wedding_group_split_routing_009",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔海边婚礼及亲友入住需求拆解成可执行的多部门调度计划。",
+        "routing_context": "订单涉及 18 间客房、草坪仪式、晚宴、摄影、宾客接送和次日早餐包厢；宾客名单将分两批补齐，销售已确认总体预算，但部分场地布置细节待最终审批。",
+        "integration_state": {
+          "pms": "healthy",
+          "banquet_scheduler": "healthy",
+          "transport_dispatch": "healthy",
+          "finance_console": "healthy",
+          "crm": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "客房、场地、宴会、摄影、接送和名单管理的拆线任务",
+        "名单未齐和布置待审时的暂锁与补录规则",
+        "任一场地或运力冲突时的替代场地或时间 fallback"
+      ],
+      "mustAvoid": [
+        "把婚礼订单按普通团队订房流程处理",
+        "在草坪场地和晚宴档期未最终锁定前就对外宣称无风险"
+      ]
+    },
+    {
+      "id": "dispatcher_resort_hotel_replay_after_duplicate_package_redemption_010",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放一笔因渠道超时导致套餐权益核销状态不一致的入住计划，并避免重复核销和重复预约。",
+        "routing_context": "客人通过平台购买房券套餐并已支付成功，到店后 PMS 有订单但 CRM 显示部分权益未核销；前台怀疑第一次核销请求超时，当前儿童活动和晚餐都只剩最后少量名额。",
+        "integration_state": {
+          "pms": "healthy",
+          "crm": "degraded",
+          "coupon_service": "degraded",
+          "restaurant_scheduler": "healthy",
+          "kids_club_scheduler": "healthy",
+          "front_desk": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号加权益实例号去重的补核销路径",
+        "在核销结果明确前的临时锁位或保留策略",
+        "系统恢复后的 replay 顺序和回写规则"
+      ],
+      "mustAvoid": [
+        "不做去重就再次核销同一套餐权益",
+        "核销状态未明时重复占用晚餐和儿童活动名额"
+      ]
+    }
+  ]
+}

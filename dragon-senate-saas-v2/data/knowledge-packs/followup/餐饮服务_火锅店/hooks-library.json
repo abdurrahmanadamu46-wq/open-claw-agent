@@ -1,0 +1,140 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_hotpot_booking_facts",
+      "scene": "dm_followup",
+      "lead_state": "fresh_same_day_booking",
+      "intent": "lock_hotpot_reservation_facts",
+      "hook": "这顿火锅先别让你白跑，我先把最关键的订位信息和开锅条件锁住。",
+      "bridge": "火锅店同一餐期的桌位、炉位和候位变化很快，门店、到店时间、人数和能不能吃辣一清楚，后面的订位或候位就能立刻推进。",
+      "next_step": "请客户确认门店、到店时间、人数，以及是否要包间、鸳鸯锅或带老人小孩，目标是尽快进入订位或候位确认。",
+      "cadence_hint": "用户刚回复时优先在 15-30 分钟内接上；若未回，在下一餐前做一次轻提醒。",
+      "approval_guard": "未确认桌位和餐期前，不写成已安排开锅或免等位。"
+    },
+    {
+      "id": "hook_family_dual_broth_followup",
+      "scene": "family_dining_followup",
+      "lead_state": "family_high_intent",
+      "intent": "qualify_broth_and_seating_fit",
+      "hook": "这桌火锅先不急着推最辣最满，先把一家人都能吃舒服的条件对齐。",
+      "bridge": "家庭火锅最怕的不是没有菜，而是锅底不合、老人孩子吃不惯、座位不顺手。先把锅底、人数和同席需求问清，后面才稳。",
+      "next_step": "请客户确认用餐日期、人数、是否需要鸳鸯锅、儿童座椅、低辣或不吃牛羊，再推进桌型和订位。",
+      "cadence_hint": "家庭聚餐线索优先在当天工作时段完成一轮信息补齐，未回则隔半天或下一工作时段再跟一次。",
+      "approval_guard": "未核实锅底与备注前，不承诺所有口味和特殊需求都能现场满足。"
+    },
+    {
+      "id": "hook_peak_queue_relief",
+      "scene": "peak_queue_followup",
+      "lead_state": "urgent_tonight",
+      "intent": "shift_to_waitlist_or_safer_arrival",
+      "hook": "你这顿火锅最重要的是别扑空，我们先把更稳妥的到店方案找出来。",
+      "bridge": "晚市高峰能不能马上入座受桌位、炉位、人数和候位波动影响很大，比起空口保证，先给更稳的方案更有用。",
+      "next_step": "请客户确认门店、预计到店时间和人数，优先推进候位、错峰到店、提前或延后半小时，或换门店方案。",
+      "cadence_hint": "同餐期线索快速响应，但一次只推进一个明确动作，不连续追问。",
+      "approval_guard": "不写“保证不用排队”或“到店立刻开锅”。"
+    },
+    {
+      "id": "hook_broth_preference_to_booking",
+      "scene": "menu_guidance_followup",
+      "lead_state": "broth_preference_shared",
+      "intent": "convert_preference_into_booking",
+      "hook": "锅底和口味方向已经有了，下一步把这顿火锅怎么坐、什么时候去落下来会更省心。",
+      "bridge": "很多火锅线索卡在“想吃什么锅”这一层，真正能推进成交的是把人数、场景和时间一起带进来。",
+      "next_step": "请客户确认是朋友局、家庭聚餐还是庆祝局，以及用餐时间、人数和是否要鸳鸯锅，目标是把锅底偏好转成订位或候位方案。",
+      "cadence_hint": "给完锅底建议后，尽量在同一轮沟通里顺手推进订位，不要隔太久再回来追。",
+      "approval_guard": "未核实当日锅底和招牌鲜货状态前，不把限定口味写成必有。"
+    },
+    {
+      "id": "hook_coupon_verification_first",
+      "scene": "promotion_followup",
+      "lead_state": "offer_interested",
+      "intent": "verify_branch_time_and_voucher_rules",
+      "hook": "优惠先别急着拍板，先把能不能用、哪家能用核清楚，省得到店落空。",
+      "bridge": "火锅店团购券和套餐常受门店、日期、餐期、包间、锅底和节假日规则影响，跟进里先核条件比直接说能用更稳。",
+      "next_step": "请客户发门店、到店时间、人数和券的规则截图，目标是先确认适用条件，再推进订位。",
+      "cadence_hint": "优惠类线索回复要快，但确认条件后再继续推进，不做连续轰炸。",
+      "approval_guard": "未经核实，不一概承诺所有门店、锅底和包间都可用。"
+    },
+    {
+      "id": "hook_large_party_surface_blocker",
+      "scene": "group_dining_followup",
+      "lead_state": "party_size_high",
+      "intent": "surface_budget_or_room_blocker",
+      "hook": "这桌人多的火锅局先不急着催决定，想先帮你把最卡的点找出来。",
+      "bridge": "生日局、团建局和朋友大桌在火锅店里，常见卡点不是吃不吃，而是桌型、预算、锅底搭配、包间和定金。",
+      "next_step": "请客户只回最卡的一项：人数、包间、预算、锅底还是到店时间，然后推进桌型或定金下一步。",
+      "cadence_hint": "发完方案后可在 18-24 小时内做一次温和追问，再根据反馈决定下一次节奏。",
+      "approval_guard": "未确认桌数和定金前，不把包间和大桌资源写成已锁定。"
+    },
+    {
+      "id": "hook_dietary_restriction_safe_followup",
+      "scene": "safety_sensitive_followup",
+      "lead_state": "allergy_or_special_diet",
+      "intent": "collect_precise_restriction",
+      "hook": "这个顾虑值得认真对待，我们先把限制说准，后面才敢往下安排。",
+      "bridge": "火锅店的芝麻酱、花生碎、牛油锅底、蘸料和交叉接触风险都高，不能靠模糊经验回复，先把具体锅底和菜品收全更安全。",
+      "next_step": "请客户确认具体限制、涉及锅底或菜品、门店和用餐时间，目标是先完成人工核实输入。",
+      "cadence_hint": "安全类线索以稳为先，拿到关键信息后再跟下一步，不靠高频催促。",
+      "approval_guard": "未核实前，不承诺零交叉接触、绝对不含某成分或一定适合所有人。"
+    },
+    {
+      "id": "hook_service_recovery_rebuild",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_engaged",
+      "intent": "repair_trust_then_rebook",
+      "hook": "上次让你体验不好，这次先不急着推消费，先把能修复的地方说明白。",
+      "bridge": "火锅店售后后的复联重点不是立刻成交，而是让客户看到锅底、菜品、服务或配送问题已被记录、处理和避免重演。",
+      "next_step": "先确认上次问题点、期望补救和本次是否还考虑到店或下单，若对方愿意，再推进低压力的订位或备注服务。",
+      "cadence_hint": "售后恢复期减少频次，以一次明确说明和一次后续确认为主。",
+      "approval_guard": "未经批准，不擅自承诺补偿、免单、升级包间或额外赠菜。"
+    },
+    {
+      "id": "hook_reactivation_with_new_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，是有个更贴近你那顿火锅的新理由。",
+      "bridge": "火锅沉睡线索更容易对新锅底、工作日晚市空档、更新后更合适的人均组合或已核清的优惠条件产生回应，而不是对“还来吗”产生回应。",
+      "next_step": "带一个具体新变化复联，比如新上的菌汤或番茄锅、空出的包间、雨天更合适的工作日晚市档或更稳的人均方案，并给客户低压力回复入口。",
+      "cadence_hint": "沉睡复联单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_waiting_for_callback_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你的问题我先记下，先把信息收齐，等允许的动作一到位就能更快推进。",
+      "bridge": "在火锅店线索里，电话回拨、特殊饮食说明或补偿承诺如果审批没到位，先把门店、时间、锅底和问题清单收好，后面会更顺。",
+      "next_step": "请客户留下方便联系的时间、关心的问题点和门店或订单基础信息，作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼或口头给出食安、优惠或补偿例外承诺。"
+    },
+    {
+      "id": "hook_deposit_before_room_hold",
+      "scene": "payment_followup",
+      "lead_state": "ready_but_unpaid",
+      "intent": "advance_deposit_gate",
+      "hook": "这桌火锅局已经很接近落了，下一步关键是把包间和档期的确认条件补齐。",
+      "bridge": "火锅店包间、生日局和节假日大桌都是真实稀缺资源，未到定金前能做的是推进确认，不是提前替客户占满。",
+      "next_step": "推动客户确认定金、人数、到店时间、锅底方向和是否需要包间，并同步说明保留时长与档期风险。",
+      "cadence_hint": "付款前可更聚焦，但一次只推进一个明确确认动作。",
+      "approval_guard": "未达付款条件前，不写成已锁包间、已排炉位或已备好鲜货。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更容易回复一点。",
+      "bridge": "火锅店线索里，沉默不一定是拒绝，很多时候只是还在约人、在赶路或没法立刻决定，高频追问反而更容易把人推远。",
+      "next_step": "发一个低成本回复入口，例如只回门店、人数、能否吃辣中的一个，随后进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回应时，拉开到下一餐前或次日再判断。",
+      "approval_guard": "避免多人、多渠道重复跟同一位客户。"
+    }
+  ]
+}

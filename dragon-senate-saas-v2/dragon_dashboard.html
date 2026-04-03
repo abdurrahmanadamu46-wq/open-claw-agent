@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Senate 指挥中心</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0e1a;
+    color: #c9d1d9;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+  }
+
+  /* ── 顶栏 ── */
+  .header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border-bottom: 1px solid #21262d;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-title {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .header-title h1 { font-size: 16px; color: #e6edf3; font-weight: 600; }
+  .header-title .badge {
+    background: #1f6feb; color: #fff; padding: 2px 8px;
+    border-radius: 20px; font-size: 11px;
+  }
+  .live-indicator {
+    display: flex; align-items: center; gap: 6px;
+    color: #3fb950; font-size: 12px;
+  }
+  .view-switcher { display:flex; gap:6px; }
+  .view-btn {
+    background: transparent; border: 1px solid #30363d; color: #8b949e;
+    padding: 4px 10px; border-radius: 20px; cursor: pointer; font-size: 11px;
+  }
+  .view-btn.active { border-color: #1f6feb; color: #79c0ff; background: #1c2535; }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #3fb950;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── 主体布局 ── */
+  .main { display: grid; grid-template-columns: 280px 1fr 320px; gap: 0; height: calc(100vh - 50px); overflow: hidden; }
+
+  /* ── 左栏：龙虾状态 ── */
+  .panel-left {
+    background: #0d1117;
+    border-right: 1px solid #21262d;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .panel-title {
+    color: #8b949e; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 10px; padding: 0 4px;
+  }
+  .lobster-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .lobster-card:hover { border-color: #388bfd; }
+  .lobster-card.active { border-color: #1f6feb; background: #1c2535; }
+  .lobster-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .lobster-name { font-weight: 600; color: #e6edf3; font-size: 13px; }
+  .lobster-alias { color: #8b949e; font-size: 11px; margin-left: 4px; }
+  .status-badge {
+    padding: 1px 7px; border-radius: 20px; font-size: 10px; font-weight: 600;
+  }
+  .status-idle     { background: #1c2535; color: #8b949e; border: 1px solid #30363d; }
+  .status-working  { background: #1f3d1f; color: #3fb950; border: 1px solid #238636; }
+  .status-waiting  { background: #2d2a1a; color: #e3b341; border: 1px solid #9e6a03; }
+  .status-done     { background: #1c2535; color: #1f6feb; border: 1px solid #1f6feb; }
+  .status-error    { background: #3d1a1a; color: #f85149; border: 1px solid #da3633; }
+  .lobster-task {
+    color: #8b949e; font-size: 11px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .lobster-metrics { display: flex; gap: 8px; margin-top: 4px; }
+  .metric-chip {
+    font-size: 10px; color: #6e7681;
+  }
+  .metric-chip span { color: #c9d1d9; }
+
+  /* ── 中栏：任务流 + 产出物 ── */
+  .panel-center { overflow-y: auto; padding: 12px 16px; }
+
+  .run-selector {
+    display: flex; gap: 8px; margin-bottom: 14px; align-items: center;
+  }
+  .run-selector select {
+    background: #161b22; border: 1px solid #30363d; color: #c9d1d9;
+    padding: 5px 10px; border-radius: 6px; font-size: 12px; flex: 1;
+  }
+  .btn {
+    background: #1f6feb; color: #fff; border: none; padding: 5px 14px;
+    border-radius: 6px; cursor: pointer; font-size: 12px;
+  }
+  .btn:hover { background: #388bfd; }
+  .btn-sm { padding: 3px 10px; font-size: 11px; }
+  .btn-outline {
+    background: transparent; border: 1px solid #30363d; color: #8b949e;
+    padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 12px;
+  }
+  .btn-outline:hover { border-color: #388bfd; color: #388bfd; }
+
+  /* 进度条 */
+  .workflow-progress {
+    background: #161b22; border: 1px solid #21262d; border-radius: 8px;
+    padding: 14px 16px; margin-bottom: 14px;
+  }
+  .progress-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .progress-name { color: #e6edf3; font-weight: 600; }
+  .progress-pct { color: #3fb950; font-size: 12px; }
+  .progress-bar-bg {
+    background: #21262d; border-radius: 4px; height: 6px; width: 100%;
+  }
+  .progress-bar-fill {
+    background: linear-gradient(90deg, #1f6feb, #3fb950);
+    height: 6px; border-radius: 4px; transition: width 0.5s;
+  }
+  .progress-steps {
+    display: flex; gap: 3px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .step-dot {
+    width: 24px; height: 24px; border-radius: 4px; display: flex;
+    align-items: center; justify-content: center; font-size: 10px; font-weight: 600;
+    cursor: pointer; transition: transform 0.1s;
+  }
+  .step-dot:hover { transform: scale(1.15); }
+  .step-done    { background: #1f6feb; color: #fff; }
+  .step-current { background: #3fb950; color: #fff; animation: glow 1.5s infinite; }
+  .step-wait    { background: #21262d; color: #6e7681; }
+  .step-error   { background: #da3633; color: #fff; }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 4px #3fb950; }
+    50% { box-shadow: 0 0 12px #3fb950; }
+  }
+
+  /* 产出物列表 */
+  .section-title {
+    color: #8b949e; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; margin: 14px 0 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-count {
+    background: #21262d; color: #8b949e;
+    padding: 0 6px; border-radius: 20px; font-size: 10px;
+  }
+  .artifact-card {
+    background: #161b22; border: 1px solid #21262d; border-radius: 6px;
+    padding: 10px 12px; margin-bottom: 6px; cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .artifact-card:hover { border-color: #30363d; }
+  .artifact-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .artifact-type {
+    background: #1c2535; color: #79c0ff; padding: 1px 7px;
+    border-radius: 4px; font-size: 10px; font-weight: 600;
+  }
+  .artifact-type.copy     { background: #1f3a1a; color: #56d364; }
+  .artifact-type.brief    { background: #1a2a3f; color: #79c0ff; }
+  .artifact-type.intel    { background: #2a1f3a; color: #d2a8ff; }
+  .artifact-type.visual   { background: #3a2a1a; color: #e3b341; }
+  .artifact-type.publish_result { background: #1f3a1a; color: #3fb950; }
+  .artifact-type.analysis { background: #1a3a3a; color: #39d0d8; }
+  .artifact-type.lead_package { background: #3a1a1a; color: #f78166; }
+  .artifact-lobster { color: #8b949e; font-size: 11px; }
+  .artifact-version { color: #6e7681; font-size: 10px; margin-left: auto; }
+  .artifact-preview {
+    color: #8b949e; font-size: 11px; line-height: 1.5;
+    white-space: pre-wrap; word-break: break-all;
+    max-height: 60px; overflow: hidden;
+  }
+  .artifact-footer { display: flex; gap: 8px; margin-top: 6px; align-items: center; }
+  .artifact-time { color: #6e7681; font-size: 10px; flex: 1; }
+  .status-pill {
+    padding: 1px 7px; border-radius: 20px; font-size: 10px;
+  }
+  .status-draft     { background: #21262d; color: #8b949e; }
+  .status-approved  { background: #1f3d1f; color: #3fb950; }
+  .status-rejected  { background: #3d1a1a; color: #f85149; }
+  .status-published { background: #1a2a3f; color: #79c0ff; }
+
+  /* ── 右栏：事件流 ── */
+  .panel-right {
+    background: #0d1117;
+    border-left: 1px solid #21262d;
+    display: flex; flex-direction: column;
+  }
+  .event-toolbar {
+    padding: 10px 12px; border-bottom: 1px solid #21262d;
+    display: flex; gap: 6px; align-items: center;
+  }
+  .event-list {
+    flex: 1; overflow-y: auto; padding: 8px;
+  }
+  .event-item {
+    padding: 6px 8px; border-radius: 4px; margin-bottom: 3px;
+    font-size: 11px; line-height: 1.5; border-left: 2px solid transparent;
+  }
+  .event-item:hover { background: #161b22; }
+  .event-item.step_completed { border-left-color: #3fb950; }
+  .event-item.step_started   { border-left-color: #1f6feb; }
+  .event-item.step_failed    { border-left-color: #f85149; }
+  .event-item.workflow_started { border-left-color: #d2a8ff; }
+  .event-item.workflow_completed { border-left-color: #3fb950; }
+  .event-item.signal         { border-left-color: #e3b341; }
+  .event-time { color: #6e7681; font-size: 10px; margin-right: 6px; }
+  .event-type-tag {
+    font-size: 10px; padding: 0 4px; border-radius: 3px;
+    background: #21262d; color: #8b949e; margin-right: 4px;
+  }
+  .event-desc { color: #c9d1d9; }
+
+  /* 产出物详情弹层 */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); z-index: 100;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+    width: 680px; max-height: 80vh; display: flex; flex-direction: column;
+  }
+  .modal-header {
+    padding: 14px 18px; border-bottom: 1px solid #21262d;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-title { color: #e6edf3; font-weight: 600; }
+  .modal-close {
+    background: none; border: none; color: #8b949e;
+    cursor: pointer; font-size: 18px; line-height: 1;
+  }
+  .modal-body { padding: 18px; overflow-y: auto; flex: 1; }
+  .modal-content-text {
+    background: #0d1117; border: 1px solid #21262d; border-radius: 6px;
+    padding: 12px; white-space: pre-wrap; word-break: break-all;
+    color: #c9d1d9; font-size: 12px; line-height: 1.6; max-height: 400px; overflow-y: auto;
+  }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .meta-item { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 8px 12px; }
+  .meta-key { color: #8b949e; font-size: 10px; margin-bottom: 2px; }
+  .meta-val { color: #c9d1d9; font-size: 12px; }
+
+  /* 空状态 */
+  .empty-state {
+    text-align: center; padding: 40px 20px; color: #6e7681;
+  }
+  .empty-state .icon { font-size: 32px; margin-bottom: 10px; }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- 顶栏 -->
+<div class="header">
+  <div class="header-title">
+    <h1>🐉 Dragon Senate 指挥中心</h1>
+    <span class="badge">v2</span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:center;">
+    <div class="view-switcher">
+      <button class="view-btn" data-view="ops" onclick="switchDashboardView('ops')">运营</button>
+      <button class="view-btn" data-view="tech" onclick="switchDashboardView('tech')">技术</button>
+      <button class="view-btn" data-view="boss" onclick="switchDashboardView('boss')">老板</button>
+    </div>
+    <span style="color:#8b949e;font-size:11px;" id="last-refresh">--</span>
+    <div class="live-indicator">
+      <div class="live-dot"></div>
+      <span>LIVE</span>
+    </div>
+    <div style="border-top:1px solid #21262d;padding:10px 12px;">
+      <div class="section-title" style="margin-top:0;">🔧 Tool Monitor</div>
+      <!-- tool monitor moved to right panel -->
+    </div>
+
+    <div class="workflow-progress dashboard-card" data-card-id="header-log-query-disabled" id="log-query-card" style="display:none;">
+      <div class="progress-header">
+        <span class="progress-name">📄 日志查询</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <select id="header-log-time-range" style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;padding:5px 8px;border-radius:6px;font-size:12px;">
+          <option value="1">过去 1 小时</option>
+          <option value="6">过去 6 小时</option>
+          <option value="24" selected>过去 24 小时</option>
+          <option value="168">过去 7 天</option>
+        </select>
+        <select id="header-log-templates" style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;padding:5px 8px;border-radius:6px;font-size:12px;" onchange="loadLogTemplate(this.value)">
+          <option value="">-- 选择预置查询 --</option>
+        </select>
+        <button class="btn btn-sm" onclick="runLogQuery()">执行</button>
+      </div>
+      <textarea id="header-log-sql-editor" rows="4" style="width:100%;background:#0d1117;border:1px solid #21262d;color:#c9d1d9;border-radius:6px;padding:10px;font-size:12px;">SELECT lobster_name, COUNT(*) AS total FROM llm_call_logs GROUP BY lobster_name ORDER BY total DESC</textarea>
+      <div id="header-log-query-result" style="margin-top:10px;font-size:11px;color:#8b949e;"></div>
+    </div>
+    <div style="border-top:1px solid #21262d;padding:10px 12px;">
+      <div class="section-title" style="margin-top:0;">🔧 Tool Monitor</div>
+      <div id="tool-monitor-top" style="display:flex;flex-direction:column;gap:6px;font-size:11px;color:#8b949e;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 三栏主体 -->
+<div class="main">
+
+  <!-- 左栏：龙虾状态 -->
+  <div class="panel-left dashboard-card" data-card-id="lobster-status">
+    <div class="panel-title">🦞 龙虾战队</div>
+    <div id="lobster-list">
+      <!-- 动态生成 -->
+    </div>
+  </div>
+
+  <!-- 中栏：任务 + 产出物 -->
+  <div class="panel-center">
+
+    <!-- 任务选择 -->
+    <div class="run-selector">
+      <select id="run-select" onchange="loadRun(this.value)">
+        <option value="">-- 选择任务 --</option>
+      </select>
+      <button class="btn btn-sm" onclick="refreshAll()">刷新</button>
+      <button class="btn-outline btn-sm" onclick="loadRecentRuns()">最近任务</button>
+    </div>
+
+    <!-- 工作流进度 -->
+    <div class="workflow-progress dashboard-card" data-card-id="task-count" id="workflow-progress" style="display:none;">
+      <div class="progress-header">
+        <span class="progress-name" id="wf-name">--</span>
+        <span class="progress-pct" id="wf-pct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="wf-bar" style="width:0%"></div>
+      </div>
+      <div class="progress-steps" id="wf-steps"></div>
+      <div style="display:flex;gap:16px;margin-top:10px;">
+        <span class="metric-chip">状态: <span id="wf-status">--</span></span>
+        <span class="metric-chip">步骤: <span id="wf-step-count">--</span></span>
+        <span class="metric-chip">已用时: <span id="wf-elapsed">--</span></span>
+      </div>
+    </div>
+
+    <!-- 产出物列表 -->
+    <div class="workflow-progress">
+      <div class="progress-header">
+        <span class="progress-name">🦞 任务看板</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <select id="kanban-filter-status" style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;padding:5px 8px;border-radius:6px;font-size:12px;" onchange="renderKanban()">
+          <option value="">全部状态</option>
+          <option value="pending">待处理</option>
+          <option value="running">执行中</option>
+          <option value="done">已完成</option>
+          <option value="failed">失败</option>
+        </select>
+        <button class="btn btn-sm" onclick="refreshKanban()">刷新</button>
+      </div>
+      <div id="kanban-board" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;"></div>
+    </div>
+
+    <div class="section-title">
+      📦 产出物
+      <span class="section-count" id="artifact-count">0</span>
+      <div style="margin-left:auto;display:flex;gap:6px;">
+        <select id="type-filter" style="background:#161b22;border:1px solid #30363d;color:#8b949e;padding:2px 8px;border-radius:4px;font-size:10px;" onchange="filterArtifacts()">
+          <option value="">全部类型</option>
+          <option value="intel">情报 intel</option>
+          <option value="brief">策略 brief</option>
+          <option value="copy">文案 copy</option>
+          <option value="visual_brief">视觉brief</option>
+          <option value="visual">视觉 visual</option>
+          <option value="publish_result">发布结果</option>
+          <option value="echo_report">评论报告</option>
+          <option value="lead_package">线索包</option>
+          <option value="analysis">数据分析</option>
+        </select>
+      </div>
+    </div>
+    <div id="artifact-list" class="dashboard-card" data-card-id="recent-tasks">
+      <div class="empty-state">
+        <div class="icon">📭</div>
+        <div>选择一个任务查看产出物</div>
+      </div>
+    </div>
+
+    <!-- 最近产出物（无任务时） -->
+    <div id="recent-artifacts-section" class="dashboard-card" data-card-id="recent-tasks" style="display:none;">
+      <div class="section-title">⏱ 最近产出（全局）</div>
+      <div id="recent-artifacts-list"></div>
+    </div>
+
+    <div class="workflow-progress dashboard-card" data-card-id="log-query" id="log-query-card-main" style="display:none;">
+      <div class="progress-header">
+        <span class="progress-name">📄 日志查询</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <select id="log-time-range" style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;padding:5px 8px;border-radius:6px;font-size:12px;">
+          <option value="1">过去 1 小时</option>
+          <option value="6">过去 6 小时</option>
+          <option value="24" selected>过去 24 小时</option>
+          <option value="168">过去 7 天</option>
+        </select>
+        <select id="log-templates" style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;padding:5px 8px;border-radius:6px;font-size:12px;" onchange="loadLogTemplate(this.value)">
+          <option value="">-- 选择预置查询 --</option>
+        </select>
+        <button class="btn btn-sm" onclick="runLogQuery()">执行</button>
+      </div>
+      <textarea id="log-sql-editor" rows="4" style="width:100%;background:#0d1117;border:1px solid #21262d;color:#c9d1d9;border-radius:6px;padding:10px;font-size:12px;">SELECT lobster_name, COUNT(*) AS total FROM llm_call_logs GROUP BY lobster_name ORDER BY total DESC</textarea>
+      <div id="log-query-result" style="margin-top:10px;font-size:11px;color:#8b949e;"></div>
+    </div>
+  </div>
+
+  <!-- 右栏：事件流 -->
+  <div class="panel-right dashboard-card" data-card-id="latency-chart">
+    <div class="event-toolbar">
+      <span class="panel-title" style="margin:0;flex:1;">📡 事件流</span>
+      <button class="btn-outline btn-sm" onclick="clearEvents()">清空</button>
+    </div>
+    <div class="event-list" id="event-list">
+      <div class="empty-state" style="padding:20px 10px;">
+        <div>等待事件...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 产出物详情弹层 -->
+<div class="modal-overlay" id="artifact-modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">产出物详情</span>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="meta-grid" id="modal-meta"></div>
+      <div class="section-title" style="margin-top:0;">内容</div>
+      <div class="modal-content-text" id="modal-content"></div>
+      <div style="margin-top:12px;display:flex;gap:8px;" id="modal-actions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── 配置 ──────────────────────────────────────────────────────
+const API_BASE = window.location.origin; // 同域
+let currentRunId = '';
+let allArtifacts = [];
+let lobsterStatus = {};
+
+// 龙虾定义
+const LOBSTERS = [
+  { id: 'commander',  name: '陈',     alias: 'Commander',  role: '指挥' },
+  { id: 'strategist', name: '苏思',   alias: 'Strategist', role: '策略' },
+  { id: 'inkwriter',  name: '墨小雅', alias: 'Inkwriter',  role: '文案' },
+  { id: 'radar',      name: '林探',   alias: 'Radar',      role: '情报' },
+  { id: 'visualizer', name: '影子',   alias: 'Visualizer', role: '视觉' },
+  { id: 'dispatcher', name: '老将',   alias: 'Dispatcher', role: '发布' },
+  { id: 'echoer',     name: '阿声',   alias: 'Echoer',     role: '监听' },
+  { id: 'catcher',    name: '铁钩',   alias: 'Catcher',    role: '线索' },
+  { id: 'abacus',     name: '算无遗策',alias:'Abacus',    role: '数据' },
+  { id: 'followup',   name: '小锤',   alias: 'Followup',   role: '跟进' },
+];
+
+const DASHBOARD_TEMPLATES = {
+  ops: ['lobster-status', 'task-count', 'recent-tasks'],
+  tech: ['lobster-status', 'task-count', 'latency-chart', 'log-query'],
+  boss: ['task-count', 'recent-tasks']
+};
+
+// ── 初始化龙虾列表 ──────────────────────────────────────────
+function initLobsterList() {
+  const el = document.getElementById('lobster-list');
+  el.innerHTML = LOBSTERS.map(l => `
+    <div class="lobster-card" id="lcard-${l.id}" onclick="filterByLobster('${l.id}')">
+      <div class="lobster-header">
+        <div>
+          <span class="lobster-name">${l.name}</span>
+          <span class="lobster-alias">${l.alias}</span>
+        </div>
+        <span class="status-badge status-idle" id="lstatus-${l.id}">待命</span>
+      </div>
+      <div class="lobster-task" id="ltask-${l.id}">暂无任务</div>
+      <div class="lobster-metrics">
+        <span class="metric-chip">产出: <span id="lcount-${l.id}">0</span></span>
+        <span class="metric-chip" id="lscore-${l.id}"></span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── 刷新龙虾状态 ──────────────────────────────────────────────
+async function refreshLobsterStatus() {
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/lobsters/status`, { signal: AbortSignal.timeout(3000) });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    (data.lobsters || []).forEach(l => {
+      lobsterStatus[l.name] = l;
+      updateLobsterCard(l.name, l);
+    });
+  } catch(e) {
+    // API 不可用时用本地mock数据
+    useMockLobsterStatus();
+  }
+}
+
+function updateLobsterCard(name, info) {
+  const statusEl = document.getElementById(`lstatus-${name}`);
+  const taskEl   = document.getElementById(`ltask-${name}`);
+  if (!statusEl) return;
+  const statusMap = {
+    'working': ['working', '执行中'],
+    'idle':    ['idle',    '待命'],
+    'waiting': ['waiting', '等待'],
+    'done':    ['done',    '完成'],
+    'error':   ['error',   '异常'],
+  };
+  const [cls, label] = statusMap[info.status || 'idle'] || ['idle', '待命'];
+  statusEl.className = `status-badge status-${cls}`;
+  statusEl.textContent = label;
+  if (taskEl && info.current_task) {
+    taskEl.textContent = info.current_task;
+  }
+}
+
+function useMockLobsterStatus() {
+  // 无API时用占位状态，不报错
+  LOBSTERS.forEach(l => {
+    const statusEl = document.getElementById(`lstatus-${l.id}`);
+    if (statusEl && statusEl.textContent === '待命') {
+      // 保持待命状态
+    }
+  });
+}
+
+// ── 更新产出物龙虾计数 ──────────────────────────────────────
+function updateLobsterCounts() {
+  const counts = {};
+  allArtifacts.forEach(a => {
+    counts[a.lobster] = (counts[a.lobster] || 0) + 1;
+  });
+  LOBSTERS.forEach(l => {
+    const el = document.getElementById(`lcount-${l.id}`);
+    if (el) el.textContent = counts[l.id] || 0;
+  });
+}
+
+// ── 加载最近任务列表 ──────────────────────────────────────────
+async function loadRecentRuns() {
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/workflow/runs?limit=20`, { signal: AbortSignal.timeout(3000) });
+    if (!resp.ok) throw new Error();
+    const data = await resp.json();
+    const sel = document.getElementById('run-select');
+    const runs = data.runs || data || [];
+    sel.innerHTML = '<option value="">-- 选择任务 --</option>' + runs.map(r =>
+      `<option value="${r.run_id}">[${r.status}] ${r.workflow_name} (${r.run_id.slice(0,12)}...)</option>`
+    ).join('');
+    appendEvent('system', '已加载最近任务列表', `共 ${runs.length} 条`);
+  } catch(e) {
+    appendEvent('system', '无法获取任务列表（API未启动）', '使用模拟数据演示');
+    loadMockData();
+  }
+}
+
+// ── 加载任务详情 ──────────────────────────────────────────────
+async function loadRun(runId) {
+  if (!runId) return;
+  currentRunId = runId;
+
+  // 加载工作流事件时间线
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/workflow/${runId}/timeline`, { signal: AbortSignal.timeout(3000) });
+    if (resp.ok) {
+      const data = await resp.json();
+      renderTimeline(data.events || data || []);
+    }
+  } catch(e) {}
+
+  // 加载任务摘要
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/workflow/${runId}/summary`, { signal: AbortSignal.timeout(3000) });
+    if (resp.ok) {
+      const data = await resp.json();
+      renderWorkflowProgress(data);
+    }
+  } catch(e) {}
+
+  // 加载产出物
+  loadArtifacts(runId);
+}
+
+// ── 加载产出物 ──────────────────────────────────────────────
+async function loadArtifacts(runId) {
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/artifacts?run_id=${runId}`, { signal: AbortSignal.timeout(3000) });
+    if (resp.ok) {
+      const data = await resp.json();
+      allArtifacts = data.artifacts || data || [];
+      renderArtifacts(allArtifacts);
+      updateLobsterCounts();
+      return;
+    }
+  } catch(e) {}
+  // API不可用时展示空状态
+  renderArtifacts([]);
+}
+
+// ── 渲染工作流进度 ──────────────────────────────────────────
+function renderWorkflowProgress(data) {
+  document.getElementById('workflow-progress').style.display = 'block';
+  document.getElementById('wf-name').textContent = data.workflow_name || '--';
+  const pct = data.progress || 0;
+  document.getElementById('wf-pct').textContent = pct + '%';
+  document.getElementById('wf-bar').style.width = pct + '%';
+  document.getElementById('wf-status').textContent = data.status || '--';
+  document.getElementById('wf-step-count').textContent =
+    `${(data.last_completed_step || 0) + 1} / ${data.total_steps || 14}`;
+  document.getElementById('wf-elapsed').textContent =
+    data.elapsed_sec ? formatDuration(data.elapsed_sec) : '--';
+
+  // 步骤点
+  const total = data.total_steps || 14;
+  const last = data.last_completed_step || -1;
+  const stepsEl = document.getElementById('wf-steps');
+  stepsEl.innerHTML = Array.from({length: total}, (_, i) => {
+    let cls = 'step-wait';
+    if (i <= last) cls = 'step-done';
+    else if (i === last + 1 && data.status === 'running') cls = 'step-current';
+    return `<div class="step-dot ${cls}" title="步骤 ${i+1}">${i+1}</div>`;
+  }).join('');
+}
+
+// ── 渲染产出物列表 ──────────────────────────────────────────
+function renderArtifacts(artifacts) {
+  const el = document.getElementById('artifact-list');
+  document.getElementById('artifact-count').textContent = artifacts.length;
+  if (!artifacts.length) {
+    el.innerHTML = '<div class="empty-state"><div class="icon">📭</div><div>暂无产出物</div></div>';
+    return;
+  }
+  el.innerHTML = artifacts.map(a => {
+    const preview = (a.content_preview || a.content || '').slice(0, 120);
+    const time = a.created_at ? new Date(a.created_at).toLocaleTimeString('zh-CN') : '';
+    return `
+      <div class="artifact-card" onclick="openArtifact('${a.artifact_id}')">
+        <div class="artifact-header">
+          <span class="artifact-type ${a.artifact_type}">${ARTIFACT_LABELS[a.artifact_type] || a.artifact_type}</span>
+          <span class="artifact-lobster">🦞 ${a.lobster}</span>
+          <span class="artifact-version">v${a.version || 1}</span>
+        </div>
+        <div class="artifact-preview">${escHtml(preview)}</div>
+        <div class="artifact-footer">
+          <span class="artifact-time">⏱ ${time}</span>
+          <span class="status-pill status-${a.status || 'draft'}">${STATUS_LABELS[a.status] || '草稿'}</span>
+          ${a.score != null ? `<span style="color:#e3b341;font-size:10px;">★ ${a.score}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+const ARTIFACT_LABELS = {
+  intel: '📡 情报', brief: '📋 策略', copy: '✍️ 文案',
+  visual_brief: '🎨 视觉需求', visual: '🖼 视觉', publish_plan: '📅 发布计划',
+  publish_result: '✅ 发布结果', echo_report: '💬 评论报告',
+  lead_package: '🎣 线索包', followup_log: '📞 跟进记录',
+  analysis: '📊 数据分析', workflow_summary: '📝 任务总结',
+};
+const STATUS_LABELS = {
+  draft: '草稿', approved: '✅ 批准', rejected: '❌ 拒绝', published: '🚀 已发布'
+};
+
+// ── 事件时间线渲染 ──────────────────────────────────────────
+function renderTimeline(events) {
+  events.forEach(e => {
+    appendEvent(e.event_type, e.step_name || e.event_type, e.output_summary || e.error_message || '', e.created_at);
+  });
+}
+
+function appendEvent(type, title, desc, ts) {
+  const el = document.getElementById('event-list');
+  const emptyState = el.querySelector('.empty-state');
+  if (emptyState) emptyState.remove();
+
+  const time = ts ? new Date(ts).toLocaleTimeString('zh-CN') : new Date().toLocaleTimeString('zh-CN');
+  const div = document.createElement('div');
+  div.className = `event-item ${type}`;
+  div.innerHTML = `
+    <span class="event-time">${time}</span>
+    <span class="event-type-tag">${type}</span>
+    <span class="event-desc">${escHtml(String(title || ''))}${desc ? ' — ' + escHtml(String(desc).slice(0,60)) : ''}</span>
+  `;
+  el.insertBefore(div, el.firstChild);
+
+  // 最多保留100条
+  while (el.children.length > 100) el.removeChild(el.lastChild);
+}
+
+// ── 产出物详情弹层 ──────────────────────────────────────────
+async function openArtifact(artifactId) {
+  let artifact = allArtifacts.find(a => a.artifact_id === artifactId);
+  if (!artifact) {
+    try {
+      const resp = await fetch(`${API_BASE}/api/v1/artifacts/${artifactId}`);
+      if (resp.ok) artifact = await resp.json();
+    } catch(e) {}
+  }
+  if (!artifact) return;
+
+  document.getElementById('modal-title').textContent =
+    `${ARTIFACT_LABELS[artifact.artifact_type] || artifact.artifact_type} — ${artifact.lobster}`;
+
+  const meta = artifact.meta || {};
+  document.getElementById('modal-meta').innerHTML = `
+    <div class="meta-item"><div class="meta-key">产出龙虾</div><div class="meta-val">${artifact.lobster}</div></div>
+    <div class="meta-item"><div class="meta-key">类型</div><div class="meta-val">${artifact.artifact_type}</div></div>
+    <div class="meta-item"><div class="meta-key">版本</div><div class="meta-val">v${artifact.version || 1}</div></div>
+    <div class="meta-item"><div class="meta-key">状态</div><div class="meta-val">${STATUS_LABELS[artifact.status] || artifact.status}</div></div>
+    ${artifact.score != null ? `<div class="meta-item"><div class="meta-key">质量评分</div><div class="meta-val">${artifact.score} / 100</div></div>` : ''}
+    ${Object.entries(meta).slice(0,4).map(([k,v]) =>
+      `<div class="meta-item"><div class="meta-key">${k}</div><div class="meta-val">${escHtml(String(v))}</div></div>`
+    ).join('')}
+  `;
+
+  const content = artifact.content || artifact.content_preview || '';
+  document.getElementById('modal-content').textContent = content || '（无文本内容）';
+
+  if (artifact.content_url) {
+    document.getElementById('modal-content').innerHTML +=
+      `<br><a href="${artifact.content_url}" target="_blank" style="color:#79c0ff;">📎 查看文件</a>`;
+  }
+
+  document.getElementById('modal-actions').innerHTML = `
+    <button class="btn btn-sm" onclick="approveArtifact('${artifactId}')">✅ 批准</button>
+    <button class="btn-outline btn-sm" onclick="rejectArtifact('${artifactId}')">❌ 拒绝</button>
+  `;
+
+  document.getElementById('artifact-modal').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target.id === 'artifact-modal') closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('artifact-modal').classList.remove('show');
+}
+
+async function approveArtifact(id) {
+  try {
+    await fetch(`${API_BASE}/api/v1/artifacts/${id}/status`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({status: 'approved'})
+    });
+    appendEvent('signal', `产出物 ${id.slice(0,8)} 已批准`, '');
+    closeModalBtn();
+    if (currentRunId) loadArtifacts(currentRunId);
+  } catch(e) {
+    appendEvent('error', '批准失败（API未启动）', '');
+  }
+}
+
+async function rejectArtifact(id) {
+  const note = prompt('拒绝原因：');
+  if (!note) return;
+  try {
+    await fetch(`${API_BASE}/api/v1/artifacts/${id}/status`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({status: 'rejected', review_note: note})
+    });
+    appendEvent('signal', `产出物 ${id.slice(0,8)} 已拒绝`, note);
+    closeModalBtn();
+    if (currentRunId) loadArtifacts(currentRunId);
+  } catch(e) {}
+}
+
+// ── 过滤 ──────────────────────────────────────────────────────
+function filterArtifacts() {
+  const type = document.getElementById('type-filter').value;
+  const filtered = type ? allArtifacts.filter(a => a.artifact_type === type) : allArtifacts;
+  renderArtifacts(filtered);
+}
+
+function filterByLobster(lobsterId) {
+  const filtered = allArtifacts.filter(a => a.lobster === lobsterId);
+  renderArtifacts(filtered);
+  // 高亮当前龙虾卡片
+  document.querySelectorAll('.lobster-card').forEach(c => c.classList.remove('active'));
+  document.getElementById(`lcard-${lobsterId}`)?.classList.add('active');
+}
+
+// ── WebSocket 实时推送 ──────────────────────────────────────
+function connectWS() {
+  const wsUrl = `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/api/v1/lobster/realtime`;
+  try {
+    const ws = new WebSocket(wsUrl);
+    ws.onmessage = (e) => {
+      try {
+        const msg = JSON.parse(e.data);
+        handleWSMessage(msg);
+      } catch(err) {}
+    };
+    ws.onclose = () => setTimeout(connectWS, 5000);
+    ws.onerror = () => {};
+  } catch(e) {}
+}
+
+function handleWSMessage(msg) {
+  if (msg.type === 'workflow_event') {
+    appendEvent(msg.event_type, msg.step_name || '', msg.output_summary || '', msg.created_at);
+    if (msg.run_id === currentRunId) {
+      // 刷新当前任务的产出物
+      loadArtifacts(currentRunId);
+    }
+  } else if (msg.type === 'artifact_created') {
+    appendEvent('artifact.created', msg.lobster, `${msg.artifact_type} 产出物已创建`);
+    if (msg.run_id === currentRunId) loadArtifacts(currentRunId);
+  } else if (msg.type === 'lobster_status') {
+    updateLobsterCard(msg.lobster, msg);
+  }
+}
+
+// ── Mock数据（API未启动时演示用）──────────────────────────
+function loadMockData() {
+  const mockRun = {
+    workflow_name: '美妆内容推广 [演示]',
+    run_id: 'demo-run-001',
+    status: 'running',
+    progress: 57,
+    last_completed_step: 7,
+    total_steps: 14,
+    elapsed_sec: 1843,
+  };
+  renderWorkflowProgress(mockRun);
+
+  const mockArtifacts = [
+    { artifact_id: 'art_demo001', run_id: 'demo-run-001', lobster: 'radar', artifact_type: 'intel', version: 1, status: 'approved', content_preview: '话题：#敏感肌护肤\n平台：小红书\n热度：238.4万\n增速：+2.3万/小时\n持续预估：3-5天\n结论：值得追\n推荐钩子：敏感肌亲测/成分控必看', created_at: new Date(Date.now()-3600000).toISOString() },
+    { artifact_id: 'art_demo002', run_id: 'demo-run-001', lobster: 'strategist', artifact_type: 'brief', version: 1, status: 'approved', content_preview: '品牌：某敏感肌护肤品牌\n目标：新用户种草+收藏\n受众：18-30岁敏感肌女性\n内容方向：成分科普/真实体验/对比测评\n平台：小红书\n禁忌词：无，最好/绝对', created_at: new Date(Date.now()-3000000).toISOString() },
+    { artifact_id: 'art_demo003', run_id: 'demo-run-001', lobster: 'inkwriter', artifact_type: 'copy', version: 1, status: 'approved', content_preview: '【版本1 - 情绪共鸣】\n标题：敏感肌爆皮那年，我哭着扔掉了所有护肤品\n正文：三年前的我...', created_at: new Date(Date.now()-2400000).toISOString() },
+    { artifact_id: 'art_demo004', run_id: 'demo-run-001', lobster: 'inkwriter', artifact_type: 'copy', version: 2, status: 'draft', content_preview: '【版本2 - 数字冲击】\n标题：测了47款护肤品，只有这3个敏感肌能用\n正文：作为一个成分党...', created_at: new Date(Date.now()-2300000).toISOString() },
+    { artifact_id: 'art_demo005', run_id: 'demo-run-001', lobster: 'inkwriter', artifact_type: 'copy', version: 3, status: 'draft', content_preview: '【版本3 - 悬念反转】\n标题：皮肤科医生让我停用所有护肤品，我却找到了更好的方案\n正文：...', created_at: new Date(Date.now()-2200000).toISOString() },
+    { artifact_id: 'art_demo006', run_id: 'demo-run-001', lobster: 'inkwriter', artifact_type: 'visual_brief', version: 1, status: 'approved', content_preview: '核心卖点：敏感肌的温柔守护\n封面画面：特写 敏感泛红的脸颊 vs 修复后的白皙肌肤\n色调：奶白+淡粉色系\n禁忌：不要高饱和颜色', created_at: new Date(Date.now()-2100000).toISOString() },
+    { artifact_id: 'art_demo007', run_id: 'demo-run-001', lobster: 'visualizer', artifact_type: 'visual', version: 1, status: 'draft', content_url: '', content_preview: '封面图已生成（AI辅助）\n提示词：soft pink aesthetic, sensitive skin, close up face, warm lighting\nCTR预估：行业均值+18%', created_at: new Date(Date.now()-1800000).toISOString() },
+  ];
+
+  allArtifacts = mockArtifacts;
+  renderArtifacts(mockArtifacts);
+  updateLobsterCounts();
+  document.getElementById('artifact-count').textContent = mockArtifacts.length;
+
+  // 模拟龙虾状态
+  ['radar','strategist','inkwriter'].forEach(l => updateLobsterCard(l, {name:l, status:'done', current_task:'已完成'}));
+  updateLobsterCard('visualizer', {name:'visualizer', status:'working', current_task:'正在生成视频...'});
+  ['dispatcher','echoer','catcher','abacus','followup','commander'].forEach(l =>
+    updateLobsterCard(l, {name:l, status:'waiting', current_task:'等待上游产出物'})
+  );
+
+  // 模拟事件流
+  const events = [
+    {t:'workflow_started',  n:'工作流启动',    d:'美妆内容推广'},
+    {t:'step_completed',    n:'radar',          d:'情报包已发出'},
+    {t:'step_completed',    n:'strategist',     d:'策略brief已发出'},
+    {t:'step_completed',    n:'inkwriter',      d:'文案3版已完成'},
+    {t:'step_completed',    n:'inkwriter',      d:'视觉brief已发出'},
+    {t:'step_started',      n:'visualizer',     d:'开始生成封面图'},
+  ];
+  events.forEach((e, i) => {
+    setTimeout(() => appendEvent(e.t, e.n, e.d, new Date(Date.now() - (events.length-i)*300000).toISOString()), i*100);
+  });
+
+  const sel = document.getElementById('run-select');
+  sel.innerHTML = '<option value="demo-run-001">[running] 美妆内容推广 (demo-run-001...)</option>';
+
+  appendEvent('system', '演示模式', 'API未启动，显示模拟数据');
+}
+
+// ── 工具函数 ──────────────────────────────────────────────────
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function formatDuration(sec) {
+  if (sec < 60) return `${Math.round(sec)}s`;
+  if (sec < 3600) return `${Math.floor(sec/60)}m ${Math.round(sec%60)}s`;
+  return `${Math.floor(sec/3600)}h ${Math.floor((sec%3600)/60)}m`;
+}
+
+function clearEvents() {
+  document.getElementById('event-list').innerHTML = '';
+}
+
+function switchDashboardView(viewKey) {
+  const visible = DASHBOARD_TEMPLATES[viewKey] || DASHBOARD_TEMPLATES.ops;
+  document.querySelectorAll('.dashboard-card').forEach(card => {
+    card.style.display = visible.includes(card.dataset.cardId) ? '' : 'none';
+  });
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === viewKey);
+  });
+  localStorage.setItem('dashboard_view', viewKey);
+}
+
+async function loadLogTemplates() {
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/logs/templates`, { signal: AbortSignal.timeout(3000) });
+    if (!resp.ok) throw new Error('template fetch failed');
+    const data = await resp.json();
+    window.__logTemplates = data.items || [];
+    const select = document.getElementById('log-templates');
+    select.innerHTML = '<option value="">-- 选择预置查询 --</option>' + window.__logTemplates.map((item, index) => `<option value="${index}">${escHtml(item.name)}</option>`).join('');
+  } catch (e) {
+    window.__logTemplates = [];
+  }
+}
+
+function loadLogTemplate(index) {
+  const item = (window.__logTemplates || [])[Number(index)];
+  if (!item) return;
+  document.getElementById('log-sql-editor').value = item.sql || '';
+}
+
+async function runLogQuery() {
+  const resultEl = document.getElementById('log-query-result');
+  resultEl.innerHTML = '查询中...';
+  try {
+    const sql = document.getElementById('log-sql-editor').value;
+    const time_range_hours = Number(document.getElementById('log-time-range').value || 24);
+    const resp = await fetch(`${API_BASE}/api/v1/logs/query`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sql, time_range_hours }),
+      signal: AbortSignal.timeout(5000),
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.detail || data.error || 'query failed');
+    const rows = data.rows || [];
+    if (!rows.length) {
+      resultEl.innerHTML = '<div>无数据</div>';
+      return;
+    }
+    const cols = Object.keys(rows[0]);
+    resultEl.innerHTML = `
+      <div style="margin-bottom:8px;color:#8b949e;">共 ${data.count} 条</div>
+      <div style="overflow:auto;max-height:240px;">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead><tr>${cols.map(c => `<th style="text-align:left;border-bottom:1px solid #30363d;padding:6px;">${escHtml(c)}</th>`).join('')}</tr></thead>
+          <tbody>${rows.map(r => `<tr>${cols.map(c => `<td style="border-bottom:1px solid #21262d;padding:6px;vertical-align:top;">${escHtml(r[c] ?? '')}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+      </div>
+    `;
+  } catch (e) {
+    resultEl.innerHTML = `<div style="color:#f85149;">${escHtml(e.message || 'query failed')}</div>`;
+  }
+}
+
+async function loadToolMonitor() {
+  const container = document.getElementById('tool-monitor-top');
+  if (!container) return;
+  try {
+    const [topResp, failResp] = await Promise.all([
+      fetch(`${API_BASE}/api/v1/monitor/tools/top?limit=5`, { signal: AbortSignal.timeout(3000) }),
+      fetch(`${API_BASE}/api/v1/monitor/tools/failures`, { signal: AbortSignal.timeout(3000) }),
+    ]);
+    if (!topResp.ok || !failResp.ok) throw new Error('monitor fetch failed');
+    const top = await topResp.json();
+    const fail = await failResp.json();
+    const rows = [];
+    (top.items || []).forEach(item => rows.push(`<div class="metric-chip"><span>${escHtml(item.tool)}</span> ${item.count}</div>`));
+    if ((fail.items || []).length) {
+      const hottest = fail.items[0];
+      rows.push(`<div class="metric-chip">failure top <span>${escHtml(hottest.tool)}</span> ${hottest.failure_rate_pct}%</div>`);
+    }
+    container.innerHTML = rows.join('') || '<div class="metric-chip">鏆傛棤宸ュ叿鏁版嵁</div>';
+  } catch (e) {
+    container.innerHTML = '<div class="metric-chip">宸ュ叿鐩戞帶鏁版嵁鏆備笉鍙敤</div>';
+  }
+}
+
+let _kanbanData = [];
+
+async function refreshKanban() {
+  const board = document.getElementById('kanban-board');
+  if (!board) return;
+  try {
+    const resp = await fetch(`${API_BASE}/api/v1/tasks/kanban`, { signal: AbortSignal.timeout(3000) });
+    const data = await resp.json();
+    _kanbanData = data.items || [];
+  } catch (e) {
+    _kanbanData = [];
+  }
+  renderKanban();
+}
+
+function renderKanban() {
+  const board = document.getElementById('kanban-board');
+  if (!board) return;
+  const filterStatus = document.getElementById('kanban-filter-status')?.value || '';
+  const order = ['commander','strategist','radar','inkwriter','visualizer','dispatcher','echoer','catcher','abacus','followup'];
+  const grouped = {};
+  order.forEach(item => { grouped[item] = []; });
+  (_kanbanData || []).forEach(task => {
+    const lobster = task.lobster_name || 'unassigned';
+    if (!grouped[lobster]) grouped[lobster] = [];
+    if (!filterStatus || task.status === filterStatus) grouped[lobster].push(task);
+  });
+  board.innerHTML = order.map(lobster => {
+    const tasks = grouped[lobster] || [];
+    const cards = tasks.length
+      ? tasks.slice(0, 10).map(task => `
+          <div style="background:#fff;border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:12px;border-left:3px solid ${task.status === 'running' ? '#3b82f6' : task.status === 'done' ? '#22c55e' : task.status === 'failed' ? '#ef4444' : '#a3a3a3'};">
+            <div style="font-weight:600;margin-bottom:4px;">${escHtml(task.title || task.task_id)}</div>
+            <div style="color:#64748b;font-size:11px;">${escHtml(task.status)} · ${escHtml(task.priority || 'medium')}</div>
+          </div>
+        `).join('')
+      : '<div style="color:#6e7681;font-size:12px;padding:12px 0;text-align:center;">暂无任务</div>';
+    return `
+      <div style="background:#161b22;border:1px solid #21262d;border-radius:8px;padding:10px;min-width:180px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:13px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #30363d;">
+          <span>${escHtml(lobster)}</span>
+          <span style="background:#1f6feb;color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;">${tasks.length}</span>
+        </div>
+        ${cards}
+      </div>
+    `;
+  }).join('');
+}
+
+async function refreshAll() {
+  document.getElementById('last-refresh').textContent = '刷新于 ' + new Date().toLocaleTimeString('zh-CN');
+  await refreshLobsterStatus();
+  await loadToolMonitor();
+  if (currentRunId) await loadRun(currentRunId);
+}
+
+// ── 启动 ──────────────────────────────────────────────────────
+initLobsterList();
+refreshLobsterStatus();
+loadRecentRuns();
+loadToolMonitor();
+refreshKanban();
+loadLogTemplates();
+switchDashboardView(localStorage.getItem('dashboard_view') || 'ops');
+connectWS();
+
+// 每30秒自动刷新
+setInterval(refreshAll, 30000);
+document.getElementById('last-refresh').textContent = '已启动 ' + new Date().toLocaleTimeString('zh-CN');
+</script>
+</body>
+</html>

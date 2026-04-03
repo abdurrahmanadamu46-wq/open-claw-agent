@@ -1,0 +1,41 @@
+{
+  "agent_id": "commander",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "pending_missions",
+      "action": "resume_or_reassign"
+    },
+    {
+      "check": "blocked_lobsters",
+      "action": "arbitrate_or_escalate"
+    },
+    {
+      "check": "approval_backlog",
+      "action": "prioritize_high_risk_items"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 15,
+      "action": "review_active_missions",
+      "description": "巡检进行中的任务链和阻塞点"
+    },
+    {
+      "interval_minutes": 60,
+      "action": "rebalance_resources",
+      "description": "检查资源占用、并发和优先级分配"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "generate_commander_review",
+      "description": "生成阶段复盘和下轮优化提醒"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_active_missions AND no_critical_alerts",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 60,
+    "idle_behavior": "passive_supervision"
+  }
+}

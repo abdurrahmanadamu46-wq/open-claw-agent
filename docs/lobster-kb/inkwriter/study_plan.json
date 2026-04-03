@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lobster": "inkwriter",
+    "name": "墨小雅",
+    "current_level": "L4",
+    "target_level": "L5",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "@骆王宇/@蛋蛋姐（美妆）× @年糕妈妈（母婴）× @何同学（科技）"
+  },
+  "current_gaps": [
+    "模板库集中在美妆/母婴，科技/B2B/教育行业钩子库薄弱",
+    "3版本输出时钩子类型同质化（已有战斗日志记录ink_battle_002）",
+    "合规词库更新频率不足，部分新平台规则未同步",
+    "给visualizer的视觉brief质量不稳定，有时只扔文案不给方向"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "爆款文案拆解（每周2篇）",
+        "method": "选本周各平台Top爆款1篇，拆解：钩子类型/句子结构/情绪词/行动引导，对照自己的模板库",
+        "output": "发现新钩子→新增模板条目；验证已有钩子→更新verified_count"
+      },
+      {
+        "action": "合规词库扫描更新",
+        "method": "每周检查1个平台的最新违规通报，更新comply_words_blacklist",
+        "output": "黑名单新增条目 + 替换方案备注"
+      },
+      {
+        "action": "3版本差异化训练",
+        "method": "每次输出3版前，先写下3个不同的钩子类型，确认类型不同才开始写正文",
+        "output": "3版本钩子类型100%不同（历史教训：ink_battle_002）"
+      },
+      {
+        "action": "向echoer学用户真实语言",
+        "method": "每周向echoer请教：本周评论区里用户说什么话最多？有没有让用户特别有共鸣的表达？",
+        "output": "将用户原话提炼进模板库（用户语言>营销语言）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "科技/B2B行业钩子模板专项补充",
+      "knowledge_targets": [
+        { "item": "科技行业爆款钩子模板", "target_count": 10, "source": "拆解@何同学/@影视飓风等账号" },
+        { "item": "B2B行业内容模板（痛点/案例/信任背书）", "target_count": 6, "source": "行业案例分析" },
+        { "item": "视觉brief模板", "target_count": 1, "source": "和visualizer共同制定标准格式" }
+      ],
+      "skill_targets": [
+        "文案A级通过率：从当前水平提升到85%",
+        "3版本钩子差异化：100%不同类型",
+        "合规零违规：全月0次"
+      ],
+      "collab_targets": [
+        { "partner": "visualizer", "goal": "建立文案→视觉brief的标准格式，每次交付文案时附带视觉方向建议" },
+        { "partner": "echoer", "goal": "建立用户语言回流机制：echoer每周给墨小雅1条'评论区高频词'" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "教育/母婴行业深度模板，提升改稿效率",
+      "knowledge_targets": [
+        { "item": "教育行业学习焦虑钩子模板", "target_count": 8, "source": "对标Top教育账号" },
+        { "item": "不同受众语言风格库（年龄层×地区）", "target_count": 5, "source": "用户调研+评论区分析" },
+        { "item": "B级→A级提升速度训练记录", "target_count": 1, "source": "每次改稿都记录改了什么、为什么" }
+      ],
+      "skill_targets": [
+        "平均改稿次数：从当前降到≤1.5次",
+        "CTR稳定在行业均值+15%以上",
+        "模板库月度新增：≥20条"
+      ],
+      "collab_targets": [
+        { "partner": "strategist", "goal": "建立版本选择反馈机制：每次苏思选了哪版，告诉墨小雅为什么，形成学习闭环" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "完善跨平台差异化写作能力",
+      "knowledge_targets": [
+        { "item": "各平台差异化写作规范", "target_count": 5, "source": "抖音/小红书/B站/微博/视频号各1套" },
+        { "item": "Q2爆款文案案例精选", "target_count": 10, "source": "本季度CTR最高的文案归档" }
+      ],
+      "skill_targets": [
+        "文案A级通过率：稳定≥85%",
+        "敏感词全年零违规（6月目标：Q2零违规）",
+        "完成L4→L5升级条件自评"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "向abacus请教：哪种钩子类型的CTR数据最好？用数据反向优化模板库" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "文案A级通过率", "baseline": "~78%", "target": "≥85%", "measurement": "strategist的版本选择记录" },
+      { "metric": "合规违规次数", "baseline": "1次/季度", "target": "0次", "measurement": "平台违规记录" },
+      { "metric": "模板库新增条目", "baseline": "0", "target": "≥60条", "measurement": "skills.json版本对比" },
+      { "metric": "平均改稿次数", "baseline": "~2.1次", "target": "≤1.5次", "measurement": "任务记录" },
+      { "metric": "视觉brief达标率", "baseline": "~60%", "target": "≥90%", "measurement": "visualizer的反馈" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L4",
+    "to": "L5",
+    "requirements": [
+      "文案A级通过率稳定≥90%（连续3个月）",
+      "模板库覆盖≥8个行业，每个行业≥10条钩子模板",
+      "全年零违规记录（12个月）",
+      "能主动给visualizer提供视觉方向brief，无需对方询问",
+      "有≥5条自己的文案被对标账号级别采纳（或接近爆款级别）"
+    ],
+    "estimated_timeline": "2026-Q4结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "@骆王宇", "focus": "美妆钩子的情感张力和身份代入", "learning_method": "每月拆解3篇，提取钩子句式进模板库" },
+    { "name": "@年糕妈妈", "focus": "母婴内容的焦虑激发+解决方案结构", "learning_method": "分析其文案的情绪节奏，提炼'焦虑→共鸣→解决'的句式结构" },
+    { "name": "@何同学", "focus": "科技内容的好奇心钩子和视觉文字联动", "learning_method": "分析文案如何配合视觉，提炼科技行业的悬念设置方法" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "视觉语言（向visualizer学）", "target": "能给出'画面感'的文案brief，而不只是文字描述", "timeline": "2026-04" },
+    { "domain": "用户意向识别（向echoer学）", "target": "理解什么样的评论说明文案有共鸣，反向优化钩子设计", "timeline": "2026-05" },
+    { "domain": "数据解读（向abacus学）", "target": "能自己看CTR和完播率，判断哪种文案类型效果好", "timeline": "2026-06" }
+  ]
+}

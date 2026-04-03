@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_考研培训",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "postgrad_score_problem_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分文案能在前两句就让用户看见明确问题或场景，例如初试、复试、调剂、二战和择校，而不是只说考研和上岸。",
+      "examples": [
+        "高分：开头直接点出复试或调剂问题。 ",
+        "低分：一开始只有上岸和逆袭。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "postgrad_score_trust_tone",
+      "title": "信任与边界感",
+      "description": "高分文案会主动给试听流程、老师和边界说明，让用户感到机构不会乱推。低分文案往往只强调结果和优惠。",
+      "examples": [
+        "高分：先写判断和边界，再写试听。 ",
+        "低分：只靠上岸和录取吸引。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "postgrad_score_compliance_safety",
+      "title": "合规安全性",
+      "description": "高分文案避免保过、保录取和上岸承诺；低分文案容易出现绝对化承诺和违规导向。",
+      "examples": [
+        "高分：用试听判断和适用提示替代强承诺。 ",
+        "低分：保证上岸、包录取、稳赚。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "postgrad_score_scene_match",
+      "title": "场景匹配度",
+      "description": "高分文案会让报名季、复试调剂和续课维护各归其位；低分文案把所有人群都用一套语气去写。",
+      "examples": [
+        "高分：节点文案重日期和时效，老学员文案重复训理由。 ",
+        "低分：所有文案都只会喊来试听。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "postgrad_score_respectfulness",
+      "title": "尊重感与情绪稳定度",
+      "description": "高分文案会陪用户一起判断状态，而不是拿零基础和考研焦虑刺激逼单。考研培训文案的情绪越稳，越有助于真实预约。",
+      "examples": [
+        "高分：用先看方向和先试听这类语气。 ",
+        "低分：用再不上岸就完了这类恐吓。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "postgrad_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收问题、日期和是否第一次来等预约事实，方便后续承接；低分 CTA 只有欢迎试听或私信了解。",
+      "examples": [
+        "高分：先发问题和想约时间。 ",
+        "低分：快来试听一下。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+﻿{
+  "protocol": "marionette/v1",
+  "taskId": "scout-lipstick-001",
+  "campaignId": "campaign-lipstick-01",
+  "fromCabinet": "trend_radar",
+  "targetNodeId": "node-001",
+  "scheduledAt": "2026-03-10T10:00:00+08:00",
+  "humanLike": {
+    "typingCharsPerMinute": 80,
+    "delayBetweenActionsMs": [500, 1500],
+    "humanLikeMouse": true
+  },
+  "steps": [
+    {
+      "step_id": "1",
+      "action": "NAVIGATE",
+      "params": {
+        "url": "https://www.xiaohongshu.com/search_result?keyword=口红",
+        "platform": "xiaohongshu"
+      }
+    },
+    {
+      "step_id": "2",
+      "action": "WAIT",
+      "params": { "wait_ms": 3000 }
+    },
+    {
+      "step_id": "3",
+      "action": "GRAB_SOURCE",
+      "params": { "extract": "links" }
+    },
+    {
+      "step_id": "4",
+      "action": "SCROLL",
+      "params": { "delta_y": 800, "count": 5 }
+    },
+    {
+      "step_id": "5",
+      "action": "GRAB_SOURCE",
+      "params": { "extract": "metrics" }
+    },
+    {
+      "step_id": "6",
+      "action": "REPORT_BACK",
+      "params": {
+        "message": "侦察完成",
+        "result": {
+          "top_links": [],
+          "metrics_sample": {},
+          "platform": "xiaohongshu"
+        }
+      }
+    }
+  ],
+  "reportBack": {
+    "onSuccess": true,
+    "onFailure": true,
+    "screenshots": ["feed_overview"]
+  },
+  "createdAt": "2026-03-10T09:58:00+08:00"
+}

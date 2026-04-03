@@ -1,0 +1,17 @@
+### 1. 登录并拿到 Token (REST Client 插件会自动帮你把返回的 token 存到变量里)
+# @name loginRequest
+POST http://127.0.0.1:48789/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "change_me"
+}
+
+###
+
+### 2. 随便请求一个受保护的业务接口 (直接引用上面的变量)
+@authToken = {{loginRequest.response.body.access_token}}
+
+GET http://127.0.0.1:48789/api/some_protected_route
+Authorization: Bearer {{authToken}}

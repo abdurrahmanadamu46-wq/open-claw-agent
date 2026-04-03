@@ -1,0 +1,318 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_boutique_homestay_late_night_butler_self_checkin_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔高铁晚点后的精品民宿晚到订单转成可执行的管家引路、实名核验和夜间自助入住计划",
+        "routing_context": "客人原计划 21:30 到店，现改为 23:40 抵达；民宿位于古镇步行街深处且 23:00 后无固定前台，目标露台房已完成清扫，可由夜值管家远程发送路线和密码锁，但必须先完成实名核验",
+        "integration_state": {
+          "pms": "healthy",
+          "butler_chat": "healthy",
+          "smart_lock": "healthy",
+          "public_security_uploader": "healthy",
+          "navigation_guide": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "管家首次触达、到店时间窗确认和古镇步行路线指引节点",
+        "实名核验完成后再发门锁密码的闸门",
+        "客人失联或找不到民宿时的夜间接棒与房间保留规则"
+      ],
+      "mustAvoid": [
+        "在实名未完成前直接发送完整门锁密码",
+        "默认白班管家下班后仍会自然承接晚到单"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_early_arrival_room_setup_pending_002",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔纪念日晚到改早到的入住需求，但指定签名房仍在深清和欢迎布置中",
+        "routing_context": "客人希望从原定 15:00 提前到 10:30 入住，并坚持要预订的天窗浴缸房；当前该房仍处于 deep_clean，花艺和蛋糕布置尚未完成，民宿公共咖啡区可供短时休息，另有一间普通景观房可临时替代",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "decor_vendor": "healthy",
+          "butler_chat": "healthy",
+          "guest_lounge": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "目标房 clean_inspected、花艺布置完成和浴缸点检作为前置依赖",
+        "咖啡区候用、寄存行李或临时替代房的分流路线",
+        "签名房未就绪前不得承诺固定放房时间的状态回写"
+      ],
+      "mustAvoid": [
+        "在 deep_clean 和布置未完成时直接承诺指定房号可入住",
+        "为了赶时间跳过欢迎布置和设施点检"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_package_slot_split_routing_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔含早餐、下午茶、私汤和旅拍的精品民宿套餐拆成可执行的多资源调度计划",
+        "routing_context": "订单包含两晚庭院房、次日 08:30 早餐、17:00 下午茶、19:00 私汤和第二天下午旅拍；客人要求尽量保持时间连贯，店内目前各资源尚有少量名额，但旅拍只剩最后一档",
+        "integration_state": {
+          "pms": "healthy",
+          "experience_scheduler": "healthy",
+          "butler_chat": "healthy",
+          "private_bath_scheduler": "healthy",
+          "photography_vendor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "早餐、下午茶、私汤和旅拍的并行锁位任务",
+        "旅拍最后一档名额的优先锁定或候补规则",
+        "任一时段冲突时的改时段或替代体验 fallback"
+      ],
+      "mustAvoid": [
+        "把多体验套餐当普通客房订单只安排入住",
+        "在资源未锁定前对外确认所有权益已稳妥落地"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_ota_paid_not_synced_small_inventory_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放一笔 OTA 支付成功但民宿后台未落单的入住流程，并避免最后一间签名房被重复占用",
+        "routing_context": "客人已在平台支付成功并到店出示订单页，但 PMS 中没有对应订单，前台怀疑是渠道回传超时；当前只剩最后一间 loft 签名房，微信侧同时间段也有待确认询单",
+        "integration_state": {
+          "ota_channel": "degraded",
+          "pms": "healthy",
+          "payment_gateway": "healthy",
+          "smart_lock": "healthy",
+          "butler_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号、手机号和支付流水做去重补录",
+        "最后一间 loft 房的库存冻结和临时保底入住中间态",
+        "渠道恢复后的 replay 顺序与门锁发放回写规则"
+      ],
+      "mustAvoid": [
+        "未做去重就重新建第二张订单占掉签名房",
+        "在支付状态未核验前再次向客人收订金或房费"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_birthday_decor_waiting_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带生日布置和露台蛋糕需求的订单，但供应商确认和静音审批尚未完成",
+        "routing_context": "客人希望当晚 20:00 入住时房内已有生日布置，并在 21:30 送蛋糕到露台；当前花艺供应商尚未最终确认物料，露台使用又受 22:00 静音规则约束，房间本身可正常入住",
+        "integration_state": {
+          "pms": "healthy",
+          "decor_vendor": "healthy",
+          "butler_chat": "healthy",
+          "manager_console": "healthy",
+          "quiet_hours_policy": "healthy"
+        },
+        "approval_state": "waiting_supplier_confirmation"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "生日布置物料确认与露台静音规则审批节点",
+        "房间可入住与个性化布置待确认的拆线处理",
+        "供应商无法履约时的简化布置或室内替代方案"
+      ],
+      "mustAvoid": [
+        "在供应商和规则审批未完成前直接承诺完整生日场景",
+        "把个性化布置失败风险隐藏在“已备注”里不设回退"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_weekend_overbooking_signature_room_006",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在周末旺季签名房撞单时建立止损执行计划，确保到店客人有可执行去向",
+        "routing_context": "唯一一间庭院私汤房同时被 OTA 订单和微信订金单占用，另有两位客人都明确表示只接受该房型；民宿其余房间为普通景观房，附近合作民宿还有一间高一级套房可调配",
+        "integration_state": {
+          "pms": "healthy",
+          "ota_channel": "healthy",
+          "wechat_booking": "healthy",
+          "partner_inventory": "healthy",
+          "manager_console": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "签名房库存冻结、订单优先级排序和去重判断",
+        "不可平替房型的二次确认、升级补差或改住合作民宿路线",
+        "到店前主动通知与差价承担规则"
+      ],
+      "mustAvoid": [
+        "在已知撞单后继续对外释放该签名房库存",
+        "把庭院私汤房直接平替成普通景观房而不征得客人确认"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_midnight_smart_lock_failure_007",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔深夜到店时密码锁离线的异常，确保无前台场景下仍有可执行兜底",
+        "routing_context": "客人 00:25 已抵达民宿门口，但目标房密码锁离线且远程重试失败；门店没有固定前台，夜值管家在 15 分钟车程外，仓库有备用机械钥匙，房间本身已准备完成",
+        "integration_state": {
+          "smart_lock": "degraded",
+          "butler_chat": "healthy",
+          "backup_key_registry": "healthy",
+          "pms": "healthy",
+          "public_security_uploader": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "远程重试、实名复核和备用钥匙到场的主备链路",
+        "夜值管家到场时限与超时后的进一步兜底方案",
+        "锁具恢复后的门锁状态回写与重复发码去重规则"
+      ],
+      "mustAvoid": [
+        "把总控密码或不受控通行码直接发送给客人",
+        "只登记锁故障而让客人在门外无限等待"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_noise_party_extra_visitors_008",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔在住客临时申请增加访客并在院内庆生的请求，确保不越过静音与访客治理闸门",
+        "routing_context": "住客 21:40 提出想让 6 位外来朋友进院庆生到 23:30，并希望临时开放天台与蓝牙音箱；民宿位于居民区，22:00 后有静音规则，外来访客尚未登记",
+        "integration_state": {
+          "manager_console": "healthy",
+          "visitor_registry": "healthy",
+          "quiet_hours_policy": "healthy",
+          "butler_chat": "healthy",
+          "access_control": "healthy"
+        },
+        "approval_state": "waiting_manager_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "访客登记、静音规则校验和值班经理审批节点",
+        "审批未完成前不得开放院门或天台权限的暂停态",
+        "被拒绝时的室内简化庆生或限定时长替代方案"
+      ],
+      "mustAvoid": [
+        "在审批未决时先把院门密码分享给外来访客",
+        "忽略居民区静音要求直接安排延时聚会"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_weather_road_closure_arrival_reroute_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在暴雨导致山路封控时重排精品民宿到店计划，保证房间保留与客人改道方案可执行",
+        "routing_context": "客人当天下午将自驾前往半山民宿，但景区发布暴雨预警且上山道路临时封控；房间为两晚山景房，客人已经支付订金，民宿可协调山下接驳点和一晚合作客栈临时改住",
+        "integration_state": {
+          "weather_alert_feed": "healthy",
+          "road_closure_feed": "healthy",
+          "butler_chat": "healthy",
+          "partner_inventory": "healthy",
+          "payment_gateway": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "暴雨与道路封控作为安全闸门的暂停节点",
+        "山下接驳、改期或合作客栈改住的多条 fallback 路线",
+        "房间保留时限、订金处理和主动通知逻辑"
+      ],
+      "mustAvoid": [
+        "明知道路封控仍让客人自行冒险上山",
+        "按普通 no-show 规则直接释放已付订金订单"
+      ]
+    },
+    {
+      "id": "dispatcher_boutique_homestay_signature_facility_failure_soldout_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一位在住客夜间反馈签名设施失效的情况，并在几乎满房前提下给出可执行兜底",
+        "routing_context": "客人入住的天窗浴缸房在 22:50 出现热水异常且投影无法启动，该房是民宿主推卖点；店内仅剩一间普通景观房，工程可到场但无法保证 30 分钟内修复，原房需要立即停售排查",
+        "integration_state": {
+          "engineering_queue": "healthy",
+          "pms": "healthy",
+          "butler_chat": "healthy",
+          "manager_console": "healthy",
+          "compensation_policy": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "问题房停售、工程抢修和值班经理补偿判断节点",
+        "普通景观房临时过夜、次日调房或合作民宿改住的 fallback",
+        "签名设施失效后的差价返还或体验补偿回写规则"
+      ],
+      "mustAvoid": [
+        "只创建维修工单而不处理客人当晚住宿体验",
+        "在问题未定位前把该房继续标记为可售"
+      ]
+    }
+  ]
+}

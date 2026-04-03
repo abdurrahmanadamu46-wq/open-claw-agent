@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lobster": "radar",
+    "name": "林探",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "各行业Top10爆款账号的热点发现速度"
+  },
+  "current_gaps": [
+    "热点判断最短观察时间规则刚建立，尚未在实践中稳定执行（已有war_log rdr_battle_001）",
+    "竞品监控覆盖行业不足，目前仅稳定覆盖美妆/食品",
+    "情报报告格式不统一，strategist有时收到的信息不完整",
+    "跨域知识（文案/策略）理解度不足，无法判断热点是否'可执行'"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "热点信号扫描（每日）",
+        "method": "每天早8点扫描各平台热榜，记录：话题名/当前热度/增速/行业类型/预判持续时间",
+        "output": "强信号满足观察时间要求后→发情报包给strategist；弱信号→观察池"
+      },
+      {
+        "action": "本周情报准确率自评",
+        "method": "每周五回顾本周发出的所有情报，对照实际热点走势，评分：准/误判/漏报",
+        "output": "误判→写入battle_log找根因；连续准确→更新verified_count"
+      },
+      {
+        "action": "竞品爆款结构拆解（每周2个）",
+        "method": "选本周竞品爆款各1个，拆解：标题结构/封面特征/BGM/发布时间/互动数据",
+        "output": "提炼爆款结构特征→新增模板条目"
+      },
+      {
+        "action": "向strategist确认情报价值",
+        "method": "每周主动向苏思询问：本周情报中哪条最有用？哪条没用到？原因是什么？",
+        "output": "了解strategist的需求边界，精准化下周情报方向"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "热点判断时间规则100%执行 + 建立标准情报格式",
+      "knowledge_targets": [
+        { "item": "标准情报包模板", "target_count": 1, "source": "和strategist共同制定，包含5必填字段" },
+        { "item": "B2B/教育行业爆款规律", "target_count": 10, "source": "扫描相关平台Top内容" },
+        { "item": "竞品账号监控名单", "target_count": 1, "source": "建立各行业Top5竞品账号的监控清单" }
+      ],
+      "skill_targets": [
+        "热点发现延迟：<2小时（观察时间规则下的目标）",
+        "情报准确率：≥70%",
+        "情报格式达标率：≥95%（发出去的情报100%用标准格式）"
+      ],
+      "collab_targets": [
+        { "partner": "strategist", "goal": "建立情报格式共识：苏思收到情报后5分钟内能做出追/不追的判断" },
+        { "partner": "inkwriter", "goal": "在情报包中增加'可用钩子方向'字段，帮助墨小雅更快启动创作" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "扩展行业覆盖，提升情报准确率",
+      "knowledge_targets": [
+        { "item": "汽车/母婴行业热点规律", "target_count": 15, "source": "对标账号分析" },
+        { "item": "平台算法变化追踪记录", "target_count": 3, "source": "监控各平台官方公告+实测数据" },
+        { "item": "昙花热点 vs 持续热点的识别特征", "target_count": 5, "source": "历史误判案例提炼" }
+      ],
+      "skill_targets": [
+        "情报准确率：从70%提升到75%",
+        "热点发现延迟：<1.5小时（进化目标）",
+        "行业覆盖：从2个行业扩展到5个行业"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "建立热点→快速工作流启动的标准流程，情报→工作流启动<30分钟" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "建立跨平台热点规律库",
+      "knowledge_targets": [
+        { "item": "各平台热点传播规律对比（抖/红/B站/微博）", "target_count": 1, "source": "季度数据整理" },
+        { "item": "Q2误判案例复盘", "target_count": 3, "source": "本季度所有误判案例" },
+        { "item": "竞品爆款结构模板库Q2新增", "target_count": 20, "source": "每周2个拆解积累" }
+      ],
+      "skill_targets": [
+        "情报准确率：从75%达到80%（Q2目标）",
+        "竞品模板库季度增量：≥20套",
+        "完成L3→L4升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "向算无遗策请教：如何用数据验证情报准确率？建立情报效果追踪机制" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "热点发现延迟", "baseline": "<2小时", "target": "<1.5小时", "measurement": "情报时间戳记录" },
+      { "metric": "信号准确率", "baseline": "~65%", "target": "≥80%", "measurement": "情报追踪评分" },
+      { "metric": "行业知识新增条目", "baseline": "0", "target": "≥50条", "measurement": "skills.json版本对比" },
+      { "metric": "竞品爆款模板库", "baseline": "~10套", "target": "≥30套", "measurement": "模板库文件" },
+      { "metric": "情报格式达标率", "baseline": "~70%", "target": "≥98%", "measurement": "strategist反馈" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "情报准确率稳定≥80%（连续3个月）",
+      "热点发现延迟稳定<1小时",
+      "竞品模板库达到≥50套（含5个行业）",
+      "能主动给strategist附上'可行性评估'（不只是信号，还有'这个能做吗'的判断）",
+      "建立完整的行业热点规律对比表"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "新榜/飞瓜数据", "focus": "专业热点追踪工具的判断逻辑", "learning_method": "研究其热点评分体系，提炼可以用于自身判断的指标" },
+    { "name": "各行业Top10爆款账号", "focus": "爆款出现前的信号特征", "learning_method": "每月选1个账号，分析其爆款发布前48小时的平台数据变化规律" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "内容策略（向strategist学）", "target": "能在情报包中给出'这个热点适合哪类内容策略'的初步判断", "timeline": "2026-04" },
+    { "domain": "文案钩子（向inkwriter学）", "target": "能在情报包中附上1-2个可用的标题钩子方向", "timeline": "2026-05" },
+    { "domain": "数据分析（向abacus学）", "target": "能看懂完播率/互动率数据，用数据验证热点质量", "timeline": "2026-06" }
+  ]
+}

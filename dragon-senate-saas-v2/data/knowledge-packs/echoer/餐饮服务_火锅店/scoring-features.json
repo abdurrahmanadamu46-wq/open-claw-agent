@@ -1,0 +1,516 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u706b\u9505\u5e97",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_party_size",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_party_size",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "2 people",
+        "8 adults and 2 kids",
+        "table for 6",
+        "headcount included"
+      ],
+      "why_it_matters": "Serious hotpot planning usually surfaces party size early because booking, broth choice, and seating fit depend on it.",
+      "echoer_action": "Acknowledge the detail and keep gathering branch, time, and seating preference."
+    },
+    {
+      "id": "explicit_dining_time",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_dining_time",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "tonight at 7",
+        "Friday dinner",
+        "tomorrow night",
+        "Qingming evening"
+      ],
+      "why_it_matters": "Date and meal period move the conversation from browsing into real booking behavior.",
+      "echoer_action": "Use the time signal to guide toward reservation or queue advice."
+    },
+    {
+      "id": "branch_specified",
+      "applies_to": "incoming_message",
+      "feature_name": "branch_specified",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "downtown branch",
+        "Xujiahui store",
+        "the Bund location",
+        "specific hotpot branch"
+      ],
+      "why_it_matters": "Branch detail makes booking, queue, and coupon answers much more actionable.",
+      "echoer_action": "Reply with branch-aware language instead of generic statements."
+    },
+    {
+      "id": "broth_or_spice_preference_detail",
+      "applies_to": "incoming_message",
+      "feature_name": "broth_or_spice_preference_detail",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "not too spicy",
+        "tomato broth",
+        "mushroom pot",
+        "mild yin-yang"
+      ],
+      "why_it_matters": "Broth and spice detail makes menu guidance more useful and often predicts follow-through.",
+      "echoer_action": "Offer one practical direction and ask only the next few important questions."
+    },
+    {
+      "id": "mixed_group_detail",
+      "applies_to": "incoming_message",
+      "feature_name": "mixed_group_detail",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "parents and a child",
+        "elders and kids",
+        "half the table wants spicy",
+        "family table mix"
+      ],
+      "why_it_matters": "Table-mix detail usually signals a real dining plan and shapes the right broth or seating advice.",
+      "echoer_action": "Tie the reply to who is dining, not just what dish is popular."
+    },
+    {
+      "id": "private_room_or_party_intent",
+      "applies_to": "incoming_message",
+      "feature_name": "private_room_or_party_intent",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "private room",
+        "birthday dinner",
+        "team dinner",
+        "large table"
+      ],
+      "why_it_matters": "Private-room and event requests usually carry stronger intent and higher value than casual walk-ins.",
+      "echoer_action": "Collect date, headcount, budget, and event type."
+    },
+    {
+      "id": "budget_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "budget_signal",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "per person budget",
+        "what range should I expect",
+        "cheapest workable option",
+        "budget for 8 people"
+      ],
+      "why_it_matters": "Budget questions show buying seriousness when paired with event or group facts.",
+      "echoer_action": "Respect the budget and move toward trade-offs instead of bait pricing."
+    },
+    {
+      "id": "coupon_or_membership_detail",
+      "applies_to": "incoming_message",
+      "feature_name": "coupon_or_membership_detail",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "group-buy coupon",
+        "member day",
+        "discount screenshot",
+        "holiday offer tonight"
+      ],
+      "why_it_matters": "Promotion questions often mean the user is close to choosing a branch or time slot.",
+      "echoer_action": "Use the offer question to collect branch and dining time."
+    },
+    {
+      "id": "ready_to_book_or_queue",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_book_or_queue",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "book now",
+        "reserve for us",
+        "hold a table",
+        "can you queue it now"
+      ],
+      "why_it_matters": "Direct booking language is one of the clearest conversion signals.",
+      "echoer_action": "Keep the reply warm and funnel toward minimal reservation facts."
+    },
+    {
+      "id": "invoice_or_business_need",
+      "applies_to": "incoming_message",
+      "feature_name": "invoice_or_business_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "need invoice",
+        "client dinner",
+        "team dinner",
+        "business hosting"
+      ],
+      "why_it_matters": "Business dining usually needs coordination and often carries higher booking value.",
+      "echoer_action": "Collect invoice need, headcount, and private-room preference."
+    },
+    {
+      "id": "dietary_restriction_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "dietary_restriction_declared",
+      "category": "service_complexity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "allergy",
+        "vegetarian",
+        "no sesame",
+        "pregnancy diet"
+      ],
+      "why_it_matters": "Restriction detail often signals real dining intent, but it also raises service sensitivity.",
+      "echoer_action": "Treat it carefully and guide toward exact confirmation."
+    },
+    {
+      "id": "complaint_order_info_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_order_info_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "order number",
+        "delivery time",
+        "I have photos",
+        "missing item proof"
+      ],
+      "why_it_matters": "Complaint recovery moves faster when the user is ready with usable order facts.",
+      "echoer_action": "Acknowledge the frustration and route to service handling."
+    },
+    {
+      "id": "holiday_or_late_night_deadline",
+      "applies_to": "incoming_message",
+      "feature_name": "holiday_or_late_night_deadline",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "holiday dinner",
+        "late night",
+        "birthday tonight",
+        "must dine by a certain time"
+      ],
+      "why_it_matters": "Time-bound dining requests usually mean the user is close to making a decision.",
+      "echoer_action": "Calm urgency first, then collect the key booking details."
+    },
+    {
+      "id": "skeptic_but_engaged",
+      "applies_to": "incoming_message",
+      "feature_name": "skeptic_but_engaged",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "is the soup base really authentic",
+        "looks overhyped",
+        "every hotpot place says that",
+        "is it actually worth it"
+      ],
+      "why_it_matters": "A skeptical user who keeps asking is still a live engagement opportunity.",
+      "echoer_action": "De-escalate and invite a concrete preference or concern."
+    },
+    {
+      "id": "guarantee_no_wait_request",
+      "applies_to": "incoming_message",
+      "feature_name": "guarantee_no_wait_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee no queue",
+        "promise a seat",
+        "definitely no wait",
+        "hold it for me no matter what"
+      ],
+      "why_it_matters": "Peak-time guarantees create service risk and disappointment if phrased too confidently.",
+      "echoer_action": "Shift from guarantee language to time, branch, and reservation guidance."
+    },
+    {
+      "id": "allergy_or_cross_contact_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "allergy_or_cross_contact_guarantee_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guarantee no sesame",
+        "100 percent no cross-contact",
+        "absolutely no allergen",
+        "can you promise it is safe"
+      ],
+      "why_it_matters": "Allergy guarantee language is a high-risk safety topic that should not be answered casually.",
+      "echoer_action": "Treat it as a careful-confirmation case and escalate."
+    },
+    {
+      "id": "absolute_freshness_or_origin_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_freshness_or_origin_guarantee_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "absolutely fresh",
+        "never frozen guarantee",
+        "100 percent handmade",
+        "can you guarantee the origin"
+      ],
+      "why_it_matters": "Absolute ingredient claims create avoidable credibility and safety risk.",
+      "echoer_action": "Move toward exact ingredient and branch confirmation instead of sweeping claims."
+    },
+    {
+      "id": "food_safety_accusation",
+      "applies_to": "incoming_message",
+      "feature_name": "food_safety_accusation",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "food poisoning",
+        "foreign object",
+        "not fresh",
+        "smelled bad"
+      ],
+      "why_it_matters": "Food-safety accusations are highly sensitive and must move into structured service handling fast.",
+      "echoer_action": "Acknowledge the concern and route to a human review path."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave phone number",
+        "call me now",
+        "drop your contact in comments"
+      ],
+      "why_it_matters": "Moving private contact into public comments creates platform and privacy risk.",
+      "echoer_action": "Use platform DM as the safe bridge."
+    },
+    {
+      "id": "price_only_without_context",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_context",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give the cheapest",
+        "price only",
+        "quote now no details",
+        "lowest package immediately"
+      ],
+      "why_it_matters": "Price-only traffic is not always useless, but it needs reframing before it becomes a workable booking lead.",
+      "echoer_action": "Move from price pressure to group size and dining purpose."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never convert into healthy dining intent.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges urgency",
+        "acknowledges frustration",
+        "acknowledges caution"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior for hospitality conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_booking_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_booking_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for branch",
+        "asks for dining time",
+        "asks for party size",
+        "asks for seating type"
+      ],
+      "why_it_matters": "A strong hotpot reply turns vague interest into usable booking data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_captures_broth_and_group_context",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_captures_broth_and_group_context",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "asks about spice level",
+        "asks whether children or elders are joining",
+        "asks about broth preference",
+        "asks how split the table is on spice"
+      ],
+      "why_it_matters": "Hotpot guidance feels more human when it accounts for broth choice and who is dining.",
+      "echoer_action": "Use broth and table-mix questions instead of generic dish dumping."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send booking details in DM",
+        "share branch and time",
+        "send the order info"
+      ],
+      "why_it_matters": "One clear next step is easier for diners to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_high_risk_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_high_risk_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "allergy topic escalated",
+        "food-safety complaint escalated",
+        "service issue escalated"
+      ],
+      "why_it_matters": "Echoer should not improvise past safety, service, or liability boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps order details minimal in comments"
+      ],
+      "why_it_matters": "Hospitality conversations often involve booking or order details that should not be collected publicly.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_absolute_guarantee",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_guarantee",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed table",
+        "absolutely safe",
+        "definitely no wait",
+        "100 percent no allergen"
+      ],
+      "why_it_matters": "Absolute promises create avoidable service and safety risk.",
+      "echoer_action": "Replace with condition-based and careful wording."
+    },
+    {
+      "id": "reply_bait_discount",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_bait_discount",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "lowest in town",
+        "today only cheapest deal",
+        "discount promise without conditions",
+        "price bait"
+      ],
+      "why_it_matters": "Bait pricing damages trust and sets up service friction later.",
+      "echoer_action": "Give context-aware range guidance instead."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "customer is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_generic_menu_dump",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_generic_menu_dump",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 7,
+      "trigger_patterns": [
+        "long generic dish list",
+        "no question about spice",
+        "no question about group mix",
+        "copy-paste recommendation block"
+      ],
+      "why_it_matters": "Hotpot advice feels weak when it ignores broth choice, table mix, and dining purpose.",
+      "echoer_action": "Anchor recommendations in broth, spice tolerance, and the people at the table."
+    }
+  ]
+}

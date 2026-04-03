@@ -1,0 +1,17 @@
+{
+  "meta": { "lobster": "echoer", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "ech_battle_001",
+      "type": "failure",
+      "date": "2026-03-18",
+      "skill_ref": "ech_intent_001",
+      "description": "将'下次去试试'判断为D级忽略，但该用户后来自己找到竞品下单，事后复盘属于A级意向被漏掉",
+      "root_cause": "'下次去试试'被理解为礼貌性回复，没有识别出'去试试'中的行动意向",
+      "action_taken": "更新意向词库：包含'试试/看看/去一次'等词汇的评论，自动升级为A级，不再归入D级",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

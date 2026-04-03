@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "CopyPack",
+  "goal": "Create a compliant, high-conversion script that moves viewers from trust to consultation booking.",
+  "assumptions": [
+    "Evidence-led hooks outperform hype in regulated service categories.",
+    "A restrained CTA increases trust with high-ticket local service buyers."
+  ],
+  "evidence": [
+    "Strategist route favors consultation-first conversion.",
+    "Radar shows stricter enforcement on exaggerated claims."
+  ],
+  "confidence": 0.88,
+  "riskLevel": "L2",
+  "nextAction": "handoff_to_visualizer",
+  "core_message": "You do not need louder promises; you need proof, clarity, and a next step that feels safe.",
+  "hooks": "Why do some clinics post every day but still miss high-quality bookings?",
+  "script_body": "Open with a real business loss, show a proof-backed content route, then invite the viewer to book a consultation instead of chasing vague promises.",
+  "risk_phrases": "avoid guarantee, avoid medical efficacy overclaim, avoid fake urgency"
+}

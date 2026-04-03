@@ -1,0 +1,168 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "gatehouse_case_first_route",
+      "rule_name": "同场景案例优先于泛工厂宣传",
+      "priority": "P0",
+      "trigger_signals": [
+        "询盘明确指向村口门楼、景区入口、学校门头、厂区门楼、祠堂牌坊等具体场景",
+        "项目客单价高、决策周期长、需要多人审批"
+      ],
+      "recommended_primary_route": "先展示同场景已落地案例、尺寸范围、材料选择和安装照片，再引导收集项目用途、尺寸、预算、区域、安装条件。",
+      "recommended_alternative_route": "若缺少同场景案例，先用“现场照片+用途说明换初步风格建议”的轻量验证路线，不直接放大投放预算。",
+      "hard_constraints": [
+        "没有近似案例时不能把效果图当作完工证明",
+        "案例必须能说明材质、尺寸或交付背景"
+      ],
+      "risk_tradeoff": "接受前端获客速度更慢，换取更高信任度和更低废线索率。"
+    },
+    {
+      "id": "gatehouse_qualification_before_quote",
+      "rule_name": "先做项目资格筛选，再进入报价和深度方案",
+      "priority": "P0",
+      "trigger_signals": [
+        "客户一上来就问价格",
+        "门楼类型、场地条件、运输安装范围仍不清晰"
+      ],
+      "recommended_primary_route": "先收齐项目基础四件套：场地照片或视频、预估尺寸、用途场景、预算区间，再判断走标准款、半定制或完全定制路线。",
+      "recommended_alternative_route": "若信息不完整，先给出预算区间和影响报价的关键变量，避免直接报死价。",
+      "hard_constraints": [
+        "不能在尺寸、材质、安装范围不明时承诺固定总价",
+        "不能把明显不合格线索排进高成本设计流程"
+      ],
+      "risk_tradeoff": "前期会损失一部分只比价线索，但能显著提升报价效率与成交概率。"
+    },
+    {
+      "id": "gatehouse_consultation_cta_over_low_price",
+      "rule_name": "设计咨询型 CTA 优先于最低价吸引",
+      "priority": "P0",
+      "trigger_signals": [
+        "项目需要兼顾造型、结构、安全、地域风格",
+        "客户更关心做成什么样和是否能落地，而不是单纯买现货"
+      ],
+      "recommended_primary_route": "主路线使用“案例对照+需求诊断+初步方案建议”的咨询型入口，把报价放在资格确认之后。",
+      "recommended_alternative_route": "对价格敏感但仍有项目意向的线索，单独给出标准化款式和预算带，不把全量线索都拉进低价竞争。",
+      "hard_constraints": [
+        "不能把全网最低价作为主卖点",
+        "不能用价格口号替代交付能力说明"
+      ],
+      "risk_tradeoff": "线索量可能低于低价引流，但更符合高客单工程类成交逻辑。"
+    },
+    {
+      "id": "gatehouse_segment_by_project_type",
+      "rule_name": "按项目类型拆分路线，不用一套内容打所有门楼需求",
+      "priority": "P1",
+      "trigger_signals": [
+        "同一时期同时出现乡村改造、景区形象、学校厂区、私宅仿古等不同项目",
+        "素材池里已有多个不同风格案例"
+      ],
+      "recommended_primary_route": "至少拆成四条子路线：乡村和祠堂形象、景区文旅入口、学校厂区功能型门楼、私宅庭院仿古门楼。",
+      "recommended_alternative_route": "如果素材有限，优先聚焦转化证据最强的两个场景，其余场景只做承接页与轻投放验证。",
+      "hard_constraints": [
+        "不能让高审美文旅项目和功能型厂区项目共用一套主叙事",
+        "优先级排序必须跟证据密度一致"
+      ],
+      "risk_tradeoff": "内容制作复杂度上升，但能显著减少无效咨询和错误预期。"
+    },
+    {
+      "id": "gatehouse_delivery_radius_gate",
+      "rule_name": "交付半径与安装能力是硬门槛，不是后置问题",
+      "priority": "P1",
+      "trigger_signals": [
+        "异地询盘变多",
+        "项目涉及吊装、基础施工、跨省运输或现场焊接安装"
+      ],
+      "recommended_primary_route": "在前期筛选里明确区域覆盖、安装队能力、运输方式和售后半径，把不能稳定交付的区域降权。",
+      "recommended_alternative_route": "若异地订单吸引力高但交付能力弱，先改为材料供货或设计咨询合作，而非承诺全包落地。",
+      "hard_constraints": [
+        "不能默认全国可接",
+        "不能对跨省安装项目隐去吊装和售后成本"
+      ],
+      "risk_tradeoff": "主动缩小可接范围会减少表面机会，但能避免高损耗和履约风险。"
+    },
+    {
+      "id": "gatehouse_compliance_first_for_public_projects",
+      "rule_name": "政企和公共项目先讲资质、结构、安全与审批配合",
+      "priority": "P1",
+      "trigger_signals": [
+        "客户来自村委、景区、学校、园区、国企或施工总包",
+        "对方频繁提到验收、审批、施工配合和材料规范"
+      ],
+      "recommended_primary_route": "先突出可配合深化、材质说明、结构理解、基础施工经验和项目流程，再进入造型表达。",
+      "recommended_alternative_route": "若资质或配合能力不足，优先转入分包、供货或联合施工路线，不直接承诺整包交付。",
+      "hard_constraints": [
+        "不能承诺审批包过",
+        "不能模糊资质边界或借用他人资质表达成自有能力"
+      ],
+      "risk_tradeoff": "前端表达不如效果图路线抓眼，但更适合长决策链和高信任门槛项目。"
+    },
+    {
+      "id": "gatehouse_validate_new_scene_before_scale",
+      "rule_name": "新场景证据弱时，先低成本验证再扩量",
+      "priority": "P1",
+      "trigger_signals": [
+        "准备切入新的区域或新的项目场景",
+        "现有案例与目标项目差异大"
+      ],
+      "recommended_primary_route": "先跑小预算测试：单一场景内容、咨询表单、电话回访和案例反馈，再决定是否放大投放或增配设计资源。",
+      "recommended_alternative_route": "如果验证表现一般，回到已有证据更强的场景继续深耕，同时补拍新场景样板内容。",
+      "hard_constraints": [
+        "证据弱时不能一开始就铺大量投放",
+        "不能忽略线索反馈中的场景差异"
+      ],
+      "risk_tradeoff": "扩张速度下降，但能避免在陌生场景里高成本试错。"
+    },
+    {
+      "id": "gatehouse_reactivate_old_leads_with_revision_offer",
+      "rule_name": "沉睡旧线索优先用方案修订和新案例重激活",
+      "priority": "P2",
+      "trigger_signals": [
+        "CRM 里沉睡询盘较多",
+        "旧线索曾发过尺寸、图纸或现场照片"
+      ],
+      "recommended_primary_route": "按场景和预算分组，先推送最近落地的相似案例，再给出“旧方案微调/预算重估/材质替换建议”的再沟通入口。",
+      "recommended_alternative_route": "对长期失联线索，只保留低打扰触达和节前节点提醒，不继续投入高人工跟进。",
+      "hard_constraints": [
+        "不能用统一群发文案覆盖所有旧线索",
+        "重激活优先级应高于重新冷启动陌生场景"
+      ],
+      "risk_tradeoff": "看起来不如新线索扩量热闹，但通常更节省预算且更接近成交。"
+    },
+    {
+      "id": "gatehouse_dual_lane_standard_vs_custom",
+      "rule_name": "标准款与定制款必须双路线运营",
+      "priority": "P2",
+      "trigger_signals": [
+        "既有快速成交的常规门楼，也有高利润的定制项目",
+        "询盘中同时存在快交付和深定制需求"
+      ],
+      "recommended_primary_route": "把标准款做成快筛快报路线，把定制款做成案例诊断路线，两条路线分开承接、分开报价、分开排期。",
+      "recommended_alternative_route": "资源不够时，优先保留利润更稳定且交付更可控的一条路线，另一条只做轻承接。",
+      "hard_constraints": [
+        "不能让标准款低价预期污染定制项目谈判",
+        "不能把复杂定制线索塞进标准品报价逻辑"
+      ],
+      "risk_tradeoff": "运营复杂度更高，但能减少价格错配和排产冲突。"
+    },
+    {
+      "id": "gatehouse_absolute_claims_veto",
+      "rule_name": "绝对承诺、工期包过、验收无忧类表达一票否决",
+      "priority": "P0",
+      "trigger_signals": [
+        "内容策划、投放话术或销售跟进出现绝对化语言",
+        "为抢单想直接承诺最低价、最快工期、百分百过审"
+      ],
+      "recommended_primary_route": "用可核验案例、材质参数、交付流程、风险提示替代绝对化承诺，把信任建立在证据而不是口号上。",
+      "recommended_alternative_route": "如果客户只接受绝对承诺，宁可降低优先级或放弃，不要为短期转化牺牲治理安全。",
+      "hard_constraints": [
+        "禁止全网最低价、全国都能做、百分百验收通过、几天必完工等表述",
+        "禁止用未经核验的案例和资质背书抢单"
+      ],
+      "risk_tradeoff": "短期转化刺激感下降，但能避免平台风险、履约纠纷和品牌透支。"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "lobster": "strategist",
+    "name": "苏思",
+    "current_level": "L4",
+    "target_level": "L5",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "宝洁P&G内容营销标准 × 各行业Top账号内容节奏"
+  },
+  "current_gaps": [
+    "策略模板库目前覆盖行业不足（偏重美妆/母婴，B2B/教育/汽车偏弱）",
+    "A/B实验结论率约55%，有效结论低于目标60%",
+    "对abacus数据报告的利用深度不足，多数情况下只看结论不看过程",
+    "brief发出前的5字段自检偶尔仍被跳过（已有战斗日志记录）"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "brief质量自检（每次发出前）",
+        "method": "对照5字段清单：目标/受众/钩子方向/平台/禁忌，全部填写后才发出",
+        "output": "零违规（历史教训：str_battle_001）"
+      },
+      {
+        "action": "本周策略效果复盘",
+        "method": "对照abacus的数据报告，找出本周表现最好/最差的策略，提炼规律",
+        "output": "每周≥1条策略模板库更新，包含：行业/账号阶段/策略方向/验证数据"
+      },
+      {
+        "action": "行业新案例扫描",
+        "method": "每周扫描3个行业的Top爆款内容，分析内容策略逻辑，和自己的模板库对比",
+        "output": "发现新模式→新增模板条目；验证已有模式→更新verified_count"
+      },
+      {
+        "action": "向radar同步情报",
+        "method": "每周主动联系radar，了解本周热点方向，判断是否需要调整策略计划",
+        "output": "情报→策略的转化决策记录（追or不追，理由是什么）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "补齐B2B和教育行业策略模板",
+      "knowledge_targets": [
+        { "item": "B2B行业内容策略模板", "target_count": 3, "source": "案例分析+abacus历史数据" },
+        { "item": "教育行业策略模板", "target_count": 2, "source": "对标案例提炼" },
+        { "item": "失败策略归档", "target_count": 2, "source": "本月所有低于预期的策略" }
+      ],
+      "skill_targets": [
+        "A/B实验结论率：从55%提升到57%",
+        "brief零返工率：≥95%（平均每月发出的brief中95%不需要因格式问题返工）"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "建立月度策略复盘会：abacus提供数据，苏思提供策略解读，双方共同输出结论" },
+        { "partner": "inkwriter", "goal": "建立新的版本选择反馈机制：每次选A/B/C版后，告知墨小雅选择原因" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "完善不同预算规模的策略分级体系",
+      "knowledge_targets": [
+        { "item": "小预算（<5万/月）策略模板", "target_count": 3, "source": "实际客户案例" },
+        { "item": "中预算（5-50万/月）策略模板", "target_count": 3, "source": "对标案例" },
+        { "item": "A/B假设模板库（标准化）", "target_count": 5, "source": "整理历史实验中有效的假设框架" }
+      ],
+      "skill_targets": [
+        "A/B实验结论率：从57%提升到60%（达到Q2目标）",
+        "策略采纳率：维持≥80%"
+      ],
+      "collab_targets": [
+        { "partner": "radar", "goal": "建立热点情报快速策略转化流程：情报进来→15分钟内出策略判断（追/不追/改造追）" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "完成Q2策略模板库整理 + 沉淀季度最有价值的5个策略洞察",
+      "knowledge_targets": [
+        { "item": "Q2全量策略模板库整理", "target_count": 1, "source": "整理本季度新增模板" },
+        { "item": "季度最有价值策略洞察", "target_count": 5, "source": "从本季度任务中提炼" },
+        { "item": "汽车行业策略模板（新增赛道）", "target_count": 2, "source": "对标案例研究" }
+      ],
+      "skill_targets": [
+        "策略模板库总量：达到Q2目标（≥15套新增）",
+        "完成L4→L5升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "Q2复盘时共同评估各行业的工作流设计，优化策略→执行的交接节点" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "策略采纳率", "baseline": "80%", "target": "≥82%", "measurement": "客户接受/调整/拒绝记录" },
+      { "metric": "A/B实验结论率", "baseline": "55%", "target": "≥60%", "measurement": "实验报告有效结论比例" },
+      { "metric": "新增策略模板", "baseline": "0", "target": "≥15套", "measurement": "skills.json条目版本对比" },
+      { "metric": "失败策略归档率", "baseline": "~70%", "target": "100%", "measurement": "battle_log完整性检查" },
+      { "metric": "brief返工率", "baseline": "~8%", "target": "<3%", "measurement": "inkwriter的返工记录" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L4",
+    "to": "L5",
+    "requirements": [
+      "策略模板库覆盖≥8个行业，且每个行业≥3套",
+      "A/B实验结论率稳定≥65%（连续2个季度）",
+      "策略采纳率稳定≥85%",
+      "能在10分钟内给出任意行业的内容策略框架",
+      "有≥3个自己提出的策略洞察被全团队采纳为标准知识"
+    ],
+    "estimated_timeline": "2026-Q4结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "宝洁P&G内容营销", "focus": "不同受众分层的策略设计逻辑", "learning_method": "分析其不同品牌的内容差异，提炼受众→策略的映射方法" },
+    { "name": "小红书Top品牌号", "focus": "内容节奏设计（冷启动→爆发→维稳的节奏）", "learning_method": "每月选1个行业的Top账号，分析最近90天的内容节奏" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "数据分析（向abacus深度学习）", "target": "能自己看完整的漏斗数据，判断问题在哪一层（不只是看结论）", "timeline": "2026-04" },
+    { "domain": "视觉语言（向visualizer学）", "target": "能在brief中给出视觉方向指导（不只是文字方向）", "timeline": "2026-05" },
+    { "domain": "发布节奏（向dispatcher学）", "target": "策略设计时就考虑发布时间窗，不再出现策略和发布节奏脱节", "timeline": "2026-06" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "session_id": "0da5a91e7636f718",
+  "peer_id": "skill_scanner",
+  "lobster_id": "commander",
+  "tenant_id": "tenant_main",
+  "channel": "skill_registry",
+  "mode": "shared",
+  "messages": [],
+  "created_at": "2026-04-02T18:46:07.015870+00:00",
+  "last_active_at": "2026-04-02T18:46:07.015870+00:00",
+  "message_count": 0,
+  "metadata": {}
+}

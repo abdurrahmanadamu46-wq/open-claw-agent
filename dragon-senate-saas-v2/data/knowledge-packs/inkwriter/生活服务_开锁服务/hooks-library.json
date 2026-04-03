@@ -1,0 +1,8 @@
+{"industry":"生活服务_开锁服务","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"unlock_hook_urgent","title":"急开门开头模板","description":"适合夜间急开门、反锁和忘带钥匙路线。","examples":["很多人卡的不是要不要找师傅，而是这次到底能不能快、能不能正规、能不能先把门打开。 ","门反锁最怕的不是没人接，而是没把时间和锁型说清楚。 "],"priority":"high"},
+  {"id":"unlock_hook_change","title":"换锁换芯开头模板","description":"适合租房换锁、新房换锁和锁芯升级路线。","examples":["换锁最怕的不是没人来，而是锁体、预算和整套还是换芯没一起算清楚。 ","真正难的不是找师傅，而是先把门型和锁型说清楚。 "],"priority":"high"},
+  {"id":"unlock_hook_trust","title":"备案信任开头模板","description":"适合首次预约、夜间急单和身份核验焦虑路线。","examples":["很多人找开锁第一句不是多少钱，而是这次到底能不能放心让师傅上门。 ","想先处理得稳，先把备案、核验和边界看明白，比先问折扣更重要。 "],"priority":"high"},
+  {"id":"unlock_hook_smart","title":"智能锁安装开头模板","description":"适合智能锁安装、旧锁改装和门禁路线。","examples":["智能锁安装最怕的不是贵一点，而是门型、兼容和安装边界没说清。 ","真正影响体验的，往往不是价格，而是门店敢不敢把能不能装讲明白。 "],"priority":"medium"},
+  {"id":"unlock_hook_window","title":"节点时效开头模板","description":"适合返家、交房和夜间急单路线。","examples":["夜里进不去门的时候，最怕的不是没人接，而是来不来得及。 ","交房前想省心，先把门型和时效说清楚会更快。 "],"priority":"medium"},
+  {"id":"unlock_hook_repeat","title":"复约维护开头模板","description":"适合门禁维护和老客换锁回流路线。","examples":["复约这件事很多时候不是重新选，而是先把这次要处理哪一类锁说清。 ","后续维护更看重设备、时段和是否还是之前那种服务。 "],"priority":"medium"}
+]}

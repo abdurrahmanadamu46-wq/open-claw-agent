@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"visit_and_capacity_gate","title":"高峰预约前必须先校验时段、车辆和师傅资源","description":"搬家调度的核心不是单纯接单，而是把预约时段、车辆、师傅、房型、大件和跨城能力一起纳入 task_graph。","examples":["月底高峰时段已满时，先进入候补和分时段节点。","跨城集中时，先确认车次和仓储排班。"],"priority":"high"},
+  {"id":"first_visit_and_return_visit_must_split","title":"首次预约、复约和补运是独立调度变量","description":"首次预约、复约和补运会显著改变单客时长与资源匹配。","examples":["首次预约用户需要先进入范围与楼层判断节点。","复约用户应优先路由到熟悉其历史记录的链路。"],"priority":"high"},
+  {"id":"local_and_crosscity_routes","title":"同城和跨城必须走不同执行链路","description":"同城判断更依赖房型、楼层和大件，跨城更依赖时效、仓储和车次。","examples":["同城线索优先安排范围判断。","跨城线索优先锁城市和仓储。"],"priority":"high"},
+  {"id":"peak_schedule_check","title":"高峰急搬必须先确认门店、时段和范围","description":"月底和周末急搬不能直接默认安排，需要先判断候补、改时段或缩小范围。","examples":["这周六前优先判断是否还能安排。","时段较紧时改走重点件优先。"],"priority":"medium"},
+  {"id":"writeback_gate","title":"服务状态与完工条件必须写回执行链路","description":"搬家和补运类任务如果不把时段、完工和签收条件写进链路，后续极易出错。","examples":["搬运服务必须带上完工回写节点。","补运服务要带签收与回访。"],"priority":"high"},
+  {"id":"post_service_followup_reserve","title":"高峰搬运和老客复约都要预留 followup 任务","description":"搬家成交后仍有补运、复约、满意度和下次预约提醒需要跟进。","examples":["月底搬家后预留后续补运节点。","复约后预留下次提醒。"],"priority":"medium"}
+]}

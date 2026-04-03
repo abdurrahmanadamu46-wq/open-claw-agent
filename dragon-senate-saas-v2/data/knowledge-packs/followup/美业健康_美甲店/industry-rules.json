@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐风格、时间和卸甲前，本轮目标是锁预约事实，不是先把款式说满",
+      "description": "美甲店线索很多从有没有位、多少钱和能不能做同款开场，但真正决定能否推进的是风格方向、预约时间、是否需要卸甲和门店。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定能做成。",
+      "examples": [
+        "客户只问周末能不能做时，先问风格和是否带旧甲。",
+        "客户只发参考图时，先补时间和门店，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_style_confidence",
+      "title": "第一次做甲和不会选款的用户必须先进入低压力引导阶段",
+      "description": "第一次做甲、不知道选什么和担心不适合的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入风格缩窄和低压力引导阶段，再推进预约。",
+      "examples": [
+        "先确认是日常款还是场合款，而不是先推复杂款。",
+        "先让用户选大方向，再谈时段。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_booking_needs_fast_scope",
+      "title": "婚礼、旅行和节日前线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和款式。FollowUp 应先确认日期、时段和是否卸甲，再帮助其进入合适预约，而不是在时间紧张时展开长篇销售。",
+      "examples": [
+        "婚礼线索先确认周几可来和是否带旧甲。",
+        "旅行前脚甲线索先锁时间，再聊颜色和复杂度。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_rebook_split",
+      "title": "首单预约跟进和复做回访必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心做成一次，复做回访的目标才是提醒周期、换款和储值价值。两阶段不能共用同一套推进动作。",
+      "examples": [
+        "首单更多围绕风格、时间和卸甲。",
+        "复做更多围绕长出来了、想换什么和何时回来。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_wear_feedback",
+      "title": "做完后的跟进要先收佩戴感受和掉落风险，再决定是否推进",
+      "description": "做完美甲后的 FollowUp 不是默认销售时刻。应先确认手感、日常适配、是否有翘边掉钻和对颜色款式的满意度，再根据反馈决定是返修观察、复做提醒还是储值承接。",
+      "examples": [
+        "节日贴饰款做完后先问是否硌手或担心掉钻。",
+        "通勤款做完后先问是否适合日常工作。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老客回访要给具体换款或周期理由，不要只催回来",
+      "description": "两到三周复做周期、季节换色、节前换款和上次款长出来了，都是合理的回访理由。FollowUp 应用这些具体理由引导老客回来，而不是泛泛问要不要再来做甲。",
+      "examples": [
+        "提醒上次做奶灰的老客，现在正适合换一次春夏色。",
+        "按两到三周周期提醒通勤短甲老客。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

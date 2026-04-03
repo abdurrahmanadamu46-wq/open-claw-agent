@@ -1,0 +1,170 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "old_town_night_then_morning",
+      "hook_angle": "Old-town slow stay",
+      "hook_line": "People rarely book an inn just for a bed. They book it because the night walk and the next morning still belong to the place.",
+      "target_scene": "Old-town or riverside inns where the lane, gate, room, and next-morning rhythm can all be captured as one stay loop.",
+      "cover_direction": "Use the gate or lane lanterns leading into the inn as the main cover, with a small room or breakfast inset and a headline about staying inside the town instead of only visiting it.",
+      "first_3_shots": [
+        "Show a real lane anchor, turn, or bridge leading to the inn gate or signboard.",
+        "Enter the courtyard or room threshold so the property becomes specific and real.",
+        "Hint at the overnight payoff with a room window, breakfast setup, or dawn courtyard detail."
+      ],
+      "required_proof_assets": [
+        "Lane or old-town anchor footage",
+        "Gate, sign, courtyard, or room-door footage",
+        "Morning or breakfast closure footage"
+      ],
+      "fallback_if_missing": "If the night-to-morning loop is incomplete, reduce the hook to a truthful arrival-and-room stay rather than claiming a full slow-stay arc."
+    },
+    {
+      "id": "courtyard_after_dinner_pause",
+      "hook_angle": "Night courtyard pause",
+      "hook_line": "The real value of an inn often starts after dinner, when you still have somewhere worth sitting before the room closes the night.",
+      "target_scene": "Inns with a courtyard, tea table, rooftop, fire pit, terrace, or riverside deck that guests can genuinely use in the evening.",
+      "cover_direction": "Make the courtyard or terrace the visual hero, but keep the room door or gate in frame so the atmosphere still feels property-specific rather than generic.",
+      "first_3_shots": [
+        "Tie the outside lane or gate to the courtyard or terrace entrance.",
+        "Show the space being used through tea, seating, reading, or return-from-walk action.",
+        "Close the loop by moving from the shared night space back toward the real room."
+      ],
+      "required_proof_assets": [
+        "Courtyard or terrace wide shot",
+        "Real usable seating or tea setup",
+        "A path back to the room or gate"
+      ],
+      "fallback_if_missing": "If night access or use proof is missing, keep the space as a daylight mood bonus and move the core hook back to room truth."
+    },
+    {
+      "id": "late_arrival_still_lands_softly",
+      "hook_angle": "Arrival reassurance",
+      "hook_line": "A good inn does not need a giant lobby to feel settled. It just needs the route, the handoff, and the room to make sense the moment you arrive.",
+      "target_scene": "Old-town, mountain, or village inns where arrival happens through a lane, a gate, a key handoff, or a self-check-in step rather than a standard hotel reception.",
+      "cover_direction": "Lead with the gate, room key, or welcome note plus the room entrance, and keep the headline focused on a calm, believable arrival.",
+      "first_3_shots": [
+        "Start at the last clear route anchor, parking edge, or lane entrance.",
+        "Show the actual check-in handoff, code, note, or host guidance that gets the guest inside.",
+        "Enter the room and let the settle-in moment prove the arrival promise."
+      ],
+      "required_proof_assets": [
+        "Route anchor or arrival point footage",
+        "Check-in process or host-guidance proof",
+        "Room-entry footage"
+      ],
+      "fallback_if_missing": "If check-in evidence is weak, shift the hook to 'easy to understand once you arrive' rather than promising smooth late-night landing."
+    },
+    {
+      "id": "anniversary_one_night_memory",
+      "hook_angle": "Couple slow celebration",
+      "hook_line": "What makes an inn memorable for two people is not bigger luxury. It is that the evening, the room, and the next morning all connect.",
+      "target_scene": "Couple-oriented inns with courtyard mood, tea or dessert setup, calm room truth, and a morning scene that can finish the stay honestly.",
+      "cover_direction": "Use the gate or courtyard plus one real room corner and a breakfast or tea inset, with a headline about a one-night memory rather than flashy romance.",
+      "first_3_shots": [
+        "Establish the inn identity through the gate, courtyard, or sign.",
+        "Move into one real room type and prove the stay texture.",
+        "Plant the overnight payoff through breakfast, tea, or a morning window."
+      ],
+      "required_proof_assets": [
+        "Property identity footage",
+        "One consistent room type",
+        "Breakfast, tea, or morning closure footage"
+      ],
+      "fallback_if_missing": "If the morning or hostable moment is unavailable, frame the story as a calm room-and-yard pause instead of a full celebration stay."
+    },
+    {
+      "id": "friends_gather_after_the_street_walk",
+      "hook_angle": "Friends gather",
+      "hook_line": "The best inn for friends is not the loudest one. It is the one that gives the group a place to keep talking after the street walk ends.",
+      "target_scene": "Inns with shared courtyards, tea tables, rooftops, or common rooms suitable for small-group stays, reunions, or birthday weekends.",
+      "cover_direction": "Put the shared sitting space beside the inn identity and room proof, and avoid making the place feel like an unrestricted party venue or whole-property buyout.",
+      "first_3_shots": [
+        "Anchor the property through the lane, gate, or sign before any group-style atmosphere.",
+        "Show the shared sit-down space with enough scale to understand how it is actually used.",
+        "Return to the rooms or corridor so the viewer reads it as a real stay, not only a hangout space."
+      ],
+      "required_proof_assets": [
+        "Property identity footage",
+        "Shared-space wide shot",
+        "Room or corridor footage tied to the gathering space"
+      ],
+      "fallback_if_missing": "If group-use proof or ownership boundaries are unclear, reduce the hook to a small-group stay suggestion and do not imply exclusive or party-ready use."
+    },
+    {
+      "id": "wake_up_into_local_morning",
+      "hook_angle": "Morning closure",
+      "hook_line": "If the morning is empty, the inn story feels unfinished. The stay only lands when breakfast or the first walk outside feels real.",
+      "target_scene": "Inns with breakfast, tea service, market access, riverside walks, courtyard morning light, or mountain-view wake-up moments that are actually shootable.",
+      "cover_direction": "Use the room window or breakfast table as the hero frame, backed by a small lane or courtyard cue so the morning still reads as inn-specific.",
+      "first_3_shots": [
+        "Open inside the room or courtyard as the morning begins.",
+        "Show breakfast, tea, or the first outside step that proves a lived-in morning.",
+        "Connect the morning scene back to the inn gate, room, or yard to close the stay loop."
+      ],
+      "required_proof_assets": [
+        "Room, courtyard, or window morning-light footage",
+        "Breakfast, tea, or first-walk proof",
+        "A return link to the inn itself"
+      ],
+      "fallback_if_missing": "If morning access is not real, close the video on the night settle-in or room pause and do not use a morning-based headline."
+    },
+    {
+      "id": "mountain_or_riverside_reset",
+      "hook_angle": "Reset stay",
+      "hook_line": "A destination inn works when the route in, the quiet room, and the first look outside all prove you can actually slow down here.",
+      "target_scene": "Mountain, riverside, lake, or village inns where the real appeal is reduced pace, view-linked pause, and believable arrival rather than pure luxury.",
+      "cover_direction": "Lead with the real exterior setting plus the room threshold or window, and keep the title focused on resetting pace rather than making absolute silence claims.",
+      "first_3_shots": [
+        "Show the actual road, village path, or riverside approach into the inn.",
+        "Enter the room and prove where rest actually happens.",
+        "Use one honest outside look, terrace, or morning view to validate the reset promise."
+      ],
+      "required_proof_assets": [
+        "Approach or entry footage",
+        "Real room footage",
+        "View or outdoor pause footage tied back to the room"
+      ],
+      "fallback_if_missing": "If the weather window, view access, or outdoor proof is weak, move the hook back to room calm and arrival clarity instead of scenic fantasy."
+    },
+    {
+      "id": "small_room_complete_stay",
+      "hook_angle": "Room truth",
+      "hook_line": "An inn room does not need to be huge. It needs to prove that the bed, bath, luggage, and pause moments really work together.",
+      "target_scene": "Compact old-house rooms, attic rooms, lane-facing rooms, or simple countryside inn rooms that sell comfort through truthful layout rather than size.",
+      "cover_direction": "Use one honest wide room shot with a small bathroom or window inset, and let the headline focus on completeness rather than premium scale.",
+      "first_3_shots": [
+        "Start with the room wide shot so layout truth comes first.",
+        "Follow with the bathroom, luggage area, desk, or window relationship that proves usable flow.",
+        "End the opening run with a small pause action that makes the room feel livable."
+      ],
+      "required_proof_assets": [
+        "Room wide shot",
+        "Bathroom or utility proof",
+        "Luggage, window, desk, or seating relationship footage"
+      ],
+      "fallback_if_missing": "If layout proof is too partial, position the video as a design-detail preview rather than a complete room recommendation."
+    },
+    {
+      "id": "stay_inside_the_lane_not_next_to_it",
+      "hook_angle": "Local-life link",
+      "hook_line": "The point is not that the inn is near the street. It is that the lane outside and the room upstairs feel like one continuous stay.",
+      "target_scene": "Inns above cafe lanes, inside market streets, beside bridges, or tucked into villages where the surrounding life can be visually tied back to the gate.",
+      "cover_direction": "Pair the inn entrance with one recognizable nearby scene and keep at least one room or courtyard cue so the local-life claim stays anchored.",
+      "first_3_shots": [
+        "Connect the inn gate to a real nearby street, bridge, market, or lane anchor.",
+        "Return toward the room, yard, or corridor so the local scene feels attached to the stay.",
+        "Use one room or window shot to land the idea of living inside the place, not just visiting it."
+      ],
+      "required_proof_assets": [
+        "Inn gate or entrance footage",
+        "A nearby local-life anchor",
+        "A transition back to the room or courtyard"
+      ],
+      "fallback_if_missing": "If the relationship between the inn and the local scene cannot be proven, drop the live-inside-the-lane claim and keep the video property-centered."
+    }
+  ]
+}

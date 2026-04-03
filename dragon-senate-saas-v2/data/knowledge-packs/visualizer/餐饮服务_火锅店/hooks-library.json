@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "boiling_pot_worth_the_wait",
+      "hook_angle": "开锅瞬间",
+      "hook_line": "一家火锅店值不值得等，第一眼先看这锅开得够不够真。",
+      "target_scene": "川渝火锅、牛油火锅、特色锅底、商场晚市门店",
+      "cover_direction": "封面主体给招牌锅底滚沸，副元素补一盘核心涮品和小范围等位动作，标题直指“这锅一开就想下筷”。",
+      "first_3_shots": [
+        "锅底滚沸特写",
+        "毛肚、牛肉或招牌涮品下锅镜头",
+        "顾客捞菜蘸料或入口画面"
+      ],
+      "required_proof_assets": [
+        "锅底滚沸视频",
+        "招牌涮品镜头",
+        "围桌用餐或入口反馈"
+      ],
+      "fallback_if_missing": "没有真实餐期时，改成锅底和招牌涮品说明版，不做“值得等位”的人气叙事。"
+    },
+    {
+      "id": "queue_and_turnover_prove_popularity",
+      "hook_angle": "人气证明",
+      "hook_line": "火锅店是不是稳，不用喊爆满，看等位和翻台节奏就知道。",
+      "target_scene": "商场火锅、社区连锁、晚市和夜宵客流明显的门店",
+      "cover_direction": "门头和等位区同框，画面里要有入店或叫号动作，标题强调“晚市真实状态”。",
+      "first_3_shots": [
+        "门头与等位区镜头",
+        "服务员带位或顾客进店",
+        "加汤、上菜或桌面占用状态"
+      ],
+      "required_proof_assets": [
+        "门头外景",
+        "等位或入座镜头",
+        "高峰期用餐区画面"
+      ],
+      "fallback_if_missing": "没有真实等位素材时，不做“排队必吃”钩子，改成锅底、食材或聚会体验路线。"
+    },
+    {
+      "id": "fresh_cut_meat_reassures_first",
+      "hook_angle": "鲜切鲜配",
+      "hook_line": "肉是不是现切、菜是不是新鲜，上桌前这几秒最有说服力。",
+      "target_scene": "潮汕牛肉火锅、铜锅涮肉、鲜切品类和手打丸滑门店",
+      "cover_direction": "鲜切肉盘或手打动作占主画面，副元素补锅底和部位标识，标题强调“看得见的新鲜”。",
+      "first_3_shots": [
+        "切肉、摆盘或手打动作",
+        "部位标识或食材纹理近景",
+        "下锅变色和起筷入口画面"
+      ],
+      "required_proof_assets": [
+        "切配或手打镜头",
+        "原料上桌镜头",
+        "涮煮后反馈画面"
+      ],
+      "fallback_if_missing": "没有切配素材时，改成招牌涮品体验版，不硬讲鲜切现配。"
+    },
+    {
+      "id": "sauce_bar_creates_memory",
+      "hook_angle": "调料记忆点",
+      "hook_line": "火锅好不好吃，不只在锅底，很多老客最后记住的是这一口蘸料搭配。",
+      "target_scene": "有特色小料台、自助调料区、秘制油碟或干碟的火锅店",
+      "cover_direction": "调料台整洁广角做主体，辅以捞菜蘸料的小动作，标题聚焦“这口蘸料才是灵魂”。",
+      "first_3_shots": [
+        "调料台整洁广角",
+        "招牌蘸料组合镜头",
+        "蘸料加持后的入口反馈"
+      ],
+      "required_proof_assets": [
+        "调料台镜头",
+        "蘸料搭配过程",
+        "捞菜蘸料入口画面"
+      ],
+      "fallback_if_missing": "没有调料台素材时，改成锅底或肉品路线，不把调料记忆点写成主钩子。"
+    },
+    {
+      "id": "group_gathering_confidence",
+      "hook_angle": "聚会场景",
+      "hook_line": "火锅店能不能把一桌人坐住，看桌型、动线和服务节奏就够了。",
+      "target_scene": "家庭聚餐、朋友局、生日局、商务包厢和夜宵社交型火锅店",
+      "cover_direction": "大桌或包厢围炉做主体，辅以上锅和夹菜动作，标题聚焦“这桌坐下就开局”。",
+      "first_3_shots": [
+        "大厅大桌或包厢整桌全景",
+        "服务员上锅上菜镜头",
+        "多人夹菜或举杯的避脸互动"
+      ],
+      "required_proof_assets": [
+        "座位区环境",
+        "整桌出品镜头",
+        "服务流程或多人互动"
+      ],
+      "fallback_if_missing": "没有多人围桌素材时，改成单桌体验或空间说明版，不硬做聚会局。"
+    },
+    {
+      "id": "value_set_must_look_enough",
+      "hook_angle": "性价比分量",
+      "hook_line": "火锅讲性价比，别只写人均，要让这一桌到底够不够吃看得见。",
+      "target_scene": "双人套餐、多人套餐、工作日午市、社区聚餐型火锅店",
+      "cover_direction": "整桌套餐和大盘肉菜占主体，标题围绕“人均”“几个人吃”“分量够不够”。",
+      "first_3_shots": [
+        "整桌套餐全景",
+        "关键大盘肉菜或拼盘特写",
+        "多人分食或空盘速度镜头"
+      ],
+      "required_proof_assets": [
+        "整桌套餐镜头",
+        "份量参照物",
+        "用餐反馈画面"
+      ],
+      "fallback_if_missing": "如果只有单盘食材素材，就不要主打人均和分量，改成单品招牌或锅底体验路线。"
+    },
+    {
+      "id": "clean_store_comfort_signal",
+      "hook_angle": "卫生舒适",
+      "hook_line": "能把锅开得热、桌面还保持清爽，这家火锅店的体验感才是真稳定。",
+      "target_scene": "商场连锁、新式火锅、亲子或家庭友好型门店",
+      "cover_direction": "清爽桌面和滚沸锅底同框，辅以收空盘或换盘动作，标题强调“吃完也不狼狈”。",
+      "first_3_shots": [
+        "开锅前整桌洁净状态",
+        "锅底滚沸但不过度油烟的画面",
+        "服务员换盘、收空盘或加汤镜头"
+      ],
+      "required_proof_assets": [
+        "整洁桌面镜头",
+        "用餐区舒适环境",
+        "服务员整理桌面动作"
+      ],
+      "fallback_if_missing": "没有环境和桌面秩序证明时，不做舒适度钩子，改成锅底或食材路线。"
+    },
+    {
+      "id": "signature_broth_difference",
+      "hook_angle": "锅底差异",
+      "hook_line": "同样是火锅，真正让人记住的，往往先是这一锅底味型和涮后反馈。",
+      "target_scene": "牛油锅、菌汤锅、番茄锅、酸汤锅和特色地域锅底门店",
+      "cover_direction": "招牌锅底占主画面，辅以一盘核心涮品和蘸料边角，标题强调“这锅底为什么被记住”。",
+      "first_3_shots": [
+        "招牌锅底滚沸状态",
+        "核心涮品下锅镜头",
+        "捞起入口或蘸料反馈"
+      ],
+      "required_proof_assets": [
+        "招牌锅底视频",
+        "核心涮品镜头",
+        "围桌入口反馈"
+      ],
+      "fallback_if_missing": "没有稳定的开锅和入口镜头时，改成锅底介绍版，不硬做“记忆点钩子”。"
+    }
+  ]
+}

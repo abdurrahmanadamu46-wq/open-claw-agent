@@ -1,0 +1,376 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_boutique_homestay_anniversary_package_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Next Saturday is our anniversary. We want 2 nights at your Moganshan house, 1 skylight suite, budget around 3200, with room decor and a dinner package if available.",
+        "engagement_history": [
+          "watched full anniversary suite video",
+          "clicked dinner set poster",
+          "asked about late arrival handling"
+        ],
+        "tenant_rules": {
+          "require_property_for_booking": true,
+          "occasion_packages_require_scope": true,
+          "forbid_unapproved_upgrade_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "scoped occasion package demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "promising room decor or upgrades without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_family_pet_booking_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We want 2 nights at your Dali Shuanglang house after Labor Day weekend. Two adults, one 6-year-old child, one 8 kg corgi, and we prefer a family room with a small yard.",
+        "engagement_history": [
+          "clicked pet-friendly room post",
+          "asked about child breakfast policy",
+          "asked about self-drive parking"
+        ],
+        "tenant_rules": {
+          "require_property_for_booking": true,
+          "pet_rooms_require_manual_confirmation": true,
+          "same_day_inventory_promises_forbidden": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "clear family and pet travel facts",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing pet room availability without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_style_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "Is your courtyard wabi-sabi style, does it look good at night, and can coffee be bought without staying.",
+        "engagement_history": [
+          "liked two courtyard videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but booking intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating atmosphere curiosity as a confirmed stay lead"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_same_day_arrival_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We will reach the Aranya area in one hour and want 1 night at your beach house for two people. If the sea-view room works, we can book now and need an e-invoice.",
+        "engagement_history": [
+          "clicked map card",
+          "asked whether late check-in is supported"
+        ],
+        "tenant_rules": {
+          "same_day_arrival_needs_fast_followup": true,
+          "late_arrival_requires_inventory_confirmation": true,
+          "forbid_unapproved_room_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real arrival plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room inventory without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_buyout_retreat_005",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "Our company wants a one-night retreat in Anji in June. We want the full courtyard, 8 rooms, lawn dinner, projection, and next-day tea. Please send a scoped company plan and invoice notes.",
+        "engagement_history": [
+          "downloaded buyout brochure",
+          "asked about projector and dinner setup"
+        ],
+        "tenant_rules": {
+          "group_stay_requires_manual_confirmation": true,
+          "event_package_quotes_need_scoped_requirements": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "multi-room event demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as a simple single-room leisure inquiry"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_dates_not_final_006",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We may go to Lijiang during Dragon Boat Festival. About three couples may need three rooms for two nights, and we want to see your buyout and barbecue options first. The exact dates will be fixed this weekend.",
+        "engagement_history": [
+          "saved buyout note",
+          "asked about courtyard barbecue setup"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "preserve_medium_confidence_group_stay_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium intent",
+        "good fit",
+        "worth structured follow-up",
+        "do not over-escalate before dates lock"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because the dates are not final"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_absolute_promise_request_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "We will book for Dragon Boat Festival only if you guarantee the deepest room, total quiet, free early check-in at 9 a.m., and late checkout until 4 p.m.",
+        "engagement_history": [
+          "asked twice whether a specific room can be guaranteed"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_room_promises": true,
+          "high_demand_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute room, quietness, or check-in promises"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_service_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We stayed at your old-town house last week. The room smelled bad, next door was noisy, and the invoice still has not arrived. I have the order number and photos.",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent room photo",
+          "sent invoice title"
+        ],
+        "tenant_rules": {
+          "service_complaints_go_to_support_queue": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_influencer_collab_009",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "Send me your summer bottom rates, creator barter policy, and full room photo set. I have influencer and wedding-shoot resources and may bring traffic later.",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real stay facts"
+      ],
+      "mustAvoid": [
+        "classifying collaboration fishing as a direct booker"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_repeat_guest_return_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "We stayed at your Moganshan house last National Day and want 2 rooms for 2 nights again with the same group of friends. I am sending the old contact and invoice details.",
+        "engagement_history": [
+          "historical stay record exists in tenant memory",
+          "shares previous invoice title and contact",
+          "asks to continue with the same property"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_trip_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-guest confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning guest as a cold ambiguous lead"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_non_compliant_party_011",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "We want one courtyard room for four adults and two children, preferably without registering everyone, and we also want fireworks and a late barbecue party.",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "forbid_non_compliant_checkin_requests": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating non-compliant occupancy or safety requests as a valid homestay lead"
+      ]
+    },
+    {
+      "id": "catcher_boutique_homestay_proposal_package_012",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Next month I want to propose at your Erhai house for 2 nights in one sea-view room with a budget around 5000. I want floral setup, dinner, travel photography, and station pickup if possible.",
+        "engagement_history": [
+          "watched proposal setup video",
+          "clicked transfer poster",
+          "asked about room view categories"
+        ],
+        "tenant_rules": {
+          "occasion_packages_require_scope": true,
+          "forbid_unapproved_upgrade_promises": true,
+          "require_property_for_booking": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "scoped proposal package demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "promising exact room view or proposal setup details without confirmation"
+      ]
+    }
+  ]
+}

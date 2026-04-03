@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-podcast-pipeline",
+  "name": "播客制作管线",
+  "name_en": "Podcast Production Pipeline",
+  "category": "content_creation",
+  "difficulty": "intermediate",
+  "description": "从选题、脚本大纲、口播文案到封面和摘要的播客制作工作流。",
+  "pain_point": "播客创作前期准备重，选题和口播提纲很容易消耗大量时间。",
+  "lobsters": ["radar", "inkwriter", "visualizer"],
+  "skills_required": ["radar_trend_analysis", "inkwriter_copy_generate", "visualizer_cover_design", "visualizer_subtitle_gen"],
+  "channels": ["podcast", "wechat"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "定义播客主题",
+      "code_type": "prompt",
+      "code": "输入节目定位、听众画像和最近关注的行业主题。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "设定输出工件",
+      "code_type": "config",
+      "code": "选择是否需要节目大纲、逐段口播稿、show notes 和封面建议。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "上传品牌参考",
+      "code_type": "config",
+      "code": "补充过往节目风格、品牌色和标题规范。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启动播客管线",
+      "code_type": "none",
+      "code": "触须虾给出选题依据，吐墨虾生成提纲与口播稿，幻影虾准备封面与摘要物料。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "播客最怕信息密度不稳，建议先让脑虫虾做主题聚焦再扩展。",
+    "如果你有固定主持人口吻，可以写进 prompt 资产库。",
+    "节目摘要很适合二次分发到公众号或私域。"
+  ],
+  "estimated_cost_per_run": "$0.08-0.22",
+  "tags": ["播客", "内容制作", "脚本", "封面"]
+}

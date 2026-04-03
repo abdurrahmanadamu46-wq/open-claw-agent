@@ -1,0 +1,402 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PKGX_BIN="${PKGX_BIN:-pkgx}"
+PKGX_CACHE_DIR="${PKGX_CACHE_DIR:-${PKGX_DIR:-$HOME/.pkgx}}"
+EDGE_SCRIPT="${ROOT_DIR}/edge_agent.py"
+DRAGON_HOME="${DRAGON_HOME:-$HOME/.dragon}"
+ONBOARD_MARK="${DRAGON_HOME}/onboarded"
+VERSION_FILE="${ROOT_DIR}/VERSION"
+
+ensure_pkgx() {
+  if command -v "${PKGX_BIN}" >/dev/null 2>&1; then
+    return 0
+  fi
+  echo "[dragon] pkgx not found. Install from https://pkgx.sh then retry."
+  exit 1
+}
+
+pkgx_exec() {
+  ensure_pkgx
+  PKGX_DIR="${PKGX_CACHE_DIR}" PKGX_CACHE_DIR="${PKGX_CACHE_DIR}" PKGX_NO_MODIFY_PATH=1 "${PKGX_BIN}" "$@"
+}
+
+local_version() {
+  if [[ -f "${VERSION_FILE}" ]]; then
+    tr -d '\r\n' < "${VERSION_FILE}"
+  else
+    echo "0.0.0-dev"
+  fi
+}
+
+maybe_onboarding_notice() {
+  if [[ ! -f "${ONBOARD_MARK}" ]]; then
+    echo "[dragon] first-run detected. recommended: dragon init"
+  fi
+}
+
+ensure_shim() {
+  local shim_dir="${HOME}/.local/bin"
+  local shim_path="${shim_dir}/dragon-edge"
+  local pkgm_cmd="${PKGX_BIN} +python@3.12 -- python ${EDGE_SCRIPT}"
+  mkdir -p "${shim_dir}"
+
+  # Try native pkgm shim first (if installed). Fallback to manual shim file.
+  if command -v pkgm >/dev/null 2>&1; then
+    if pkgm shim dragon-edge -- ${pkgm_cmd} >/dev/null 2>&1; then
+      echo "[dragon] pkgm shim created: dragon-edge"
+      return 0
+    fi
+  fi
+
+  cat >"${shim_path}" <<EOF
+#!/usr/bin/env -S pkgx +python@3.12 python
+${EDGE_SCRIPT} "\$@"
+EOF
+  chmod +x "${shim_path}"
+  echo "[dragon] dragon-edge shim ready: ${shim_path}"
+}
+
+cmd_dev() {
+  echo "[dragon] bootstrap dev runtime with pkgx cache: ${PKGX_CACHE_DIR}"
+  pkgx_exec +python@3.12 +uv +node@20 +pnpm +git -- bash -lc "
+    cd '${ROOT_DIR}' &&
+    uv venv .venv &&
+    uv pip install -r requirements.txt &&
+    if [ -d '../web' ]; then
+      cd ../web && pnpm install;
+    fi
+  "
+  echo "[dragon] dev environment ready."
+}
+
+cmd_init() {
+  echo "[dragon] init start (first-run guide)"
+  cmd_dev
+  ensure_shim
+  mkdir -p "${DRAGON_HOME}"
+  {
+    echo "onboarded_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "version=$(local_version)"
+  } > "${ONBOARD_MARK}"
+  echo "[dragon] init completed."
+  echo "[dragon] next:"
+  echo "  1) dragon edge --edge_id=edge-001 --account_token=token-001 --user_id=u1"
+  echo "  2) dragon desktop"
+}
+
+cmd_edge() {
+  if [[ ! -f "${EDGE_SCRIPT}" ]]; then
+    echo "[dragon] missing edge script: ${EDGE_SCRIPT}"
+    exit 1
+  fi
+  pkgx_exec +python@3.12 -- python "${EDGE_SCRIPT}" "$@"
+}
+
+cmd_desktop() {
+  echo "[dragon] desktop helper: run Windows packaging script if available."
+  if [[ -f "${ROOT_DIR}/desktop_package_tauri.ps1" ]]; then
+    echo "powershell -ExecutionPolicy Bypass -File ${ROOT_DIR}/desktop_package_tauri.ps1 -AppName LiaoyuanDesk -WebUrl http://127.0.0.1:3012"
+  else
+    echo "[dragon] desktop_package_tauri.ps1 not found."
+  fi
+}
+
+cmd_update() {
+  local channel="${1:-stable}"
+  local manifest_url="${DRAGON_UPDATE_MANIFEST_URL:-}"
+  if [[ -z "${manifest_url}" ]]; then
+    manifest_url="${ROOT_DIR}/updates/${channel}.json"
+  fi
+  local require_signature="${DRAGON_UPDATE_REQUIRE_SIGNATURE:-true}"
+  echo "[dragon] update check channel=${channel}"
+  echo "[dragon] local version: $(local_version)"
+
+  if [[ "${manifest_url}" =~ ^https?:// ]]; then
+    echo "[dragon] remote manifest: ${manifest_url}"
+  else
+    echo "[dragon] local manifest: ${manifest_url}"
+  fi
+
+  DRAGON_UPDATE_CHANNEL="${channel}" \
+  DRAGON_UPDATE_MANIFEST_URL="${manifest_url}" \
+  DRAGON_UPDATE_REQUIRE_SIGNATURE="${require_signature}" \
+  DRAGON_UPDATE_ROOT="${ROOT_DIR}" \
+  DRAGON_UPDATE_LOCAL_VERSION="$(local_version)" \
+  pkgx_exec +python@3.12 -- python - <<'PY'
+import base64
+import hashlib
+import hmac
+import json
+import os
+import shutil
+import subprocess
+import tempfile
+import urllib.parse
+import urllib.request
+from pathlib import Path
+
+
+def env_bool(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name, "").strip().lower()
+    if not raw:
+        return default
+    return raw in {"1", "true", "yes", "on"}
+
+
+def load_manifest(uri: str) -> dict:
+    if uri.startswith("http://") or uri.startswith("https://"):
+        with urllib.request.urlopen(uri, timeout=20) as resp:
+            raw = resp.read().decode("utf-8", "ignore")
+    else:
+        raw = Path(uri).read_text(encoding="utf-8")
+    data = json.loads(raw or "{}")
+    if not isinstance(data, dict):
+        raise ValueError("manifest must be a json object")
+    return data
+
+
+def parse_signature(manifest: dict) -> tuple[str, str, str]:
+    sig_obj = manifest.get("signature")
+    key_id = str(manifest.get("keyId") or manifest.get("key_id") or "").strip()
+    sig_alg = str(manifest.get("signature_alg") or "").strip()
+    sig_value = ""
+
+    if isinstance(sig_obj, dict):
+        sig_value = str(sig_obj.get("value") or sig_obj.get("sig") or "").strip()
+        sig_alg = str(sig_obj.get("alg") or sig_obj.get("algorithm") or sig_alg or "").strip()
+        key_id = str(sig_obj.get("keyId") or sig_obj.get("key_id") or key_id or "").strip()
+    elif isinstance(sig_obj, str):
+        sig_value = sig_obj.strip()
+
+    if not sig_alg:
+        sig_alg = "rsa-sha256"
+    if not key_id:
+        key_id = str(os.getenv("DRAGON_UPDATE_DEFAULT_KEY_ID", "default")).strip() or "default"
+    return key_id, sig_alg.lower(), sig_value
+
+
+def canonical_payload(manifest: dict) -> bytes:
+    payload = dict(manifest)
+    payload.pop("signature", None)
+    payload.pop("signature_alg", None)
+    payload.pop("keyId", None)
+    payload.pop("key_id", None)
+    text = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return text.encode("utf-8")
+
+
+def verify_rsa_sha256(payload: bytes, signature: bytes, public_key: str) -> bool:
+    openssl = shutil.which("openssl")
+    if not openssl:
+        return False
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_path = Path(tmp)
+        payload_path = tmp_path / "payload.json"
+        sig_path = tmp_path / "sig.bin"
+        pub_path = tmp_path / "pub.pem"
+        payload_path.write_bytes(payload)
+        sig_path.write_bytes(signature)
+        pub_path.write_text(public_key, encoding="utf-8")
+        proc = subprocess.run(
+            [
+                openssl,
+                "dgst",
+                "-sha256",
+                "-verify",
+                str(pub_path),
+                "-signature",
+                str(sig_path),
+                str(payload_path),
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        return proc.returncode == 0
+
+
+def verify_signature(manifest: dict, require_signature: bool) -> tuple[bool, str]:
+    key_id, sig_alg, sig_value = parse_signature(manifest)
+    keys_json = os.getenv("DRAGON_UPDATE_KEYS_JSON", "").strip()
+    keys = {}
+    if keys_json:
+        try:
+            parsed = json.loads(keys_json)
+            if isinstance(parsed, dict):
+                keys = {str(k): str(v) for k, v in parsed.items()}
+        except json.JSONDecodeError:
+            return False, "invalid DRAGON_UPDATE_KEYS_JSON"
+
+    if not sig_value:
+        if require_signature:
+            return False, "signature missing"
+        return True, "signature skipped (not required)"
+
+    key_material = keys.get(key_id, "")
+    if not key_material:
+        return False, f"keyId not found: {key_id}"
+
+    payload = canonical_payload(manifest)
+    try:
+        signature_bytes = base64.b64decode(sig_value)
+    except Exception:
+        return False, "signature is not valid base64"
+
+    if sig_alg in {"hmac-sha256", "hmac_sha256"}:
+        secret = key_material
+        if secret.startswith("hmac:"):
+            secret = secret.split(":", 1)[1]
+        digest = hmac.new(secret.encode("utf-8"), payload, hashlib.sha256).digest()
+        ok = hmac.compare_digest(digest, signature_bytes)
+        return ok, (f"hmac verified by keyId={key_id}" if ok else "hmac verify failed")
+
+    if sig_alg in {"rsa-sha256", "rsassa-pkcs1-v1_5-sha256"}:
+        ok = verify_rsa_sha256(payload, signature_bytes, key_material)
+        return ok, (f"rsa verified by keyId={key_id}" if ok else "rsa verify failed (openssl required)")
+
+    return False, f"unsupported signature algorithm: {sig_alg}"
+
+
+def resolve_artifact(manifest: dict, manifest_uri: str) -> tuple[str, str]:
+    artifact = manifest.get("artifact") if isinstance(manifest.get("artifact"), dict) else {}
+    url = str(artifact.get("url") or manifest.get("download_url") or "").strip()
+    sha256 = str(artifact.get("sha256") or manifest.get("sha256") or "").strip().lower()
+    if not url:
+        return "", sha256
+    if url.startswith("http://") or url.startswith("https://"):
+        return url, sha256
+    if "://" in url:
+        return url, sha256
+    # relative path
+    if manifest_uri.startswith("http://") or manifest_uri.startswith("https://"):
+        base = manifest_uri.rsplit("/", 1)[0] + "/"
+        return urllib.parse.urljoin(base, url), sha256
+    return str((Path(manifest_uri).parent / url).resolve()), sha256
+
+
+def download_or_resolve_artifact(url: str, root_dir: Path) -> Path:
+    if not url:
+        return Path()
+    if url.startswith("http://") or url.startswith("https://"):
+        dl_dir = Path(os.getenv("DRAGON_UPDATE_DOWNLOAD_DIR", str(root_dir / "updates" / "downloads")))
+        dl_dir.mkdir(parents=True, exist_ok=True)
+        filename = os.path.basename(urllib.parse.urlparse(url).path) or "dragon-update.bin"
+        target = dl_dir / filename
+        with urllib.request.urlopen(url, timeout=45) as resp:
+            target.write_bytes(resp.read())
+        return target
+    return Path(url).expanduser().resolve()
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as fh:
+        while True:
+            chunk = fh.read(1024 * 1024)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest().lower()
+
+
+manifest_uri = os.getenv("DRAGON_UPDATE_MANIFEST_URL", "").strip()
+if not manifest_uri:
+    root_dir = Path(os.getenv("DRAGON_UPDATE_ROOT", ".")).resolve()
+    channel = os.getenv("DRAGON_UPDATE_CHANNEL", "stable").strip() or "stable"
+    manifest_uri = str(root_dir / "updates" / f"{channel}.json")
+else:
+    root_dir = Path(os.getenv("DRAGON_UPDATE_ROOT", ".")).resolve()
+
+local_version = os.getenv("DRAGON_UPDATE_LOCAL_VERSION", "0.0.0-dev")
+require_signature = env_bool("DRAGON_UPDATE_REQUIRE_SIGNATURE", True)
+manifest = load_manifest(manifest_uri)
+latest_version = str(manifest.get("version", "")).strip()
+notes = str(manifest.get("notes", "")).strip()
+
+ok, verify_msg = verify_signature(manifest, require_signature=require_signature)
+if not ok:
+    print(f"[dragon] signature verify failed: {verify_msg}")
+    raise SystemExit(2)
+print(f"[dragon] signature: {verify_msg}")
+
+artifact_url, artifact_sha = resolve_artifact(manifest, manifest_uri)
+artifact_path = Path()
+if artifact_url:
+    artifact_path = download_or_resolve_artifact(artifact_url, root_dir)
+    if not artifact_path.exists():
+        print(f"[dragon] artifact missing: {artifact_path}")
+        raise SystemExit(3)
+    actual_sha = sha256_file(artifact_path)
+    if artifact_sha:
+        if actual_sha != artifact_sha:
+            print(f"[dragon] sha256 mismatch: expected={artifact_sha} actual={actual_sha}")
+            raise SystemExit(4)
+        print(f"[dragon] sha256 verified: {actual_sha}")
+    else:
+        print(f"[dragon] artifact sha256 (no expected provided): {actual_sha}")
+
+verified_path = root_dir / "updates" / "last_verified_manifest.json"
+verified_path.parent.mkdir(parents=True, exist_ok=True)
+verified_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+print(f"[dragon] latest_version: {latest_version or 'unknown'}")
+print(f"[dragon] local_version: {local_version}")
+if notes:
+    print(f"[dragon] release_notes: {notes[:240]}")
+if artifact_url:
+    print(f"[dragon] artifact_url: {artifact_url}")
+    print(f"[dragon] artifact_path: {artifact_path}")
+print(f"[dragon] verified_manifest: {verified_path}")
+PY
+
+  if [[ -d "${ROOT_DIR}/.git" ]] && [[ "${DRAGON_UPDATE_APPLY_GIT_PULL:-false}" =~ ^(1|true|yes|on)$ ]]; then
+    echo "[dragon] applying git pull after verified manifest..."
+    git -C "${ROOT_DIR}" fetch --all --tags
+    git -C "${ROOT_DIR}" pull --ff-only
+  fi
+}
+
+cmd_help() {
+  cat <<'EOF'
+dragon command
+
+Usage:
+  dragon init                 First-run bootstrap (dev + shim + onboarding marker)
+  dragon dev                  Bootstrap full dev stack by pkgx (zero host pollution)
+  dragon edge [args...]       Run edge agent under pkgx python runtime
+  dragon shim                 Create dragon-edge shim in ~/.local/bin
+  dragon update [channel]     Verify signed manifest + artifact sha256 (+ optional git pull)
+  dragon desktop              Print desktop packaging command
+
+Examples:
+  dragon init
+  dragon dev
+  dragon shim
+  dragon update stable
+  dragon edge --edge_id=edge-001 --account_token=token-001 --user_id=u1
+EOF
+}
+
+main() {
+  local cmd="${1:-help}"
+  shift || true
+  case "${cmd}" in
+    init) cmd_init "$@" ;;
+    dev) cmd_dev "$@" ;;
+    edge) cmd_edge "$@" ;;
+    shim) ensure_shim ;;
+    update) cmd_update "$@" ;;
+    desktop) cmd_desktop ;;
+    help|-h|--help) cmd_help ;;
+    *)
+      echo "[dragon] unknown command: ${cmd}"
+      cmd_help
+      exit 1
+      ;;
+  esac
+}
+
+maybe_onboarding_notice
+main "$@"

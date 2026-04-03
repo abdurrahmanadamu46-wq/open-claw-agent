@@ -1,0 +1,73 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Rust build artifacts
+apps/desktop-client/src-tauri/target/
+
+# Environment files (contain secrets)
+.env
+.env.*
+!.env.example
+!.env.local.example
+!.env.*.example
+
+# VIP special build — contains JWT, do not commit
+scripts/vip-build/.env.vip
+dist/vip-lobster.exe
+
+# SQLite test/temp databases
+data/*.sqlite
+dragon-senate-saas-v2/data/_test_*.sqlite
+dragon-senate-saas-v2/data/_tmp_*.sqlite
+*.sqlite
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+web/playwright-report/
+web/test-results/
+coverage/
+.nyc_output/
+
+# Python virtual envs
+venv/
+.venv/
+env/
+
+# Next.js standalone
+web/.next/standalone/
+web/.next/cache/
+
+# Docker volumes (local)
+.docker-volumes/

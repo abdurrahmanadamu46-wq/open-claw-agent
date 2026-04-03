@@ -1,0 +1,476 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_fastfood_corporate_lunch_order_001",
+      "label": "happy_path",
+      "scenario_tag": "office_group_lunch_with_prepayment",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户确认周三 11:45 给软件园 A 座 16 楼送 28 份工作餐，已经选好 3 个套餐组合，要求分装贴姓名标签，可开公司发票，愿意今天先付 50% 定金并确认楼层和电梯信息。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.42,
+          "segment_type": "企业工作餐",
+          "lifetime_value": 146000,
+          "repeat_purchase_probability": 0.34,
+          "past_referral_count_for_segment": 3
+        },
+        "cost_data": {
+          "cost_per_lead": 52,
+          "expected_ingredient_cost": 386,
+          "expected_packaging_cost": 68,
+          "expected_delivery_cost": 46,
+          "expected_peak_labor_cost": 40,
+          "estimated_gross_margin_rate": 0.47
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询工作餐",
+            "发送标准团餐菜单与预算带",
+            "确认定金、楼层信息和分装标签"
+          ],
+          "last_meaningful_touch": "确认定金、楼层信息和分装标签",
+          "engagement_metrics": {
+            "private_message_rounds": 5,
+            "menu_clicks": 7
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "把定金、套餐锁版和交付锁档视为主要价值信号",
+        "奖励信号要指向付款确认、分装标签和楼层路线确认"
+      ],
+      "mustAvoid": [
+        "只因为份数大就机械高估",
+        "忽略分装、配送和高峰人工成本"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_office_meal_subscription_trial_002",
+      "label": "edge_case",
+      "scenario_tag": "office_meal_subscription_trial",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家设计公司行政想先试一个月，每周一到周五中午 12:10 给 18 位员工送固定工作餐，支持周结和发票，如果试单稳定，下个月会扩到隔壁团队一起订。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.21,
+          "segment_type": "工作餐订阅试单",
+          "lifetime_value": 188000,
+          "repeat_purchase_probability": 0.58,
+          "multi_team_expandability": 0.46
+        },
+        "cost_data": {
+          "cost_per_lead": 76,
+          "expected_ingredient_cost": 268,
+          "expected_packaging_cost": 44,
+          "expected_delivery_cost": 38,
+          "onboarding_coordination_cost": 72,
+          "estimated_gross_margin_rate": 0.34
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询按周工作餐",
+            "发送试单周期、发票与结算说明",
+            "确认工作日固定时段与首周套餐"
+          ],
+          "last_meaningful_touch": "确认工作日固定时段与首周套餐"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应高于短期分",
+        "不能把未来整月甚至扩楼收入提前算成已成交价值",
+        "奖励信号应指向试用节奏、发票流程和第二团队扩展条件确认"
+      ],
+      "mustAvoid": [
+        "把试单视作普通一次性散单",
+        "忽略试用阶段的协同和配送成本"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_breakfast_preorder_selfpickup_003",
+      "label": "happy_path",
+      "scenario_tag": "commuter_breakfast_preorder_pickup",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户已经连续 4 周在工作日 8:05 通过小程序预点同一家门店的早餐套餐，自提 2 份主食加 2 杯咖啡，最近还开通了早餐月卡并收藏了常购组合。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.67,
+          "segment_type": "通勤早餐自提",
+          "lifetime_value": 36400,
+          "repeat_purchase_probability": 0.74,
+          "member_conversion_rate": 0.81
+        },
+        "cost_data": {
+          "cost_per_lead": 9,
+          "expected_ingredient_cost": 24,
+          "expected_pickup_fulfillment_cost": 3,
+          "coffee_attach_rate": 0.44,
+          "estimated_gross_margin_rate": 0.63
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序常购页回访",
+            "固定时段预点自提",
+            "早餐月卡开通与咖啡加购"
+          ],
+          "last_meaningful_touch": "早餐月卡开通与咖啡加购"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 和长期分应明显偏高",
+        "把低履约成本与高频复购视为主要价值来源",
+        "奖励信号应指向月卡、常购绑定和固定时段提醒"
+      ],
+      "mustAvoid": [
+        "因为单笔金额不高就判成低价值",
+        "忽略自提模式带来的履约优势"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_family_bucket_weekend_pickup_004",
+      "label": "happy_path",
+      "scenario_tag": "weekend_family_bucket_pickup",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户确认周六 18:30 到店自提 1 份家庭桶、2 份儿童餐和 4 杯饮料，用于小朋友生日聚会，已经选好口味并说明需要分成两袋打包，愿意提前线上支付。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.48,
+          "segment_type": "周末家庭多人套餐",
+          "lifetime_value": 52800,
+          "repeat_purchase_probability": 0.37,
+          "community_repeat_density": 0.42
+        },
+        "cost_data": {
+          "cost_per_lead": 26,
+          "expected_ingredient_cost": 168,
+          "expected_packaging_cost": 22,
+          "expected_pickup_fulfillment_cost": 6,
+          "gift_item_cost": 8,
+          "estimated_gross_margin_rate": 0.5
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "短视频团购页咨询周末家庭桶",
+            "确认儿童餐和两袋打包需求",
+            "提前支付并锁定自提时间"
+          ],
+          "last_meaningful_touch": "提前支付并锁定自提时间"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应偏高",
+        "把自提锁档、套餐明细和打包要求视为关键确定性信号",
+        "奖励信号应指向取餐提醒、分袋打包和儿童餐备注确认"
+      ],
+      "mustAvoid": [
+        "仅凭周末家庭桶热度就默认高分",
+        "忽略赠品、包装和缺件赔付风险"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_coupon_delivery_burst_005",
+      "label": "failure_case",
+      "scenario_tag": "late_night_coupon_delivery_burst",
+      "input": {
+        "lead_assessment_or_campaign_result": "平台夜宵买一送一把炸鸡和汉堡订单量拉高了，但大部分订单来自 5 公里外小区，客单价下降、配送补贴上升，领券后几乎没有用户绑定会员。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.29,
+          "segment_type": "夜宵券单促销",
+          "repeat_purchase_probability": 0.11,
+          "refund_rate": 0.08
+        },
+        "cost_data": {
+          "cost_per_lead": 43,
+          "platform_commission_rate": 0.24,
+          "delivery_subsidy_per_order": 7.2,
+          "packaging_cost_per_order": 4.8,
+          "estimated_gross_margin_rate": 0.09
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "平台夜宵买一送一券",
+            "远距离配送单量上升",
+            "订单完成后未绑定会员"
+          ],
+          "last_meaningful_touch": "平台夜宵买一送一券",
+          "engagement_metrics": {
+            "coupon_claims": 286,
+            "member_bind_rate": 0.04
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把单量和 GMV 直接视为高 ROI",
+        "短期分和 ROI 都应保持谨慎",
+        "奖励信号要偏向二单转化、会员绑定或收窄配送半径"
+      ],
+      "mustAvoid": [
+        "因为订单量上升就默认继续放大补贴",
+        "忽略抽佣、配送和包装后的净贡献"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_viral_lto_heat_006",
+      "label": "failure_case",
+      "scenario_tag": "viral_limited_combo_without_order_facts",
+      "input": {
+        "lead_assessment_or_campaign_result": "一条新品联名汉堡视频带来很多评论，用户集中在问哪里门店还有、排队久不久、玩具能不能抽到，但始终没有补充门店、时间、人数，也没有转私信或下单动作。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.07,
+          "segment_type": "公域围观新品",
+          "lifetime_value": 9200,
+          "historical_no_show_rate": 0.51
+        },
+        "cost_data": {
+          "cost_per_lead": 24,
+          "expected_followup_cost": 36,
+          "limited_item_wastage_risk": 0.22,
+          "estimated_gross_margin_rate": 0.19
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "联名新品短视频曝光",
+            "评论区询问排队和玩具",
+            "未转私信未支付"
+          ],
+          "last_meaningful_touch": "评论区询问排队和玩具",
+          "engagement_metrics": {
+            "video_like": 8200,
+            "video_comment": 510
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分偏低",
+        "不能把高互动直接换算成高商业价值",
+        "奖励信号应偏向低成本筛选或引导补齐门店与下单事实"
+      ],
+      "mustAvoid": [
+        "按评论热度给高优先级",
+        "建议投入高成本人工逐条深聊"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_duplicate_school_meal_merge_007",
+      "label": "happy_path",
+      "scenario_tag": "duplicate_school_meal_across_channels",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一位培训机构老师先在小程序留言 60 份周五活动餐，随后电话确认送达时间，最后又通过企业微信发来了 3 套套餐分配和楼层路线，内容都指向同一笔订单。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.36,
+          "segment_type": "学校活动团餐",
+          "lifetime_value": 132000,
+          "duplicate_project_risk": "high",
+          "repeat_purchase_probability": 0.27
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "mini_program_form": 16,
+            "telephone_followup": 22,
+            "enterprise_wechat_followup": 24
+          },
+          "expected_ingredient_cost": 706,
+          "expected_packaging_cost": 118,
+          "expected_delivery_cost": 64,
+          "estimated_gross_margin_rate": 0.43
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序活动餐留资",
+            "电话确认送达时间",
+            "企业微信发送套餐分配与楼层路线"
+          ],
+          "last_meaningful_touch": "企业微信发送套餐分配与楼层路线",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一机会计算价值",
+        "奖励信号要更偏向真正推进细节和交付锁档的关键触点",
+        "不能把多入口重复记成多笔 ROI"
+      ],
+      "mustAvoid": [
+        "让最后一个触点独占全部 credit 并忽略前置成本",
+        "把小程序、电话和企业微信拆成三条高价值线索"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_allergy_birthday_order_008",
+      "label": "edge_case",
+      "scenario_tag": "birthday_order_with_allergy_and_special_notes",
+      "input": {
+        "lead_assessment_or_campaign_result": "家长想给社区活动室的小朋友生日会订 10 份套餐，其中 1 个孩子花生过敏、2 份不要芝士、3 份要低辣，还要求 35 分钟内送到并单独打包标注名字。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.24,
+          "segment_type": "亲子活动多人套餐",
+          "lifetime_value": 48600,
+          "repeat_purchase_probability": 0.26,
+          "complaint_sensitivity": "high"
+        },
+        "cost_data": {
+          "cost_per_lead": 31,
+          "expected_manual_review_cost": 22,
+          "expected_packaging_cost": 20,
+          "expected_refund_risk_cost": 46,
+          "estimated_gross_margin_rate": 0.28
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "社群私信咨询生日多人套餐",
+            "发送过敏与去料备注",
+            "要求 35 分钟内送达并单独标注"
+          ],
+          "last_meaningful_touch": "发送过敏与去料备注"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分需要被复杂定制和时效压力明显封顶",
+        "ROI 评估必须纳入人工复核、返工和退款风险",
+        "奖励信号要优先指向人工确认、替代方案和风险说明"
+      ],
+      "mustAvoid": [
+        "只按人数给高分",
+        "在未确认执行边界前承诺一定能安全准时送达"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_corporate_complaint_recovery_009",
+      "label": "failure_case",
+      "scenario_tag": "high_value_corporate_complaint_recovery",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位历史高频企业联系人反馈昨天送到会议室的 24 份工作餐里有 4 份明显变冷、2 杯饮料遗漏，还出现了 1 份漏发餐具，客户要求店长解释并给出处置方案。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.44,
+          "segment_type": "高价值企业投诉修复",
+          "lifetime_value": 154000,
+          "past_referral_count_for_segment": 4,
+          "dispute_history": "low"
+        },
+        "cost_data": {
+          "cost_per_lead": 14,
+          "expected_refund_cost": 196,
+          "expected_service_recovery_cost": 240,
+          "brand_risk_reserve": 420,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业工作餐历史复购",
+            "反馈变冷与漏发问题",
+            "要求店长介入说明"
+          ],
+          "last_meaningful_touch": "要求店长介入说明"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应显著降低并强调人工处置",
+        "长期价值不能被直接归零，但必须以修复成功为前提",
+        "奖励信号要指向店长介入、证据留存和批次复盘，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把高历史消费错误理解为当前高成交意向",
+        "建议用优惠券替代质量复盘"
+      ]
+    },
+    {
+      "id": "abacus_fastfood_night_shift_reorder_010",
+      "label": "edge_case",
+      "scenario_tag": "night_shift_team_recurrent_pickup",
+      "input": {
+        "lead_assessment_or_campaign_result": "附近医院夜班团队想先试一周，每天 22:20 自提 12 份简化套餐和 6 杯热饮，接受固定菜单和固定取餐点，如果稳定会改成按周结算。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.26,
+          "segment_type": "夜班团队补给",
+          "lifetime_value": 97200,
+          "repeat_purchase_probability": 0.62,
+          "team_stability_score": 0.55
+        },
+        "cost_data": {
+          "cost_per_lead": 34,
+          "expected_ingredient_cost": 142,
+          "expected_packaging_cost": 18,
+          "expected_pickup_fulfillment_cost": 8,
+          "night_shift_labor_premium": 16,
+          "estimated_gross_margin_rate": 0.39
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "社区群咨询夜班补给",
+            "确认固定菜单与固定取餐点",
+            "提出试一周后按周结算"
+          ],
+          "last_meaningful_touch": "提出试一周后按周结算"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应高于短期分",
+        "要把低峰产能利用、自提模式和按周结算潜力一起考虑",
+        "奖励信号应指向固定菜单、固定取餐点和试单节奏确认"
+      ],
+      "mustAvoid": [
+        "把夜宵场景一概当成低价值随机单",
+        "忽略夜间人工溢价和保温风险"
+      ]
+    }
+  ]
+}

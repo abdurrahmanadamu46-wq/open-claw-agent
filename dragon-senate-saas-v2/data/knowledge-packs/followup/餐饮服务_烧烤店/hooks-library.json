@@ -1,0 +1,140 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_bbq_booking_facts",
+      "scene": "dm_followup",
+      "lead_state": "fresh_same_day_booking",
+      "intent": "lock_bbq_reservation_facts",
+      "hook": "这顿烧烤先别让你白跑，我先把最关键的订位信息和座位条件锁住。",
+      "bridge": "烧烤店同一餐期的桌位、炉位和露台位变化很快，门店、到店时间、人数和室内外偏好一清楚，后面的订位或候位就能立刻推进。",
+      "next_step": "请客户确认门店、到店时间、人数，以及想坐室内、露台还是包间，目标是尽快进入订位或候位确认。",
+      "cadence_hint": "用户刚回复时优先在 15-30 分钟内接上；若未回，在下一餐前做一次轻提醒。",
+      "approval_guard": "未确认桌位前，不写成已订到桌或到店即坐。"
+    },
+    {
+      "id": "hook_late_night_last_call_followup",
+      "scene": "late_night_followup",
+      "lead_state": "urgent_late_night",
+      "intent": "verify_last_order_and_arrival_window",
+      "hook": "这顿夜宵先别急着出发，我先帮你把能不能赶上末单和还能点什么核清楚。",
+      "bridge": "烧烤店夜宵档最怕的是人在路上、后厨已经收档，或招牌串和生蚝供应已经收口。先把到店时间和末单窗口核清，比空口让你赶来更稳。",
+      "next_step": "请客户确认预计到店时间、人数和最想点的几样菜，优先推进末单确认、可点范围和是否需要改门店或改时段。",
+      "cadence_hint": "夜宵线索要快接，但一轮里只推进一个结论，不反复连追。",
+      "approval_guard": "未核末单和供应窗口前，不承诺来店就能点到全部招牌菜。"
+    },
+    {
+      "id": "hook_peak_wait_relief",
+      "scene": "peak_queue_followup",
+      "lead_state": "urgent_tonight",
+      "intent": "shift_to_waitlist_or_safer_arrival",
+      "hook": "你这顿烧烤最重要的是别扑空，我们先把更稳妥的到店方案找出来。",
+      "bridge": "晚市高峰能不能马上入座受桌位、翻台、露台位和排烟位波动影响很大，比起空口保证，先给更稳的方案更有用。",
+      "next_step": "请客户确认门店、预计到店时间和人数，优先推进订位、候位、提前或延后半小时，或改门店方案。",
+      "cadence_hint": "同餐期线索快速响应，但一次只推进一个明确动作，不连续追问。",
+      "approval_guard": "不写“保证不用等位”或“到店马上有桌”。"
+    },
+    {
+      "id": "hook_signature_skewer_to_booking",
+      "scene": "menu_guidance_followup",
+      "lead_state": "preference_shared",
+      "intent": "convert_signature_preference_into_booking",
+      "hook": "想吃的方向已经有了，下一步把这顿烧烤怎么坐、什么时候到店落下来会更省心。",
+      "bridge": "很多烧烤线索卡在“想吃羊肉串还是生蚝”这一层，真正能推进成交的是把人数、时间和菜品可用性一起带进来。",
+      "next_step": "请客户确认是朋友夜宵、家庭聚餐还是庆祝局，以及用餐时间、人数和最想点的招牌菜，目标是把菜品偏好转成订位或候位方案。",
+      "cadence_hint": "给完菜品建议后，尽量在同一轮沟通里顺手推进订位，不要隔太久再追。",
+      "approval_guard": "未核当日库存和供应状态前，不把限定招牌串、生蚝或烤鱼写成必有。"
+    },
+    {
+      "id": "hook_coupon_verification_first",
+      "scene": "promotion_followup",
+      "lead_state": "offer_interested",
+      "intent": "verify_branch_time_and_voucher_rules",
+      "hook": "优惠先别急着拍板，先把能不能用、在哪家用核清楚，省得到店落空。",
+      "bridge": "烧烤店团购券和套餐常受门店、日期、餐期、包间或露台规则影响，跟进里先核条件比直接说能用更稳。",
+      "next_step": "请客户发门店、到店时间、人数和券规则截图，目标是先确认适用条件，再推进订位。",
+      "cadence_hint": "优惠类线索回复要快，但确认条件后再继续推进，不做连续轰炸。",
+      "approval_guard": "未经核实，不一概承诺所有门店、时段和座位都可用。"
+    },
+    {
+      "id": "hook_large_party_surface_blocker",
+      "scene": "group_dining_followup",
+      "lead_state": "party_size_high",
+      "intent": "surface_budget_or_seat_blocker",
+      "hook": "这场人多的烧烤局先不急着催决定，想先帮你把最卡的点找出来。",
+      "bridge": "生日局、团建局和朋友大桌在烧烤店里，常见卡点不是吃不吃，而是桌型、预算、露台或包间、定金和招牌菜供应。",
+      "next_step": "请客户只回最卡的一项：人数、预算、包间、露台、菜品还是到店时间，然后推进桌型、菜单或定金的下一步。",
+      "cadence_hint": "发完方案后可在 18-24 小时内做一次温和追问，再根据反馈决定下一次节奏。",
+      "approval_guard": "未确认桌数和定金前，不把包间或露台资源写成已锁定。"
+    },
+    {
+      "id": "hook_dietary_restriction_safe_followup",
+      "scene": "safety_sensitive_followup",
+      "lead_state": "allergy_or_special_diet",
+      "intent": "collect_precise_restriction",
+      "hook": "这个顾虑值得认真对待，我们先把限制说准，后面才敢往下安排。",
+      "bridge": "烧烤店的花生、芝麻、海鲜、生蚝和刷料交叉接触风险都不低，不能靠模糊经验回复，先把具体菜品和限制收全更安全。",
+      "next_step": "请客户确认具体限制、涉及菜品、门店和用餐时间，目标是先完成人工核实输入。",
+      "cadence_hint": "安全类线索以稳为先，拿到关键信息后再跟下一步，不靠高频催促。",
+      "approval_guard": "未核实前，不承诺零交叉接触、绝对不含某成分或一定适合所有人。"
+    },
+    {
+      "id": "hook_service_recovery_rebuild",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_engaged",
+      "intent": "repair_trust_then_rebook",
+      "hook": "上次让你体验不好，这次先不急着推消费，先把能修复的地方说明白。",
+      "bridge": "烧烤店售后后的复联重点不是立刻成交，而是让客户看到漏串、出品不稳、上菜慢或环境问题已被记录、处理和避免重演。",
+      "next_step": "先确认上次问题点、期望补救和这次是否还考虑来店或下单，若对方愿意，再推进低压力的订位或服务备注。",
+      "cadence_hint": "售后恢复期减少频次，以一次明确说明和一次后续确认为主。",
+      "approval_guard": "未经批准，不擅自承诺补偿、免单、送酒水或升级包间。"
+    },
+    {
+      "id": "hook_reactivation_with_new_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，是有个更贴近你那顿烧烤的新理由。",
+      "bridge": "烧烤沉睡线索更容易对新上的多人拼盘、工作日夜宵空档、露台开放、更新后更合适的人均方案或已核清的券规则产生回应，而不是对“还来吗”产生回应。",
+      "next_step": "带一个具体新变化复联，比如新的多人拼盘、露台空档、夜宵套餐或更稳的人均方案，并给客户低压力回复入口。",
+      "cadence_hint": "沉睡复联单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_waiting_for_callback_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你的问题我先记下，先把信息收齐，等允许的动作一到位就能更快推进。",
+      "bridge": "在烧烤店线索里，电话回拨、特殊饮食说明或补偿承诺如果审批没到位，先把门店、时间、菜品和问题清单收好，后面会更顺。",
+      "next_step": "请客户留下方便联系的时间、关心的问题点和门店或订单基础信息，作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼或口头给出例外承诺。"
+    },
+    {
+      "id": "hook_deposit_before_room_hold",
+      "scene": "payment_followup",
+      "lead_state": "ready_but_unpaid",
+      "intent": "advance_deposit_gate",
+      "hook": "这单已经很接近落了，下一步关键是把座位和档期的确认条件补齐。",
+      "bridge": "烧烤店包间、露台黄金位和节假日大桌都是真实稀缺资源，未到定金前能做的是推进确认，不是提前替客户占满。",
+      "next_step": "推动客户确认定金、人数、到店时间、座位需求和菜品方向，并同步说明保留时长与档期风险。",
+      "cadence_hint": "付款前可更聚焦，但一次只推进一个明确确认动作。",
+      "approval_guard": "未达付款条件前，不写成已锁包间、已留露台或已备好指定菜品。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更容易回复一点。",
+      "bridge": "烧烤店线索里，沉默不一定是拒绝，很多时候只是还在约人、在赶路或没法立刻决定，高频追问反而更容易把人推远。",
+      "next_step": "发一个低成本回复入口，例如只回门店、时间、人数中的一个，随后进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回应时，拉开到下一餐前或次日再判断。",
+      "approval_guard": "避免多人、多渠道重复跟同一位客户。"
+    }
+  ]
+}

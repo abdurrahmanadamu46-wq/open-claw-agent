@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_软装设计","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"qualify_by_project_time_scope","title":"先看风格、时间和软装方向，再判断是不是高意向","description":"软装设计线索只有在明确提到风格方向、到店时间或时间窗口、空间场景、是否第一次来和是否有交房、婚房或补单需求时，才能被视为高意向。","examples":["高价值信号：周五晚想去国金门店先看窗帘和灯具，第一次来，想知道现在先定窗帘还是先配灯具更合适。","低确定性信号：最近想做软装，先了解下。"],"priority":"high"},
+{"id":"deadline_visit_is_high_intent","title":"交房、婚房和节点入住出现明确日期时要显著提权","description":"交房、婚房、节前入住和搬家节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实到店动作。","examples":["周六交房，想约周四晚先来看看。","下周入住，这周想先看一套方案。"],"priority":"high"},
+{"id":"first_time_and_process_questions_are_not_low_intent","title":"第一次到店和软装顾虑不应被误判成低意向","description":"第一次来、怕踩坑、担心色差和不懂流程，并不等于低意向。","examples":["第一次来，担心不会选风格，这周末有空想先看看。","想先看窗帘，但比较怕色差和材质问题。"],"priority":"high"},
+{"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着项目和时间","description":"价格问题本身并不低意向，但如果没有项目范围、时间窗口和居住场景等事实，Catcher 不能把它直接提到最高层。","examples":["高意向：这周末想来看看窗帘方案，大概什么价位。","普通意向：软装多少钱。"],"priority":"medium"},
+{"id":"returning_owner_signal_upgrade","title":"老客复访和朋友推荐要抬高拟合度","description":"老客复访、朋友推荐和之前来过等信号，通常意味着信任门槛已经降低。","examples":["上次来店里看过，这次想继续看看。","朋友推荐来的，这周末能先来沟通吗。"],"priority":"medium"},
+{"id":"public_budget_anxiety_should_not_hide_intent","title":"公开场合的预算和怕踩坑表达不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如预算不高还能不能做、第一次做软装怕被骗。","examples":["预算不高也能先来看看吗，这周末能到店吗。","第一次做软装怕踩坑，也能先来看方案吗。"],"priority":"medium"}]}

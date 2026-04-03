@@ -1,0 +1,177 @@
+﻿{
+  "industry_tag": "hotel_inn",
+  "industry_name": "客栈",
+  "category_name": "酒店民宿",
+  "tenant_id": "tenant_demo",
+  "attempt": 1,
+  "trace_id": "industry_profile_3501424884c4",
+  "fallback_used": false,
+  "profile": {
+    "industry_name": "客栈",
+    "pain_points": [
+      "外卖抽佣高，订单增长但利润薄",
+      "高峰期翻台不足、低峰期空置严重",
+      "短视频播放和到店核销断层，投放回本慢",
+      "差评处理缺少标准流程，口碑波动大",
+      "私域沉淀弱，老客复购率低",
+      "后厨损耗统计不精确，隐性浪费高"
+    ],
+    "jargon_terms": [
+      "翻台率",
+      "客单价",
+      "坪效",
+      "核销率",
+      "引流款",
+      "利润款",
+      "SKU",
+      "报损率",
+      "BOM表",
+      "POI热度",
+      "LBS定向",
+      "复购率"
+    ],
+    "solutions": [
+      "重构引流款+利润款菜单，先拉新再升单",
+      "分午市/晚市/夜宵做分时套餐，提升全时段坪效",
+      "建立企微私域承接，会员日驱动复购",
+      "围绕客栈半径联动内容与投放",
+      "建立差评48小时响应SOP",
+      "沉淀高转化脚本模板，降低试错成本"
+    ],
+    "objections": [
+      {
+        "objection": "预算有限，担心投入无效果",
+        "response_logic": "先跑最小闭环，用核销和到店数据验证后再放量"
+      },
+      {
+        "objection": "有播放没成交，短视频没用",
+        "response_logic": "问题在漏斗断层，需要选题、套餐、承接、复访一体化优化"
+      }
+    ],
+    "banned_absolute": [
+      {
+        "term": "全网第一",
+        "reason": "绝对化宣传违规",
+        "safer_alternative": "区域热门/口碑优选"
+      },
+      {
+        "term": "稳赚不赔",
+        "reason": "收益保证违规",
+        "safer_alternative": "展示真实案例和经营区间"
+      }
+    ],
+    "banned_industry": [
+      {
+        "term": "加盟必暴富",
+        "reason": "招商收益承诺违规",
+        "safer_alternative": "披露真实经营数据与适配条件"
+      },
+      {
+        "term": "刷单上榜",
+        "reason": "平台作弊行为",
+        "safer_alternative": "通过服务与内容提升真实权重"
+      }
+    ],
+    "risk_behaviors": [
+      {
+        "behavior": "视频中长时间展示手机号或二维码导流站外",
+        "risk_type": "违规导流",
+        "platform_hint": "抖音/快手/小红书",
+        "safer_alternative": "使用平台内留资组件或主页承接"
+      },
+      {
+        "behavior": "直播中承诺收益和回本周期",
+        "risk_type": "收益承诺",
+        "platform_hint": "抖音/视频号",
+        "safer_alternative": "仅展示真实案例和可验证指标"
+      }
+    ]
+  },
+  "ingest_result": {
+    "ok": true,
+    "tenant_id": "tenant_demo",
+    "industry_tag": "hotel_inn",
+    "scope_user_id": "tenant_tenant_demo__industry_hotel_inn",
+    "received_count": 32,
+    "ingested_count": 8,
+    "accepted_count": 8,
+    "duplicate_count": 0,
+    "rejected_count": 24,
+    "rejected_samples": [
+      {
+        "title": "外卖抽佣高，订单增长但利润薄",
+        "entry_type": "pain_point",
+        "quality_score": 48.8875,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "高峰期翻台不足、低峰期空置严重",
+        "entry_type": "pain_point",
+        "quality_score": 49.2937,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "短视频播放和到店核销断层，投放回本慢",
+        "entry_type": "pain_point",
+        "quality_score": 50.5125,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "差评处理缺少标准流程，口碑波动大",
+        "entry_type": "pain_point",
+        "quality_score": 49.7,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "私域沉淀弱，老客复购率低",
+        "entry_type": "pain_point",
+        "quality_score": 48.075,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "后厨损耗统计不精确，隐性浪费高",
+        "entry_type": "pain_point",
+        "quality_score": 49.2937,
+        "reasons": [
+          "content_too_short"
+        ]
+      },
+      {
+        "title": "翻台率",
+        "entry_type": "jargon",
+        "quality_score": 41.0312,
+        "reasons": [
+          "title_too_short",
+          "quality_score_too_low"
+        ]
+      },
+      {
+        "title": "客单价",
+        "entry_type": "jargon",
+        "quality_score": 41.0312,
+        "reasons": [
+          "title_too_short",
+          "quality_score_too_low"
+        ]
+      }
+    ],
+    "duplicate_samples": [],
+    "thresholds": {
+      "min_quality_score": 45.0,
+      "min_effect_score": 0.0,
+      "min_content_len": 24.0,
+      "min_title_len": 4.0
+    },
+    "vector_count": 8
+  }
+}

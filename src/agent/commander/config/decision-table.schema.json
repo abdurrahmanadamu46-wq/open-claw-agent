@@ -1,0 +1,265 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lobsterpool.local/schemas/commander/decision-table.schema.json",
+  "title": "LobsterPool Commander Decision Table",
+  "type": "object",
+  "required": [
+    "meta",
+    "lineupCatalog",
+    "missionProfiles",
+    "riskPolicies",
+    "stopLossProfiles",
+    "arbitrationPriority",
+    "overrideRules"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["version", "name", "description", "lastUpdated"],
+      "properties": {
+        "version": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "lastUpdated": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "lineupCatalog": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/lineup"
+      }
+    },
+    "missionProfiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/missionProfile"
+      }
+    },
+    "riskPolicies": {
+      "type": "object",
+      "required": ["L0", "L1", "L2", "L3"],
+      "properties": {
+        "L0": { "$ref": "#/$defs/riskPolicy" },
+        "L1": { "$ref": "#/$defs/riskPolicy" },
+        "L2": { "$ref": "#/$defs/riskPolicy" },
+        "L3": { "$ref": "#/$defs/riskPolicy" }
+      },
+      "additionalProperties": false
+    },
+    "stopLossProfiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/stopLossProfile"
+      }
+    },
+    "arbitrationPriority": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "overrideRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/overrideRule"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lineup": {
+      "type": "object",
+      "required": ["id", "label", "roles"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+    "stage": {
+      "type": "object",
+      "required": ["stageId", "label", "ownerRole", "lineupId", "parallelAllowed"],
+      "properties": {
+        "stageId": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "ownerRole": { "type": "string", "minLength": 1 },
+        "lineupId": { "type": "string", "minLength": 1 },
+        "parallelAllowed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "budgetPlan": {
+      "type": "object",
+      "required": ["tokenBudget", "toolBudget", "latencyBudgetSec", "parallelismBudget"],
+      "properties": {
+        "tokenBudget": { "type": "integer", "minimum": 1 },
+        "toolBudget": { "type": "integer", "minimum": 1 },
+        "latencyBudgetSec": { "type": "integer", "minimum": 1 },
+        "parallelismBudget": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "missionProfile": {
+      "type": "object",
+      "required": ["baseLineups", "stagePlan", "budgetPlan", "approvalActions", "stopLossProfile"],
+      "properties": {
+        "baseLineups": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "stagePlan": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/stage" }
+        },
+        "budgetPlan": { "$ref": "#/$defs/budgetPlan" },
+        "approvalActions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "stopLossProfile": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "riskPolicy": {
+      "type": "object",
+      "required": [
+        "requiresCommanderSupervision",
+        "requiresHumanReview",
+        "approvalActions",
+        "budgetMultiplier",
+        "parallelismCap"
+      ],
+      "properties": {
+        "requiresCommanderSupervision": { "type": "boolean" },
+        "requiresHumanReview": { "type": "boolean" },
+        "approvalActions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "budgetMultiplier": { "type": "number", "exclusiveMinimum": 0 },
+        "parallelismCap": {
+          "anyOf": [
+            { "type": "integer", "minimum": 1 },
+            { "type": "null" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "stopLossProfile": {
+      "type": "object",
+      "required": [
+        "maxRetry",
+        "maxBudgetOverrunRatio",
+        "killOnRepeatedFailure",
+        "freezeOnApprovalReject"
+      ],
+      "properties": {
+        "maxRetry": { "type": "integer", "minimum": 0 },
+        "maxBudgetOverrunRatio": { "type": "number", "minimum": 1 },
+        "killOnRepeatedFailure": { "type": "boolean" },
+        "freezeOnApprovalReject": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "overrideRule": {
+      "type": "object",
+      "required": ["id", "enabled", "priority", "weight", "when", "effects"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "enabled": { "type": "boolean" },
+        "priority": { "type": "integer", "minimum": 0 },
+        "weight": { "type": "number", "minimum": 0 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "notes": { "type": "string" },
+        "when": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "anyOf": [
+              { "type": "string" },
+              { "type": "number" },
+              { "type": "boolean" },
+              {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    { "type": "string" },
+                    { "type": "number" },
+                    { "type": "boolean" }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "prependLineups": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "appendLineups": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "replaceLineups": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "prependStages": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/stage" }
+            },
+            "appendStages": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/stage" }
+            },
+            "replaceStagesFromMission": {
+              "type": "string",
+              "minLength": 1
+            },
+            "addApprovalActions": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "budgetMultiplier": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "parallelismCap": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "forceCommanderSupervision": {
+              "type": "boolean"
+            },
+            "forceHumanReview": {
+              "type": "boolean"
+            },
+            "reasons": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

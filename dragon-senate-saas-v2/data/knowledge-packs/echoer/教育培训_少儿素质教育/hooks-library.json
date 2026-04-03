@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_少儿素质教育",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "hook_booking_without_scope",
+      "scene": "public_comment",
+      "intent": "trial_booking",
+      "emotion": "ready_to_move",
+      "hook": "可以先帮你把这一步收窄下来。",
+      "bridge": "少儿素质教育预约里，先弄清问题、年龄段和时间，比直接回一个能不能约更有用。",
+      "next_step": "Ask for concern, child age, preferred time, and whether this is a first visit.",
+      "handoff_suggestion": "Route to Catcher if the parent replies with booking facts."
+    },
+    {
+      "id": "hook_first_time_help",
+      "scene": "public_comment",
+      "intent": "first_visit_guidance",
+      "emotion": "unsure",
+      "hook": "第一次来先想清楚适不适合，本来就很正常。",
+      "bridge": "很多第一次接触这类课程的家长，不是需要更多选项，而是需要先知道孩子更适合哪条路线、现在最卡在哪。",
+      "next_step": "Acknowledge the uncertainty and ask what concern matters most plus the time window.",
+      "handoff_suggestion": "Route to Catcher if the parent shares route and timing."
+    },
+    {
+      "id": "hook_seasonal_booking",
+      "scene": "private_message",
+      "intent": "deadline_trial_booking",
+      "emotion": "time_pressure",
+      "hook": "我们可以先从你的时间点往回看。",
+      "bridge": "开学、假期和升年级节点快到时，日期、可来的时段和当前问题，比先讲一大段课程更关键。",
+      "next_step": "Ask when the node is, when the parent can come in, and what they most want to solve.",
+      "handoff_suggestion": "Route to Catcher once the parent shares timing facts."
+    },
+    {
+      "id": "hook_price_scope_recovery",
+      "scene": "public_comment",
+      "intent": "price_check",
+      "emotion": "comparing",
+      "hook": "我可以先把价格问题变得更有参考性一点。",
+      "bridge": "这类课程的价格很多时候取决于问题和试听深度，所以先收窄是专注力、表达力、思维还是幼小衔接，会更有帮助。",
+      "next_step": "Ask whether the parent is mainly asking about attention, expression, thinking, or school-readiness.",
+      "handoff_suggestion": "Route to Catcher if the parent shares scope."
+    },
+    {
+      "id": "hook_returning_family",
+      "scene": "private_message",
+      "intent": "return_visit",
+      "emotion": "warm",
+      "hook": "欢迎你再回来接上这一段。",
+      "bridge": "对回来的家庭来说，最重要的不是从零重聊，而是先知道这次想接上哪段训练、解决哪个卡点。",
+      "next_step": "Ask what has changed since the last visit and when they hope to come in.",
+      "handoff_suggestion": "Route to FollowUp or Catcher depending on the parent's reply."
+    },
+    {
+      "id": "hook_sensitive_public_anxiety",
+      "scene": "public_comment",
+      "intent": "confidence_sensitive",
+      "emotion": "embarrassed",
+      "hook": "这类担心可以慢一点说，不用急着给孩子定性。",
+      "bridge": "有些育儿焦虑在公开评论里看起来轻描淡写，但背后通常是真实的不确定和压力，所以回复要既有帮助又不让人更难堪。",
+      "next_step": "Reply with empathy and lightly invite the parent to share concern and timing.",
+      "handoff_suggestion": "Route to Catcher if the parent continues with details."
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_bbq_occasion_clarity",
+      "feature_name": "核心烧烤场景清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确单一主场景，如工作日晚市下班小聚、周末朋友局、社区夜宵或外卖到家；3 分：有 2 个候选场景但优先级仍可判断；1 分：晚市、夜宵、团建、外卖全部想做且没有排序。",
+      "positive_signals": [
+        "明确核心时段和客群",
+        "主打场景与现有串品和评价证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有场景一起推",
+        "主场景和当前口碑证据完全错位"
+      ],
+      "route_guidance": "场景越清晰，越适合集中预算和内容；场景越混乱，越应该先缩小范围做验证。"
+    },
+    {
+      "id": "signature_skewer_evidence_density",
+      "feature_name": "招牌串证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定招牌串实拍、现烤过程、分量证据、复购评价和出品稳定记录；3 分：有菜品素材但缺少真实回评或稳定记录；1 分：主要依赖环境图和优惠图，没有串品证据。",
+      "positive_signals": [
+        "真实烤制画面",
+        "高频被提及的招牌串",
+        "串品供应和出品稳定"
+      ],
+      "negative_signals": [
+        "只有装修图没有串品证据",
+        "串品经常断货或品质波动大"
+      ],
+      "route_guidance": "证据越强，越适合走真串真店路线；证据越弱，越应先补口碑和试吃，再谈放大。"
+    },
+    {
+      "id": "local_night_radius_fit",
+      "feature_name": "本地夜间半径匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确主要辐射半径、夜间客流结构、停车和步行便利；3 分：知道大致商圈但未细化到社区、写字楼或夜间流量点；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚 1 到 5 公里核心客源",
+        "知道社区、写字楼或夜间流量占比",
+        "对停车和导航便利有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视到店成本和临时消费门槛"
+      ],
+      "route_guidance": "本地半径越清晰，越容易先把预算压到高转化人群；半径模糊时应先缩小目标区域。"
+    },
+    {
+      "id": "customer_asset_reactivation_readiness",
+      "feature_name": "老客资产再激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员、联系方式、订单标签，且可按辣度、夜宵频次、多人聚会或客单分层；3 分：有联系方式但标签有限；1 分：几乎没有可用老客资产却仍忽视冷启动成本。",
+      "positive_signals": [
+        "有会员体系或企微私域",
+        "可按点串偏好和到店时段分层",
+        "有生日、节日或上新提醒信息"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有标签",
+        "完全不考虑老客回流路线"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本再激活；资产弱时再考虑外部拉新。"
+    },
+    {
+      "id": "reputation_hygiene_health",
+      "feature_name": "口碑与卫生健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定，差评主题可控，且近期真实好评持续出现；3 分：评分一般但问题集中且可修复；1 分：卫生、油烟、食材新鲜度或服务差评明显扩散，却仍计划强推扩量。",
+      "positive_signals": [
+        "评分保持稳定",
+        "问题集中且正在修复",
+        "近期有真实好评回升"
+      ],
+      "negative_signals": [
+        "评分连续下滑",
+        "差评集中在卫生、油烟、食材不新鲜或上串慢"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线押在真实评价和复购；口碑不稳时必须先修承接和评价。"
+    },
+    {
+      "id": "grill_capacity_service_stability",
+      "feature_name": "烤炉、备串与服务稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰时段座位、烤炉、备串、酒水和服务均有余量且节奏稳定；3 分：可以承接但需要限定时段、预约或限定套餐；1 分：高峰已经频繁排队、上串慢、断货或收台失控。",
+      "positive_signals": [
+        "清楚高峰翻台和上串上限",
+        "备串、酒水和人手能覆盖当前路线",
+        "可用预约或错峰分流"
+      ],
+      "negative_signals": [
+        "依赖单点师傅或关键岗位",
+        "热门串品断货和投诉频发"
+      ],
+      "route_guidance": "承接越稳，越适合扩量；承接越弱，越应转向预约、低峰和老客路线。"
+    },
+    {
+      "id": "dinein_delivery_economics_fit",
+      "feature_name": "堂食与外卖单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：堂食和外卖的菜单、毛利、包装和承接边界清楚；3 分：知道两边差异但尚未拆开运营；1 分：用同一套折扣和菜单硬覆盖堂食与外卖。",
+      "positive_signals": [
+        "堂食和外卖有不同主打 SKU",
+        "包装、复热和配送半径清楚",
+        "能核算各路线毛利"
+      ],
+      "negative_signals": [
+        "把外卖爆款当成堂食主推",
+        "不看毛利只追求订单量"
+      ],
+      "route_guidance": "单位经济越清晰，越能安全扩量；如果毛利和体验边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "group_booking_lead_qualification",
+      "feature_name": "多人聚会线索资格完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集日期、人数、预算、是否需要大桌或包区、酒水和停车条件；3 分：知道人数和大致预算但信息不全；1 分：只问价格就直接投入大量人工跟进。",
+      "positive_signals": [
+        "日期和人数明确",
+        "预算区间清楚",
+        "知道是否需要包区、酒水或外摆"
+      ],
+      "negative_signals": [
+        "档期不明就想锁单",
+        "把高客单聚会当成普通低价团购承接"
+      ],
+      "route_guidance": "资格信息越完整，越适合投入人工深跟；信息不足时应先用标准方案筛选。"
+    },
+    {
+      "id": "weather_and_time_window_operability",
+      "feature_name": "天气与夜间时窗可运营度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：清楚夜宵营业时段、雨天备选、室内外座位切换和晚班排班；3 分：有时间窗口想法但天气和排班边界不清；1 分：只有营销主题，没有时段和天气承接方案。",
+      "positive_signals": [
+        "22 点后营业和菜单稳定",
+        "雨天有室内替代或配送补位",
+        "晚班排班和清洁节奏可覆盖"
+      ],
+      "negative_signals": [
+        "一遇天气变化就承接失稳",
+        "夜间人手和备货明显不足"
+      ],
+      "route_guidance": "时窗与天气边界越清楚，越适合做夜宵和节令路线；边界不清时应缩成限定时段和限定菜单。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "承诺合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实串品、评价、营业规则和到店条件；3 分：有少量模糊夸张但可修正；1 分：存在全城第一、零油烟、绝对新鲜、绝不排队等高风险表达。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "明确等位和预约边界",
+        "食材与出品证据可核验"
+      ],
+      "negative_signals": [
+        "功效暗示",
+        "零油烟或绝不排队承诺",
+        "伪造明星打卡和平台背书"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，优先修正话术和承接边界。"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_皮肤管理",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "skin_score_concern_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分文案能在前两句就让用户看见明确问题或场景，例如黑头闭口、痘肌、敏感修护、节前状态管理和第一次咨询，而不是只说护肤和变好看。",
+      "examples": [
+        "高分：开头直接点出黑头闭口或敏感修护。 ",
+        "低分：一开始只有精致和焕肤。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "skin_score_trust_tone",
+      "title": "信任与边界感",
+      "description": "高分文案会主动给流程、环境、适用边界和低压力感，让用户感到门店不会乱推。低分文案往往只强调效果和优惠。",
+      "examples": [
+        "高分：先写判断和边界，再写预约。 ",
+        "低分：只靠前后对比和效果吸引。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "skin_score_compliance_safety",
+      "title": "合规安全性",
+      "description": "高分文案避免药效化、绝对化和虚假敏感安全承诺；低分文案容易出现根治、永久和绝对不过敏等高风险表述。",
+      "examples": [
+        "高分：用咨询判断和风险提示替代强承诺。 ",
+        "低分：一次解决、绝对安全、不过敏。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "skin_score_scene_match",
+      "title": "场景匹配度",
+      "description": "高分文案会让节前状态管理、日常修护和复访维护各归其位；低分文案把所有人群都用一套语气去写。",
+      "examples": [
+        "高分：节前文案重日期和时效，老客文案重复访理由。 ",
+        "低分：所有文案都只会喊来做护理。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "skin_score_respectfulness",
+      "title": "尊重感与情绪稳定度",
+      "description": "高分文案会陪用户一起判断问题，而不是拿容貌羞耻和焦虑刺激逼单。皮肤管理文案的情绪越稳，越有助于真实预约。",
+      "examples": [
+        "高分：用先看方向和先判断这类语气。 ",
+        "低分：用再不做就晚了这类恐吓。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "skin_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收问题、日期和是否第一次来等预约事实，方便后续承接；低分 CTA 只有欢迎到店或私信了解。",
+      "examples": [
+        "高分：先发问题和想约时间。 ",
+        "低分：快来做同款。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

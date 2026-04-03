@@ -1,0 +1,23 @@
+# Legacy helper compose (backend development only).
+# Preferred entry is root docker-compose.yml (unified stack).
+#
+# Usage:
+# docker compose -f docker-compose.backend.yml up -d
+# then run backend with REDIS_PORT=6380
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_backend:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  redis_backend: {}
+

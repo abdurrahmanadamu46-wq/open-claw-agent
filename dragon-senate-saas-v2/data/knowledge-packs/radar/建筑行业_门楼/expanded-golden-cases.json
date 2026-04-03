@@ -1,0 +1,187 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_gate_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测门楼工程商家在抖音和视频号上的内容规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_service",
+        "competitor_watchlist": [
+          "钢构门楼厂家A",
+          "景观牌坊厂家B"
+        ],
+        "raw_signals": [
+          "抖音企业服务公告提示工程安装类内容不得使用“包过验收”“零风险施工”等绝对化表述",
+          "视频号商家培训通知强调展示工程资质和施工许可时必须真实可核验",
+          "两家竞品把主页文案从“包审批包验收”改成“协助报审，节点以合同为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方规则变化优先于竞品文案变化",
+        "需要指出对资质展示和工期承诺的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品文案修改当成唯一核心信号"
+      ]
+    },
+    {
+      "id": "radar_gate_bid_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现县域文旅与工业园门楼改造机会窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_project_bidding",
+        "competitor_watchlist": [
+          "门楼设计施工公司C",
+          "厂区形象门公司D"
+        ],
+        "raw_signals": [
+          "同一省份5天内出现3个“景区入口提升/村口牌坊改造”官方招标公告",
+          "县级文旅提质文件明确提出入口形象更新和游客动线改造",
+          "竞品D同步上线“现场勘测+深化设计+异地安装”套餐"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方招标和政策窗口应被识别为机会信号",
+        "竞品套餐动作需要与政策信号分开归类",
+        "要形成面向 Commander 的机会提示"
+      ]
+    },
+    {
+      "id": "radar_gate_material_noise_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测门楼工程报价风险与材料成本信号",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "mixed_market",
+        "competitor_watchlist": [
+          "钢结构门楼厂家A"
+        ],
+        "raw_signals": [
+          "某材料群流传“下周钢材必涨15%”截图，未附来源",
+          "行业协会周报与主流钢价公开数据未出现同步上涨",
+          "竞品报价和交期口径暂未调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源材料传闻应被降级",
+        "缺少互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "因群聊截图直接判断报价体系将全面上调"
+      ]
+    },
+    {
+      "id": "radar_gate_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别北方工业园区门楼需求与内容机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "园区形象门厂家E"
+        ],
+        "raw_signals": [
+          "南方别墅庭院大门改造视频在短视频平台爆火",
+          "本地公共资源平台暂无新增高端住宅门楼项目",
+          "北方工业园相关评论区连续出现“厂区大门升级”“门头形象改造”问询"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地需求线索应高于跨区域爆款内容",
+        "要区分住宅审美趋势与工业项目需求",
+        "关注级别应为中"
+      ]
+    },
+    {
+      "id": "radar_gate_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描门楼工程案例发布风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "匿名营销号称“平台将全面禁止门楼工程案例视频”",
+          "该说法被两个搬运号重复转发",
+          "未发现平台官方公告、商家通知或客服口径更新"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "传闻应被隔离为低可信信号",
+        "没有官方证据不能判定为规则已变"
+      ],
+      "mustAvoid": [
+        "把传闻描述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_gate_fake_showcase_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高客单门楼竞品动作",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [
+          "景区牌坊厂家F",
+          "仿古门楼厂家G"
+        ],
+        "raw_signals": [
+          "竞品F发布“千万级景区门楼竣工”视频，但未给出项目地点、甲方或施工节点",
+          "评论区多人质疑画面为效果图拼接",
+          "未找到对应招标结果、公示或媒体报道"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱的竞品展示不能当成已确认市场变化",
+        "在缺少外部佐证时来源可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把未核验的展示案例当成确定的行业标杆"
+      ]
+    }
+  ]
+}

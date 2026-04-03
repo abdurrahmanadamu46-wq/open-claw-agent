@@ -1,0 +1,105 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "explicit_concern_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_concern_scope",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "pores",
+        "acne marks",
+        "fine lines",
+        "sagging",
+        "pre-event"
+      ],
+      "why_it_matters": "A user who names the actual concern is much easier to route into a useful next step than someone who only says they want to look better.",
+      "echoer_action": "Acknowledge the concern and keep gathering timing plus first-visit facts."
+    },
+    {
+      "id": "explicit_time_window",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_time_window",
+      "category": "booking_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "this weekend",
+        "Thursday night",
+        "before Saturday",
+        "after work"
+      ],
+      "why_it_matters": "Timing is one of the clearest signs that a clinic inquiry is moving toward action.",
+      "echoer_action": "Keep the reply warm and direct the next step toward booking facts."
+    },
+    {
+      "id": "first_visit_caution_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "first_visit_caution_signal",
+      "category": "trust_barrier",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "first time",
+        "worried about recovery",
+        "a bit scared",
+        "not sure if it suits me"
+      ],
+      "why_it_matters": "First-time caution means the reply should optimize for reassurance and trust, not for closing speed.",
+      "echoer_action": "Use calm language and guide toward a consult-style next step."
+    },
+    {
+      "id": "event_deadline_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "event_deadline_signal",
+      "category": "timing_pressure",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "wedding",
+        "photoshoot",
+        "holiday",
+        "trip"
+      ],
+      "why_it_matters": "Event-driven clinic requests often convert quickly if slot and concern fit are handled well.",
+      "echoer_action": "Acknowledge urgency and ask for event date plus available slot."
+    },
+    {
+      "id": "price_only_without_context",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_context",
+      "category": "context_gap",
+      "score_direction": "negative",
+      "weight": 6,
+      "trigger_patterns": [
+        "how much",
+        "price?",
+        "what's the cost",
+        "quote please"
+      ],
+      "why_it_matters": "Price-only questions are not low intent by default, but they need concern scope before the next step becomes useful.",
+      "echoer_action": "Answer lightly and recover one scope detail."
+    },
+    {
+      "id": "public_embarrassment_risk",
+      "applies_to": "incoming_message",
+      "feature_name": "public_embarrassment_risk",
+      "category": "brand_safety",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "my skin looks terrible",
+        "really embarrassed",
+        "pores are so bad",
+        "my face is a mess"
+      ],
+      "why_it_matters": "When the concern is personal and exposed in public, the response must protect dignity while staying useful.",
+      "echoer_action": "Reply gently, avoid echoing the shame language, and guide toward a safer next step."
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_business_hotel_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a business hotel for weekday solo travelers using location-to-destination fit, breakfast and invoice clarity, and a consultative booking CTA",
+        "brand_tone": "professional, efficient, and trustworthy",
+        "offer_info": "weekday business rooms, breakfast options, invoice support, parking guidance, in-room desk, no exaggerated ranking claims",
+        "audience_segment": "solo business travelers visiting office parks, client offices, or meetings in the city"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "task-based opening around business travel or next-day meetings",
+        "specific proof around location fit, breakfast, invoice, parking, or work-friendly room details",
+        "CTA that asks for dates, number of nights, destination, and whether invoice or breakfast is needed"
+      ],
+      "mustAvoid": [
+        "best-in-city hotel claims",
+        "guaranteed perfect sleep promise",
+        "always-available room promise"
+      ]
+    },
+    {
+      "id": "inkwriter_business_hotel_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive team bookings for a business hotel near a convention center using group-coordination proof and a low-pressure consultation flow",
+        "brand_tone": "credible, organized, and calm",
+        "offer_info": "multi-room booking support, breakfast coordination, transport guidance, invoice handling, nearby convenience stores and late arrival support",
+        "audience_segment": "office admins, project leads, and event teams arranging several rooms for exhibitions or short business stays"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to team travel coordination or exhibition accommodation pressure",
+        "trust modules around room-count confirmation, breakfast, invoice, and arrival logistics",
+        "next step asking for dates, room count, team schedule, and invoice requirements"
+      ],
+      "mustAvoid": [
+        "one-price-fits-all team quote",
+        "luxury language without evidence",
+        "guaranteed upgrade or late checkout language"
+      ]
+    },
+    {
+      "id": "inkwriter_business_hotel_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write business hotel copy for a cost-sensitive company inquiry with unclear room count, mixed stay lengths, and incomplete travel details",
+        "brand_tone": "helpful, restrained, and practical",
+        "offer_info": "company lodging under discussion, limited information, potentially mixed single and twin room needs, invoice required but details still unclear",
+        "audience_segment": "administrative staff comparing several hotels for a small business travel group"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing dates, room count, room mix, or invoice details",
+        "conservative wording around rates and inclusions",
+        "scenario-based framing instead of a single exact quote"
+      ],
+      "mustAvoid": [
+        "instant fixed team pricing",
+        "claiming every request can be met without confirmation",
+        "overconfident language about availability"
+      ]
+    },
+    {
+      "id": "inkwriter_business_hotel_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a business hotel for late-arrival and early-departure travelers when proof assets are limited and sleep claims must stay conservative",
+        "brand_tone": "steady, empathetic, and grounded",
+        "offer_info": "late check-in friendly operations, simple breakfast arrangement, practical room layout, limited photo assets, no hard urgency",
+        "audience_segment": "travelers arriving by late train or flight before an early meeting the next morning"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening anchored to late arrival and next-day schedule pressure",
+        "practical arrival or departure convenience instead of decorative positioning",
+        "conservative handling of quietness, comfort, and sleep language"
+      ],
+      "mustAvoid": [
+        "zero-noise claims",
+        "guaranteed deep sleep promise",
+        "fake urgency around room scarcity"
+      ]
+    },
+    {
+      "id": "inkwriter_business_hotel_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow bookings fast for a business hotel using aggressive ranking claims, guaranteed convenience messaging, and hard urgency",
+        "brand_tone": "high conversion and sales-heavy",
+        "offer_info": "busy dates, pressure to fill rooms quickly, mixed traveler scenarios, desire to push direct booking fast",
+        "audience_segment": "cold business travel traffic comparing several city hotels"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky sales phrases in risk_phrases",
+        "reframed urgency into planning or date-confirmation guidance",
+        "trust built through destination fit and business-travel proof instead of hype"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed room availability",
+        "instant-book-now-or-miss-out pressure language"
+      ]
+    },
+    {
+      "id": "inkwriter_business_hotel_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a business hotel by promising zero noise, five-star experience, guaranteed upgrades, and the city's lowest rate",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "pricing-sensitive offer, uncertain occupancy, desire to overstate comfort and service outcomes, multiple risk points in copy",
+        "audience_segment": "mixed cold leads asking for quick business travel booking decisions"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of comfort, price, and service promises",
+        "explicit marking of red-flag expressions in risk_phrases",
+        "CTA focused on dates, nights, room count, and stay requirements before confirming options"
+      ],
+      "mustAvoid": [
+        "zero-noise guarantee",
+        "five-star-experience claim without factual basis",
+        "citywide lowest-rate promise"
+      ]
+    }
+  ]
+}

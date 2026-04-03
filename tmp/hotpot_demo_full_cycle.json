@@ -1,0 +1,623 @@
+﻿{
+  "ok": true,
+  "status": "demo_full_cycle_completed",
+  "thread_id": "admin_edge-demo-001",
+  "generated_score": 0,
+  "content_package": {},
+  "delivery_results": [],
+  "edge_pull_summary": [
+    {
+      "edge_id": "edge-demo-001",
+      "pulled_count": 0,
+      "package_ids": []
+    },
+    {
+      "edge_id": "edge-demo-002",
+      "pulled_count": 0,
+      "package_ids": []
+    },
+    {
+      "edge_id": "edge-demo-003",
+      "pulled_count": 0,
+      "package_ids": []
+    }
+  ],
+  "dm_results": [
+    {
+      "ok": true,
+      "trace_id": "dm_edge-demo-001_1774205652",
+      "thread_id": "admin_edge-demo-001",
+      "edge_id": "edge-demo-001",
+      "account_id": "admin-acct-001",
+      "catcher_output": {
+        "captured_leads": [
+          {
+            "lead_id": "dm_185412",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-001",
+            "account_id": "admin-acct-001"
+          }
+        ]
+      },
+      "abacus_output": {
+        "scored_leads": [
+          {
+            "lead_id": "dm_185412",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-001",
+            "account_id": "admin-acct-001",
+            "score": 0.7,
+            "grade": "B"
+          }
+        ],
+        "avg_score": 0.7
+      },
+      "followup_output": {
+        "actions": [
+          {
+            "lead_id": "dm_185412",
+            "action": "manual_followup",
+            "owner": "admin",
+            "worker_id": "followup:sub_01_single"
+          }
+        ],
+        "call_brief": "Follow up with a call after sending a direct message to lead dm_185412.",
+        "subagent_spawn": {
+          "spawn_run_id": "spr_75dff15328e4",
+          "mode": "dm_single",
+          "lead_count": 1,
+          "child_count": 1,
+          "max_concurrency": 1,
+          "queue_inserted_count": 1,
+          "queue_claimed_count": 1,
+          "queue_completed_count": 1,
+          "queue_failed_count": 0,
+          "child_failure_count": 0,
+          "status": "completed",
+          "children": [
+            {
+              "child_id": "sub_01_single",
+              "worker_id": "followup:sub_01_single",
+              "lead_ids": [
+                "dm_185412"
+              ],
+              "status": "completed",
+              "action_count": 1,
+              "started_at": "2026-03-22T18:54:12.402927+00:00",
+              "finished_at": "2026-03-22T18:54:14.069809+00:00",
+              "duration_ms": 1666,
+              "error": null,
+              "detail": {
+                "call_brief": "Follow up with a call after sending a direct message to lead dm_185412.",
+                "dm_text_preview": "????????????????????",
+                "action_count": 1
+              }
+            }
+          ]
+        }
+      },
+      "followup_spawn": {
+        "spawn_run_id": "spr_75dff15328e4",
+        "mode": "dm_single",
+        "lead_count": 1,
+        "child_count": 1,
+        "max_concurrency": 1,
+        "queue_inserted_count": 1,
+        "queue_claimed_count": 1,
+        "queue_completed_count": 1,
+        "queue_failed_count": 0,
+        "child_failure_count": 0,
+        "status": "completed"
+      },
+      "clawteam_queue": {
+        "followup_inserted_count": 1,
+        "followup_claimed_count": 1,
+        "followup_completed_count": 1,
+        "followup_failed_count": 0,
+        "followup_spawn_run_id": "spr_75dff15328e4"
+      },
+      "score": 0.7,
+      "call_log": [
+        {
+          "ts": "2026-03-22T18:54:07.383122+00:00",
+          "agent": "radar",
+          "skills": [
+            "agent-browser",
+            "summarize"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "Radar scan finished with source scoring",
+          "payload": {
+            "keyword_count": 0,
+            "source_credibility": 0.682,
+            "weak_source_count": 2
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:07.384331+00:00",
+          "agent": "hotspot_investigation",
+          "skills": [
+            "proactive-agent"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "Hotspot investigation completed",
+          "payload": {
+            "hot_topic_count": 1
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.290157+00:00",
+          "agent": "strategist",
+          "skills": [
+            "ontology",
+            "self-improving-agent",
+            "proactive-agent"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "Strategy completed with RAG references",
+          "payload": {
+            "rag_reference_count": 4,
+            "industry_kb_reference_count": 0,
+            "rag_vector_reference_count": 4,
+            "rag_graph_reference_count": 0,
+            "user_id": "admin",
+            "rag_runtime_mode": "fallback_disabled",
+            "rag_runtime_used_query_mode": null,
+            "rag_runtime_fail_closed": false,
+            "preferred_storyboard_count": 15,
+            "confidence_low": 0.722,
+            "confidence_high": 0.922,
+            "source_gate_applied": false
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.291558+00:00",
+          "agent": "constitutional_guardian",
+          "skills": [
+            "ontology",
+            "skill-vetter"
+          ],
+          "skill_key": null,
+          "summary": "Constitutional guardian evaluated strategy",
+          "payload": {
+            "decision": "allow",
+            "industry": "general",
+            "strategy_version": "general_safe_v1",
+            "reason_codes": [
+              "guardian.allow"
+            ]
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.292767+00:00",
+          "agent": "verification_gate",
+          "skills": [
+            "ontology"
+          ],
+          "skill_key": null,
+          "summary": "Verification gate completed",
+          "payload": {
+            "route": "reject",
+            "publish_allowed": false,
+            "confidence_band": "medium",
+            "reason_codes": [
+              "guardian.allow",
+              "verification.center_below_threshold"
+            ]
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.365088+00:00",
+          "agent": "feedback",
+          "skills": [
+            "self-improving-agent",
+            "ontology"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "Feedback node completed with RAG optimization",
+          "payload": {
+            "score": 0,
+            "lead_count": 0,
+            "delivery": {},
+            "rag_similar_count": 3,
+            "rag_ingested_count": 0,
+            "user_id": "admin"
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.366631+00:00",
+          "agent": "feedback",
+          "skills": [
+            "self-improving-agent",
+            "ontology"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "Self-improving memory updated",
+          "payload": {}
+        },
+        {
+          "ts": "2026-03-22T18:54:12.389815+00:00",
+          "agent": "catcher",
+          "skills": [
+            "summarize",
+            "ontology"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead extracted",
+          "payload": {
+            "intent": "warm"
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:12.390625+00:00",
+          "agent": "abacus",
+          "skills": [
+            "api-gateway",
+            "gog"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead scored",
+          "payload": {
+            "avg_score": 0.7
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:14.111186+00:00",
+          "agent": "followup",
+          "skills": [
+            "openai-whisper"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM follow-up generated with deterministic sub-agent spawning",
+          "payload": {
+            "action_count": 1,
+            "child_count": 1,
+            "max_concurrency": 1,
+            "child_failure_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "trace_id": "dm_edge-demo-002_1774205654",
+      "thread_id": "admin_edge-demo-002",
+      "edge_id": "edge-demo-002",
+      "account_id": "admin-acct-002",
+      "catcher_output": {
+        "captured_leads": [
+          {
+            "lead_id": "dm_185414",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-002",
+            "account_id": "admin-acct-002"
+          }
+        ]
+      },
+      "abacus_output": {
+        "scored_leads": [
+          {
+            "lead_id": "dm_185414",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-002",
+            "account_id": "admin-acct-002",
+            "score": 0.7,
+            "grade": "B"
+          }
+        ],
+        "avg_score": 0.7
+      },
+      "followup_output": {
+        "actions": [
+          {
+            "lead_id": "dm_185414",
+            "action": "manual_followup",
+            "owner": "admin",
+            "worker_id": "followup:sub_01_single"
+          }
+        ],
+        "call_brief": "Follow up with a call after sending a direct message to lead dm_185414.",
+        "subagent_spawn": {
+          "spawn_run_id": "spr_7577d55b6166",
+          "mode": "dm_single",
+          "lead_count": 1,
+          "child_count": 1,
+          "max_concurrency": 1,
+          "queue_inserted_count": 1,
+          "queue_claimed_count": 1,
+          "queue_completed_count": 1,
+          "queue_failed_count": 0,
+          "child_failure_count": 0,
+          "status": "completed",
+          "children": [
+            {
+              "child_id": "sub_01_single",
+              "worker_id": "followup:sub_01_single",
+              "lead_ids": [
+                "dm_185414"
+              ],
+              "status": "completed",
+              "action_count": 1,
+              "started_at": "2026-03-22T18:54:14.131952+00:00",
+              "finished_at": "2026-03-22T18:54:15.599108+00:00",
+              "duration_ms": 1467,
+              "error": null,
+              "detail": {
+                "call_brief": "Follow up with a call after sending a direct message to lead dm_185414.",
+                "dm_text_preview": "????????????????????",
+                "action_count": 1
+              }
+            }
+          ]
+        }
+      },
+      "followup_spawn": {
+        "spawn_run_id": "spr_7577d55b6166",
+        "mode": "dm_single",
+        "lead_count": 1,
+        "child_count": 1,
+        "max_concurrency": 1,
+        "queue_inserted_count": 1,
+        "queue_claimed_count": 1,
+        "queue_completed_count": 1,
+        "queue_failed_count": 0,
+        "child_failure_count": 0,
+        "status": "completed"
+      },
+      "clawteam_queue": {
+        "followup_inserted_count": 1,
+        "followup_claimed_count": 1,
+        "followup_completed_count": 1,
+        "followup_failed_count": 0,
+        "followup_spawn_run_id": "spr_7577d55b6166"
+      },
+      "score": 0.7,
+      "call_log": [
+        {
+          "ts": "2026-03-22T18:54:14.121181+00:00",
+          "agent": "catcher",
+          "skills": [
+            "summarize",
+            "ontology"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead extracted",
+          "payload": {
+            "intent": "warm"
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:14.122171+00:00",
+          "agent": "abacus",
+          "skills": [
+            "api-gateway",
+            "gog"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead scored",
+          "payload": {
+            "avg_score": 0.7
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:15.638234+00:00",
+          "agent": "followup",
+          "skills": [
+            "openai-whisper"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM follow-up generated with deterministic sub-agent spawning",
+          "payload": {
+            "action_count": 1,
+            "child_count": 1,
+            "max_concurrency": 1,
+            "child_failure_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "trace_id": "dm_edge-demo-003_1774205655",
+      "thread_id": "admin_edge-demo-003",
+      "edge_id": "edge-demo-003",
+      "account_id": "admin-acct-003",
+      "catcher_output": {
+        "captured_leads": [
+          {
+            "lead_id": "dm_185415",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-003",
+            "account_id": "admin-acct-003"
+          }
+        ]
+      },
+      "abacus_output": {
+        "scored_leads": [
+          {
+            "lead_id": "dm_185415",
+            "intent": "warm",
+            "text": "????????????????????",
+            "edge_id": "edge-demo-003",
+            "account_id": "admin-acct-003",
+            "score": 0.7,
+            "grade": "B"
+          }
+        ],
+        "avg_score": 0.7
+      },
+      "followup_output": {
+        "actions": [
+          {
+            "lead_id": "dm_185415",
+            "action": "manual_followup",
+            "owner": "admin",
+            "worker_id": "followup:sub_01_single"
+          }
+        ],
+        "call_brief": "Follow up with dm_185415 via DM and then a call.",
+        "subagent_spawn": {
+          "spawn_run_id": "spr_d32b525becf7",
+          "mode": "dm_single",
+          "lead_count": 1,
+          "child_count": 1,
+          "max_concurrency": 1,
+          "queue_inserted_count": 1,
+          "queue_claimed_count": 1,
+          "queue_completed_count": 1,
+          "queue_failed_count": 0,
+          "child_failure_count": 0,
+          "status": "completed",
+          "children": [
+            {
+              "child_id": "sub_01_single",
+              "worker_id": "followup:sub_01_single",
+              "lead_ids": [
+                "dm_185415"
+              ],
+              "status": "completed",
+              "action_count": 1,
+              "started_at": "2026-03-22T18:54:15.654820+00:00",
+              "finished_at": "2026-03-22T18:54:16.870177+00:00",
+              "duration_ms": 1215,
+              "error": null,
+              "detail": {
+                "call_brief": "Follow up with dm_185415 via DM and then a call.",
+                "dm_text_preview": "????????????????????",
+                "action_count": 1
+              }
+            }
+          ]
+        }
+      },
+      "followup_spawn": {
+        "spawn_run_id": "spr_d32b525becf7",
+        "mode": "dm_single",
+        "lead_count": 1,
+        "child_count": 1,
+        "max_concurrency": 1,
+        "queue_inserted_count": 1,
+        "queue_claimed_count": 1,
+        "queue_completed_count": 1,
+        "queue_failed_count": 0,
+        "child_failure_count": 0,
+        "status": "completed"
+      },
+      "clawteam_queue": {
+        "followup_inserted_count": 1,
+        "followup_claimed_count": 1,
+        "followup_completed_count": 1,
+        "followup_failed_count": 0,
+        "followup_spawn_run_id": "spr_d32b525becf7"
+      },
+      "score": 0.7,
+      "call_log": [
+        {
+          "ts": "2026-03-22T18:54:15.645201+00:00",
+          "agent": "catcher",
+          "skills": [
+            "summarize",
+            "ontology"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead extracted",
+          "payload": {
+            "intent": "warm"
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:15.646473+00:00",
+          "agent": "abacus",
+          "skills": [
+            "api-gateway",
+            "gog"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM lead scored",
+          "payload": {
+            "avg_score": 0.7
+          }
+        },
+        {
+          "ts": "2026-03-22T18:54:16.904814+00:00",
+          "agent": "followup",
+          "skills": [
+            "openai-whisper"
+          ],
+          "skill_key": "skill_xxx",
+          "summary": "DM follow-up generated with deterministic sub-agent spawning",
+          "payload": {
+            "action_count": 1,
+            "child_count": 1,
+            "max_concurrency": 1,
+            "child_failure_count": 0
+          }
+        }
+      ]
+    }
+  ],
+  "readiness_after": {
+    "checkpointer_mode": "postgres",
+    "main_graph_ready": true,
+    "dm_graph_ready": true,
+    "registered_edges": 3,
+    "registered_edges_with_skills": 3,
+    "registered_edges_with_commands": 3,
+    "known_edge_skills": [
+      "monitor-dm",
+      "publish-content",
+      "video-publish"
+    ],
+    "known_edge_commands": [
+      "cli-anything monitor-dm --json",
+      "cli-anything publish-content --payload input.json"
+    ],
+    "pending_outbox": {},
+    "rag": {
+      "collection_name": "viral_formulas__u_admin",
+      "qdrant_enabled": true,
+      "binary_quantization_enabled": true,
+      "binary_quantization_error": null,
+      "fallback_memory_size": 24,
+      "multimodal": {
+        "scope": "admin",
+        "enabled": false,
+        "strict_mode": false,
+        "installed": false,
+        "mode": "fallback_disabled",
+        "runtime_ready": false,
+        "error": "No module named 'raganything'",
+        "workdir": "raganything_workdir/admin",
+        "inserted_records": 0,
+        "last_query_mode": null,
+        "last_used_query_mode": null,
+        "last_query_at": null
+      }
+    },
+    "anythingllm": {
+      "base_url": "http://127.0.0.1:3002",
+      "embed_enabled": false
+    },
+    "integrations": {
+      "raganything_mode": "fallback_disabled",
+      "raganything_strict_mode": false,
+      "cli_anything_ready_edges": 3,
+      "anythingllm_base_url": "http://127.0.0.1:3002",
+      "clawteam_db_path": "./data/clawteam_inbox.sqlite",
+      "policy_bandit_enabled": true
+    },
+    "billing": {
+      "guard_enabled": true,
+      "guarded_paths": [
+        "/analyze_competitor_formula",
+        "/receive_dm_from_edge",
+        "/run-dragon-team"
+      ]
+    }
+  }
+}

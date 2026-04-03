@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"inkwriter","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"moving_rule_scene_first","title":"开头先锚定同城、跨城或打包场景，不要一上来堆低价词","description":"搬家文案第一句话要先让用户看见自己要解决什么，例如同城搬家、跨城搬家、包打包、办公室搬迁和临时仓储，而不是先堆低价、秒杀和爆款词。","examples":["不要先写今天多便宜，而要先写这次是同城换租、跨城搬家还是办公室搬迁。","不要先写活动名，而要先写你现在更卡在时间、楼层还是打包拆装。"],"priority":"high"},
+  {"id":"moving_rule_no_absolute_claims","title":"避免绝不加价、绝不磕碰和绝对当天到承诺","description":"搬家文案不能把服务写成绝不加价、绝不磕碰、绝对当天到和绝对适合所有场景，也不能模糊楼层、电梯和大件边界。","examples":["不要写零风险搬家，要写先看房型和范围。","不要写绝不加价，要写先按楼层和加项说明。"],"priority":"high"},
+  {"id":"moving_rule_trust_before_discount","title":"信任和过程说明应早于折扣信息出现","description":"搬家文案最怕用户觉得门店只会喊便宜不会讲车型、赔付和流程，所以文案要先建立可信度，再讲优惠与活动。","examples":["先写车型、师傅和赔付，再写搬家活动。","先写楼层、电梯和拆装，再写套餐价格。"],"priority":"high"},
+  {"id":"moving_rule_scope_clear","title":"房型与范围要说清，不要把所有情况混成一锅","description":"高分文案会把单身小搬、家庭整搬、跨城和办公室搬迁拆开呈现，让用户快速进入自己的那一档。","examples":["两居同城是一条线。","跨城仓储是另一条线。"],"priority":"medium"},
+  {"id":"moving_rule_cta_collect_facts","title":"CTA 要收房型、时间和楼层，不要只催成交","description":"搬家 CTA 的核心不是立刻下单，而是收集房型件数、日期、楼层电梯和是否打包拆装。","examples":["可以先告诉我这次更像同城、跨城还是办公室搬迁。","把房型和时间发我，我先帮你收窄路线。"],"priority":"high"},
+  {"id":"moving_rule_return_visit_language","title":"复购文案要像补运提醒，不像重新教育新客","description":"老客复约和企业搬迁文案要承接历史服务感，不要又从头开始讲所有搬家内容。","examples":["上次搬过的路线快到时间时，再提醒会更自然。","办公室补运更需要时段和设备说明。"],"priority":"medium"}
+]}

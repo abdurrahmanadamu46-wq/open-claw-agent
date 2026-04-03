@@ -1,0 +1,753 @@
+﻿{
+  "catalog_name": "lobster_rag_factory",
+  "version": "1.1.0",
+  "notes": [
+    "覆盖 8 只基础 Agent 的知识包种子。",
+    "第 9 只 Agent 通过 feedback 或 followup 变体按 profile 装载。",
+    "Agent 能力边界已扩展到 46 项技能，知识包按每虾 12-15 个目标维护，供批量生成脚本与 API 复用。"
+  ],
+  "base_agents": [
+    {
+      "agent_id": "radar",
+      "agent_name": "触须虾",
+      "default_task_type": "radar_enrichment",
+      "summary": "全网信号发现层；负责热点监控、竞品追踪、关键词雷达、用户画像分析、内容效果反馈接收和舆情预警。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "competitor_landscape",
+          "knowledge_pack_name": "竞品版图库",
+          "seed_goal": "沉淀竞品的定位、报价、套餐、渠道动作与内容打法，含竞品账号列表管理、内容更新追踪和差异化策略生成输入。"
+        },
+        {
+          "knowledge_pack_id": "hot_topic_signal",
+          "knowledge_pack_name": "热点选题信号库",
+          "seed_goal": "追踪微博/抖音/小红书/B站/Twitter 热门话题、热搜、爆款切口与赛道热度漂移，支撑全网热点监控技能，用于选题、投流预警和内容日历排期输入。"
+        },
+        {
+          "knowledge_pack_id": "high_conversion_account",
+          "knowledge_pack_name": "高转化账号拆解库",
+          "seed_goal": "沉淀高转化账号的人设、封面、钩子、内容结构、成交路径和承接方式。"
+        },
+        {
+          "knowledge_pack_id": "offer_price_band",
+          "knowledge_pack_name": "产品与价格带库",
+          "seed_goal": "收集竞品产品层级、套餐价位、加价项、引流款与利润款的组合逻辑。"
+        },
+        {
+          "knowledge_pack_id": "local_region_heat",
+          "knowledge_pack_name": "区域供需热度库",
+          "seed_goal": "跟踪不同城市、商圈、区县的赛道热度、竞争强度与供需错位。"
+        },
+        {
+          "knowledge_pack_id": "comment_pain_signal",
+          "knowledge_pack_name": "评论区痛点信号库",
+          "seed_goal": "从评论区、问答区、直播互动中抽取老板高频痛点、顾虑和购买触发词。"
+        },
+        {
+          "knowledge_pack_id": "ad_creative_capture",
+          "knowledge_pack_name": "广告素材捕捉库",
+          "seed_goal": "沉淀同行投放素材、开头钩子、卖点拆解和落地页承接方向。"
+        },
+        {
+          "knowledge_pack_id": "platform_rule_change",
+          "knowledge_pack_name": "平台规则变动库",
+          "seed_goal": "跟踪平台规则、风控提示、限流信号和内容审核边界的变化。"
+        },
+        {
+          "knowledge_pack_id": "lead_keywords",
+          "knowledge_pack_name": "高意向搜索词库",
+          "seed_goal": "沉淀老板在搜索、咨询和评论里会使用的高意向需求词与问题词。"
+        },
+        {
+          "knowledge_pack_id": "seasonal_campaign",
+          "knowledge_pack_name": "季节节点营销库",
+          "seed_goal": "围绕节假日、旺淡季、促销节点沉淀节点打法、话题角度和素材需求。"
+        },
+        {
+          "knowledge_pack_id": "hotspot_data_structure",
+          "knowledge_pack_name": "全网热搜数据结构库",
+          "seed_goal": "沉淀微博/抖音/小红书/B站/Twitter各平台热搜、热榜、趋势数据的采集字段、更新频率和结构化入库规范。"
+        },
+        {
+          "knowledge_pack_id": "competitor_tracking_rule",
+          "knowledge_pack_name": "竞品账号追踪规则库",
+          "seed_goal": "沉淀竞品账号的发现方式、关注指标（发布频率/互动量/增粉速度）、对比维度和异动检测规则。"
+        },
+        {
+          "knowledge_pack_id": "sentiment_alert_threshold",
+          "knowledge_pack_name": "舆情预警阈值库",
+          "seed_goal": "沉淀品牌相关负面舆情的关键词、情感分值阈值、告警等级和响应SOP。"
+        },
+        {
+          "knowledge_pack_id": "user_portrait_label",
+          "knowledge_pack_name": "用户画像标签体系库",
+          "seed_goal": "沉淀各平台用户画像标签（年龄/性别/地域/兴趣/活跃时段/消费能力），用于精准触达和内容调优。"
+        }
+      ]
+    },
+    {
+      "agent_id": "strategist",
+      "agent_name": "脑虫虾",
+      "default_task_type": "strategy_planning",
+      "summary": "策略制定层；负责目标拆解、多平台投放策略、内容日历排期、A/B测试设计、预算分配和策略自适应调整。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "persona_decision_map",
+          "knowledge_pack_name": "老板决策人格库",
+          "seed_goal": "沉淀不同老板的决策偏好、风险偏好、话术敏感点与成交触发方式。"
+        },
+        {
+          "knowledge_pack_id": "business_stage_playbook",
+          "knowledge_pack_name": "经营阶段策略库",
+          "seed_goal": "按冷启动、爬坡、扩张、瓶颈、转型阶段沉淀不同策略。"
+        },
+        {
+          "knowledge_pack_id": "offer_positioning",
+          "knowledge_pack_name": "定位与差异化打法库",
+          "seed_goal": "用于为客户找到更易成交的市场切口、卖点与竞争差异。"
+        },
+        {
+          "knowledge_pack_id": "funnel_breakpoint",
+          "knowledge_pack_name": "漏斗断点诊断库",
+          "seed_goal": "沉淀流量、到店、预约、咨询、成交、复购各环节的断点和修复方案。"
+        },
+        {
+          "knowledge_pack_id": "scenario_route",
+          "knowledge_pack_name": "场景化内容路由库",
+          "seed_goal": "把不同老板问题映射到选题、脚本、直播、销售、私域等动作路径。"
+        },
+        {
+          "knowledge_pack_id": "region_benchmark",
+          "knowledge_pack_name": "区域基准参照库",
+          "seed_goal": "沉淀不同区域、城市级别、商圈成熟度的经营基准与打法偏差。"
+        },
+        {
+          "knowledge_pack_id": "campaign_goal_map",
+          "knowledge_pack_name": "增长目标拆解库",
+          "seed_goal": "把涨粉、线索、预约、到店、成交、复购目标拆成执行动作。"
+        },
+        {
+          "knowledge_pack_id": "offer_bundle",
+          "knowledge_pack_name": "套餐产品化设计库",
+          "seed_goal": "沉淀引流款、主推款、利润款、续费款和组合包设计逻辑。"
+        },
+        {
+          "knowledge_pack_id": "objection_strategy",
+          "knowledge_pack_name": "反对点策略库",
+          "seed_goal": "针对价格、效果、周期、案例、信任、资质等抗拒点建立拆解框架。"
+        },
+        {
+          "knowledge_pack_id": "priority_decision",
+          "knowledge_pack_name": "决策优先级矩阵库",
+          "seed_goal": "把老板面临的多个问题按收益、紧迫、投入和风险排序。"
+        },
+        {
+          "knowledge_pack_id": "platform_allocation_benchmark",
+          "knowledge_pack_name": "多平台投放比例基准库",
+          "seed_goal": "沉淀不同行业、不同预算量级下抖音/小红书/微信/B站/微博的推荐内容比例、投放节奏和ROI预期。"
+        },
+        {
+          "knowledge_pack_id": "content_calendar_template",
+          "knowledge_pack_name": "内容日历模板库",
+          "seed_goal": "沉淀7天/30天内容排期模板，含平台差异化发布时间、内容类型轮转和节假日调整规则。"
+        },
+        {
+          "knowledge_pack_id": "ab_test_variable",
+          "knowledge_pack_name": "A/B测试变量库",
+          "seed_goal": "沉淀标题/封面/开头钩子/CTA/发布时间等可测试变量的隔离方法、样本量和判定标准。"
+        },
+        {
+          "knowledge_pack_id": "budget_optimization_model",
+          "knowledge_pack_name": "预算分配优化模型库",
+          "seed_goal": "沉淀基于历史ROI数据的预算再分配规则，含边际效益递减判断和渠道切换阈值。"
+        }
+      ]
+    },
+    {
+      "agent_id": "inkwriter",
+      "agent_name": "吐墨虾",
+      "default_task_type": "content_generation",
+      "summary": "文案生产层；负责多平台文案适配、话题标签生成、违禁词检测、私信话术链和SEO关键词植入。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "short_video_hook",
+          "knowledge_pack_name": "短视频钩子模板库",
+          "seed_goal": "沉淀适合 To B 老板的开场钩子、痛点引爆和转化型开头模板。"
+        },
+        {
+          "knowledge_pack_id": "sales_script",
+          "knowledge_pack_name": "成交口播脚本库",
+          "seed_goal": "沉淀能拉近信任、推进咨询与成交的口播和顾问式话术骨架。"
+        },
+        {
+          "knowledge_pack_id": "live_script",
+          "knowledge_pack_name": "直播控场脚本库",
+          "seed_goal": "沉淀直播间的开场、留人、答疑、案例过渡、留资承接脚本。"
+        },
+        {
+          "knowledge_pack_id": "comment_reply",
+          "knowledge_pack_name": "评论成交回复库",
+          "seed_goal": "沉淀评论区分层回复、转预约、转私信、转留资的话术模板，含品牌自评论暖场话术和评论区管理策略（置顶/隐藏/回复优先级）。"
+        },
+        {
+          "knowledge_pack_id": "private_message",
+          "knowledge_pack_name": "私信转化话术库",
+          "seed_goal": "沉淀私信首轮响应、需求确认、预约推进和风险规避表达，含多轮私信话术链（破冰→兴趣→需求→促成交→微信引流）和平台合规边界。"
+        },
+        {
+          "knowledge_pack_id": "case_story",
+          "knowledge_pack_name": "案例叙事模板库",
+          "seed_goal": "沉淀从问题、动作、过程到结果的案例表达结构。"
+        },
+        {
+          "knowledge_pack_id": "ad_copy",
+          "knowledge_pack_name": "广告文案模板库",
+          "seed_goal": "沉淀不同投放目标下的广告标题、正文、利益点和合规替代表达。"
+        },
+        {
+          "knowledge_pack_id": "risk_rewrite",
+          "knowledge_pack_name": "合规改写替代表达库",
+          "seed_goal": "把高风险表达改写成更稳妥的说法，含广告法违禁词替代、各平台敏感词规避和违禁词自动检测规则。"
+        },
+        {
+          "knowledge_pack_id": "industry_lexicon",
+          "knowledge_pack_name": "行业术语表达库",
+          "seed_goal": "沉淀不同细分行业的专业行话、黑话和老板视角表达。"
+        },
+        {
+          "knowledge_pack_id": "crm_summary",
+          "knowledge_pack_name": "线索跟进纪要模板库",
+          "seed_goal": "沉淀顾问跟进后的结构化纪要、标签、下一步动作与交接模板。"
+        },
+        {
+          "knowledge_pack_id": "platform_format_spec",
+          "knowledge_pack_name": "多平台内容格式规范库",
+          "seed_goal": "沉淀抖音（标题限制/标签/文案长度）、小红书（图文笔记/标题/正文/标签）、微信公众号（推文结构/排版）、B站（视频描述/标签/分区）、微博（正文长度/话题/超话）的格式规范。"
+        },
+        {
+          "knowledge_pack_id": "banned_word_dictionary",
+          "knowledge_pack_name": "违禁词与敏感词库",
+          "seed_goal": "沉淀广告法违禁词（极限用语/绝对化表述）、各平台敏感词（导流词/价格词/承诺词）、行业特定违规词及安全替代表达。"
+        },
+        {
+          "knowledge_pack_id": "seo_keyword_insertion",
+          "knowledge_pack_name": "SEO关键词植入规则库",
+          "seed_goal": "沉淀各平台搜索排名规则、关键词自然植入技巧、标题/正文/标签的关键词密度和长尾词策略。"
+        },
+        {
+          "knowledge_pack_id": "hashtag_strategy",
+          "knowledge_pack_name": "话题标签策略库",
+          "seed_goal": "沉淀各平台热门话题/超话/标签的选择策略，含大标签+垂直标签+长尾标签的组合公式和蹭热点时机。"
+        }
+      ]
+    },
+    {
+      "agent_id": "visualizer",
+      "agent_name": "幻影虾",
+      "default_task_type": "visual_prompting",
+      "summary": "视觉/视频生产层；负责AI绘图提示词、AI图片生成、数字人视频脚本与生成、视频剪辑、字幕生成和封面设计。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "shot_list",
+          "knowledge_pack_name": "分镜镜头库",
+          "seed_goal": "沉淀适合 To B 商业内容的镜头语言、景别切换和叙事节奏。"
+        },
+        {
+          "knowledge_pack_id": "scene_style",
+          "knowledge_pack_name": "场景风格库",
+          "seed_goal": "沉淀老板访谈、门店探访、办公场景、直播场景等视觉风格。"
+        },
+        {
+          "knowledge_pack_id": "cover_thumbnail",
+          "knowledge_pack_name": "封面版式提示库",
+          "seed_goal": "沉淀高识别度封面构图、标题层级、对比元素与视觉锚点，含AI生成封面图的提示词模板和多平台尺寸适配方案。"
+        },
+        {
+          "knowledge_pack_id": "evidence_asset",
+          "knowledge_pack_name": "证据型画面素材库",
+          "seed_goal": "沉淀增强可信度的素材类型，如后台数据、流程图、工位、交付现场。"
+        },
+        {
+          "knowledge_pack_id": "live_room_visual",
+          "knowledge_pack_name": "直播间视觉布局库",
+          "seed_goal": "沉淀直播间背景板、桌面陈列、提示卡、镜位和信息层级。"
+        },
+        {
+          "knowledge_pack_id": "before_after_safe",
+          "knowledge_pack_name": "前后对比合规呈现库",
+          "seed_goal": "沉淀前后对比类内容的安全表达和视觉替代方案。"
+        },
+        {
+          "knowledge_pack_id": "service_demo",
+          "knowledge_pack_name": "服务演示画面库",
+          "seed_goal": "沉淀咨询、交付、到店、培训、服务演示的镜头模板。"
+        },
+        {
+          "knowledge_pack_id": "broll_asset",
+          "knowledge_pack_name": "B-roll 补帧素材库",
+          "seed_goal": "沉淀提升节奏感和信息密度的补充画面与转场素材。"
+        },
+        {
+          "knowledge_pack_id": "brand_visual",
+          "knowledge_pack_name": "品牌识别视觉库",
+          "seed_goal": "沉淀品牌色、品牌符号、场景标准件和视觉一致性规则。"
+        },
+        {
+          "knowledge_pack_id": "forbidden_visual",
+          "knowledge_pack_name": "风险画面规避库",
+          "seed_goal": "沉淀容易触发审核、误导或导流风险的画面类型与安全替代。"
+        },
+        {
+          "knowledge_pack_id": "ai_image_prompt_template",
+          "knowledge_pack_name": "AI绘图提示词模板库",
+          "seed_goal": "沉淀Midjourney/Stable Diffusion/DALL-E/Flux的提示词结构、风格关键词、画面描述模板、负面提示词和参数设置（ar/style/quality）。"
+        },
+        {
+          "knowledge_pack_id": "digital_human_script_format",
+          "knowledge_pack_name": "数字人口播脚本格式库",
+          "seed_goal": "沉淀数字人视频脚本的结构规范，含语速标注（正常/快/慢）、表情标签（微笑/严肃/惊喜）、手势指令、停顿标记和镜头切换点。"
+        },
+        {
+          "knowledge_pack_id": "digital_human_platform_spec",
+          "knowledge_pack_name": "数字人平台对接规范库",
+          "seed_goal": "沉淀HeyGen/D-ID/硅基智能/腾讯智影的API参数、形象ID管理、音色选择、背景设置和渲染质量选项。"
+        },
+        {
+          "knowledge_pack_id": "video_edit_instruction",
+          "knowledge_pack_name": "视频剪辑指令规范库",
+          "seed_goal": "沉淀FFmpeg/MoviePy的常用剪辑指令序列，含片段拼接、转场效果、字幕叠加（SRT/ASS）、BGM混音和多尺寸导出（9:16/16:9/1:1）的参数模板。"
+        },
+        {
+          "knowledge_pack_id": "multi_size_adaptation",
+          "knowledge_pack_name": "多尺寸适配规则库",
+          "seed_goal": "沉淀抖音(9:16)、B站(16:9)、小红书(3:4/1:1)、微信(不定)等平台的尺寸要求，含裁剪策略、安全区标注和文字重排版规则。"
+        }
+      ]
+    },
+    {
+      "agent_id": "dispatcher",
+      "agent_name": "点兵虾",
+      "default_task_type": "dispatch_routing",
+      "summary": "分发调度层；负责任务拆包、定时发布、多账号轮转、跨平台同步和紧急下架。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "task_decomposition",
+          "knowledge_pack_name": "任务拆包库",
+          "seed_goal": "沉淀从需求到子任务、输入物、输出物、责任节点的拆解规则。"
+        },
+        {
+          "knowledge_pack_id": "routing_rule",
+          "knowledge_pack_name": "节点路由规则库",
+          "seed_goal": "沉淀不同任务应该如何路由到不同龙虾 Agent 或外部节点。"
+        },
+        {
+          "knowledge_pack_id": "prompt_guard",
+          "knowledge_pack_name": "Prompt 注入防护库",
+          "seed_goal": "沉淀调度时对异常输入、越权指令和脏数据的防护规则。"
+        },
+        {
+          "knowledge_pack_id": "priority_queue",
+          "knowledge_pack_name": "优先级调度库",
+          "seed_goal": "沉淀高价值任务、紧急任务、延迟容忍任务的排序与抢占规则。"
+        },
+        {
+          "knowledge_pack_id": "failover_strategy",
+          "knowledge_pack_name": "降级兜底策略库",
+          "seed_goal": "沉淀节点失败、超时、结果不合格时的补救流程。"
+        },
+        {
+          "knowledge_pack_id": "qa_checkpoint",
+          "knowledge_pack_name": "质检检查点库",
+          "seed_goal": "沉淀每类任务在流转中必须检查的质量点和拦截点。"
+        },
+        {
+          "knowledge_pack_id": "sla_sop",
+          "knowledge_pack_name": "交付时限 SOP 库",
+          "seed_goal": "沉淀不同任务等级的 SLA、提醒、升级和回写规范。"
+        },
+        {
+          "knowledge_pack_id": "tool_capability",
+          "knowledge_pack_name": "工具能力映射库",
+          "seed_goal": "沉淀不同工具、模型、Agent 的能力边界和适用场景。"
+        },
+        {
+          "knowledge_pack_id": "input_contract",
+          "knowledge_pack_name": "输入契约字段库",
+          "seed_goal": "沉淀各类任务的标准输入字段和校验规则。"
+        },
+        {
+          "knowledge_pack_id": "output_contract",
+          "knowledge_pack_name": "输出契约字段库",
+          "seed_goal": "沉淀各类任务的标准输出结构和回写要求。"
+        },
+        {
+          "knowledge_pack_id": "platform_publish_window",
+          "knowledge_pack_name": "各平台最佳发布时间库",
+          "seed_goal": "沉淀抖音/小红书/微信/B站/微博各平台不同行业、不同内容类型的最佳发布时间窗口和流量高峰规律。"
+        },
+        {
+          "knowledge_pack_id": "multi_account_rotation",
+          "knowledge_pack_name": "多账号轮转策略库",
+          "seed_goal": "沉淀单平台多账号轮转的频率控制、IP隔离、设备指纹差异化和限流恢复周期规则。"
+        },
+        {
+          "knowledge_pack_id": "post_publish_verification",
+          "knowledge_pack_name": "发布后验证规则库",
+          "seed_goal": "沉淀发布后检查内容是否被限流/屏蔽/删除的判定指标（播放量/推荐量/搜索可见性），含异常阈值和应对SOP。"
+        },
+        {
+          "knowledge_pack_id": "emergency_takedown_sop",
+          "knowledge_pack_name": "紧急下架SOP库",
+          "seed_goal": "沉淀检测到风险（违规/舆情/竞品举报）时的紧急下架流程，含触发条件、操作步骤、通知链和事后复盘。"
+        }
+      ]
+    },
+    {
+      "agent_id": "echoer",
+      "agent_name": "回声虾",
+      "default_task_type": "engagement_copy",
+      "summary": "互动转化层；负责评论区管理、私信自动回复、微信引流和情绪升级处理。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "comment_intent",
+          "knowledge_pack_name": "评论意图分层库",
+          "seed_goal": "沉淀评论区的咨询、质疑、挑衅、价格、观望等意图标签。"
+        },
+        {
+          "knowledge_pack_id": "trust_build",
+          "knowledge_pack_name": "信任建立回复库",
+          "seed_goal": "沉淀在公开互动中建立专业感、可信度与安全感的表达策略。"
+        },
+        {
+          "knowledge_pack_id": "crisis_diffusion",
+          "knowledge_pack_name": "负评化解库",
+          "seed_goal": "沉淀负面评论、投诉苗头、误解评论的降温和澄清回复。"
+        },
+        {
+          "knowledge_pack_id": "troll_filter",
+          "knowledge_pack_name": "低质评论过滤库",
+          "seed_goal": "沉淀无效互动、引战评论、恶意评论的识别与处理边界。"
+        },
+        {
+          "knowledge_pack_id": "faq_reply",
+          "knowledge_pack_name": "高频问答库",
+          "seed_goal": "沉淀老板常见问题、咨询入口问题与标准答法。"
+        },
+        {
+          "knowledge_pack_id": "live_interaction",
+          "knowledge_pack_name": "直播互动回复库",
+          "seed_goal": "沉淀直播间拉停留、答疑、控节奏、引导预约的互动表达。"
+        },
+        {
+          "knowledge_pack_id": "bait_comment_safe",
+          "knowledge_pack_name": "钩子评论合规库",
+          "seed_goal": "沉淀既能促进互动又不触发违规导流的评论钩子表达。"
+        },
+        {
+          "knowledge_pack_id": "appointment_transition",
+          "knowledge_pack_name": "预约承接话术库",
+          "seed_goal": "沉淀从公开评论平稳转入预约、留资或表单动作的话术。"
+        },
+        {
+          "knowledge_pack_id": "brand_tone",
+          "knowledge_pack_name": "品牌语气人格库",
+          "seed_goal": "沉淀不同品牌定位下的回复语气、边界和稳定风格。"
+        },
+        {
+          "knowledge_pack_id": "escalation_rule",
+          "knowledge_pack_name": "转人工升级条件库",
+          "seed_goal": "沉淀哪些互动必须转销售、客服、运营或法务人工接管。"
+        },
+        {
+          "knowledge_pack_id": "dm_intent_routing",
+          "knowledge_pack_name": "私信意图路由库",
+          "seed_goal": "沉淀私信消息的意图分类（咨询/投诉/意向/闲聊/广告/骚扰），每种意图的回复策略和是否转人工的判定规则。"
+        },
+        {
+          "knowledge_pack_id": "wechat_funnel_compliance",
+          "knowledge_pack_name": "微信引流合规话术库",
+          "seed_goal": "沉淀从平台私信引导添加微信的合规表达方式，含时机判断（几轮对话后引导）、话术变体（避免重复被检测）和平台风控规避。"
+        },
+        {
+          "knowledge_pack_id": "comment_management_strategy",
+          "knowledge_pack_name": "评论区管理策略库",
+          "seed_goal": "沉淀评论置顶选择标准、负面评论隐藏/回复策略、品牌自评论暖场话术和互动率提升技巧。"
+        }
+      ]
+    },
+    {
+      "agent_id": "catcher",
+      "agent_name": "铁网虾",
+      "default_task_type": "intent_classification",
+      "summary": "线索识别层；负责多维度线索评分、跨平台去重合并、CRM自动入库和竞品线索拦截。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "lead_intent_signal",
+          "knowledge_pack_name": "高意向信号库",
+          "seed_goal": "沉淀评论、私信、表单、通话中反映高购买意愿的典型信号。"
+        },
+        {
+          "knowledge_pack_id": "risk_lead_filter",
+          "knowledge_pack_name": "低质与高风险线索库",
+          "seed_goal": "沉淀无效线索、薅羊毛线索、竞争对手试探和高风险线索特征。"
+        },
+        {
+          "knowledge_pack_id": "purchase_readiness",
+          "knowledge_pack_name": "购买成熟度特征库",
+          "seed_goal": "沉淀冷、温、热不同成熟度线索的可识别特征与差异。"
+        },
+        {
+          "knowledge_pack_id": "industry_need_map",
+          "knowledge_pack_name": "需求类型映射库",
+          "seed_goal": "沉淀不同赛道老板需求如何映射到方案类型和销售路径。"
+        },
+        {
+          "knowledge_pack_id": "objection_trigger",
+          "knowledge_pack_name": "抗拒触发信号库",
+          "seed_goal": "沉淀线索在什么时刻、因什么刺激会产生价格或信任抗拒。"
+        },
+        {
+          "knowledge_pack_id": "budget_signal",
+          "knowledge_pack_name": "预算信号库",
+          "seed_goal": "沉淀能推断预算区间、决策速度和资源投入能力的表达特征。"
+        },
+        {
+          "knowledge_pack_id": "org_role",
+          "knowledge_pack_name": "角色识别库",
+          "seed_goal": "沉淀老板、店长、运营、投手、合伙人等身份识别规则。"
+        },
+        {
+          "knowledge_pack_id": "fraud_signal",
+          "knowledge_pack_name": "虚假线索与黑产信号库",
+          "seed_goal": "沉淀异常号码、重复身份、恶意脚本、测试流量等风险特征。"
+        },
+        {
+          "knowledge_pack_id": "followup_priority",
+          "knowledge_pack_name": "跟进优先级库",
+          "seed_goal": "沉淀哪些线索必须秒回、哪些可排队、哪些只做自动化触达。"
+        },
+        {
+          "knowledge_pack_id": "conversion_event",
+          "knowledge_pack_name": "转化事件定义库",
+          "seed_goal": "沉淀咨询、预约、到店、试用、成交等关键转化事件的标准定义。"
+        },
+        {
+          "knowledge_pack_id": "cross_platform_id_matching",
+          "knowledge_pack_name": "跨平台用户打通规则库",
+          "seed_goal": "沉淀通过手机号/微信号/邮箱/昵称/头像等信息进行跨平台用户去重和身份合并的规则和置信度阈值。"
+        },
+        {
+          "knowledge_pack_id": "lead_decay_function",
+          "knowledge_pack_name": "线索衰减函数库",
+          "seed_goal": "沉淀线索热度随时间衰减的计算模型，含衰减系数、唤醒信号（重新互动/二次访问）和从热到冷的阶段判定。"
+        },
+        {
+          "knowledge_pack_id": "competitor_lead_intercept",
+          "knowledge_pack_name": "竞品线索拦截库",
+          "seed_goal": "沉淀识别正在考虑竞品用户的信号词（提到竞品名/比价/犹豫），优先触达策略和差异化卖点话术。"
+        }
+      ]
+    },
+    {
+      "agent_id": "abacus",
+      "agent_name": "金算盘虾",
+      "default_task_type": "lead_scoring",
+      "summary": "ROI复盘层；负责多触点归因分析、渠道ROI对比、策略效果报告和策略反馈闭环。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "lead_scoring_model",
+          "knowledge_pack_name": "线索评分因子库",
+          "seed_goal": "沉淀影响线索热度、成交概率和优先级的评分因子。"
+        },
+        {
+          "knowledge_pack_id": "crm_field_map",
+          "knowledge_pack_name": "CRM 字段映射库",
+          "seed_goal": "沉淀前端线索字段、标签、动作与 CRM 字段之间的映射关系。"
+        },
+        {
+          "knowledge_pack_id": "webhook_event",
+          "knowledge_pack_name": "Webhook 事件标准库",
+          "seed_goal": "沉淀线索创建、更新、转阶段、成交、失效等事件的触发标准。"
+        },
+        {
+          "knowledge_pack_id": "attribution_source",
+          "knowledge_pack_name": "归因来源字典库",
+          "seed_goal": "沉淀自然流量、广告、直播、评论、私信等来源归因规则，扩展支持首触/末触/线性/时间衰减多种归因模型。"
+        },
+        {
+          "knowledge_pack_id": "roi_benchmark",
+          "knowledge_pack_name": "ROI 与成本基准库",
+          "seed_goal": "沉淀不同来源线索的成本、转化率与投入产出基准。"
+        },
+        {
+          "knowledge_pack_id": "revenue_projection",
+          "knowledge_pack_name": "收入预测约束库",
+          "seed_goal": "沉淀内部预测时应遵守的保守假设、变量口径和误差边界。"
+        },
+        {
+          "knowledge_pack_id": "sales_pipeline_stage",
+          "knowledge_pack_name": "销售阶段定义库",
+          "seed_goal": "沉淀从新线索到成交/丢单的阶段划分、进入条件和退出条件。"
+        },
+        {
+          "knowledge_pack_id": "alert_rule",
+          "knowledge_pack_name": "预警阈值库",
+          "seed_goal": "沉淀掉线、超时未跟进、转化异常、成本异常的预警规则。"
+        },
+        {
+          "knowledge_pack_id": "reporting_kpi",
+          "knowledge_pack_name": "日报周报 KPI 库",
+          "seed_goal": "沉淀日报、周报、月报所需的关键指标口径和解读规则。"
+        },
+        {
+          "knowledge_pack_id": "closed_loop_feedback",
+          "knowledge_pack_name": "成交闭环反馈库",
+          "seed_goal": "把成交/丢单结果反哺到评分、归因和策略优化，含策略反馈闭环数据流：金算虾→脑虫虾→下轮策略参数自动调整。"
+        },
+        {
+          "knowledge_pack_id": "multi_touch_attribution_model",
+          "knowledge_pack_name": "多触点归因模型库",
+          "seed_goal": "沉淀首触/末触/线性/时间衰减/U型归因等模型的适用场景、计算公式和数据链路要求。"
+        },
+        {
+          "knowledge_pack_id": "channel_roi_comparison",
+          "knowledge_pack_name": "渠道ROI对比基准库",
+          "seed_goal": "沉淀各渠道（抖音/小红书/微信/B站/微博/私域）的获客成本/转化率/客单价行业基准，含对比维度和异常偏差判定。"
+        },
+        {
+          "knowledge_pack_id": "strategy_report_template",
+          "knowledge_pack_name": "策略效果报告模板库",
+          "seed_goal": "沉淀周报/月报的结构模板，含关键指标呈现、趋势图表、归因分析、策略调整建议和下期计划的标准格式。"
+        }
+      ]
+    }
+  ],
+  "ninth_agent_variants": {
+    "feedback": {
+      "agent_id": "feedback",
+      "agent_name": "反馈虾",
+      "default_task_type": "strategy_feedback",
+      "summary": "闭环复盘与策略迭代；负责复盘、归因、方法论版本化。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "win_loss_review",
+          "knowledge_pack_name": "成交与丢单复盘库",
+          "seed_goal": "沉淀成交和丢单的关键因素、证据、转折点与归因逻辑。"
+        },
+        {
+          "knowledge_pack_id": "hypothesis_test",
+          "knowledge_pack_name": "A/B 假设迭代库",
+          "seed_goal": "沉淀选题、脚本、落地页、跟进方式的假设、变量与验证结果。"
+        },
+        {
+          "knowledge_pack_id": "content_feedback",
+          "knowledge_pack_name": "内容效果反馈库",
+          "seed_goal": "沉淀内容表现数据、评论反馈、成交贡献与优化方向。"
+        },
+        {
+          "knowledge_pack_id": "sales_call_review",
+          "knowledge_pack_name": "销售对话复盘库",
+          "seed_goal": "沉淀销售通话、咨询过程中的关键节点、问题和优秀动作。"
+        },
+        {
+          "knowledge_pack_id": "delivery_issue",
+          "knowledge_pack_name": "交付问题归因库",
+          "seed_goal": "沉淀交付延迟、预期落差、客诉、续费受阻等问题的归因。"
+        },
+        {
+          "knowledge_pack_id": "platform_penalty",
+          "knowledge_pack_name": "限流与违规回溯库",
+          "seed_goal": "沉淀被限流、被警告、被下架内容的成因和修复记录。"
+        },
+        {
+          "knowledge_pack_id": "playbook_version",
+          "knowledge_pack_name": "方法论版本库",
+          "seed_goal": "沉淀策略、话术、脚本、SOP 的版本迭代和生效条件。"
+        },
+        {
+          "knowledge_pack_id": "learning_agenda",
+          "knowledge_pack_name": "学习议程库",
+          "seed_goal": "沉淀团队在策略、内容、销售、数据方面的学习重点和补课方向。"
+        },
+        {
+          "knowledge_pack_id": "knowledge_gap",
+          "knowledge_pack_name": "知识缺口发现库",
+          "seed_goal": "沉淀当前知识库缺失、召回不足、误判频发的知识空洞。"
+        },
+        {
+          "knowledge_pack_id": "weekly_iteration",
+          "knowledge_pack_name": "周迭代任务库",
+          "seed_goal": "沉淀每周必须跟踪、验证、回收和升级的迭代动作。"
+        }
+      ]
+    },
+    "followup": {
+      "agent_id": "followup",
+      "agent_name": "回访虾",
+      "default_task_type": "sales_followup",
+      "summary": "成交跟进层；负责多触点跟进编排、个性化话术、沉默用户唤醒和复购续费提醒。",
+      "knowledge_targets": [
+        {
+          "knowledge_pack_id": "outreach_sop",
+          "knowledge_pack_name": "私信与电话跟进 SOP 库",
+          "seed_goal": "沉淀初次联系、二次触达、预约推进、失联补救的标准节奏。"
+        },
+        {
+          "knowledge_pack_id": "next_best_action",
+          "knowledge_pack_name": "下一步动作库",
+          "seed_goal": "沉淀不同线索状态下最优下一步动作和切换条件。"
+        },
+        {
+          "knowledge_pack_id": "followup_script",
+          "knowledge_pack_name": "跟进脚本库",
+          "seed_goal": "沉淀跟进开场、需求确认、推进预约、推进成交、收尾总结的话术。"
+        },
+        {
+          "knowledge_pack_id": "silence_reactivation",
+          "knowledge_pack_name": "沉默线索唤醒库",
+          "seed_goal": "沉淀长时间未回复、已读不回、冷却线索的唤醒策略。"
+        },
+        {
+          "knowledge_pack_id": "appointment_confirmation",
+          "knowledge_pack_name": "预约确认话术库",
+          "seed_goal": "沉淀预约前确认、提醒、材料准备与到场率提升话术。"
+        },
+        {
+          "knowledge_pack_id": "proposal_push",
+          "knowledge_pack_name": "方案发送推进库",
+          "seed_goal": "沉淀报价、方案、合同发送后的推进动作和异议处理。"
+        },
+        {
+          "knowledge_pack_id": "no_show_recovery",
+          "knowledge_pack_name": "爽约挽回库",
+          "seed_goal": "沉淀未到场、临时取消、拖延决策线索的挽回动作。"
+        },
+        {
+          "knowledge_pack_id": "trial_conversion",
+          "knowledge_pack_name": "试用转化推进库",
+          "seed_goal": "沉淀试用、试听、体验、demo 后的转化推进方式。"
+        },
+        {
+          "knowledge_pack_id": "closing_window",
+          "knowledge_pack_name": "逼单窗口判断库",
+          "seed_goal": "沉淀何时适合强推进、何时需要降压、何时转长期培育。"
+        },
+        {
+          "knowledge_pack_id": "lost_recovery",
+          "knowledge_pack_name": "丢单再激活库",
+          "seed_goal": "沉淀丢单后重新激活、换入口、换策略、换时机的打法。"
+        },
+        {
+          "knowledge_pack_id": "multi_touch_orchestration",
+          "knowledge_pack_name": "多触点跟进编排库",
+          "seed_goal": "沉淀跨渠道跟进的编排规则，含私信→微信→电话→邮件的切换条件、间隔时长、内容差异化和触点优先级。"
+        },
+        {
+          "knowledge_pack_id": "renewal_reminder_rule",
+          "knowledge_pack_name": "复购续费提醒规则库",
+          "seed_goal": "沉淀已成交客户的复购/续费提醒节点（到期前30天/15天/7天/3天/1天），含提醒话术、优惠策略和流失预警。"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_软装设计","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"project_plus_time_hook","title":"方向加时间同时出现时的高意向钩子","description":"当线索同时出现方向和到店时间时，应优先判为高意向候选。","examples":["周五晚想先看窗帘。","这周日想看看灯具和沙发。"],"priority":"high"},
+{"id":"first_visit_process_hook","title":"首次到店与流程顾虑钩子","description":"用户主动提到第一次来、不懂方案、怕踩坑和担心色差时，说明其到店意图更具体。","examples":["第一次来，周末想先看适不适合。","担心摆场翻车，想先来了解一下。"],"priority":"high"},
+{"id":"deadline_hook","title":"交房和节前入住钩子","description":"交房、婚房和节前入住前的明确日期，是软装设计线索中非常强的行动信号。","examples":["周六交房，想周四晚上先来看看。","下周入住，这两天想先看方案。"],"priority":"high"},
+{"id":"store_specific_booking_hook","title":"门店位置明确钩子","description":"当用户直接说出门店、商圈、地铁站附近或写字楼附近时，说明其已经在做实际选择阶段。","examples":["想约你们国金那家。","万象城门店这周末有设计师吗。"],"priority":"high"},
+{"id":"returning_owner_hook","title":"老客复访钩子","description":"用户提到之前来过、朋友推荐或上次感觉还不错时，通常意味着信任成本更低。","examples":["上次来店里看过，这次想看看下一步。","朋友推荐我来问问这周能不能沟通。"],"priority":"medium"},
+{"id":"price_with_context_hook","title":"带上下文的价格咨询钩子","description":"价格问题只要带着项目范围、时间窗口或场景，就不再是纯比较型流量。","examples":["节前想配一套，大概什么价位。","窗帘和灯具都想看看，周末想先来，价格大概多少。"],"priority":"medium"}]}

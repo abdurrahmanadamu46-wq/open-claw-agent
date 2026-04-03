@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐问题、时间和门店前，本轮目标是锁预约事实，不是先把项目说满",
+      "description": "美容院线索很多从“有没有位置”“最近想做做脸”开场，但真正决定能否推进的是皮肤问题、时间窗口、门店或商圈、是否第一次到店和是否有重要场合。FollowUp 遇到这类线索时，本轮目标应是补齐预约事实，而不是先承诺一定有位或先推高客单项目。",
+      "examples": [
+        "客户只问这周末能不能做时，先问问题和大概时段，而不是直接报套卡。",
+        "客户只说最近状态不好时，先补问题和门店，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_trust_stage",
+      "title": "首次到店和怕踩雷用户必须先进入信任建立阶段",
+      "description": "第一次来、怕过敏、怕乱推和怕踩雷的用户，跟进动作不能直接写成催到店或催成交。FollowUp 需要先进入信任建立阶段，围绕流程透明、卫生、咨询判断和适合性做收口。",
+      "examples": [
+        "敏感用户优先确认是否先咨询，而不是先推项目。",
+        "怕乱推卡的用户先给流程和边界，再谈时间。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pre_event_booking_needs_fast_decision_path",
+      "title": "婚礼、拍照和节前线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的窗口和能不能稳住状态。FollowUp 应先确认日期、时段和当前问题，再帮助其进入合适的预约，而不是在时间紧张时展开长篇推销。",
+      "examples": [
+        "周六拍照的客户先确认周四晚是否可约。",
+        "节前见人线索先锁可执行时段，再补项目说明。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "experience_card_to_second_visit_split",
+      "title": "首次体验卡跟进和第二次到店承接必须拆开",
+      "description": "美容院的第一次到店目标通常是体验、判断和建立信任，第二次到店才更适合承接长期管理或更高客单项目。FollowUp 不能把两阶段混成同一套催单动作。",
+      "examples": [
+        "体验卡核销后先问感受和状态变化，再谈下一步。",
+        "不能首次到店后立刻硬推年卡。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_reason_not_pressure",
+      "title": "老客回访要给具体理由，不要只催回来",
+      "description": "换季、节前、上次提到的问题回潮、上次建议的复访周期到了，都是合理的回访理由。FollowUp 应用具体理由引导老客复访，而不是泛泛问最近要不要来。",
+      "examples": [
+        "换季时提醒上次敏感问题的老客。",
+        "按上次建议周期提醒清洁或修护复访。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_followup_should_reduce_pushiness",
+      "title": "项目完成后的跟进要先收感受和状态，再决定是否推进",
+      "description": "护理完成后的 FollowUp 不是默认销售时刻。应先确认本次体验感受、当前状态和是否有不适，再根据反馈决定是安排下一次、给护理建议还是先做安抚。",
+      "examples": [
+        "做完清洁先问有没有紧绷和刺痛感。",
+        "做完节前急救先确认状态是否满足当前场景。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

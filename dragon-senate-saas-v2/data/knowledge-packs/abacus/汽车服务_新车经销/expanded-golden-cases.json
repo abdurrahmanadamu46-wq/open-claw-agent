@@ -1,0 +1,70 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_new_car_budget_time_001",
+      "label": "happy_path",
+      "scenario_tag": "budget_based_visit_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户想在周五晚去国金门店先看十五万级家用 SUV，第一次来，担心不会选配置，已明确下班后可到店时间。",
+        "crm_data": { "historical_close_rate_for_segment": 0.42, "segment_type": "预算型到店预约", "lifetime_value": 118000, "repeat_visit_probability": 0.29 },
+        "cost_data": { "cost_per_lead": 34, "visit_cost": 20, "testdrive_cost": 12, "followup_cost": 12, "estimated_gross_margin_rate": 0.53 },
+        "attribution_context": {
+          "touchpoints": ["小红书预算型内容咨询", "私信确认周五晚时间窗口", "查看门店和试驾流程内容"],
+          "last_meaningful_touch": "私信确认周五晚时间窗口"
+        }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["高短期分建立在预算、时间和到店意愿明确之上", "ROI 需要计入看车与试驾成本", "奖励信号应指向快速到店确认"],
+      "mustAvoid": ["只因价格敏感就高估价值", "忽略首次信任成本"]
+    },
+    {
+      "id": "abacus_new_car_deadline_002",
+      "label": "happy_path",
+      "scenario_tag": "seasonal_window_visit",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户周六提车，想周四晚先来看车并了解如何把方向理顺，第一次来看，已明确门店和时段范围。",
+        "crm_data": { "historical_close_rate_for_segment": 0.4, "segment_type": "节前提车到店", "lifetime_value": 121000, "repeat_visit_probability": 0.24 },
+        "cost_data": { "cost_per_lead": 31, "visit_cost": 18, "testdrive_cost": 10, "estimated_gross_margin_rate": 0.55 },
+        "attribution_context": {
+          "touchpoints": ["节前提车内容咨询", "私信确认提车日期", "补充首次到店事实"],
+          "last_meaningful_touch": "补充首次到店事实"
+        }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["高短期分建立在节点日期和到店窗口明确之上", "ROI 需要计入热门时段机会成本", "奖励信号应指向时段和适配方案确认"],
+      "mustAvoid": ["只因提车场景就无限抬高价值", "忽略首次到店的解释成本"]
+    },
+    {
+      "id": "abacus_new_car_hard_close_003",
+      "label": "risk_case",
+      "scenario_tag": "high_pressure_close_after_visit",
+      "input": {
+        "lead_assessment_or_campaign_result": "首次到店后，销售在现场强推金融方案，用户当场下订但后续在评论里表达后悔和不想再来。",
+        "crm_data": { "historical_close_rate_for_segment": 0.48, "segment_type": "高压首单升级", "lifetime_value": 62000, "repeat_visit_probability": 0.11 },
+        "cost_data": { "cost_per_lead": 26, "visit_cost": 16, "refund_risk_cost": 120, "estimated_gross_margin_rate": 0.56 },
+        "attribution_context": { "touchpoints": ["首次到店", "现场高压成交"], "last_meaningful_touch": "现场高压成交" }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["不能只按成交金额给高分", "长期分应显著下调", "ROI 必须计入退单与口碑风险"],
+      "mustAvoid": ["把账面高客单等同于高质量", "忽略后续流失风险"]
+    },
+    {
+      "id": "abacus_new_car_returning_004",
+      "label": "long_term_case",
+      "scenario_tag": "returning_buyer_revisit",
+      "input": {
+        "lead_assessment_or_campaign_result": "老客说上次来看过后方向清楚很多，这次想周末再来并看看置换下一步，已明确可来时间。",
+        "crm_data": { "historical_close_rate_for_segment": 0.6, "segment_type": "复访置换老客", "lifetime_value": 165000, "repeat_visit_probability": 0.5 },
+        "cost_data": { "cost_per_lead": 10, "visit_cost": 12, "testdrive_cost": 8, "estimated_gross_margin_rate": 0.64 },
+        "attribution_context": { "touchpoints": ["微信回访触达", "用户主动回复想再来看"], "last_meaningful_touch": "用户主动回复想再来看" }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["长期分显著高于冷启动新客", "短期分建立在本次问题和时间存在之上", "奖励信号应指向复访确认"],
+      "mustAvoid": ["把老客当普通泛咨询处理", "忽略低获客成本优势"]
+    }
+  ]
+}

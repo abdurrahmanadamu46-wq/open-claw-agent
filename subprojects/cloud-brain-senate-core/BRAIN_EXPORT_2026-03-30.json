@@ -1,0 +1,22 @@
+﻿{
+  "schema_version": "cloud_brain.export.v1",
+  "exported_at": "2026-03-30",
+  "subproject_id": "cloud-brain-senate-core",
+  "roles": [
+    { "id": "commander", "display_name": "Commander", "zh_name": "元老院总脑", "role_type": "supreme_orchestrator" },
+    { "id": "radar", "display_name": "Radar", "zh_name": "触须虾", "role_type": "elder" },
+    { "id": "strategist", "display_name": "Strategist", "zh_name": "脑虫虾", "role_type": "elder" },
+    { "id": "inkwriter", "display_name": "InkWriter", "zh_name": "吐墨虾", "role_type": "elder" },
+    { "id": "visualizer", "display_name": "Visualizer", "zh_name": "幻影虾", "role_type": "elder" },
+    { "id": "dispatcher", "display_name": "Dispatcher", "zh_name": "点兵虾", "role_type": "elder" },
+    { "id": "echoer", "display_name": "Echoer", "zh_name": "回声虾", "role_type": "elder" },
+    { "id": "catcher", "display_name": "Catcher", "zh_name": "铁网虾", "role_type": "elder" },
+    { "id": "abacus", "display_name": "Abacus", "zh_name": "金算虾", "role_type": "elder" },
+    { "id": "followup", "display_name": "FollowUp", "zh_name": "回访虾", "role_type": "elder" }
+  ],
+  "support_kernel": {
+    "id": "feedback",
+    "display_name": "Feedback Kernel",
+    "zh_name": "反馈内核"
+  }
+}

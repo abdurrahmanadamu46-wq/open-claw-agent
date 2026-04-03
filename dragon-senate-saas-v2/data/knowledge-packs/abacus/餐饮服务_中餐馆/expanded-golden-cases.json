@@ -1,0 +1,474 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_chinese_restaurant_private_room_birthday_deposit_001",
+      "label": "happy_path",
+      "scenario_tag": "private_room_birthday_with_deposit",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户咨询本周六晚 12 人生日宴包间，预算 3200 到 3800，已确认要儿童座椅和一位不吃辣，愿意今天先付定金并锁菜单框架。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.44,
+          "segment_type": "家庭生日宴包间",
+          "lifetime_value": 58000,
+          "past_referral_count_for_segment": 3,
+          "repeat_purchase_probability": 0.31
+        },
+        "cost_data": {
+          "cost_per_lead": 68,
+          "expected_service_labor_cost": 420,
+          "expected_food_cost": 1260,
+          "private_room_opportunity_cost": 260,
+          "estimated_gross_margin_rate": 0.47
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "短视频包间探店内容",
+            "私信咨询包间和菜单",
+            "电话确认人数并同意支付定金"
+          ],
+          "last_meaningful_touch": "电话确认人数并同意支付定金",
+          "engagement_metrics": {
+            "video_like": 23,
+            "video_comment": 4
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "把包间机会成本和服务成本计入后 ROI 仍然健康",
+        "奖励信号要指向定金到账、菜单确认和忌口补齐"
+      ],
+      "mustAvoid": [
+        "只因为视频互动不算高就低估价值",
+        "把口头占位和真实付定金等同"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_corporate_lunch_subscription_002",
+      "label": "edge_case",
+      "scenario_tag": "corporate_lunch_trial_with_recurring_potential",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户先想试一单 25 份工作日午餐盒饭，若体验稳定，计划给 3 个办公室做每周 4 天固定配送，并需要对公发票和月结流程。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.19,
+          "segment_type": "企业工作餐",
+          "lifetime_value": 420000,
+          "average_contract_cycle_days": 120,
+          "multi_site_repeat_probability": 0.37
+        },
+        "cost_data": {
+          "cost_per_lead": 110,
+          "sample_meal_cost": 280,
+          "expected_delivery_cost_per_run": 95,
+          "estimated_gross_margin_rate": 0.26,
+          "account_management_cost": 650
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询",
+            "菜单和报价单发送",
+            "试单时间确认"
+          ],
+          "last_meaningful_touch": "试单时间确认"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分高于短期分",
+        "不能因为首单金额不大就当成普通低价外卖线索",
+        "奖励信号应包含试单、开票和频次确认"
+      ],
+      "mustAvoid": [
+        "只看眼前一单毛利忽略复购潜力",
+        "把样餐和客户维护成本完全漏掉"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_member_reactivation_003",
+      "label": "happy_path",
+      "scenario_tag": "member_reactivation_family_dinner",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年办过满月酒的老会员回复回访短信，准备下个月带家人再订一个 8 人包间，点名想沿用上次两道招牌菜，并考虑顺便续充储值。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.57,
+          "segment_type": "老客复订",
+          "lifetime_value": 86000,
+          "historical_project_count_with_account": 2,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 18,
+          "expected_service_labor_cost": 260,
+          "expected_food_cost": 820,
+          "member_reactivation_coupon_cost": 120,
+          "estimated_gross_margin_rate": 0.49
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "会员回访短信",
+            "客户主动回电",
+            "历史订单偏好调取"
+          ],
+          "last_meaningful_touch": "客户主动回电并确认下个月安排"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 明显高于普通新客线索",
+        "把历史偏好和低获客成本视为价值来源",
+        "奖励信号应指向快速调档和复订确认"
+      ],
+      "mustAvoid": [
+        "把老客复订当成普通冷启动线索",
+        "忽略储值和后续转介绍空间"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_viral_comment_only_004",
+      "label": "failure_case",
+      "scenario_tag": "viral_public_interest_without_booking_facts",
+      "input": {
+        "lead_assessment_or_campaign_result": "一条爆款短视频带来大量评论，有用户只问“今晚排不排队”“人均最低多少”“能不能再便宜点”，但始终没有提供门店、时间和人数。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.06,
+          "segment_type": "公域围观咨询",
+          "lifetime_value": 9800,
+          "historical_no_show_rate": 0.58
+        },
+        "cost_data": {
+          "cost_per_lead": 32,
+          "expected_followup_cost": 55,
+          "estimated_gross_margin_rate": 0.21
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "爆款短视频",
+            "评论区问人均和排队",
+            "未转私信"
+          ],
+          "last_meaningful_touch": "评论区问人均和排队",
+          "engagement_metrics": {
+            "video_like": 5400,
+            "video_comment": 310
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分偏低",
+        "不能把高互动直接换算成高商业价值",
+        "奖励信号应偏向低成本补齐预订事实或继续筛选"
+      ],
+      "mustAvoid": [
+        "按评论热度给高优先级",
+        "建议投入高成本人工逐条深聊"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_holiday_banquet_without_deposit_005",
+      "label": "edge_case",
+      "scenario_tag": "holiday_banquet_high_budget_without_deposit",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户咨询中秋家宴 3 桌包间，预算看起来充足，也在催问能否先全部锁位，但表示要等家人商量后再付定金。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.21,
+          "segment_type": "节庆家宴",
+          "lifetime_value": 72000,
+          "seasonal_repeat_probability": 0.29
+        },
+        "cost_data": {
+          "cost_per_lead": 74,
+          "expected_food_cost": 2860,
+          "holiday_staffing_cost": 620,
+          "inventory_hold_risk_cost": 380,
+          "estimated_gross_margin_rate": 0.35
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "节庆套餐海报",
+            "电话咨询包间",
+            "微信追问锁位"
+          ],
+          "last_meaningful_touch": "微信追问能否先锁位但暂不付定金"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分需要被定金缺失明显封顶",
+        "长期分可以保留中等但置信度要下降",
+        "奖励信号应优先指向定金、菜单和档期确认"
+      ],
+      "mustAvoid": [
+        "把节庆紧迫感直接当成高短期价值",
+        "建议在未付款前正式锁死多桌包间资源"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_delivery_coupon_burst_low_margin_006",
+      "label": "failure_case",
+      "scenario_tag": "delivery_coupon_burst_with_low_net_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "午高峰平台券引来大量双人套餐订单，单量上涨明显，但客单价低、平台抽佣高、包装成本上升，且很多用户只用一次首单券。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.31,
+          "segment_type": "平台促销外卖",
+          "repeat_purchase_probability": 0.11,
+          "refund_rate": 0.09
+        },
+        "cost_data": {
+          "cost_per_lead": 46,
+          "platform_commission_rate": 0.23,
+          "packaging_cost_per_order": 4.8,
+          "delivery_subsidy_per_order": 7.5,
+          "estimated_gross_margin_rate": 0.14
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "平台首页活动位",
+            "首单优惠券",
+            "订单完成后未绑定会员"
+          ],
+          "last_meaningful_touch": "首单优惠券核销",
+          "engagement_metrics": {
+            "coupon_claims": 280,
+            "member_bind_rate": 0.07
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把订单量和 GMV 直接当成高 ROI",
+        "短期分和 ROI 都应保持谨慎",
+        "奖励信号要偏向二次复购、会员绑定或错峰引导"
+      ],
+      "mustAvoid": [
+        "因为单量上涨就默认加大投放",
+        "忽略抽佣、包装和补贴后的净毛利"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_food_safety_repair_007",
+      "label": "failure_case",
+      "scenario_tag": "vip_complaint_service_recovery",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位历史高客单会员反馈上次外卖有异味并在私信里要求解释，表示如果处理妥当还愿意继续来店里请客，但目前情绪明显不满。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.48,
+          "segment_type": "高价值会员客诉",
+          "lifetime_value": 126000,
+          "dispute_history": "low",
+          "past_referral_count_for_segment": 4
+        },
+        "cost_data": {
+          "cost_per_lead": 12,
+          "expected_refund_cost": 288,
+          "expected_service_recovery_cost": 180,
+          "brand_risk_reserve": 500,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "会员外卖订单",
+            "私信投诉异味",
+            "要求店长解释"
+          ],
+          "last_meaningful_touch": "要求店长解释",
+          "duplicate_merge_required": false
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应显著降低并强调人工处理",
+        "长期价值不能被直接归零，但必须以修复成功为前提",
+        "奖励信号要指向店长介入、证据留存和修复方案，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把高历史消费错误理解为当前高成交意向",
+        "建议用优惠券替代食安复核"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_duplicate_channel_merge_008",
+      "label": "happy_path",
+      "scenario_tag": "duplicate_banquet_lead_across_channels",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一位企业行政先在团购页留言问包间，后又电话咨询年终聚餐，最终通过企业微信发来人数和预算，内容都指向同一天 18 人商务晚宴。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.33,
+          "segment_type": "企业商务晚宴",
+          "lifetime_value": 188000,
+          "duplicate_project_risk": "high",
+          "repeat_purchase_probability": 0.27
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "group_buy_page": 36,
+            "telephone_followup": 18,
+            "enterprise_wechat_followup": 24
+          },
+          "expected_service_labor_cost": 520,
+          "expected_food_cost": 2360,
+          "estimated_gross_margin_rate": 0.41
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "团购页咨询包间",
+            "电话确认晚宴日期",
+            "企业微信发送人数预算并要求预留包间"
+          ],
+          "last_meaningful_touch": "企业微信发送人数预算并要求预留包间",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一个机会计算价值",
+        "奖励信号要更偏向企业微信这一关键推进触点",
+        "不能把多个入口重复记成多份 ROI"
+      ],
+      "mustAvoid": [
+        "让最后一个触点独占全部 credit 而忽略前置触达成本",
+        "把电话、团购、私域分别算成三条高价值线索"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_live_seafood_margin_risk_009",
+      "label": "edge_case",
+      "scenario_tag": "high_ticket_live_seafood_with_discount_pressure",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户要做一桌 10 人商务海鲜宴，预算口径看起来有 6000 左右，但点名活海鲜和酒水，还要求在现有套餐基础上继续打折，且采购截止时间只剩 1 天。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.24,
+          "segment_type": "高客单商务海鲜宴",
+          "lifetime_value": 96000,
+          "service_radius_fit": "strong",
+          "repeat_purchase_probability": 0.22
+        },
+        "cost_data": {
+          "cost_per_lead": 88,
+          "expected_live_seafood_cost": 2480,
+          "expected_beverage_service_cost": 360,
+          "expected_waste_risk_cost": 260,
+          "estimated_gross_margin_rate": 0.22
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "商务宴请菜单页",
+            "电话咨询时价海鲜",
+            "微信要求继续打折"
+          ],
+          "last_meaningful_touch": "微信要求继续打折"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高金额不等于高 ROI",
+        "短期分可以保留中等但必须被毛利和采购时点约束",
+        "奖励信号应强调锁定定金、菜品结构和折扣底线"
+      ],
+      "mustAvoid": [
+        "按预算口径自动给高优先级",
+        "忽略时价食材和损耗风险"
+      ]
+    },
+    {
+      "id": "abacus_chinese_restaurant_off_peak_group_buy_fill_010",
+      "label": "edge_case",
+      "scenario_tag": "off_peak_group_buy_fill_capacity",
+      "input": {
+        "lead_assessment_or_campaign_result": "社群用户想周二下午 2 点来 4 个人吃团购套餐，对价格很敏感，但明确不会占用晚市，且愿意现场加点饮品和小吃。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.28,
+          "segment_type": "错峰团购到店",
+          "lifetime_value": 24000,
+          "repeat_purchase_probability": 0.18,
+          "member_conversion_rate": 0.16
+        },
+        "cost_data": {
+          "cost_per_lead": 21,
+          "expected_food_cost": 168,
+          "expected_service_labor_cost": 72,
+          "estimated_gross_margin_rate": 0.32,
+          "peak_cannibalization_risk": "low"
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "社群团购券",
+            "客服确认错峰时间",
+            "用户表示愿意到店后加点"
+          ],
+          "last_meaningful_touch": "客服确认错峰时间",
+          "engagement_metrics": {
+            "coupon_claims": 18,
+            "add_on_intent": 0.62
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分可以给中等，不必机械压低",
+        "ROI 要建立在错峰填充和加购空间上",
+        "奖励信号应鼓励会员绑定和后续复访"
+      ],
+      "mustAvoid": [
+        "把所有低价团购都视为低价值噪音",
+        "忽略其不占用高峰台位这一条件"
+      ]
+    }
+  ]
+}

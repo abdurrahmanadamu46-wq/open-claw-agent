@@ -1,0 +1,262 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_fast_food_case_001",
+      "label": "happy_path",
+      "scenario": "写字楼快餐店午市招牌双拼盖饭套餐与叫号取餐证据",
+      "input": {
+        "copy_pack": "写字楼园区快餐店午市短视频脚本，核心卖点是招牌双拼盖饭和小食套餐出餐快、工作日 11:30 到 13:30 稳定翻台、上班族午休不用绕路，适合附近白领堂食或打包带回工位。",
+        "brand_assets": [
+          "门头与写字楼入口关系镜头",
+          "点餐台与菜单灯箱画面",
+          "明档双拼盖饭装盘视频",
+          "炸物出锅或保温出餐口镜头",
+          "叫号屏与取餐口画面",
+          "托盘成套餐与价格签",
+          "白领避脸取餐与落座画面",
+          "桌面第一口与见底速度素材",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "克制纪实的工作餐节奏",
+          "真实快餐店午市效率"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "lunch_service": true,
+          "counter_access": true,
+          "kitchen_access_partial": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "招牌双拼盖饭或套餐成品作为开场证据",
+        "点单、叫号、取餐和开吃中的至少三段真实链路",
+        "11:30 到 13:30 午市节奏的真实证明",
+        "明确列出顾客避脸拍摄和明档部分可拍的依赖"
+      ],
+      "mustAvoid": [
+        "用空店环境镜头撑满前半段",
+        "拿外部白领和别家工作餐素材冒充本店午市",
+        "把低峰时段碎剪成持续高峰翻台"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把写字楼快餐店脚本转成一条以真实套餐、午市效率和顺路工作餐可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在 11:30 前完成门头、点餐台和空位建立镜头，再在 11:30 到 13:30 之间补叫号、取餐和落座节奏。",
+          "白领顾客不适合正脸近拍，因此以背影、手部、托盘和到桌动作为主画面。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、点餐台、明档装盘、叫号屏、取餐口和开吃画面。",
+          "脚本核心卖点围绕午休不绕路、套餐完整和稳定出餐速度。"
+        ],
+        "confidence": 0.9,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给招牌双拼盖饭整托盘，右上角补叫号屏或取餐口一角，标题聚焦午休这一份够快也够饱。",
+        "shot_list": "1) 写字楼入口与门头建立顺路工作餐位置 2) 点餐台和菜单灯箱交代主打套餐与价格带 3) 明档装盘和热餐落托盘建立真实出餐证据 4) 叫号屏、取餐口和白领避脸拿餐证明午市效率 5) 到桌第一口与桌面见底速度补足真实就餐反馈 6) 门店位置与午市到店建议收束到堂食或打包 CTA",
+        "asset_dependencies": "写字楼入口、门头、点餐台、菜单灯箱、招牌双拼盖饭、热食出餐口、叫号屏、取餐口、白领避脸拿餐、堂食桌面反馈；需锁定 11:30 到 13:30 可拍窗口并确认明档部分可拍。",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_fast_food_case_002",
+      "label": "happy_path",
+      "scenario": "商场炸鸡汉堡快餐店傍晚现炸双人餐与外带打包证据",
+      "input": {
+        "copy_pack": "商场连锁快餐店视频脚本，重点想讲现炸鸡腿堡、薯条和双人分享餐刚出锅，适合下班后顺手打包回家或逛街边走边吃，希望观众看到出餐热感、叫号节奏和打包完整度。",
+        "brand_assets": [
+          "商场楼层指引与门头镜头",
+          "现炸下锅与出篮沥油视频",
+          "汉堡组装与薯条装盒画面",
+          "双人餐托盘与打包袋成片",
+          "叫号屏或取餐台画面",
+          "员工装袋与封口动作",
+          "顾客避脸提袋离店或家庭接餐素材",
+          "新品海报与 Logo 墙"
+        ],
+        "reference_styles": [
+          "克制的热食纪实感",
+          "真实商场快餐外带节奏"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "dinner_service": true,
+          "fry_station_access": true,
+          "customer_closeup_allowed": false,
+          "mall_peak_flow": "moderate"
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "现炸或现组装热食作为前段证据",
+        "双人餐完整打包和提袋离店链路",
+        "商场楼层和柜台位置锚点",
+        "明确列出炸台可拍窗口和顾客避脸约束"
+      ],
+      "mustAvoid": [
+        "假装全天持续排长队",
+        "没有打包证据却硬讲适合带回家",
+        "用过度电影化慢镜削弱快餐热感和效率"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把商场快餐店脚本转成一条以现炸热感、双人外带完整度和下班顺手带走可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在傍晚客流起来前拍门头和楼层指引，再在饭点补炸台、装袋和提袋离店镜头。",
+          "顾客不适合正脸近拍，因此重点使用手部、背影和提袋离店动作表达消费场景。"
+        ],
+        "evidence": [
+          "品牌素材同时具备楼层位置、现炸出锅、汉堡组装、双人餐成品、装袋和提袋离店画面。",
+          "脚本核心卖点是刚出锅热食与顺手打包，而不是堂食氛围或夸张排队。"
+        ],
+        "confidence": 0.87,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用现炸鸡腿堡和双人餐打包袋做主体，左下角补商场楼层标识或柜台一角，标题聚焦刚出锅这一袋带走刚刚好。",
+        "shot_list": "1) 商场楼层指引与门头交代顺路快取位置 2) 炸台下锅和出篮沥油建立热感证据 3) 汉堡组装与薯条装盒连到双人餐完整成品 4) 叫号屏、取餐口和员工装袋证明真实交付链路 5) 顾客避脸提袋离店或家庭接餐补足外带场景 6) 新品海报与到店提醒收束到双人餐 CTA",
+        "asset_dependencies": "商场楼层指引、门头、炸台下锅、出篮沥油、汉堡组装、薯条装盒、双人餐成品、叫号屏、取餐台、装袋封口、顾客避脸提袋离店；需确认傍晚饭点和炸台可拍窗口。",
+        "execution_feasibility_score": "0.87"
+      }
+    },
+    {
+      "id": "visualizer_fast_food_case_003",
+      "label": "edge_case",
+      "scenario": "社区快餐店仅有门头柜台与标准盒饭素材，却想讲工作日午高峰爆单",
+      "input": {
+        "copy_pack": "社区简餐快餐店脚本，原本想讲天天中午排队、出餐飞快、盖饭和汤品都稳定，但现有素材只有门头、菜单灯箱、收银台、几份标准盒饭成品、打包袋和零散顾客取餐，没有真实高峰排队，也不能进入后厨。",
+        "brand_assets": [
+          "门头白天外景",
+          "菜单灯箱与收银台",
+          "标准盒饭成品",
+          "打包袋与餐盒贴签",
+          "零散顾客避脸取餐画面",
+          "Logo 与营业时间贴"
+        ],
+        "reference_styles": [
+          "真实克制的社区快餐店",
+          "顺路带走而非爆单探店"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "lunch_service_partial": true,
+          "kitchen_access": false,
+          "queue_stability": "low",
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确当前没有真实高峰排队和后厨权限",
+        "主动降级为标准工作餐或顺路带走路线",
+        "只围绕门头、柜台、盒饭和零散取餐素材设计镜头"
+      ],
+      "mustAvoid": [
+        "硬做天天排队和爆单叙事",
+        "虚构现炒现做或完整叫号链路",
+        "把执行分数打得高于真实素材条件"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在没有真实高峰和后厨权限的前提下，把社区快餐店脚本降级为一条以标准工作餐、顺路带走和清晰菜单选择为核心的可执行分镜。",
+        "assumptions": [
+          "可在午前或午后低峰补门头、菜单灯箱、柜台和打包动作镜头，但不承诺拍到可用排队素材。",
+          "顾客更适合避脸拍手部和取袋动作，不以正脸互动作为关键证据。"
+        ],
+        "evidence": [
+          "现有素材集中在门头、收银台、标准盒饭、打包袋和零散取餐画面。",
+          "脚本原本想讲高峰爆单，但真实可用证据只支持稳定工作餐和顺路带走。"
+        ],
+        "confidence": 0.69,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用标准盒饭和打包袋做主体，右侧补菜单灯箱或门头一角，标题聚焦附近这一份工作餐带走够不够省事，不使用任何排队暗示。",
+        "shot_list": "1) 门头与营业时间交代社区顺路属性 2) 菜单灯箱和收银台说明主打工作餐选择 3) 标准盒饭成品和打包袋贴签建立真实交付形态 4) 零散顾客避脸取餐补足顺路带走场景 5) 回看盒饭份量和门店定位收束到稳定工作餐逻辑 6) 营业时段与到店提醒形成快取 CTA",
+        "asset_dependencies": "门头外景、营业时间贴、菜单灯箱、收银台、标准盒饭成品、打包袋、餐盒贴签、零散顾客避脸取餐；缺少真实高峰排队、后厨和完整叫号屏素材。",
+        "execution_feasibility_score": "0.64"
+      }
+    },
+    {
+      "id": "visualizer_fast_food_case_004",
+      "label": "failure_case",
+      "scenario": "未开业快餐品牌只有效果图和菜单海报，却想做午市爆满探店",
+      "input": {
+        "copy_pack": "新快餐品牌宣传脚本，希望做出午市排队、主打套餐很火、门店空间很有秩序感的探店效果，但门店尚未正式开业，没有真实餐品、没有顾客、也没有柜台和后厨可拍条件，目前只有装修效果图、菜单海报、包装样机、品牌 Logo 和开业倒计时物料。",
+        "brand_assets": [
+          "装修效果图",
+          "菜单海报",
+          "包装样机",
+          "品牌 Logo",
+          "开业倒计时海报"
+        ],
+        "reference_styles": [
+          "新店预告",
+          "清晰的菜单方向说明"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "store_open": false,
+          "real_food_assets": false,
+          "customer_assets": false,
+          "counter_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店未开业且没有真实餐品和客流证明",
+        "主动降级为开业预告或菜单方向说明",
+        "给出低执行分和开业后补拍清单"
+      ],
+      "mustAvoid": [
+        "把效果图和包装样机包装成真实营业现场",
+        "拿外部快餐店餐品和人流素材冒充本店",
+        "继续设计排队、叫号和取餐探店叙事"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在门店未开业且没有真实餐品和客流素材的前提下，输出一条不冒充营业现场的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌方向、菜单结构和开业时间信息。",
+          "任何真实套餐、柜台、叫号、顾客和高峰镜头都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、菜单海报、包装样机、品牌 Logo 和倒计时物料。",
+          "拍摄条件完全不支持真实快餐探店链路和营业节奏证明。"
+        ],
+        "confidence": 0.62,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，用效果图和 Logo 做主体，标题明确写新店即将开业或主打套餐方向先看，不给任何已营业暗示。",
+        "shot_list": "1) 装修效果图与品牌 Logo 建立新店印象 2) 菜单海报拆解未来主打套餐和价格带方向 3) 包装样机说明交付形式但不冒充真实出餐 4) 明确当前没有真实餐品、柜台和客流证据 5) 列出开业后需要补拍的门头、套餐、柜台、叫号和堂食素材 6) 开业倒计时与关注提醒收束到预告 CTA",
+        "asset_dependencies": "装修效果图、菜单海报、包装样机、品牌 Logo、开业倒计时海报；缺少门头实景、真实套餐、柜台、叫号、顾客和任何饭点证明素材。",
+        "execution_feasibility_score": "0.28"
+      }
+    }
+  ]
+}

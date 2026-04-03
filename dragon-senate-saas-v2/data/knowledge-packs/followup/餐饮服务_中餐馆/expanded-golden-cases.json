@@ -1,0 +1,301 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_restaurant_same_day_booking_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_reservation_completion",
+      "input": {
+        "lead_assessment": "A 级高意向晚餐订位线索，客户刚在私信里回复今晚想去国贸店，19:00 左右 4 大 1 小，用餐目的为家庭晚餐。",
+        "value_score_card": "short_term high; booking likelihood high; fast follow-up within current meal window should convert",
+        "contact_history": [
+          "25 分钟前客户评论“今晚还有位置吗”",
+          "12 分钟前已转入私信并补充门店、到店时间和人数"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以完成订位或候位确认为明确目标",
+        "私信里确认门店、时间、人数和儿童座椅等关键事实",
+        "不越过审批改打电话或索要站外联系方式"
+      ],
+      "mustAvoid": [
+        "直接保证到店免等位",
+        "在未核台位前写成已订座成功"
+      ]
+    },
+    {
+      "id": "followup_restaurant_private_room_birthday_002",
+      "label": "happy_path",
+      "scenario_tag": "private_room_event_qualification",
+      "input": {
+        "lead_assessment": "A- 级高意向生日家宴线索，客户明确要周六晚包间，10 位成人 2 位儿童，重视长辈用餐舒适和蛋糕安排。",
+        "value_score_card": "short_term high; group dining value high; next best action is qualification plus deposit path",
+        "contact_history": [
+          "昨天已问过是否有包间",
+          "今天上午补充了人数和生日场景，但还没确认预算和菜单"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进阶段放在包间资格确认而不是直接推最贵套餐",
+        "推进确认日期、人数、预算、蛋糕或老人小孩需求和定金节点",
+        "为后续包间锁定保留明确下一步"
+      ],
+      "mustAvoid": [
+        "未核库存就承诺指定包间",
+        "不问需求直接强推高价宴席"
+      ]
+    },
+    {
+      "id": "followup_restaurant_banquet_menu_feedback_003",
+      "label": "happy_path",
+      "scenario_tag": "banquet_quote_feedback",
+      "input": {
+        "lead_assessment": "B+ 级公司聚餐线索，客户已收到 2 档宴席菜单和人均区间，但迟迟没有回套餐选择。",
+        "value_score_card": "short_term medium_high; objection handling likely needed; booking step is finding blocker",
+        "contact_history": [
+          "昨天下午已发送 8 桌公司聚餐菜单和包间说明",
+          "客户已读未回 20 小时"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在确认预算、桌数、包间或菜单卡点",
+        "提供菜单微调或讲解入口而不是只重复发同一套餐",
+        "节奏温和，不在同一餐期连续催"
+      ],
+      "mustAvoid": [
+        "跳过异议直接催定金",
+        "24 小时内多轮轰炸"
+      ]
+    },
+    {
+      "id": "followup_restaurant_reactivation_seasonal_004",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_reason",
+      "input": {
+        "lead_assessment": "沉睡但已合格的家宴线索，客户两周前问过包间和人均，后来停在“再看看”。",
+        "value_score_card": "short_term medium; long_term high; reactivation with new seasonal reason likely",
+        "contact_history": [
+          "16 天前客户咨询周末家宴包间和人均 120-150",
+          "最近无回复",
+          "门店本周新增工作日晚市包间空档和一版更贴近家庭聚餐的人均菜单"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "带着新的包间空档或更合适菜单复联",
+        "语气轻，不默认客户仍按原时间用餐",
+        "给低压力回复入口，例如只回继续或暂缓"
+      ],
+      "mustAvoid": [
+        "只发“还需要吗”",
+        "连续两天追问"
+      ]
+    },
+    {
+      "id": "followup_restaurant_allergy_approval_wait_005",
+      "label": "edge_case",
+      "scenario_tag": "allergy_callback_approval_wait",
+      "input": {
+        "lead_assessment": "高意向家庭聚餐线索，客户说明孩子对花生严重过敏，并希望有人电话确认可点菜品。",
+        "value_score_card": "high intent but safety and approval sensitive",
+        "contact_history": [
+          "客户刚留言询问某两道菜是否含花生及是否能避免交叉接触",
+          "门店内部尚未完成 outbound call 与特殊饮食口径审批"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "审批感知暂停",
+        "若私信允许则先收集具体过敏原、门店、用餐时间和目标菜品",
+        "不做未核实的安全承诺"
+      ],
+      "mustAvoid": [
+        "先打电话再补审批",
+        "承诺绝对零交叉接触"
+      ]
+    },
+    {
+      "id": "followup_restaurant_overcontact_cooldown_006",
+      "label": "edge_case",
+      "scenario_tag": "overcontact_same_day_booking",
+      "input": {
+        "lead_assessment": "中高意向当日晚餐线索，客户白天问过订位但一直未继续回复，仍有转化价值。",
+        "value_score_card": "short_term medium; annoyance risk rising",
+        "contact_history": [
+          "上午 11:20 已私信询问门店和人数一次",
+          "下午 15:10 又提醒过一次",
+          "目前 5 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频",
+        "把下一次触达放到更合适的下一餐前或次日",
+        "给客户更低成本的回复方式，例如只回时间或人数"
+      ],
+      "mustAvoid": [
+        "当天第三次追问",
+        "把沉默直接解读为永久拒绝并施压"
+      ]
+    },
+    {
+      "id": "followup_restaurant_deposit_gate_007",
+      "label": "edge_case",
+      "scenario_tag": "holiday_private_room_deposit_gate",
+      "input": {
+        "lead_assessment": "A 级节假日包间线索，客户口头认可了菜单方向，希望先占周五晚黄金档包间，定金要明天再付。",
+        "value_score_card": "short_term high but deposit gate unresolved",
+        "contact_history": [
+          "客户已确认 12 人用餐和包间需求",
+          "表示今天先口头定下，明天再转定金"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进目标设为定金或正式确认条件",
+        "说明未到定金前只能做短时保留或待支付跟进",
+        "保留档期风险提示"
+      ],
+      "mustAvoid": [
+        "承诺正式锁定黄金档包间",
+        "把口头确认等同于完成预订"
+      ]
+    },
+    {
+      "id": "followup_restaurant_peak_wait_relief_008",
+      "label": "happy_path",
+      "scenario_tag": "peak_dinner_waitlist_relief",
+      "input": {
+        "lead_assessment": "B 级同餐期紧急到店线索，客户今晚 18:30 想 6 人到热门门店吃饭，核心诉求是少等位。",
+        "value_score_card": "short_term high; booking likelihood depends on expectation management",
+        "contact_history": [
+          "20 分钟前客户问“现在去会不会排很久”",
+          "刚刚补充了门店和人数"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "不做零等位承诺",
+        "推进候位、错峰到店、提前或延后半小时或改门店中的一个明确方案",
+        "语气以帮客户少扑空为主"
+      ],
+      "mustAvoid": [
+        "保证马上有桌",
+        "为了抢单忽略当前餐期容量波动"
+      ]
+    },
+    {
+      "id": "followup_restaurant_service_recovery_rebook_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_rebook",
+      "input": {
+        "lead_assessment": "曾有外卖漏餐投诉但已进入修复阶段的老客，客户表示如果线下体验稳还愿意再来。",
+        "value_score_card": "trust recovery can reopen booking probability",
+        "contact_history": [
+          "三天前客户投诉外卖少了一道菜",
+          "售后已完成补单并得到客户“知道了”的回应",
+          "今天客户在私信里问周末到店是否会比外卖更稳"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力订位或服务备注确认",
+        "若涉及补偿只引用已批准内容"
+      ],
+      "mustAvoid": [
+        "跳过道歉和问题回写直接硬推消费",
+        "擅自追加未批准补偿"
+      ]
+    },
+    {
+      "id": "followup_restaurant_coupon_boundary_010",
+      "label": "failure_case",
+      "scenario_tag": "coupon_rules_unverified",
+      "input": {
+        "lead_assessment": "高紧急优惠线索，客户发来一张团购截图，想今晚直接用在包间聚餐上，但门店和券规则都没核清。",
+        "value_score_card": "short_term medium_high; conversion possible but promise risk high",
+        "contact_history": [
+          "客户连续追问“这张券今晚能直接用吧”",
+          "目前只收到截图，没有明确门店、餐期和人数"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先核门店、到店时间、人数和券规则截图关键信息",
+        "把下一步转成优惠适用条件确认，再决定是否推进订位",
+        "不把未验证优惠写成已可用"
+      ],
+      "mustAvoid": [
+        "一口答应所有门店和包间都能用",
+        "为了留单绕开限制条件"
+      ]
+    }
+  ]
+}

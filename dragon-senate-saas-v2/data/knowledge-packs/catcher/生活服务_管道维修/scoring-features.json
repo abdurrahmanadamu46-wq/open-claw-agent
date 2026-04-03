@@ -1,0 +1,7 @@
+{"industry":"生活服务_管道维修","lobster_id":"catcher","pack_type":"scoring-features","version":"v1","items":[
+{"id":"intent_explicitness","title":"上门动作显性度","description":"评估线索是否明确表达想约、想来、今晚能不能安排、有没有上门时段等动作。","examples":["高分：今晚能不能帮我安排师傅。","低分：最近想问下维修。"],"priority":"high"},
+{"id":"scene_specificity","title":"场景方向清晰度","description":"高分线索会明确提到疏通、查漏、反味和爆管等具体方向。","examples":["高分：最近想做查漏。","低分：想问下管道问题。"],"priority":"high"},
+{"id":"scope_clarity","title":"位置范围清晰度","description":"评估线索是否给出位置、区域和重点问题。","examples":["高分：厨房下水堵了。","低分：水有点不顺。"],"priority":"high"},
+{"id":"timing_urgency","title":"时间窗口紧迫度","description":"夜间、交房、返家和周末来客节点越明确，分值越高。","examples":["高分：今晚就要。","低分：有空再约。"],"priority":"medium"},
+{"id":"trust_readiness","title":"信任推进 readiness","description":"看用户是否愿意继续补充位置、范围、门店和时间，而不是停留在泛咨询。","examples":["高分：可以，我把位置和时间发你。","低分：先看看再说。"],"priority":"medium"},
+{"id":"risk_boundary","title":"风险边界稳定度","description":"涉及绝不乱拆、绝不乱收费和超范围上门的线索要扣分，避免把高风险话题误算成高价值。","examples":["高风险：保证不乱拆、现在一定上门。","低风险：想找报价清楚、门店能说明清楚的路线。"],"priority":"medium"}]}

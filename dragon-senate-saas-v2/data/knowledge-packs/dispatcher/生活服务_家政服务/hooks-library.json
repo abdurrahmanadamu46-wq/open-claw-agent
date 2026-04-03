@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次预约问询触发优先调度","description":"当来单中出现第一次来、想先上门、想先看看方案或具体范围问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先看深清方案。","客户想先看开荒路线是否适合自己。"],"priority":"high"},
+  {"id":"seasonal_window_inquiry","title":"节前与入住窗口询单触发时效优先调度","description":"当来单明确说明节前、入住和退租节点时，Dispatcher 要立即优先判断热门时段可用性和排班边界。","examples":["客户这周要来客，想周四晚先上门。","客户说明下周入住，希望今晚先确认。"],"priority":"high"},
+  {"id":"high_scope_trigger","title":"房型加项触发高工时优先调度","description":"当用户明确房型、面积和加项时，Dispatcher 应优先分配高工时路线。","examples":["客户 120 平开荒带玻璃。","客户两居深清带油烟机和卫生间除垢。"],"priority":"high"},
+  {"id":"peak_schedule_trigger","title":"高峰时段触发排班优先调度","description":"当用户需要这周末或节前上门时，Dispatcher 要优先判断候补与改时段路径。","examples":["这周六前想先做完。","节前这两天想约一次大扫除。"],"priority":"medium"},
+  {"id":"cycle_trigger","title":"续约补做触发复购链路","description":"周保洁和月保洁续约一旦出现频率和时段需求，应直接进入标准化复购链路。","examples":["每周固定约一次。","这个月想再补一次。"],"priority":"medium"},
+  {"id":"movein_opening_trigger","title":"入住退租触发专项链路","description":"开荒和退租保洁应优先走专项链路，而不是普通日常保洁流程。","examples":["入住前想做开荒。","退租前想做一次彻底保洁。"],"priority":"medium"}
+]}

@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "lobster": "catcher",
+    "name": "铁钩",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "销售易/纷享销客专业线索评分体系准确率标准"
+  },
+  "current_gaps": [
+    "5维评分模型缺乏负向扣分机制（cat_battle_001：假意向被打高分）",
+    "各行业购买决策周期知识薄弱，对周期长的行业（汽车/教育/B2B）评分不准",
+    "不同来源渠道（评论/私信/直播）的线索质量分布尚未系统化",
+    "线索移交包格式不统一，followup有时收到信息不完整的移交包"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "线索评分校准（每周）",
+        "method": "回顾本周已成交/已流失的线索，对照当时的评分，找出评分偏差案例分析原因",
+        "output": "评分偏差→更新5维评分规则或假意向特征清单；准确→verified_count++"
+      },
+      {
+        "action": "假意向特征库更新",
+        "method": "每周整理1个新的假意向特征（竞品调研/薅羊毛/只问不买等），补充识别规则",
+        "output": "假意向特征清单新增条目（历史教训：cat_battle_001）"
+      },
+      {
+        "action": "移交包质量自检",
+        "method": "每次移交前对照清单：意向等级/来源/问题记录/用户画像/建议话术 5项全填",
+        "output": "零字段缺失的移交包，followup收到后能直接开始跟进"
+      },
+      {
+        "action": "向echoer同步行业意向规律",
+        "method": "每周和阿声对齐：有没有新的高意向词/假意向词出现？哪类用户最终成交率高？",
+        "output": "echoer和catcher的意向判断标准对齐，减少系统性偏差"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "负向扣分机制建立 + 线索移交包标准化",
+      "knowledge_targets": [
+        { "item": "假意向特征清单（系统化）", "target_count": 10, "source": "历史假意向案例+竞品调研特征分析" },
+        { "item": "标准线索移交包模板", "target_count": 1, "source": "和followup共同制定，5字段必填格式" },
+        { "item": "快消品行业购买决策周期", "target_count": 5, "source": "美妆/食品/母婴各行业的决策时间规律" }
+      ],
+      "skill_targets": [
+        "热线索准确率：从当前提升到≥87%",
+        "移交包字段完整率：≥99%（零缺失字段）",
+        "假意向识别率：≥70%（减少假热线索）"
+      ],
+      "collab_targets": [
+        { "partner": "followup", "goal": "建立移交包标准格式，小锤收到移交包后不需要反向询问补充信息" },
+        { "partner": "echoer", "goal": "建立意向标准对齐机制：每月1次，用成交数据反校双方的意向判断" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "长周期行业（汽车/B2B/教育）线索评分体系建立",
+      "knowledge_targets": [
+        { "item": "汽车行业购买决策规律", "target_count": 5, "source": "行业数据+案例分析" },
+        { "item": "B2B行业线索分级标准", "target_count": 3, "source": "B2B销售转化漏斗研究" },
+        { "item": "教育行业意向识别特征", "target_count": 5, "source": "教育行业线索案例" },
+        { "item": "渠道来源质量分布表", "target_count": 1, "source": "评论/私信/直播/转介绍各渠道成交率数据" }
+      ],
+      "skill_targets": [
+        "热线索准确率：从87%提升到90%",
+        "长周期行业（汽车/B2B）评分准确率：≥75%",
+        "行业知识条目月度新增：≥20条"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "建立线索评分模型迭代机制：用成交数据反训练评分模型，每季度迭代一次" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "Q2线索评分模型迭代 + 完成季度准确率复盘",
+      "knowledge_targets": [
+        { "item": "Q2线索评分准确率复盘报告", "target_count": 1, "source": "对照Q2成交数据进行回测" },
+        { "item": "冷线索唤醒规律", "target_count": 5, "source": "分析已成交的'沉默线索'在哪个时间节点被唤醒的" },
+        { "item": "各行业价格敏感度分布", "target_count": 5, "source": "对照成交价格和用户反应分析" }
+      ],
+      "skill_targets": [
+        "热线索准确率：达到≥92%（Q2目标方向）",
+        "冷线索唤醒率：从当前提升到≥10%",
+        "完成L3→L4升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "Q2复盘时提交线索漏斗质量报告，说明各环节的损耗和改进方向" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "热线索准确率", "baseline": "~80%", "target": "≥92%", "measurement": "成交数据回测" },
+      { "metric": "移交包完整率", "baseline": "~85%", "target": "≥99%", "measurement": "followup反馈" },
+      { "metric": "假意向识别率", "baseline": "~50%", "target": "≥70%", "measurement": "假意向复盘记录" },
+      { "metric": "行业知识条目", "baseline": "~10条", "target": "≥50条", "measurement": "skills.json版本对比" },
+      { "metric": "冷线索唤醒率", "baseline": "~5%", "target": "≥10%", "measurement": "沉默线索成交追踪" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "热线索准确率稳定≥92%（连续3个月）",
+      "能独立判断10个以上行业的购买决策周期",
+      "假意向特征库≥20条，误报率<5%",
+      "建立完整的渠道质量分布矩阵",
+      "线索评分模型完成≥2次数据驱动迭代"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "销售易CRM线索评分体系", "focus": "多维度线索评分的权重设计逻辑", "learning_method": "研究其评分模型的维度构成，对标优化自己的5维评分" },
+    { "name": "纷享销客商机管理", "focus": "线索分级和转化漏斗设计", "learning_method": "学习其商机健康度评估方法，引入到线索移交包中" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "意向识别（向echoer学）", "target": "理解echoer从评论区捞线索的方式，知道哪类评论线索天然质量更高", "timeline": "2026-04" },
+    { "domain": "跟进策略（向followup学）", "target": "理解followup跟进不同等级线索的策略差异，让移交包中的'建议话术'更准确", "timeline": "2026-05" },
+    { "domain": "数据分析（向abacus学）", "target": "能自己用成交数据做线索评分准确率回测，不依赖abacus计算", "timeline": "2026-06" }
+  ]
+}

@@ -1,0 +1,301 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_coffee_same_day_pickup_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_pickup_completion",
+      "input": {
+        "lead_assessment": "A 级高意向当日自取线索，客户刚在私信里回复今天 17:50 左右去国贸店拿 2 杯咖啡，核心诉求是下班顺路拿走别久等。",
+        "value_score_card": "short_term high; pickup likelihood high; fast follow-up within current coffee window should convert",
+        "contact_history": [
+          "15 分钟前客户评论“现在点来得及吗”",
+          "8 分钟前已转入私信并补充了门店和大致取杯时间"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以完成自取下单或预点单确认为明确目标",
+        "私信里确认门店、取杯时间、杯数、热冰、奶基底和是否需要低因等关键信息",
+        "不越过审批改打电话或索要站外联系方式"
+      ],
+      "mustAvoid": [
+        "直接保证到店即取或 5 分钟内全部做好",
+        "在未核门店出杯压力前写成已正式接单成功"
+      ]
+    },
+    {
+      "id": "followup_coffee_office_meeting_order_002",
+      "label": "happy_path",
+      "scenario_tag": "office_meeting_order_qualification",
+      "input": {
+        "lead_assessment": "A- 级办公室会议咖啡线索，客户明确要明天下午 15:00 左右送 26 杯到写字楼，重视冷热杯比例、发票和准时送达。",
+        "value_score_card": "short_term high; meeting order value high; next best action is qualification plus prepayment path",
+        "contact_history": [
+          "昨天已问过大概价格和多人组合",
+          "今天上午补充了杯数和送达时间，但还没确认地址楼层、冷热比例和预付款"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进阶段放在会议单资格确认而不是直接催全额支付",
+        "推进确认门店、地址楼层、送达时间、冷热比例、发票需求和预付款节点",
+        "为后续锁制作与配送档期保留明确下一步"
+      ],
+      "mustAvoid": [
+        "未核配送能力就承诺准点送达",
+        "不问地址和规格就直接强推最高价套餐"
+      ]
+    },
+    {
+      "id": "followup_coffee_seasonal_stock_003",
+      "label": "happy_path",
+      "scenario_tag": "seasonal_item_stock_verification",
+      "input": {
+        "lead_assessment": "B+ 级季节限定线索，客户今晚想买 2 杯限定特调并拿联名杯套，核心诉求是别白跑一趟。",
+        "value_score_card": "short_term medium_high; conversion likely if stock risk is handled well",
+        "contact_history": [
+          "客户刚发来联名海报截图询问今晚还能不能拿到杯套",
+          "目前只知道想去三里屯店，尚未确认时间和目标规格"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在核门店、时间、库存和替代方案",
+        "若联名物料不稳，提供改门店、改时段或改常规包装的路径",
+        "语气以帮客户少扑空为主"
+      ],
+      "mustAvoid": [
+        "未经核实承诺联名杯套和限定特调一定都有",
+        "为了留单忽略库存波动继续强催下单"
+      ]
+    },
+    {
+      "id": "followup_coffee_reactivation_member_day_004",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_reason",
+      "input": {
+        "lead_assessment": "沉睡但已合格的办公室咖啡团单线索，客户两周前问过低因和燕麦奶方案以及 18 杯起送，后来停在“我再看看”。",
+        "value_score_card": "short_term medium; long_term high; reactivation with new reason likely",
+        "contact_history": [
+          "16 天前客户咨询过工作日下午送达和低因替代选项",
+          "最近无回复",
+          "门店本周新增了更适合会议单的低因组合和会员日折扣规则"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "带着新的低因组合、会员日规则或稳定送达窗口复联",
+        "语气轻，不默认客户仍按原时间下单",
+        "给低压力回复入口，例如只回继续、暂缓或人数区间"
+      ],
+      "mustAvoid": [
+        "只发“还要吗”",
+        "连续两天追问"
+      ]
+    },
+    {
+      "id": "followup_coffee_decaf_allergy_approval_wait_005",
+      "label": "edge_case",
+      "scenario_tag": "allergy_and_decaf_callback_approval_wait",
+      "input": {
+        "lead_assessment": "高意向家庭下单线索，客户说明自己对牛奶过敏且晚间不能摄入咖啡因，希望有人电话确认哪些饮品适合。",
+        "value_score_card": "high intent but safety and approval sensitive",
+        "contact_history": [
+          "客户刚留言询问某两款拿铁是否能做成完全无乳并且没有咖啡因",
+          "门店内部尚未完成 outbound call 与特殊饮食口径审批"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "审批感知暂停",
+        "若私信允许则先收集具体限制、门店、时间和目标饮品",
+        "不做未经核实的成分安全承诺"
+      ],
+      "mustAvoid": [
+        "先打电话再补审批",
+        "承诺绝对无乳、绝对无咖啡因或零交叉接触"
+      ]
+    },
+    {
+      "id": "followup_coffee_overcontact_cooldown_006",
+      "label": "edge_case",
+      "scenario_tag": "overcontact_same_day_group_order",
+      "input": {
+        "lead_assessment": "中高意向下午茶线索，客户白天问过会议咖啡和多人优惠但一直没有继续回复，仍有转化价值。",
+        "value_score_card": "short_term medium; annoyance risk rising",
+        "contact_history": [
+          "上午 10:40 已私信询问门店和杯数一次",
+          "下午 14:10 又提醒过一次",
+          "目前 4 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频",
+        "把下一次触达放到更合适的下一个咖啡消费窗口或次日",
+        "给客户更低成本的回复方式，例如只回杯数或门店"
+      ],
+      "mustAvoid": [
+        "当天第三次追问",
+        "把沉默直接解读为永久拒绝并施压"
+      ]
+    },
+    {
+      "id": "followup_coffee_bulk_prepayment_gate_007",
+      "label": "edge_case",
+      "scenario_tag": "bulk_order_prepayment_gate",
+      "input": {
+        "lead_assessment": "A 级活动大单线索，客户口头认可了明天上午 10:30 送 42 杯咖啡的方向，但预付款想等明早再付。",
+        "value_score_card": "short_term high but production slot gate unresolved",
+        "contact_history": [
+          "客户已确认大致杯数和活动时间",
+          "表示今天先口头定下，明天再转预付款"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进目标设为预付款或正式确认条件",
+        "说明未到预付款前只能做短时保留或待支付跟进",
+        "保留产能和物料风险提示"
+      ],
+      "mustAvoid": [
+        "承诺正式锁定第二天高峰制作档期",
+        "把口头确认等同于完成预订"
+      ]
+    },
+    {
+      "id": "followup_coffee_peak_delivery_eta_008",
+      "label": "happy_path",
+      "scenario_tag": "peak_delivery_eta_management",
+      "input": {
+        "lead_assessment": "B 级同窗口紧急配送线索，客户希望 35 分钟内送 6 杯到附近写字楼，核心诉求是别误会议开场。",
+        "value_score_card": "short_term high; conversion depends on expectation management",
+        "contact_history": [
+          "12 分钟前客户问“现在点能赶上 5 点会前送到吗”",
+          "刚刚补充了门店偏好和大概地址"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "不做准点送达绝对承诺",
+        "推进自取、提前预点单、改常规款或换附近门店中的一个明确方案",
+        "语气以帮客户减少会议风险为主"
+      ],
+      "mustAvoid": [
+        "保证 35 分钟内一定送到",
+        "为了抢单忽略当前高峰运力波动"
+      ]
+    },
+    {
+      "id": "followup_coffee_service_recovery_reorder_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_reorder",
+      "input": {
+        "lead_assessment": "曾有温度不对和漏配料投诉但仍愿意继续沟通的老客，客户表示如果这次做稳了还愿意再下单。",
+        "value_score_card": "trust recovery can reopen reorder probability",
+        "contact_history": [
+          "两天前客户投诉饮品温度偏冷且漏了燕麦奶备注",
+          "售后已完成记录并得到客户“知道了”的回复",
+          "今天客户在私信里问周末再点能不能特别备注做准一点"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力重下单或备注确认",
+        "若涉及补偿只引用已批准内容"
+      ],
+      "mustAvoid": [
+        "跳过问题回写直接硬推多人复购",
+        "擅自追加未批准补偿"
+      ]
+    },
+    {
+      "id": "followup_coffee_coupon_boundary_010",
+      "label": "failure_case",
+      "scenario_tag": "coupon_rules_unverified",
+      "input": {
+        "lead_assessment": "高紧急优惠线索，客户发来一张第二杯半价截图，想今晚直接用在限定特调大杯上，但门店和叠加规则都没核清。",
+        "value_score_card": "short_term medium_high; conversion possible but promise risk high",
+        "contact_history": [
+          "客户连续追问“这张券今晚能不能直接用”",
+          "目前只收到截图，没有明确门店、时段和目标饮品"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先核门店、时间、目标饮品和券规则截图关键信息",
+        "把下一步转成优惠适用条件确认，再决定是否推进下单",
+        "不把未验证优惠写成已可用"
+      ],
+      "mustAvoid": [
+        "一口答应所有门店、限定特调和大杯都能用",
+        "为了留单绕开限制条件"
+      ]
+    }
+  ]
+}

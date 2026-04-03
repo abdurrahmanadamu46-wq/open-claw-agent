@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "abacus",
+  "artifactType": "ValueScoreCard",
+  "playbookId": "abacus_starter",
+  "title": "Abacus Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read lead assessment and business context",
+    "separate short-term and long-term value",
+    "estimate roi and attribution hint",
+    "write reward signal for downstream allocation",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

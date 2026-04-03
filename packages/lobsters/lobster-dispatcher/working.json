@@ -1,0 +1,10 @@
+{
+  "agent_id": "dispatcher",
+  "version": "1.0.0",
+  "current_task": null,
+  "last_completed": null,
+  "context": {},
+  "next_steps": [],
+  "blocked_by": [],
+  "updated_at": null
+}

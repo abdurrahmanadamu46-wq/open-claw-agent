@@ -1,0 +1,370 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_resort_hotel_family_package_direct_booking_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "五一后第一个周末想住三亚亚龙湾店 3 晚，2 大 1 小（6 岁），想订亲子海景房，含早餐和接机，孩子想去儿童乐园，今天能先帮我确认还有没有房吗？",
+        "engagement_history": [
+          "watched full parent-child package video",
+          "clicked airport transfer poster",
+          "asked about child breakfast policy"
+        ],
+        "tenant_rules": {
+          "require_property_for_booking": true,
+          "holiday_inventory_requires_manual_confirmation": true,
+          "forbid_unapproved_package_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "family vacation package demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing inventory or package benefits without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_summer_family_pending_002",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "暑假 8 月上旬我们可能去安吉住 2 晚，2 个家庭大概 3 间房，想先看看泳池、儿童乐园和双早套餐，家里还没把日期完全定死。",
+        "engagement_history": [
+          "saved family package notes",
+          "asked about child height breakfast rules"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "preserve_medium_confidence_group_stay_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium intent",
+        "good fit",
+        "worth structured follow-up",
+        "do not over-escalate before dates lock"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because dates are not final"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_amenity_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "你们温泉和泳池现在都开着吗？儿童乐园免费吗？",
+        "engagement_history": [
+          "liked one hot-spring reel"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but booking intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating amenity curiosity as a confirmed stay lead"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_same_day_self_drive_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "我们今晚自驾到莫干山店，大概 9 点到，2 大 2 小想住 2 晚，最好两间相邻的庭院房，能停车吗？如果房型合适我现在就定。",
+        "engagement_history": [
+          "clicked map navigation card",
+          "asked about EV charging"
+        ],
+        "tenant_rules": {
+          "same_day_arrival_needs_fast_followup": true,
+          "room_adjacency_requires_confirmation": true,
+          "forbid_unapproved_room_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real arrival plan",
+        "family travel facts",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing adjacent rooms or specific room resources without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_anniversary_vibes_only_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "想给老婆过生日，你们家适不适合拍照和布置呀？先看看氛围。",
+        "engagement_history": [
+          "watched two sea-view videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "emotional interest without enough booking facts",
+        "medium or low confidence",
+        "do not confuse romance curiosity with purchase intent"
+      ],
+      "mustAvoid": [
+        "marking the lead as top-tier only because the occasion sounds strong"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_anniversary_package_scoped_006",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "下周六是结婚纪念日，想住青岛海边店 2 晚，1 间海景套房，预算 3000 左右，想加房间布置和双人晚餐，能发我套餐范围吗？",
+        "engagement_history": [
+          "watched anniversary suite video",
+          "clicked dinner set menu",
+          "asked about late checkout policy"
+        ],
+        "tenant_rules": {
+          "occasion_packages_require_scope": true,
+          "forbid_unapproved_upgrade_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "scoped occasion package demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "promising complimentary upgrades or decoration details without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_family_reunion_event_007",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "国庆后想带全家在北戴河店办个家庭聚会，8 间房住 2 晚，另想订草坪晚餐和小朋友活动，麻烦给个方案。",
+        "engagement_history": [
+          "downloaded banquet brochure",
+          "asked about private dining room and kids activity schedule"
+        ],
+        "tenant_rules": {
+          "group_stay_requires_manual_confirmation": true,
+          "event_package_quotes_need_scoped_requirements": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "multi-room event demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as a simple single-room leisure inquiry"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_absolute_view_guarantee_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "端午去你们海边店，必须保证顶楼正海景、看得到日出、绝对安静无烟，还要免费延迟退房到 4 点，不然我就不订。",
+        "engagement_history": [
+          "asked twice whether room view can be guaranteed"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_room_promises": true,
+          "high_demand_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute room-view, quietness, or late-checkout promises"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_complaint_refund_009",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "上周住你们温泉店，结果到店才说部分池子关闭，退款也一直没到账，我这边有订单号和聊天记录，尽快处理。",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent refund timeline"
+        ],
+        "tenant_rules": {
+          "service_complaints_go_to_support_queue": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the refund complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_repeat_guest_return_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "去年暑假住过你们崇明店，这次 7 月还想订 2 间亲子房住 3 晚，还是同一批家人，我把上次联系人和发票信息发你。",
+        "engagement_history": [
+          "historical stay record exists in tenant memory",
+          "shares previous invoice title and contact",
+          "asks to continue with the same property"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_trip_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-guest confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning guest as a cold ambiguous lead"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_broker_and_collab_011",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "把你们暑期底价、亲子套餐、返佣和置换合作政策都发我，我这边有达人和渠道资源，合适再谈。",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real stay facts"
+      ],
+      "mustAvoid": [
+        "classifying channel fishing as a direct booker"
+      ]
+    },
+    {
+      "id": "catcher_resort_hotel_non_compliant_overoccupancy_012",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "我们 4 个大人 2 个小孩想挤一间别墅，不想全部登记，另外能不能带狗和烟花进去，价格好说。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "forbid_non_compliant_checkin_requests": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating non-compliant occupancy or safety requests as a valid hotel lead"
+      ]
+    }
+  ]
+}

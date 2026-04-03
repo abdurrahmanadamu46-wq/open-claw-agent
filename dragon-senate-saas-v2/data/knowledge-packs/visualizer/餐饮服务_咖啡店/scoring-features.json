@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_cup_proof_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实成杯与交付证据可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实主打咖啡、杯贴、杯盖、杯套和拿杯交付放在前排位置，而不是依赖空间、机器静物和海报替代真实出杯。",
+      "high_score_signals": [
+        "前 3 镜内出现真实主打成杯或取杯交付画面",
+        "杯型、贴标和门店关系可验证",
+        "观众能快速判断这杯是本店真实在售咖啡"
+      ],
+      "low_score_signals": [
+        "开场长时间只有装修、器具和海报墙",
+        "饮品像样片或外部图库，不像真实门店出杯",
+        "看不出这杯和本店有什么关系"
+      ],
+      "score_rule": "真实成杯和真实交付证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心购买理由对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应咖啡店最核心的下单理由，例如通勤第一杯、午后续航、手冲豆单、早餐组合、周末慢饮或商场顺手带走，而不是泛泛地拍得好看。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体饮品或场景理由",
+        "一眼能知道视频在解决哪种下单犹豫",
+        "封面主杯或主场景与正文首镜一致"
+      ],
+      "low_score_signals": [
+        "封面只有空间氛围没有具体咖啡理由",
+        "标题写主打单杯，画面却是空店或纯装修",
+        "卖点过空，只写高级感或新店颜值"
+      ],
+      "score_rule": "越能用真实画面回答为什么现在要点这杯，得分越高。"
+    },
+    {
+      "id": "brew_process_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "萃取或手冲工艺真实性",
+      "weight": 0.14,
+      "definition": "镜头是否展示磨豆、萃取、闷蒸、注水、落杯和对应成杯的真实操作证据，让精品工艺和现做感被感知。",
+      "high_score_signals": [
+        "出现萃取、手冲或磨豆等连续动作",
+        "前后镜头能对上对应成杯",
+        "真实操作而非纯器具摆拍"
+      ],
+      "low_score_signals": [
+        "只拍成杯静物却强调精品工艺",
+        "器具画面好看但信息不足",
+        "工艺动作和后续成杯完全对不上"
+      ],
+      "score_rule": "越能让观众感到这杯是现场做出来的，得分越高。"
+    },
+    {
+      "id": "milk_texture_and_latte_art_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "奶泡质感与拉花可信度",
+      "weight": 0.12,
+      "definition": "当脚本强调拿铁、澳白、卡布或奶咖顺滑口感时，镜头是否用蒸奶、融合倒奶、杯面状态和入口反应来建立真实预期。",
+      "high_score_signals": [
+        "蒸奶和倒奶动作可见",
+        "杯面或拉花状态与成杯一致",
+        "入口镜头能支撑顺滑、平衡等卖点"
+      ],
+      "low_score_signals": [
+        "只拍纸杯外观却文案猛讲奶泡",
+        "拉花全靠一次素材反复剪",
+        "画面看不出奶咖和普通饮品差异"
+      ],
+      "score_rule": "越能让观众提前判断这杯奶咖喝起来是什么感觉，得分越高。"
+    },
+    {
+      "id": "scene_fit_and_route_anchor",
+      "metric_group": "visual_proof_density",
+      "feature": "消费场景适配与位置锚点密度",
+      "weight": 0.12,
+      "definition": "分镜是否用门头、楼层、地铁口、写字楼入口、社区街角、校园路径、堂食位或取杯台关系镜头，证明这家咖啡店适合对应的早高峰、午后、周末或夜间场景。",
+      "high_score_signals": [
+        "出现真实位置锚点并和拿杯场景相互呼应",
+        "能区分通勤、周末、早餐或加班等不同时段",
+        "门店动线和消费理由在画面里连得起来"
+      ],
+      "low_score_signals": [
+        "只有单杯特写，完全靠旁白说明场景",
+        "位置关系模糊，观众不知道店适合什么路线",
+        "门头和拿杯画面互相无关"
+      ],
+      "score_rule": "真实路线和真实消费场景越清晰、越可验证，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "营业窗口限制下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配咖啡店常见限制，包括早餐高峰与午后低峰、吧台拥挤、可拍工位、顾客避脸、限定豆单供应、烘焙出炉时间和拍摄时长。",
+      "high_score_signals": [
+        "关键镜头和真实营业窗口匹配",
+        "吧台、门头、办公、商场或校园权限有前置说明",
+        "小团队也能在给定时间内完成拍摄"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计跨多个时段和多场景长链路",
+        "关键镜头默认顾客和员工一定配合",
+        "拍摄动线明显和营业节奏冲突"
+      ],
+      "score_rule": "越能在真实门店状态下直接执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确度",
+      "weight": 0.10,
+      "definition": "分镜是否准确列出咖啡店内容所依赖的成杯素材、补拍杯数、吧台工位、门头位置、顾客授权、早餐食物、豆单信息和取杯场景，不留下模糊假设。",
+      "high_score_signals": [
+        "封面和关键镜头都对应具体杯型、具体时段或具体区域",
+        "补拍需求写到杯数、机位、工序和人物边界",
+        "缺失素材有明确替代路线"
+      ],
+      "low_score_signals": [
+        "只写需要门店素材这种空话",
+        "默认所有口味、豆单和工位都能随时补拍",
+        "不写人物授权、吧台边界和时段依赖"
+      ],
+      "score_rule": "依赖越具体、假设越少、越方便执行，得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.10,
+      "definition": "当门店缺少客流、吧台权限、真实成杯、早餐食物或交付场景时，方案是否诚实降级为单杯推荐、门店便利、早餐预告、豆单说明或开业预告，而不是硬做爆单探店。",
+      "high_score_signals": [
+        "明确标注当前缺口和阶段限制",
+        "分镜与执行分数随素材边界同步调整",
+        "替代路线仍保留咖啡店特征和可信度"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高执行分和高人气叙事",
+        "用海报、效果图或外部素材冒充营业现场",
+        "后续执行大概率因权限和时段失败"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

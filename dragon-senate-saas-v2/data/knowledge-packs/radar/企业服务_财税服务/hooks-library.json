@@ -1,0 +1,8 @@
+{"industry":"企业服务_财税服务","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"filing_deadline_hook","title":"申报时点钩子","description":"当用户同时提到本月报税、季度申报、年报截止等时间窗口时，应优先标记为高价值信号。","examples":["这周要报税，想问现在接不接账。","月底前要把年报做完。"],"priority":"high"},
+  {"id":"company_scale_hook","title":"公司规模与票量钩子","description":"出现小规模、一般纳税人、票量和员工人数时，说明线索更接近真实成交。","examples":["每月二十来张票。","公司有 8 个人，想一起管社保。"],"priority":"high"},
+  {"id":"abnormal_case_hook","title":"税务异常钩子","description":"税务异常、地址异常、逾期申报和罚款风险如果带着明确问题，也应视为更高价值信号。","examples":["税务异常提示要处理。","前几个月忘记申报了。"],"priority":"high"},
+  {"id":"reporting_and_invoice_hook","title":"开票与报表钩子","description":"用户主动追问发票、报表、老板要数据和对公流程时，说明财税协同是关键影响因子。","examples":["每月要给老板出经营数据。","开票流程能不能一起管。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"年报与汇算窗口钩子","description":"工商年报、汇算清缴和年底关账节点一旦带着明确日期出现，应显著提权。","examples":["年报这月要做完。","汇算清缴前想先把账梳理好。"],"priority":"high"},
+  {"id":"repeat_service_hook","title":"续约与老客回流钩子","description":"老客续约、年报复购和异常处理后的持续委托通常有更高的长期价值。","examples":["去年就在你们这做的，今年还想继续。","异常处理完还想继续委托代账。"],"priority":"medium"}
+]}

@@ -1,0 +1,118 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70d8\u7119\u5e97",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "morning_bread_backlog_hook",
+      "title": "Morning bake backlog triggers rate limiting, batch restock, and promise inflation",
+      "description": "When oven queues, proofing queues, packing waits, or front-of-house lines exceed threshold, Dispatcher should immediately reduce new promise speed and switch to batch restock, narrower menu, and staggered pickup. The system must not keep promising all hot bakery items at normal speed.",
+      "examples": [
+        "If three oven rounds are already queued before 08:00, new orders should move from exact promises to a wider ready-time range.",
+        "If the packing bench and cashier are both congested, complex filled pastries should be limited while core breakfast items are protected."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "birthday_cake_and_inscription_keyword_hook",
+      "title": "Birthday, inscription, candle, and topper keywords trigger the custom cake route",
+      "description": "If the incoming request contains birthday cake, inscription, candles, number topper, anniversary, banner, or similar keywords, Dispatcher should create a custom cake route with spec confirmation, text confirmation, deposit confirmation, decoration scheduling, and handoff review. It must not route the order like a normal ready-made cake.",
+      "examples": [
+        "A note that says pickup tonight with inscription and age candles should be routed into the custom cake flow immediately.",
+        "An order that mentions a two-layer celebration cake should trigger version tracking and manual confirmation."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "office_tea_break_or_gift_box_group_order_hook",
+      "title": "Tea break, invoice, gift box, and large-count keywords trigger group order dispatch",
+      "description": "If the request mentions tea break, meeting, invoice, company front desk, gift box, or large quantity, Dispatcher should move to a group order flow with payment confirmation, batching, ambient versus chilled split, contact review, and delivery or pickup routing. These orders should not stay in the normal retail queue.",
+      "examples": [
+        "A request for 40 afternoon tea boxes to an office tower should go straight to the group order path.",
+        "A corporate order for 60 seasonal gift boxes should automatically gain packing and labeling subtasks."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "allergen_alcohol_or_kids_customization_hook",
+      "title": "Allergen, alcohol-free, low-sugar, and kid-safe notes trigger manual confirmation",
+      "description": "If notes mention no nuts, no alcohol, low sugar, child-safe, no mango, no dairy, or no specific filling, Dispatcher must insert manual confirmation and note writeback. The confirmed outcome must be sent to front desk, decoration, and packing roles.",
+      "examples": [
+        "A child-safe cake with no rum syrup should create an extra confirmation and labeling step.",
+        "A pistachio allergy note should trigger feasibility review before production is released."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "cream_fruit_or_packaging_low_stock_hook",
+      "title": "Low cream, fruit, butter, chocolate plaque, cake box, or ice pack stock triggers substitution or stop-sell",
+      "description": "When stock is low for cream, fruit, butter, chocolate plaques, cake boxes, cooling bags, or ice packs, Dispatcher must not keep normal promises. It should switch to substitute flavors, pause the affected SKU, move the slot, or call for manual confirmation.",
+      "examples": [
+        "If strawberries are insufficient for evening cakes, the plan should trigger alternative fruit confirmation instead of promising the original design.",
+        "If large cake boxes run short, new large-size cake orders should be limited or resized."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "oven_proofer_mixer_or_chiller_fault_hook",
+      "title": "Oven, proofer, mixer, or chiller faults trigger menu downgrade and manual review",
+      "description": "When ovens fail, proofers drift, mixers break, decoration queues clog, or chillers become unstable, Dispatcher should shrink the sellable menu, pause complex cream cakes, raise manual review frequency, and route affected orders to safer products, later windows, or refund paths.",
+      "examples": [
+        "A whipping mixer failure should pause new cream cake orders instead of preserving the full cake menu.",
+        "A proofer issue that delays croissant output should widen promise windows and limit immediate pickups."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "heatwave_rain_and_fragile_delivery_risk_hook",
+      "title": "Heat, rain, and fragile structure risks trigger pickup conversion or reschedule",
+      "description": "When weather alerts, rider speed, travel distance, or cake fragility cross a threshold, Dispatcher should reduce delivery promises, narrow the service radius, recommend pickup or specialized delivery, and prepare customer notice plus compensation fallback.",
+      "examples": [
+        "A fresh cream cake in extreme heat should be moved to pickup or a safer delivery mode.",
+        "A tall celebration cake should not stay on the ordinary route when rain and traffic make collapse risk high."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "holiday_campaign_pickup_overflow_hook",
+      "title": "Holiday presale and pickup overflow trigger time-windowed release",
+      "description": "When mooncake gift boxes, Christmas cakes, co-branded desserts, or member campaigns create a pickup surge and the front pickup area gets congested, Dispatcher should switch to time windows, staged call numbers, pickup code confirmation, and no-show return logic.",
+      "examples": [
+        "If front-of-house pickup lines stretch after seasonal gift box release, orders should be moved into 30-minute pickup windows.",
+        "If a co-branded launch floods pickup traffic, presale pickups and walk-in retail should be routed to different handoff lanes."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "unpaid_preorder_deadline_hook",
+      "title": "Unpaid custom cake and group order deadlines trigger payment chase and capacity release",
+      "description": "When a custom cake, dessert table, holiday gift box order, or group order misses its deposit deadline, Dispatcher should create a payment chase task, a temporary hold expiration reminder, and a capacity release decision. Bakery resources must not stay locked behind non-committed demand.",
+      "examples": [
+        "If a same-day celebration cake still has no deposit close to cutoff, the plan should trigger a payment chase and keep a release option.",
+        "If a corporate tea break order remains unpaid at deadline, the reserved packing and baking slots should return to sellable capacity."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "platform_writeback_outage_and_safe_replay_hook",
+      "title": "Mini program, POS, and order writeback failures trigger backup intake and safe replay",
+      "description": "When the mini program, POS, marketplace, or order hub times out repeatedly or loses post-payment writeback, Dispatcher should switch to phone, chat, or front-desk manual intake and define replay safety rules. The goal is to avoid duplicate baking, duplicate decoration, and duplicate charge handling.",
+      "examples": [
+        "If deposit payment succeeds but no production ticket arrives, the order should go to manual registration plus master-order mapping before replay.",
+        "If platform status keeps flapping, staff should use manual intake with payment trace preserved for later reconciliation."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "quality_complaint_or_collapse_emergency_hook",
+      "title": "Spoilage, collapse, leakage, wrong inscription, and damage complaints trigger quality escalation",
+      "description": "If signals mention sour cream, collapsed cake, leaking cream, wrong inscription, damaged delivery, or multiple complaints from the same batch, Dispatcher must leave the normal automatic path and move into manager escalation, batch retention, root-cause review, and customer recovery. Auto-compensation alone is not enough.",
+      "examples": [
+        "A customer who posts a collapsed cake online should trigger store-manager and quality-tracker routing immediately.",
+        "Multiple inscription mistakes in one hour should freeze the affected writing template or routing until checked."
+      ],
+      "priority": "high"
+    }
+  ]
+}

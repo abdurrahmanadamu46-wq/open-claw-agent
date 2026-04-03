@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "office_short_nail_visual",
+      "hook_angle": "通勤耐看",
+      "hook_line": "上班也顺眼、两周后也不显乱的甲，前十秒就该看得出来。",
+      "target_scene": "写字楼通勤款、短甲法式、裸透款",
+      "cover_direction": "封面主体给真实短甲细节，副元素补工作台和低调色系，不用夸张贴饰主画面。",
+      "first_3_shots": [
+        "真实短甲成品近景",
+        "工作台或工具准备镜头",
+        "手部自然动作镜头"
+      ],
+      "required_proof_assets": [
+        "真实短甲作品",
+        "工作台镜头",
+        "自然手部动作"
+      ],
+      "fallback_if_missing": "若缺少通勤短甲真人素材，改用本店作品集翻拍配工作台细节。"
+    },
+    {
+      "id": "bridal_nail_visual",
+      "hook_angle": "重要场合适配",
+      "hook_line": "婚礼前的甲，不只是好看，而是伸手那一刻刚好对上整个人。",
+      "target_scene": "婚礼甲、新娘甲、伴娘甲",
+      "cover_direction": "封面用精致细节和场合提示，不用过度华丽滤镜掩盖真实质感。",
+      "first_3_shots": [
+        "真实婚礼款细节",
+        "手部配饰或礼服氛围提示",
+        "工作台操作镜头"
+      ],
+      "required_proof_assets": [
+        "真实婚礼款作品",
+        "场合提示素材",
+        "操作过程镜头"
+      ],
+      "fallback_if_missing": "若缺少婚礼场景素材，用细节字幕明确礼服和档期场景。"
+    },
+    {
+      "id": "style_truth_visual",
+      "hook_angle": "图实一致",
+      "hook_line": "好看的参考图很多，真正关键的是你手上能不能成立。",
+      "target_scene": "爆款图承接、延长甲、高复杂度设计",
+      "cover_direction": "封面突出真实作品和手型，不用外部高清图做主视觉。",
+      "first_3_shots": [
+        "真实作品近景",
+        "手型或长度说明镜头",
+        "关键工艺步骤镜头"
+      ],
+      "required_proof_assets": [
+        "真实作品",
+        "长度或手型说明",
+        "工艺步骤"
+      ],
+      "fallback_if_missing": "作品不足时改成真实作品合集，不拍爆款复刻承接。"
+    },
+    {
+      "id": "tool_hygiene_visual",
+      "hook_angle": "卫生感先建立",
+      "hook_line": "一家美甲店靠不靠谱，不只看成品，也看你前几秒看到的工具和台面。",
+      "target_scene": "首次到店、怕踩雷用户、卫生感内容",
+      "cover_direction": "封面主体给干净工具和工作台，副元素补作品细节。",
+      "first_3_shots": [
+        "工具消毒或摆放镜头",
+        "工作台整理镜头",
+        "真实操作开始镜头"
+      ],
+      "required_proof_assets": [
+        "工具准备",
+        "工作台清洁",
+        "操作开始"
+      ],
+      "fallback_if_missing": "若无法拍消毒过程，至少拍整洁工作台和备品准备。"
+    },
+    {
+      "id": "festival_theme_visual",
+      "hook_angle": "节日氛围上手",
+      "hook_line": "节日款不是把元素堆满，而是让你一伸手就看得出今天不一样。",
+      "target_scene": "春节、情人节、生日、圣诞主题款",
+      "cover_direction": "封面给真实节日款细节，不把装饰道具拍得比手更重要。",
+      "first_3_shots": [
+        "节日主题作品细节",
+        "色系与元素特写",
+        "真实手部动作镜头"
+      ],
+      "required_proof_assets": [
+        "节日款作品",
+        "元素细节",
+        "真实手部动作"
+      ],
+      "fallback_if_missing": "若节日素材不足，改用色系和字幕表达，不硬造场景。"
+    },
+    {
+      "id": "rebook_cycle_visual",
+      "hook_angle": "到了该换的时候",
+      "hook_line": "真正会复做的甲，通常不是看腻了，而是长出来的时候就知道该回来一次了。",
+      "target_scene": "老客回访、复做提醒、换色换款",
+      "cover_direction": "封面强调自然复做和新旧对比感，不拍成强促销海报。",
+      "first_3_shots": [
+        "旧甲状态提示镜头",
+        "新款方向镜头",
+        "工作位准备或预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "旧甲状态",
+        "新款风格",
+        "预约承接"
+      ],
+      "fallback_if_missing": "缺少真实旧甲素材时，用周期字幕和新款作品替代。"
+    }
+  ]
+}

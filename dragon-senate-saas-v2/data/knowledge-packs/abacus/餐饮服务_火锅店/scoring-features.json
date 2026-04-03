@@ -1,0 +1,228 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "reservation_fact_completeness",
+      "feature_name": "预订事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分：已明确门店、日期、到店时间、人数、就餐场景和是否需要包间或大桌；3 分：已明确其中 3 项以上且愿意继续补充；1 分：只有“今晚有位吗”“排多久”这类模糊问询。",
+      "positive_signals": [
+        "门店明确",
+        "日期和时间明确",
+        "人数明确",
+        "场景明确，例如生日局、团建、家庭聚餐或夜宵"
+      ],
+      "negative_signals": [
+        "只问人均或排队",
+        "没有门店信息",
+        "没有时间和人数",
+        "只在评论区围观"
+      ],
+      "value_guidance": "火锅店的短期价值首先来自可执行的预订事实，而不是排队热度和围观情绪。"
+    },
+    {
+      "id": "deposit_and_potbase_commitment_strength",
+      "feature_name": "定金与锅底偏好承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：已确认定金、锅底类型、辣度或基础预点；3 分：愿意电话深聊、看套餐或确认预算；1 分：只说“先留位”但没有任何实质动作。",
+      "positive_signals": [
+        "愿意支付定金",
+        "确认锅底和辣度",
+        "接受最低消费或套餐结构",
+        "提前说明忌口、儿童同席或分锅要求"
+      ],
+      "negative_signals": [
+        "反复比价但不进入下一步",
+        "拒绝任何支付动作",
+        "不愿确认时间或人数",
+        "临时先占位"
+      ],
+      "value_guidance": "对 Abacus 来说，付款和锅底确认比聊天热度更能代表真实交易意愿。"
+    },
+    {
+      "id": "net_margin_after_variable_cost",
+      "feature_name": "扣除变动成本后的净毛利质量",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除锅底、食材、蘸料、佣金、分佣、赠品、包装和售后后仍有健康净毛利；3 分：净毛利偏紧但仍为正；1 分：GMV 看起来高但净贡献很薄甚至为负。",
+      "positive_signals": [
+        "锅底和食材成本可控",
+        "平台抽佣可接受",
+        "加购空间存在",
+        "售后和退款风险低"
+      ],
+      "negative_signals": [
+        "强折扣或高补贴",
+        "赠饮赠品成本高",
+        "高分佣或高抽佣",
+        "高退款或投诉风险"
+      ],
+      "value_guidance": "Abacus 不能被核销量和台面消费迷惑，真正的 ROI 来自净贡献。"
+    },
+    {
+      "id": "turnover_and_peak_capacity_impact",
+      "feature_name": "翻台与高峰锅位挤占影响",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分：需求落在可承接时段，不明显挤占热门锅位、包间、小料台和服务资源；3 分：有一定高峰压力但可调配；1 分：明显占用晚市高峰、包间稀缺时段或会拉长翻台。",
+      "positive_signals": [
+        "错峰到店",
+        "夜宵时段",
+        "桌位和锅位有余量",
+        "服务复杂度可控"
+      ],
+      "negative_signals": [
+        "周五周六晚市高峰",
+        "包间已紧张",
+        "预计就餐时长很长",
+        "会明显增加翻台压力"
+      ],
+      "value_guidance": "同样金额的订单，放在不同锅位和翻台状态下，真实价值差异很大。"
+    },
+    {
+      "id": "arrival_time_and_execution_certainty",
+      "feature_name": "到店时点与执行确定性",
+      "metric": "short_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：到店时间、等位接受度或预订时段明确，且门店当前可承接；3 分：有目标时段但仍需确认桌型、档期或锅底；1 分：只有“越快越好”或纯排队焦虑，没有执行条件。",
+      "positive_signals": [
+        "到店时间明确",
+        "能接受明确的等位区间",
+        "档期可锁定",
+        "门店资源与时段匹配"
+      ],
+      "negative_signals": [
+        "只说很急",
+        "档期未确认",
+        "桌型或包间未锁定",
+        "旺季承接能力不明"
+      ],
+      "value_guidance": "时间紧迫只有在可执行时才会放大短期价值，否则只会放大风险。"
+    },
+    {
+      "id": "repeat_purchase_and_group_dining_ltv",
+      "feature_name": "复购频次与聚餐长期价值",
+      "metric": "long_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分：客户具备固定聚餐、企业庆功、生日月回流、储值复购或家庭组织者特征；3 分：主体稳定但频次一般；1 分：明显一次性、低复购或低沉淀空间。",
+      "positive_signals": [
+        "企业团建或部门聚餐",
+        "会员或储值客户",
+        "家庭聚餐组织者",
+        "社区夜宵常客"
+      ],
+      "negative_signals": [
+        "纯一次性薅券",
+        "没有后续复购空间",
+        "只看最低价",
+        "历史留存很低"
+      ],
+      "value_guidance": "长期分的核心是未来还能不能持续回来，而不是这一次看起来有多热闹。"
+    },
+    {
+      "id": "team_dinner_expandability",
+      "feature_name": "团建、庆功和多部门扩展潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个主体下可能扩展到多次庆功、多人聚餐、多部门活动或多办公室合作；3 分：当前单次明确但后续空间一般；1 分：无法扩展或主体不稳定。",
+      "positive_signals": [
+        "多部门活动",
+        "多办公室聚餐",
+        "固定企业招待",
+        "季度或月度庆功"
+      ],
+      "negative_signals": [
+        "偶发单次消费",
+        "联系人无决策权",
+        "只能做一次",
+        "无法复制到其他场景"
+      ],
+      "value_guidance": "能否从一场团建扩展成一串后续订单，是火锅店长期价值的重要来源。"
+    },
+    {
+      "id": "member_asset_and_birthday_leverage",
+      "feature_name": "会员资产与生日回流杠杆",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：来自生日月会员、储值客、老客回访或历史高客单客户，且能调用明确偏好；3 分：有历史消费但标签不完整；1 分：几乎没有可复用历史资产。",
+      "positive_signals": [
+        "历史消费记录完整",
+        "有锅底或菜品偏好",
+        "曾经高客单消费",
+        "愿意再次预订或续充"
+      ],
+      "negative_signals": [
+        "历史投诉严重",
+        "偏好数据缺失",
+        "过去多次爽约",
+        "历史上只来过一次且体验差"
+      ],
+      "value_guidance": "会员资产越可复用，长期价值越容易被低估，需要单独加权。"
+    },
+    {
+      "id": "attribution_merge_quality",
+      "feature_name": "归因合并与关键触点质量",
+      "metric": "reward_signal",
+      "weight": 0.08,
+      "scoring_rule": "5 分：能识别重复线索并找到真正推进排号、预订、定金或复购的关键触点；3 分：知道主要渠道但归因不够细；1 分：谁最后出现就把全部 credit 给谁。",
+      "positive_signals": [
+        "合并电话、小程序和企业微信重复线索",
+        "区分曝光触点和推进触点",
+        "知道是哪一步推动了定金或预订",
+        "统一核算渠道成本"
+      ],
+      "negative_signals": [
+        "重复计算同一桌客人价值",
+        "只按最后点击分功",
+        "忽略电话或私域推进",
+        "渠道各自重复算 ROI"
+      ],
+      "value_guidance": "奖励信号必须服务于正确归因，否则团队会被带向错误动作。"
+    },
+    {
+      "id": "engagement_to_reservation_ratio",
+      "feature_name": "互动向预订转化比",
+      "metric": "short_term_score",
+      "weight": 0.04,
+      "scoring_rule": "5 分：评论、私信或内容互动很快转成排号、预订、定金或到店事实；3 分：有一定转化；1 分：只有围观和点赞，没有任何业务推进。",
+      "positive_signals": [
+        "评论后转私信",
+        "私信后补齐门店与时间",
+        "内容热度伴随真实预订增长",
+        "用户愿意补充人数和锅底偏好"
+      ],
+      "negative_signals": [
+        "只涨点赞不涨预订",
+        "只问最低价",
+        "评论热但无人留资",
+        "围观多于转化"
+      ],
+      "value_guidance": "这是一项校正项，防止 Abacus 把公域热度误判成短期价值。"
+    },
+    {
+      "id": "governance_allergen_food_safety_and_refund_risk",
+      "feature_name": "治理、过敏、食安与退款风险",
+      "metric": "reward_signal",
+      "weight": 0.06,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动避开高退款、高客诉、严重过敏和食安风险；3 分：存在小幅模糊但可纠正；1 分：鼓励带病推进、无定金锁资源或忽视严重风险。",
+      "positive_signals": [
+        "先人工复核再推进",
+        "对过敏和食安问题保守处理",
+        "要求定金或正式确认后再投入重资源",
+        "对高投诉风险客户主动降级"
+      ],
+      "negative_signals": [
+        "忽略严重客诉继续营销",
+        "无定金先锁包间和鲜货",
+        "对食安风险做绝对承诺",
+        "只追核销量不做止损"
+      ],
+      "value_guidance": "火锅店的奖励信号不能只鼓励成交，也要防止坏单和品牌风险被放大。"
+    }
+  ]
+}

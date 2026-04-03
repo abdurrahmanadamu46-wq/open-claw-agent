@@ -1,0 +1,108 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "stage_based_dispatch",
+      "title": "按项目阶段拆包执行",
+      "description": "门楼项目天然跨越线索初判、现场勘测、结构校核、效果图、报价、合同、排产、安装、验收多个节点。Dispatcher 生成 task_graph 时必须把阶段、依赖、责任人和回写动作写清楚，不能跳过前置节点直接下发后续任务。",
+      "examples": [
+        "客户只给了门脸照片和预算时，先路由到销售初判与勘测预约，不直接下发排产。",
+        "勘测完成后再创建效果图、报价和合同准备节点，并在 routing_targets 里明确由谁接力。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "channel_selection_matrix",
+      "title": "按客户类型选择沟通与交付渠道",
+      "description": "工业园区、厂区、景区、商业街、政企门楼项目的沟通链路不同。Dispatcher 应优先选择能沉淀尺寸、图纸、审批意见和报价回执的渠道，并为不同场景配置主路由与备用路由。",
+      "examples": [
+        "厂区门楼优先企微加电话同步尺寸和进场条件，备用渠道为短信提醒。",
+        "政企项目优先邮件或正式 PDF 报价流，避免只靠即时聊天传递关键版本。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "approval_gate_for_external_commitments",
+      "title": "报价、效果图和对外承诺必须过审批门",
+      "description": "凡是涉及结构安全、抗风等级、消防、审批可办性、工期承诺、价格折扣的对外输出，Dispatcher 不得绕过 approval gate。approval_state 未明确通过时，只能停留在草稿、待审或补资料节点。",
+      "examples": [
+        "效果图可以内部流转，但未审批前不能直接向客户发送定版稿。",
+        "客户催问“能不能 7 天完工”时，先走工程负责人确认，再决定是否对外承诺。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "dimension_and_site_data_gate",
+      "title": "尺寸与现场条件不完整时先补勘测",
+      "description": "门楼项目高度依赖开间、净高、基础条件、吊装空间、夜间施工限制和物业要求。若尺寸来源不可靠或现场限制缺失，Dispatcher 应先创建补勘测或远程视频踏勘任务，再允许报价或排产。",
+      "examples": [
+        "客户只给门楼远景照片时，先派发勘测而不是直接给精确报价。",
+        "商场门楼翻新涉及夜间进场时，先确认封路、吊车和垃圾清运要求。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "gray_release_for_new_offer_or_case",
+      "title": "新方案、新案例和新优惠先做灰度投放",
+      "description": "新包装的门楼案例视频、新报价话术或新促销方案，先在单城市、单渠道或单人群灰度验证，观察留资质量、咨询成本和审批风险，再决定是否放量。",
+      "examples": [
+        "新“工厂大门门楼 7 天交付”话术先在单一工业园受众里测试，不直接全渠道铺开。",
+        "新的短视频案例先在视频号试投，再决定是否同步抖音和百度。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "weather_and_permit_dependency",
+      "title": "天气、进场证和吊装资源属于硬依赖",
+      "description": "户外门楼项目受大风、暴雨、节假日限行、吊装车辆、物业进场证影响明显。Dispatcher 的 task_graph 必须把这些外部依赖单独列出，并为延期、改期或分阶段进场准备 fallback_plan。",
+      "examples": [
+        "安装前 48 小时若天气预警升级，自动切换到改期沟通与物料保管方案。",
+        "景区项目在拿不到进场证前，只能推进图纸和物料准备，不能派工上门。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "duplicate_project_merge_rule",
+      "title": "重复线索与重复项目先归并后执行",
+      "description": "门楼客户常同时从抖音、百度爱采购、微信多个入口咨询。Dispatcher 在建任务前要先合并同一项目、同一联系人、同一现场地址，避免重复报价、重复勘测和重复催收。",
+      "examples": [
+        "同一客户在抖音留资后又加企微，应回写到同一项目卡而不是新开第二条主线。",
+        "同一厂区的新建门楼和门头改造如果预算独立，可以拆成子任务，但共享主项目号。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "supplier_failover_preplanning",
+      "title": "设计、制作、安装资源要预设主备路线",
+      "description": "门楼项目周期长、供应商波动大。Dispatcher 需要为效果图制作、钢结构加工、铝板喷涂、现场安装等关键环节指定主执行方和备用路由，并定义超时后的切换阈值。",
+      "examples": [
+        "效果图供应商 4 小时未接单，则回退到模板方案或备用设计师。",
+        "主安装队伍在节前排满时，自动升级给项目经理确认是否切换备用班组。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stop_loss_for_unqualified_or_unprofitable_projects",
+      "title": "发现高风险项目要及时止损或降级",
+      "description": "当客户预算与需求严重错位、现场无法施工、审批长期卡住、毛利跌破底线或供应链明显不稳时，Dispatcher 应触发止损，改为保守报价、延后执行、只发概念方案，或直接暂停。",
+      "examples": [
+        "客户要求超大门楼但预算只够门头翻新时，改发分阶段方案而不是硬推进成交。",
+        "关键材料连续涨价导致报价失真时，先暂停对外承诺并更新成本基线。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "writeback_and_handoff_requirement",
+      "title": "每次路由都要带回写与交接说明",
+      "description": "Dispatcher 不只负责下发任务，还要保证每个节点完成后把尺寸、审批意见、报价版本、客户异议和下一步动作回写到统一项目记录，方便 replay、fallback 和人工接管。",
+      "examples": [
+        "勘测结束后必须回写照片、尺寸表、特殊施工限制和客户紧急程度。",
+        "报价发送后要记录版本号、发送渠道、已读状态和下一次跟进时间。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+﻿{
+  "thread_id": "sd-10",
+  "name": "XAI Scorer",
+  "owner_scope": "lead scoring and counterfactual explanation",
+  "maturity": "prototype",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "score": "REST"
+  },
+  "source_anchors": [
+    "services/xai-scorer-service"
+  ]
+}

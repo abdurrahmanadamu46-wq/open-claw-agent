@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "echoer",
+  "artifactType": "EngagementReplyPack",
+  "playbookId": "echoer_starter",
+  "title": "Echoer Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read user message and tone constraints",
+    "classify intent and emotional state",
+    "draft a calm human reply",
+    "decide whether to hand off to catcher or abacus",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

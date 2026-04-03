@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "dispatcher",
+  "patterns": [
+    {
+      "id": "dispatcher_approval_skip",
+      "label": "approval_skip",
+      "description": "Execution plan fails to pause on required approval checkpoints."
+    },
+    {
+      "id": "dispatcher_fallback_missing",
+      "label": "fallback_missing",
+      "description": "No viable fallback or compensation path is provided for unstable external dependencies."
+    },
+    {
+      "id": "dispatcher_non_idempotent",
+      "label": "non_idempotent",
+      "description": "Plan can create duplicate side effects on replay or retry."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "FollowUpActionPlan",
+  "goal": "Move the lead toward a booked consultation without crossing approval or cadence boundaries.",
+  "assumptions": [
+    "Fast response matters for hot leads.",
+    "Repeated pressure harms conversion and increases complaint risk."
+  ],
+  "evidence": [
+    "Lead asked for next-step timing.",
+    "ValueScoreCard prioritizes immediate follow-up."
+  ],
+  "confidence": 0.89,
+  "riskLevel": "L2",
+  "nextAction": "submit_followup_queue",
+  "followup_stage": "appointment_push",
+  "contact_plan": "send DM now, confirm availability, offer booking slot, pause before any phone action if approval not granted",
+  "cadence_rule": "max 1 touch per 24h unless user re-engages",
+  "approval_requirements": "phone_call requires approval; dm safe within policy"
+}

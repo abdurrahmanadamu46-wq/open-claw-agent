@@ -1,0 +1,263 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "agent_id",
+    "agent_name",
+    "default_task_type",
+    "knowledge_pack_id",
+    "knowledge_pack_name",
+    "knowledge_pack_goal",
+    "why_now",
+    "downstream_use_cases",
+    "source_map",
+    "document_blueprints",
+    "metadata_schema",
+    "retrieval_queries",
+    "ranking_rules",
+    "freshness_rules",
+    "dedup_rules",
+    "risk_guardrails",
+    "evaluation_metrics",
+    "continuous_improvement_loops"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "default_task_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "knowledge_pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "knowledge_pack_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "knowledge_pack_goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "why_now": {
+      "type": "string",
+      "minLength": 1
+    },
+    "downstream_use_cases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true
+    },
+    "source_map": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_type",
+          "priority",
+          "why_it_matters",
+          "update_frequency"
+        ],
+        "properties": {
+          "source_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "type": "string",
+            "minLength": 1
+          },
+          "why_it_matters": {
+            "type": "string",
+            "minLength": 1
+          },
+          "update_frequency": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "document_blueprints": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "doc_type",
+          "must_include_fields",
+          "chunking_strategy",
+          "quality_checks"
+        ],
+        "properties": {
+          "doc_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "must_include_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 6,
+            "maxItems": 6,
+            "uniqueItems": true
+          },
+          "chunking_strategy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quality_checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "metadata_schema": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field_name",
+          "field_type",
+          "required",
+          "description"
+        ],
+        "properties": {
+          "field_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "field_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "retrieval_queries": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true
+    },
+    "ranking_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "freshness_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "dedup_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "risk_guardrails": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "evaluation_metrics": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "metric",
+          "definition",
+          "success_threshold"
+        ],
+        "properties": {
+          "metric": {
+            "type": "string",
+            "minLength": 1
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "success_threshold": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "continuous_improvement_loops": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true
+    }
+  }
+}

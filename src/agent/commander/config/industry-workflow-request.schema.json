@@ -1,0 +1,100 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lobster://commander/industry-workflow-request.schema.json",
+  "title": "IndustryWorkflowRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workflowId",
+    "categoryId",
+    "subIndustryId",
+    "merchantProfile"
+  ],
+  "properties": {
+    "workflowId": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Client-generated workflow request id for idempotency and preview trace."
+    },
+    "categoryId": {
+      "type": "string",
+      "description": "Top-level industry category id from industry-catalog.json."
+    },
+    "subIndustryId": {
+      "type": "string",
+      "description": "Sub-industry id under the selected category."
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["douyin", "xiaohongshu", "kuaishou", "video_account"]
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Optional publish channels. Omit to use catalog defaults."
+    },
+    "callScoreThreshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Optional score threshold for high-score auto call logic."
+    },
+    "merchantProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "customerPainPoints",
+        "solvedProblems",
+        "personaBackground",
+        "competitiveAdvantages"
+      ],
+      "properties": {
+        "brandName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tenantId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bindAccounts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "customerPainPoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "minItems": 1
+        },
+        "solvedProblems": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "minItems": 1
+        },
+        "personaBackground": {
+          "type": "string",
+          "minLength": 4
+        },
+        "competitiveAdvantages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

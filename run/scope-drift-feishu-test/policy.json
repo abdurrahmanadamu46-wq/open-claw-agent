@@ -1,0 +1,27 @@
+﻿{
+    "failedDirectory":  "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\failed",
+    "retryBackoffMs":  10,
+    "maxAttemptsPerTarget":  1,
+    "processedDirectory":  "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\processed",
+    "version":  "lobster.scope-drift-webhook-dispatch.policy.test.v0.2",
+    "requestTimeoutMs":  10000,
+    "name":  "Local Test Scope Dispatch Policy",
+    "outboxDirectory":  "F:\\openclaw-agent\\run\\scope-drift-feishu-test\\outbox",
+    "targets":  [
+                    {
+                        "id":  "generic-webhook",
+                        "urlEnvVar":  "LOBSTER_SCOPE_ALERT_WEBHOOK_URL",
+                        "secretEnvVar":  "LOBSTER_SCOPE_ALERT_WEBHOOK_SECRET",
+                        "secretHeaderName":  "x-lobster-scope-secret",
+                        "payloadMode":  "raw_json",
+                        "enabled":  true
+                    },
+                    {
+                        "secretEnvVar":  "LOBSTER_SCOPE_ALERT_FEISHU_SIGNING_SECRET",
+                        "payloadMode":  "feishu_text",
+                        "urlEnvVar":  "LOBSTER_SCOPE_ALERT_FEISHU_WEBHOOK_URL",
+                        "id":  "feishu-webhook",
+                        "enabled":  true
+                    }
+                ]
+}

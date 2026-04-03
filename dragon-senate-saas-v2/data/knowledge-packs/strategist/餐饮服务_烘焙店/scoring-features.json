@@ -1,0 +1,178 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_daypart_clarity",
+      "feature_name": "核心消费时段清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确单一主时段与主客群，例如工作日早餐外带、下午茶拼盒或周末庆生预订；3 分：有 2 个候选时段但优先级仍可判断；1 分：早餐、下午茶、堂食和预订全都想做且没有排序。",
+      "positive_signals": [
+        "明确主时段、主人群和主价格带",
+        "主场景与现有订单证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有时段一起推",
+        "主场景与真实订单结构明显错位"
+      ],
+      "route_guidance": "时段越清晰，越适合集中预算和内容；时段越混乱，越应该先缩范围做验证。"
+    },
+    {
+      "id": "hero_sku_evidence_density",
+      "feature_name": "主力 SKU 证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定主力 SKU 的实拍、口感说明、复购记录和补货稳定性；3 分：有产品素材但缺少复购或履约证据；1 分：主要依赖陈列图、装修图或低价券，没有主力产品证明。",
+      "positive_signals": [
+        "主力面包、甜点或蛋糕的真实出品图",
+        "围绕口感和新鲜度的高频评价",
+        "清楚知道哪一类产品承担复购"
+      ],
+      "negative_signals": [
+        "只有海报没有真实柜台或切面证据",
+        "主推产品经常缺货、塌陷或口感波动"
+      ],
+      "route_guidance": "产品证据越强，越适合走真实产品路线；证据越弱，越要先补实拍、回评和补货稳定性。"
+    },
+    {
+      "id": "local_radius_fit",
+      "feature_name": "本地半径与动线匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确 1 到 3 公里核心辐射半径、主通勤或停留动线和周边客群结构；3 分：知道大致商圈但未细化到楼宇、学校或社区；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚写字楼、学校、社区或商场客流结构",
+        "知道步行、自提和配送的便利边界",
+        "对地铁口、电梯、商场楼层和停车便利性有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视到店成本和顺路便利性"
+      ],
+      "route_guidance": "半径越清晰，越容易先把预算压到高转化人群；半径模糊时应先收缩目标区域。"
+    },
+    {
+      "id": "member_asset_reactivation_readiness",
+      "feature_name": "会员与熟客召回就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员联系方式、购买标签、活跃度分层和可触达方式；3 分：有会员名单但标签有限；1 分：几乎没有可用熟客资产却仍忽略召回路线。",
+      "positive_signals": [
+        "有小程序、企业微信、储值卡或社群资产",
+        "可按早餐面包、甜点、蛋糕或时段偏好分层",
+        "有回店提醒、预约取货或积分机制"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑熟客回流"
+      ],
+      "route_guidance": "熟客资产越强，越应优先安排低成本召回；资产越弱，越要先补标签再谈扩大冷启动。"
+    },
+    {
+      "id": "reputation_and_freshness_health",
+      "feature_name": "评分与新鲜口碑健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定、差评主题可控，且近 30 天持续有关于新鲜度和口感的真实好评；3 分：评分一般但问题集中且可修复；1 分：差评明显扩散，却仍计划继续强推放量。",
+      "positive_signals": [
+        "评分稳定在较高区间",
+        "差评原因少且已在修复",
+        "近期好评持续出现并强调新鲜和稳定"
+      ],
+      "negative_signals": [
+        "评分快速下滑",
+        "差评集中在不新鲜、补货慢、蛋糕压坏、配送迟到或图片不符"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线建立在真实回评和复购上；口碑不稳时必须先修履约和评分。"
+    },
+    {
+      "id": "baking_capacity_stability",
+      "feature_name": "现烤与裱花产能稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰现烤补货、裱花写字、打包和冷藏交接都有余量且节奏稳定；3 分：可承接但需要限定时段、限定 SKU 或预约；1 分：高峰已频繁缺货、排队和超时。",
+      "positive_signals": [
+        "清楚高峰可补货和可交付上限",
+        "现烤、裱花、打包和骑手交接冲突可控",
+        "冷藏、写字配件和包装库存能覆盖当前路线"
+      ],
+      "negative_signals": [
+        "依赖个别员工手法",
+        "高峰经常空柜、断货、塌陷或骑手积压"
+      ],
+      "route_guidance": "承接越稳，越适合放量；承接越弱，越应转向预约、自提和低峰时段路线。"
+    },
+    {
+      "id": "shelf_life_and_loss_control",
+      "feature_name": "保质期与损耗控制清晰度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：清楚不同品类的保质期、最佳售卖时段、报损边界和补货节奏；3 分：知道大概损耗但缺乏单品级核算；1 分：只看销量不看损耗，扩量可能直接放大报损。",
+      "positive_signals": [
+        "按吐司、常温点心、冷藏甜点和蛋糕区分保质期",
+        "有补货频率和报损记录",
+        "知道哪些 SKU 适合限时卖、哪些适合预订"
+      ],
+      "negative_signals": [
+        "切件和整模共用一套粗糙备货逻辑",
+        "高峰后剩余库存和报损长期失控"
+      ],
+      "route_guidance": "损耗边界越清晰，越能安全放量；若报损和补货逻辑不清，应先缩 SKU 和缩时段。"
+    },
+    {
+      "id": "takeout_preorder_unit_economics_fit",
+      "feature_name": "即买外带与预订订单单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：即买、拼盒和蛋糕预订的主力 SKU、毛利、配送边界和售后风险都清楚；3 分：知道差异但尚未拆开运营；1 分：同一套菜单和权益强行覆盖三种履约模式。",
+      "positive_signals": [
+        "即买和预订有不同主推组合",
+        "知道配送半径、包装成本和退款风险",
+        "能核算各路线毛利与售后成本"
+      ],
+      "negative_signals": [
+        "把预订蛋糕逻辑直接套到即时外带",
+        "只看客单不看售后与履约成本"
+      ],
+      "route_guidance": "单位经济越清晰，越能安全拆路线；若毛利和售后边界不清，应该先拆开验证再投放。"
+    },
+    {
+      "id": "immediate_purchase_and_preorder_route_validity",
+      "feature_name": "即买现烤与预订蛋糕路线有效性",
+      "metric": "route_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分：即买现烤和预订蛋糕各自的转化动作、证据和承接边界都清楚；3 分：知道两条路线都重要，但没有明确切换逻辑；1 分：用同一套内容同时覆盖早餐外带和庆生蛋糕。",
+      "positive_signals": [
+        "现烤路线强调顺路、补货和新鲜度",
+        "预订路线强调尺寸、口味、提前期和配件说明",
+        "两条路线各自有对应 CTA 和承接动作"
+      ],
+      "negative_signals": [
+        "把所有 SKU 都塞进同一个主页面或同一套投放",
+        "没有提前期和履约边界却主推蛋糕预订"
+      ],
+      "route_guidance": "路线翻译越准确，越能提高命中率；若即买与预订混在一起，应先拆分信息结构和预算。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "表述合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实产品、回评、原料信息和履约规则；3 分：有少量模糊夸张但可修正；1 分：存在健康功效、绝对最低价、绝对排名、绝对时效或未核验背书等高风险说法。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "口感、尺寸、提前期和履约边界说明清楚",
+        "原料与联名信息可核验"
+      ],
+      "negative_signals": [
+        "零负担、零糖不胖、全城第一、全网最低价、当天必达等绝对化表述",
+        "伪造联名、排队、限量或配送时效"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术和承接边界。"
+    }
+  ]
+}

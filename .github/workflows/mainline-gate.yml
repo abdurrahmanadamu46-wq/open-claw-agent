@@ -1,0 +1,126 @@
+name: mainline-gate-matrix
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  contracts:
+    name: contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install contract validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema openapi-spec-validator
+
+      - name: Validate contracts and schemas
+        run: |
+          python scripts/contracts/validate_contracts.py
+
+      - name: UTF-8 scan (non-blocking)
+        continue-on-error: true
+        run: |
+          python scripts/quality/scan_utf8.py --roots backend web dragon-senate-saas-v2 docs scripts apps
+
+  openapi-freshness:
+    name: openapi-freshness
+    needs: contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            web/package-lock.json
+            backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Check OpenAPI generated freshness
+        run: bash scripts/check-openapi-generated.sh
+
+  week3-e2e-live:
+    name: week3-e2e-live
+    needs: [contracts, openapi-freshness]
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            web/package-lock.json
+            backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: web
+        run: npx playwright install --with-deps chromium
+
+      - name: Run live release E2E gate (mock fallback disabled)
+        working-directory: web
+        env:
+          CI: true
+          REDIS_HOST: 127.0.0.1
+          REDIS_PORT: 6379
+          JWT_SECRET: github_actions_release_secret_1234567890
+          NEW_API_BASE_URL: http://127.0.0.1:39999
+          NEXT_PUBLIC_USE_MOCK: "false"
+          NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: "false"
+          NEXT_PUBLIC_RUNTIME_ENV: production
+          E2E_LIVE_USERNAME: admin
+          E2E_LIVE_PASSWORD: change_me
+        run: npm run test:e2e:release
+
+      - name: Upload Playwright live report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-live-report
+          path: web/playwright-report
+          retention-days: 7

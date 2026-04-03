@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-07",
+  "name": "Policy Router",
+  "owner_scope": "policy tensor updates and prompt-context routing",
+  "maturity": "prototype",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "read": "REST",
+    "feedback": "REST or MQ"
+  },
+  "source_anchors": [
+    "services/policy-router-service"
+  ]
+}

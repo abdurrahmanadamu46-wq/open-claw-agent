@@ -1,0 +1,50 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "catcher",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "intent_explicitness",
+      "title": "到店动作显性度",
+      "description": "评估线索是否明确表达想约、想来、这个周末能不能安排、有没有看车或试驾时段等动作。高分表示用户已经从泛兴趣进入行动准备。",
+      "examples": ["高分：周五晚能不能帮我安排一个到店。", "低分：最近想了解一下。"],
+      "priority": "high"
+    },
+    {
+      "id": "budget_specificity",
+      "title": "预算与车型清晰度",
+      "description": "高分线索会明确提到预算、SUV、新能源、家用和首台车等具体方向，而不是只有想买辆车这类笼统表达。",
+      "examples": ["高分：预算十五万左右，想找家用 SUV。", "低分：想买辆车。"],
+      "priority": "high"
+    },
+    {
+      "id": "time_window_strength",
+      "title": "时间窗口强度",
+      "description": "高分线索通常会给出周末、周四晚、提车前和下班后等可执行时间窗口。没有时间线索的咨询不应高估。",
+      "examples": ["高分：这周日或者周四下班后都可以。", "低分：有空再来。"],
+      "priority": "high"
+    },
+    {
+      "id": "config_barrier_visibility",
+      "title": "配置顾虑可见度",
+      "description": "用户若明确表达担心不会选配置、怕金融套路和第一次买车，说明承接时要优先走信任路线。这类信息不是降分，而是重要的跟进信号。",
+      "examples": ["高分信号：第一次来，担心不会选配置。", "高分信号：怕金融套路。"],
+      "priority": "medium"
+    },
+    {
+      "id": "location_specificity",
+      "title": "门店位置明确度",
+      "description": "明确门店、商圈和写字楼，代表用户已经在做实际选择，通常比泛泛咨询更接近真实预约。",
+      "examples": ["高分：想约国金门店。", "低分：你们在哪里。"],
+      "priority": "medium"
+    },
+    {
+      "id": "relationship_warmth",
+      "title": "关系温度",
+      "description": "老客复访、朋友推荐和之前来过等关系信号，应提升拟合度和后续跟进优先级，因为其成交和复购概率通常更高。",
+      "examples": ["高分：上次来过，这次还想看。", "高分：朋友推荐我来问问。"],
+      "priority": "medium"
+    }
+  ]
+}

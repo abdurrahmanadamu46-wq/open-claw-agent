@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "catcher",
+  "artifactType": "LeadAssessment",
+  "playbookId": "catcher_starter",
+  "title": "Catcher Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read_tenant_and_industry_filters",
+    "classify_intent_fit_and_risk",
+    "assign_lead_tier",
+    "flag_followup_or_rejection_path",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

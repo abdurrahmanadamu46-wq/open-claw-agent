@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "echoer_beauty_salon_sensitive_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I have pretty sensitive skin and I am a little scared to book. Do you have anything gentle this weekend?",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "guarantee zero reaction",
+          "hard package push"
+        ],
+        "context_window": [
+          "public comment thread",
+          "first-time beauty inquiry",
+          "cautious user"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the concern calmly",
+        "ask for current concern and time window",
+        "guide toward a safe consult-style next step"
+      ],
+      "mustAvoid": [
+        "diagnosis claims",
+        "guaranteed reaction-free promise",
+        "aggressive upsell"
+      ]
+    },
+    {
+      "id": "echoer_beauty_salon_pre_event_002",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I have a photoshoot on Saturday. Can I do something Thursday night to look more presentable?",
+        "brand_tone": "helpful and reassuring",
+        "negative_patterns": [
+          "promise dramatic guaranteed transformation",
+          "push a long package"
+        ],
+        "context_window": [
+          "private message",
+          "time-sensitive booking",
+          "before-event request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the event timing",
+        "ask for Thursday availability and current concern",
+        "keep the next step practical"
+      ],
+      "mustAvoid": [
+        "magic-result promise",
+        "ignoring the event date",
+        "hard-selling a package"
+      ]
+    },
+    {
+      "id": "echoer_beauty_salon_price_003",
+      "label": "edge_case",
+      "input": {
+        "user_message": "How much is it?",
+        "brand_tone": "light and helpful",
+        "negative_patterns": [
+          "defensive tone",
+          "long menu dump"
+        ],
+        "context_window": [
+          "public comment thread",
+          "no concern context yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "light answer without sounding evasive",
+        "one low-friction scope question",
+        "natural bridge to next step"
+      ],
+      "mustAvoid": [
+        "cold price list dump",
+        "hostile pushback",
+        "forced off-platform diversion"
+      ]
+    },
+    {
+      "id": "echoer_beauty_salon_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "user_message": "I came before and might want to come back. My skin has been acting up again lately.",
+        "brand_tone": "familiar and calm",
+        "negative_patterns": [
+          "treating the user like a stranger",
+          "jumping into a hard close"
+        ],
+        "context_window": [
+          "private message",
+          "returning guest",
+          "possible follow-up path"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the prior visit naturally",
+        "ask what changed this time",
+        "guide toward an easy re-entry point"
+      ],
+      "mustAvoid": [
+        "cold restart tone",
+        "ignoring prior context",
+        "pushing a package too early"
+      ]
+    }
+  ]
+}

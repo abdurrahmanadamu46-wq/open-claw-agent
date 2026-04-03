@@ -1,0 +1,456 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_bbq_private_room_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need a private room or a terrace table for 10 people this Saturday night. Do you still have space?",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "promise room availability without checking",
+          "pushy upsell"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is close to booking",
+          "group dining scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge booking intent",
+        "ask for branch and exact time",
+        "guide toward the next reservation step naturally"
+      ],
+      "mustAvoid": [
+        "guaranteeing seating availability",
+        "hard off-platform diversion"
+      ]
+    },
+    {
+      "id": "echoer_bbq_family_not_spicy_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Taking my parents and a child there this weekend. What should we order if we do not want it too spicy?",
+        "brand_tone": "helpful and human",
+        "negative_patterns": [
+          "generic menu dumping",
+          "salesy pressure"
+        ],
+        "context_window": [
+          "menu guidance request",
+          "mixed-age group",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the mixed family group",
+        "anchor the reply in flavor preference",
+        "guide toward one practical next detail such as party size or preferred style"
+      ],
+      "mustAvoid": [
+        "one-size-fits-all recommendations",
+        "ignoring the not-spicy request"
+      ]
+    },
+    {
+      "id": "echoer_bbq_self_grill_preference_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "It is our first time there and my parents are older. Do we have to grill it ourselves or can the kitchen handle most of it?",
+        "brand_tone": "natural and practical",
+        "negative_patterns": [
+          "assuming every branch uses the same setup",
+          "pushing a premium platter before answering"
+        ],
+        "context_window": [
+          "service-style question",
+          "family comfort matters",
+          "user is planning the actual visit"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the comfort concern",
+        "mention that branch format can matter",
+        "ask for branch or dining context as the next step"
+      ],
+      "mustAvoid": [
+        "pretending the answer is identical everywhere",
+        "ignoring the older-family context"
+      ]
+    },
+    {
+      "id": "echoer_bbq_authenticity_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every barbecue place online says the charcoal flavor is authentic. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete flavor or quality concern",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-city bragging",
+        "sarcasm"
+      ]
+    },
+    {
+      "id": "echoer_bbq_queue_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I come at 8 tonight can you guarantee there will be no wait?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "no-wait guarantee",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "peak dining hour",
+          "public comment thread",
+          "user is in a hurry"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid wasting a trip",
+        "state that queue depends on branch traffic and party size",
+        "guide toward reservation or sharing branch and time details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_bbq_allergy_risk_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My child has a sesame allergy. Can you guarantee there will be zero cross-contact on the grill?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "absolute allergen guarantee",
+          "casual reassurance"
+        ],
+        "context_window": [
+          "food safety topic",
+          "family dining intent",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the concern as serious",
+        "avoid making a guarantee",
+        "move toward exact allergen confirmation and human or branch review"
+      ],
+      "mustAvoid": [
+        "100 percent safe language",
+        "guessing grill handling"
+      ]
+    },
+    {
+      "id": "echoer_bbq_company_gathering_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need a team dinner for 18 people next Wednesday and an invoice. Do you have a private area and a less smoky option?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "ignoring invoice needs",
+          "package hard sell"
+        ],
+        "context_window": [
+          "business dining lead",
+          "high-intent group booking",
+          "user is organized"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize this as a business meal",
+        "ask for branch, time, and seating preference",
+        "guide toward a clear booking follow-up"
+      ],
+      "mustAvoid": [
+        "assuming every branch supports the same arrangement",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_bbq_takeout_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "Our barbecue delivery arrived cold and one skewer tray is missing. Is this how you handle orders?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request order time or order details through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming delivery in public",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_bbq_coupon_question_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I use this beer-and-skewer combo coupon tonight at your downtown branch?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket yes",
+          "discount bait"
+        ],
+        "context_window": [
+          "promotion check",
+          "branch partially known",
+          "user may be close to dining"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the offer question",
+        "mention that coupon rules can depend on branch and time",
+        "guide toward confirming branch and dining time"
+      ],
+      "mustAvoid": [
+        "approving the coupon without conditions",
+        "vague promotional hype"
+      ]
+    },
+    {
+      "id": "echoer_bbq_budget_group_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We are 8 people. What is the cheapest way to eat there? I do not care about anything fancy.",
+        "brand_tone": "respectful and practical",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "price-led inquiry",
+          "group dining",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget focus",
+        "explain that the workable range still depends on protein mix or drinks",
+        "reframe toward one or two trade-offs"
+      ],
+      "mustAvoid": [
+        "instant fixed price without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_bbq_freshness_claim_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "Is your lamb absolutely fresh and never frozen? I only want the safest option.",
+        "brand_tone": "careful and credible",
+        "negative_patterns": [
+          "absolute freshness promise",
+          "casual health reassurance"
+        ],
+        "context_window": [
+          "ingredient quality question",
+          "user is cautious",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the ingredient concern",
+        "avoid making an absolute freshness or safety claim",
+        "guide toward exact item and branch confirmation"
+      ],
+      "mustAvoid": [
+        "never frozen guarantee",
+        "improvised sourcing claims"
+      ]
+    },
+    {
+      "id": "echoer_bbq_smoke_sensitive_family_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "My parents hate smoky clothes. Do you have an outdoor table or a better-ventilated area for tonight?",
+        "brand_tone": "warm and measured",
+        "negative_patterns": [
+          "guaranteeing no smoke",
+          "dismissing the concern"
+        ],
+        "context_window": [
+          "comfort-sensitive booking question",
+          "family dining context",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "validate the comfort concern",
+        "mention that branch and time can matter",
+        "ask for branch or arrival time as the next step"
+      ],
+      "mustAvoid": [
+        "promising a fully smoke-free experience",
+        "ignoring the family context"
+      ]
+    },
+    {
+      "id": "echoer_bbq_holiday_hours_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Are you open after midnight on Qingming evening, and should I book ahead?",
+        "brand_tone": "natural and reliable",
+        "negative_patterns": [
+          "guessing holiday hours",
+          "ignoring branch differences"
+        ],
+        "context_window": [
+          "holiday planning",
+          "branch not specified",
+          "user needs practical guidance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the planning question",
+        "mention that holiday timing can vary by branch",
+        "guide toward branch and arrival time details"
+      ],
+      "mustAvoid": [
+        "fixed holiday answer without branch context",
+        "generic booking pressure"
+      ]
+    },
+    {
+      "id": "echoer_bbq_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to confirm the booking now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "booking is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request branch plus booking details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    }
+  ]
+}

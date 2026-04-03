@@ -1,0 +1,11 @@
+﻿{
+  "schema_version": "approval_gate.contract.v1",
+  "name": "ApprovalGate",
+  "purpose": "Tool-level approval contract for high-risk actions in the Lobster Pool execution chain.",
+  "principles": [
+    "tool_level_hitl",
+    "no_prompt_only_safety",
+    "server_side_pending_registry",
+    "durable_resume"
+  ]
+}

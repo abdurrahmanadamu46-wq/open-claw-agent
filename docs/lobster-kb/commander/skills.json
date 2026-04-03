@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lobster": "commander",
+    "name": "陈",
+    "role": "元老院总脑·调度核心",
+    "level": "L3",
+    "version": "2.0",
+    "last_updated": "2026-04-01",
+    "constitution_ref": "../LOBSTER_KB_CONSTITUTION.md"
+  },
+  "skills": [
+    {
+      "entry_id": "cmd_dispatch_001",
+      "title": "任务优先级裁决",
+      "content": "当多个龙虾同时发出任务请求或冲突时，按以下顺序裁决：1.客户死线>内部计划；2.已承诺>未承诺；3.高意向线索相关>内容生产；4.异常处理>常规任务。如果仍然僵持，执行'资源最小化原则'：让占用资源最少的任务先走。",
+      "source": "团队内部验证",
+      "source_ref": "工作流复盘会议-2026-03",
+      "status": "已验证",
+      "verified_count": 3,
+      "last_verified": "2026-03-30",
+      "created_at": "2026-03-01",
+      "tags": ["调度", "优先级", "冲突处理"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_dispatch_002",
+      "title": "龙虾阻塞识别",
+      "content": "龙虾超过20分钟未输出且无状态更新 → 视为阻塞。处理步骤：1.发送'状态确认'请求；2.如果5分钟内无响应，判断为阻塞；3.绕过阻塞龙虾，启用备份路径或降级处理；4.记录阻塞原因和处理方式到 battle_log。常见阻塞原因：上游输入缺失/任务描述不清/LLM超时。",
+      "source": "团队内部验证",
+      "source_ref": "运营日志-2026-03",
+      "status": "已验证",
+      "verified_count": 5,
+      "last_verified": "2026-03-28",
+      "created_at": "2026-02-15",
+      "tags": ["阻塞处理", "监控", "容错"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_dispatch_003",
+      "title": "工作流降级策略",
+      "content": "当14步工作流中某一步骤失败，判断是否可降级执行：必须步骤（热点分析/文案/视觉/发布）→ 无法降级，必须修复；可选步骤（数据回收/followup通知）→ 可延迟；可替代步骤（图文 vs 视频）→ 切换格式继续。降级时主动告知客户/operator，不要静默失败。",
+      "source": "团队内部验证",
+      "source_ref": "14步工作流复盘报告",
+      "status": "已验证",
+      "verified_count": 4,
+      "last_verified": "2026-03-25",
+      "created_at": "2026-02-01",
+      "tags": ["工作流", "降级", "容错"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_collab_001",
+      "title": "跨龙虾需求对齐",
+      "content": "当A龙虾的输出需要被B龙虾使用时，commander负责确认：1.A的输出格式是否是B期望的格式；2.A输出的时间是否在B的需要时间之前；3.如果有gap，commander在任务开始前明确说明，不要等到执行时才发现。对齐时间：复杂任务任务开始前5分钟。",
+      "source": "团队内部验证",
+      "source_ref": "多龙虾协作复盘-2026-03",
+      "status": "已验证",
+      "verified_count": 4,
+      "last_verified": "2026-03-20",
+      "created_at": "2026-02-10",
+      "tags": ["协作", "对齐", "接口"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_exception_001",
+      "title": "客户投诉分级响应",
+      "content": "P0（内容违规/账号被封/数据泄露）→ 立刻暂停相关工作流，30分钟内上报，等待人工决策；P1（内容质量严重不符/发布失败）→ 2小时内修复方案；P2（效果低于预期）→ 当天内分析原因，明日提出改进方案；P3（客户一般性反馈）→ 48小时内回复。每次P0/P1事件必须写事后复盘报告。",
+      "source": "团队内部验证",
+      "source_ref": "客户投诉处理手册-2026-02",
+      "status": "已验证",
+      "verified_count": 6,
+      "last_verified": "2026-03-31",
+      "created_at": "2026-01-15",
+      "tags": ["异常处理", "客户", "响应时效"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_talent_001",
+      "title": "龙虾能力评估方法",
+      "content": "每季度对每只龙虾进行能力评估，评估维度：1.任务完成率（目标90%+）；2.输出质量（被下游接受率80%+）；3.响应速度（平均响应时间）；4.迭代频率（每月知识库更新次数）；5.失败率趋势（同类失败是否在下降）。评估结果更新龙虾等级（L1-L4），并提出下季度成长计划。",
+      "source": "团队内部验证",
+      "source_ref": "龙虾成长手册",
+      "status": "验证中",
+      "verified_count": 1,
+      "last_verified": "2026-03-31",
+      "created_at": "2026-03-31",
+      "tags": ["人才评估", "成长", "季度复盘"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "cmd_risk_001",
+      "title": "内容发布前风险扫描",
+      "content": "以下情况触发 commander 强制审核，阻止发布：1.涉及竞品具名批评；2.内容涉及医疗/法律/金融效果承诺；3.账号最近7天已有违规警告；4.同一内容在该账号24小时内已发布过（防止重复发布）；5.发布时间在凌晨1-5点（非预设计划）。",
+      "source": "团队内部验证",
+      "source_ref": "内容合规手册-2026-01",
+      "status": "已验证",
+      "verified_count": 8,
+      "last_verified": "2026-03-30",
+      "created_at": "2026-01-01",
+      "tags": ["风控", "合规", "发布审核"],
+      "superseded_by": null,
+      "failure_log": []
+    }
+  ],
+  "known_failure_patterns": [
+    {
+      "pattern": "静默失败",
+      "description": "某个龙虾遇到问题但没有上报，导致工作流静默卡死",
+      "prevention": "每个龙虾必须在超时前主动发出状态信号，commander每20分钟轮询一次"
+    },
+    {
+      "pattern": "格式不对齐导致的连锁失败",
+      "description": "A输出的格式，B不认识，B输出空结果给C，C不知道原因",
+      "prevention": "任务开始时commander确认接口格式，任何格式变更必须通知下游"
+    },
+    {
+      "pattern": "优先级争抢",
+      "description": "两只龙虾同时要用同一个LLM资源，互相等待导致死锁",
+      "prevention": "commander维护资源占用表，同一时间同类资源只分配给1个龙虾"
+    }
+  ]
+}

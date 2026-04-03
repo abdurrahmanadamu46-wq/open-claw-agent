@@ -1,0 +1,192 @@
+﻿{
+  "schema_version": "subproject-registry.v1",
+  "generated_at": "2026-03-30T00:00:00+08:00",
+  "coordination_mode": "contract_driven_black_box",
+  "subprojects": [
+    {
+      "subproject_id": "sp_control_plane_web",
+      "owner_thread": "thread_control_web",
+      "responsibility_boundary": [
+        "merchant console",
+        "operator console",
+        "mobile web fallback",
+        "commercial readiness cockpit"
+      ],
+      "forbidden_scope": [
+        "direct AI orchestration logic",
+        "provider SDK coupling",
+        "database truth ownership"
+      ],
+      "main_repo_integration_contract": "consume backend REST only",
+      "handoff_package_type": ["ui_command_request", "ui_review_action", "ui_dashboard_view"],
+      "conflict_avoidance_rule": "Owns web/src/app, web/src/components, web/src/services endpoints only.",
+      "acceptance_signal": "web next build passes and critical pages read real backend data"
+    },
+    {
+      "subproject_id": "sp_control_plane_backend",
+      "owner_thread": "thread_control_backend",
+      "responsibility_boundary": [
+        "auth",
+        "rbac",
+        "tenant registry",
+        "billing proxy",
+        "ai subservice proxy",
+        "subproject contract registration"
+      ],
+      "forbidden_scope": [
+        "AI graph internals",
+        "content production internals"
+      ],
+      "main_repo_integration_contract": "provides stable REST facade to web and child domains",
+      "handoff_package_type": ["auth_context", "tenant_context", "billing_context", "subproject_handoff_record"],
+      "conflict_avoidance_rule": "Owns backend/src exclusively; child domains must not re-implement auth/tenant logic.",
+      "acceptance_signal": "backend build and proxy regressions pass"
+    },
+    {
+      "subproject_id": "sp_dragon_brain_commander",
+      "owner_thread": "thread_brain_commander",
+      "responsibility_boundary": [
+        "9 elder orchestration",
+        "commander routing",
+        "TG terminal logic",
+        "low-cost direct strategy path"
+      ],
+      "forbidden_scope": [
+        "platform billing",
+        "tenant core",
+        "desktop release chain"
+      ],
+      "main_repo_integration_contract": "consume async submit/status contract only",
+      "handoff_package_type": ["strategy_run_result", "senate_trace_bundle", "commander_decision_bundle"],
+      "conflict_avoidance_rule": "Parent thread must not rewrite commander internals.",
+      "acceptance_signal": "graph runs via async path without recursion or blocking"
+    },
+    {
+      "subproject_id": "sp_kernel_governance_memory",
+      "owner_thread": "thread_kernel_governance",
+      "responsibility_boundary": [
+        "senate kernel",
+        "memory compiler",
+        "risk taxonomy",
+        "autonomy metrics",
+        "rollback presets",
+        "governance alerts"
+      ],
+      "forbidden_scope": [
+        "content production",
+        "TG UI logic"
+      ],
+      "main_repo_integration_contract": "consume kernel reports and emit governance rollups, presets, and folded memories",
+      "handoff_package_type": ["kernel_report", "risk_alert_bundle", "memory_fold_bundle", "rollback_preset_bundle"],
+      "conflict_avoidance_rule": "Owns senate_kernel.py and memory_governor.py outputs.",
+      "acceptance_signal": "kernel regressions pass and Trace shows risk/autonomy/preset context"
+    },
+    {
+      "subproject_id": "sp_intelligence_compiler",
+      "owner_thread": "thread_intelligence_compiler",
+      "responsibility_boundary": [
+        "research radar batch",
+        "industry compiler",
+        "starter kits",
+        "workflow hints"
+      ],
+      "forbidden_scope": [
+        "content rendering",
+        "CRM ownership"
+      ],
+      "main_repo_integration_contract": "consume industry/topic/goal and emit compiled intelligence artifacts",
+      "handoff_package_type": ["research_signal_bundle", "industry_profile_bundle", "starter_task_bundle", "workflow_hint_bundle"],
+      "conflict_avoidance_rule": "Content threads consume outputs; they do not rebuild intelligence compile logic.",
+      "acceptance_signal": "starter kits and radar signals can be generated offline"
+    },
+    {
+      "subproject_id": "sp_content_production_aoto_cut",
+      "owner_thread": "thread_aoto_cut",
+      "responsibility_boundary": [
+        "content production subdomain"
+      ],
+      "forbidden_scope": [
+        "auth",
+        "tenant core",
+        "billing",
+        "global orchestration"
+      ],
+      "main_repo_integration_contract": "consume standard inputs and emit publish-ready packages",
+      "handoff_package_type": ["topic_candidates", "script_asset", "compliance_report", "storyboard_package", "material_bundle", "media_bundle", "archive_record", "publish_ready_package"],
+      "conflict_avoidance_rule": "Main repo must not rebuild Aoto Cut internal pages or object model.",
+      "acceptance_signal": "handoff package contract succeeds"
+    },
+    {
+      "subproject_id": "sp_template_recommender_seeder",
+      "owner_thread": "thread_template_recommender",
+      "responsibility_boundary": [
+        "template family recommendation",
+        "CLI/seeder alignment",
+        "anti-fit and prerequisite rules"
+      ],
+      "forbidden_scope": [
+        "main workflow pages",
+        "global schema governance"
+      ],
+      "main_repo_integration_contract": "consume condition signals and emit ranked template recommendations",
+      "handoff_package_type": ["template_recommendation_bundle", "template_seed_status"],
+      "conflict_avoidance_rule": "Content production threads consume recommendations instead of rebuilding rule engine.",
+      "acceptance_signal": "recommendation tests pass"
+    },
+    {
+      "subproject_id": "sp_integration_adapter_hub",
+      "owner_thread": "thread_adapter_hub",
+      "responsibility_boundary": [
+        "Feishu",
+        "DingTalk",
+        "Telegram",
+        "AnythingLLM",
+        "LibTV",
+        "ComfyUI adapters",
+        "mobile approval delivery"
+      ],
+      "forbidden_scope": [
+        "senate strategy logic",
+        "billing core"
+      ],
+      "main_repo_integration_contract": "consume normalized delivery requests and return normalized receipts",
+      "handoff_package_type": ["delivery_request", "delivery_receipt", "provider_callback_event"],
+      "conflict_avoidance_rule": "Feature teams must use adapter contracts, not provider SDKs directly.",
+      "acceptance_signal": "provider failures degrade to deferred delivery rather than blocking the main chain"
+    },
+    {
+      "subproject_id": "sp_telephony_followup_voice",
+      "owner_thread": "thread_voice_followup",
+      "responsibility_boundary": [
+        "telephony provider",
+        "voice followup",
+        "transcript and disposition normalization"
+      ],
+      "forbidden_scope": [
+        "main task orchestration",
+        "billing/auth"
+      ],
+      "main_repo_integration_contract": "consume lead+call policy package and emit call result plus transcript ref",
+      "handoff_package_type": ["voice_followup_request", "voice_followup_result", "voice_transcript_ref"],
+      "conflict_avoidance_rule": "Main brain stops at enqueueing and does not embed provider-specific voice logic.",
+      "acceptance_signal": "canary call flow succeeds with provider or mock"
+    },
+    {
+      "subproject_id": "sp_edge_client_delivery",
+      "owner_thread": "thread_edge_client",
+      "responsibility_boundary": [
+        "edge runtime",
+        "desktop client",
+        "update chain",
+        "release manifest and ack chain"
+      ],
+      "forbidden_scope": [
+        "cloud strategy generation"
+      ],
+      "main_repo_integration_contract": "consume signed release manifest and return device/update acknowledgements",
+      "handoff_package_type": ["release_manifest", "device_ack_event", "edge_runtime_status"],
+      "conflict_avoidance_rule": "Strategy teams must treat edge/client as executor-only surface.",
+      "acceptance_signal": "client update chain and runtime integrity checks pass"
+    }
+  ]
+}

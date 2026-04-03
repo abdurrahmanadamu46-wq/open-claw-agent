@@ -1,0 +1,206 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_hair_salon_case_001",
+      "label": "happy_path",
+      "scenario": "写字楼低维护剪发的真实案例分镜",
+      "input": {
+        "copy_pack": "美发店短视频脚本，核心卖点是洗完自己也能打理的低维护剪发。",
+        "brand_assets": [
+          "真实剪发案例视频",
+          "工位和工具镜头",
+          "剪裁与吹整过程镜头",
+          "预约承接画面"
+        ],
+        "reference_styles": [
+          "克制耐看",
+          "真实案例优先"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "customer_closeup_allowed": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现真实剪发案例",
+        "工位和过程证据",
+        "后半段出现预约路径"
+      ],
+      "mustAvoid": [
+        "只拍网感模特图",
+        "空镜撑满前半段",
+        "只给成片不给过程"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把低维护剪发脚本转成一条真实、克制且能承接预约的分镜。",
+        "assumptions": [
+          "可以拍到本店真实剪发案例。",
+          "工位和工具允许出镜。"
+        ],
+        "evidence": [
+          "案例和过程素材齐全。",
+          "脚本强调低维护。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_hair_salon_case_002",
+      "label": "happy_path",
+      "scenario": "显白染发的真实发色分镜",
+      "input": {
+        "copy_pack": "染发脚本，重点是显白但真实，强调底色和是否需漂的边界。",
+        "brand_assets": [
+          "真实染发案例",
+          "发色细节特写",
+          "工位操作镜头",
+          "咨询说明素材"
+        ],
+        "reference_styles": [
+          "真实光线",
+          "发质适配"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "customer_closeup_allowed": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "真实发色和光线",
+        "底色或适配说明",
+        "不承诺人人同色同结果"
+      ],
+      "mustAvoid": [
+        "过度滤镜和外部图冒充",
+        "没有任何边界说明",
+        "案例和项目脱节"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把显白染发内容拍成高相关、高信任的预约分镜。",
+        "assumptions": [
+          "真实染发素材可用。",
+          "咨询镜头可拍。"
+        ],
+        "evidence": [
+          "案例存在。",
+          "脚本核心围绕适配与真实。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_hair_salon_case_003",
+      "label": "happy_path",
+      "scenario": "图实一致路线的真实案例分镜",
+      "input": {
+        "copy_pack": "脚本围绕大家最怕拿着参考图来，最后做出来完全不是那回事展开，强调本店真实案例和发质判断。",
+        "brand_assets": [
+          "真实案例合集",
+          "不同发质案例",
+          "操作过程镜头"
+        ],
+        "reference_styles": [
+          "真实可信",
+          "适配优先"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "customer_closeup_allowed": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "真实案例代替网图幻想",
+        "发质和底色条件可见",
+        "适配逻辑清楚"
+      ],
+      "mustAvoid": [
+        "网图做主视觉",
+        "没有任何边界说明",
+        "只拍一个角度"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让观众先相信店里真的做得出，再进入预约。",
+        "assumptions": [
+          "不同发质案例可展示。",
+          "过程允许拍摄。"
+        ],
+        "evidence": [
+          "真实案例充足。",
+          "脚本核心是图实一致。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_hair_salon_case_004",
+      "label": "risk_case",
+      "scenario": "咨询感冷启动的安全降级拍法",
+      "input": {
+        "copy_pack": "首次到店友好脚本，强调咨询、工位和过程专业感，但顾客完整案例素材不够丰富。",
+        "brand_assets": [
+          "工具准备镜头",
+          "工位镜头",
+          "基础操作镜头"
+        ],
+        "reference_styles": [
+          "降级保真",
+          "咨询与过程优先"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确以咨询和工位建立可信度",
+        "不硬造外部案例",
+        "保留预约承接画面"
+      ],
+      "mustAvoid": [
+        "拿外部图补素材",
+        "把缺素材伪装成爆款现场",
+        "完全没有案例或过程证据"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在缺少大量顾客案例时，仍用真实过程和工位专业感建立最低可信度。",
+        "assumptions": [
+          "顾客授权案例有限。",
+          "工具与工位可拍。"
+        ],
+        "evidence": [
+          "工位与过程素材存在。",
+          "脚本主卖点是首次到店安心。"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车租赁","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+{"id":"facts_before_slot_commitment","title":"没补齐车型、时间和用车方向前，本轮目标是锁预约事实，不是先把结果说满","description":"汽车租赁线索很多从有没有车、多少钱和能不能免押开场，但真正决定能否推进的是车型范围、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问车型和用车方向。","客户只说最近想租个车时，先补时间和门店，再决定如何推进。"],"priority":"high"},
+{"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕被坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会选车型、怕押金纠纷和怕乱收费的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出到店路径。","先讲清保险和押金，再谈时间。"],"priority":"high"},
+{"id":"seasonal_booking_needs_fast_scope","title":"节假日、婚礼和节点用车线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间和车型方向。","examples":["返乡线索先确认周几可来和这次最在意什么。","活动线索先锁时间，再讲车型范围。"],"priority":"high"},
+{"id":"first_visit_and_revisit_split","title":"首次预约跟进和复租维护必须拆开","description":"首单跟进的目标通常是帮用户安心完成一次到店，复租维护的目标才是提醒节点、订单状态和下一步选择。","examples":["首单更多围绕车型、时间和风险边界。","复租更多围绕上次提车感受、行程变化和下一步。"],"priority":"high"},
+{"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收感受和状态变化，再决定是否推进","description":"到店后的 FollowUp 不是默认销售时刻。","examples":["到店后先问感觉和最在意的点。","提车后先问车况和后续想法。"],"priority":"high"},
+{"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复租或续签理由，不要只催回来","description":"返乡节点、活动节点和订单周期等都是合理的回访理由。","examples":["提醒上次来租车的客户节假日节点到了。","按订单周期提醒续租。"],"priority":"medium"}]}

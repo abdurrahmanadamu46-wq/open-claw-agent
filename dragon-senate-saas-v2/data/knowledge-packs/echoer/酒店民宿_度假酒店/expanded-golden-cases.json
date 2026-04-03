@@ -1,0 +1,392 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_resort_family_room_fit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We are planning a weekend getaway with two adults, a 6-year-old, and a toddler. Do you have a family room or connecting rooms near the kids club?",
+        "brand_tone": "warm and reassuring",
+        "negative_patterns": [
+          "generic room list dumping",
+          "promise-like family fit"
+        ],
+        "context_window": [
+          "family vacation scenario",
+          "public comment thread",
+          "room fit matters more than price first"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the family-trip planning need",
+        "ask for stay dates plus child ages or bedding preference",
+        "guide toward the next room-fit clarification naturally"
+      ],
+      "mustAvoid": [
+        "guaranteeing connecting rooms",
+        "ignoring child-age context"
+      ]
+    },
+    {
+      "id": "echoer_resort_anniversary_upgrade_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We are coming for our anniversary next month. If I book a garden room now, can you guarantee a free upgrade to an ocean-view room?",
+        "brand_tone": "warm and composed",
+        "negative_patterns": [
+          "free upgrade promise",
+          "careless reassurance"
+        ],
+        "context_window": [
+          "celebration stay",
+          "premium room preference",
+          "expectation risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the anniversary context",
+        "state that upgrades depend on live inventory or rate conditions",
+        "guide toward the property, stay date, and the room preference that matters most"
+      ],
+      "mustAvoid": [
+        "guaranteeing a free upgrade",
+        "treating the celebration as unimportant"
+      ]
+    },
+    {
+      "id": "echoer_resort_package_inclusion_peak_dates_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "The package page shows breakfast, hot spring, and afternoon tea. Are all of those included for the holiday weekend too?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket package claim",
+          "generic upsell"
+        ],
+        "context_window": [
+          "rate-plan question",
+          "holiday dates may change package rules",
+          "user may be close to booking"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the inclusion question",
+        "mention that package benefits can depend on plan and dates",
+        "guide toward the exact package or booking-channel details"
+      ],
+      "mustAvoid": [
+        "saying every holiday package is the same",
+        "ignoring the date sensitivity"
+      ]
+    },
+    {
+      "id": "echoer_resort_rainy_day_pool_beach_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We are bringing our kids tomorrow. Will the outdoor pool and beach activities definitely be open if it rains?",
+        "brand_tone": "calm and considerate",
+        "negative_patterns": [
+          "weather guarantee",
+          "casual safety minimization"
+        ],
+        "context_window": [
+          "weather-sensitive trip",
+          "family vacation pressure",
+          "outdoor amenities matter"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the concern about the trip experience",
+        "state that outdoor amenities depend on weather and same-day operations",
+        "guide toward the property, date, and activity that matters most"
+      ],
+      "mustAvoid": [
+        "guaranteeing weather-dependent operations",
+        "ignoring safety considerations"
+      ]
+    },
+    {
+      "id": "echoer_resort_pet_policy_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We want to bring our small dog for two nights. Is your hot spring resort pet friendly, and are there any room restrictions?",
+        "brand_tone": "friendly and practical",
+        "negative_patterns": [
+          "blanket pet approval",
+          "ignoring room category"
+        ],
+        "context_window": [
+          "pet-stay planning",
+          "room policy matters",
+          "stay dates are partly known"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the need to avoid pet-related arrival friction",
+        "ask for the property, pet details, and room or date context",
+        "guide toward policy confirmation without oversimplifying"
+      ],
+      "mustAvoid": [
+        "saying all rooms allow pets",
+        "skipping the pet-size or property context"
+      ]
+    },
+    {
+      "id": "echoer_resort_transfer_late_arrival_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Our ferry reaches the island close to 10:30 tonight. Does your resort definitely provide pickup that late?",
+        "brand_tone": "clear and composed",
+        "negative_patterns": [
+          "blanket transport promise",
+          "guessing pickup hours"
+        ],
+        "context_window": [
+          "late arrival",
+          "property is partly implied",
+          "transport detail matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the late-arrival concern",
+        "mention that transfer support depends on property and operating hours",
+        "guide toward the exact resort, date, and pickup details"
+      ],
+      "mustAvoid": [
+        "definite yes without verification",
+        "casual guesswork on timing"
+      ]
+    },
+    {
+      "id": "echoer_resort_early_checkin_red_eye_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Our flight lands at 7 am. If I book tonight, can we definitely get into the room early so the kids can rest?",
+        "brand_tone": "steady and empathetic",
+        "negative_patterns": [
+          "guaranteed early check-in",
+          "hard-sell urgency"
+        ],
+        "context_window": [
+          "family arrival fatigue",
+          "user wants certainty",
+          "live room turnover matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the tired-arrival and kids-rest concern",
+        "state that early check-in depends on room status and property context",
+        "guide toward the resort, date, and booking details"
+      ],
+      "mustAvoid": [
+        "guaranteeing a 7 am room",
+        "ignoring the arrival-time pressure"
+      ]
+    },
+    {
+      "id": "echoer_resort_ota_cancellation_weather_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I booked a non-refundable holiday package on a travel app, but the forecast looks terrible. Can you refund it anyway?",
+        "brand_tone": "careful and respectful",
+        "negative_patterns": [
+          "instant refund promise",
+          "dismissive policy talk"
+        ],
+        "context_window": [
+          "booking already exists",
+          "channel matters",
+          "user is disappointed"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the disappointment about the trip",
+        "state that refund handling depends on booking channel and package rules",
+        "guide toward booking-source and reservation details for the next step"
+      ],
+      "mustAvoid": [
+        "promising a refund before checking the booking context",
+        "treating third-party and direct bookings as identical"
+      ]
+    },
+    {
+      "id": "echoer_resort_group_retreat_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We are planning a company retreat for 18 people and may need 9 rooms plus one dinner setup. Can your resort handle that in late June?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "instant fixed quote",
+          "ignoring event details"
+        ],
+        "context_window": [
+          "group resort demand",
+          "high-intent planning",
+          "multi-part booking"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the request as a serious group booking",
+        "ask for exact dates, room split, and dinner or event setup needs",
+        "guide toward a clear group-booking follow-up naturally"
+      ],
+      "mustAvoid": [
+        "assuming every resort handles retreats the same way",
+        "quoting without dates or headcount detail"
+      ]
+    },
+    {
+      "id": "echoer_resort_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your phone or WeChat. I want to lock a villa tonight.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "replying only with DM me"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "reservation may be close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move quickly",
+        "use platform DM as the safe bridge",
+        "request the resort plus stay details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "sounding evasive or robotic"
+      ]
+    },
+    {
+      "id": "echoer_resort_service_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "The balcony is dirty, the room next door is noisy, and the kids club said our package was not included. We already checked in today.",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "active stay complaint",
+          "multiple service issues",
+          "user is upset"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request the resort and room or booking details through a safer channel",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming the guest or operations publicly",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_resort_claim_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every resort photo looks amazing online. How do I know your sea view and crowd level are not being oversold?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite one concrete concern such as room view, package inclusion, or travel dates",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-city bragging",
+        "sarcasm"
+      ]
+    }
+  ]
+}

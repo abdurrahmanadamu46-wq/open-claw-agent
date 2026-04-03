@@ -1,0 +1,118 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u57ce\u5e02\u6c11\u5bbf",
+  "lobster_id": "catcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "qualify_by_location_and_stay_facts",
+      "title": "Qualify with location and stay facts before calling it high intent",
+      "description": "A city homestay lead should only be treated as high intent when it includes a specific property, neighborhood, subway stop, hospital, exam site, venue, or office area, plus dates, nights, guest count, room type, arrival time, and a booking action such as hold, reserve, confirm self check-in, or confirm invoice handling. Generic questions like do you have rooms or send prices should not be auto-promoted.",
+      "examples": [
+        "Next Friday to Sunday at your Jing'an Temple loft, 2 guests for 2 nights, please help hold one projector queen room if late self check-in works.",
+        "Your place looks nice, send me a price sheet first."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "separate_space_curiosity_from_booking_intent",
+      "title": "Do not confuse projector, bathtub, kitchen, or style curiosity with booking intent",
+      "description": "Questions about a projector, bathtub, kitchen access, washer, desk, photo style, parking, pet policy, or decor usually mean the user is screening options rather than preparing to book. Intent should rise only after the conversation moves toward dates, room count, guest structure, budget, arrival plan, or contact ownership.",
+      "examples": [
+        "Does the bathtub look good in photos and can we cook there should stay as an interest lead.",
+        "After asking about the projector, the guest adds two nights next Saturday, three guests, and an arrival time."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "require_landmark_specificity_before_top_tier",
+      "title": "Require area or landmark specificity before top-tier escalation",
+      "description": "Transit convenience, elevator access, parking, self check-in, building rules, and noise vary heavily by location. If the lead only says Beijing this weekend or Shanghai homestay without locking a neighborhood, landmark, or property, it should usually remain a nurture lead rather than a top-tier follow-up lead.",
+      "examples": [
+        "Near Hongqiao Railway Station with elevator access is much stronger than asking whether you have any rooms in Shanghai.",
+        "Without a clear area or property, do not auto-classify the lead as followup-ready top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "trip_purpose_needs_schedule_scope",
+      "title": "Concert, exam, hospital, work trip, and weekend trip language need scoped schedules",
+      "description": "Concert nights, exam stays, hospital companion stays, trade fair trips, office commutes, and short city breaks can all be good fit signals, but only when paired with dates, nights, guest count, arrival and departure timing, invoice needs, kitchen or laundry needs, and realistic next steps. Emotion or urgency alone is not enough.",
+      "examples": [
+        "We need two rooms after the concert and will arrive around 11:30 p.m. is much stronger than a vague plan to visit Shanghai sometime.",
+        "We may travel there soon, just checking your vibe first should not be treated as a high-value stay lead."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_and_rule_compliance_shape_fit",
+      "title": "Guest structure and rule compliance directly shape fit",
+      "description": "Couples, friends, families, children, elderly guests, pets, and multi-person shared stays all change the feasibility of bed types, elevator needs, floor preference, quiet needs, extra guest limits, registration rules, and deposit risk. The clearer the guest structure, the more reliable the fit assessment. Signs of avoiding registration or hiding guest count should increase risk.",
+      "examples": [
+        "Two adults, one child, and one elderly parent needing elevator access is much stronger than a vague family trip.",
+        "We will move in first and maybe more friends come later without registering everyone is a risk signal."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "long_stay_requires_operational_scope",
+      "title": "Long stay, internship, and relocation leads need operational scope",
+      "description": "Seven to thirty night stays for internship, relocation, renovation transition, office placement, or hospital companion use can be valuable, but only when the lead includes length of stay, budget, cleaning rhythm, deposit expectations, invoice needs, Wi-Fi, laundry, cooking, parking, and contact ownership. Pure can you give me a monthly discount is not enough.",
+      "examples": [
+        "An 18-night internship stay with washer, fridge, stable Wi-Fi, and weekly invoice needs is worth structured follow-up.",
+        "Can monthly stay be cheaper, just send the lowest price should stay below top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_vs_location_resource_mismatch",
+      "title": "Lower fit when downtown timing and resource demands are badly mismatched with budget",
+      "description": "If the guest wants a central location, weekend timing, projector, bathtub, parking, elevator, cooking access, and near-zero noise but gives a clearly unrealistic budget, that reflects real desire but weak commercial fit. These leads should be preserved carefully rather than over-promoted.",
+      "examples": [
+        "A trendy downtown loft on a weekend with bathtub and parking at a budget far below normal rates is real intent but weak fit.",
+        "When area, room type, arrival timing, and budget broadly match the offer range, fit_score should rise."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "same_day_arrival_and_self_checkin_are_signals_not_promises",
+      "title": "Same-day arrival and self check-in pressure are strong signals, not promises",
+      "description": "Tonight stay, red-eye arrival, late train arrival, post-event arrival, password lock questions, and contactless check-in all indicate a late-stage decision. Catcher should treat them as priority signals without assuming inventory, cleaning completion, access code release, parking, or early check-in are already confirmed.",
+      "examples": [
+        "We arrive after 11 p.m. and need the lock code can increase intent_score but should not lower risk_score automatically.",
+        "If you cannot guarantee 1 p.m. early check-in we will cancel is a high-pressure request that needs caution."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaints_are_service_signals_not_sales_wins",
+      "title": "Lock issues, deposit problems, invoice gaps, and hygiene complaints are service signals",
+      "description": "Messages about lock failure, room mismatch, odor, hygiene, missing invoice, refund delay, or deposit disputes deserve quick handling, but they should not be mistaken for high-intent commercial leads. They belong in support or service escalation flows.",
+      "examples": [
+        "The lock code failed and the deposit still has not come back, and I have the order number should go to support rather than sales.",
+        "The room smelled bad and the invoice never came through is urgent but not a normal booking lead."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "filter_channel_noise_and_rule_bending",
+      "title": "Filter agency noise, creator scouting, and rule-bending requests",
+      "description": "Requests about property bundles, bottom rates, channel cooperation, managed hosting, filming, creator visits, off-platform deals, no ID registration, over-occupancy, loud gatherings, or pets in restricted rooms should be treated as low-fit noise or high-risk leads unless a concrete compliant stay plan is also present.",
+      "examples": [
+        "Send all your Shanghai properties, bottom rates, and commission rules because I have clients and creators is usually not a direct stay lead.",
+        "Six people in one one-bedroom loft without full registration and a late party is clearly high risk."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "merge_repeat_contacts_before_upgrade",
+      "title": "Merge repeated comments, DMs, and enterprise chat contacts before upgrading priority",
+      "description": "The same stay plan often begins in comments, then moves into direct messages or enterprise chat with dates, guest count, and invoice details. Repeated and consistent contact can improve confidence, but only after the system confirms the same property or area, same dates, same organizer, and same travel purpose.",
+      "examples": [
+        "A comment asks about subway distance, then a DM adds dates and guest count, and enterprise chat adds invoice details.",
+        "Two inquiries with different neighborhoods, dates, or guest counts should not be merged into one top-priority lead."
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+# 自带技能的龙虾 — 本机一键启动
+# 以 OpenClaw 为核心，集成 CLI-Anything、RAG-Anything 技能
+# 启动：在仓库根目录执行 docker compose -f docker/lobster/docker-compose.yml up -d
+# 或进入 docker/lobster 后 docker compose up -d（需先构建镜像）
+
+services:
+  lobster:
+    build:
+      context: ../..
+      dockerfile: docker/lobster/Dockerfile
+    image: lobster-openclaw:local
+    container_name: lobster-openclaw
+    restart: unless-stopped
+    ports:
+      - "${LOBSTER_GATEWAY_PORT:-18789}:18789"
+    environment:
+      HOME: /home/node
+      NODE_ENV: production
+      # 非 loopback 绑定（--bind lan）时必须允许 Control UI 的 origin，否则 Gateway 启动报错
+      OPENCLAW_GATEWAY_CONTROL_UI_DANGEROUSLY_ALLOW_HOST_HEADER_ORIGIN_FALLBACK: "true"
+      # 可选：OpenClaw 配置与模型
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN:-}
+      # RAG-Anything / LLM 需 API Key 时在宿主机 .env 或此处传入
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+    # 不在宿主机挂载 openclaw.json（Windows 下易 EBUSY）；配置已写入镜像
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:18789/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 60s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+

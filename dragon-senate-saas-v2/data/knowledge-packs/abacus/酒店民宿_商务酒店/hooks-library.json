@@ -1,0 +1,118 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "guaranteed_arrival_commitment_hook",
+      "hook_name": "担保晚到落地钩子",
+      "trigger_pattern": "客人明确表示会深夜或凌晨到店，并愿意提供担保、支付责任、准确到店时点或航班车次信息。",
+      "value_hypothesis": "这类线索已经从普通询价进入可执行入住阶段，只要担保有效，短期确定性通常高于泛价格咨询，也更可能沉淀为企业差旅复住关系。",
+      "short_term_score_hint": "可上调到高短期分候选，前提是房型、日期、担保方式和到店窗口之间没有冲突。",
+      "long_term_score_hint": "若主体是企业差旅客、出差常客或企业行政代订，长期分也应维持中高位。",
+      "roi_estimate_hint": "把深夜保留房晚机会成本和夜班处理成本算进去后，只要担保牢靠，ROI 通常仍比无担保晚到健康得多。",
+      "reward_signal": "奖励确认担保、到店时间、夜班交接和发票信息的动作。",
+      "caution": "没有担保、联系不上的“可能晚到”，不能和有效担保到店等同。"
+    },
+    {
+      "id": "corporate_rate_monthly_settlement_hook",
+      "hook_name": "协议价月结钩子",
+      "trigger_pattern": "企业客户询问协议价、挂账、月结、专票或成本中心，并同步给出间夜数、入住日期或企业主体。",
+      "value_hypothesis": "企业差旅账户首单未必马上放大短期收入，但一旦审批和结算链路跑通，后续通常会带来稳定复住、团队房晚和更高长期价值。",
+      "short_term_score_hint": "短期分可给中高位，但必须依赖审批状态、入住事实和结算方式明确。",
+      "long_term_score_hint": "长期分应显著抬高，尤其是在企业主体稳定、历史复住存在时。",
+      "roi_estimate_hint": "允许承担一定销售维护和开票成本，但要把账期占用与信用风险一起算进 ROI。",
+      "reward_signal": "奖励确认企业主体、协议编号、审批人、账期和开票资料的动作。",
+      "caution": "别把“企业问价”直接当成“企业已下单”。"
+    },
+    {
+      "id": "meeting_package_room_block_hook",
+      "hook_name": "会务房块打包钩子",
+      "trigger_pattern": "客户同时提到客房、会议室、茶歇、接送站、停车或统一开票，并愿意提供参会人数或会期安排。",
+      "value_hypothesis": "这类需求往往不只是一次房晚交易，而是可拆解成多资源协同的高价值机会，对商务酒店的长期账户价值也更高。",
+      "short_term_score_hint": "在房量、会期、场地和付款节点清晰时，短期分应进入高位候选。",
+      "long_term_score_hint": "如果客户主体是企业培训、巡回会议或区域活动方，长期分应保持高位。",
+      "roi_estimate_hint": "ROI 不能只看客房收入，必须同时计入会场、茶歇、设备、人力和接送成本。",
+      "reward_signal": "奖励拿到房量清单、名单回收时间、PO/定金和设备排期的动作。",
+      "caution": "复杂套餐单很容易看起来大，但未必每个资源都赚钱。"
+    },
+    {
+      "id": "early_checkin_paid_solution_hook",
+      "hook_name": "早到晚退付费解法钩子",
+      "trigger_pattern": "客人要求早到放房或延迟退房，同时能接受付费升级、行政酒廊等待、寄存行李或明确到离店时间。",
+      "value_hypothesis": "真正有价值的不是诉求本身，而是能否在不压垮翻房产能的前提下把便利诉求转成付费服务或关系增益。",
+      "short_term_score_hint": "只有在容量允许或愿意付费升级时，短期分才值得上调；否则应保持谨慎。",
+      "long_term_score_hint": "若主体是高频会员或关键企业客，长期分可保留中位，用于关系维护判断。",
+      "roi_estimate_hint": "把翻房挤压、保洁加班和赠送权益成本扣除后，再判断是否还有正 ROI。",
+      "reward_signal": "奖励推动精确时间确认、付费升级、寄存和替代方案落地的动作。",
+      "caution": "“客户很急”不等于“客户值高分”。"
+    },
+    {
+      "id": "long_stay_extension_hook",
+      "hook_name": "长住续住钩子",
+      "trigger_pattern": "客户提出续住、项目驻场、工程团队连住或周/月度延长房晚，并愿意确认具体延住区间。",
+      "value_hypothesis": "长住客户的真实价值来自稳定房晚、可预测收入和后续续住概率，而不是单晚价格是否最高。",
+      "short_term_score_hint": "一旦延住天数、房量和账期明确，短期分可提升到中高位。",
+      "long_term_score_hint": "长期分应显著上调，因为项目制住宿常伴随二次延长和跨团队复制。",
+      "roi_estimate_hint": "ROI 往往受益于换房频次下降和获客成本摊薄，即便单晚折扣更低。",
+      "reward_signal": "奖励锁定延住日期、账单周期、房型组合和保洁偏好的动作。",
+      "caution": "不要因为长住折扣存在，就忽略其更稳定的现金流质量。"
+    },
+    {
+      "id": "member_direct_booking_reactivation_hook",
+      "hook_name": "老客直订回流钩子",
+      "trigger_pattern": "过往住客通过会员短信、App、电话回访或企业老客联系，直接询问再次入住并能说出历史偏好或开票需求。",
+      "value_hypothesis": "这类线索通常比平台新客有更低成交摩擦和更低渠道成本，是商务酒店里典型的高 ROI 机会。",
+      "short_term_score_hint": "若入住日期、房型或开票口径已明确，短期分应高于普通新客询价。",
+      "long_term_score_hint": "长期分应至少保持中高，因为它同时代表复住和直订资产回流。",
+      "roi_estimate_hint": "把节省的佣金、已知偏好带来的履约效率和更高复住概率都显式算进去。",
+      "reward_signal": "奖励调历史偏好、推动会员绑定、确认直订权益和补齐发票信息的动作。",
+      "caution": "如果历史上投诉或爽约频繁，仍然要折损分值。"
+    },
+    {
+      "id": "ota_low_adr_coupon_hook",
+      "hook_name": "低价券低 ADR 钩子",
+      "trigger_pattern": "订单量因为 OTA 券、闪促或满减明显上涨，但客单偏低、佣金高且附送早餐或晚退。",
+      "value_hypothesis": "这类场景最容易出现“房晚多但不赚钱”，Abacus 需要先判断净房晚收益，而不是被入住率表象带偏。",
+      "short_term_score_hint": "短期分不应随订单量自动升高，除非已经看到稳定加购、担保或会员沉淀。",
+      "long_term_score_hint": "如果促销客有明显直订迁移潜力，可保留中位；否则应偏低。",
+      "roi_estimate_hint": "ROI 应从净 ADR 出发，而不是从房晚量或 GMV 出发。",
+      "reward_signal": "奖励把 OTA 低价客转成会员、直订或加购早餐升级的动作。",
+      "caution": "低价流量很热闹，但很可能是在侵蚀正常价盘。"
+    },
+    {
+      "id": "free_upgrade_request_hook",
+      "hook_name": "免费升级压价钩子",
+      "trigger_pattern": "客人未明确确认基础订单，却反复要求免费升级、赠早、免费停车、免费接送或免费延退。",
+      "value_hypothesis": "这类信号更像议价压力测试，而不是天然价值信号。真正值得加分的是哪些赠项能换来确定性转化，而不是诉求数量本身。",
+      "short_term_score_hint": "短期分通常不应上调，除非基础预订已经成立且赠项能明显降低流失。",
+      "long_term_score_hint": "若客人是高频企业客或高 LTV 会员，长期分可保留中位以支持关系维护判断。",
+      "roi_estimate_hint": "要显式扣除升级挤占、早餐、停车和接送等全部赠项成本。",
+      "reward_signal": "奖励把免费诉求重构成付费升级、套餐或可控权益的动作。",
+      "caution": "高要求并不自动意味着高价值。"
+    },
+    {
+      "id": "duplicate_channel_merge_hook",
+      "hook_name": "多渠道企业询单合并钩子",
+      "trigger_pattern": "同一公司、同一手机号或同一入住日期同时出现在 OTA、电话、销售和企业微信里，并指向同一批房晚。",
+      "value_hypothesis": "多渠道活跃可能只是同一个机会的重复呈现；真正有价值的是哪个触点把它推进到了担保、房量确认或协议落地。",
+      "short_term_score_hint": "短期分只能算一次，不能因为多入口重复上调。",
+      "long_term_score_hint": "长期分要看哪个触点真正沉淀了可复用的企业关系和直订资产。",
+      "roi_estimate_hint": "统一核算 merged lead 的总体渠道成本和跟进成本后再看净回报。",
+      "reward_signal": "奖励推动到担保、名单回收和结算确认的关键触点。",
+      "caution": "别让最后一次点击错误地吃掉全部 credit。"
+    },
+    {
+      "id": "vip_service_recovery_hook",
+      "hook_name": "高价值客诉修复钩子",
+      "trigger_pattern": "高频会员、企业协议客或团队决策人出现房间故障、异味、卫生或发票纠纷，并愿意继续沟通处理。",
+      "value_hypothesis": "当下不是销售机会，但如果修复得当，可能保住长期关系；如果处理失当，长期价值会迅速归零甚至变负。",
+      "short_term_score_hint": "短期分应主动下调，重点转向止损和履约修复。",
+      "long_term_score_hint": "长期分可保留极低到中位，取决于客户历史价值和修复可能性。",
+      "roi_estimate_hint": "ROI 需要把补偿、换房、差评扩散和企业流失风险全部计入。",
+      "reward_signal": "奖励经理介入、证据留存、修复方案确认和回访闭环的动作。",
+      "caution": "绝不能把服务恢复场景当成继续加售的机会。"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-12",
+  "name": "SuperHarbor Command Cabin",
+  "owner_scope": "ToB cockpit UI and read-model assembly",
+  "maturity": "mvp",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "read_models": "REST",
+    "live_updates": "WebSocket optional"
+  },
+  "source_anchors": [
+    "superharbor/README.md"
+  ]
+}

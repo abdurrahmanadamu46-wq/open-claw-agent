@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "radar",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "radar_light_med_concern_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测轻医美机构在本地内容平台上的问题型需求变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_beauty_content",
+        "competitor_watchlist": [
+          "商圈机构A",
+          "机构B"
+        ],
+        "raw_signals": [
+          "本地内容里毛孔和痘印咨询明显增多",
+          "评论区大量追问节前状态管理",
+          "两家竞品同时上新面诊加检测组合"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "问题型需求比泛变美更重要",
+        "要指出面诊与检测组合变化",
+        "关注级别至少为中高"
+      ],
+      "mustAvoid": [
+        "只把这看成普通流量波动",
+        "忽略竞品同步变化"
+      ]
+    },
+    {
+      "id": "radar_light_med_policy_002",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测轻医美机构的合规规则变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "platform_backend_and_local_ads",
+        "competitor_watchlist": [
+          "机构C",
+          "机构D"
+        ],
+        "raw_signals": [
+          "平台新增对术后恢复承诺和对比图的限制",
+          "商家后台要求补充机构资质信息",
+          "同商圈机构同步调整文案中的恢复期表述"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方规则优先于同行改文案",
+        "要指出对前后对比和恢复期表达的影响",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "只把文案变化当成营销动作",
+        "忽略平台后台规则的高可信度"
+      ]
+    },
+    {
+      "id": "radar_light_med_risk_003",
+      "label": "risk_case",
+      "input": {
+        "mission_scope": "监测轻医美机构口碑与恢复风险",
+        "time_window": "last_10_days",
+        "platform_or_market_context": "map_reviews_plus_public_comments",
+        "competitor_watchlist": [
+          "机构E"
+        ],
+        "raw_signals": [
+          "近一周评价连续提到恢复时间超过预期",
+          "评论区开始出现被强推项目和售后扯皮的吐槽",
+          "多平台同时出现术后指导不清的反馈"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "风险优先级应高",
+        "要区分恢复风险和售后态度风险",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "把这些反馈视为个别情绪",
+        "只关注咨询量不管口碑"
+      ]
+    },
+    {
+      "id": "radar_light_med_event_window_004",
+      "label": "opportunity_case",
+      "input": {
+        "mission_scope": "监测轻医美机构婚礼与节日前机会窗口",
+        "time_window": "last_21_days",
+        "platform_or_market_context": "local_event_and_beauty_content",
+        "competitor_watchlist": [
+          "婚纱店F",
+          "写真馆G"
+        ],
+        "raw_signals": [
+          "婚礼季状态管理内容明显增多",
+          "写真馆开始出现拍照前状态管理建议",
+          "节日前晚间面诊内容被集中收藏"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "联动和档期窗口要被识别为机会信号",
+        "需要指出节前晚间预约价值",
+        "本地相关性应判高"
+      ],
+      "mustAvoid": [
+        "把档期窗口当成普通热点",
+        "忽略婚礼和写真联动"
+      ]
+    }
+  ]
+}

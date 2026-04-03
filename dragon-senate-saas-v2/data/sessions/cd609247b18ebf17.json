@@ -1,0 +1,13 @@
+{
+  "session_id": "cd609247b18ebf17",
+  "peer_id": "radar",
+  "lobster_id": "radar",
+  "tenant_id": "tenant-a",
+  "channel": "runner",
+  "mode": "shared",
+  "messages": [],
+  "created_at": "2026-04-02T16:34:57.265246+00:00",
+  "last_active_at": "2026-04-02T16:34:57.265246+00:00",
+  "message_count": 0,
+  "metadata": {}
+}

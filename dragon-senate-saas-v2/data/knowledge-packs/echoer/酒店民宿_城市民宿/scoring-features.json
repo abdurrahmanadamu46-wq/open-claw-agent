@@ -1,0 +1,759 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_stay_dates",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_stay_dates",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "this Friday to Sunday",
+        "one night tomorrow",
+        "checking in next Tuesday",
+        "April 18 to April 20"
+      ],
+      "why_it_matters": "Specific stay timing moves a city-homestay conversation from browsing into real booking behavior.",
+      "echoer_action": "Use the date signal to guide toward guest count, area, and room-type details."
+    },
+    {
+      "id": "stay_length_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "stay_length_declared",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "2 nights",
+        "staying for five nights",
+        "weekend only",
+        "3-night short stay"
+      ],
+      "why_it_matters": "Length of stay helps Echoer distinguish between a quick browse and a concrete city-stay plan.",
+      "echoer_action": "Anchor the reply in stay duration and gather only the next relevant detail."
+    },
+    {
+      "id": "district_or_landmark_specified",
+      "applies_to": "incoming_message",
+      "feature_name": "district_or_landmark_specified",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "near the old town",
+        "close to line 2",
+        "by the arena",
+        "near the hospital district"
+      ],
+      "why_it_matters": "Area detail makes room, access, and timing answers much more actionable.",
+      "echoer_action": "Reply with area-aware language instead of generic city-homestay claims."
+    },
+    {
+      "id": "metro_or_walkability_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "metro_or_walkability_reference",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "near the metro",
+        "easy to walk back",
+        "citywalk area",
+        "close to restaurants"
+      ],
+      "why_it_matters": "Walkability language often signals a real trip-planning decision rather than vague inspiration.",
+      "echoer_action": "Use the location cue to guide toward property, dates, and guest count."
+    },
+    {
+      "id": "arrival_time_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "arrival_time_declared",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "arrive around 11 pm",
+        "late train tonight",
+        "getting there after midnight",
+        "check in around 10"
+      ],
+      "why_it_matters": "Arrival timing usually signals operational intent around self check-in, code delivery, and room readiness.",
+      "echoer_action": "Use the timing to guide toward property and booking-status clarification."
+    },
+    {
+      "id": "headcount_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "headcount_declared",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "4 people",
+        "two adults and one child",
+        "for our family of 3",
+        "we are 5 friends"
+      ],
+      "why_it_matters": "Guest count makes city-homestay demand much more concrete and easier to route.",
+      "echoer_action": "Collect only the next needed detail such as bed setup, child age, or room layout."
+    },
+    {
+      "id": "room_layout_or_style_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "room_layout_or_style_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "loft room",
+        "two-bedroom unit",
+        "projector room",
+        "balcony room"
+      ],
+      "why_it_matters": "Room-layout preference shows the user is already imagining the stay, not just asking casually.",
+      "echoer_action": "Reflect the preference and ask only for the next booking fact."
+    },
+    {
+      "id": "kitchen_or_laundry_need",
+      "applies_to": "incoming_message",
+      "feature_name": "kitchen_or_laundry_need",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "need a washer",
+        "simple kitchen",
+        "can cook there",
+        "laundry for a few days"
+      ],
+      "why_it_matters": "Home-style amenity questions usually signal a practical stay decision, not casual browsing.",
+      "echoer_action": "Tie the reply back to room type, stay length, and the most important amenity."
+    },
+    {
+      "id": "projector_or_home_facility_need",
+      "applies_to": "incoming_message",
+      "feature_name": "projector_or_home_facility_need",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "projector",
+        "living room",
+        "dining table",
+        "bathtub in the room"
+      ],
+      "why_it_matters": "Feature-specific interest helps Echoer answer more like a human who understands how the stay will be used.",
+      "echoer_action": "Acknowledge the use case and gather the exact room or listing context."
+    },
+    {
+      "id": "late_return_event_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "late_return_event_reference",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "after the concert",
+        "late return from the arena",
+        "night game",
+        "coming back after the show"
+      ],
+      "why_it_matters": "Event-linked timing often indicates a near-term stay decision with access and occupancy implications.",
+      "echoer_action": "Guide toward venue, headcount, and latest return time."
+    },
+    {
+      "id": "family_or_child_context",
+      "applies_to": "incoming_message",
+      "feature_name": "family_or_child_context",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "our 6-year-old",
+        "traveling with a child",
+        "parents and child",
+        "family stay"
+      ],
+      "why_it_matters": "Family details help Echoer shift from vibe talk to real room-fit and safety questions.",
+      "echoer_action": "Gather child age, bedding setup, and layout or elevator priorities."
+    },
+    {
+      "id": "pet_details_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "pet_details_declared",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "bringing a corgi",
+        "small dog",
+        "our cat",
+        "one pet carrier"
+      ],
+      "why_it_matters": "Pet details make the stay request operationally specific and easier to route accurately.",
+      "echoer_action": "Ask for the room and date context rather than giving a blanket yes."
+    },
+    {
+      "id": "elevator_stairs_or_luggage_need",
+      "applies_to": "incoming_message",
+      "feature_name": "elevator_stairs_or_luggage_need",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "elevator",
+        "many stairs",
+        "big suitcases",
+        "older parent"
+      ],
+      "why_it_matters": "Arrival-access detail makes the conversation more practical and reduces mismatch risk.",
+      "echoer_action": "Ask for the property and whether the main concern is stairs, luggage, or elevator access."
+    },
+    {
+      "id": "parking_or_vehicle_details",
+      "applies_to": "incoming_message",
+      "feature_name": "parking_or_vehicle_details",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "SUV",
+        "parking nearby",
+        "driving over",
+        "overnight parking"
+      ],
+      "why_it_matters": "Vehicle detail makes access questions more operationally specific and easier to route.",
+      "echoer_action": "Ask for the property and the exact parking concern."
+    },
+    {
+      "id": "weekday_transition_exam_or_medical_need",
+      "applies_to": "incoming_message",
+      "feature_name": "weekday_transition_exam_or_medical_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "near the hospital",
+        "exam site",
+        "a few nights for errands",
+        "weekday stay"
+      ],
+      "why_it_matters": "Functional weekday stays often signal concrete demand with clearer fit criteria than leisure browsing.",
+      "echoer_action": "Acknowledge the practical purpose and gather dates, area, and top facility needs."
+    },
+    {
+      "id": "booking_channel_mentioned",
+      "applies_to": "incoming_message",
+      "feature_name": "booking_channel_mentioned",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "booked on an app",
+        "through your link",
+        "mini program booking",
+        "OTA listing"
+      ],
+      "why_it_matters": "Channel detail shapes refund, fee, and inclusion answers.",
+      "echoer_action": "Use the channel to avoid generic policy language."
+    },
+    {
+      "id": "deposit_or_cleaning_fee_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "deposit_or_cleaning_fee_reference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "deposit",
+        "cleaning fee",
+        "extra fee",
+        "order says non-refundable"
+      ],
+      "why_it_matters": "Specific fee or policy wording reduces guesswork in booking-change conversations.",
+      "echoer_action": "Guide toward order details and the correct confirmation path."
+    },
+    {
+      "id": "budget_band_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "budget_band_declared",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "under 800",
+        "around 1000 for two nights",
+        "not too expensive",
+        "budget cap"
+      ],
+      "why_it_matters": "Budget framing helps Echoer keep city-homestay guidance realistic instead of overly broad.",
+      "echoer_action": "Reframe toward dates, area, and room-fit trade-offs."
+    },
+    {
+      "id": "same_day_or_deadline",
+      "applies_to": "incoming_message",
+      "feature_name": "same_day_or_deadline",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "tonight",
+        "need to decide now",
+        "before the train arrives",
+        "book it today"
+      ],
+      "why_it_matters": "Deadline language often means the user is close to booking or needs fast routing.",
+      "echoer_action": "Calm urgency first, then collect the few facts needed for the next step."
+    },
+    {
+      "id": "ready_to_book",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_book",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "I want to lock it now",
+        "ready to reserve",
+        "book it now",
+        "can I confirm this now"
+      ],
+      "why_it_matters": "Direct booking language is one of the clearest conversion signals in city-homestay conversations.",
+      "echoer_action": "Keep the reply warm and funnel toward the minimum reservation facts."
+    },
+    {
+      "id": "complaint_case_details_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_case_details_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "room 1203",
+        "booking number",
+        "checked in tonight",
+        "the code did not work"
+      ],
+      "why_it_matters": "Complaint resolution moves faster when the guest already has usable case details.",
+      "echoer_action": "Lead with empathy and route to structured service handling."
+    },
+    {
+      "id": "photo_truth_or_real_room_skepticism",
+      "applies_to": "incoming_message",
+      "feature_name": "photo_truth_or_real_room_skepticism",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "does it really look like the photos",
+        "wide-angle camera",
+        "just want the real room",
+        "is the loft actually that big"
+      ],
+      "why_it_matters": "Skeptical-but-engaged users can still convert if Echoer de-escalates and clarifies one concrete proof point.",
+      "echoer_action": "Do not argue; invite the user to name the exact room detail they want clarified."
+    },
+    {
+      "id": "absolute_self_checkin_or_late_arrival_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_self_checkin_or_late_arrival_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee self check-in",
+        "definitely can get in after midnight",
+        "promise the code will work no matter what",
+        "someone will wait all night right"
+      ],
+      "why_it_matters": "Absolute arrival-handling requests create service risk when code delivery, building entry, and host response vary by property.",
+      "echoer_action": "Move toward property, timing, and booking-status clarification instead of reassurance."
+    },
+    {
+      "id": "absolute_early_checkin_or_late_checkout_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_early_checkin_or_late_checkout_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee early check-in",
+        "guarantee late checkout",
+        "definitely until 6 pm",
+        "promise noon check-in"
+      ],
+      "why_it_matters": "Timing guarantees can backfire quickly when cleaning turnover or host handling is tight.",
+      "echoer_action": "Use condition-based wording tied to date, property, and booking status."
+    },
+    {
+      "id": "absolute_photo_or_view_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_photo_or_view_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee it looks exactly like the video",
+        "promise the same room as the photos",
+        "100 percent photo perfect",
+        "exact same loft view"
+      ],
+      "why_it_matters": "Absolute room-image promises create avoidable trust and review risk for city stays.",
+      "echoer_action": "Shift from guarantee language to room-type and priority-detail clarification."
+    },
+    {
+      "id": "rule_bypass_for_headcount_or_party",
+      "applies_to": "incoming_message",
+      "feature_name": "rule_bypass_for_headcount_or_party",
+      "category": "boundary_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "6 people but only 4 sleeping",
+        "make some noise late",
+        "extra friends just hanging out",
+        "can we squeeze more people in"
+      ],
+      "why_it_matters": "Occupancy and noise-boundary pushes create high risk for complaints, building friction, and unsafe promises.",
+      "echoer_action": "Stay calm, do not invite rule-breaking, and move toward occupancy plus house-rule confirmation."
+    },
+    {
+      "id": "pet_rule_bypass_request",
+      "applies_to": "incoming_message",
+      "feature_name": "pet_rule_bypass_request",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "bring the dog anyway",
+        "no pet fee right",
+        "ignore the pet rule",
+        "pets are always fine right"
+      ],
+      "why_it_matters": "Rule-bypass framing can push the reply into unsafe promises around pet handling and building boundaries.",
+      "echoer_action": "Acknowledge the need, then move toward room-specific policy confirmation."
+    },
+    {
+      "id": "full_refund_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "full_refund_guarantee_request",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "full refund no matter what",
+        "guarantee I can cancel",
+        "refund everything anyway",
+        "promise the deposit comes back"
+      ],
+      "why_it_matters": "Refund guarantees create policy and trust risk when booking channel and order terms are still unknown.",
+      "echoer_action": "Move toward channel and policy confirmation rather than broad reassurance."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave your phone",
+        "call me now",
+        "drop the number here"
+      ],
+      "why_it_matters": "Public contact exchange creates privacy and platform risk when DM can handle booking details safely.",
+      "echoer_action": "Use platform DM as the safer bridge."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "cheapest room only",
+        "price only",
+        "quote now no details",
+        "lowest rate immediately"
+      ],
+      "why_it_matters": "Price-only traffic is not useless, but it needs reframing before it becomes a workable city-homestay lead.",
+      "echoer_action": "Guide the user toward dates, area, or occupancy basics before trying to answer."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never create healthy conversion.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges stress",
+        "acknowledges frustration",
+        "acknowledges urgency",
+        "acknowledges practical pressure"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior in hospitality conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_trip_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_trip_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for stay dates",
+        "asks for area or property",
+        "asks for guest count",
+        "asks for booking channel"
+      ],
+      "why_it_matters": "A strong city-homestay reply turns broad interest into usable booking or service data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_sets_condition_based_expectation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_sets_condition_based_expectation",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "depends on room type",
+        "depends on live room status",
+        "varies by property and order terms",
+        "avoids promising certainty"
+      ],
+      "why_it_matters": "Condition-based wording keeps city-homestay replies useful without overpromising operations or room feel.",
+      "echoer_action": "Use realistic qualifiers while still guiding the user forward."
+    },
+    {
+      "id": "reply_acknowledges_trip_purpose",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_acknowledges_trip_purpose",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions citywalk",
+        "mentions concert return",
+        "mentions family stay",
+        "mentions hospital or exam trip"
+      ],
+      "why_it_matters": "Guests respond better when the reply reflects why they want the stay, not just the room.",
+      "echoer_action": "Use the trip purpose to guide a more relevant next question."
+    },
+    {
+      "id": "reply_anchors_on_property_plan_or_room",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_anchors_on_property_plan_or_room",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions room type",
+        "mentions property access",
+        "mentions booking channel",
+        "mentions specific stay context"
+      ],
+      "why_it_matters": "City-homestay answers feel more credible when they reflect the actual context behind the question.",
+      "echoer_action": "Use room-, property-, or order-aware wording instead of generic claims."
+    },
+    {
+      "id": "reply_handles_access_or_house_rule_boundary",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_handles_access_or_house_rule_boundary",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions occupancy limits calmly",
+        "mentions quiet-hour boundary",
+        "mentions access depends on property flow",
+        "does not invite rule-breaking"
+      ],
+      "why_it_matters": "City-homestay replies need to stay warm without blurring building and community boundaries.",
+      "echoer_action": "Acknowledge the need, then guide toward scope and policy confirmation."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send the stay dates in DM",
+        "share the property plus timing",
+        "confirm the booking channel",
+        "send the booking details"
+      ],
+      "why_it_matters": "One clear next step is easier for guests to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_service_issue_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_service_issue_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "complaint escalated",
+        "host review path",
+        "guest service follow-up",
+        "human handling suggested"
+      ],
+      "why_it_matters": "Echoer should not improvise past active stay issues or service-recovery boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps booking details minimal in comments"
+      ],
+      "why_it_matters": "City-homestay conversations often involve private stay, access, and payment details that should not be collected publicly.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_respects_real_room_expectation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_respects_real_room_expectation",
+      "category": "trust_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "does not oversell the photos",
+        "clarifies room-type context",
+        "acknowledges angle or layout variation",
+        "avoids staged certainty"
+      ],
+      "why_it_matters": "Trust in city homestays often rises or falls on whether the room feels true to expectation.",
+      "echoer_action": "Use precise, room-aware wording instead of visual overstatement."
+    },
+    {
+      "id": "reply_absolute_room_or_checkin_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_room_or_checkin_promise",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed self check-in",
+        "guaranteed early check-in",
+        "guaranteed exact room",
+        "absolute late return approval"
+      ],
+      "why_it_matters": "Absolute city-homestay promises create avoidable review, refund, and service risk.",
+      "echoer_action": "Replace with condition-based and property-aware wording."
+    },
+    {
+      "id": "reply_unchecked_policy_statement",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_unchecked_policy_statement",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "all bookings can be refunded",
+        "every room has a kitchen",
+        "pets are always fine",
+        "self check-in is never a problem"
+      ],
+      "why_it_matters": "Broad policy claims are risky when city-homestay rules differ by room, building, and booking channel.",
+      "echoer_action": "Ground the answer in room, property, or order context."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guest is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_hard_sell_pressure",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_hard_sell_pressure",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "book now or lose it",
+        "only tonight lowest price",
+        "pressure to reserve fast",
+        "fear-based urgency"
+      ],
+      "why_it_matters": "High-pressure sales language clashes with Echoer's steady, human mission.",
+      "echoer_action": "Keep urgency calm and grounded in real next steps."
+    },
+    {
+      "id": "reply_invites_rule_breaking",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_invites_rule_breaking",
+      "category": "boundary_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "extra people are fine",
+        "noise is no problem",
+        "just bring the pet anyway",
+        "we can ignore the rules"
+      ],
+      "why_it_matters": "Inviting users past occupancy, noise, or pet boundaries creates trust and service-recovery risk later.",
+      "echoer_action": "Stay warm while keeping the next step within stated boundaries."
+    }
+  ]
+}

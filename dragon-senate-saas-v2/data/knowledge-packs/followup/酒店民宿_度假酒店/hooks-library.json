@@ -1,0 +1,129 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_weekend_family_package_completion",
+      "scene": "dm_followup",
+      "lead_state": "weekend_family_resort",
+      "intent": "complete_stay_facts_and_package_dependencies",
+      "hook": "这类亲子周末单先别急着报一个总价，把能影响能不能顺利成行的关键信息先锁住。",
+      "bridge": "度假酒店的家庭订单最怕日期、孩子年龄、早餐和加床都没问清，就先把房型和权益说满，后面一变就容易失信。",
+      "next_step": "请客户确认入住日期、晚数、房间数、成人儿童人数与年龄、是否需要加床或婴儿床、早餐和温泉或乐园需求，以及大致到店方式，目标是推进到可预订或待确认。",
+      "cadence_hint": "客户刚有假期计划时优先在当前窗口接上；若仍在比日期，可留一次低压力提醒，避免同日多轮轰炸。",
+      "approval_guard": "未核清套餐资格和房态前，不承诺儿童免费、加床免费、权益全含或指定景观一定可订。"
+    },
+    {
+      "id": "hook_late_arrival_transfer_confirmation",
+      "scene": "arrival_followup",
+      "lead_state": "late_arrival_with_transfer_need",
+      "intent": "confirm_eta_transfer_window_and_hold_boundary",
+      "hook": "这单最关键的不是再发一遍房型介绍，而是把晚到还能不能顺利接上和保留先确认住。",
+      "bridge": "度假酒店夜间到店往往同时卡接驳班次、最晚保留时点和入住人信息，先把这些边界讲清楚，比一句“放心来”更有用。",
+      "next_step": "请客户确认航班或车次、预计到店时间、到店人数、是否已有担保以及是否仍需接送，目标是推进到可执行的接驳确认或备选到店方案。",
+      "cadence_hint": "晚到线索以当天关键窗口一次说清为主，等新的 ETA 或门店反馈后再跟，不连续强追。",
+      "approval_guard": "未确认接驳时段、担保状态或门店保留规则前，不承诺一定接送或一定保留到深夜。"
+    },
+    {
+      "id": "hook_early_arrival_expectation_management",
+      "scene": "arrival_management",
+      "lead_state": "early_arrival_room_not_ready",
+      "intent": "manage_room_readiness_and_facility_options",
+      "hook": "先不急着把“到了就能住”说满，我先帮你把最省心的到店方案排出来。",
+      "bridge": "度假客真正在意的是别白跑、别一直等，模糊地说“尽量安排”不如把房态、设施使用和候用方案讲清楚。",
+      "next_step": "请客户确认实际到店时间、是否要先使用泳池温泉或儿童区、是否接受行李寄存和公共区域候用，目标是推进到可执行的到店预期管理方案。",
+      "cadence_hint": "到店前给一次明确预期即可；房态未更新前不反复催问，等新的 ready 节点再跟。",
+      "approval_guard": "未核到 ready 房态前，不承诺几点一定能入住，也不默认免费延展设施使用。"
+    },
+    {
+      "id": "hook_anniversary_setup_approval",
+      "scene": "celebration_followup",
+      "lead_state": "anniversary_or_honeymoon",
+      "intent": "collect_celebration_needs_and_wait_approval",
+      "hook": "这类纪念日单先把你最在意的惊喜点收拢清楚，再决定哪些能正式推进。",
+      "bridge": "度假酒店的房间布置、蛋糕、升房和延退常常都带审批门，先收场景和优先级，比先口头答应更稳。",
+      "next_step": "请客户确认入住日期、房型、庆祝类型、是否要布置或蛋糕、预算区间和最看重的一项，目标是形成审批输入或低风险备选方案。",
+      "cadence_hint": "庆祝类需求给客户一次清单式确认后，留出内部审批时间，不在短时间内连续催答复。",
+      "approval_guard": "审批未到位前，不承诺免费布置、蛋糕、海景升级、延迟退房或额外赠送。"
+    },
+    {
+      "id": "hook_weather_reschedule_safety",
+      "scene": "weather_sensitive_followup",
+      "lead_state": "weather_risk_concern",
+      "intent": "judge_reschedule_vs_alternative_plan",
+      "hook": "这次别急着把原行程硬往下推，先看客户是更想改期、保留还是换成室内玩法。",
+      "bridge": "度假酒店很多价值都绑在天气和开放设施上，先把客户真正担心的点拆清，比直接催确认更能保住信任。",
+      "next_step": "请客户确认最在意的是天气、设施开放、改期成本还是同行人安排，目标是推进到改期申请、替代权益说明或保留原单的低风险判断。",
+      "cadence_hint": "天气类线索跟着预报窗口和审批进度走，不高频连追；有新天气节点或新审批结果再触达。",
+      "approval_guard": "未获批前，不承诺免损改期、免手续费取消、退差或额外补偿。"
+    },
+    {
+      "id": "hook_activity_bundle_slot_confirmation",
+      "scene": "package_followup",
+      "lead_state": "multi_benefit_bundle",
+      "intent": "surface_the_primary_dependency",
+      "hook": "这类订单最怕房间确认了，后面活动时段和名额接不上，我先帮你把最卡的那一项找出来。",
+      "bridge": "温泉、乐园、儿童俱乐部、SPA、旅拍和晚餐往往不是一起自然成立的，先拆依赖，跟进动作才不会失焦。",
+      "next_step": "请客户确认最在意的权益是哪一项、希望的日期或时段、同行人数和年龄限制，目标是推进到单一关键依赖确认，而不是一次追完所有资源。",
+      "cadence_hint": "每轮只推进一个关键确认点，给客户内部商量空间，避免把多项资源一次性压过去。",
+      "approval_guard": "未核清名额、预约时段或资格规则前，不承诺套餐里所有活动都能按客户理想时间锁定。"
+    },
+    {
+      "id": "hook_family_policy_age_and_bedding_check",
+      "scene": "family_policy_followup",
+      "lead_state": "two_adults_with_children",
+      "intent": "verify_child_policy_and_sleeping_arrangement",
+      "hook": "先别把“孩子都能免费住”说出去，把年龄和睡眠安排问清，后面才稳。",
+      "bridge": "度假酒店的儿童早餐、门票、加床和同住上限都跟年龄和房型直接绑定，事实没问清就最容易踩雷。",
+      "next_step": "请客户确认孩子年龄、是否需要加床或婴儿床、是否需要儿童早餐或票券，目标是推进到可执行的家庭入住方案或审批判断。",
+      "cadence_hint": "家庭政策类问题适合一次清单式问清，让客户整理信息后再回，不必高频追问。",
+      "approval_guard": "未核政策和房型人数上限前，不承诺一间可住、儿童免费早餐、免费加床或超员入住。"
+    },
+    {
+      "id": "hook_peak_holiday_hold_gate",
+      "scene": "peak_window_followup",
+      "lead_state": "holiday_high_intent_without_deposit",
+      "intent": "advance_guarantee_or_conditional_hold",
+      "hook": "高峰期这单最值钱的不是把话说满，而是把真正能落地的保留条件锁下来。",
+      "bridge": "节假日度假单的房态、景观房和配套时段变化极快，先确认担保和正式确认条件，比空口留房更稳。",
+      "next_step": "请客户确认具体日期、房间数量、是否接受候补或替代房型、担保方式以及最在意的一项权益，目标是推进到担保确认或条件化保留。",
+      "cadence_hint": "高峰窗口要快，但每次只推动一个明确动作，避免同日多次轰炸式催付。",
+      "approval_guard": "未确认房态、担保和资源依赖前，不承诺节假日一定留房、指定房型一定锁定或名额一定保留。"
+    },
+    {
+      "id": "hook_service_recovery_then_rebook",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_open",
+      "intent": "repair_trust_before_next_stay",
+      "hook": "这次先别急着推他再订，先把上次最让他不舒服的点接住。",
+      "bridge": "度假酒店的复住转化先看信任有没有修回来，不是看你这次房价讲得多快。",
+      "next_step": "先确认上次问题点、客户最在意的修复结果以及这次是否仍有出行计划；若客户愿意，再推进低压力预订或偏好备注确认。",
+      "cadence_hint": "修复期以一次明确说明和一次确认式跟进为主，避免高频触达重新激怒客户。",
+      "approval_guard": "未获批的补偿、升房、代金券或额外权益不自行承诺。"
+    },
+    {
+      "id": "hook_reactivation_with_new_trip_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_resort_guest",
+      "intent": "restart_with_new_reason_to_travel",
+      "hook": "这次来找他，不是重复提醒，而是带一个比上次更有出行动机的新理由回来。",
+      "bridge": "沉睡度假线索更容易对新季节活动、错峰礼遇、恢复开放设施或已解决的历史痛点产生回应，而不是对空泛提醒产生回应。",
+      "next_step": "带着一个具体新变化复联，比如新上的亲子周末包、工作日温泉礼遇、优化后的接驳或已恢复开放的设施，并给客户一个低压力回复入口。",
+      "cadence_hint": "复联尽量轻，一次触达后至少拉开几天再判断是否二次跟进。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联，不把未核实的新权益说成既定可用。"
+    },
+    {
+      "id": "hook_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure_and_leave_easy_reply",
+      "hook": "先别再给客户加压，我把下一步留成一个最容易回复的小动作。",
+      "bridge": "度假酒店线索很多时候不是拒绝，而是在等家人决定、等天气、等假期或等审批；高频追问只会让本来可转化的单子失温。",
+      "next_step": "把回覆门槛降到只确认一个最关键的信息，比如日期、儿童年龄、是否仍需接驳或是否继续保留，并同步进入降频节奏。",
+      "cadence_hint": "短时间已触达两次仍无回复时，至少拉开到下一个更合适的工作或晚间窗口再判断，不换人不换渠道继续压。",
+      "approval_guard": "避免多人、多渠道同时追同一位客户，也不要把沉默解释成默认同意。"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_家电门店","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+{"id":"appliance_score_problem_specificity","title":"问题指向清晰度","description":"高分文案能在前两句就让用户看见明确问题或场景，例如空调、冰洗、厨电、补贴和送装，而不是只说家电和品质。","examples":["高分：开头直接点出空调或套购问题。 ","低分：一开始只有低价和大牌。 "],"priority":"high"},
+{"id":"appliance_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给参数、送装和售后说明，让用户感到门店不会乱推。","examples":["高分：先写判断和边界，再写到店。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+{"id":"appliance_score_compliance_safety","title":"合规安全性","description":"高分文案避免绝对补贴和绝对省电承诺；低分文案容易出现绝对化表述和违规导向。","examples":["高分：用参数说明和适用提示替代强承诺。 ","低分：保证免安装费、绝对省电、补贴全拿。 "],"priority":"high"},
+{"id":"appliance_score_scene_match","title":"场景匹配度","description":"高分文案会让交房焕新、日常补购和老客复访各归其位。","examples":["高分：节点文案重日期和场景，老客文案重补单理由。 ","低分：所有文案都只会喊来看看。 "],"priority":"medium"},
+{"id":"appliance_score_respectfulness","title":"尊重感与情绪稳定度","description":"高分文案会陪用户一起判断状态，而不是拿预算有限和第一次买家电刺激逼单。","examples":["高分：用先看方向和先到店这类语气。 ","低分：用再不买就没货这类恐吓。 "],"priority":"high"},
+{"id":"appliance_score_cta_quality","title":"CTA 收口质量","description":"高分 CTA 会自然收品类、日期和是否第一次来等到店事实。","examples":["高分：先发品类和想约时间。 ","低分：快来店里看看。 "],"priority":"high"}]}

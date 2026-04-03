@@ -1,0 +1,75 @@
+﻿{
+  "base": "http://127.0.0.1:18000",
+  "steps": [
+    {
+      "name": "healthz",
+      "ok": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "auth/login",
+      "ok": true
+    },
+    {
+      "name": "industry-kb/dissect-and-ingest",
+      "ok": true,
+      "data": {
+        "trace_id": "6f181130-99dc-4169-a67a-e37199b9d778",
+        "industry_tag": "restaurant_hotpot",
+        "ingested": 2,
+        "rejected": 0,
+        "duplicate": 4
+      }
+    },
+    {
+      "name": "run-dragon-team",
+      "ok": true,
+      "data": {
+        "request_id": "5045028f-9d3d-453a-b09b-23a8fd9e9984",
+        "trace_id": "5045028f-9d3d-453a-b09b-23a8fd9e9984",
+        "industry_tag": "restaurant_hotpot",
+        "industry_kb_context_count": 6,
+        "publish_allowed": true,
+        "hitl_required": true,
+        "reason_codes": [
+          "guardian.allow",
+          "verification.pass"
+        ]
+      }
+    },
+    {
+      "name": "receive_dm_from_edge",
+      "ok": true,
+      "data": {
+        "intent": null,
+        "lead_score": null,
+        "followup_status": null,
+        "trace_id": "dm_edge-hotpot-001_1774205639"
+      }
+    },
+    {
+      "name": "followup/spawns/recent",
+      "ok": true,
+      "data": {
+        "items": 0
+      }
+    },
+    {
+      "name": "kernel/report",
+      "ok": true,
+      "data": {
+        "publish_allowed": null,
+        "confidence_band": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "name": "memory/trace",
+      "ok": true,
+      "data": {
+        "events": 0
+      }
+    }
+  ],
+  "ok": true
+}

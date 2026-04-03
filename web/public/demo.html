@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>进入演示 - ClawCommerce</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0F172A; color: #F8FAFC; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    a { color: #E5A93D; }
+  </style>
+</head>
+<body>
+  <div style="text-align:center;padding:1rem;">
+    <p id="msg">正在进入演示…</p>
+    <p style="color:#94A3B8;font-size:14px;">若未跳转，请点 <a href="/">进入首页</a> 或 <a href="/login">登录页</a></p>
+  </div>
+  <script>
+    try {
+      localStorage.setItem('clawcommerce_token', 'mock_jwt_demo');
+      localStorage.setItem('clawcommerce_demo_mode', '1');
+      document.getElementById('msg').textContent = '已进入演示，正在跳转…';
+      window.location.replace('/');
+    } catch (e) {
+      document.getElementById('msg').textContent = '无法写入本地存储，请用 /login 页「一键进入演示」';
+    }
+  </script>
+</body>
+</html>

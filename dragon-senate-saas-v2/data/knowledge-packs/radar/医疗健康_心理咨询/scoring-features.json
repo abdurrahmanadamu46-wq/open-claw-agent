@@ -1,0 +1,8 @@
+{"industry":"医疗健康_心理咨询","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"problem_specificity","title":"问题指向清晰度","description":"高分信号会明确提到焦虑、失眠、关系冲突、职场压力和青少年问题等具体方向。","examples":["高分：最近失眠很严重。","低分：最近状态一般。"],"priority":"high"},
+  {"id":"functional_impact_clarity","title":"功能受影响清晰度","description":"睡眠、工作、学习、关系和日常生活受到影响越清楚，价值越高。","examples":["高分：已经影响上班和睡觉。","低分：有点烦而已。"],"priority":"high"},
+  {"id":"timing_clarity","title":"时间窗口清晰度","description":"最近加重、考试前、返校前和长期持续等时间信息越清楚，价值越高。","examples":["高分：这两周明显恶化。","低分：一直有点这样。"],"priority":"medium"},
+  {"id":"trust_sensitivity","title":"咨询师与形式敏感度","description":"当用户高度关注咨询师背景、咨询方式和安全边界时，需要提升信号权重与风险识别。","examples":["高分：主动问咨询师方向和形式。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"repeat_signal_strength","title":"复谈回流强度","description":"复谈、复盘和长期咨询续约信号越明确，优先级越高。","examples":["高分：想继续上次那位咨询师。","低分：只是看看。"],"priority":"medium"},
+  {"id":"risk_boundary_strength","title":"高风险边界强度","description":"明显危机、严重失控感和需要优先人工判断的表达越强，越需要提权并与普通线索分开处理。","examples":["高分：状态严重影响基本生活。","低分：只是短暂心烦。"],"priority":"high"}
+]}

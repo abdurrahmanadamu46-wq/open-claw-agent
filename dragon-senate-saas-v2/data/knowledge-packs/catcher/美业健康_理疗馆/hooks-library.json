@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_理疗馆",
+  "lobster_id": "catcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_plus_time_hook",
+      "title": "问题加时间同时出现时的高意向钩子",
+      "description": "当线索同时出现具体困扰和预约时间时，应优先判为高意向候选，因为这类表达比纯种草或纯价格更接近真实到店动作。",
+      "examples": [
+        "周五晚想先评估肩颈问题。",
+        "这周日想看看腰背和运动恢复问题。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_consult_safety_hook",
+      "title": "首次评估与不适顾虑钩子",
+      "description": "用户主动提到第一次做、担心按压更痛、担心不适合和怕踩雷时，说明其预约意图更具体，也更适合进入高优先级承接。",
+      "examples": [
+        "第一次做，周末想先看适不适合。",
+        "担心按压后更难受，想先来了解一下。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_deadline_hook",
+      "title": "重要场合截止日期钩子",
+      "description": "拍照、旅行和节日前的明确日期，是理疗馆线索中非常强的行动信号。只要再补足门店和时段，就可以进入高优先级承接。",
+      "examples": [
+        "周六拍照，想周四晚上先来评估。",
+        "出游前这两天想做一次放松。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "branch_specific_booking_hook",
+      "title": "门店或商圈明确钩子",
+      "description": "当用户直接说出门店、商场、地铁站附近或写字楼附近时，说明其已经在做实际选择阶段，线索确定性明显提高。",
+      "examples": [
+        "想约你们国金那家。",
+        "万象城店这周末有评估吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "returning_client_hook",
+      "title": "老客回流钩子",
+      "description": "用户提到之前来过、朋友推荐或上次感觉还不错时，通常意味着信任成本更低。只要再补齐本次问题和时间，就可快速交给 followup-ready 队列。",
+      "examples": [
+        "上次来做过理疗，这次想看看下一步。",
+        "朋友推荐我来问问这周能不能体验。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_with_context_hook",
+      "title": "带上下文的价格咨询钩子",
+      "description": "价格问题只要带着困扰范围、时间窗口或场景，就不再是纯比较型流量，而是值得继续推进的线索。",
+      "examples": [
+        "拍照前想做一次放松，大概什么价位。",
+        "肩颈和腰背问题比较明显，周末想先看看，价格大概多少。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

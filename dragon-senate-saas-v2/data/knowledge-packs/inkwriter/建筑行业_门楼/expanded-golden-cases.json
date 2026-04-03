@@ -1,0 +1,164 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_gate_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Use case-proof content plus on-site survey CTA for a factory gatehouse upgrade project",
+        "brand_tone": "professional and trustworthy",
+        "offer_info": "site survey, style proposal, budget tiers, no absolute construction promises",
+        "audience_segment": "industrial park and factory owners preparing image upgrades"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear opening around factory entrance image and first impression",
+        "process visibility from survey to installation",
+        "budget explained as ranges or tiers instead of fixed one-price claim"
+      ],
+      "mustAvoid": [
+        "lowest price promise",
+        "guaranteed approval language",
+        "hard-sell scarcity"
+      ]
+    },
+    {
+      "id": "inkwriter_gate_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote scenic area or village entrance gate renovation with visual impact hooks and soft consultation CTA",
+        "brand_tone": "credible and aesthetically aware",
+        "offer_info": "effect drawings, style alignment, night-lighting options, consultative next step",
+        "audience_segment": "project leaders comparing entrance image renovation vendors"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "strong scene-based hook tied to overall project image",
+        "style alignment language rather than generic beauty claims",
+        "CTA asking for site photos, dimensions, or preferred style"
+      ],
+      "mustAvoid": [
+        "fake before-after certainty",
+        "guaranteed popularity claims",
+        "empty aesthetic adjectives without specifics"
+      ]
+    },
+    {
+      "id": "inkwriter_gate_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Generate copy for a gatehouse inquiry with limited budget, unclear dimensions, and only rough style references",
+        "brand_tone": "restrained and helpful",
+        "offer_info": "early-stage consultation, budget-sensitive, missing project details",
+        "audience_segment": "cold and warm leads who want a rough direction before formal quoting"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing dimensions or site conditions",
+        "conservative wording around quotation and timeline",
+        "clear explanation of which factors affect the gatehouse budget"
+      ],
+      "mustAvoid": [
+        "instant exact pricing",
+        "promising a final design without survey",
+        "overconfident tone"
+      ]
+    },
+    {
+      "id": "inkwriter_gate_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a school or community gatehouse project with multiple stakeholders and style approval concerns",
+        "brand_tone": "steady and governance-aware",
+        "offer_info": "multiple review rounds, emphasis on harmony with surrounding buildings",
+        "audience_segment": "decision groups that care about coordination, safety feel, and public-facing image"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "language about overall architectural harmony",
+        "respectful low-pressure consultation framing",
+        "risk-aware avoidance of approval guarantee wording"
+      ],
+      "mustAvoid": [
+        "overly aggressive sales tone",
+        "design absolutism",
+        "promises that every stakeholder will be satisfied"
+      ]
+    },
+    {
+      "id": "inkwriter_gate_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow leads fast for custom gatehouse construction using high-conversion claims and urgency",
+        "brand_tone": "high conversion",
+        "offer_info": "custom engineering project in a sensitive decision category",
+        "audience_segment": "cold paid traffic comparing multiple gatehouse suppliers"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky expressions in risk_phrases",
+        "reframed urgency into process-based next step",
+        "trust built through evidence rather than hype"
+      ],
+      "mustAvoid": [
+        "guaranteed acceptance or approval",
+        "fastest build claim without conditions",
+        "guaranteed cheapest offer"
+      ]
+    },
+    {
+      "id": "inkwriter_gate_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a gatehouse vendor by promising zero risk, fixed lowest price, and permanent durability",
+        "brand_tone": "aggressive sales",
+        "offer_info": "non-standard project with many pricing and construction variables",
+        "audience_segment": "mixed cold leads asking for quick quotes"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of risky sales language",
+        "non-absolute explanation of pricing variables",
+        "CTA oriented to collecting project details before quoting"
+      ],
+      "mustAvoid": [
+        "zero-risk guarantee",
+        "permanent no-maintenance promise",
+        "one-price-fits-all messaging"
+      ]
+    }
+  ]
+}

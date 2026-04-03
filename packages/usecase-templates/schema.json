@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "name", "category", "difficulty", "lobsters", "description", "setup_steps"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^uc-[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "name_en": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "content_creation",
+        "social_media",
+        "customer_service",
+        "competitive_intel",
+        "ecommerce",
+        "lead_gen",
+        "analytics",
+        "devops"
+      ]
+    },
+    "difficulty": { "type": "string", "enum": ["beginner", "intermediate", "advanced"] },
+    "description": { "type": "string" },
+    "pain_point": { "type": "string" },
+    "lobsters": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["radar", "strategist", "inkwriter", "visualizer", "dispatcher", "echoer", "catcher", "abacus", "followup"]
+      }
+    },
+    "skills_required": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "channels": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "setup_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step", "action"],
+        "properties": {
+          "step": { "type": "integer" },
+          "action": { "type": "string" },
+          "code_type": { "type": "string", "enum": ["bash", "config", "prompt", "none"] },
+          "code": { "type": "string" },
+          "requires_user_input": { "type": "boolean" }
+        }
+      }
+    },
+    "scheduler_config": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string", "enum": ["cron", "every", "once"] },
+        "schedule": { "type": "string" },
+        "session_mode": { "type": "string", "enum": ["shared", "isolated"] }
+      }
+    },
+    "tips": { "type": "array", "items": { "type": "string" } },
+    "estimated_cost_per_run": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } }
+  }
+}

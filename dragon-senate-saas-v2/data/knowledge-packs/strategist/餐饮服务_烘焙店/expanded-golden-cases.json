@@ -1,0 +1,239 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_bakery_breakfast_fresh_bake_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "breakfast_fresh_bake_pickup_growth",
+      "input": {
+        "mission_goal": "在 21 天内为社区写字楼交界烘焙店新增 480 单工作日早餐自提订单，并把 7 点到 10 点的现烤产能利用率从 52% 提升到 76%。",
+        "signal_brief": "周边 4 栋写字楼复工稳定，竞品开始用 9.9 元早餐面包加咖啡抢量，但门店已有稳定的吐司、贝果和蛋挞主力款，线上评分 4.7，7 点到 9 点每 25 分钟能完成一轮补货，更适合走顺路早餐外带路线。",
+        "tenant_context": {
+          "budget_limit": 8600,
+          "brand_tone": "新鲜、利落、靠谱",
+          "asset_state": "有 2300 名会员、近 45 天早餐订单记录和小程序预约自提功能，早餐会员占比 34%",
+          "location_type": "地铁口与社区办公混合街边店",
+          "operations_state": "早餐高峰现烤与打包基本可承接，10 点后明显空闲，切件甜点能力一般"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日早餐主路线",
+        "本地 1 到 2 公里通勤半径优先",
+        "1 到 2 个主力早餐 SKU 与预约自提路径",
+        "至少一个会员召回或周常备面包包备选路线",
+        "明确早餐补货与打包承接风险"
+      ],
+      "mustAvoid": [
+        "把早餐、下午茶和周末蛋糕同时作为同优先级主推",
+        "承诺所有时段都刚出炉或绝对零等待"
+      ]
+    },
+    {
+      "id": "strategist_bakery_office_afternoon_share_001",
+      "label": "happy_path",
+      "scenario_tag": "office_afternoon_share_box_growth",
+      "input": {
+        "mission_goal": "在 30 天内为办公室下午茶和项目会议场景获得 60 条高意向拼盒咨询，并落地 28 单 8 盒以上的实际订单。",
+        "signal_brief": "门店周边 2 公里内有多个产业园和联合办公空间，早餐散单稳定，但 14 点到 17 点存在明显产能空窗；过去 2 个月做过 9 次 10 盒以上下午茶订单，蛋挞、巴斯克和泡芙评价稳定，更适合走预约拼盒路线。",
+        "tenant_context": {
+          "budget_limit": 9400,
+          "brand_tone": "准时、体面、适合分享",
+          "asset_state": "有标准拼盒方案、企业微信客服和 7 条团队订单好评截图",
+          "location_type": "产业园与写字楼混合商圈",
+          "operations_state": "即时大单会挤压 17 点到 19 点零售高峰，必须依赖预约和冷藏打包分流"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "办公室下午茶拼盒主路线",
+        "收集时间、人数、预算和口味偏好",
+        "标准拼盒方案与预约承接路径",
+        "至少一个办公室自提或固定企业客户 fallback",
+        "明确打包与晚高峰冲突的权衡"
+      ],
+      "mustAvoid": [
+        "把普通拉新优惠直接套到团队订单报价",
+        "未查产能就承诺所有时段都能接大单"
+      ]
+    },
+    {
+      "id": "strategist_bakery_member_reactivation_weekly_pack_001",
+      "label": "happy_path",
+      "scenario_tag": "member_reactivation_weekly_staple_pack",
+      "input": {
+        "mission_goal": "在 18 天内激活 1500 名近 90 天未下单会员，并带回 360 单熟客复购订单。",
+        "signal_brief": "门店计划上线一组周常备吐司和贝果组合，预算不高，但历史订单中早餐主食面包、蛋挞和切件甜点的偏好标签完整，沉睡会员回流成本明显低于公域冷启动。",
+        "tenant_context": {
+          "budget_limit": 3400,
+          "brand_tone": "熟客感、克制、不打扰",
+          "crm_state": "可按早餐面包、甜点偏好、常下单时段和距离门店半径做分层",
+          "asset_state": "有近 6 个月订单记录、会员积分体系和两轮活动反馈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "会员分层重激活节奏",
+        "周常备面包包或早餐预约作为召回理由",
+        "低成本熟客召回优先级高于陌生人投流",
+        "至少一个本地冷启动备选路线",
+        "明确熟客回流与新客增量的权衡"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略早餐与下午茶偏好差异"
+      ]
+    },
+    {
+      "id": "strategist_bakery_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的商场烘焙店验证第一个值得持续投放的增长场景，并决定预算优先压在早餐顺手买、放学后加餐还是周末甜点带走。",
+        "signal_brief": "门店开业仅 8 天，装修和包装出片不错，但线上只有 26 条评价，主力 SKU 还没有稳定销量数据，团队同时想做探店、团购券、下午茶拼盒和当天蛋糕快送，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "年轻、明亮、适合拍照",
+          "asset_state": "有开业素材和全柜海报，但缺少真实复购、稳定补货和高峰履约证据",
+          "location_type": "新商场 4 层餐饮休闲区",
+          "operations_state": "店员仍在磨合，周末高峰等候和空柜情况波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实评价、主力 SKU 和补货证据",
+        "把即买、堂食和预订拆开排序",
+        "明确什么条件达标后才扩大预算"
+      ],
+      "mustAvoid": [
+        "基于装修和包装直接大规模放量",
+        "开业初期同时冲团购低价、探店、蛋糕急送和下午茶拼盒"
+      ]
+    },
+    {
+      "id": "strategist_bakery_cake_fulfillment_gate_001",
+      "label": "edge_case",
+      "scenario_tag": "celebration_cake_fulfillment_gate",
+      "input": {
+        "mission_goal": "在不放大售后投诉的前提下，把周末生日蛋糕预约量在 21 天内提升到 90 单，并保持准时交付率高于 95%。",
+        "signal_brief": "门店近期生日蛋糕咨询明显增多，但过去两周差评集中在图样不符、当天急单来不及、配送迟到和写字出错；老板仍想通过纪念日短视频和复杂定制款快速做增量。",
+        "tenant_context": {
+          "budget_limit": 7800,
+          "brand_tone": "温柔、体面、讲清边界",
+          "asset_state": "有 8 款标准蛋糕实拍、尺寸口味矩阵和部分庆生好评截图",
+          "operations_state": "周末裱花人手紧张，复杂定制容易挤占门店零售和标准款出货"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "预约优先的蛋糕主路线",
+        "标准款、尺寸、口味、写字和提前期的清晰边界",
+        "至少一个标准款自提或固定配送半径 fallback",
+        "明确同日急单和复杂定制的风险降级",
+        "把裱花修复与增长时序说清楚"
+      ],
+      "mustAvoid": [
+        "承诺任意主题当天现做",
+        "承诺照片百分百复刻或全城急送"
+      ]
+    },
+    {
+      "id": "strategist_bakery_deep_discount_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_all_day_overexpansion",
+      "input": {
+        "mission_goal": "用 6.9 元面包、9.9 元蛋糕切件、全网最低价口号和全城当天蛋糕快送，在 10 天内把订单量翻倍。",
+        "signal_brief": "周边竞品持续用低价券抢量，但门店当前毛利已经偏薄，周末和早餐高峰常出现空柜、打包拥堵和配送超时；继续压价和扩配送半径很可能带来更高损耗、更多售后和评分下滑。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 3 个主力 SKU，但缺少承接深折扣、全时段现货和全城急送的人手与库存",
+          "operations_state": "现烤、裱花、打包和骑手交接已接近上限，堂食与排队也在周末高峰承压"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定全时段最低价与全城急送中心路线",
+        "把单店承接、毛利、损耗和售后风险说透",
+        "给出更稳的替代增长路径",
+        "指出绝对价格和绝对时效承诺的治理风险"
+      ],
+      "mustAvoid": [
+        "全网最低价导向",
+        "无限库存或全城当天任意蛋糕配送承诺",
+        "忽略现烤、裱花、打包和骑手交接上限"
+      ]
+    }
+  ]
+}

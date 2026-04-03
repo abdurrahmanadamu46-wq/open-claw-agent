@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "lobster": "echoer",
+    "name": "阿声",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "ech_fail_001：模板回复无温度——回复评论用固定话术，用户感觉到是机器人，互动意愿下降",
+    "ech_fail_002：差评公开杠精——遇到不合理差评时反驳用户，引发更多人来看热闹，扩大负面影响"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "ECH-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "针对ech_fail_001：写一条每次回复评论前必须执行的个性化检查规则",
+      "deliverable": "一条if-then规则写入skills.json：'每条回复发出前，必须检查是否包含[与用户评论内容相关的个性化元素]，如果没有，重写——不能100%套模板'",
+      "pass_criteria": [
+        "规则必须定义什么算'个性化元素'（不能是模糊描述）",
+        "规则是自动执行的检查动作，不靠记忆",
+        "写入skills.json的known_failure_patterns.prevention字段"
+      ],
+      "fail_action": "重做，没有明确定义个性化元素的规则不可执行",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "ECH-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "对一条真实发布的内容，执行黄金1小时内密集回复评论的完整操作",
+      "deliverable": "回复记录：前10条评论的回复内容截图/每条回复的个性化元素说明/发布后互动数据对比（1小时内vs1小时后）",
+      "pass_criteria": [
+        "每条回复有具体的个性化元素（不是'谢谢'或'对对对'）",
+        "每条回复包含一个引发用户继续说话的开放性问题",
+        "1小时内回复≥前10条评论（不能只回复自己喜欢的）"
+      ],
+      "fail_action": "重做，通用模板回复直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "ECH-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "设计并测试3种不同类型的评论区UGC钩子，记录效果",
+      "deliverable": "UGC钩子测试报告：3种钩子类型/内容设计/发布后评论量对比/结论（哪种类型最有效）",
+      "pass_criteria": [
+        "3种钩子类型必须各不相同（选择题/地域确认/经验分享/反问任选3种）",
+        "每种钩子有具体的文案（不能是'某类型钩子'这种模糊描述）",
+        "效果对比基于真实数据（评论量数字），不是主观感受"
+      ],
+      "fail_action": "重做，没有数据支撑的效果报告不算PASS",
+      "collab_required": "abacus（数据记录）"
+    },
+    {
+      "task_id": "ECH-T003",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "处理一次真实的差评危机：按5步流程完整执行，并复盘处理效果",
+      "deliverable": "危机处理记录：差评原文/各步骤执行内容/用户最终反应/复盘总结（哪步执行最好/哪步可以改进）",
+      "pass_criteria": [
+        "24小时内必须有公开回复（有时间戳证明）",
+        "公开回复不包含任何防御性/反驳性语言",
+        "成功将冲突从公开转移到私信处理"
+      ],
+      "fail_action": "重做，在公开场合争论对错直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "ECH-T004",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "执行一批评论区意向词识别，并按SABCD五级完成分类和移交",
+      "deliverable": "≥50条评论的意向分级表 + S/A级的移交包（含平台/内容ID/用户名/原评论/意向级别/上下文）",
+      "pass_criteria": [
+        "S级识别准确率≥90%（由catcher事后验证）",
+        "移交包中上下文字段完整（包含用户看了什么内容和表达了什么需求）",
+        "D级评论没有进入移交包（不浪费catcher资源）"
+      ],
+      "fail_action": "S级误判为D级→FAIL（漏掉热线索）",
+      "collab_required": "catcher（验证移交准确性）"
+    },
+    {
+      "task_id": "ECH-T005",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "从历史评论记录中找出1个因模板回复导致用户划走的真实案例，复盘根因",
+      "deliverable": "复盘记录：原始回复内容/用户反应（如何判断是划走信号）/问题根因/改进版回复/写入skills.json一条规则",
+      "pass_criteria": [
+        "必须是真实案例",
+        "改进版回复必须具体写出来（不是'以后更有温度'）",
+        "写入的规则是可检查的动作，不是笼统原则"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    },
+    {
+      "task_id": "ECH-T006",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "和catcher做一次协作复盘：哪些移交包让catcher难以判断意向，找出根因改进",
+      "deliverable": "协作复盘报告：问题移交包案例（≥3个）/根因（哪个字段缺失或模糊）/移交模板改进方案",
+      "pass_criteria": [
+        "每个问题案例指出具体字段问题",
+        "改进方案立刻可执行（不是'以后注意'）",
+        "改进后模板更新到skills.json的ech_transfer_001"
+      ],
+      "fail_action": "重做",
+      "collab_required": "catcher"
+    },
+    {
+      "task_id": "ECH-T007",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "针对一个真实账号，制定下一个内容发布后的完整评论区运营方案",
+      "deliverable": "运营方案：黄金1小时回复计划/UGC钩子设计/意向监控分工/差评预案（遇到差评的第一步是什么）",
+      "pass_criteria": [
+        "黄金1小时计划有具体的执行步骤（不是'积极回复'）",
+        "UGC钩子文案已写好（不是等发布后再想）",
+        "差评预案有明确的时间节点（'24小时内必须...'）"
+      ],
+      "fail_action": "重做，没有具体文案的方案不算PASS",
+      "collab_required": "catcher（意向识别分工确认）"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "ECH-DRILL-001",
+      "description": "内容发布后的黄金1小时内，完成≥10条个性化回复 + 完成意向分级 + 输出移交包给catcher",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "pass_criteria": [
+        "每条回复有个性化元素（catcher确认无模板感）",
+        "S/A级移交包格式完整",
+        "无差评被遗漏超过24小时未回复"
+      ],
+      "evaluation": "catcher反馈移交质量"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "ECH-T001到ECH-T007全部PASS",
+      "连续10次回复审核，无模板化回复（catcher/commander抽查确认）",
+      "S级意向识别准确率≥90%（catcher连续3周验证）",
+      "差评处理成功率≥80%（成功定义：用户在私信中得到解决方案）",
+      "ECH-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

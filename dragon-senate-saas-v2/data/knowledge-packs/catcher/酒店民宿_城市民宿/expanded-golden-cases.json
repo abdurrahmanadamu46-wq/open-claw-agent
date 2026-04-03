@@ -1,0 +1,347 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u57ce\u5e02\u6c11\u5bbf",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_city_homestay_direct_booking_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Next Friday to Sunday we want your Jing'an Temple loft for two guests and two nights. Can you confirm late self check-in and an electronic invoice first?",
+        "engagement_history": [
+          "watched full room-tour video",
+          "clicked map card",
+          "asked whether late self check-in is supported"
+        ],
+        "tenant_rules": {
+          "require_property_for_booking": true,
+          "late_arrival_requires_inventory_confirmation": true,
+          "forbid_unapproved_self_checkin_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low to medium risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room hold or self check-in details without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_exam_companion_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "My child has an interview near ECNU next Monday. We need two nights near the exam site for a parent and student, preferably with elevator access, quiet at night, and an e-invoice.",
+        "engagement_history": [
+          "clicked nearby-location post",
+          "asked about elevator access",
+          "asked whether luggage can be stored after checkout"
+        ],
+        "tenant_rules": {
+          "require_property_or_landmark_for_booking": true,
+          "quiet_room_requests_require_soft_confirmation": true,
+          "forbid_absolute_environment_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "real exam-related stay plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "promising absolute quietness or late checkout without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_space_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "Is the projector bright, does the bathtub look good in photos, and can we just come see the vibe first without discussing dates?",
+        "engagement_history": [
+          "liked two room-style videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but booking intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating style and amenity curiosity as a confirmed booking lead"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_same_day_self_checkin_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We will reach Hongqiao after 11 p.m. tonight and need one twin room for one night. If it still works, we can book now. Please confirm the lock code flow and parking access.",
+        "engagement_history": [
+          "clicked navigation card",
+          "asked whether no-contact check-in is supported"
+        ],
+        "tenant_rules": {
+          "same_day_arrival_needs_fast_followup": true,
+          "late_arrival_requires_inventory_confirmation": true,
+          "forbid_unapproved_access_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real arrival plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room access or parking arrangements without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_long_stay_relocation_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "I am coming to Shanghai next month for an internship and need 18 nights near Line 2. One guest only. I need a washer, fridge, stable Wi-Fi, and weekly invoicing. Please let me know what fits first.",
+        "engagement_history": [
+          "read long-stay post",
+          "asked whether weekly cleaning is available",
+          "asked about deposit rules"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "support_long_stay_negotiation": true,
+          "preserve_medium_confidence_long_stay_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium to high intent",
+        "good fit",
+        "long-stay potential",
+        "worth structured follow-up"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because the user is still comparing long-stay options"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_concert_group_006",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Three of us are going to the Mercedes-Benz Arena concert on Saturday and want two nearby rooms for one night. We will arrive around 11:30 p.m. after the show. If self check-in works, we can book today.",
+        "engagement_history": [
+          "clicked concert-weekend location note",
+          "asked about late arrival entry"
+        ],
+        "tenant_rules": {
+          "require_property_or_landmark_for_booking": true,
+          "group_booking_requires_manual_confirmation": true,
+          "forbid_unapproved_late_entry_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "clear event-driven multi-room demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as vague chatter or guaranteeing late entry without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_absolute_promise_request_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "We will book this Friday only if you guarantee complete quiet, 1 p.m. early check-in, no deposit, and the exact room shown in the video. Otherwise we will not consider it.",
+        "engagement_history": [
+          "asked twice whether a specific room can be guaranteed"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_room_promises": true,
+          "high_demand_requests_require_human_confirmation": true,
+          "deposit_policy_cannot_be_overridden": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute room, quietness, deposit, or early check-in promises"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_service_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "I stayed in your unit last week. The lock code did not work, the replacement room smelled bad, the deposit still has not been returned, and the invoice never arrived. I have the order number and screenshots.",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent lock-error photo",
+          "sent invoice title"
+        ],
+        "tenant_rules": {
+          "service_complaints_go_to_support_queue": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_repeat_guest_return_009",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "We stayed at your Xujiahui duplex last month and want the same area again for two nights. It is still two coworkers. I am sending the old order and invoice details so we can follow the same process.",
+        "engagement_history": [
+          "historical stay record exists in tenant memory",
+          "shares previous invoice title and contact",
+          "asks to continue with the same property area"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_trip_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-guest confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning guest as a cold ambiguous lead"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_agency_rate_sheet_010",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "Send me all your Shanghai units, bottom rates, monthly stay deals, and commission policy. I have customers and creator resources and want to see whether there is cooperation space first.",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real stay facts"
+      ],
+      "mustAvoid": [
+        "classifying rate-sheet fishing or channel cooperation as a direct buyer lead"
+      ]
+    },
+    {
+      "id": "catcher_city_homestay_non_compliant_party_011",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "We want six adults and two children in one loft, preferably without registering everyone. Friends may come over for a party until 2 a.m., and we also want to bring a pet in.",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "forbid_non_compliant_checkin_requests": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating non-compliant occupancy, party, or pet requests as a valid city-homestay lead"
+      ]
+    }
+  ]
+}

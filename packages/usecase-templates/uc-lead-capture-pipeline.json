@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-lead-capture-pipeline",
+  "name": "线索获取管线",
+  "name_en": "Lead Capture Pipeline",
+  "category": "lead_gen",
+  "difficulty": "intermediate",
+  "description": "从互动消息中识别高意向人群、自动评分、跟进并把价值结果回写。",
+  "pain_point": "评论和私信里的高意向线索经常被遗漏，销售也难以及时接住高价值用户。",
+  "lobsters": ["echoer", "catcher", "followup", "abacus"],
+  "skills_required": ["echoer_comment_manage", "catcher_lead_score", "followup_multi_touch", "abacus_feedback_loop"],
+  "channels": ["douyin", "wechat", "xiaohongshu"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "定义高意向线索规则",
+      "code_type": "prompt",
+      "code": "列出预算、时效、需求成熟度等判定规则，供铁网虾评分使用。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "绑定 CRM 或通知渠道",
+      "code_type": "config",
+      "code": "选择线索写入方式，可先用飞书/微信通知替代 CRM。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置跟进策略",
+      "code_type": "config",
+      "code": "设定首次触达、二次提醒和沉睡唤醒的时间窗口。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启动线索管线",
+      "code_type": "none",
+      "code": "回声虾识别互动，铁网虾评分去重，回访虾跟进，金算虾回写价值和转化结果。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "every",
+    "schedule": "15m",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "线索标准越清晰，自动评分效果越稳定。",
+    "可以先只接一个渠道跑通，再扩到多渠道。",
+    "如果销售动作需要人工批准，记得保留审批门。"
+  ],
+  "estimated_cost_per_run": "$0.06-0.18",
+  "tags": ["线索", "跟进", "评分", "闭环"]
+}

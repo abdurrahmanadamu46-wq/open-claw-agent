@@ -1,0 +1,178 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_first_time_not_too_sweet",
+      "scene": "public_comment",
+      "intent": "drink_recommendation",
+      "emotion": "curious",
+      "hook": "Happy to help you narrow it down without making you guess.",
+      "bridge": "For a milk tea shop, the best first pick usually depends on whether you lean milk tea or fruit tea and how sweet you normally like it.",
+      "next_step": "Ask whether they prefer tea-with-milk or fruit tea, plus sweetness level.",
+      "handoff_suggestion": "Good engagement signal if the user answers with taste preferences."
+    },
+    {
+      "id": "hook_sugar_ice_customization",
+      "scene": "comment_or_dm",
+      "intent": "customization_help",
+      "emotion": "practical",
+      "hook": "That is an easy place to fine-tune the drink instead of ordering blind.",
+      "bridge": "Sweetness, ice level, and topping weight can change the whole feel of a milk tea order more than the name alone.",
+      "next_step": "Ask what sweetness and ice level they usually choose and whether they want pearls, jelly, or no toppings.",
+      "handoff_suggestion": "Menu-guidance opportunity."
+    },
+    {
+      "id": "hook_fruit_vs_milk_choice",
+      "scene": "public_comment",
+      "intent": "flavor_direction",
+      "emotion": "undecided",
+      "hook": "A quick flavor split usually makes the decision much easier.",
+      "bridge": "People who want something refreshing often land very differently from people who want tea aroma with a creamier feel.",
+      "next_step": "Ask whether they want refreshing fruit tea, classic milk tea, or a richer dessert-like drink.",
+      "handoff_suggestion": "Useful pre-order clarification."
+    },
+    {
+      "id": "hook_seasonal_limited_stock",
+      "scene": "public_comment",
+      "intent": "limited_item_check",
+      "emotion": "ready_to_move",
+      "hook": "Makes sense to check before you make the trip.",
+      "bridge": "Limited drinks can sell through at different speeds depending on the store and what time you plan to order.",
+      "next_step": "Ask for the store and whether they want it now, later today, or by delivery.",
+      "handoff_suggestion": "High-intent availability check."
+    },
+    {
+      "id": "hook_queue_or_pickup_eta",
+      "scene": "public_comment",
+      "intent": "eta_check",
+      "emotion": "urgent",
+      "hook": "I get why you do not want to gamble on the timing.",
+      "bridge": "Milk tea prep time can change a lot with store traffic, cup count, and whether this is pickup or delivery.",
+      "next_step": "Ask for the store, order mode, and number of cups.",
+      "handoff_suggestion": "Send to store or order follow-up quickly if the user gives timing details."
+    },
+    {
+      "id": "hook_office_bulk_order",
+      "scene": "comment_or_dm",
+      "intent": "bulk_order",
+      "emotion": "organized",
+      "hook": "That sounds like a real order worth planning cleanly.",
+      "bridge": "For office tea rounds, the key pieces are usually store, delivery time, cup count, and whether you need flavor variety or a simpler set.",
+      "next_step": "Ask for store, arrival time, number of cups, and whether an invoice is needed.",
+      "handoff_suggestion": "Route as a high-intent group order."
+    },
+    {
+      "id": "hook_invoice_meeting_order",
+      "scene": "comment_or_dm",
+      "intent": "business_order",
+      "emotion": "businesslike",
+      "hook": "Meeting orders usually go smoother when we lock the logistics first.",
+      "bridge": "Invoice needs, exact arrival time, and whether the drinks should match or vary matter more than a fast guess.",
+      "next_step": "Ask for invoice need, delivery time, and how many drink variations they expect.",
+      "handoff_suggestion": "Business order lead for Catcher."
+    },
+    {
+      "id": "hook_coupon_or_buy_one_get_one",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer details before you place the order.",
+      "bridge": "Milk tea promotions often change by store, channel, time slot, and which drinks are included.",
+      "next_step": "Ask for the store and whether they are ordering in app, in person, or by delivery.",
+      "handoff_suggestion": "Useful bridge into a purchase-ready conversation."
+    },
+    {
+      "id": "hook_member_points_or_upgrade",
+      "scene": "comment_or_dm",
+      "intent": "member_benefit_check",
+      "emotion": "practical",
+      "hook": "Happy to help narrow the rule instead of letting you guess.",
+      "bridge": "Points, free topping perks, and size-up rules often depend on the account benefit and the exact drink.",
+      "next_step": "Ask which benefit they are trying to use and at which store or channel.",
+      "handoff_suggestion": "Store-rule clarification opportunity."
+    },
+    {
+      "id": "hook_dairy_or_lactose_concern",
+      "scene": "comment_or_dm",
+      "intent": "ingredient_check",
+      "emotion": "careful",
+      "hook": "That is exactly the kind of thing worth checking carefully before you order.",
+      "bridge": "With milk tea, the exact base and topping can matter a lot more than the drink name alone.",
+      "next_step": "Ask for the exact ingredient concern and the specific drink they are asking about.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_pregnancy_or_caffeine_sensitive",
+      "scene": "comment_or_dm",
+      "intent": "caffeine_suitability",
+      "emotion": "serious",
+      "hook": "I am glad you asked before ordering.",
+      "bridge": "Pregnancy and caffeine questions are better handled by checking the exact drink ingredients than by giving a broad yes or no.",
+      "next_step": "Ask which drink they mean and what they are trying to avoid.",
+      "handoff_suggestion": "Human or store confirmation required."
+    },
+    {
+      "id": "hook_kid_friendly_not_too_sweet",
+      "scene": "public_comment",
+      "intent": "family_order_help",
+      "emotion": "careful",
+      "hook": "That is worth choosing a little carefully for a child.",
+      "bridge": "For kids, parents usually care about sweetness, caffeine, ice level, and whether the texture is easy to drink.",
+      "next_step": "Ask whether they want something fruit-based, milk-based, or lower-caffeine and how sweet they want it.",
+      "handoff_suggestion": "Family-order guidance opportunity."
+    },
+    {
+      "id": "hook_quality_skeptic_real_fruit",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With milk tea shops, people often care about different proof points such as tea aroma, fruit texture, sweetness balance, or whether the drink tastes heavy.",
+      "next_step": "Invite the user to name the exact quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_delivery_spill_or_missing",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a milk tea delivery issue is usually the store, order time, and a clear photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales."
+    },
+    {
+      "id": "hook_custom_event_labels",
+      "scene": "comment_or_dm",
+      "intent": "custom_event_order",
+      "emotion": "hopeful",
+      "hook": "That kind of extra touch can be great if the store has enough notice.",
+      "bridge": "Custom labels, event drops, or special cup messages usually depend on store capability, cup count, and timing.",
+      "next_step": "Ask for the date, store, number of cups, and the exact custom request.",
+      "handoff_suggestion": "Needs human or store confirmation."
+    },
+    {
+      "id": "hook_store_hours_or_late_night",
+      "scene": "public_comment",
+      "intent": "hours_check",
+      "emotion": "practical",
+      "hook": "Good call to check the timing before you head over.",
+      "bridge": "Store hours and rush pressure can differ a lot by location and time slot, especially later in the evening.",
+      "next_step": "Ask which store and what time they plan to arrive or place the order.",
+      "handoff_suggestion": "Booking or pickup-ready if the user has a fixed time."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The safest first step is still platform DM so order, coupon, or complaint details do not get scattered in public.",
+      "next_step": "Ask for the store plus the order or issue details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

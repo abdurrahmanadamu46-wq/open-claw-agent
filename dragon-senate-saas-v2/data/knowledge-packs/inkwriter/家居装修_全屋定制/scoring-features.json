@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_全屋定制","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+{"id":"custom_score_problem_specificity","title":"问题指向清晰度","description":"高分文案能在前两句就让用户看见明确问题或场景，例如板材、收纳、衣柜、橱柜和工期，而不是只说定制和收纳。","examples":["高分：开头直接点出板材或收纳问题。 ","低分：一开始只有高级感和一门到顶。 "],"priority":"high"},
+{"id":"custom_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给板材、五金和安装说明，让用户感到门店不会乱推。","examples":["高分：先写判断和边界，再写到店。 ","低分：只靠样柜吸引。 "],"priority":"high"},
+{"id":"custom_score_compliance_safety","title":"合规安全性","description":"高分文案避免绝对环保和零误差承诺；低分文案容易出现绝对化表述和违规导向。","examples":["高分：用工艺说明和适用提示替代强承诺。 ","低分：保证零甲醛、零误差、绝不变形。 "],"priority":"high"},
+{"id":"custom_score_scene_match","title":"场景匹配度","description":"高分文案会让交房婚房、日常补柜和老客复访各归其位。","examples":["高分：节点文案重日期和场景，老客文案重补柜理由。 ","低分：所有文案都只会喊来看看。 "],"priority":"medium"},
+{"id":"custom_score_respectfulness","title":"尊重感与情绪稳定度","description":"高分文案会陪用户一起判断状态，而不是拿预算有限和第一次定制刺激逼单。","examples":["高分：用先看方向和先量尺这类语气。 ","低分：用再不做就住不上这类恐吓。 "],"priority":"high"},
+{"id":"custom_score_cta_quality","title":"CTA 收口质量","description":"高分 CTA 会自然收户型、日期和是否第一次来等量尺事实。","examples":["高分：先发户型和想约时间。 ","低分：快来店里看看。 "],"priority":"high"}]}

@@ -1,0 +1,380 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u5ba2\u6808",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_inn_direct_scenic_booking_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "下周五到周日想住你们平遥古城南门客栈，4 个大人要 2 间双床房，晚上 9 点半到站，麻烦先确认接站和停车怎么安排。",
+        "engagement_history": [
+          "watched full inn room-tour video",
+          "clicked scenic map card",
+          "asked whether pickup from the south gate can be arranged"
+        ],
+        "tenant_rules": {
+          "require_property_or_scenic_area_for_booking": true,
+          "pickup_requires_manual_confirmation": true,
+          "forbid_unapproved_parking_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "real arrival and transport plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing pickup or parking without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_inn_family_elderly_slow_trip_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "清明后想去你们丽江古城院子住 2 晚，2 大 1 小加 1 位老人，想要 1 间低楼层房和 1 间双床房，我们自驾过去，顺便问下早餐和停车。",
+        "engagement_history": [
+          "clicked family-room post",
+          "asked whether elders can avoid steep stairs",
+          "asked about self-drive parking notes"
+        ],
+        "tenant_rules": {
+          "require_property_or_scenic_area_for_booking": true,
+          "elderly_access_requests_require_soft_confirmation": true,
+          "forbid_unapproved_room_assignment_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "good fit",
+        "clear family and elderly access facts",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "promising exact low-floor room assignment without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_inn_atmosphere_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "你们河景院子晚上拍照好不好看，茶室能不能单独来坐坐，先不定日期就是想看看氛围。",
+        "engagement_history": [
+          "liked two courtyard videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but booking intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating atmosphere curiosity as a confirmed inn booking lead"
+      ]
+    },
+    {
+      "id": "catcher_inn_same_day_late_arrival_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "我们刚下高铁，今晚想住你们凤凰古城北门客栈 1 晚，2 个人 1 间大床房，如果晚到入住和接站流程没问题我现在就定。",
+        "engagement_history": [
+          "clicked navigation card",
+          "asked whether late check-in is supported"
+        ],
+        "tenant_rules": {
+          "same_day_arrival_needs_fast_followup": true,
+          "late_arrival_requires_inventory_confirmation": true,
+          "pickup_requires_manual_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real same-day arrival plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room inventory or pickup flow without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_inn_buyout_family_reunion_005",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "6 月想在你们大理古城客栈办家庭聚会，住 2 晚，大概 6 间房，另外想要晚餐、茶室和发票，麻烦给个有范围的方案。",
+        "engagement_history": [
+          "downloaded reunion brochure",
+          "asked about tea-room setup",
+          "asked whether group dinner can be arranged"
+        ],
+        "tenant_rules": {
+          "group_stay_requires_manual_confirmation": true,
+          "buyout_or_event_quotes_need_scoped_requirements": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "multi-room reunion demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as a simple single-room leisure inquiry"
+      ]
+    },
+    {
+      "id": "catcher_inn_dates_not_final_pet_trip_006",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "端午那几天我们可能会去你们苏州老街客栈住 2 晚，2 个大人带一只柯基，日期明天才能定，先想确认哪些房型能带宠物和停车规则。",
+        "engagement_history": [
+          "clicked pet-friendly room note",
+          "asked about cleaning fee",
+          "asked about self-drive arrival"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "pet_rooms_require_manual_confirmation": true,
+          "preserve_medium_confidence_pet_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium intent",
+        "good fit",
+        "worth structured follow-up",
+        "do not over-escalate before dates lock"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because the exact dates are not final"
+      ]
+    },
+    {
+      "id": "catcher_inn_long_stay_workation_007",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "我下个月想在你们同里水边客栈住 12 晚，一个人远程办公和写东西，需要稳定 Wi-Fi、洗衣、安静的早上，最好能周开发票，先看下适合的房型。",
+        "engagement_history": [
+          "read long-stay post",
+          "asked about desk setup",
+          "asked whether weekly cleaning is available"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "support_long_stay_negotiation": true,
+          "preserve_medium_confidence_long_stay_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium to high intent",
+        "good fit",
+        "long-stay potential",
+        "worth structured follow-up"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because it is still comparing long-stay options"
+      ]
+    },
+    {
+      "id": "catcher_inn_absolute_promise_request_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "端午如果订你们家，必须保证最好的河景房、整晚绝对安静、上午 10 点免费提前入住，还要接站，不然我就不考虑。",
+        "engagement_history": [
+          "asked twice whether the best-view room can be guaranteed"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_room_promises": true,
+          "high_demand_requests_require_human_confirmation": true,
+          "pickup_requires_manual_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute room-view, quietness, pickup, or early-check-in promises"
+      ]
+    },
+    {
+      "id": "catcher_inn_service_complaint_009",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "上周住你们家，接站没来，实际房间和照片也不一样，退款和发票到现在都没处理，我这边有订单号和聊天截图，麻烦尽快处理。",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent pickup chat screenshot",
+          "sent invoice title"
+        ],
+        "tenant_rules": {
+          "service_complaints_go_to_support_queue": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_inn_repeat_guest_return_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "去年国庆住过你们周庄客栈，这次还想订 2 间房住 2 晚，还是同一批家人，我把上次联系人和发票信息发你，想按之前流程走。",
+        "engagement_history": [
+          "historical stay record exists in tenant memory",
+          "shares previous invoice title and contact",
+          "asks to continue with the same property"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_trip_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-guest confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning guest as a cold ambiguous lead"
+      ]
+    },
+    {
+      "id": "catcher_inn_agency_creator_collab_011",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "把你们暑期底价、全部古镇房源、房间图包和达人置换政策发我，我这边有流量和渠道资源，合适再谈。",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real stay facts"
+      ],
+      "mustAvoid": [
+        "classifying creator barter or channel fishing as a direct inn booking lead"
+      ]
+    },
+    {
+      "id": "catcher_inn_non_compliant_party_012",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "我们 6 个大人 2 个小孩想挤 1 间院子套房，最好别全登记，晚上朋友还会来烧烤唱歌到很晚，价格都好说。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "forbid_non_compliant_checkin_requests": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating non-compliant occupancy or party requests as a valid inn lead"
+      ]
+    }
+  ]
+}

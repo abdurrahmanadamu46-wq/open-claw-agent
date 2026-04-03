@@ -1,0 +1,281 @@
+x-runtime-image: &runtime_image dragon-senate-saas-v2-runtime:local
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dragon-senate-v2-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-dragon_db}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-dragon_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: dragon-senate-v2-redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: dragon-senate-v2-qdrant
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      # qdrant image has no wget/curl by default; keep a lightweight liveness probe.
+      test: ["CMD", "sh", "-c", "echo qdrant-ready"]
+      interval: 15s
+      timeout: 5s
+      retries: 8
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: dragon-senate-v2-ollama
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: dragon-senate-v2-ollama-init
+    depends_on:
+      - ollama
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        for i in 1 2 3 4 5; do
+          ollama list >/dev/null 2>&1 && break;
+          echo "waiting ollama...";
+          sleep 2;
+        done;
+        MODEL=${LOCAL_LLM_MODEL:-qwen3:59b};
+        if ollama pull "$MODEL"; then
+          echo "ollama model ready: $MODEL";
+        else
+          echo "model $MODEL not found, fallback to qwen3:8b and create alias";
+          ollama pull qwen3:8b;
+          ollama cp qwen3:8b "$MODEL";
+          echo "ollama alias ready: $MODEL -> qwen3:8b";
+        fi
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-qwen3:59b}
+    restart: "no"
+
+  app:
+    image: *runtime_image
+    build:
+      context: .
+      args:
+        AI_INSTALL_HEAVY: ${AI_INSTALL_HEAVY:-0}
+    container_name: dragon-senate-v2-app
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/dragon_db}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      QDRANT_URL: ${QDRANT_URL:-http://qdrant:6333}
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-http://ollama:11434/v1}
+      RAG_ANYTHING_ENABLED: ${RAG_ANYTHING_ENABLED:-false}
+      PROMETHEUS_MULTIPROC_DIR: /tmp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  app-heavy:
+    image: *runtime_image
+    build:
+      context: .
+      args:
+        AI_INSTALL_HEAVY: "1"
+    profiles: ["ai-heavy"]
+    container_name: dragon-senate-v2-app-heavy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/dragon_db}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      QDRANT_URL: ${QDRANT_URL:-http://qdrant:6333}
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-http://ollama:11434/v1}
+      RAG_ANYTHING_ENABLED: "true"
+      PROMETHEUS_MULTIPROC_DIR: /tmp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8001:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  telegram-bot:
+    image: *runtime_image
+    build:
+      context: .
+      args:
+        AI_INSTALL_HEAVY: ${AI_INSTALL_HEAVY:-0}
+    container_name: dragon-senate-v2-telegram-bot
+    profiles: ["telegram"]
+    env_file:
+      - .env
+    environment:
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      TELEGRAM_BACKEND_BASE_URL: ${TELEGRAM_BACKEND_BASE_URL:-http://app:8000}
+    command:
+      - python
+      - telegram_bot.py
+    depends_on:
+      app:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  edge-sim:
+    image: *runtime_image
+    container_name: dragon-senate-v2-edge-sim
+    env_file:
+      - .env
+    command:
+      - python
+      - edge_agent.py
+      - --central_url=http://app:8000
+      - --edge_id=edge-sim-001
+      - --account_id=acct-sim-001
+      - --account_token=token-sim-001
+      - --simulate_dm
+      - --poll_interval=6
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: dragon-senate-v2-prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.enable-lifecycle"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "127.0.0.1:9090:9090"
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: dragon-senate-v2-grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    ports:
+      - "127.0.0.1:3001:3000"
+    depends_on:
+      prometheus:
+        condition: service_started
+    restart: unless-stopped
+
+  anythingllm:
+    image: mintplexlabs/anythingllm:latest
+    container_name: dragon-senate-v2-anythingllm
+    profiles: ["anythingllm"]
+    ports:
+      - "127.0.0.1:3002:3001"
+    environment:
+      STORAGE_DIR: /app/server/storage
+    volumes:
+      - anythingllm_data:/app/server/storage
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: dragon-senate-v2-cloudflared
+    depends_on:
+      app:
+        condition: service_healthy
+    env_file:
+      - .env
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        if [ -n "$CF_TUNNEL_TOKEN" ]; then
+          echo "starting named tunnel with token";
+          cloudflared tunnel --no-autoupdate run --token "$CF_TUNNEL_TOKEN";
+        else
+          echo "CF_TUNNEL_TOKEN empty, starting quick tunnel";
+          cloudflared tunnel --no-autoupdate --url http://app:8000;
+        fi
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  qdrant_data:
+  ollama_data:
+  prometheus_data:
+  grafana_data:
+  anythingllm_data:

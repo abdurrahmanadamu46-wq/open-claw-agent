@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_考研培训",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_concern_time_scope",
+      "title": "先看问题、时间和试听范围，再判断是不是高意向",
+      "description": "考研培训线索只有在明确提到想解决的问题、试听时间或时间窗口、校区、是否第一次来和大致班型方向时，才能被视为高意向。只有“多少钱”“最近想考研”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周五晚想去国金校区先试听复试班，第一次来，想了解调剂和面试是不是要一起准备。",
+        "低确定性信号：最近想考研，先看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "deadline_driven_booking_is_high_intent",
+      "title": "考试和复试调剂节点出现明确日期时要显著提权",
+      "description": "初试、复试、调剂和报名节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实试听动作，应进入高意向候选。",
+      "examples": [
+        "周六复试，想约周四晚先试听判断路线。",
+        "调剂窗口很快到了，这周想先来看看班型是否合适。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_and_foundation_questions_are_not_low_intent",
+      "title": "第一次试听和基础薄弱顾虑不应被误判成低意向",
+      "description": "第一次来、零基础、担心跟不上和二战焦虑，并不等于低意向。只要用户同时愿意给出时间和问题范围，这类线索依然值得快速承接。",
+      "examples": [
+        "第一次来，担心基础太弱，这周末有空想先看看。",
+        "二战用户想先来听听复盘课。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "price_only_needs_scope_before_upgrade",
+      "title": "只问价格不等于高意向，除非同时带着问题和时间",
+      "description": "价格问题本身并不低意向，但如果没有问题范围、时间窗口和是否第一次来等事实，Catcher 不能把它直接提到最高层，必须等更多信息出现。",
+      "examples": [
+        "高意向：这周末想来看看复试和调剂方向，大概什么价位。",
+        "普通意向：考研课多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_student_signal_upgrade",
+      "title": "老学员回流和朋友推荐要抬高拟合度",
+      "description": "老学员回流、朋友推荐和之前来过等信号，通常意味着信任门槛已经降低。这类线索在问题和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来试听过，这次想续班并看看下一步。",
+        "朋友推荐来的，这周末能先试听吗。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_anxiety_should_not_hide_intent",
+      "title": "公开场合的失败焦虑表达不应掩盖真实意向",
+      "description": "有些用户会在评论区用很轻的语气掩饰强烈需求，比如二战还有没有机会、基础差还能不能救。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "最近很焦虑，这周末还能试听吗。",
+        "基础差也能来先看看吗。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

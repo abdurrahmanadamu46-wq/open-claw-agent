@@ -1,0 +1,8 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"project_plus_time_hook","title":"品类加时间同时出现时的高意向钩子","description":"当线索同时出现宠物用品方向和到店时间时，应优先判为高意向候选。","examples":["周五晚想先看猫粮和猫砂。","这周日想给狗狗补驱虫和洗护用品。"],"priority":"high"},
+  {"id":"first_visit_process_hook","title":"首次到店与养宠顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心不适口时，说明其到店意图更具体。","examples":["第一次来，周末想先看适不适合幼猫。","担心换粮软便，想先来了解一下。"],"priority":"high"},
+  {"id":"seasonal_supply_hook","title":"换季补货与节前节点钩子","description":"换季、出行、节礼和囤货节点如果带着明确时间进入私信，应显著提权。","examples":["下周要出门，这周想先补一批粮和猫砂。","周六去朋友家做客，想先看一份宠物礼盒。"],"priority":"high"},
+  {"id":"diet_sensitivity_hook","title":"适口性与敏感体质顾虑钩子","description":"当用户明确提到挑食、软便、泪痕、肠胃敏感或年龄阶段时，往往意味着真实选品需求已经收窄。","examples":["猫咪肠胃比较敏感，想先看看主粮。","狗狗最近挑食，想来对比几种零食。"],"priority":"high"},
+  {"id":"old_client_restock_hook","title":"老客补货与推荐回流钩子","description":"老客复购、朋友推荐和之前买过同品牌又回来问新批次，通常有更高的成交确定性。","examples":["上次在你们家买过冻干，这周想再来补点。","朋友推荐你们店，说猫砂除臭做得不错。"],"priority":"medium"},
+  {"id":"price_plus_brand_compare_hook","title":"价格叠加品牌比较钩子","description":"只问价格不一定高意向，但如果同时出现品牌、规格、预算和到店时间，质量明显更高。","examples":["这周末想来看看渴望和百利，大概什么价位。","想给狗狗换粮，预算三百左右，周六能来吗。"],"priority":"medium"}
+]}

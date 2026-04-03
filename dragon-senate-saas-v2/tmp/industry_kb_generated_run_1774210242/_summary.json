@@ -1,0 +1,92 @@
+﻿{
+  "ok": false,
+  "total": 72,
+  "success": 56,
+  "skipped": 0,
+  "failed": 16,
+  "seed_to_kb": true,
+  "elapsed_sec": 1233.3,
+  "output_dir": "C:\\Users\\Administrator\\Desktop\\openclaw-agent\\dragon-senate-saas-v2\\tmp\\industry_kb_generated_run_1774210242",
+  "failed_items": [
+    {
+      "industry_tag": "life_moving",
+      "industry_name": "搬家服务",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=240)"
+    },
+    {
+      "industry_tag": "life_laundry",
+      "industry_name": "洗衣洗护",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=240)"
+    },
+    {
+      "industry_tag": "life_locksmith",
+      "industry_name": "开锁服务",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=240)"
+    },
+    {
+      "industry_tag": "life_plumbing",
+      "industry_name": "管道维修",
+      "error": "('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))"
+    },
+    {
+      "industry_tag": "life_appliance_clean",
+      "industry_name": "家电清洗",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_dental",
+      "industry_name": "口腔门诊",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_eye",
+      "industry_name": "眼科门诊",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_checkup",
+      "industry_name": "体检中心",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_rehab",
+      "industry_name": "康复中心",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_tcm_clinic",
+      "industry_name": "中医诊所",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "medical_psych",
+      "industry_name": "心理咨询",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "enterprise_tax",
+      "industry_name": "财税服务",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "enterprise_legal",
+      "industry_name": "法律服务",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "enterprise_hr",
+      "industry_name": "人力资源",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "enterprise_software",
+      "industry_name": "软件服务",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    },
+    {
+      "industry_tag": "enterprise_ip",
+      "industry_name": "知识产权",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /industry-kb/generate-profile (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"industry":"医疗健康_口腔门诊","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"dental_hook_pain","title":"疼痛问题开头模板","description":"适合牙痛、根管、智齿和急诊路线。","examples":["很多人卡的不是要不要看，而是这次到底先止痛、先检查，还是先把疼的位置说清楚。 ","牙痛最怕的不是没人接，而是没把牙位和时间说清楚。 ","真正难的不是约上门诊，而是先把痛点和时效讲明白。 "],"priority":"high"},
+  {"id":"dental_hook_cleaning","title":"洁牙检查开头模板","description":"适合洗牙、洁牙和常规检查路线。","examples":["很多人想做洗牙，不是因为想赶活动，而是现在已经到了该先把口腔状态看清的时候。 ","洁牙最怕的不是贵一点，而是没搞清楚自己更像日常维护还是已经有不适。 "],"priority":"high"},
+  {"id":"dental_hook_trust","title":"医生信任开头模板","description":"适合种植、正畸、儿牙和方案评估路线。","examples":["很多人来口腔门诊第一句不是多少钱，而是这次到底能不能先看清楚、找对医生。 ","真正让人安心的，不是套餐有多大，而是医生和方案边界有没有讲明白。 "],"priority":"high"},
+  {"id":"dental_hook_ortho","title":"正畸周期开头模板","description":"适合金属托槽、隐形矫正和青少年正畸路线。","examples":["正畸最怕的不是选择多，而是周期、复诊和目标没一起讲清楚。 ","想做矫正这件事，先把是自己做还是孩子做、主要诉求是什么说清楚，会更省心。 "],"priority":"medium"},
+  {"id":"dental_hook_child","title":"儿牙预防开头模板","description":"适合儿牙检查、涂氟和窝沟封闭路线。","examples":["很多家长不是不想带孩子看，而是担心孩子不配合、项目不好选。 ","儿牙就诊最怕的不是排队，而是没先把年龄和问题讲明白。 "],"priority":"medium"},
+  {"id":"dental_hook_repeat","title":"复诊回流开头模板","description":"适合老客复诊、正畸复查和种植复查路线。","examples":["复诊这件事很多时候不是重新选，而是先把这次要看的牙位和节点说清。 ","后续复查更看重时间、方案和是不是延续之前那条路线。 "],"priority":"medium"}
+]}

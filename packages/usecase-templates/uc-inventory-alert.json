@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-inventory-alert",
+  "name": "库存预警",
+  "name_en": "Inventory Alert",
+  "category": "ecommerce",
+  "difficulty": "beginner",
+  "description": "定期检查库存余量和异常变化，自动发出补货或下架提醒。",
+  "pain_point": "库存问题往往直到断货才被发现，运营和仓配之间的信息差会直接影响转化。",
+  "lobsters": ["radar", "dispatcher", "abacus"],
+  "skills_required": ["radar_metrics_feedback", "dispatcher_emergency_takedown", "abacus_feedback_loop"],
+  "channels": ["wechat", "feishu", "shop"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "接入库存数据源",
+      "code_type": "config",
+      "code": "配置库存表、SKU 清单和安全库存阈值。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "定义提醒级别",
+      "code_type": "prompt",
+      "code": "说明什么情况下提醒补货、暂停投放或紧急下架。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置巡检间隔",
+      "code_type": "config",
+      "code": "建议先每 30 分钟巡检一次，再根据业务峰值调整。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启动库存预警",
+      "code_type": "none",
+      "code": "触须虾持续拉取库存变化，点兵虾执行保护动作，金算虾评估影响范围。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "every",
+    "schedule": "30m",
+    "session_mode": "isolated"
+  },
+  "tips": [
+    "先做提醒，再逐步开放自动下架等高风险动作。",
+    "高峰期可缩短巡检间隔，但要避免对数据源造成压力。",
+    "适合和活动日历一起看，能更早发现供给风险。"
+  ],
+  "estimated_cost_per_run": "$0.02-0.08",
+  "tags": ["库存", "电商", "预警", "巡检"]
+}

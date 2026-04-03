@@ -1,0 +1,208 @@
+﻿{
+  "industry": "教育培训_少儿素质教育",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_quality_case_001",
+      "label": "happy_path",
+      "scenario": "专注力试听预约的真实教室分镜",
+      "input": {
+        "copy_pack": "少儿素质教育脚本，核心卖点是先判断孩子当前状态和问题，再决定适合的试听路径，不夸张承诺结果。",
+        "brand_assets": [
+          "教室或互动区镜头",
+          "老师带班镜头",
+          "孩子任务参与过程镜头",
+          "试听承接画面"
+        ],
+        "reference_styles": [
+          "克制纪实",
+          "家长信任优先"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现真实教室和老师带班证据",
+        "问题和试听流程能对应上",
+        "后半段出现试听路径"
+      ],
+      "mustAvoid": [
+        "只拍海报和成果墙",
+        "把结果承诺拍成主视觉",
+        "没有任何边界说明"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把问题型试听脚本转成一条真实、克制且能承接试听的分镜。",
+        "assumptions": [
+          "可以拍到本机构教室和老师带班过程。",
+          "前台与试听登记允许出镜。"
+        ],
+        "evidence": [
+          "环境和过程素材齐全。",
+          "脚本强调先判断再推进。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_quality_case_002",
+      "label": "happy_path",
+      "scenario": "表达力与思维路线的过程型分镜",
+      "input": {
+        "copy_pack": "表达力和思维路线脚本，重点是当前状态、老师反馈和互动过程，不做速成承诺。",
+        "brand_assets": [
+          "互动细节镜头",
+          "老师点评镜头",
+          "任务过程镜头",
+          "试听咨询承接画面"
+        ],
+        "reference_styles": [
+          "过程导向",
+          "低压解释"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "互动过程真实可见",
+        "老师反馈和阶段判断同屏出现",
+        "CTA 与试听路径一致"
+      ],
+      "mustAvoid": [
+        "把成长包装成速成案例",
+        "只拍结果不拍过程",
+        "没有说明适合谁"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让表达和思维路线看起来可信、可判断、可试听。",
+        "assumptions": [
+          "互动与老师点评素材可用。",
+          "允许用字幕补充阶段说明。"
+        ],
+        "evidence": [
+          "过程素材完整。",
+          "脚本以阶段判断和互动过程为核心。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_quality_case_003",
+      "label": "happy_path",
+      "scenario": "开学前窗口的时间感分镜",
+      "input": {
+        "copy_pack": "开学和升年级前窗口脚本，重点是当前状态、老师判断和近期安排，不制造恐慌。",
+        "brand_assets": [
+          "教室镜头",
+          "老师指导镜头",
+          "时间节点字幕素材",
+          "预约承接画面"
+        ],
+        "reference_styles": [
+          "时间感明确",
+          "克制紧迫"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现时间窗口和课堂证据",
+        "老师指导镜头进入主体段落",
+        "收口回到试听或咨询路径"
+      ],
+      "mustAvoid": [
+        "拍成纯焦虑倒计时海报",
+        "没有实际训练证据",
+        "跳过适配判断"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把节点季内容拍成高相关、高信任的试听视频。",
+        "assumptions": [
+          "机构具备课堂和老师指导镜头。",
+          "可通过字幕补足时间窗口。"
+        ],
+        "evidence": [
+          "流程素材完整。",
+          "脚本以时间窗口和状态判断为主。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_quality_case_004",
+      "label": "long_term_case",
+      "scenario": "老学员续费与进阶的阶段型分镜",
+      "input": {
+        "copy_pack": "老学员续费脚本，强调上次状态、当前卡点和下一阶段方向，不做强促销。",
+        "brand_assets": [
+          "阶段记录镜头",
+          "老师复盘镜头",
+          "教室镜头",
+          "续费承接画面"
+        ],
+        "reference_styles": [
+          "熟悉感",
+          "阶段递进"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "student_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "展示阶段变化而非单次促销",
+        "老师复盘与下一步方向清楚",
+        "收口指向续费或进阶承接"
+      ],
+      "mustAvoid": [
+        "把老学员当新客硬推",
+        "没有历史阶段感",
+        "只讲优惠不讲成长理由"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让续费内容建立在真实进度和成长理由上。",
+        "assumptions": [
+          "有阶段记录。",
+          "老师可出镜做简短复盘。"
+        ],
+        "evidence": [
+          "阶段证据存在。",
+          "脚本核心是续费理由和下一步方向。"
+        ]
+      }
+    }
+  ]
+}

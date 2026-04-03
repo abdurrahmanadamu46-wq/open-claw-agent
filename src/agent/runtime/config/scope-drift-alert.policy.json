@@ -1,0 +1,31 @@
+﻿{
+  "version": "lobster.scope-drift-alert.policy.v0.1",
+  "name": "Default Scope Drift Alert Policy",
+  "defaultThresholds": {
+    "staleAfterHours": 6,
+    "alertOnFailedCountAtLeast": 1,
+    "alertOnSimulatedCountAtLeast": 1,
+    "requireHandledWithinQueuedScopes": true
+  },
+  "severityRules": {
+    "policy_violation": "high",
+    "stale_scope": "medium",
+    "failure_detected": "high",
+    "simulated_only_scope": "medium",
+    "no_handled_yet": "medium"
+  },
+  "scopeOverrides": {
+    "dispatcher::internal_execute": {
+      "staleAfterHours": 2,
+      "alertOnFailedCountAtLeast": 1,
+      "alertOnSimulatedCountAtLeast": 1,
+      "requireHandledWithinQueuedScopes": true
+    },
+    "dispatcher::external_publish": {
+      "staleAfterHours": 24,
+      "alertOnFailedCountAtLeast": 1,
+      "alertOnSimulatedCountAtLeast": 99,
+      "requireHandledWithinQueuedScopes": false
+    }
+  }
+}

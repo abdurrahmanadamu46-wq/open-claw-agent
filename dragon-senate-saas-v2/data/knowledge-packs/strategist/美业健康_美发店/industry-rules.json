@@ -1,0 +1,104 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "service_route_first",
+      "rule_name": "先锁一个核心项目路线，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店同时想做剪发、染发、烫发、头皮护理和补染复访",
+        "预算有限，但真实咨询集中在少数项目和档期"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的项目路线作为主线，例如通勤剪发、显白发色或头皮护理，再统一内容、预约承接和套餐结构。",
+      "recommended_alternative_route": "若证据分散，先并行验证最多 2 条路线，保留预约率和复购率更优的一条。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有项目和所有价格层",
+        "不能在证据尚弱时同时主推剪染烫三条大线"
+      ],
+      "risk_tradeoff": "接受覆盖面更窄，换取更清楚的预约链路和案例认知。"
+    },
+    {
+      "id": "first_visit_and_membership_split",
+      "rule_name": "新客首单路线和储值复访路线必须拆开",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店既想靠低门槛洗剪吹获客，又想快速转储值和高客单染烫",
+        "新客咨询多，但复访和储值不稳定"
+      ],
+      "recommended_primary_route": "把首单路线定义为预约到店和建立风格信任，把储值和长期护理承接放在做完后的 followup 与下次返店节点。",
+      "recommended_alternative_route": "若门店有稳定老客盘，可针对熟客测试轻量储值承接，但仍要保留温和路线。",
+      "hard_constraints": [
+        "不能把低门槛新客套餐直接写成高储值成交文案",
+        "不能要求评论区和首次私信完成储值成交"
+      ],
+      "risk_tradeoff": "短期客单看起来更慢，但更利于降低反感和翻车后流失。"
+    },
+    {
+      "id": "hair_truth_and_condition_match",
+      "rule_name": "真实案例和发质适配优先于网图照搬",
+      "priority": "P0",
+      "trigger_signals": [
+        "用户持续拿网图询问能不能一模一样做出来",
+        "评论区开始出现发色、卷度和图片不符反馈"
+      ],
+      "recommended_primary_route": "优先走真实案例和发质适配路线，用真实发量、底色、长度和是否需漂发的边界建立预期，再承接预约。",
+      "recommended_alternative_route": "若真实案例不足，先补拍真实案例集与发质解释，不急着放量爆款内容。",
+      "hard_constraints": [
+        "不能拿盗图或外部网图冒充本店作品",
+        "不能把并不适合当前发质的效果写成人人可做"
+      ],
+      "risk_tradeoff": "点击率可能不如爆款网图，但能显著减少翻车与补救成本。"
+    },
+    {
+      "id": "event_window_and_daily_maintenance_split",
+      "rule_name": "婚礼节日档和日常维护复访是两条不同策略路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "一部分客人只在婚礼、节日和拍照前做一次焕新",
+        "另一部分客人更关心补染、修刘海和周期护理"
+      ],
+      "recommended_primary_route": "把节日档路线聚焦日期、风格和档期稀缺，把日常维护路线聚焦耐看、长长了怎么办和复访周期提醒。",
+      "recommended_alternative_route": "资源有限时，先做占比更高的一类，另一类只用轻量内容验证。",
+      "hard_constraints": [
+        "不能把节日应景造型写成长期低维护路线",
+        "不能用婚礼档期逻辑覆盖通勤熟客"
+      ],
+      "risk_tradeoff": "拆路线能减少错配和排班混乱。"
+    },
+    {
+      "id": "capacity_before_discount",
+      "rule_name": "工位、总监和单客时长先于折扣放量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店准备上线低价洗剪吹或节日限时套餐",
+        "晚高峰和周末已经出现等待和赶工"
+      ],
+      "recommended_primary_route": "先校验工位、技师排班、平均时长、是否需漂发和返工容量，再决定是否扩投低价套餐。",
+      "recommended_alternative_route": "若容量不足，优先分流时段和项目复杂度，而不是继续压价冲量。",
+      "hard_constraints": [
+        "不能在承接不足时继续加大低价引流",
+        "不能承诺复杂染烫也能极短时间完成"
+      ],
+      "risk_tradeoff": "短期咨询量可能更少，但交付体验和复访更稳。"
+    },
+    {
+      "id": "maintenance_revisit_route",
+      "rule_name": "老客补染、修剪和护理要作为独立增长路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "门店已有一定老客和维护记录",
+        "新客获客成本上升，复访周期更值得经营"
+      ],
+      "recommended_primary_route": "围绕补染、修根、修刘海、头皮护理和节日前焕新，设计周期提醒与熟客专属路线。",
+      "recommended_alternative_route": "若老客记录弱，先从最近 60 天做过头发的用户分层回访。",
+      "hard_constraints": [
+        "不能无差别群发所有老客同一条优惠",
+        "不能只靠降价而没有项目与周期对应逻辑"
+      ],
+      "risk_tradeoff": "老客复访起量更慢，但 ROI 通常高于纯冷启动流量。"
+    }
+  ]
+}

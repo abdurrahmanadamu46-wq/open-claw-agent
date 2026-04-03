@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "chair_and_stylist_capacity_gate",
+      "title": "高峰预约前必须先校验工位、技师和单客时长",
+      "description": "美发店的调度核心不是单纯接单，而是把工位、技师班次、项目复杂度、是否漂发和返工容量一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": [
+        "周末晚间工位已满时，先进入候补和分时段预约节点。",
+        "节日前复杂染烫集中时，先确认可用时长和技师排班。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "wash_blow_bleach_must_be_routed",
+      "title": "洗吹、护理、漂发和补色是独立调度变量",
+      "description": "是否需要洗吹、护理、漂发、补色或总监指定，会显著改变单客时长与技师匹配。Dispatcher 不能按普通洗剪吹去承接这些场景，必须单独分流。",
+      "examples": [
+        "带旧色来店想做显白染发的用户需要先进入底色判断节点。",
+        "漂发和复杂染色要优先路由到经验更足的技师。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "service_complexity_before_confirmation",
+      "title": "确认预约前先判断项目复杂度和是否适合该时段",
+      "description": "基础剪发、快速焕新、显白染发、烫发和头皮护理不能共用同一套预约时长假设。Dispatcher 需要先按复杂度和工时做分流。",
+      "examples": [
+        "午休档只适合轻项目，不应塞入染烫大改。",
+        "婚礼焕新和多人同做需提前扩展时长。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "station_reset_and_hygiene_gate",
+      "title": "工位重置和工具整理是独立调度节点",
+      "description": "美发店不是一位顾客结束就能立刻无缝接下一位。工具重置、工位整理和吹风区准备必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": [
+        "连续预约时，先插入工位重置和工具准备步骤。",
+        "复杂染发做完后不可直接无缝切换下一单。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "peak_slot_hold_window",
+      "title": "热门时段和总监档要设置保留窗口",
+      "description": "周末、节日前夜和热门总监时段是稀缺资源。Dispatcher 对高需求档期要设置保留时限、提醒节点和释放机制，避免空挂预约。",
+      "examples": [
+        "节日前晚间时段要求限时确认。",
+        "总监档周末预约超过一定时间未确认则释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_backwrite",
+      "title": "做完后必须回写项目、售后风险和复访任务",
+      "description": "美发执行链路不能在结账后结束。完成后要回写本次项目、颜色、护理建议、是否需补色和可能售后点，方便后续 followup 承接。",
+      "examples": [
+        "染发完成后自动创建补色和护理回访任务。",
+        "修刘海完成后创建下次修剪提醒。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

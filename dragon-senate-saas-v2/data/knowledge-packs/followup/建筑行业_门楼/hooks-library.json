@@ -1,0 +1,140 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_high_intent_site_photo",
+      "scene": "dm_followup",
+      "lead_state": "fresh_high_intent",
+      "intent": "book_survey",
+      "hook": "现场信息已经足够先推进到下一步了。",
+      "bridge": "门楼项目只要先把大致尺寸、安装城市和现场条件锁住，后面的方案和报价就会快很多。",
+      "next_step": "邀请客户确认开间、净高、城市和可勘测时间，目标是预约勘测或视频踏勘。",
+      "cadence_hint": "30 分钟内首跟；若未回，在下一个工作时段轻提醒一次。",
+      "approval_guard": "若仅批准私信，不转电话、不索要站外联系方式。"
+    },
+    {
+      "id": "hook_quote_sent_silent_24h",
+      "scene": "quote_followup",
+      "lead_state": "awaiting_feedback",
+      "intent": "surface_blocker",
+      "hook": "先不着急定，想帮你把卡点看清楚。",
+      "bridge": "门楼报价后最常见的阻塞点通常不是价格本身，而是材质选择、安装条件或领导审批节奏。",
+      "next_step": "请客户只回复最关心的一项：预算、风格、工期、安装还是审批。",
+      "cadence_hint": "报价后 18-24 小时可做一次温和追问，再根据反馈决定下一次节奏。",
+      "approval_guard": "未批准电话时，仅用已批准渠道做异议确认。"
+    },
+    {
+      "id": "hook_post_survey_push_plan_review",
+      "scene": "post_survey_followup",
+      "lead_state": "survey_completed",
+      "intent": "plan_review_booking",
+      "hook": "勘测信息已经齐了，下一步最值钱的是把方向一次讲透。",
+      "bridge": "门楼项目勘测后如果不尽快对齐风格、材质和预算带宽，后面容易在报价环节来回返工。",
+      "next_step": "邀请客户预约一个 15-20 分钟的方案讲解时间，优先确认风格方向和预算接受区间。",
+      "cadence_hint": "勘测完成后同日或次工作日推进方案讲解预约。",
+      "approval_guard": "涉及最终定稿承诺前，先核对内部审批状态。"
+    },
+    {
+      "id": "hook_urgent_opening_date",
+      "scene": "deadline_pressure",
+      "lead_state": "high_value_urgent",
+      "intent": "reframe_to_feasibility_check",
+      "hook": "日期我记住了，我们先把能否落地这一步卡准。",
+      "bridge": "门楼项目的进度不只看制作，还受现场条件、运输、吊装和审批影响，先核查可行性比直接答应更稳。",
+      "next_step": "请客户确认开业或验收日期、城市、现场状态和可勘测时间，必要时转为可行性核查。",
+      "cadence_hint": "高紧急线索尽快回应，但节奏快不等于承诺快。",
+      "approval_guard": "没有对应审批时，不给工期保证、不说“肯定来得及”。"
+    },
+    {
+      "id": "hook_reactivation_with_new_case",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_conversation",
+      "hook": "这次来找你，不是重复催，而是有更贴近你项目的新参考了。",
+      "bridge": "门楼客户更容易对新的完工案例、材质替代或旧方案微调产生回应，而不是对泛泛提醒产生回应。",
+      "next_step": "带一个相似案例或新版思路复联，并让客户只需回复“继续”或“暂缓”即可。",
+      "cadence_hint": "沉睡线索单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 时执行复联。"
+    },
+    {
+      "id": "hook_budget_sensitive_tradeoff",
+      "scene": "budget_objection",
+      "lead_state": "engaged_but_price_sensitive",
+      "intent": "keep_project_alive",
+      "hook": "预算紧也能继续聊，关键是先减对地方。",
+      "bridge": "门楼项目里，造型复杂度、饰面、材质和安装方式都可以调，但不能把影响安全和落地的部分随意砍掉。",
+      "next_step": "请客户在造型、耐久、速度、预算里先选最优先的一项，再按优先级给出降配方案。",
+      "cadence_hint": "价格异议出现后，优先在同一轮沟通内给出选项，不要隔很久再回。",
+      "approval_guard": "涉及折扣或特殊让利时先看审批。"
+    },
+    {
+      "id": "hook_old_gatehouse_renovation",
+      "scene": "renovation_followup",
+      "lead_state": "needs_clarification",
+      "intent": "collect_existing_condition",
+      "hook": "想少拆少改是很正常的，这类门楼翻新先看现状最关键。",
+      "bridge": "旧门楼能不能包覆、加灯、换字或局部重做，通常取决于原结构和基础状态，不看现状很难判断。",
+      "next_step": "请客户补前视图、侧视图和关键细节照片，推进一次现状判断。",
+      "cadence_hint": "收到现状照片后尽快跟，不要让翻新线索因资料断层失温。",
+      "approval_guard": "未核实现状前，不承诺最小改造成本或工期。"
+    },
+    {
+      "id": "hook_waiting_for_call_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你的问题我已经记下来了，先把沟通准备好，等允许的动作一到位就能更快推进。",
+      "bridge": "在门楼项目里，先把问题清单、联系人和可联系时间收好，能减少后续电话或会议里的反复确认。",
+      "next_step": "请客户留下方便联系时间、最关心的问题和现场基本信息，作为审批通过后的优先沟通输入。",
+      "cadence_hint": "审批等待期只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼。"
+    },
+    {
+      "id": "hook_remote_project_access_check",
+      "scene": "cross_region_followup",
+      "lead_state": "remote_but_workable",
+      "intent": "collect_delivery_constraints",
+      "hook": "异地项目不是不能做，关键是先把落地条件确认清楚。",
+      "bridge": "门楼异地项目真正影响推进的，往往是运输、吊装、基础、现场限时和进场协调，而不是单纯距离。",
+      "next_step": "请客户补城市、是否限高限行、能否吊装、现场是否已做基础，先推进可行性判断。",
+      "cadence_hint": "异地项目跟进要快收集约束，慢给承诺。",
+      "approval_guard": "未明确交付边界前，不承诺固定周期和安装方式。"
+    },
+    {
+      "id": "hook_deposit_before_slot_hold",
+      "scene": "payment_followup",
+      "lead_state": "ready_but_unpaid",
+      "intent": "advance_to_payment_gate",
+      "hook": "方案已经接近能落地了，下一步关键是把资源条件确认下来。",
+      "bridge": "门楼项目的排产、材料和安装档期都是真实资源，付款和合同条件不落地，后续承诺就不稳。",
+      "next_step": "推动客户确认定金、合同和预计到款时间，并同步提示档期风险。",
+      "cadence_hint": "付款节点前可以更聚焦，但仍应一次只推进一个明确动作。",
+      "approval_guard": "未达付款条件前，不写成“已锁档期”。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更清楚一点。",
+      "bridge": "门楼项目往往不是一句话能拍板，给客户一个更容易回复的选项，比继续高频催问更有效。",
+      "next_step": "发送一次低成本回复入口，例如“回 1 继续、回 2 暂缓、回 3 等领导看完”，然后进入冷却节奏。",
+      "cadence_hint": "24 小时内已触达两次仍无回应时，进入降频。",
+      "approval_guard": "避免多人、多渠道重复跟进同一客户。"
+    },
+    {
+      "id": "hook_trust_repair_after_render_only",
+      "scene": "trust_repair",
+      "lead_state": "skeptical_but_interested",
+      "intent": "restore_confidence",
+      "hook": "你这个顾虑很合理，门楼项目不能只看效果图。",
+      "bridge": "真实安装照片、尺寸关系和现场细节，比单纯渲染图更能帮助判断这类项目能不能落地。",
+      "next_step": "补发真实案例、现场细节或施工过程证据，并邀请客户指出最担心的一点。",
+      "cadence_hint": "质疑出现后优先修复信任，再谈预约和成交。",
+      "approval_guard": "不使用未经核实的案例或绝对化承诺来压过质疑。"
+    }
+  ]
+}

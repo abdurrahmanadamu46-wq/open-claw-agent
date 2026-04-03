@@ -1,0 +1,271 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_bbq_shop_after_work_evening_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_evening_after_work_growth",
+      "input": {
+        "mission_goal": "在 21 天内为商圈烧烤店新增 280 单工作日晚市到店核销，并把工作日 18:00 到 21:00 的翻台率从 0.95 提升到 1.35。",
+        "signal_brief": "周边写字楼恢复加班和下班聚餐，竞品持续用低价双人餐抢量，但门店已有 3 款稳定招牌串、平均上串 12 分钟内、线上评分 4.7，更适合走下班就近小聚路线。",
+        "tenant_context": {
+          "budget_limit": 8500,
+          "brand_tone": "热闹、真烤真串、下班就能开局",
+          "asset_state": "有 3600 名会员、近 90 天工作日晚市复购客 520 人、招牌牛肉串和鸡翅评价稳定",
+          "location_type": "写字楼和社区混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日晚市下班小聚主路线",
+        "本地 1 到 3 公里优先级",
+        "招牌串证据和上串稳定性",
+        "至少一个老客或私域备选路线",
+        "明确优先顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "晚市、夜宵、外卖和团建同时主推",
+        "深折扣引流超过烤炉和服务承接"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的烧烤店验证第一个值得持续投入的增长场景，并决定预算优先押在晚市小聚、深夜夜宵还是外卖到家。",
+        "signal_brief": "门店开业仅 5 天，装修和炉火画面很多，但真实评价不到 25 条，团队同时想做短视频爆量、低价团购和外卖满减，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "年轻、热闹、适合拍照",
+          "asset_state": "只有开业素材和少量首周回评，没有稳定爆款串数据",
+          "location_type": "商场顶楼餐饮区",
+          "operations_state": "前场和后厨仍在磨合"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实串品和评价证据",
+        "把堂食与外卖拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和氛围直接大规模扩量",
+        "一开业就同时冲低价团购和外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_group_booking_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "birthday_and_team_dinner_growth",
+      "input": {
+        "mission_goal": "在 30 天内为生日局、团建和朋友大桌场景获取 40 条高意向咨询，并锁定 20 场 6 到 12 人聚会预订。",
+        "signal_brief": "门店周末散台上座稳定，但外摆区和大桌利用率偏低，附近社区和产业园的多人聚会需求在升高，大桌照片、标准套餐和停车信息都比较完整。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "热闹、有氛围、安排省心",
+          "asset_state": "有 10 组多人聚会实拍、3 套标准聚会套餐、可协助蛋糕和简单布置",
+          "location_type": "社区与产业园交界",
+          "operations_state": "工作日晚市仍有部分大桌和外摆位空档"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "多人聚会资格筛选",
+        "日期、人数、预算和酒水或外摆需求收集",
+        "标准套餐与定制组合双路线",
+        "明确主路线和 fallback"
+      ],
+      "mustAvoid": [
+        "用低价团购替代高意向聚会路线",
+        "未查档期就承诺可接大桌"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_member_reactivation",
+      "input": {
+        "mission_goal": "重新激活 1600 名 90 天未到店会员，并在 18 天内带回 240 单老客复购。",
+        "signal_brief": "门店有完整手机号和历史点串记录，最近上新了限定牛肉串和烤生蚝，预算不高，但老客回流成本明显低于陌生投流。",
+        "tenant_context": {
+          "budget_limit": 3200,
+          "brand_tone": "熟客感、热闹、不打扰",
+          "crm_state": "可按辣度偏好、夜宵常客、朋友局和高客单老客分层",
+          "asset_state": "有过去 6 个月订单标签和生日信息"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客分层再激活节奏",
+        "上新串品或时令海鲜作为回店理由",
+        "低成本优先级高于陌生投流",
+        "至少一个冷启动备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略历史点串和到店时段信息"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_smoke_and_service_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复周末晚市到店客流，并在 21 天内把有效预订量拉回到上月平均水平。",
+        "signal_brief": "最近 3 周平台评分从 4.6 降到 4.1，差评集中在油烟大、上串慢、桌面不干净和热门串品断货，但老板仍想继续加大短视频和团购投放。",
+        "tenant_context": {
+          "budget_limit": 7000,
+          "brand_tone": "诚恳、接地气、愿意改问题",
+          "asset_state": "仍有 2 款评分高的稳定串品和一批老客好评截图",
+          "operations_state": "周末人手紧张，外摆位受天气影响明显"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分、卫生和承接力再扩量",
+        "限定菜单、限定时段或预约分流路线",
+        "真实评价修复和口碑回收",
+        "明确停止或降级高风险投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或掩盖真实油烟与卫生风险"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_overexpansion",
+      "input": {
+        "mission_goal": "用 39.9 双人餐和全城最低价口号在 10 天内把到店流量翻倍。",
+        "signal_brief": "周边竞品持续用低价团购抢量，但门店当前毛利已经薄、周末排队长、烤炉和服务接近满负荷，继续压价很可能带来差评和履约失控。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 4 款招牌串，但缺少承接深折扣的人手和备串弹性",
+          "operations_state": "周末高峰烤炉、座位和服务都接近上限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把单店承接和口碑风险说透",
+        "给出更稳的替代增长路径"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量团购或无需排队式承诺",
+        "忽略烤炉和服务上限"
+      ]
+    },
+    {
+      "id": "strategist_bbq_shop_dinein_delivery_split_001",
+      "label": "happy_path",
+      "scenario_tag": "dinein_and_delivery_split",
+      "input": {
+        "mission_goal": "在 24 天内把烧烤外卖做成第二增长线，新增 200 单到家订单，同时不影响晚市堂食毛利。",
+        "signal_brief": "门店晚市堂食稳定，雨天和周末中午常有人咨询外卖，现有包装和配送评分不错，但团队想把堂食套餐和话术原样搬到外卖平台。",
+        "tenant_context": {
+          "budget_limit": 6500,
+          "brand_tone": "省心、热乎、适合居家夜宵",
+          "asset_state": "有 2 套适合配送的组合、近 45 天到家复购客 90 人、包装好评稳定",
+          "location_type": "社区密集区域",
+          "operations_state": "配送半径 3 公里内承接较稳"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "堂食与到家路线拆分",
+        "包装、复热和配送半径约束",
+        "家庭或居家夜宵决策场景而非到店场景复用",
+        "明确主副路线排序"
+      ],
+      "mustAvoid": [
+        "把堂食套餐和话术直接照搬到家",
+        "忽略配送损耗和复热体验"
+      ]
+    }
+  ]
+}

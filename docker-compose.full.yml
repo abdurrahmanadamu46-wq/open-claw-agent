@@ -1,0 +1,142 @@
+# 龙虾元老院 SaaS 平台 — 全量部署（仅用于你们的服务器）
+# 用法: docker compose -f docker-compose.full.yml up -d
+
+version: "3.8"
+
+x-common-env: &common-env
+  TZ: ${TZ:-Asia/Shanghai}
+  REDIS_URL: redis://redis:6379/0
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: lobster-redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: lobster-qdrant
+    ports:
+      - "${QDRANT_PORT:-6333}:6333"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: unless-stopped
+
+  dragon-senate:
+    build:
+      context: ./dragon-senate-saas-v2
+      dockerfile: Dockerfile
+    container_name: dragon-senate
+    environment:
+      <<: *common-env
+      API_KEY: ${API_KEY:-}
+      BASE_URL: ${BASE_URL:-}
+      MODEL_ID: ${MODEL_ID:-gpt-4o}
+      API_PROTOCOL: ${API_PROTOCOL:-openai}
+      FEISHU_ENABLED: ${FEISHU_ENABLED:-false}
+      DINGTALK_ENABLED: ${DINGTALK_ENABLED:-false}
+      WECOM_ENABLED: ${WECOM_ENABLED:-false}
+      AGENT_REACH_ENABLED: ${AGENT_REACH_ENABLED:-false}
+      POLICY_ROUTER_URL: http://policy-router:8010
+      LOBSTER_MEMORY_URL: http://lobster-memory:8000
+      TRUST_VERIFY_URL: http://trust-verification:8020
+      CTI_ENGINE_URL: http://cti-engine:8030
+      XAI_SCORER_URL: http://xai-scorer:8040
+      QDRANT_URL: http://qdrant:6333
+    ports:
+      - "${DRAGON_SENATE_PORT:-18000}:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    restart: unless-stopped
+
+  policy-router:
+    build:
+      context: ./services/policy-router-service
+    container_name: policy-router
+    environment:
+      <<: *common-env
+    ports:
+      - "${POLICY_ROUTER_PORT:-8010}:8010"
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  lobster-memory:
+    build:
+      context: ./services/lobster-memory
+    container_name: lobster-memory
+    environment:
+      QDRANT_HOST: qdrant
+      QDRANT_PORT: "6333"
+    ports:
+      - "${LOBSTER_MEMORY_PORT:-8000}:8000"
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+
+  trust-verification:
+    build:
+      context: ./services/trust-verification-service
+    container_name: trust-verification
+    ports:
+      - "${TRUST_VERIFY_PORT:-8020}:8020"
+    restart: unless-stopped
+
+  cti-engine:
+    build:
+      context: ./services/cti-engine-service
+    container_name: cti-engine
+    ports:
+      - "${CTI_ENGINE_PORT:-8030}:8030"
+    restart: unless-stopped
+
+  xai-scorer:
+    build:
+      context: ./services/xai-scorer-service
+    container_name: xai-scorer
+    ports:
+      - "${XAI_SCORER_PORT:-8040}:8040"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    container_name: lobster-backend
+    environment:
+      <<: *common-env
+      PORT: "48789"
+      DRAGON_SENATE_URL: http://dragon-senate:8000
+    ports:
+      - "${BACKEND_PORT:-48789}:48789"
+    depends_on:
+      - dragon-senate
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+    container_name: lobster-web
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:48789
+    ports:
+      - "${WEB_PORT:-3301}:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+  qdrant-data:

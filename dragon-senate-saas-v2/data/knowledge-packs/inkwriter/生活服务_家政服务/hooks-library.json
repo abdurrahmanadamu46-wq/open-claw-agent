@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"housekeeping_hook_problem","title":"保洁问题开头模板","description":"适合深清、厨房重油污、卫生间除垢路线。","examples":["很多人卡的不是要不要做，而是这次到底是先深清、先开荒还是先做重点区域更值。 ","想找家政最怕的不是没人做，而是没把家里的问题讲清楚。 ","真正难的不是找一个阿姨，而是先把这次的范围和时间说清楚。 "],"priority":"high"},
+  {"id":"housekeeping_hook_window","title":"节点窗口开头模板","description":"适合节前、入住、退租和来客前路线。","examples":["节前大扫除最怕拖到最后一天才开始约。 ","入住和退租这种节点，怕的不是没人做，而是范围和时间没一起定下来。 ","来客前想省心，先把房型和重点区域说清楚会更快。 "],"priority":"high"},
+  {"id":"housekeeping_hook_trust_first","title":"阿姨信任开头模板","description":"适合首次上门、固定阿姨和养宠家庭路线。","examples":["很多人来问家政第一句不是多少钱，而是这次到底能不能放心让人上门。 ","真正让人安心的，不是促销有多大，而是阿姨和边界有没有讲明白。 ","想先约得稳，先把范围和信任说清楚，比先看价格更重要。 "],"priority":"high"},
+  {"id":"housekeeping_hook_cycle","title":"周期保洁开头模板","description":"适合周保洁、月保洁和办公室周期清洁路线。","examples":["补做这件事很多时候不是重新选，而是先把这次该做哪一类说清楚。 ","真正省事的续约，不是每次重讲一遍，而是知道你这次该补哪一种。 ","家里长期需要保洁，先把频率和时段讲清楚，会比盲目比价更稳。 "],"priority":"medium"},
+  {"id":"housekeeping_hook_scope","title":"房型范围开头模板","description":"适合开荒、玻璃、油烟机和收纳加项路线。","examples":["很多人不是不想做，而是怕面积、加项和价格没算清。 ","加项最怕的不是贵一点，而是做到一半才发现没算进去。 ","先把房型和重点区域说清楚，会比先追问最低价更省心。 "],"priority":"medium"},
+  {"id":"housekeeping_hook_schedule","title":"排班时效开头模板","description":"适合周末急约和高峰路线。","examples":["临时想约保洁的人，最怕的不是没选择，而是来不来得及。 ","高峰时段要省心，先把门店和时间说清。 ","急着想做的时候，先确认排班边界比先看一堆套餐更重要。 "],"priority":"medium"}
+]}

@@ -1,0 +1,19 @@
+﻿{
+  "thread_id": "sd-06",
+  "name": "Telegram Command Gateway",
+  "owner_scope": "telegram command intake and mission pushback",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "channel": "Telegram Bot API",
+    "backend": "REST",
+    "result_push": "Telegram Bot API"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/telegram_bot.py"
+  ]
+}

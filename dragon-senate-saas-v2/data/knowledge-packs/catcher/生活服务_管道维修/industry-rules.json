@@ -1,0 +1,7 @@
+{"industry":"生活服务_管道维修","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"qualify_by_scene_scope_time","title":"先看场景、位置范围和时间，再判断是不是高意向","description":"管道维修线索只有在明确提到疏通、查漏、反味、爆管等场景，位置范围或重点区域，以及上门时间或节点时，才能被视为高意向。","examples":["高价值信号：今晚想约厨房下水疏通，已经返水，第一次来。","低确定性信号：最近想问下管道维修。"],"priority":"high"},
+{"id":"deadline_visit_is_high_intent","title":"夜间、交房和返家出现明确日期时要显著提权","description":"夜间急修、交房查漏和返家返水等节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实上门动作。","examples":["今晚想先把马桶反水处理好。","下周交房，这周想先把查漏约好。"],"priority":"high"},
+{"id":"first_time_and_process_questions_are_not_low_intent","title":"第一次预约和流程顾虑不应被误判成低意向","description":"第一次来、怕踩坑、怕乱拆和想先问清楚流程，并不等于低意向。","examples":["第一次约维修，担心不透明，这周末有空想先看看。","想先看查漏路线，但比较怕拆修。"],"priority":"high"},
+{"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着范围和时间","description":"价格问题本身并不低意向，但如果没有位置范围、问题类型和时间窗口等事实，Catcher 不能把它直接提到最高层。","examples":["高意向：今晚想疏通厨房下水，大概什么价位。","普通意向：通一次下水多少钱。"],"priority":"medium"},
+{"id":"returning_customer_signal_upgrade","title":"老客返修和维护回流要抬高拟合度","description":"老客复购、朋友推荐和之前修过又回来问时段等信号，通常意味着信任门槛已经降低。","examples":["上次来修过，这次想继续约。","之前查漏过，这次想再做一次处理。"],"priority":"medium"},
+{"id":"public_anxiety_should_not_hide_intent","title":"公开场合的焦虑表达不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如怕来不及、怕乱拆和怕收费不透明。","examples":["第一次找维修怕踩坑，也能先来看看吗。","今晚有点急，也想先问清楚再约。"],"priority":"medium"}]}

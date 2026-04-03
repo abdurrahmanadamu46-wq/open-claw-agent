@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "catcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_plus_time_hook",
+      "title": "问题 + 时间同时出现时的高意向钩子",
+      "description": "当线索同时出现具体皮肤问题和预约时间时，应优先判为高意向候选，因为这类表达比纯种草或纯价格更接近真实到店动作。",
+      "examples": [
+        "周六前想做一次黑头清洁。",
+        "最近敏感泛红，周末能来先看看吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_deadline_hook",
+      "title": "重要场合截止日期钩子",
+      "description": "婚礼、拍照、约会和节日前的明确日期，是美容院线索中非常强的行动信号。只要再补足门店和时段，就可以进入高优先级承接。",
+      "examples": [
+        "周六拍照，想约周四晚。",
+        "下周见客户，想这两天整理下状态。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_sensitive_hook",
+      "title": "首次到店且怕踩雷钩子",
+      "description": "当用户同时出现第一次来、怕过敏、怕乱推和想先试试等表述时，说明其真实动作已经靠近预约，但需要安全感承接。",
+      "examples": [
+        "第一次做，担心敏感，想先约个周日。",
+        "没来过，怕被乱推卡，能不能先试一次。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "branch_specific_booking_hook",
+      "title": "门店或商圈明确钩子",
+      "description": "当用户直接说出门店、商场、写字楼或地铁站附近时，说明其已经从兴趣进入可执行选择阶段，线索确定性明显提高。",
+      "examples": [
+        "国金店这周五晚有位置吗。",
+        "想约你们万象城那家。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "returning_guest_hook",
+      "title": "老客回流钩子",
+      "description": "用户提到之前来过、朋友推荐或上次效果不错时，通常意味着信任成本更低。只要再补齐本次问题和时间，就可快速交给 followup-ready 队列。",
+      "examples": [
+        "上次来做过清洁，这次想再约一下。",
+        "朋友推荐来的，周末能不能安排。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_with_context_hook",
+      "title": "带上下文的价格咨询钩子",
+      "description": "价格问题只要带着问题范围、时间窗口或场景，就不再是纯比较型流量，而是值得继续推进的线索。",
+      "examples": [
+        "婚礼前想做一次补水，大概什么价位。",
+        "黑头比较重，周末想做，价格大概多少。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

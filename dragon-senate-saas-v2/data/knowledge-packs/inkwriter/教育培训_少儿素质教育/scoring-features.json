@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_少儿素质教育",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "quality_score_problem_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分文案能在前两句就让家长看见明确问题或场景，例如专注力、表达力、逻辑思维、幼小衔接和开学安排，而不是只说提升和成长。",
+      "examples": [
+        "高分：开头直接点出专注力或表达问题。 ",
+        "低分：一开始只有优秀和领先。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "quality_score_trust_tone",
+      "title": "信任与边界感",
+      "description": "高分文案会主动给试听流程、老师和反馈说明，让家长感到机构不会乱推。低分文案往往只强调结果和优惠。",
+      "examples": [
+        "高分：先写判断和边界，再写试听。 ",
+        "低分：只靠神童案例吸引。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "quality_score_compliance_safety",
+      "title": "合规安全性",
+      "description": "高分文案避免智力提升、治疗化和结果承诺；低分文案容易出现绝对化承诺和违规导向。",
+      "examples": [
+        "高分：用试听判断和适用提示替代强承诺。 ",
+        "低分：保证改善、包优秀、绝对见效。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "quality_score_scene_match",
+      "title": "场景匹配度",
+      "description": "高分文案会让开学节点、长期培养和续费维护各归其位；低分文案把所有家庭都用一套语气去写。",
+      "examples": [
+        "高分：节点文案重日期和安排，老学员文案重复费理由。 ",
+        "低分：所有文案都只会喊来试听。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "quality_score_respectfulness",
+      "title": "尊重感与情绪稳定度",
+      "description": "高分文案会陪家长一起判断孩子状态，而不是拿慢热和坐不住刺激逼单。少儿素质教育文案的情绪越稳，越有助于真实预约。",
+      "examples": [
+        "高分：用先看方向和先试听这类语气。 ",
+        "低分：用再不管就晚了这类恐吓。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "quality_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收问题、年龄段、日期和是否第一次来等预约事实，方便后续承接；低分 CTA 只有欢迎试听或私信了解。",
+      "examples": [
+        "高分：先发年龄、问题和想约时间。 ",
+        "低分：快来试听一下。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

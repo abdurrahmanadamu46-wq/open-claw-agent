@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "followup",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "stage_match_accuracy",
+      "metric_group": "stage_fit",
+      "feature": "跟进阶段匹配度",
+      "weight": 0.17,
+      "definition": "评估 FollowUpActionPlan 是否根据美发线索的真实位置设置 followup_stage，例如预约事实补齐、首次项目引导、节前快速锁档、做后感受回访或老客维护回访，而不是一律按催成交处理。",
+      "high_score_signals": [
+        "不同类型线索有不同阶段定义",
+        "首次用户和老客回流被清楚区分",
+        "做后回访不是直接卖储值"
+      ],
+      "low_score_signals": [
+        "所有线索都按催预约处理",
+        "首次用户和老客用同一套脚本",
+        "阶段描述模糊"
+      ],
+      "score_rule": "阶段判断越贴近美发线索真实推进位置，得分越高。"
+    },
+    {
+      "id": "contact_objective_clarity",
+      "metric_group": "momentum_quality",
+      "feature": "单次跟进目标清晰度",
+      "weight": 0.15,
+      "definition": "评估 contact_plan 是否把本轮目标压缩成一个清楚的小动作，例如补齐项目和时段、确认当前头发基础、确认活动日期或收做后感受，而不是一轮里同时追问价格、储值和复杂项目。",
+      "high_score_signals": [
+        "每轮有一个主收口",
+        "客户完成成本低",
+        "下一步清楚"
+      ],
+      "low_score_signals": [
+        "一轮追问太多信息",
+        "目标泛泛",
+        "既要预约又要储值又要复访"
+      ],
+      "score_rule": "目标越单一、越容易让客户完成，得分越高。"
+    },
+    {
+      "id": "direction_confidence_handling",
+      "metric_group": "trust_building",
+      "feature": "首次方向信心处理质量",
+      "weight": 0.17,
+      "definition": "评估对第一次做头发和不会选项目用户，计划是否先帮助缩小方向，而不是急于推进复杂大改或储值。",
+      "high_score_signals": [
+        "先缩小项目方向再推进",
+        "语气低压力",
+        "不强推高客单"
+      ],
+      "low_score_signals": [
+        "忽略不会选项目直接催约",
+        "一上来推复杂大改",
+        "语气过度销售化"
+      ],
+      "score_rule": "越能稳住首次不确定感并自然推进，得分越高。"
+    },
+    {
+      "id": "time_window_fit",
+      "metric_group": "timing_fit",
+      "feature": "时间窗口贴合度",
+      "weight": 0.14,
+      "definition": "评估 cadence_rule 和 contact_plan 是否贴合周末、午休、婚礼前和节日前等真实决策窗口，而不是统一节奏。",
+      "high_score_signals": [
+        "节前线索快速闭环",
+        "老客复联更克制",
+        "价格型线索低压力收窄范围"
+      ],
+      "low_score_signals": [
+        "节前线索拖太久",
+        "所有线索都高频追问",
+        "时间窗口被忽略"
+      ],
+      "score_rule": "节奏越贴合可执行窗口，得分越高。"
+    },
+    {
+      "id": "post_visit_sensitivity",
+      "metric_group": "trust_repair",
+      "feature": "做后感受反馈敏感度",
+      "weight": 0.18,
+      "definition": "评估完成服务后的跟进是否先收颜色、卷度、打理和满意度，再决定是否推进补救、护理或维护预约。",
+      "high_score_signals": [
+        "先问做后感受和满意度",
+        "根据反馈决定下一步",
+        "不会一上来推储值"
+      ],
+      "low_score_signals": [
+        "做完直接卖卡",
+        "忽略翻车或不适风险",
+        "回访只为成交"
+      ],
+      "score_rule": "越能先确认体验再推进，得分越高。"
+    },
+    {
+      "id": "return_reason_strength",
+      "metric_group": "revival_quality",
+      "feature": "维护理由强度",
+      "weight": 0.19,
+      "definition": "评估老客回访是否带着补色、修根、修刘海、护理周期和节前焕新等真实理由，而不是泛泛问要不要再来。",
+      "high_score_signals": [
+        "理由具体且与历史记录相关",
+        "不制造虚假紧迫感",
+        "能自然引出本次调整需求"
+      ],
+      "low_score_signals": [
+        "只有促销没有理由",
+        "理由和历史状态无关",
+        "强行制造稀缺"
+      ],
+      "score_rule": "维护理由越真实、越相关，得分越高。"
+    }
+  ]
+}

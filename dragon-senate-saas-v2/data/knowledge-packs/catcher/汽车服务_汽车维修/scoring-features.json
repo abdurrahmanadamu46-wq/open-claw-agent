@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车维修","lobster_id":"catcher","pack_type":"scoring-features","version":"v1","items":[
+{"id":"intent_explicitness","title":"到店动作显性度","description":"评估线索是否明确表达想约、想来、这个周末能不能安排、有没有到店或检测时段等动作。","examples":["高分：周五晚能不能帮我安排一个到店。","低分：最近想了解一下。"],"priority":"high"},
+{"id":"project_specificity","title":"问题方向清晰度","description":"高分线索会明确提到异响、故障灯、空调、保养、电瓶等具体方向，而不是只有想修车这类笼统表达。","examples":["高分：最近异响和空调都比较纠结。","低分：想修修车。"],"priority":"high"},
+{"id":"time_window_strength","title":"时间窗口强度","description":"高分线索通常会给出周末、周四晚、年检前和节前等可执行时间窗口。","examples":["高分：这周日或者周四下班后都可以。","低分：有空再来。"],"priority":"high"},
+{"id":"process_barrier_visibility","title":"检测顾虑可见度","description":"用户若明确表达担心不会选项目、怕被坑和第一次来，说明承接时要优先走信任路线。","examples":["高分信号：第一次来，担心不会选项目。","高分信号：怕修车翻车。"],"priority":"medium"},
+{"id":"location_specificity","title":"门店位置明确度","description":"明确门店、商圈和写字楼，代表用户已经在做实际选择。","examples":["高分：想约国金门店。","低分：你们在哪里。"],"priority":"medium"},
+{"id":"relationship_warmth","title":"关系温度","description":"老客复购、朋友推荐和之前来过等关系信号，应提升拟合度和后续跟进优先级。","examples":["高分：上次来过，这次还想修。","高分：朋友推荐我来问问。"],"priority":"medium"}]}

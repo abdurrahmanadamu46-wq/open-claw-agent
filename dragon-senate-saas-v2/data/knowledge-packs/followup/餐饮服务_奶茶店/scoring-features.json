@@ -1,0 +1,171 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "followup",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "stage_match_accuracy",
+      "metric_group": "stage_fit",
+      "feature": "跟进阶段匹配度",
+      "weight": 0.14,
+      "definition": "评估 FollowUpActionPlan 是否根据奶茶店线索的真实推进位置设置 followup_stage，例如出杯事实补齐、规格确认、优惠核验、团单预付款、配送安抚、售后修复或沉睡复联，而不是一律按催下单处理。",
+      "high_score_signals": [
+        "followup_stage 与客户当前状态一致",
+        "模糊下单线索先推进门店、时间、取餐方式和规格补齐",
+        "售后或不满线索优先进入信任修复而非硬推复购",
+        "沉睡线索使用 reactivation 而不是高压追单"
+      ],
+      "low_score_signals": [
+        "阶段描述模糊，无法区分是在补订单事实、核优惠、等审批还是修复售后",
+        "把还没拿到门店、杯数和规格的线索直接当成催支付对象",
+        "客户刚投诉完就马上推动复购或团单"
+      ],
+      "score_rule": "阶段判断越贴近奶茶线索的真实推进位置，得分越高。"
+    },
+    {
+      "id": "contact_objective_clarity",
+      "metric_group": "momentum_quality",
+      "feature": "单次跟进目标清晰度",
+      "weight": 0.1,
+      "definition": "评估 contact_plan 是否把本轮跟进压缩成一个明确目标，例如确认门店和取杯时间、补齐甜度冰量、核实券规则、确认地址楼层、推动预付款或安排低压力复联，而不是一次堆进多个摩擦动作。",
+      "high_score_signals": [
+        "每次触达只有一个主目标",
+        "目标可直接执行，例如确认取杯时间、补规格或确认预付款节点",
+        "下一步能明显推进下单、自取、配送安抚或 reactivation"
+      ],
+      "low_score_signals": [
+        "同一轮沟通同时催规格、催支付、催发地址和催电话回拨",
+        "动作停留在泛泛提醒，没有明确收口点",
+        "下游执行看不懂这次联系到底要拿到什么"
+      ],
+      "score_rule": "单次目标越清楚、越容易让客户完成一个小动作，得分越高。"
+    },
+    {
+      "id": "cadence_safety",
+      "metric_group": "cadence_safety",
+      "feature": "饮品窗口节奏安全性",
+      "weight": 0.14,
+      "definition": "评估 cadence_rule 是否兼顾奶茶店同窗口推进的速度需求和客户承压边界，避免同日多次追问、深夜高压催单、评论区与私信并发轰炸，或在客户未回时持续追加触达。",
+      "high_score_signals": [
+        "同窗口线索快接上，但触达频次受控",
+        "对已高频触达的线索会主动降频",
+        "售后、过敏和规则核验场景保持稳妥节奏"
+      ],
+      "low_score_signals": [
+        "客户已读未回仍短时间连续催问",
+        "高峰窗口里为了冲单连续多轮触达",
+        "多人、多渠道同时追同一位客户"
+      ],
+      "score_rule": "既能保持推进，又能避免过度打扰和投诉风险的计划得分更高。"
+    },
+    {
+      "id": "approval_boundary_integrity",
+      "metric_group": "approval_safety",
+      "feature": "审批与承诺边界完整度",
+      "weight": 0.14,
+      "definition": "评估 contact_plan 和 approval_requirements 是否严格尊重电话外呼、成分与过敏口径、咖啡因或代糖安全表述、优惠例外、退款补偿和免费重做等敏感动作的审批门，不把未获批准的承诺提前写进执行动作。",
+      "high_score_signals": [
+        "approval_requirements 写明缺什么审批才能继续",
+        "等待审批时只做允许的信息收集或低压力触达",
+        "不会把未批准动作塞进 contact_plan"
+      ],
+      "low_score_signals": [
+        "审批未到位仍安排电话或给出口头例外",
+        "approval_requirements 为空但动作明显涉及高风险承诺",
+        "用模糊话术绕开成分、券规则或补偿边界"
+      ],
+      "score_rule": "对审批门越敏感、替代动作越安全，得分越高。"
+    },
+    {
+      "id": "drink_fulfillment_dependency_awareness",
+      "metric_group": "fulfillment_readiness",
+      "feature": "出杯前置条件识别度",
+      "weight": 0.12,
+      "definition": "评估计划是否识别奶茶线索落地所需的关键前置条件，例如门店、取餐方式、时间、杯数、规格、甜度、冰量、加料、地址楼层、限定库存、券规则和预付款状态，并据此安排动作。",
+      "high_score_signals": [
+        "明确指出缺哪些条件才能进入下一阶段",
+        "跟进动作围绕补齐出杯和交付所需信息展开",
+        "不会跳过库存核验、地址确认或预付款节点"
+      ],
+      "low_score_signals": [
+        "门店、时间和取餐方式都不清楚就承诺立刻下单或安排制作",
+        "未核限定库存和配送条件就推进正式锁单",
+        "忽略甜度冰量、加料、地址或楼层等关键履约约束"
+      ],
+      "score_rule": "越能看见奶茶订单落地的前置条件，并把它们变成具体跟进动作，得分越高。"
+    },
+    {
+      "id": "channel_fit",
+      "metric_group": "channel_strategy",
+      "feature": "触达渠道匹配度",
+      "weight": 0.1,
+      "definition": "评估 contact_plan 是否根据客户所在场景、审批边界和风险等级选择合适渠道，例如公开评论转私信、私信补订单事实、电话只在审批允许后使用、售后和成分问题走更安全的私密渠道，而不是所有线索都用同一种追法。",
+      "high_score_signals": [
+        "客户场景和风险等级驱动渠道选择",
+        "审批限制被真实反映到渠道里",
+        "公开到私密渠道的切换自然且有理由"
+      ],
+      "low_score_signals": [
+        "评论区直接索要大量隐私或订单信息",
+        "未获批准就安排电话回拨",
+        "售后和过敏问题仍在公开场合反复推进"
+      ],
+      "score_rule": "渠道越贴合客户当前情境和安全边界，得分越高。"
+    },
+    {
+      "id": "reactivation_specificity",
+      "metric_group": "reactivation_quality",
+      "feature": "复联内容具体度",
+      "weight": 0.1,
+      "definition": "评估针对沉睡奶茶线索的复联是否带着新的季节饮品、低糖替代、团单组合、稳定取杯窗口、恢复供应的小料或已核清的券规则回来，而不是重复空泛提醒。",
+      "high_score_signals": [
+        "复联带有新的理由或新选择",
+        "内容与客户原本的饮品偏好、预算或场景相关",
+        "给客户低压力回复入口"
+      ],
+      "low_score_signals": [
+        "只发“还要吗”或“在吗”",
+        "新内容与客户原需求无关",
+        "复联频次过密或明显施压"
+      ],
+      "score_rule": "复联越像一次有价值的重新开启，而不是简单打扰，得分越高。"
+    },
+    {
+      "id": "promise_risk_control",
+      "metric_group": "risk_control",
+      "feature": "高风险承诺控制力",
+      "weight": 0.08,
+      "definition": "评估计划是否主动约束马上做好、绝对无咖啡因、绝对无奶、限定一定有、全部门店都能用券、一定准点送达、一定能补偿到位等高风险承诺，把不确定项转成核实动作或审批要求。",
+      "high_score_signals": [
+        "把敏感问题转成核实动作或审批需求",
+        "避免绝对化表述",
+        "即使在线索紧急时也保留风险提示"
+      ],
+      "low_score_signals": [
+        "为了推进直接承诺 10 分钟做好或一定准时送达",
+        "擅自保证成分安全、券例外或限定库存",
+        "完全缺少对产能、库存和规则风险的提示"
+      ],
+      "score_rule": "越能稳住边界、少用不可核实承诺，得分越高。"
+    },
+    {
+      "id": "writeback_operability",
+      "metric_group": "execution_handoff",
+      "feature": "回写与可执行性",
+      "weight": 0.08,
+      "definition": "评估跟进计划是否能为后续执行留下清晰记录，包括门店、时间、取餐方式、地址、杯数、规格、甜度、冰量、加料、券规则、预付款状态、客户允许渠道、当前阻塞点和下一次触达窗口，便于门店、客服或售后继续接管。",
+      "high_score_signals": [
+        "每次动作后都能回写阻塞点和下一步",
+        "contact_plan 具备明确时间和动作",
+        "审批状态和客户偏好能支撑后续接手"
+      ],
+      "low_score_signals": [
+        "动作做完没有记录",
+        "下次谁跟、何时跟、跟什么都不清楚",
+        "客户反馈和审批状态没有沉淀下来"
+      ],
+      "score_rule": "越方便后续继续推进、复盘和人工接管，得分越高。"
+    }
+  ]
+}

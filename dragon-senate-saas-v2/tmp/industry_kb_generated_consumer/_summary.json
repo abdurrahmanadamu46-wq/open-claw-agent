@@ -1,0 +1,11 @@
+﻿{
+  "ok": true,
+  "total": 1,
+  "success": 1,
+  "skipped": 0,
+  "failed": 0,
+  "seed_to_kb": false,
+  "elapsed_sec": 101.72,
+  "output_dir": "C:\\Users\\Administrator\\Desktop\\openclaw-agent\\dragon-senate-saas-v2\\tmp\\industry_kb_generated_consumer",
+  "failed_items": []
+}

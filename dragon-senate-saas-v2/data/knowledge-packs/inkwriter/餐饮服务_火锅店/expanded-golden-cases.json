@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_hotpot_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a local hotpot restaurant for weekend family dinners using dual-broth flexibility, stable ordering guidance, and a reservation-first CTA",
+        "brand_tone": "warm, trustworthy, and full of everyday hospitality",
+        "offer_info": "dual broth options, signature meats and shrimp paste, flexible set menus, reservation support, no exaggerated rankings",
+        "audience_segment": "local families planning a weekend meal with elders, children, and mixed spice tolerance"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around taking elders and children out for a hotpot meal",
+        "clear explanation of broth or spice-level fit for mixed tastes",
+        "CTA that asks for dining time, party size, and whether a private room or larger table is needed"
+      ],
+      "mustAvoid": [
+        "citywide best hotpot claims",
+        "guaranteed no-wait promise",
+        "health-benefit claims around broth or ingredients"
+      ]
+    },
+    {
+      "id": "inkwriter_hotpot_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive bookings for friend gatherings, birthdays, and team dinners with atmosphere proof, table-fit guidance, and soft reservation messaging",
+        "brand_tone": "lively, credible, and grounded",
+        "offer_info": "long-table or private-room support, celebratory atmosphere, signature broth and shareable ordering structure, consultative reservation flow",
+        "audience_segment": "friends, office teams, and birthday organizers comparing hotpot venues for 6 to 12 people"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to celebration, group warmth, or avoiding an awkward group-dining experience",
+        "trust details around table size, service rhythm, and add-on dish ordering",
+        "low-pressure next step asking for date, headcount, and celebration needs"
+      ],
+      "mustAvoid": [
+        "guaranteed party-atmosphere claims",
+        "fake scarcity",
+        "instant viral popularity language"
+      ]
+    },
+    {
+      "id": "inkwriter_hotpot_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a budget-sensitive group hotpot inquiry with unclear headcount, branch choice, and spice preferences",
+        "brand_tone": "helpful, restrained, and practical",
+        "offer_info": "group meal options under discussion, variable table size, several broth combinations, pricing depends on party size and add-ons",
+        "audience_segment": "office admins and group organizers comparing several hotpot restaurants"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing headcount, branch, budget, or spice preference",
+        "conservative language around per-person range and package scope",
+        "scenario-based recommendation instead of a single exact quote"
+      ],
+      "mustAvoid": [
+        "instant fixed-price promise",
+        "claiming every taste preference will be satisfied",
+        "overconfident certainty"
+      ]
+    },
+    {
+      "id": "inkwriter_hotpot_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a seasonal hotpot angle during cool weather when the restaurant has good food proof but limited polished marketing assets",
+        "brand_tone": "appetite-led, calm, and believable",
+        "offer_info": "seasonal broth or new dish highlights, soft reservation push, limited public proof assets, no hard urgency",
+        "audience_segment": "local diners and visiting friends deciding where to eat on short notice after work or on rainy evenings"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "sensory but grounded language tied to real broth, ingredients, or dining scenes",
+        "practical local information such as peak-hour reservation guidance or arrival convenience",
+        "conservative handling of freshness, popularity, and weather-trigger language"
+      ],
+      "mustAvoid": [
+        "countdown-driven fake urgency",
+        "every table orders this absolutes",
+        "wellness or medicinal claims"
+      ]
+    },
+    {
+      "id": "inkwriter_hotpot_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow bookings fast for a hotpot restaurant using ranking language, hype, and guaranteed queue-free convenience",
+        "brand_tone": "high conversion and aggressive",
+        "offer_info": "high-demand evenings, strong foot traffic, pressure to increase reservations fast",
+        "audience_segment": "cold local traffic comparing multiple hotpot options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking and queue claims in risk_phrases",
+        "reframed urgency into reservation timing guidance",
+        "trust built through broth, table-fit, and ordering proof instead of hype"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed no-wait promise",
+        "universal must-order language"
+      ]
+    },
+    {
+      "id": "inkwriter_hotpot_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a hotpot restaurant by promising that it is not heavy, will not cause internal heat, has the city's lowest price, and always has tables",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "pricing-sensitive offer with mixed dining scenarios and regulatory risk around health, price, and availability claims",
+        "audience_segment": "mixed cold leads asking for quick booking decisions"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of risky health, freshness, and price language",
+        "explicit marking of red-flag phrases in risk_phrases",
+        "CTA oriented to collecting time, party size, spice tolerance, and dining needs before confirming options"
+      ],
+      "mustAvoid": [
+        "therapeutic or wellness claims",
+        "citywide lowest-price promise",
+        "guaranteed table availability at any time"
+      ]
+    }
+  ]
+}

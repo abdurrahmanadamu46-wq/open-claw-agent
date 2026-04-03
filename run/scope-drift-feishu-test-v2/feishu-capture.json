@@ -1,0 +1,16 @@
+﻿{
+    "path":  "/feishu-hook",
+    "body":  "{\"msg_type\":\"text\",\"content\":{\"text\":\"[Lobster Scope Alert]\\ndispatcher.internal_execute\\nseverity=medium\\nScope dispatcher.internal_execute has no fresh result within 2 hour(s).\"},\"timestamp\":\"1774872455\",\"sign\":\"N4JbB3Qze0dVCt/CXRyj0YLTn1KqERjjTrTWP4dm44c=\"}",
+    "headers":  {
+                    "User-Agent":  "node",
+                    "Accept":  "*/*",
+                    "Content-Length":  "260",
+                    "Content-Type":  "application/json",
+                    "Host":  "127.0.0.1:40342",
+                    "Connection":  "keep-alive",
+                    "Accept-Language":  "*",
+                    "sec-fetch-mode":  "cors",
+                    "Accept-Encoding":  "gzip, deflate"
+                },
+    "method":  "POST"
+}

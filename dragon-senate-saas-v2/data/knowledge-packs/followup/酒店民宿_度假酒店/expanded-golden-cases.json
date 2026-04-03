@@ -1,0 +1,335 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_resort_hotel_family_weekend_package_001",
+      "label": "happy_path",
+      "scenario_tag": "family_weekend_package_completion",
+      "input": {
+        "lead_assessment": "A 级亲子周末度假线索，客户刚私信咨询下周五入住 1 晚，2 大 1 小，想要早餐加温泉的家庭套餐。",
+        "value_score_card": "short_term high; family package intent high; conversion depends on quick fact completion in the current window",
+        "contact_history": [
+          "22 分钟前客户从评论区转入私信",
+          "客户已说明孩子 5 岁，倾向周五下班后自驾到店",
+          "暂未确认房间数、是否要加床和是否还要乐园权益"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把本轮目标放在补齐亲子入住事实和套餐依赖",
+        "私信里快速确认日期、房量、儿童年龄、加床或婴儿床、早餐和温泉或乐园需求",
+        "不越权切到电话，也不在未核房态前承诺指定房型或儿童权益全部可用"
+      ],
+      "mustAvoid": [
+        "直接保证周末家庭房一定有房且权益全含",
+        "没问清人数和儿童规则就催客户立刻付款"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_late_arrival_transfer_002",
+      "label": "happy_path",
+      "scenario_tag": "late_arrival_transfer_and_hold",
+      "input": {
+        "lead_assessment": "A- 级高意向晚到线索，客户航班延误后预计 23:10 才能到机场，希望酒店安排接送并保留房间。",
+        "value_score_card": "short_term high; conversion depends on transfer window clarity and hold-boundary awareness",
+        "contact_history": [
+          "客户昨晚已预订 1 晚园景大床房并完成担保",
+          "40 分钟前留言说航班延误，担心错过接送和入住时间"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在确认新的 ETA、接送班次边界和房间保留条件",
+        "联系动作要帮助客户完成晚到接驳和保留确认，而不是重复发套餐介绍",
+        "若存在不确定项，要用条件化表达而不是绝对承诺"
+      ],
+      "mustAvoid": [
+        "一句“放心来”代替接送和保留条件确认",
+        "在未说明边界时把房间和接送写成无限制保留"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_early_arrival_wait_003",
+      "label": "edge_case",
+      "scenario_tag": "early_arrival_facility_expectation_management",
+      "input": {
+        "lead_assessment": "B+ 级家庭客线索，客户红眼高铁后预计早上 09:30 到店，希望先入住并马上带孩子去泳池。",
+        "value_score_card": "short_term medium_high; satisfaction depends on expectation management rather than hard promise",
+        "contact_history": [
+          "客户已预订周末 1 晚亲子房",
+          "今早刚问是否一到就能拿房并直接使用泳池",
+          "门店暂未反馈 ready 房态"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在提前到店预期管理而不是已可入住",
+        "提供行李寄存、公共区域候用或先使用可开放设施等低风险方案",
+        "明确需要等待房态确认后再给进一步动作"
+      ],
+      "mustAvoid": [
+        "直接承诺几点一定能入住",
+        "在没有新信息时连续高频追问客户是否到店"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_anniversary_approval_wait_004",
+      "label": "edge_case",
+      "scenario_tag": "celebration_setup_waiting_approval",
+      "input": {
+        "lead_assessment": "A 级情侣纪念日线索，客户想订海景房并安排房间布置、蛋糕和第二天免费延迟退房。",
+        "value_score_card": "high revenue potential but promise risk high because celebration rights require approval",
+        "contact_history": [
+          "客户 1 小时前发来入住日期和纪念日诉求",
+          "已说明更在意房间布置和海景体验，预算可接受上浮",
+          "系统显示布置和免费延退需要审批"
+        ],
+        "approval_state": "waiting_romance_package_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "体现审批感知暂停，只做允许的信息补齐和低压力沟通",
+        "继续收集入住日期、房型、布置重点和预算偏好，作为审批输入",
+        "approval_requirements 里明确缺失的审批或资源确认"
+      ],
+      "mustAvoid": [
+        "直接承诺房间会提前布置好并免费延退",
+        "在审批未过时把海景升级和蛋糕写成确定赠送"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_weather_reschedule_005",
+      "label": "edge_case",
+      "scenario_tag": "weather_sensitive_outdoor_reschedule",
+      "input": {
+        "lead_assessment": "A- 级海边度假线索，客户已预留周末 2 晚家庭套餐，但看到大雨预报后希望无损改到下周。",
+        "value_score_card": "short_term medium_high; retention depends on weather expectation management and exception approval",
+        "contact_history": [
+          "客户昨天已确认房型和入住人信息",
+          "今天上午询问户外泳池和沙滩活动是否会受影响",
+          "下午追问能否不加价改到下周同房型"
+        ],
+        "approval_state": "waiting_weather_exception_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在天气预期管理和改期审批等待",
+        "区分客户是在意天气本身、设施开放还是改期成本，并推进对应的安全动作",
+        "在审批结果出来前保留替代活动或室内方案说明"
+      ],
+      "mustAvoid": [
+        "未经批准直接承诺免费改期或退差",
+        "继续按原行程高压催成交，忽略客户的天气顾虑"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_peak_bundle_gate_006",
+      "label": "edge_case",
+      "scenario_tag": "holiday_package_without_full_confirmation",
+      "input": {
+        "lead_assessment": "A 级假期高峰线索，客户想口头先锁 3 间亲子房，配温泉和儿童俱乐部，担保明天再补。",
+        "value_score_card": "short_term high; promise risk high because peak inventory and activity slots are volatile",
+        "contact_history": [
+          "客户刚确认节假日入住日期和房间数量",
+          "表示今天先口头留房，明天再补担保和最终名单",
+          "儿童俱乐部只剩少量时段待核"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把本轮目标设为推进担保或条件化保留，而不是已正式锁定库存",
+        "说明未担保前只能做条件化保留、候补或替代房型和时段方案",
+        "保留高峰窗口下房态和活动名额波动的风险提示"
+      ],
+      "mustAvoid": [
+        "把口头确认直接写成已锁房且权益齐全",
+        "承诺节假日房态和儿童活动时段一定保留到次日"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_child_policy_boundary_007",
+      "label": "failure_case",
+      "scenario_tag": "child_age_and_extra_bed_boundary",
+      "input": {
+        "lead_assessment": "高意向家庭线索，客户想 2 大 2 小住 1 间海景房，并希望两个孩子都免费早餐、免费加床。",
+        "value_score_card": "booking likely but policy and promise risk high",
+        "contact_history": [
+          "客户 35 分钟前留言说两个孩子分别 7 岁和 12 岁",
+          "明确说不想加预算，只接受一间房并送早餐和加床"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "明确儿童政策、房型人数上限和加床边界需要先核实",
+        "先收集孩子年龄、睡眠安排和是否接受替代房型或补差方案",
+        "不把一间可住、免费加床和免费早餐写成既定事实"
+      ],
+      "mustAvoid": [
+        "为了成交直接承诺两名儿童都可免费住和免费吃早餐",
+        "弱化房型人数上限和儿童政策边界"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_reactivation_new_reason_008",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_seasonal_reason",
+      "input": {
+        "lead_assessment": "沉睡但合格的情侣度假线索，上个月问过工作日温泉房，后来停在请假和交通安排上。",
+        "value_score_card": "short_term medium; long_term high; reactivation should hinge on a new travel reason and easier arrival plan",
+        "contact_history": [
+          "26 天前客户咨询 2 晚温泉套餐和高铁接驳",
+          "之后无回复",
+          "本周酒店新增工作日双晚礼遇，并优化了高铁站接驳班次"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "复联必须带上新的工作日礼遇或接驳优化等具体新理由",
+        "语气低压力，不默认客户仍按原日期出行",
+        "给客户一个最小回复入口，比如继续评估或暂缓"
+      ],
+      "mustAvoid": [
+        "只发“最近还来不来住”",
+        "连续两天追着复联"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_service_recovery_rebook_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_rebook",
+      "input": {
+        "lead_assessment": "曾因接驳等待和房间气味投诉过但仍愿意再给一次机会的老客，今天主动问下月周末还有没有安静一点的房型。",
+        "value_score_card": "trust recovery can reopen booking; must lead with repair confidence",
+        "contact_history": [
+          "6 天前完成投诉闭环并记录了安静房和无烟偏好",
+          "今天客户私信询问下月周末的入住可能性"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力预订或安静房偏好确认",
+        "若提及补偿或权益，只能引用已批准内容"
+      ],
+      "mustAvoid": [
+        "忽略投诉历史直接按普通成交线索硬推",
+        "为了让客户回来承诺未批准的免费升级或额外赠送"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_overcontact_cooldown_010",
+      "label": "edge_case",
+      "scenario_tag": "same_day_overcontact_cooldown",
+      "input": {
+        "lead_assessment": "中高意向周末出游线索，客户白天问过房型和接驳，但晚上前仍未回复。",
+        "value_score_card": "short_term medium; annoyance risk rising after two touches",
+        "contact_history": [
+          "10:20 已私信一次确认入住日期和房型偏好",
+          "15:50 又追问过是否还需要高铁接驳和早餐",
+          "截至 20:40 已 5 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频而不是继续做第三次强追",
+        "把回复门槛降到只需确认一个最关键信息",
+        "把下一次触达放到更合适的时间窗口"
+      ],
+      "mustAvoid": [
+        "当晚继续第三次催问",
+        "改用其他渠道或多人同步追同一位客户"
+      ]
+    },
+    {
+      "id": "followup_resort_hotel_group_retreat_blocker_011",
+      "label": "happy_path",
+      "scenario_tag": "retreat_rooms_and_activity_blocker",
+      "input": {
+        "lead_assessment": "A- 级团队团建线索，客户想订 8 间房加烧烤晚餐和半天会议，但名单和儿童人数还没齐。",
+        "value_score_card": "short_term medium_high; likely conversion if blocker is surfaced clearly and rhythm stays calm",
+        "contact_history": [
+          "昨天已发送房型和会议初版方案",
+          "客户已读 18 小时未回复",
+          "销售补充说客户还在内部确认参会人数和是否需要儿童活动区"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重点放在找出名单、儿童人数、会议时段或餐食中的单一卡点",
+        "提供澄清入口，而不是重复重发整套方案",
+        "节奏保持温和，给客户内部协调空间"
+      ],
+      "mustAvoid": [
+        "跳过卡点直接硬追定金或锁房",
+        "在同一天里多轮轰炸式催回复"
+      ]
+    }
+  ]
+}

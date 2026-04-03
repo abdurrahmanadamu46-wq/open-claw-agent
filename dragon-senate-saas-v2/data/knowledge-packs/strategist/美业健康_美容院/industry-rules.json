@@ -1,0 +1,104 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "beauty_salon_core_problem_route_first",
+      "rule_name": "先锁一个核心皮肤问题路线，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店同时想做清洁、补水、敏感修护、抗衰和会员续卡",
+        "预算有限，但真实咨询集中在少数问题，例如黑头闭口、换季敏感或节前急救"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的问题路线作为主线，例如黑头闭口清洁、换季修护或妆前急救，再统一内容、体验卡、预约承接和 followup 话术。",
+      "recommended_alternative_route": "若证据分散，先并行验证最多 2 条路线，保留预约率、核销率和二次到店更优的一条。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有皮肤问题和所有价格层",
+        "不能在证据尚弱时同时主推体验卡、套卡和年卡"
+      ],
+      "risk_tradeoff": "接受短期覆盖面更窄，换取更稳定的预约链路和更低的承接损耗。"
+    },
+    {
+      "id": "first_experience_and_package_must_split",
+      "rule_name": "首次体验获客路线和高客单套卡路线必须拆开设计",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店既想靠低门槛体验卡获客，又想快速转大额套卡",
+        "新客咨询很多，但核销后承接和转化表现不稳定"
+      ],
+      "recommended_primary_route": "把首次体验卡目标定义为预约到店和建立信任，把套卡或疗程承接放在体验后的 followup 和二次到店节点，不要同一轮硬推。",
+      "recommended_alternative_route": "若门店已有成熟顾问，可测试少量体验后升级脚本，但仍要保留温和承接路径。",
+      "hard_constraints": [
+        "不能把低价体验卡文案直接写成疗程成交文案",
+        "不能要求前台或评论区完成大额项目成交"
+      ],
+      "risk_tradeoff": "短期单客产出可能看起来更慢，但能显著降低反感、退款和推卡投诉。"
+    },
+    {
+      "id": "technician_trust_and_environment_proof",
+      "rule_name": "美容院转化先看手法信任、环境卫生和流程透明度",
+      "priority": "P0",
+      "trigger_signals": [
+        "用户持续追问疼不疼、会不会过敏、用品是否一次性和老师是否专业",
+        "门店视频播放不错，但到店和核销转化偏低"
+      ],
+      "recommended_primary_route": "优先走真实流程与信任证明路线，用咨询判断、皮肤检测、手法片段、房间卫生和护理步骤建立安全感，再承接体验预约。",
+      "recommended_alternative_route": "若真实素材不足，先补拍流程和环境证据，再做放量测试。",
+      "hard_constraints": [
+        "不能用强滤镜和虚假前后对比替代信任证明",
+        "不能用医疗化表述掩盖普通护理项目边界"
+      ],
+      "risk_tradeoff": "点击率可能不如夸张变美素材，但能提高真实预约和降低纠纷。"
+    },
+    {
+      "id": "urgent_event_and_daily_maintenance_split",
+      "rule_name": "节前急救和日常管理是两条不同策略路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "一部分客人只为婚礼、约会、拍照和节前做状态提升",
+        "另一部分客人更在意长期痘肌、毛孔、敏感修护和复购管理"
+      ],
+      "recommended_primary_route": "把节前急救路线聚焦单次可见状态、预约时效和注意事项，把日常管理路线聚焦阶段性改善、复访计划和项目节奏。",
+      "recommended_alternative_route": "若门店资源有限，先只做主占比更高的一类，另一类只用轻量内容验证。",
+      "hard_constraints": [
+        "不能把短期急救承诺写成长线疗程结果",
+        "不能把长期管理项目包装成立刻见效"
+      ],
+      "risk_tradeoff": "拆路线会增加运营复杂度，但能显著减少预期落差。"
+    },
+    {
+      "id": "capacity_before_discount_scale",
+      "rule_name": "房间、技师和预约承接能力先于折扣放量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店准备上线低价体验卡或节日活动冲量",
+        "高峰时段已出现预约挤压、排队等待或顾客反感"
+      ],
+      "recommended_primary_route": "先校验高峰可用房间、技师班次、单客时长和清洁翻房能力，再决定是否扩投或上新低价卡。",
+      "recommended_alternative_route": "若容量不足，优先调整时段和预约分流，而不是继续压价冲咨询。",
+      "hard_constraints": [
+        "不能在承接不足时继续加大低价体验投放",
+        "不能承诺随到随做或过度压缩服务时长"
+      ],
+      "risk_tradeoff": "短期线索量可能更少，但履约体验和口碑更稳。"
+    },
+    {
+      "id": "private_domain_repurchase_route",
+      "rule_name": "老客复购和会员续卡要作为独立增长路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "门店已有较多体验过或做过基础护理的老客",
+        "新客获客成本上升，二次到店和续卡增长更值得做"
+      ],
+      "recommended_primary_route": "基于历史项目、皮肤问题和到店周期，设计复访提醒、换季提醒、节前状态管理和会员专属权益路线。",
+      "recommended_alternative_route": "若老客数据沉淀弱，先从最近 90 天到店客分层回访，不急着全量重启会员活动。",
+      "hard_constraints": [
+        "不能用统一群发覆盖所有老客状态",
+        "不能只靠打折而没有问题和周期对应逻辑"
+      ],
+      "risk_tradeoff": "老客路线起量更慢，但 ROI 通常高于纯冷启动流量。"
+    }
+  ]
+}

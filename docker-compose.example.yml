@@ -1,0 +1,14 @@
+# Example override file for unified stack.
+# Copy to docker-compose.override.yml if you need local customization.
+
+services:
+  web:
+    environment:
+      NEXT_PUBLIC_RUNTIME_ENV: development
+      NEXT_PUBLIC_USE_MOCK: "false"
+      NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: "false"
+
+  backend:
+    environment:
+      COMPLIANCE_REQUIRE_HITL: "true"
+

@@ -1,0 +1,152 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "gate_first_impression",
+      "hook_angle": "形象资产",
+      "hook_line": "门楼不是一块门头，它是甲方第一眼判断项目规格的地方。",
+      "target_scene": "工业园区、厂区、园林景区、商办项目主入口",
+      "cover_direction": "真实门楼正立面占画面主体，前景带车或人流，标题压在门楼一侧，突出“第一眼项目规格”。",
+      "first_3_shots": [
+        "门楼与车辆通行全景",
+        "门楼与主楼或园区关系镜头",
+        "材料与工艺节点近景"
+      ],
+      "required_proof_assets": [
+        "完工全景",
+        "车辆或人流镜头",
+        "材质细节特写"
+      ],
+      "fallback_if_missing": "没有完工全景时，改成“为什么门楼决定项目入口气质”的方案讲解版，搭配图纸、样板和局部现场。"
+    },
+    {
+      "id": "same_structure_different_lifespan",
+      "hook_angle": "质量差异",
+      "hook_line": "同样做钢结构门楼，为什么有的两年掉漆开裂，有的多年还稳？",
+      "target_scene": "强调耐候性、结构稳定、防腐工艺的项目",
+      "cover_direction": "旧门楼问题细节与新门楼节点细节并列，封面中间用问题词做对比。",
+      "first_3_shots": [
+        "旧门楼锈蚀或开裂细节",
+        "新项目焊缝、喷涂、收边近景",
+        "完工整体效果镜头"
+      ],
+      "required_proof_assets": [
+        "问题旧门楼素材",
+        "新项目工艺特写",
+        "完工实景"
+      ],
+      "fallback_if_missing": "没有旧门楼对比素材时，改为“门楼最容易出问题的三个细节”知识说明版。"
+    },
+    {
+      "id": "budget_save_wrong_place",
+      "hook_angle": "预算避坑",
+      "hook_line": "门楼预算能控，但最怕省错地方，最后贵在返工和维护。",
+      "target_scene": "预算敏感型门楼改造、学校厂区升级、园区入户口形象优化",
+      "cover_direction": "预算词做标题，画面给材料节点、结构节点和完工门楼，不做廉价促销风。",
+      "first_3_shots": [
+        "门楼整体体量建立镜头",
+        "容易省错的材料或工艺节点特写",
+        "完工后入口秩序感镜头"
+      ],
+      "required_proof_assets": [
+        "门楼全景",
+        "工艺节点近景",
+        "人车通行现场"
+      ],
+      "fallback_if_missing": "没有成本对比素材时，改为“哪些地方不能盲目压价”的设计说明版。"
+    },
+    {
+      "id": "day_night_truth",
+      "hook_angle": "亮化真实感",
+      "hook_line": "夜景亮化很出片，但门楼真正拉开差距的，是白天也站得住。",
+      "target_scene": "带亮化系统的园区、地产、文旅门楼项目",
+      "cover_direction": "同一门楼白天与夜晚左右分屏，标题压在中间，强调“白天也站得住”。",
+      "first_3_shots": [
+        "白天完整门楼正立面",
+        "夜景点亮后的同机位镜头",
+        "灯槽、材质或收边细节"
+      ],
+      "required_proof_assets": [
+        "同项目日景素材",
+        "同项目夜景素材",
+        "灯光细节"
+      ],
+      "fallback_if_missing": "没有夜景实拍时，改做“亮化预留与白天质感”版本，不宣传已实现夜景效果。"
+    },
+    {
+      "id": "old_gate_renovation",
+      "hook_angle": "改造前后",
+      "hook_line": "老厂区门口不大拆大建，也能把第一印象做新。",
+      "target_scene": "老旧厂区、学校、社区、园区入口翻新",
+      "cover_direction": "改造前后对比放同一画面，旧门楼保留真实老化状态，新门楼给秩序和尺度感。",
+      "first_3_shots": [
+        "旧门楼现状全景",
+        "改造施工或替换节点",
+        "改造后车辆进出镜头"
+      ],
+      "required_proof_assets": [
+        "改造前素材",
+        "施工过程素材",
+        "改造后实景"
+      ],
+      "fallback_if_missing": "没有完整前后对比时，改成“老门楼升级思路”版本，用现状问题+方案节点代替结果炫耀。"
+    },
+    {
+      "id": "delivery_chain_reliability",
+      "hook_angle": "交付稳定",
+      "hook_line": "从深化、下料到吊装，这类门楼为什么交付更稳？",
+      "target_scene": "想突出工程组织能力、项目管理能力的企业账号",
+      "cover_direction": "图纸、工厂、吊装、完工四格拼接，核心标题落在中央，不强调华丽而强调流程可信。",
+      "first_3_shots": [
+        "图纸或深化模型开场",
+        "工厂加工或预拼装镜头",
+        "现场吊装与完工镜头"
+      ],
+      "required_proof_assets": [
+        "设计资料",
+        "加工或预拼装素材",
+        "吊装或完工素材"
+      ],
+      "fallback_if_missing": "缺少全链路时保留已有两到三段真实环节，不用跨项目素材硬补整条流程。"
+    },
+    {
+      "id": "detail_decides_grade",
+      "hook_angle": "细节证明",
+      "hook_line": "别只看门楼轮廓，真正拉开档次的是这几个收边和节点。",
+      "target_scene": "适合做工艺展示、品质背书、专业能力证明",
+      "cover_direction": "门楼局部大特写占主体，标题简短直指“收边节点”，不堆砌太多文案。",
+      "first_3_shots": [
+        "门楼整体一闪而过建立场景",
+        "收边、转角、灯槽或焊缝特写",
+        "整体回看确认细节所处位置"
+      ],
+      "required_proof_assets": [
+        "节点特写",
+        "整体回看镜头",
+        "对应工艺说明"
+      ],
+      "fallback_if_missing": "如果只有整体图没有特写，就不要用“细节决定档次”做主钩子，改用形象升级或尺度气场路线。"
+    },
+    {
+      "id": "custom_style_with_context",
+      "hook_angle": "风格匹配",
+      "hook_line": "门楼不是越复杂越好，关键是和场地气质、行业属性对上。",
+      "target_scene": "学校、景区、园区、企业总部等风格差异大的项目",
+      "cover_direction": "门楼与周边环境同框，标题强调“风格要对场地”，避免孤立地只拍门楼本体。",
+      "first_3_shots": [
+        "场地入口全景",
+        "门楼与环境关系中景",
+        "主题元素或行业符号细节"
+      ],
+      "required_proof_assets": [
+        "场地环境镜头",
+        "门楼成品镜头",
+        "风格元素近景"
+      ],
+      "fallback_if_missing": "没有环境镜头时不主打风格匹配，改为材料工艺或交付过程路线。"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_case_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实案例可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把真实门楼现场、施工现场或交付现场放在前排位置，而不是依赖效果图或空镜。",
+      "high_score_signals": [
+        "开场三镜内出现真实门楼或真实施工现场",
+        "门楼与场地关系可验证",
+        "渲染图仅作为补充说明"
+      ],
+      "low_score_signals": [
+        "前三镜全是效果图或纯航拍空镜",
+        "看不出项目是否真实存在",
+        "案例真实性需要观众自行猜测"
+      ],
+      "score_rule": "真实现场与交付证据越靠前，分数越高。"
+    },
+    {
+      "id": "scale_anchor_clarity",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "尺度锚点清晰度",
+      "weight": 0.12,
+      "definition": "封面和关键镜头能否让人快速看懂门楼体量、通行尺度和项目规格。",
+      "high_score_signals": [
+        "人物、车辆、岗亭或主楼形成明确参照",
+        "封面一眼能看出门楼不是普通门头",
+        "镜头不会把体量拍虚"
+      ],
+      "low_score_signals": [
+        "只有局部仰角看不到尺度",
+        "画面里没有任何参照物",
+        "广角畸变导致尺寸误判"
+      ],
+      "score_rule": "观众能在一秒内判断门楼体量和项目等级，得分更高。"
+    },
+    {
+      "id": "material_process_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "材料工艺可信度",
+      "weight": 0.14,
+      "definition": "分镜是否展示材料、构造和工艺节点，让质量判断有可见依据。",
+      "high_score_signals": [
+        "出现焊缝、喷涂、收边、灯槽、基础预埋等节点",
+        "材质和工艺镜头与成品镜头对应",
+        "特写服务于证明而不是纯美感"
+      ],
+      "low_score_signals": [
+        "只有整体效果没有工艺依据",
+        "材质特写与项目无关",
+        "后期过重掩盖材料真实状态"
+      ],
+      "score_rule": "能帮助观众判断门楼质量与耐用性的镜头越多，得分越高。"
+    },
+    {
+      "id": "design_delivery_chain_integrity",
+      "metric_group": "visual_proof_density",
+      "feature": "设计到交付链路完整度",
+      "weight": 0.12,
+      "definition": "是否把图纸、加工、运输、安装、完工中的多个环节串成可信的项目链路。",
+      "high_score_signals": [
+        "至少三个真实环节被清楚串联",
+        "观众能看懂同一项目的推进过程",
+        "关键缺失环节被诚实标注"
+      ],
+      "low_score_signals": [
+        "素材拼盘感强，像不同项目混剪",
+        "只有效果图加完工照，中间过程空白",
+        "执行方无法判断该补拍什么"
+      ],
+      "score_rule": "同一项目链路越完整且越可验证，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "受限条件下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配门楼项目常见限制，包括场地权限、团队人数、拍摄时长和天气时段。",
+      "high_score_signals": [
+        "镜头数量与时长匹配",
+        "机位和拍摄时段现实可达",
+        "无人机、夜拍、工厂访问等限制已前置说明"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计整套航拍加夜景加工厂流程",
+        "关键镜头依赖未说明",
+        "拍摄条件与方案严重不匹配"
+      ],
+      "score_rule": "在现有团队与时长下能直接执行的方案得分更高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确性",
+      "weight": 0.12,
+      "definition": "分镜是否准确列出门楼内容所依赖的现有素材、补拍素材和场地权限。",
+      "high_score_signals": [
+        "封面镜头对应具体素材来源",
+        "补拍需求写到机位和时段层面",
+        "缺失素材有替代路线"
+      ],
+      "low_score_signals": [
+        "只写“需要现场素材”这类空话",
+        "把不存在的夜景或航拍默认成可用",
+        "没有补拍和替代方案"
+      ],
+      "score_rule": "依赖越具体、越少假设、越方便执行，得分越高。"
+    },
+    {
+      "id": "cover_problem_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心问题对齐度",
+      "weight": 0.10,
+      "definition": "封面方向是否准确回应门楼客户最关心的问题，例如形象、尺度、质量、维护、亮化或改造效果。",
+      "high_score_signals": [
+        "封面标题和画面都围绕同一个问题",
+        "一眼能知道视频解决什么门楼问题",
+        "没有泛泛而谈的工程口号"
+      ],
+      "low_score_signals": [
+        "封面只有好看，没有具体问题",
+        "画面与标题不一致",
+        "标题过大过空，比如只写高端大气"
+      ],
+      "score_rule": "越能把真实问题和真实画面对上，封面得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.10,
+      "definition": "当门楼素材不足时，方案是否诚实降级为过程版、方案版或细节版，而不是硬做豪华案例片。",
+      "high_score_signals": [
+        "明确标注素材缺口",
+        "根据缺口调整分镜和执行分数",
+        "替代路线仍保留行业说服力"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高可执行性评分",
+        "用渲染图、库存素材或夸张文案冒充交付结果",
+        "后续执行必然卡住"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

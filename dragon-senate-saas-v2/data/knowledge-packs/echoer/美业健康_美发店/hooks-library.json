@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "hook_booking_without_scope",
+      "scene": "public_comment",
+      "intent": "hair_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you narrow this down.",
+      "bridge": "For a salon booking, the service direction, time window, and rough current hair state matter more than a quick yes or no.",
+      "next_step": "Ask for service direction, preferred time, and rough current hair state.",
+      "handoff_suggestion": "Route to Catcher if the user replies with booking facts."
+    },
+    {
+      "id": "hook_first_time_direction_help",
+      "scene": "public_comment",
+      "intent": "first_time_guidance",
+      "emotion": "unsure",
+      "hook": "That is totally normal for a first visit.",
+      "bridge": "A lot of first-time salon clients do not need more options, they need a simple way to narrow what fits their life and schedule.",
+      "next_step": "Acknowledge the uncertainty and ask whether the user wants something easier to manage, a color refresh, or a bigger change plus the time window.",
+      "handoff_suggestion": "Route to Catcher if the user shares direction and timing."
+    },
+    {
+      "id": "hook_event_booking",
+      "scene": "private_message",
+      "intent": "event_hair_booking",
+      "emotion": "time_pressure",
+      "hook": "We can keep this simple and work from your event timing first.",
+      "bridge": "When an event is close, the date, slot, and whether this is a cut, color, or styling need matter more than a long style lecture.",
+      "next_step": "Ask when the event is, when the user can come in, and what service direction they need.",
+      "handoff_suggestion": "Route to Catcher once the user shares timing facts."
+    },
+    {
+      "id": "hook_price_scope_recovery",
+      "scene": "public_comment",
+      "intent": "price_check",
+      "emotion": "comparing",
+      "hook": "I can help make the price answer more useful.",
+      "bridge": "For hair services, the real price often changes with cuts versus color, length, bleach, and add-ons, so one quick scope question helps a lot.",
+      "next_step": "Ask whether this is a cut, color, perm, or maintenance visit.",
+      "handoff_suggestion": "Route to Catcher if the user shares scope."
+    },
+    {
+      "id": "hook_returning_client",
+      "scene": "private_message",
+      "intent": "return_visit",
+      "emotion": "warm",
+      "hook": "Nice to see you back here.",
+      "bridge": "For returning salon clients, it helps to start from what they want to refresh, change, or maintain this time instead of restarting from zero.",
+      "next_step": "Ask what they liked last time and what they want to change this time, plus when they hope to come in.",
+      "handoff_suggestion": "Route to FollowUp or Catcher depending on the user's reply."
+    },
+    {
+      "id": "hook_sensitive_public_hair_shame",
+      "scene": "public_comment",
+      "intent": "appearance_sensitive",
+      "emotion": "embarrassed",
+      "hook": "We can keep this easy and low-pressure.",
+      "bridge": "Some hair concerns feel more personal than they look in a comment, so the goal is to stay helpful without making the user feel exposed.",
+      "next_step": "Reply with empathy and lightly invite the user to share service direction and timing.",
+      "handoff_suggestion": "Route to Catcher if the user continues with details."
+    }
+  ]
+}

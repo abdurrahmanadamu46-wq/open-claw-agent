@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"pharmacy_score_scene_specificity","title":"场景指向清晰度","description":"高分文案能在前两句就让用户看见明确场景，例如夜间急用、家庭备药、儿童护理和慢病续购，而不是只说药店和优惠。","examples":["高分：开头直接点出今晚急用或返乡备药。 ","低分：一开始只有低价和爆款。 "],"priority":"high"},
+  {"id":"pharmacy_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给药师、门店和说明边界，让用户感到门店不会乱夸口。","examples":["高分：先写场景和边界，再写价格。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+  {"id":"pharmacy_score_role_clarity","title":"家庭角色清晰度","description":"高分文案会把大人、小孩、老人和家庭备药场景拆开，让用户快速判断适合自己。","examples":["高分：先区分儿童和大人。 ","低分：所有人群混写。 "],"priority":"medium"},
+  {"id":"pharmacy_score_cta_quality","title":"CTA 收事实能力","description":"高分 CTA 会收集时间、家庭角色、门店和说明需求，不只是催下单。","examples":["高分：先把今晚几点、给谁用发我。 ","低分：直接私聊下单。 "],"priority":"high"},
+  {"id":"pharmacy_score_window_fit","title":"节点适配度","description":"文案是否自然承接夜间、换季、返乡和开学等时间窗口。","examples":["高分：夜间急用写时效但不制造恐慌。 ","低分：全年都像夜间抢单。 "],"priority":"medium"},
+  {"id":"pharmacy_score_repurchase_voice","title":"复购语气自然度","description":"慢病续购和家庭补货类文案越像真实提醒，越容易形成高分。","examples":["高分：承接上次购买和这次补货。 ","低分：把熟客也当冷流量重新轰炸。 "],"priority":"medium"}
+]}

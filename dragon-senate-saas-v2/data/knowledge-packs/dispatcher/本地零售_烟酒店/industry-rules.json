@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"visit_and_stock_capacity_gate","title":"高峰到店前必须先校验时段、库存和收银资源","description":"烟酒店的调度核心不是单纯接单，而是把到店时段、库存、导购、发票、收银和配送能力一起纳入 task_graph。","examples":["节前晚间到店位已满时，先进入候补和分时段节点。","婚宴集中时，先确认整箱库存和配送排班。"],"priority":"high"},
+  {"id":"first_visit_and_return_visit_must_split","title":"首次到店、复购和宴后追加是独立调度变量","description":"首次到店、复购和宴后追加会显著改变单客时长与资源匹配。","examples":["首次到店用户需要先进入预算与场景判断节点。","复购用户应优先路由到熟悉其历史记录的导购链路。"],"priority":"high"},
+  {"id":"gift_and_banquet_need_different_routes","title":"送礼礼盒和婚宴整单必须走不同执行链路","description":"礼盒判断更依赖预算和对象，婚宴整单更依赖数量、日期、配送与发票。","examples":["送礼线索优先安排快速选品。","婚宴线索优先锁桌数、日期和整箱盘点。"],"priority":"high"},
+  {"id":"late_night_scope_check","title":"晚间急用必须先确认门店、时段和交付方式","description":"晚间临时聚餐和急送酒水不能直接默认配送，需要先判断自提、留货或有限配送。","examples":["今晚 9 点后优先判断是否还能自提。","距离较远时改走次日配送。"],"priority":"medium"},
+  {"id":"invoice_and_delivery_follow_writeback","title":"发票与配送承诺必须写回执行链路","description":"团购和宴请类任务如果不把发票、配送和签收条件写进链路，后续极易出错。","examples":["企业团购必须带上开票节点。","婚宴配送要带签收与到达确认。"],"priority":"high"},
+  {"id":"post_purchase_followup_reserve","title":"节前整单和老客补货都要预留 followup 任务","description":"烟酒店成交后仍有追加、补货、发票回传和复购提醒需要跟进。","examples":["婚宴后预留追加补单节点。","礼盒成交后预留回访与复购提醒。"],"priority":"medium"}
+]}

@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_bakery_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive weekday morning pickup orders for a neighborhood bakery using commute relevance, breakfast guidance, and fast self-pickup clarity",
+        "brand_tone": "clean, warm, and trustworthy",
+        "offer_info": "breakfast breads, sandwiches, coffee pair suggestions, quick pickup flow, no fake always-hot guarantee",
+        "audience_segment": "office commuters and parents grabbing breakfast on the way to work or school"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around rushed breakfast, school drop-off, or heading into the office",
+        "clear guidance between portable breads, more filling breakfast options, and sweet-versus-savory preferences",
+        "CTA that collects arrival time, pickup mode, and whether the order is for one person or for several"
+      ],
+      "mustAvoid": [
+        "guaranteed just-out-of-the-oven language at any hour",
+        "medical-style energy or nutrition claims",
+        "invented bestseller certainty"
+      ]
+    },
+    {
+      "id": "inkwriter_bakery_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote celebration cake orders for a bakery using occasion matching, size guidance, and a consultative preorder CTA",
+        "brand_tone": "thoughtful, steady, and reassuring",
+        "offer_info": "birthday and small celebration cakes, writing and candle options, size recommendations, pickup scheduling, no instant custom guarantee",
+        "audience_segment": "families and couples planning birthdays, anniversaries, or small in-home celebrations"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to celebration pressure or wanting a cake that arrives looking appropriate",
+        "specific guidance around cake size, sweetness, style direction, or inscription options",
+        "CTA collecting date, headcount, flavor direction, and whether pickup or delivery is needed"
+      ],
+      "mustAvoid": [
+        "guaranteed last-minute custom cake promise",
+        "everyone will love it claims",
+        "hard-sell urgency"
+      ]
+    },
+    {
+      "id": "inkwriter_bakery_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a new bakery with limited proof assets, a broad display case, and no fully confirmed hero product",
+        "brand_tone": "helpful, calm, and credible",
+        "offer_info": "new store, breads and desserts across several categories, limited public proof, no verified top seller yet",
+        "audience_segment": "local first-time customers comparing several nearby bakeries before trying one"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "conservative wording around popularity or signature certainty",
+        "implicit request for missing product proof, bestselling hierarchy, or clearer recommendation routes",
+        "copy that leans on approachable menu explanation and real freshness or process cues instead of hype"
+      ],
+      "mustAvoid": [
+        "claiming a hero item without evidence",
+        "ranking language",
+        "crowd-following overconfidence"
+      ]
+    },
+    {
+      "id": "inkwriter_bakery_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote holiday gift boxes and office pastry orders when stock rhythm, packaging combinations, and delivery boundaries are still being finalized",
+        "brand_tone": "restrained, practical, and service-oriented",
+        "offer_info": "giftable cookies and pastry boxes, possible customization, uncertain peak-day stock, delivery and pickup options with conditions",
+        "audience_segment": "office admins and local shoppers arranging visit gifts or multi-person sharing orders"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scenario-based wording instead of one exact always-available offer",
+        "clear mention of packaging, stock, or delivery boundary uncertainty",
+        "CTA that collects quantity, date, pickup-versus-delivery path, and gifting-versus-self-use intent before confirming options"
+      ],
+      "mustAvoid": [
+        "always available claims",
+        "guaranteed on-time arrival at peak holiday periods",
+        "all-in-one fixed quote promises"
+      ]
+    },
+    {
+      "id": "inkwriter_bakery_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a bakery by promising zero guilt, not fattening desserts, diabetic-friendly cakes, and meal-replacement health benefits",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "sweet bakery products under pressure to grow orders fast, high compliance risk around wellness and body-related messaging",
+        "audience_segment": "cold local traffic looking for a quick dessert or bread decision"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky health and body-related expressions in risk_phrases",
+        "conservative rewrite focused on sweetness level, portion choice, and occasion fit instead of pseudo-health claims",
+        "trust built through real product and service information rather than wellness promises"
+      ],
+      "mustAvoid": [
+        "weight-loss claims",
+        "diabetic-safe or therapeutic claims without evidence",
+        "zero-burden absolutes"
+      ]
+    },
+    {
+      "id": "inkwriter_bakery_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow bakery orders fast by claiming top-ranked taste, the city's lowest price, one-hour custom cakes, and guaranteed delivery without deformation",
+        "brand_tone": "aggressive and conversion-first",
+        "offer_info": "high-demand bakery offer with celebration cakes and daily breads, peak-hour fulfillment pressure, multiple logistical constraints",
+        "audience_segment": "mixed cold traffic comparing nearby bakeries, dessert shops, and cafe bakeries"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit marking of risky ranking, pricing, customization, and fulfillment phrases in risk_phrases",
+        "reframed urgency into preorder guidance, pickup-window planning, or expectation setting",
+        "CTA oriented to collecting date, quantity, customization depth, and delivery versus pickup before confirming suitability"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed one-hour custom cake promise",
+        "guaranteed intact delivery language"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"demand_specificity","title":"需求方向清晰度","description":"高分信号会明确提到白酒、红酒、啤酒、礼盒、婚宴或团购等具体方向。","examples":["高分：婚宴想配白酒和红酒。","低分：想买点酒。"],"priority":"high"},
+  {"id":"occasion_clarity","title":"场景节点清晰度","description":"送礼、婚礼、聚餐、开业和拜访场景越清楚，价值越高。","examples":["高分：下周拜访客户。","低分：最近想看看。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"真假与资质敏感度","description":"当用户高度关注授权、批次和进货来源时，需要提升信号权重与风险识别。","examples":["高分：主动问授权和扫码价。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"price_band_defined","title":"预算价位带明确度","description":"预算越明确，后续路线越容易收窄。","examples":["高分：300 到 500 送客户。","低分：别太贵。"],"priority":"medium"},
+  {"id":"quantity_and_timing","title":"数量与时间窗口","description":"整箱、桌数、节前截止日和到店时间越明确，优先级越高。","examples":["高分：20 桌婚宴下月初。","低分：可能会买很多。"],"priority":"high"},
+  {"id":"repurchase_signal_strength","title":"复购回流强度","description":"老客补货、企业续采和宴后追加会显著提升长期价值判断。","examples":["高分：上次买过这次继续补。","低分：纯路过咨询。"],"priority":"medium"}
+]}

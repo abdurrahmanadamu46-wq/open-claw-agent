@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"laundry_hook_seasonal","title":"换季送洗开头模板","description":"适合羽绒服、羊毛大衣和换季送洗路线。","examples":["很多人卡的不是要不要洗，而是这次到底先洗羽绒、大衣，还是先把件数和时间说清楚。 ","换季送洗最怕的不是没人接，而是没把材质和时效说清楚。 "],"priority":"high"},
+  {"id":"laundry_hook_urgent","title":"急洗次日达开头模板","description":"适合礼服、西装、出差和次日急洗路线。","examples":["急洗最怕的不是没有选择，而是明天要穿、今天还没把时效说清。 ","真正难的不是送去洗，而是先把时间和材质讲明白。 "],"priority":"high"},
+  {"id":"laundry_hook_trust","title":"赔付信任开头模板","description":"适合首次送洗、羊毛真丝和缩水串色焦虑路线。","examples":["很多人找洗护第一句不是多少钱，而是这次到底能不能放心洗。 ","想先洗得稳，先把材质、风险和赔付边界看清楚，比先问折扣更重要。 "],"priority":"high"},
+  {"id":"laundry_hook_luxury","title":"奢护修复开头模板","description":"适合鞋包、礼服和高价值衣物路线。","examples":["奢护最怕的不是贵一点，而是材质、风险和能不能修到什么程度没说清。 ","真正影响体验的，往往不是价格，而是门店敢不敢把工艺边界讲明白。 "],"priority":"medium"},
+  {"id":"laundry_hook_window","title":"节点时效开头模板","description":"适合返校、婚礼和出差节点路线。","examples":["后天要穿的时候，最怕的不是送不送，而是来不来得及。 ","婚礼前想省心，先把件数和时效说清楚会更快。 "],"priority":"medium"},
+  {"id":"laundry_hook_repeat","title":"续洗回流开头模板","description":"适合会员续洗和家庭周期送洗路线。","examples":["续洗这件事很多时候不是重新选，而是先把这次要补哪一批说清。 ","家里长期送洗，先把件数和取送频率讲清楚，会比盲目比价更稳。 "],"priority":"medium"}
+]}

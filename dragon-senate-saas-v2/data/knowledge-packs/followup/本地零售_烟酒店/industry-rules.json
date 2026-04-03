@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+  {"id":"facts_before_slot_commitment","title":"没补齐场景、预算和时间前，本轮目标是锁预约事实，不是先把结果说满","description":"烟酒店线索很多从有没有货、多少钱和能不能送开场，但真正决定能否推进的是场景方向、预算、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问场景和预算。","客户只说最近想买点酒时，先补时间和门店，再决定如何推进。"],"priority":"high"},
+  {"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会选、怕不体面和怕不真的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出到店路径。","先讲清授权和场景，再谈时间。"],"priority":"high"},
+  {"id":"seasonal_booking_needs_fast_scope","title":"节庆、婚礼和拜访节点线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间、库存和场景路线。","examples":["送礼线索先确认周几可来和这次最在意什么。","婚礼线索先锁时间，再讲品类范围。"],"priority":"high"},
+  {"id":"first_visit_and_revisit_split","title":"首次到店跟进和复购维护必须拆开","description":"首单跟进的目标通常是帮助用户安心完成第一次到店，复购维护的目标才是提醒补货节点、发票状态和下一步选择。","examples":["首单更多围绕礼盒、预算和时间。","复购更多围绕上次购买感受、库存消耗和下一步。"],"priority":"high"},
+  {"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收使用感受和签收状态，再决定是否推进下一步","description":"到店后的 FollowUp 不是默认销售时刻，而是先确认这次送礼、宴请或补货是否顺利、有无后续追加。","examples":["送礼后先问反馈和发票是否已收齐。","婚宴后先问用量和是否还需补单。"],"priority":"high"},
+  {"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体补货或节点理由，不要只催回来","description":"节庆节点、聚餐、口粮酒补货和企业续采等都是合理的回访理由。","examples":["提醒上次买礼盒的客户节前窗口到了。","按口粮酒消耗周期提醒补货。"],"priority":"medium"}
+]}

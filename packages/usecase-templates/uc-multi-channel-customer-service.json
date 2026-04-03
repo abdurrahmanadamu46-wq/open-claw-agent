@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-multi-channel-customer-service",
+  "name": "多渠道客服",
+  "name_en": "Multi-channel Customer Service",
+  "category": "customer_service",
+  "difficulty": "intermediate",
+  "description": "统一处理评论、私信和群聊中的客户问题，并根据意向度自动分流到回访流程。",
+  "pain_point": "客服消息散落在多个渠道，人工切换窗口容易漏消息，夜间响应质量也不稳定。",
+  "lobsters": ["echoer", "followup"],
+  "skills_required": ["echoer_reply_generate", "echoer_dm_auto_reply", "followup_multi_touch"],
+  "channels": ["wechat", "feishu", "dingtalk"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "接入客服渠道",
+      "code_type": "config",
+      "code": "在渠道管理中接入需要托管的微信、飞书或钉钉客服入口。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "设定客服边界",
+      "code_type": "prompt",
+      "code": "定义哪些问题可自动回复，哪些场景必须升级人工。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "配置升级动作",
+      "code_type": "config",
+      "code": "为高意向或负面投诉类消息设置升级通知渠道。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "开始自动值守",
+      "code_type": "none",
+      "code": "回声虾负责实时回复，回访虾承接需要持续跟进的会话。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "every",
+    "schedule": "10m",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "默认保留人工兜底，不要直接开放高风险承诺类回复。",
+    "共享会话能让回访虾继承上下文，但仍建议关键节点人工查看。",
+    "先把常见 FAQ 收敛好，再开放自动回复。"
+  ],
+  "estimated_cost_per_run": "$0.05-0.12",
+  "tags": ["客服", "消息分流", "多渠道", "自动回复"]
+}

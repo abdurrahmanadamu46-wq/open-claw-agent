@@ -1,0 +1,118 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u57ce\u5e02\u6c11\u5bbf",
+  "lobster_id": "catcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "booking_action_explicitness",
+      "title": "Booking action explicitness",
+      "description": "Evaluate whether the lead clearly expresses reserve, hold, confirm inventory, confirm self check-in, confirm invoice, confirm deposit rules, or confirm check-in feasibility. High scores mean the lead has moved beyond casual interest into execution planning.",
+      "examples": [
+        "High score example: Please hold one projector queen room for Friday to Sunday.",
+        "Low score example: Does your loft look good in photos."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stay_fact_completeness",
+      "title": "Stay fact completeness",
+      "description": "Evaluate whether the lead includes area or property, dates, nights, room count, guest structure, room type, arrival time, budget, and contact identity. The more complete the facts, the more reliable intent_score and lead_tier become.",
+      "examples": [
+        "High score example: area, dates, nights, guests, room type, and arrival plan are all present.",
+        "Low score example: We may stay somewhere this weekend."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "property_or_area_specificity",
+      "title": "Property or area specificity",
+      "description": "Evaluate whether the inquiry is tied to a specific property, neighborhood, subway stop, hospital, exam site, venue, or office area. Location specificity is critical because building access, parking, elevator, and noise depend on the actual property.",
+      "examples": [
+        "High score example: one night at your Xujiahui duplex near the subway.",
+        "Low score example: Do you have any city homestay in Shanghai."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "scenario_fit",
+      "title": "Scenario fit",
+      "description": "Evaluate whether the lead's use case such as concert stay, exam stay, hospital companion stay, work trip, city break, relocation, or internship aligns with what a city homestay can realistically support.",
+      "examples": [
+        "High score example: post-concert stay near the venue with late arrival details.",
+        "Low score example: vague travel interest with no real schedule."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_and_policy_clarity",
+      "title": "Guest structure and policy clarity",
+      "description": "Evaluate whether the lead clearly states adult and child counts, child ages, elderly needs, pet status, bed setup, elevator needs, and willingness to follow registration and house rules. The clearer the structure and compliance, the stronger the fit signal.",
+      "examples": [
+        "High score example: two adults, one child age seven, one elderly parent, elevator needed.",
+        "Low score example: We may add more people later and do not want to register everyone."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stay_length_and_support_match",
+      "title": "Stay length and support match",
+      "description": "Evaluate whether short-stay or long-stay duration matches the unit's support for laundry, cooking, cleaning, workspace, parking, invoice needs, and deposit policy. Clear duration plus realistic support needs should raise fit_score.",
+      "examples": [
+        "High score example: an 18-night stay needing washer, fridge, and stable Wi-Fi.",
+        "Low score example: wants a long stay but cannot specify duration, budget, or support needs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_and_resource_feasibility",
+      "title": "Budget and resource feasibility",
+      "description": "Evaluate whether budget broadly matches central location, weekend timing, popular layouts, projector, bathtub, parking, elevator, cooking access, and low-noise expectations. Unrealistic combinations should lower fit_score.",
+      "examples": [
+        "High score example: budget broadly matches the area, room type, and timing.",
+        "Low score example: wants a central weekend loft with bathtub and parking at a very low budget."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "timing_and_arrival_clarity",
+      "title": "Timing and arrival clarity",
+      "description": "Evaluate whether urgency is backed by real travel facts such as same-day arrival, train time, flight time, post-event arrival, exam timing, hospital schedule, or self-drive arrival time. Real timing clarity should raise actionable confidence.",
+      "examples": [
+        "High score example: We arrive after the concert at 11:30 p.m. and need self check-in.",
+        "Low score example: Send your lowest price now or we will leave."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "decision_ownership_and_reachability",
+      "title": "Decision ownership and reachability",
+      "description": "Evaluate whether the person asking is the actual guest, organizer, parent, hospital companion, company admin, or payer versus someone casually asking for another person. Leads closer to the actual decision point should score higher.",
+      "examples": [
+        "High score example: I am the one booking and the dates and guest count are fixed.",
+        "Low score example: I am just checking for a friend."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "repeat_engagement_and_dedup_confidence",
+      "title": "Repeat engagement and dedup confidence",
+      "description": "Evaluate whether the same stay demand appears across comments, DMs, calls, or enterprise chat and becomes more complete over time. Consistent multi-touch information should increase confidence, while conflicting details should reduce it.",
+      "examples": [
+        "High score example: comment asks about location, DM adds dates and guests, enterprise chat confirms invoice details.",
+        "Low score example: different channels give different areas, dates, and guest counts."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risk_and_noise_intensity",
+      "title": "Risk and noise intensity",
+      "description": "No registration, hidden guest count, late-night parties, commercial filming, off-platform deals, pets in restricted rooms, absolute quiet guarantees, deposit disputes, refund complaints, and bundled agency asks should all increase risk_score and can override commercial temptation.",
+      "examples": [
+        "High risk example: six people in one loft, no full registration, and friends coming over for a party.",
+        "Low risk example: normal stay confirmation around area, dates, guest count, and check-in flow."
+      ],
+      "priority": "high"
+    }
+  ]
+}

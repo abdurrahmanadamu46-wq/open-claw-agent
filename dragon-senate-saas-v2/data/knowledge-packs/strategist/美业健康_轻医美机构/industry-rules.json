@@ -1,0 +1,104 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_route_first",
+      "rule_name": "先锁一个核心问题路线，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构同时想做毛孔、痘印、细纹、下垂和节前状态管理",
+        "预算有限，但真实咨询集中在少数问题和场景"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的问题路线作为主线，例如毛孔粗大、痘印修复或节前状态管理，再统一内容、面诊承接和 followup 话术。",
+      "recommended_alternative_route": "若证据分散，先并行验证最多 2 条路线，保留预约率和复诊率更优的一条。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有问题和所有价位",
+        "不能在证据尚弱时同时主推多个高客单方向"
+      ],
+      "risk_tradeoff": "接受覆盖面更窄，换取更稳定的面诊链路和更低的承接损耗。"
+    },
+    {
+      "id": "first_consult_and_package_split",
+      "rule_name": "首次面诊路线和高客单方案承接必须拆开设计",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构既想靠低门槛面诊或体验获客，又想快速转高客单方案",
+        "新客咨询很多，但后续承接和转化表现不稳定"
+      ],
+      "recommended_primary_route": "把首次面诊目标定义为建立信任和判断适合性，把高客单承接放在面诊后的 followup 与二次到店节点，不要同一轮硬推。",
+      "recommended_alternative_route": "若机构已有成熟咨询体系，可测试少量面诊后升级脚本，但仍要保留温和承接路径。",
+      "hard_constraints": [
+        "不能把低门槛咨询文案直接写成高客单成交文案",
+        "不能要求评论区和首次私信完成高客单成交"
+      ],
+      "risk_tradeoff": "短期单客产出可能更慢，但能显著降低反感、退款和投诉。"
+    },
+    {
+      "id": "trust_and_compliance_proof",
+      "rule_name": "轻医美转化先看合规、资质和面诊信任感",
+      "priority": "P0",
+      "trigger_signals": [
+        "用户持续追问恢复期、医生资质、是否适合和机构合规",
+        "内容播放不错，但到店和预约转化偏低"
+      ],
+      "recommended_primary_route": "优先走真实面诊与信任证明路线，用资质、流程、环境、适用边界和术后指导建立安全感，再承接面诊预约。",
+      "recommended_alternative_route": "若真实资质和流程素材不足，先补齐证据再做放量测试。",
+      "hard_constraints": [
+        "不能用医疗化承诺掩盖普通项目边界",
+        "不能用夸张前后对比替代信任证明"
+      ],
+      "risk_tradeoff": "点击率可能不如夸张变美素材，但能提高真实预约和降低合规风险。"
+    },
+    {
+      "id": "event_window_and_maintenance_split",
+      "rule_name": "节前急救和日常维护是两条不同策略路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "一部分客人只在婚礼、拍照和节日前做一次状态管理",
+        "另一部分客人更在意周期性维护和复查"
+      ],
+      "recommended_primary_route": "把节前路线聚焦日期、状态和恢复期，把日常维护路线聚焦周期管理、复查节点和长期信任。",
+      "recommended_alternative_route": "资源有限时，先做占比更高的一类，另一类只用轻量内容验证。",
+      "hard_constraints": [
+        "不能把节前急救承诺写成长期稳定结果",
+        "不能用节日前逻辑覆盖维护型老客"
+      ],
+      "risk_tradeoff": "拆路线能减少错配和预期落差。"
+    },
+    {
+      "id": "capacity_before_discount",
+      "rule_name": "面诊时段、房间和核心医生资源先于折扣放量",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构准备上线低门槛面诊或节日前活动",
+        "晚高峰和周末已出现预约挤压和等待"
+      ],
+      "recommended_primary_route": "先校验面诊时段、房间、顾问和医生可用资源，再决定是否扩投低门槛引流。",
+      "recommended_alternative_route": "若容量不足，优先分流时段和问题范围，而不是继续压价冲咨询。",
+      "hard_constraints": [
+        "不能在承接不足时继续加大低价引流",
+        "不能承诺复杂项目也能极短时间完成"
+      ],
+      "risk_tradeoff": "短期咨询量可能更少，但交付体验和复诊更稳。"
+    },
+    {
+      "id": "maintenance_revisit_route",
+      "rule_name": "老客复查和维护要作为独立增长路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "机构已有一定老客和维护记录",
+        "新客获客成本上升，复诊周期更值得经营"
+      ],
+      "recommended_primary_route": "围绕复查、状态回落、节前焕新和周期性维护，设计复访提醒与熟客专属路线。",
+      "recommended_alternative_route": "若老客记录弱，先从最近 60 天做过咨询或项目的用户分层回访。",
+      "hard_constraints": [
+        "不能无差别群发所有老客同一条优惠",
+        "不能只靠降价而没有问题与周期对应逻辑"
+      ],
+      "risk_tradeoff": "老客复诊起量更慢，但 ROI 通常高于纯冷启动流量。"
+    }
+  ]
+}

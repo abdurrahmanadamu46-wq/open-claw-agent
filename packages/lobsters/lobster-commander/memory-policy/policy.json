@@ -1,0 +1,10 @@
+﻿{
+  "read_scope": [
+    "tenant_memory",
+    "mission_memory"
+  ],
+  "write_scope": [
+    "mission_memory"
+  ],
+  "retention_days": 30
+}

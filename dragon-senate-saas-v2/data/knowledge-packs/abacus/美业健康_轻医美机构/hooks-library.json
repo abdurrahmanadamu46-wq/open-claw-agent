@@ -1,0 +1,74 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_time_booking_hook",
+      "hook_name": "问题加时段面诊钩子",
+      "trigger_pattern": "用户明确具体困扰，并同步给出预约时间、门店或活动日期。",
+      "value_hypothesis": "这类线索已经从泛兴趣进入真实面诊规划阶段，短期价值通常明显高于只看内容的互动。",
+      "short_term_score_hint": "当问题、时间和到店动作都清楚时，可上调到高短期分候选。",
+      "long_term_score_hint": "若同时带有老客或推荐关系，长期分也应维持中高位。",
+      "roi_estimate_hint": "把顾问时间、面诊资源和耗材算进去后，这类线索通常仍优于纯价格咨询。",
+      "reward_signal": "奖励补齐问题、时间和门店事实的动作。",
+      "caution": "只有问题没有时间，或只有时间没有问题，都不能直接打满分。"
+    },
+    {
+      "id": "first_visit_trust_hook",
+      "hook_name": "首次到店信任建立钩子",
+      "trigger_pattern": "用户说第一次来、担心恢复期或怕踩雷，但愿意进一步聊流程或预约。",
+      "value_hypothesis": "首次到店用户虽然决策慢一点，但一旦跨过信任门槛，后续复诊与推荐潜力往往不错。",
+      "short_term_score_hint": "短期分可给中高位，但要依赖是否愿意进入咨询或预约动作。",
+      "long_term_score_hint": "若机构擅长建立信任，这类线索的长期分应高于普通冷互动。",
+      "roi_estimate_hint": "解释成本更高，但长期回收潜力也更大。",
+      "reward_signal": "奖励从谨慎观望推进到愿意预约面诊的动作。",
+      "caution": "不要因为用户谨慎就低估其长期价值。"
+    },
+    {
+      "id": "pre_event_deadline_hook",
+      "hook_name": "重要场合倒计时钩子",
+      "trigger_pattern": "用户提到婚礼、拍照、约会或节日前，并给出明确日期与可预约时段。",
+      "value_hypothesis": "这类线索具有强时间约束，一旦窗口清楚，短期确定性通常很高。",
+      "short_term_score_hint": "当事件日期和预约时段都明确时，可进入高短期分候选。",
+      "long_term_score_hint": "若本次体验良好，可转成后续复诊入口，但长期分一般略低于老客回流。",
+      "roi_estimate_hint": "需扣除黄金档期机会成本再看是否值得优先承接。",
+      "reward_signal": "奖励快速确认预约窗口和适配方案的动作。",
+      "caution": "不要把临时焦虑误判成一定可成交。"
+    },
+    {
+      "id": "returning_client_hook",
+      "hook_name": "老客回流钩子",
+      "trigger_pattern": "用户提到之前来过、朋友推荐或想复查，并能说出本次想改善的方向。",
+      "value_hypothesis": "老客和推荐线索的获客成本更低，信任基础更强，往往拥有更优的长期价值。",
+      "short_term_score_hint": "若本次问题和时间也清楚，短期分可稳定在中高位。",
+      "long_term_score_hint": "长期分应明显高于纯新客线索。",
+      "roi_estimate_hint": "低获客成本和高复诊概率通常带来更健康的 ROI。",
+      "reward_signal": "奖励承接历史项目并推动复诊预约的动作。",
+      "caution": "熟客也需要重新确认本次目标和风险边界。"
+    },
+    {
+      "id": "hard_close_risk_hook",
+      "hook_name": "高压成交风险钩子",
+      "trigger_pattern": "成交发生在明显高压环境中，或反馈里出现反感、退款和投诉倾向。",
+      "value_hypothesis": "账面成交额可能看起来很高，但真实利润和长期口碑可能更差。",
+      "short_term_score_hint": "短期分不要被单次高客单迷惑，应保留风险扣分。",
+      "long_term_score_hint": "长期分应明显下调，因为复诊与推荐质量可能较差。",
+      "roi_estimate_hint": "必须把退款、投诉和口碑损耗纳入 ROI。",
+      "reward_signal": "奖励温和承接和高质量二次面诊升级，而不是单次硬推高客单。",
+      "caution": "高收款不等于高价值。"
+    },
+    {
+      "id": "peak_slot_capacity_hook",
+      "hook_name": "热门时段机会成本钩子",
+      "trigger_pattern": "用户询问周末、晚高峰、节日前夜或核心医生时段。",
+      "value_hypothesis": "黄金时段资源稀缺，只有高确认度和高拟合度线索才值得占用。",
+      "short_term_score_hint": "确认度高时可上调短期分，否则保持中低位。",
+      "long_term_score_hint": "若属于老客或高复诊潜力主体，可适度抬高长期分。",
+      "roi_estimate_hint": "先扣除时段机会成本，再判断收益是否健康。",
+      "reward_signal": "奖励快速确认或成功分流的动作。",
+      "caution": "模糊询问不值得长期占住黄金档。"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+﻿{
+  "recordVersion": "lobster.runtime-live-queue-record.v0.1",
+  "consumedAt": "2026-03-30T02:11:12.309Z",
+  "dispatchId": "dispatch:sim_009:score:abacus",
+  "missionId": "sim_009",
+  "missionType": "review_evolution",
+  "stageId": "score",
+  "ownerRole": "abacus",
+  "bridgeTarget": "lead-ops-runner",
+  "dispatchStrategy": "invoke_lead_ops_runner",
+  "payload": {
+    "mission_id": "sim_009",
+    "tenant_id": "shadow-tenant-sim_009",
+    "lead_context": {
+      "role": "abacus",
+      "stage_id": "score"
+    },
+    "lead_submission": {
+      "tenant_id": "shadow-tenant-sim_009",
+      "campaign_id": "sim_009",
+      "contact_info": "placeholder-contact",
+      "intention_score": 80,
+      "source_platform": "shadow"
+    }
+  },
+  "guardrails": [
+    "execution_mode=limited_live",
+    "queue_lane=live_priority",
+    "sampled_live_rollout_only",
+    "truth_feedback_must_be_captured",
+    "scope_id=none"
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车维修","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+{"id":"facts_before_slot_commitment","title":"没补齐问题、时间和车况方向前，本轮目标是锁预约事实，不是先把结果说满","description":"汽车维修线索很多从有没有工位、多少钱和能不能修好开场，但真正决定能否推进的是问题范围、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问问题和车况方向。","客户只说最近想把车修一下时，先补时间和门店，再决定如何推进。"],"priority":"high"},
+{"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕被坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会选项目、怕被坑和怕翻车的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出到店路径。","先讲清检测和质保，再谈时间。"],"priority":"high"},
+{"id":"seasonal_booking_needs_fast_scope","title":"返乡、年检和节点检修线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间和项目方向。","examples":["返乡线索先确认周几可来和这次最在意什么。","年检线索先锁时间，再讲项目范围。"],"priority":"high"},
+{"id":"first_visit_and_revisit_split","title":"首次预约跟进和复购维护必须拆开","description":"首单跟进的目标通常是帮用户安心完成一次到店，复购维护的目标才是提醒节点、效果状态和下一步选择。","examples":["首单更多围绕项目、时间和风险边界。","复购更多围绕上次施工感受、车况变化和下一步。"],"priority":"high"},
+{"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收感受和状态变化，再决定是否推进","description":"到店后的 FollowUp 不是默认销售时刻。","examples":["到店后先问感觉和最在意的点。","交车后先问效果和后续想法。"],"priority":"high"},
+{"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复购或养护理由，不要只催回来","description":"返乡节点、年检节点和效果衰减等都是合理的回访理由。","examples":["提醒上次来做项目的客户年检节点到了。","按效果维持周期提醒复检。"],"priority":"medium"}]}

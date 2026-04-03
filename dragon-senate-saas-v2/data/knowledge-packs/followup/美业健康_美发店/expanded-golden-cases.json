@@ -1,0 +1,125 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_hair_salon_service_time_001",
+      "label": "happy_path",
+      "scenario_tag": "low_maintenance_cut_booking_completion",
+      "input": {
+        "lead_assessment": "A 级预约线索，用户想做低维护锁骨发，计划周四晚来店。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on service, slot, and hair-scope completion",
+        "contact_history": [
+          "刚从小红书评论区转私信",
+          "已说明是第一次做头发",
+          "暂未确认当前大致长度"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "本轮目标放在补齐长度和具体时段",
+        "不先推复杂项目或储值",
+        "把预约事实收口清楚"
+      ],
+      "mustAvoid": [
+        "没定范围就承诺一定有位",
+        "直接转入卖卡节奏"
+      ]
+    },
+    {
+      "id": "followup_hair_salon_first_time_002",
+      "label": "happy_path",
+      "scenario_tag": "first_visit_direction_guidance",
+      "input": {
+        "lead_assessment": "A- 级第一次染发线索，用户说自己不会选色，但这周末想来做一个自然一点的方向。",
+        "value_score_card": "short_term medium-high; conversion depends on low-pressure direction narrowing and slot clarity",
+        "contact_history": [
+          "用户已表示这周末有空",
+          "看过显白发色案例内容"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先做项目方向缩窄而不是直接成交",
+        "推进到可执行预约",
+        "不让用户觉得被推销"
+      ],
+      "mustAvoid": [
+        "直接推漂染大改",
+        "忽略首次不确定感"
+      ]
+    },
+    {
+      "id": "followup_hair_salon_event_003",
+      "label": "happy_path",
+      "scenario_tag": "event_slot_lock",
+      "input": {
+        "lead_assessment": "A 级节前线索，用户周六婚礼，想周四晚做染整，且头发之前漂过。",
+        "value_score_card": "short_term high; conversion depends on slot confirmation and full scope clarity",
+        "contact_history": [
+          "已明确婚礼日期",
+          "暂未确认周四晚具体时间段"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "快速锁时间窗口",
+        "把当前头发基础带进承接",
+        "不夸张承诺交付"
+      ],
+      "mustAvoid": [
+        "拖太久导致窗口错过",
+        "忽略漂后基础带来的边界"
+      ]
+    },
+    {
+      "id": "followup_hair_salon_post_visit_004",
+      "label": "long_term_case",
+      "scenario_tag": "post_visit_feedback_before_rebook",
+      "input": {
+        "lead_assessment": "项目已完成，用户昨天做了染发，今天等待回访。",
+        "value_score_card": "long_term medium-high; next value depends on feedback and maintenance timing before rebook",
+        "contact_history": [
+          "首单已完成",
+          "尚未回收颜色满意度和打理感受"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先问颜色和打理感受",
+        "根据反馈决定是否推进维护预约",
+        "避免直接推储值"
+      ],
+      "mustAvoid": [
+        "跳过体验反馈直接成交",
+        "忽略翻车或不适信号"
+      ]
+    }
+  ]
+}

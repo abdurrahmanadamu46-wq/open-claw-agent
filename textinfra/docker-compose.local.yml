@@ -1,0 +1,79 @@
+# ClawCommerce 本地 Demo 一键跑通（老板看完满意再买服务器）
+# 用法：见 textinfra/LOCAL_DEMO.md；先配置 hosts，再本机启动后端（可选），最后 up
+# 在仓库根目录执行：docker compose -f textinfra/docker-compose.local.yml up -d
+
+name: clawcommerce-local
+
+services:
+  redis:
+    labels:
+      com.clawcommerce.project: "openclaw-agent"
+    image: redis:7-alpine
+    container_name: claw_local_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_local:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    networks:
+      - claw_local
+
+  agent:
+    labels:
+      com.clawcommerce.project: "openclaw-agent"
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: clawcommerce-agent:local
+    container_name: claw_local_agent
+    restart: unless-stopped
+    command: node dist/server/agent-dashboard-server.js
+    environment:
+      REDIS_URL: redis://redis:6379
+      MAX_NODES: 10
+      IDLE_RELEASE_MINUTES: 30
+      LOG_LEVEL: info
+      PORT: 38789
+      # 本机跑后端时用 host.docker.internal
+      BACKEND_INTERNAL_URL: ${BACKEND_INTERNAL_URL:-http://host.docker.internal:3000}
+      INTERNAL_API_SECRET: ${INTERNAL_API_SECRET:-super_secret_internal_token}
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "38789:38789"
+    networks:
+      - claw_local
+
+  web:
+    labels:
+      com.clawcommerce.project: "openclaw-agent"
+    build:
+      context: ../web
+      # dockerfile 相对于 context（web/），故用 ../textinfra/docker 指向真实 Dockerfile
+      dockerfile: ../textinfra/docker/web.Dockerfile
+      args:
+        # 本地 Demo 默认 Mock，不请求后端，避免 404
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://api.clawcommerce.local:3000}
+        NEXT_PUBLIC_USE_MOCK: ${NEXT_PUBLIC_USE_MOCK:-true}
+    image: clawcommerce-web:local
+    container_name: claw_local_web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3001:3000"
+    networks:
+      - claw_local
+
+networks:
+  claw_local:
+    driver: bridge
+
+volumes:
+  redis_data_local: {}

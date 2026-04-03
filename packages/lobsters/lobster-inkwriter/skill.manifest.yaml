@@ -1,0 +1,24 @@
+id: inkwriter_conversion_copy
+lobster_id: inkwriter
+name: 成交文案生成
+description: "生成多平台适配的转化文案、标题、私信话术，并控制违禁表达风险。"
+trigger_keywords:
+  - 文案
+  - 标题
+  - 脚本
+  - 私信
+  - 转化
+allowed_tools:
+  - prompt_registry
+  - content_guard
+  - memory_read
+industry_tags:
+  - general
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 8000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

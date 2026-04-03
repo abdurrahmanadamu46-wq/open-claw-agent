@@ -1,0 +1,19 @@
+﻿{
+  "schemaVersion": "lobster.scope-drift-dashboard-feed.v0.1",
+  "generatedAt": "2026-03-30T02:46:25.372Z",
+  "title": "dispatcher.internal_execute",
+  "severity": "medium",
+  "alertType": "stale_scope",
+  "recommendedAction": "promote_with_guardrails",
+  "message": "Scope dispatcher.internal_execute has no fresh result within 2 hour(s).",
+  "stats": {
+    "queuedCount": 1,
+    "handledCount": 1,
+    "failedCount": 0,
+    "simulatedCount": 0
+  },
+  "latest": {
+    "resultStatus": "handled",
+    "resultAt": "2026-03-30T02:19:42.436Z"
+  }
+}

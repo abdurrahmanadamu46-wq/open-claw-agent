@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_职业教育",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "hook_booking_without_scope",
+      "scene": "public_comment",
+      "intent": "trial_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you narrow this down.",
+      "bridge": "For a vocational-education trial, the concern, time window, and whether this is a first visit matter more than a quick yes or no.",
+      "next_step": "Ask for concern, preferred time, and whether this is a first visit.",
+      "handoff_suggestion": "Route to Catcher if the user replies with booking facts."
+    },
+    {
+      "id": "hook_first_time_help",
+      "scene": "public_comment",
+      "intent": "first_visit_guidance",
+      "emotion": "unsure",
+      "hook": "That is totally normal for a first visit.",
+      "bridge": "A lot of first-time learners do not need more options, they need a simple way to narrow what fits their concern and current level.",
+      "next_step": "Acknowledge the uncertainty and ask what concern is most important plus the time window.",
+      "handoff_suggestion": "Route to Catcher if the user shares concern and timing."
+    },
+    {
+      "id": "hook_exam_booking",
+      "scene": "private_message",
+      "intent": "exam_trial_booking",
+      "emotion": "time_pressure",
+      "hook": "We can keep this simple and work from your deadline first.",
+      "bridge": "When an exam or application window is close, the date, slot, and concern scope matter more than a long course lecture.",
+      "next_step": "Ask when the deadline is, when the user can come in, and what they most want to solve.",
+      "handoff_suggestion": "Route to Catcher once the user shares timing facts."
+    },
+    {
+      "id": "hook_price_scope_recovery",
+      "scene": "public_comment",
+      "intent": "price_check",
+      "emotion": "comparing",
+      "hook": "I can help make the price answer more useful.",
+      "bridge": "For vocational training, the real answer often changes with concern scope and whether this is a first trial, so one quick scope question helps a lot.",
+      "next_step": "Ask whether the user is mainly asking about a certificate, job switching, hands-on skills, or an exam-window route.",
+      "handoff_suggestion": "Route to Catcher if the user shares scope."
+    },
+    {
+      "id": "hook_returning_student",
+      "scene": "private_message",
+      "intent": "return_visit",
+      "emotion": "warm",
+      "hook": "Nice to see you back here.",
+      "bridge": "For returning learners, it helps to start from what they want to review or solve this time instead of restarting from zero.",
+      "next_step": "Ask what has changed since the last visit and when they hope to come in.",
+      "handoff_suggestion": "Route to FollowUp or Catcher depending on the user's reply."
+    },
+    {
+      "id": "hook_sensitive_public_shame",
+      "scene": "public_comment",
+      "intent": "confidence_sensitive",
+      "emotion": "embarrassed",
+      "hook": "We can keep this easy and low-pressure.",
+      "bridge": "Some learning concerns feel more personal than they look in a comment, so the goal is to stay helpful without making the user feel exposed.",
+      "next_step": "Reply with empathy and lightly invite the user to share concern and timing.",
+      "handoff_suggestion": "Route to Catcher if the user continues with details."
+    }
+  ]
+}

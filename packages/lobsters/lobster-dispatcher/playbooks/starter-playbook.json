@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "dispatcher",
+  "artifactType": "ExecutionPlan",
+  "playbookId": "dispatcher_starter",
+  "title": "Dispatcher Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read mission plan and runtime state",
+    "decompose into explicit task graph",
+    "insert approval checkpoints and retry policy",
+    "define fallback and compensation path",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

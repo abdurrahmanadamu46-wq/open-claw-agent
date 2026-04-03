@@ -1,0 +1,149 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "abacus",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "gatehouse_short_term_requires_complete_brief",
+      "rule_name": "尺寸、现场和预算齐全时才给高短期分",
+      "priority": "P0",
+      "trigger_signals": [
+        "客户已提供开间、高度、现场照片或视频、项目地址、预算区间",
+        "客户愿意进入勘测、视频踏勘或初版报价确认"
+      ],
+      "short_term_value_rule": "门楼线索只有在基础参数完整且下一步动作明确时，才应进入高短期分候选。单纯说“先报个价”但没有尺寸、现场和用途，不足以视为临近成交。",
+      "long_term_value_rule": "即便暂未到高短期分，如果线索来自厂区、园区、景区、学校等高适配场景，仍可保留中等长期分。",
+      "roi_rule": "ROI 估算必须计入勘测、首版方案、报价沟通和现场复核成本，不能只看 cost_per_lead。",
+      "reward_signal_rule": "优先奖励 5 分钟内回拨、当天锁定勘测时间、补齐决策人和项目节点信息的动作。",
+      "risk_tradeoff": "牺牲一点泛询价响应速度，换取更稳的成交判断和更少的无效报价。"
+    },
+    {
+      "id": "gatehouse_engagement_heat_is_not_value",
+      "rule_name": "互动热度不能替代真实商业价值",
+      "priority": "P0",
+      "trigger_signals": [
+        "效果图或案例视频播放高、点赞高、评论多",
+        "评论区只问最低价、风格好不好看，缺少项目信息"
+      ],
+      "short_term_value_rule": "高互动但低资格信息的门楼线索，短期分默认不高，除非后续出现尺寸、地址、预算、勘测预约等强承诺动作。",
+      "long_term_value_rule": "如果热度集中在目标场景，如厂区门楼或景区入口，长期分可保留为中低分，用于内容选题和人群验证，不直接视作成交线索。",
+      "roi_rule": "流量热度只能作为内容学习收益，不应直接并入单条线索 ROI。",
+      "reward_signal_rule": "奖励能把泛互动转成私信、表单、现场图或电话沟通的动作，而不是单纯放大点赞量。",
+      "risk_tradeoff": "避免把虚高流量误当成高价值项目，保护销售和设计资源。"
+    },
+    {
+      "id": "gatehouse_approval_and_site_feasibility_discount",
+      "rule_name": "审批和施工可行性会直接折损预期价值",
+      "priority": "P0",
+      "trigger_signals": [
+        "项目涉及景区、学校、园区、政企、商业街等审批链较长场景",
+        "夜间施工、吊装空间、基础条件、物业放行、城管或消防要求尚未明确"
+      ],
+      "short_term_value_rule": "审批未明、进场条件不清、现场限制较多时，短期分需要封顶，不能因为预算高就直接给高优先级。",
+      "long_term_value_rule": "若项目本身预算高、示范价值强、客户主体优质，可保留中高长期分，但要明确转化周期更长。",
+      "roi_rule": "ROI 要扣减多轮改稿、等待审批、现场复测、反复沟通和潜在停工带来的时间成本。",
+      "reward_signal_rule": "优先奖励补齐审批清单、确认进场条件、识别夜间施工限制和现场风险的动作。",
+      "risk_tradeoff": "接受短期转化变慢，换取更真实的价值估算和更低的履约风险。"
+    },
+    {
+      "id": "gatehouse_cluster_repeatability_boost",
+      "rule_name": "园区、连锁和多点位项目要抬高长期分",
+      "priority": "P1",
+      "trigger_signals": [
+        "客户提到一个主体下有多个厂区、多个园区入口、多个景区节点或连锁门店",
+        "项目属于容易复制标准做法和报价模板的门楼场景"
+      ],
+      "short_term_value_rule": "首单未必马上成交，短期分可以只是中等，但只要试点站点明确、组织链条清楚，就不应被当成普通慢线索。",
+      "long_term_value_rule": "有多点位复制、集团采购或后续批量升级可能时，长期分应明显上调。",
+      "roi_rule": "允许为这类线索接受略高的前期获客和方案成本，因为成功后往往能摊薄后续拿单成本。",
+      "reward_signal_rule": "奖励摸清组织架构、识别试点项目、沉淀标准化方案和拿到后续点位信息的动作。",
+      "risk_tradeoff": "避免把“多项目潜力”空喊成高价值，前提仍是交付半径和产能具备承接能力。"
+    },
+    {
+      "id": "gatehouse_reactivation_and_asset_reuse",
+      "rule_name": "老客户复购和资产复用会显著抬高 ROI",
+      "priority": "P1",
+      "trigger_signals": [
+        "客户来自 CRM 重激活、老客户转介绍或历史项目延伸",
+        "已有旧图纸、旧尺寸、旧报价版本或历史勘测记录"
+      ],
+      "short_term_value_rule": "如果只是微调颜色、字牌、材质或局部结构，短期分可高于普通新线索，因为信任和沟通成本更低。",
+      "long_term_value_rule": "老客户复购往往伴随转介绍和后续维护项目，长期分应同步上调。",
+      "roi_rule": "ROI 要显式计入历史资产复用带来的设计节省、成交效率提升和更低的获客成本。",
+      "reward_signal_rule": "奖励快速调取旧档案、校验新旧现场差异、复用可用图纸和对比版本变化的动作。",
+      "risk_tradeoff": "不能因为是老客户就默认高分，若现场条件变化大，仍需重新勘测和重算风险。"
+    },
+    {
+      "id": "gatehouse_deadline_requires_feasibility",
+      "rule_name": "时间紧迫只有在可执行时才会放大短期分",
+      "priority": "P0",
+      "trigger_signals": [
+        "客户提到开业、节庆、领导检查、招投标截止、节前亮相等硬节点",
+        "同时伴随加急安装、加急出图、加急运输诉求"
+      ],
+      "short_term_value_rule": "紧急项目只有在尺寸清楚、审批边界清楚、排产可锁定、班组可用时，短期分才可大幅上调。仅有时间压力不足以构成高短期分。",
+      "long_term_value_rule": "一锤子买卖式急单未必带来高长期分，除非客户主体优质且有后续复制空间。",
+      "roi_rule": "必须扣减加急物流、夜间施工、临时班组、返工和延误赔付风险，不能把高客单价直接等于高 ROI。",
+      "reward_signal_rule": "奖励先做可行性倒排、主动切换标准化方案或轻改造路线、明确 stop-loss 条件的动作。",
+      "risk_tradeoff": "防止团队为了抢时间窗口而系统性高估价值。"
+    },
+    {
+      "id": "gatehouse_margin_over_revenue",
+      "rule_name": "高合同额不等于高价值，利润质量更重要",
+      "priority": "P0",
+      "trigger_signals": [
+        "项目金额大但存在跨省运输、吊装、驻场安装、材料涨价或强折扣要求",
+        "客户频繁要求压价、延后付款或提前锁排产"
+      ],
+      "short_term_value_rule": "即便客户很热、金额很大，只要毛利被物流、安装、售后和价格让利吃掉，短期分也不应虚高。",
+      "long_term_value_rule": "如果项目会拉低团队产能利用率、占用关键班组且难以复用，长期分也应同步下调。",
+      "roi_rule": "ROI 评估应基于扣除运输、吊装、驻场、售后准备金、加急和资金占用后的利润，而不是看合同总额。",
+      "reward_signal_rule": "奖励守住底线毛利、争取设计费或定金、及时识别高成本交付边界的动作。",
+      "risk_tradeoff": "宁可少做低质大单，也不要让表面营收掩盖真实价值。"
+    },
+    {
+      "id": "gatehouse_attribution_merge_rule",
+      "rule_name": "重复线索要合并归因，按关键推进触点分配价值",
+      "priority": "P1",
+      "trigger_signals": [
+        "同一联系人或同一现场项目同时来自抖音、百度爱采购、企微、电话或转介绍",
+        "不同渠道都声称自己带来了同一个门楼项目"
+      ],
+      "short_term_value_rule": "相同项目的短期价值只能算一次，不能因为多入口留资就重复抬高优先级。",
+      "long_term_value_rule": "长期分应更多看哪个渠道或动作真正帮助沉淀了可复用的关系和场景证据，而不是只看最后一次点击。",
+      "roi_rule": "ROI 要把 merged project 的获客和跟进成本统一核算，再按关键推进触点分摊贡献。",
+      "reward_signal_rule": "优先奖励真正推动项目从浏览到私信、从私信到勘测、从勘测到报价的渠道与动作。",
+      "risk_tradeoff": "防止最后一次低成本触达抢走全部 credit，也避免双重记功和双重算账。"
+    },
+    {
+      "id": "gatehouse_commitment_signals_over_generic_inquiry",
+      "rule_name": "勘测预约、CAD、设计费和定金强于泛泛问价",
+      "priority": "P0",
+      "trigger_signals": [
+        "客户主动发送 CAD、结构图、旧门楼照片、施工窗口、合同要求",
+        "客户愿意付设计费、锁勘测、确认定金或邀请线下看现场"
+      ],
+      "short_term_value_rule": "这类承诺动作应显著抬高短期分，因为它们比“多少钱一平方”更接近真实采购流程。",
+      "long_term_value_rule": "若客户主体本身可复购或可带来区域案例，长期分也应同步上调。",
+      "roi_rule": "有承诺动作的项目通常更值得投入设计和工程前置成本，ROI 置信度也更高。",
+      "reward_signal_rule": "优先奖励获取强承诺动作、推动报价版本确认、促成定金或设计费支付的行为。",
+      "risk_tradeoff": "避免把所有询价都当成同等级别线索，保护高成本资源只投向有行动门槛的项目。"
+    },
+    {
+      "id": "gatehouse_stop_loss_for_unprofitable_or_noncompliant",
+      "rule_name": "低利润、高纠纷和高合规风险项目要及时降级或止损",
+      "priority": "P0",
+      "trigger_signals": [
+        "客户预算和需求严重错位",
+        "坚持要求包审批、包验收、绝对安全、超短工期等高风险承诺",
+        "拒绝定金却要求排产、历史上比价严重或失约频繁"
+      ],
+      "short_term_value_rule": "即使表面上看起来很着急、沟通频繁，也要主动下调短期分，不能把高摩擦项目误判成高价值。",
+      "long_term_value_rule": "若客户关系不稳定、纠纷概率高、品牌风险高，长期分应保持低位，除非成功改造成低风险范围。",
+      "roi_rule": "这类项目的 ROI 应纳入返工、投诉、退款、声誉损耗和合规成本，而不只是项目账面利润。",
+      "reward_signal_rule": "奖励主动降级范围、要求人工复核、收缩承诺边界或直接放弃不健康订单的决策。",
+      "risk_tradeoff": "优先保护履约质量和治理安全，不用短期成交数字掩盖坏单。"
+    }
+  ]
+}

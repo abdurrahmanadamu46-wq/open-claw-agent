@@ -1,0 +1,31 @@
+﻿{
+  "envelopeId": "envelope:dispatch:sim_008:diagnose:dispatcher",
+  "dispatchId": "dispatch:sim_008:diagnose:dispatcher",
+  "missionId": "sim_008",
+  "missionType": "recovery_replay",
+  "stageId": "diagnose",
+  "ownerRole": "dispatcher",
+  "scopeId": "internal_execute",
+  "bridgeTarget": "execute-campaign",
+  "dispatchStrategy": "call_execute_campaign_task",
+  "payload": {
+    "campaign_id": "sim_008",
+    "tenant_id": "shadow-tenant-sim_008",
+    "industry_template_id": "recovery_replay-template",
+    "target_urls": [
+      "https://example.com/placeholder"
+    ],
+    "bind_accounts": [
+      "placeholder-account"
+    ]
+  },
+  "guardrails": [
+    "execution_mode=guardrailed_live",
+    "queue_lane=guardrailed_live",
+    "require_runtime_approval_check",
+    "limit_live_weight_before_apply",
+    "validate_campaign_payload_contract",
+    "scope_id=internal_execute"
+  ],
+  "createdAt": "2026-03-30T02:14:31.030Z"
+}

@@ -1,0 +1,127 @@
+﻿{
+  "industry": "汽车服务_二手车门店",
+  "lobster_id": "catcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "catcher_used_car_budget_time_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "xiaohongshu_private_message",
+        "lead_content": "周五晚想在国金门店先看看十万内家用 SUV，第一次来，担心不会看车怕踩坑。",
+        "engagement_history": [
+          "saved two budget-based posts",
+          "viewed inspection and visit content",
+          "asked whether a slot can be held"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_vehicle_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "clear budget and time window",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_used_car_deadline_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_comment_to_dm",
+        "lead_content": "周六返乡，想约周四晚上先来看看怎么把用车方向理顺，第一次来看。",
+        "engagement_history": [
+          "watched full seasonal-window video",
+          "liked visit and inspection content"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_vehicle_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "deadline noted as major signal",
+        "first-time trust concern included in fit score"
+      ],
+      "mustAvoid": [
+        "downgrading because the user still needs guidance"
+      ]
+    },
+    {
+      "id": "catcher_used_car_price_only_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "public_comment",
+        "lead_content": "这车多少钱？",
+        "engagement_history": [
+          "viewed one generic promo"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_vehicle_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "not automatically hot",
+        "needs more scope before escalation"
+      ],
+      "mustAvoid": [
+        "marking the lead as followup-ready immediately"
+      ]
+    },
+    {
+      "id": "catcher_used_car_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "lead_source": "wechat_private_message",
+        "lead_content": "上次来店里看过，这次想继续看看并判断下一步，周末能约吗。",
+        "engagement_history": [
+          "existing customer note found",
+          "past visit completed successfully"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_vehicle_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "warm relationship signal",
+        "high fit for follow-up",
+        "returning-buyer value"
+      ],
+      "mustAvoid": [
+        "treating the lead as a cold new inquiry"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+﻿{
+  "thread_id": "sd-05",
+  "name": "Video Factory",
+  "owner_scope": "multimodal rendering and media packaging",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "submit": "REST async job",
+    "status": "REST",
+    "notify": "Webhook"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/README.md"
+  ]
+}

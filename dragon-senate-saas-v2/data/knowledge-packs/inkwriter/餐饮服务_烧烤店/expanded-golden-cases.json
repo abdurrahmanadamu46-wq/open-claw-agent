@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_bbq_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a local barbecue restaurant for weekend family dinners using mild-flavor options, clear ordering guidance, and a reservation-first CTA",
+        "brand_tone": "warm, trustworthy, and grounded",
+        "offer_info": "signature skewers, non-spicy grilled vegetables and fish, family-friendly table planning, reservation support, no exaggerated ranking claims",
+        "audience_segment": "local families planning a weekend meal with elders, younger adults, and mixed spice tolerance"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around taking family members out for barbecue without making the meal feel risky or chaotic",
+        "specific menu proof that balances signature grilled items with milder or easier-to-share choices",
+        "CTA that asks for dining time, party size, and whether indoor seating or a quieter table is needed"
+      ],
+      "mustAvoid": [
+        "citywide best barbecue claims",
+        "health-benefit claims around grilled food",
+        "guaranteed no-smoke or no-wait promise"
+      ]
+    },
+    {
+      "id": "inkwriter_bbq_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive bookings for after-work friend gatherings and birthday-style barbecue nights with atmosphere proof, ordering structure, and soft reservation messaging",
+        "brand_tone": "lively, credible, and full of everyday hospitality",
+        "offer_info": "signature skewers, beer-friendly sharing dishes, large-table support, consultative reservation flow, no fake scarcity",
+        "audience_segment": "friends, office teams, and casual celebration groups comparing barbecue venues for 4 to 10 people"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to after-work release, group warmth, or avoiding an awkward barbecue gathering",
+        "trust details around table fit, serving rhythm, and what should be ordered first for a smoother meal",
+        "low-pressure next step asking for date, headcount, and whether the group wants drinks, indoor seating, or celebration support"
+      ],
+      "mustAvoid": [
+        "guaranteed perfect party atmosphere claims",
+        "instant viral popularity language",
+        "every table must-order absolutes"
+      ]
+    },
+    {
+      "id": "inkwriter_bbq_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a budget-sensitive barbecue group meal inquiry with unclear headcount, alcohol expectations, and indoor versus outdoor seating preferences",
+        "brand_tone": "helpful, restrained, and practical",
+        "offer_info": "group meal options under discussion, pricing depends on party size and drinks, several signature items, multiple seating formats",
+        "audience_segment": "office admins and group organizers comparing several barbecue restaurants for a team meal"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing headcount, budget, seating, or drinking details",
+        "conservative wording around per-person budget range and package scope",
+        "scenario-based recommendation instead of a single fixed quote"
+      ],
+      "mustAvoid": [
+        "instant one-price promise",
+        "claiming every taste preference will be satisfied",
+        "overconfident certainty"
+      ]
+    },
+    {
+      "id": "inkwriter_bbq_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a neighborhood barbecue restaurant on rainy and cooling evenings when it has strong food proof but limited polished marketing assets",
+        "brand_tone": "appetite-led, calm, and believable",
+        "offer_info": "signature grilled dishes, practical local convenience, ventilation reassurance without absolute claims, soft reservation push, limited photo assets",
+        "audience_segment": "local diners and visiting friends deciding where to eat on short notice after work or during evening weather changes"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "sensory but grounded language tied to real grilled dishes or evening dining scenes",
+        "practical local information such as arrival convenience, seating type, or peak-hour reservation guidance",
+        "conservative handling of freshness, smoke, popularity, and weather-trigger language"
+      ],
+      "mustAvoid": [
+        "countdown-driven fake urgency",
+        "absolute claims like every table orders this",
+        "wellness or medicinal claims"
+      ]
+    },
+    {
+      "id": "inkwriter_bbq_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow bookings fast for a barbecue restaurant using ranking language, aggressive hype, must-order pressure, and guaranteed queue-free convenience",
+        "brand_tone": "high conversion and aggressive",
+        "offer_info": "high-demand evenings, strong foot traffic, pressure to increase reservations fast, multiple group-dining scenarios",
+        "audience_segment": "cold local traffic comparing multiple barbecue options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking, queue, and must-order expressions in risk_phrases",
+        "reframed urgency into reservation timing or arrival guidance",
+        "trust built through menu proof, seating fit, and ordering guidance instead of hype"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed no-wait promise",
+        "universal must-order language"
+      ]
+    },
+    {
+      "id": "inkwriter_bbq_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a barbecue restaurant by promising it is not greasy, will not cause internal heat, has the city's lowest price, and always has tables",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "pricing-sensitive offer with mixed dining scenarios and regulatory risk around health, price, smoke, and availability claims",
+        "audience_segment": "mixed cold leads asking for quick booking decisions"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of risky health, price, smoke, and availability language",
+        "explicit marking of red-flag phrases in risk_phrases",
+        "CTA oriented to collecting time, party size, drinking preference, seating needs, and budget before confirming options"
+      ],
+      "mustAvoid": [
+        "therapeutic or wellness claims",
+        "citywide lowest-price promise",
+        "guaranteed table availability or zero-smoke promise"
+      ]
+    }
+  ]
+}

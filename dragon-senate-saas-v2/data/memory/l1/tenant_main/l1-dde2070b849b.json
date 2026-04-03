@@ -1,0 +1,16 @@
+﻿{
+  "report_id": "l1-dde2070b849b",
+  "source_entry_id": "task_001",
+  "lobster_id": "inkwriter",
+  "task_summary": "## 标题\n\n成交型文案内容...",
+  "decision": "parse_failed",
+  "outcome": "unknown",
+  "next_steps": [],
+  "key_entities": [],
+  "metrics": {},
+  "tenant_id": "tenant_main",
+  "created_at": "2026-03-31T13:45:55.784629+00:00",
+  "token_count": 3,
+  "source_token_count": 380,
+  "promoted_to_l2": false
+}

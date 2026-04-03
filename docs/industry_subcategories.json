@@ -1,0 +1,2303 @@
+﻿[
+  {
+    "category_tag": "construction_architecture",
+    "category_name": "建筑行业",
+    "sub_industries": [
+      {
+        "tag": "construction_gate_tower",
+        "name": "门楼",
+        "aliases": [
+          "门楼",
+          "牌坊",
+          "大门",
+          "形象门",
+          "景观门",
+          "厂区大门"
+        ],
+        "schema": {
+          "industry_name": "门楼",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "包过审批",
+            "政府指定施工",
+            "零隐患",
+            "零返工"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "虚构资质",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "food_service",
+    "category_name": "餐饮服务",
+    "sub_industries": [
+      {
+        "tag": "food_chinese_restaurant",
+        "name": "中餐馆",
+        "aliases": [
+          "中餐馆",
+          "中餐",
+          "餐馆"
+        ],
+        "schema": {
+          "industry_name": "中餐馆",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_hotpot",
+        "name": "火锅店",
+        "aliases": [
+          "火锅店",
+          "火锅"
+        ],
+        "schema": {
+          "industry_name": "火锅店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_bbq",
+        "name": "烧烤店",
+        "aliases": [
+          "烧烤店",
+          "烧烤"
+        ],
+        "schema": {
+          "industry_name": "烧烤店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_tea_shop",
+        "name": "奶茶店",
+        "aliases": [
+          "奶茶店",
+          "奶茶",
+          "茶饮"
+        ],
+        "schema": {
+          "industry_name": "奶茶店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_coffee_shop",
+        "name": "咖啡店",
+        "aliases": [
+          "咖啡店",
+          "咖啡"
+        ],
+        "schema": {
+          "industry_name": "咖啡店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_bakery",
+        "name": "烘焙店",
+        "aliases": [
+          "烘焙店",
+          "烘焙",
+          "面包店"
+        ],
+        "schema": {
+          "industry_name": "烘焙店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "food_fastfood",
+        "name": "快餐店",
+        "aliases": [
+          "快餐店",
+          "快餐"
+        ],
+        "schema": {
+          "industry_name": "快餐店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "hotel_lodging",
+    "category_name": "酒店民宿",
+    "sub_industries": [
+      {
+        "tag": "hotel_business",
+        "name": "商务酒店",
+        "aliases": [
+          "商务酒店"
+        ],
+        "schema": {
+          "industry_name": "商务酒店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "hotel_resort",
+        "name": "度假酒店",
+        "aliases": [
+          "度假酒店"
+        ],
+        "schema": {
+          "industry_name": "度假酒店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "hotel_boutique_bnb",
+        "name": "精品民宿",
+        "aliases": [
+          "精品民宿",
+          "民宿"
+        ],
+        "schema": {
+          "industry_name": "精品民宿",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "hotel_city_bnb",
+        "name": "城市民宿",
+        "aliases": [
+          "城市民宿"
+        ],
+        "schema": {
+          "industry_name": "城市民宿",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "hotel_inn",
+        "name": "客栈",
+        "aliases": [
+          "客栈"
+        ],
+        "schema": {
+          "industry_name": "客栈",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "beauty_health",
+    "category_name": "美业健康",
+    "sub_industries": [
+      {
+        "tag": "beauty_salon",
+        "name": "美容院",
+        "aliases": [
+          "美容院"
+        ],
+        "schema": {
+          "industry_name": "美容院",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_nail",
+        "name": "美甲店",
+        "aliases": [
+          "美甲店",
+          "美甲"
+        ],
+        "schema": {
+          "industry_name": "美甲店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_hair",
+        "name": "美发店",
+        "aliases": [
+          "美发店",
+          "理发店"
+        ],
+        "schema": {
+          "industry_name": "美发店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_light_med",
+        "name": "轻医美机构",
+        "aliases": [
+          "轻医美机构",
+          "轻医美",
+          "医美"
+        ],
+        "schema": {
+          "industry_name": "轻医美机构",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_skin",
+        "name": "皮肤管理",
+        "aliases": [
+          "皮肤管理"
+        ],
+        "schema": {
+          "industry_name": "皮肤管理",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_wellness",
+        "name": "养生馆",
+        "aliases": [
+          "养生馆"
+        ],
+        "schema": {
+          "industry_name": "养生馆",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "beauty_rehab",
+        "name": "理疗馆",
+        "aliases": [
+          "理疗馆"
+        ],
+        "schema": {
+          "industry_name": "理疗馆",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "education_training",
+    "category_name": "教育培训",
+    "sub_industries": [
+      {
+        "tag": "edu_vocational",
+        "name": "职业教育",
+        "aliases": [
+          "职业教育"
+        ],
+        "schema": {
+          "industry_name": "职业教育",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "edu_language",
+        "name": "语言培训",
+        "aliases": [
+          "语言培训"
+        ],
+        "schema": {
+          "industry_name": "语言培训",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "edu_postgrad",
+        "name": "考研培训",
+        "aliases": [
+          "考研培训"
+        ],
+        "schema": {
+          "industry_name": "考研培训",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "edu_arts",
+        "name": "艺术培训",
+        "aliases": [
+          "艺术培训"
+        ],
+        "schema": {
+          "industry_name": "艺术培训",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "edu_kids",
+        "name": "少儿素质教育",
+        "aliases": [
+          "少儿素质教育"
+        ],
+        "schema": {
+          "industry_name": "少儿素质教育",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "edu_adult_skills",
+        "name": "成人技能培训",
+        "aliases": [
+          "成人技能培训"
+        ],
+        "schema": {
+          "industry_name": "成人技能培训",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "auto_services",
+    "category_name": "汽车服务",
+    "sub_industries": [
+      {
+        "tag": "auto_used_car",
+        "name": "二手车门店",
+        "aliases": [
+          "二手车门店",
+          "二手车"
+        ],
+        "schema": {
+          "industry_name": "二手车门店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "auto_new_car",
+        "name": "新车经销",
+        "aliases": [
+          "新车经销"
+        ],
+        "schema": {
+          "industry_name": "新车经销",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "auto_detailing",
+        "name": "汽车美容",
+        "aliases": [
+          "汽车美容"
+        ],
+        "schema": {
+          "industry_name": "汽车美容",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "auto_repair",
+        "name": "汽车维修",
+        "aliases": [
+          "汽车维修"
+        ],
+        "schema": {
+          "industry_name": "汽车维修",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "auto_mod",
+        "name": "汽车改装",
+        "aliases": [
+          "汽车改装"
+        ],
+        "schema": {
+          "industry_name": "汽车改装",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "auto_rental",
+        "name": "汽车租赁",
+        "aliases": [
+          "汽车租赁"
+        ],
+        "schema": {
+          "industry_name": "汽车租赁",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "home_renovation",
+    "category_name": "家居装修",
+    "sub_industries": [
+      {
+        "tag": "home_decor_company",
+        "name": "装修公司",
+        "aliases": [
+          "装修公司"
+        ],
+        "schema": {
+          "industry_name": "装修公司",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "home_custom",
+        "name": "全屋定制",
+        "aliases": [
+          "全屋定制"
+        ],
+        "schema": {
+          "industry_name": "全屋定制",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "home_materials",
+        "name": "家居建材",
+        "aliases": [
+          "家居建材"
+        ],
+        "schema": {
+          "industry_name": "家居建材",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "home_appliances",
+        "name": "家电门店",
+        "aliases": [
+          "家电门店"
+        ],
+        "schema": {
+          "industry_name": "家电门店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "home_smart",
+        "name": "智能家居",
+        "aliases": [
+          "智能家居"
+        ],
+        "schema": {
+          "industry_name": "智能家居",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "home_soft",
+        "name": "软装设计",
+        "aliases": [
+          "软装设计"
+        ],
+        "schema": {
+          "industry_name": "软装设计",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "local_retail",
+    "category_name": "本地零售",
+    "sub_industries": [
+      {
+        "tag": "retail_fresh",
+        "name": "生鲜门店",
+        "aliases": [
+          "生鲜门店",
+          "生鲜"
+        ],
+        "schema": {
+          "industry_name": "生鲜门店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "retail_supermarket",
+        "name": "社区超市",
+        "aliases": [
+          "社区超市"
+        ],
+        "schema": {
+          "industry_name": "社区超市",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "retail_maternity",
+        "name": "母婴门店",
+        "aliases": [
+          "母婴门店"
+        ],
+        "schema": {
+          "industry_name": "母婴门店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "retail_pet",
+        "name": "宠物门店",
+        "aliases": [
+          "宠物门店"
+        ],
+        "schema": {
+          "industry_name": "宠物门店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "retail_tobacco_alcohol",
+        "name": "烟酒店",
+        "aliases": [
+          "烟酒店"
+        ],
+        "schema": {
+          "industry_name": "烟酒店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "retail_pharmacy",
+        "name": "药店",
+        "aliases": [
+          "药店"
+        ],
+        "schema": {
+          "industry_name": "药店",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "life_services",
+    "category_name": "生活服务",
+    "sub_industries": [
+      {
+        "tag": "life_housekeeping",
+        "name": "家政服务",
+        "aliases": [
+          "家政服务",
+          "家政"
+        ],
+        "schema": {
+          "industry_name": "家政服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "life_moving",
+        "name": "搬家服务",
+        "aliases": [
+          "搬家服务"
+        ],
+        "schema": {
+          "industry_name": "搬家服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "life_laundry",
+        "name": "洗衣洗护",
+        "aliases": [
+          "洗衣洗护",
+          "洗护"
+        ],
+        "schema": {
+          "industry_name": "洗衣洗护",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "life_locksmith",
+        "name": "开锁服务",
+        "aliases": [
+          "开锁服务"
+        ],
+        "schema": {
+          "industry_name": "开锁服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "life_plumbing",
+        "name": "管道维修",
+        "aliases": [
+          "管道维修"
+        ],
+        "schema": {
+          "industry_name": "管道维修",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "life_appliance_clean",
+        "name": "家电清洗",
+        "aliases": [
+          "家电清洗"
+        ],
+        "schema": {
+          "industry_name": "家电清洗",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "medical_health",
+    "category_name": "医疗健康",
+    "sub_industries": [
+      {
+        "tag": "medical_dental",
+        "name": "口腔门诊",
+        "aliases": [
+          "口腔门诊"
+        ],
+        "schema": {
+          "industry_name": "口腔门诊",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "medical_eye",
+        "name": "眼科门诊",
+        "aliases": [
+          "眼科门诊"
+        ],
+        "schema": {
+          "industry_name": "眼科门诊",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "medical_checkup",
+        "name": "体检中心",
+        "aliases": [
+          "体检中心"
+        ],
+        "schema": {
+          "industry_name": "体检中心",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "medical_rehab",
+        "name": "康复中心",
+        "aliases": [
+          "康复中心"
+        ],
+        "schema": {
+          "industry_name": "康复中心",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "medical_tcm_clinic",
+        "name": "中医诊所",
+        "aliases": [
+          "中医诊所",
+          "中医"
+        ],
+        "schema": {
+          "industry_name": "中医诊所",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "medical_psych",
+        "name": "心理咨询",
+        "aliases": [
+          "心理咨询"
+        ],
+        "schema": {
+          "industry_name": "心理咨询",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "enterprise_services",
+    "category_name": "企业服务",
+    "sub_industries": [
+      {
+        "tag": "enterprise_tax",
+        "name": "财税服务",
+        "aliases": [
+          "财税服务"
+        ],
+        "schema": {
+          "industry_name": "财税服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "enterprise_legal",
+        "name": "法律服务",
+        "aliases": [
+          "法律服务"
+        ],
+        "schema": {
+          "industry_name": "法律服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "enterprise_hr",
+        "name": "人力资源",
+        "aliases": [
+          "人力资源"
+        ],
+        "schema": {
+          "industry_name": "人力资源",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "enterprise_software",
+        "name": "软件服务",
+        "aliases": [
+          "软件服务",
+          "SaaS"
+        ],
+        "schema": {
+          "industry_name": "软件服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "enterprise_ip",
+        "name": "知识产权",
+        "aliases": [
+          "知识产权"
+        ],
+        "schema": {
+          "industry_name": "知识产权",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "enterprise_consulting",
+        "name": "咨询服务",
+        "aliases": [
+          "咨询服务"
+        ],
+        "schema": {
+          "industry_name": "咨询服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "travel_leisure",
+    "category_name": "文旅休闲",
+    "sub_industries": [
+      {
+        "tag": "travel_scenic",
+        "name": "景区乐园",
+        "aliases": [
+          "景区乐园",
+          "景区"
+        ],
+        "schema": {
+          "industry_name": "景区乐园",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "travel_agency",
+        "name": "旅行社",
+        "aliases": [
+          "旅行社"
+        ],
+        "schema": {
+          "industry_name": "旅行社",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "travel_camping",
+        "name": "露营基地",
+        "aliases": [
+          "露营基地"
+        ],
+        "schema": {
+          "industry_name": "露营基地",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "travel_gym",
+        "name": "健身房",
+        "aliases": [
+          "健身房"
+        ],
+        "schema": {
+          "industry_name": "健身房",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "travel_yoga",
+        "name": "瑜伽馆",
+        "aliases": [
+          "瑜伽馆"
+        ],
+        "schema": {
+          "industry_name": "瑜伽馆",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "travel_cinema",
+        "name": "影城剧场",
+        "aliases": [
+          "影城剧场",
+          "影城"
+        ],
+        "schema": {
+          "industry_name": "影城剧场",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category_tag": "crossborder_ecommerce",
+    "category_name": "电商出海",
+    "sub_industries": [
+      {
+        "tag": "overseas_crossborder",
+        "name": "跨境电商",
+        "aliases": [
+          "跨境电商"
+        ],
+        "schema": {
+          "industry_name": "跨境电商",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "overseas_factory",
+        "name": "外贸工厂",
+        "aliases": [
+          "外贸工厂"
+        ],
+        "schema": {
+          "industry_name": "外贸工厂",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "overseas_dtc",
+        "name": "独立站运营",
+        "aliases": [
+          "独立站运营",
+          "独立站"
+        ],
+        "schema": {
+          "industry_name": "独立站运营",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "overseas_warehouse",
+        "name": "海外仓服务",
+        "aliases": [
+          "海外仓服务",
+          "海外仓"
+        ],
+        "schema": {
+          "industry_name": "海外仓服务",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      },
+      {
+        "tag": "overseas_logistics",
+        "name": "国际物流",
+        "aliases": [
+          "国际物流"
+        ],
+        "schema": {
+          "industry_name": "国际物流",
+          "pain_points": [],
+          "jargon_terms": [],
+          "solutions": [],
+          "objections": [],
+          "banned_absolute": [
+            "全网第一",
+            "稳赚不赔",
+            "保证收益",
+            "100%有效"
+          ],
+          "banned_industry": [
+            "刷单上榜",
+            "平台漏洞套利"
+          ],
+          "risk_behaviors": [
+            "违规导流",
+            "夸大承诺",
+            "虚假案例",
+            "诱导交易"
+          ]
+        }
+      }
+    ]
+  }
+]

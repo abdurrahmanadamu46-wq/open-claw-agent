@@ -1,0 +1,116 @@
+﻿{
+  "industry": "教育培训_语言培训",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "exam_trial_visual",
+      "hook_angle": "先看试听",
+      "hook_line": "真正想报名的人，不是想看一段鸡血视频，而是想先知道这课到底怎么上。",
+      "target_scene": "雅思、托福、考研英语、四六级试听",
+      "cover_direction": "封面主体给教室或试听片段，副元素补资料和白板，不用成功口号主导。",
+      "first_3_shots": [
+        "试听或讲解镜头",
+        "教室或资料镜头",
+        "问题场景提示镜头"
+      ],
+      "required_proof_assets": [
+        "试听过程",
+        "教室镜头",
+        "问题相关素材"
+      ],
+      "fallback_if_missing": "若缺少学员镜头，改用老师讲解和教室素材建立信任。"
+    },
+    {
+      "id": "speaking_practice_visual",
+      "hook_angle": "开口先练起来",
+      "hook_line": "很多人不是不会学，而是一直没有一个真的能开口的场景。",
+      "target_scene": "口语、面试英语、零基础开口",
+      "cover_direction": "封面强调开口互动和练习场景，不拍成空泛励志广告。",
+      "first_3_shots": [
+        "口语互动或练习镜头",
+        "老师纠音或反馈镜头",
+        "试听承接镜头"
+      ],
+      "required_proof_assets": [
+        "口语训练过程",
+        "老师反馈",
+        "试听承接"
+      ],
+      "fallback_if_missing": "若缺少互动素材，用老师演示和课堂口播补足路径感。"
+    },
+    {
+      "id": "trust_process_visual",
+      "hook_angle": "流程和老师信任",
+      "hook_line": "很多人不是不想报名，而是不想把时间和钱交给一套看不懂边界的路径。",
+      "target_scene": "首次试听、怕踩雷、信任路线",
+      "cover_direction": "封面主体给教室、老师或试听流程，副元素补资料和环境细节。",
+      "first_3_shots": [
+        "老师或教室镜头",
+        "资料或环境细节",
+        "试听流程镜头"
+      ],
+      "required_proof_assets": [
+        "环境",
+        "资料细节",
+        "试听流程"
+      ],
+      "fallback_if_missing": "若环境素材有限，至少拍教室和流程节点。"
+    },
+    {
+      "id": "deadline_window_visual",
+      "hook_angle": "报名季窗口",
+      "hook_line": "报名季最怕的不是没课，而是你还没看清哪条路最适合自己。",
+      "target_scene": "报名季、考试季、申请季",
+      "cover_direction": "封面强调时间窗口和真实开班感，不拍成夸张冲刺海报。",
+      "first_3_shots": [
+        "时间窗口提示镜头",
+        "教室或试听镜头",
+        "报名承接镜头"
+      ],
+      "required_proof_assets": [
+        "时间提示素材",
+        "教室或试听素材",
+        "报名承接"
+      ],
+      "fallback_if_missing": "若缺少开班素材，用字幕补足窗口信息。"
+    },
+    {
+      "id": "revisit_cycle_visual",
+      "hook_angle": "到了该续课的时候",
+      "hook_line": "真正会续课的人，通常不是突然想起你，而是学到某一步就知道该继续了。",
+      "target_scene": "老学员续课、复训、进阶班",
+      "cover_direction": "封面强调续课和阶段感，不拍成强促销海报。",
+      "first_3_shots": [
+        "阶段提示镜头",
+        "进阶方向镜头",
+        "报名承接镜头"
+      ],
+      "required_proof_assets": [
+        "阶段提示",
+        "进阶建议",
+        "报名承接"
+      ],
+      "fallback_if_missing": "缺少续课素材时，用学习进度字幕和教室镜头替代。"
+    },
+    {
+      "id": "truth_over_success_visual",
+      "hook_angle": "不靠逆袭幻想",
+      "hook_line": "好看的结果很多，真正重要的是你先知道自己现在适不适合这条路。",
+      "target_scene": "反夸张成功幻想、真实边界路线",
+      "cover_direction": "封面用教室和判断感，不用成功学海报做主视觉。",
+      "first_3_shots": [
+        "教室或试听镜头",
+        "问题提示镜头",
+        "边界说明镜头"
+      ],
+      "required_proof_assets": [
+        "试听镜头",
+        "环境",
+        "边界说明"
+      ],
+      "fallback_if_missing": "若案例不足，改做真实流程和边界说明路线。"
+    }
+  ]
+}

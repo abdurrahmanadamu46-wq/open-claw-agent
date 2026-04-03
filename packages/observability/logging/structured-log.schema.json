@@ -1,0 +1,20 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "liaoyuan.logs.structured.v1",
+  "type": "object",
+  "required": ["ts", "level", "service", "eventType", "traceId", "tenantId"],
+  "properties": {
+    "ts": { "type": "string", "format": "date-time" },
+    "level": { "enum": ["debug", "info", "warn", "error"] },
+    "service": { "type": "string" },
+    "eventType": { "type": "string" },
+    "traceId": { "type": "string" },
+    "tenantId": { "type": "string" },
+    "campaignId": { "type": ["string", "null"] },
+    "nodeId": { "type": ["string", "null"] },
+    "taskId": { "type": ["string", "null"] },
+    "message": { "type": ["string", "null"] },
+    "extra": { "type": ["object", "null"] }
+  },
+  "additionalProperties": true
+}

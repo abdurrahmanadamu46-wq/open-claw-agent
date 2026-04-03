@@ -1,0 +1,29 @@
+﻿name: trunk-branch-policy
+
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  branch-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        shell: bash
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          echo "head_ref=$BRANCH"
+          if [[ "$BRANCH" =~ ^codex\/ ]]; then
+            echo "ok: feature branch"
+            exit 0
+          fi
+          if [[ "$BRANCH" =~ ^release\/ ]]; then
+            echo "ok: release branch"
+            exit 0
+          fi
+          if [[ "$BRANCH" =~ ^hotfix\/ ]]; then
+            echo "ok: hotfix branch"
+            exit 0
+          fi
+          echo "Invalid branch naming. Allowed prefixes: codex/, release/, hotfix/"
+          exit 1

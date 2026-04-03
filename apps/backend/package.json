@@ -1,0 +1,14 @@
+﻿{
+  "name": "@liaoyuan/backend-bridge",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix ../../backend run start:dev",
+    "build": "npm --prefix ../../backend run build",
+    "start": "npm --prefix ../../backend run start",
+    "test:redaction": "npm --prefix ../../backend run test:redaction",
+    "test:resilience": "npm --prefix ../../backend run test:resilience",
+    "up": "docker compose -f ../../docker-compose.yml up -d backend",
+    "down": "docker compose -f ../../docker-compose.yml stop backend",
+    "logs": "docker compose -f ../../docker-compose.yml logs -f backend"
+  }
+}

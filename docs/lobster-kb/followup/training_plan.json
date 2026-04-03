@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "lobster": "followup",
+    "name": "小锤",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "flp_fail_001：过早推销——第一条消息就推产品/报价，用户觉得被当成韭菜，直接不回复或拉黑",
+    "flp_fail_002：跟进频率失控——每天都发消息，用户感到骚扰，从温线索变成死线索",
+    "flp_fail_003：异议处理绕弯子——用户说'太贵了'，回复大段产品介绍，没有正面回应异议"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "FLP-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "针对flp_fail_001：写一条每次发出第一条私信前必须执行的检查规则",
+      "deliverable": "一条if-then规则写入skills.json：'第一条消息发出前，检查是否包含[价格/购买/成交/产品推荐]等词汇，如果包含，删除这些内容重写——前两次触达严禁销售性词汇'",
+      "pass_criteria": [
+        "规则必须列举具体的禁止词汇（不能是'销售性内容'这种模糊描述）",
+        "规则是发出前的强制检查，不靠记忆",
+        "写入skills.json的known_failure_patterns.prevention字段"
+      ],
+      "fail_action": "重做，没有列举具体词汇的规则不可执行",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "FLP-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "接收来自catcher的3条热线索移交包，在6小时内完成首次开场触达",
+      "deliverable": "3条开场消息文案 + 说明：引用了catcher移交包的哪些信息，为什么选择这个切入角度",
+      "pass_criteria": [
+        "每条消息必须引用用户的具体行为（不能用通用开场白）",
+        "开场消息不包含任何销售性词汇（价格/购买/成交/产品）",
+        "开场消息以价值输出或问题解答结尾（引导用户继续回复）"
+      ],
+      "fail_action": "使用通用开场白→FAIL；出现销售词汇→FAIL",
+      "collab_required": "catcher（提供移交包）"
+    },
+    {
+      "task_id": "FLP-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "针对一个真实行业（美妆/餐饮/教育任选），完善该行业的异议处理话术库",
+      "deliverable": "异议处理话术表：至少5种异议类型/每种对应话术/话术设计原理（为什么这样回应有效）",
+      "pass_criteria": [
+        "5种异议类型必须来自真实跟进记录，不能是想象的",
+        "话术设计原理说明清楚（'先复述异议确认理解，再框架价值'这样的逻辑）",
+        "写入skills.json的flp_objection_001，标注verified_count"
+      ],
+      "fail_action": "重做，没有真实案例来源的话术库直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "FLP-T003",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "对3条温线索执行完整的3步信任建立序列（社会证明→价值确认→自然引导）",
+      "deliverable": "3条线索的跟进记录：每步内容/用户反应/下一步计划",
+      "pass_criteria": [
+        "Step1必须用与用户情况相似的真实案例（不能是虚构的'有个客户...'）",
+        "Step2给出真正有价值的建议，即使不促成购买",
+        "没有在Step3之前出现任何'你要不要买/预约'等引导"
+      ],
+      "fail_action": "跳过Step1/2直接到Step3→FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "FLP-T004",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "找出1条历史上因跟进频率过高导致用户变成死线索的真实案例，复盘根因",
+      "deliverable": "复盘记录：跟进时间轴（每次发消息的时间）/用户反应变化/断点在哪里/修正规则写入skills.json",
+      "pass_criteria": [
+        "必须是真实案例，有跟进记录佐证",
+        "根因分析到具体的频率问题（'第3天连续发了2条消息，超过了24小时间隔要求'）",
+        "修正规则有明确的时间间隔数字（不是'适当间隔'）"
+      ],
+      "fail_action": "重做，根因不具体的复盘直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "FLP-T005",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "处理5种真实异议（太贵/需要考虑/先看看/要商量/用别家），每种写出完整的异议处理对话",
+      "deliverable": "5个异议处理对话全文：异议原文/我的回应/逻辑说明",
+      "pass_criteria": [
+        "每个回应先复述异议确认理解，再给解决方案",
+        "'太贵'的处理不包含降价，而是重新框架价值",
+        "没有任何'绕弯子'——每个回应直接正面回应异议"
+      ],
+      "fail_action": "重做，没有正面回应异议的对话直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "FLP-T006",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "完成5条线索的完整跟进周期，并向abacus回传规范格式的结果数据",
+      "deliverable": "5条线索的跟进结果回传包（6字段）+ abacus确认数据格式无误",
+      "pass_criteria": [
+        "每条回传包含key_turning_point（哪条话术促成了意向转变）",
+        "流失案例必须有具体的lost_reason（不是'用户没兴趣'）",
+        "abacus收到后无需追问补充信息"
+      ],
+      "fail_action": "abacus追问→重做回传包",
+      "collab_required": "abacus（验证数据格式）"
+    },
+    {
+      "task_id": "FLP-T007",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "设计一套温线索的月度维护话术序列（每月1次，连续3个月不重复）",
+      "deliverable": "3条维护话术文案 + 发送时机说明 + 重新激活判断标准（什么情况下转回热线索）",
+      "pass_criteria": [
+        "3条话术内容各不相同，切入角度不同",
+        "每条话术说明'为什么这个时机发'",
+        "重新激活判断标准有具体行为触发条件（不是'感觉用户有兴趣了'）"
+      ],
+      "fail_action": "重做，重复切入角度的话术序列直接FAIL",
+      "collab_required": null
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "FLP-DRILL-001",
+      "description": "接到catcher移交的3条混合热/温线索，在规定时间内完成首次开场，并按节奏完成第一周跟进",
+      "real_time_limit": "1h（首次开场）",
+      "sim_time": "1周",
+      "pass_criteria": [
+        "热线索6小时内首次触达",
+        "开场消息无通用话术、无销售词汇",
+        "第一周跟进节奏严格执行（热线索：无回复等24h再发）"
+      ],
+      "evaluation": "abacus统计首周回复率 + catcher确认移交包被正确使用"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "FLP-T001到FLP-T007全部PASS",
+      "连续20条热线索首次触达，无通用开场白（commander抽查确认）",
+      "热线索6小时内触达率≥95%（abacus数据验证）",
+      "私信成交转化率≥15%（基于连续1个月真实数据）",
+      "线索回传格式合格率100%（abacus无需追问）",
+      "FLP-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

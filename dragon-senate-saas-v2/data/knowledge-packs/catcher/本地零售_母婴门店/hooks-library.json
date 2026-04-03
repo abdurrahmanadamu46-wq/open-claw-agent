@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_母婴门店","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"project_plus_time_hook","title":"品类加时间同时出现时的高意向钩子","description":"当线索同时出现品类方向和到店时间时，应优先判为高意向候选。","examples":["周五晚想先看奶粉和尿裤。","这周日想看看辅食和洗护。"],"priority":"high"},
+{"id":"first_visit_process_hook","title":"首次到店与育儿顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心不适合时，说明其到店意图更具体。","examples":["第一次来，周末想先看适不适合。","担心不适合宝宝，想先来了解一下。"],"priority":"high"},
+{"id":"deadline_hook","title":"节礼和开学补货钩子","description":"节礼、开学和换季前的明确日期，是母婴门店线索中非常强的行动信号。","examples":["周六要送礼，想周四晚上先来看看。","下周开学，这两天想先补一批用品。"],"priority":"high"},
+{"id":"store_specific_booking_hook","title":"门店位置明确钩子","description":"当用户直接说出门店、商圈、地铁站附近或社区附近时，说明其已经在做实际选择阶段。","examples":["想约你们国金那家。","万象城门店这周末有货吗。"],"priority":"high"},
+{"id":"returning_owner_hook","title":"老客复购钩子","description":"用户提到之前来过、朋友推荐或上次感觉还不错时，通常意味着信任成本更低。","examples":["上次来店里买过，这次想看看下一步。","朋友推荐我来问问这周能不能看货。"],"priority":"medium"},
+{"id":"price_with_context_hook","title":"带上下文的价格咨询钩子","description":"价格问题只要带着项目范围、时间窗口或场景，就不再是纯比较型流量。","examples":["节前想备一批，大概什么价位。","奶粉和尿裤都想看看，周末想先来，价格大概多少。"],"priority":"medium"}]}

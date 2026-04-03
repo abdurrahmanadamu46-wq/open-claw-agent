@@ -1,0 +1,19 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "liaoyuan.events.fleet-task.v1",
+  "type": "object",
+  "required": ["eventType", "traceId", "tenantId", "taskId", "sourceQueue", "status", "ts"],
+  "properties": {
+    "eventType": { "const": "fleet.task.status" },
+    "traceId": { "type": "string" },
+    "tenantId": { "type": "string" },
+    "campaignId": { "type": ["string", "null"] },
+    "nodeId": { "type": ["string", "null"] },
+    "taskId": { "type": "string" },
+    "sourceQueue": { "type": "string" },
+    "status": { "enum": ["queued", "running", "completed", "failed", "canceled"] },
+    "errorCode": { "type": ["string", "null"] },
+    "ts": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

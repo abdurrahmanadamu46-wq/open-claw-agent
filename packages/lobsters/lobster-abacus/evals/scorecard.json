@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": "lobster.eval.scorecard.v0.2",
+  "roleId": "abacus",
+  "primaryArtifact": "ValueScoreCard",
+  "metrics": [
+    {
+      "id": "score_calibration",
+      "weight": 0.3,
+      "order": 1
+    },
+    {
+      "id": "roi_accuracy",
+      "weight": 0.25,
+      "order": 2
+    },
+    {
+      "id": "reward_signal_usefulness",
+      "weight": 0.2,
+      "order": 3
+    },
+    {
+      "id": "attribution_consistency",
+      "weight": 0.25,
+      "order": 4
+    }
+  ],
+  "acceptance": {
+    "artifactSchemaPassRate": 0.99,
+    "benchmarkPassRate": 0.91,
+    "regressionBudgetCeilingRatio": 1.03
+  }
+}

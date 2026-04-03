@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"pharmacy_hook_urgent_problem","title":"急用问题开头模板","description":"适合发烧、感冒、肠胃和夜间急送路线。","examples":["很多人卡的不是要不要买，而是今晚到底先备哪一类更稳。 ","夜里要用药的人，最怕的不是没有选择，而是来不来得及。 ","真正难的不是买一盒药，而是先把场景和时间说清楚。 "],"priority":"high"},
+  {"id":"pharmacy_hook_family_scene","title":"家庭备药开头模板","description":"适合返乡、开学和家庭常备药路线。","examples":["家庭备药最怕的不是少买一点，而是到了要用的时候家里根本没准备。 ","很多人来补药，不是想囤更多，而是想这次先把清单理顺。 ","给家里备药这件事，先把谁用、什么时候用说清楚，会更省心。 "],"priority":"high"},
+  {"id":"pharmacy_hook_trust_first","title":"药师说明开头模板","description":"适合首次到店、儿童和老人护理、说明焦虑路线。","examples":["很多人来药店第一句问的不是便宜多少，而是这次到底能不能先问清楚。 ","真正让人安心的，不是促销有多大，而是边界有没有讲明白。 ","想先备得稳，先把场景和说明问清楚，比先看价格更重要。 "],"priority":"high"},
+  {"id":"pharmacy_hook_refill","title":"慢病续购开头模板","description":"适合慢病补药、耗材和家庭复购路线。","examples":["补药这件事很多时候不是重新选，而是先把这次该补哪一盒说清楚。 ","真正省事的续购，不是每次重讲一遍，而是知道你这次该补什么规格。 ","家里长期用的东西，先把周期和数量讲清楚，会比盲目比价更稳。 "],"priority":"medium"},
+  {"id":"pharmacy_hook_seasonal","title":"季节窗口开头模板","description":"适合流感季、花粉季和返乡节点路线。","examples":["换季备药最怕拖到最后一天才开始看。 ","流感季和花粉季真正着急的不是选择少，而是家里没提前备。 ","返乡前要备药，先把家庭成员和场景说清会更快。 "],"priority":"medium"},
+  {"id":"pharmacy_hook_delivery","title":"时效履约开头模板","description":"适合夜间送药和到店自取路线。","examples":["临时要药的人，先把门店和时间说清，会比先问最低价更快。 ","夜间急送这件事，最怕的是边界没讲清。 ","急用时先确认来不来得及，比先看一堆款式更重要。 "],"priority":"medium"}
+]}

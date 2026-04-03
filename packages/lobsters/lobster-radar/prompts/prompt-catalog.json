@@ -1,0 +1,81 @@
+{
+  "lobster_id": "radar",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "signal-scan",
+      "prompts": [
+        {
+          "id": "radar.signal-scan.platform-sweep.v1",
+          "file": "signal-scan/platform-sweep.prompt.md",
+          "skill_id": "radar_signal_scan",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "local-service", "ecommerce", "health"],
+          "variants": ["v1-xiaohongshu", "v1-douyin", "v1-weibo"]
+        },
+        {
+          "id": "radar.signal-scan.competitor-watch.v1",
+          "file": "signal-scan/competitor-watch.prompt.md",
+          "skill_id": "radar_signal_scan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "3c", "food"],
+          "variants": ["v1-content-gap", "v1-keyword-gap", "v1-pricing-signal"]
+        },
+        {
+          "id": "radar.signal-scan.risk-alert.v1",
+          "file": "signal-scan/risk-alert.prompt.md",
+          "skill_id": "radar_signal_scan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "health", "finance", "food"],
+          "variants": ["v1-compliance-risk", "v1-reputation-risk"]
+        },
+        {
+          "id": "radar.signal-scan.keyword-radar.v1",
+          "file": "signal-scan/keyword-radar.prompt.md",
+          "skill_id": "radar_signal_scan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "mother-baby", "education", "local-service"],
+          "variants": ["v1-rising", "v1-decay"]
+        }
+      ]
+    },
+    {
+      "category": "trend-analysis",
+      "prompts": [
+        {
+          "id": "radar.trend-analysis.hot-topic-report.v1",
+          "file": "trend-analysis/hot-topic-report.prompt.md",
+          "skill_id": "radar_trend_report",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "fashion", "food", "travel", "ecommerce"],
+          "variants": ["v1-weekly-digest", "v1-event-driven", "v1-seasonal"]
+        },
+        {
+          "id": "radar.trend-analysis.signal-brief.v1",
+          "file": "trend-analysis/signal-brief.prompt.md",
+          "skill_id": "radar_trend_report",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "health", "local-service"],
+          "variants": ["v1-executive", "v1-ops-detail"]
+        },
+        {
+          "id": "radar.trend-analysis.platform-pulse.v1",
+          "file": "trend-analysis/platform-pulse.prompt.md",
+          "skill_id": "radar_trend_report",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "3c", "mother-baby"],
+          "variants": ["v1-xiaohongshu-pulse", "v1-douyin-pulse"]
+        },
+        {
+          "id": "radar.trend-analysis.opportunity-map.v1",
+          "file": "trend-analysis/opportunity-map.prompt.md",
+          "skill_id": "radar_trend_report",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "food", "travel", "education", "local-service"],
+          "variants": ["v1-content-opportunity", "v1-channel-opportunity"]
+        }
+      ]
+    }
+  ]
+}

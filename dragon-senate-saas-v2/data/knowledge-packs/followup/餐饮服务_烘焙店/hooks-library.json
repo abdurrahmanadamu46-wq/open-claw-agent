@@ -1,0 +1,151 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_birthday_cake_facts",
+      "scene": "dm_followup",
+      "lead_state": "fresh_same_day_birthday_need",
+      "intent": "lock_same_day_cake_facts",
+      "hook": "这次先别让你白跑门店，我先把今晚能不能稳稳拿到蛋糕的关键信息对齐。",
+      "bridge": "烘焙店当日蛋糕最怕只问有没有，不问门店、时间、尺寸、口味和写字需求，后面很容易扑空或来回改。",
+      "next_step": "请客户确认门店、预计取货时间、尺寸、口味、是否需要写字和蜡烛，目标是尽快进入现货确认、简配定制或更稳妥的替代方案。",
+      "cadence_hint": "客户刚回复时优先在 15-30 分钟内接上；若未回，在下一次明显取货窗口前做一次轻提醒。",
+      "approval_guard": "未核库存和裱花台压力前，不写成已锁货、现做来得及或到店即取。"
+    },
+    {
+      "id": "hook_custom_cake_design_followup",
+      "scene": "custom_cake_followup",
+      "lead_state": "theme_cake_high_intent",
+      "intent": "qualify_design_budget_and_pickup",
+      "hook": "定制蛋糕先不急着推贵款，先把主题、预算和取货时间对齐，后面会顺很多。",
+      "bridge": "烘焙店定制单最怕只聊参考图，不聊尺寸、口味、写字、蜡烛和预算，后面很容易反复返工。",
+      "next_step": "请客户确认日期、门店、尺寸、主题风格、预算区间、写字文案和是否接受简化替代，再推进图稿确认和定金节点。",
+      "cadence_hint": "定制线索优先在当天工作时段完成一轮信息补齐，未回则隔半天或下一个工作窗口再跟一次。",
+      "approval_guard": "未确认最终版本和定金前，不承诺正式锁裱花档期或完全复刻参考图。"
+    },
+    {
+      "id": "hook_morning_bread_pickup_window",
+      "scene": "bread_preorder_followup",
+      "lead_state": "next_morning_pickup_interest",
+      "intent": "verify_batch_and_pickup_window",
+      "hook": "这单先把出炉批次和取货时间核清楚，免得你早上赶时间还扑空。",
+      "bridge": "烘焙店早餐面包和可颂贝果常常受出炉批次、门店余量和高峰排队影响，先核窗口比先催付款更稳。",
+      "next_step": "请客户确认门店、预计取货时间、品类数量和是否接受替代批次，目标是先锁清出炉窗口、自提方式和更稳妥的到店时间。",
+      "cadence_hint": "早餐类线索尽量在前一晚或当日早晨尽快确认；未回时避免跨过早餐窗口后继续强追。",
+      "approval_guard": "未核出炉批次和余量前，不承诺现烤现拿或所有品项一定齐。"
+    },
+    {
+      "id": "hook_afternoon_tea_group_order_qualification",
+      "scene": "group_order_followup",
+      "lead_state": "office_tea_break_high_intent",
+      "intent": "qualify_count_delivery_and_invoice",
+      "hook": "这单企业茶歇先不急着催付款，先把数量、交付方式和发票条件对齐，后面更稳。",
+      "bridge": "烘焙店茶歇单最怕只聊价格，不聊数量、冷热常温拆分、送达楼层、时间窗和开票需求，后面很容易返工。",
+      "next_step": "请客户确认门店、送达或自取时间、品类数量、地址楼层、发票需求和预算区间，再推进预付款和装盒交付方案。",
+      "cadence_hint": "团单线索优先在当个工作时段完成一轮信息补齐，未回则隔半天或下一个工作窗口再跟一次。",
+      "approval_guard": "未到预付款或未核配送能力前，不承诺正式锁产能、准点送达或全部品类都可做。"
+    },
+    {
+      "id": "hook_peak_stock_relief",
+      "scene": "peak_window_followup",
+      "lead_state": "urgent_same_day_pickup",
+      "intent": "shift_to_safer_stock_option",
+      "hook": "你这次最重要的是别扑空，我们先把今天更稳的拿货方案找出来。",
+      "bridge": "晚高峰里蛋糕现货、冷藏甜品和面包余量变化很快，比起空口保证，先给一个更稳的方案更有用。",
+      "next_step": "请客户确认门店、时间、人数和最在意的是口味、尺寸还是写字，优先推进现货、自提、改小尺寸、简配定制或换门店中的一个明确方案。",
+      "cadence_hint": "同窗口线索要快响应，但一次只推进一个明确动作，不连续追问。",
+      "approval_guard": "不写“现在来肯定有”“20 分钟一定做好”或“到店不用等”。"
+    },
+    {
+      "id": "hook_quote_feedback_surface_blocker",
+      "scene": "quote_followup",
+      "lead_state": "awaiting_feedback",
+      "intent": "surface_budget_or_design_blocker",
+      "hook": "方案我先不急着追结果，想先帮你把真正卡住的点找出来。",
+      "bridge": "烘焙店的报价单卡住，常见原因不是要不要订，而是预算、尺寸、图稿复杂度、配送方式或发票条件还没对齐。",
+      "next_step": "请客户只回最卡的一项：预算、尺寸、主题、配送、发票还是取货时间，然后再推进简化方案、换款或正式确认。",
+      "cadence_hint": "发完方案后可在 18-24 小时内做一次温和追问，再根据反馈决定下一次节奏。",
+      "approval_guard": "未确认版本和支付节点前，不把报价单写成已转入正式排产。"
+    },
+    {
+      "id": "hook_holiday_gift_box_slot",
+      "scene": "holiday_followup",
+      "lead_state": "festival_preorder_interest",
+      "intent": "verify_pickup_window_and_payment",
+      "hook": "节庆档最怕临近取货才发现排满，我们先把时间窗和确认条件说清楚。",
+      "bridge": "烘焙店节庆礼盒、母亲节蛋糕和联名款通常受取货时段、门店配额和包装余量影响，先核窗口比先拍板更稳。",
+      "next_step": "请客户确认门店、日期、取货时间窗、数量和是否需要礼袋或贺卡，目标是先确认可用档期，再推进支付或短时保留。",
+      "cadence_hint": "节庆类线索要尽快确认档期，但每次只推进一个关键确认动作，避免连续轰炸。",
+      "approval_guard": "未到款或未核门店配额前，不承诺黄金时段礼盒或节庆蛋糕已经锁定。"
+    },
+    {
+      "id": "hook_allergy_and_ingredient_safe_followup",
+      "scene": "safety_sensitive_followup",
+      "lead_state": "allergy_or_special_diet",
+      "intent": "collect_precise_restriction",
+      "hook": "这个顾虑值得认真对待，我们先把限制说准确，后面才敢往下安排。",
+      "bridge": "烘焙店的坚果、乳制品、鸡蛋、酒精糖浆、代糖和无麸质相关问题不能靠模糊经验回复，先把具体产品和限制收全更安全。",
+      "next_step": "请客户确认具体限制、涉及产品、门店和取货时间，目标是先完成人工核实输入。",
+      "cadence_hint": "安全类线索以稳为先，拿到关键事实后再跟下一步，不靠高频催促。",
+      "approval_guard": "未核实前，不承诺零交叉接触、绝对无某成分或一定适合所有人。"
+    },
+    {
+      "id": "hook_service_recovery_rebuild",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_engaged",
+      "intent": "repair_trust_then_rebook",
+      "hook": "上次让你体验不好，这次先不急着推新单，先把能修复的地方说清楚。",
+      "bridge": "烘焙店售后后的复联重点不是立刻再卖一单，而是让客户看到塌边、写错字、漏蜡烛或配送破损的问题已被记录、处理和避免重演。",
+      "next_step": "先确认上次问题点、期望补救和这次是否还考虑预订，若对方愿意，再推进低压力的重订、备注确认或更稳妥的取货方式。",
+      "cadence_hint": "售后恢复期减少频次，以一次明确说明和一次后续确认为主。",
+      "approval_guard": "未经批准，不擅自承诺退款、免单、重做升级或额外补偿礼盒。"
+    },
+    {
+      "id": "hook_reactivation_with_new_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，是有个更贴近你当时需求的新理由。",
+      "bridge": "烘焙店沉睡线索更容易对新品上架、恢复供应、节庆提醒、工作日现货窗口或更贴预算的简配方案产生回应，而不是对“还要吗”产生回应。",
+      "next_step": "带一个具体新变化复联，比如季节款蛋糕、现货窗口、茶歇组合、恢复供应的口味或更合适的尺寸方案，并给客户低压力回复入口。",
+      "cadence_hint": "沉睡复联单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_waiting_for_callback_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你的问题我先记下，先把信息收齐，等允许的动作一到位就能更快推进。",
+      "bridge": "在烘焙店线索里，电话回拨、特殊原料解释或补偿承诺如果审批没到位，先把门店、时间、产品和问题清单收好，后面会更顺。",
+      "next_step": "请客户留下方便联系的时间、关心的问题点和订单或门店基础信息，作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼或口头给出例外承诺。"
+    },
+    {
+      "id": "hook_deposit_before_design_lock",
+      "scene": "payment_followup",
+      "lead_state": "ready_but_unpaid",
+      "intent": "advance_deposit_gate",
+      "hook": "这单已经很接近落地了，下一步关键是把版本确认和定金条件补齐。",
+      "bridge": "烘焙店定制蛋糕、节庆礼盒和大单会占用真实产能，未到定金前能做的是推进确认，不是提前替客户把档期全部锁死。",
+      "next_step": "推动客户确认定金、最终版本、门店、时间和交付方式，并同步说明保留时长与档期风险。",
+      "cadence_hint": "付款前可更聚焦，但一次只推进一个明确确认动作。",
+      "approval_guard": "未达付款条件前，不写成已锁裱花档期、已正式排产或已保留全部节庆资源。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更容易回复一点。",
+      "bridge": "烘焙线索里，沉默不一定是拒绝，很多时候只是还在确认预算、参考图、家庭人数或取货安排，高频追问反而更容易把人推远。",
+      "next_step": "发一个低成本回复入口，例如只回门店、尺寸、时间或是否接受现货中的一个，随后进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回应时，拉开到下一次明显消费窗口或次日再判断。",
+      "approval_guard": "避免多人、多渠道重复跟同一位客户。"
+    }
+  ]
+}

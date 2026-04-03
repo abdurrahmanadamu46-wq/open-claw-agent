@@ -1,0 +1,114 @@
+﻿{
+  "version": "lobster.shadow-signal-weight.policy.v0.2",
+  "name": "Default Shadow Signal Weight Policy",
+  "defaultSignalWeight": 1,
+  "statusMultipliers": {
+    "positive": 1,
+    "neutral": 0.35,
+    "negative": 1
+  },
+  "signalWeights": {
+    "lead_push_result": 1.4,
+    "lead_id_assigned": 1.2,
+    "lead-ops-results_result": 1,
+    "roi_realized": 1.8,
+    "content_execute_task": 1,
+    "content_scene_count": 0.45,
+    "content_script_generated": 0.55,
+    "content_post_result": 0.95,
+    "content_platform_selected": 0.35,
+    "publish_external": 1.6,
+    "manual_fallback_required": 1.2,
+    "voice_provider_unstable": 1.25
+  },
+  "suggestionThresholds": {
+    "promoteCandidateMinPositiveWeight": 2,
+    "promoteCandidateMaxNegativeWeight": 0,
+    "promoteCandidateMinNetWeight": 2,
+    "holdMinNegativeWeight": 2.5,
+    "holdMinNegativeToPositiveRatio": 0.9,
+    "cautiousMinPositiveWeight": 1
+  },
+  "roleOverrides": {
+    "dispatcher": {
+      "signalWeights": {
+        "publish_external": 2.4,
+        "voice_provider_unstable": 1.8,
+        "manual_fallback_required": 1.5,
+        "content_execute_task": 1.3,
+        "content_post_result": 1.2,
+        "content_scene_count": 0.25,
+        "content_script_generated": 0.35,
+        "content_platform_selected": 0.15
+      },
+      "suggestionThresholds": {
+        "promoteCandidateMinPositiveWeight": 4.5,
+        "promoteCandidateMaxNegativeWeight": 0.5,
+        "promoteCandidateMinNetWeight": 4.5,
+        "holdMinNegativeWeight": 3.2,
+        "cautiousMinPositiveWeight": 2
+      },
+      "scopes": [
+        {
+          "scopeId": "internal_execute",
+          "includeSignals": [
+            "execute-campaign-results_result",
+            "content_execute_task",
+            "content_scene_count",
+            "content_script_generated",
+            "content_post_result",
+            "content_platform_selected",
+            "aoto_cut_render",
+            "replay_completed"
+          ],
+          "includeScopeIds": [
+            "internal_execute"
+          ],
+          "thresholds": {
+            "minPositiveTruthWeight": 2.5,
+            "maxNegativeTruthWeight": 0.5,
+            "minNetTruthWeight": 2.5
+          },
+          "recommendedAction": "promote_with_guardrails"
+        },
+        {
+          "scopeId": "external_publish",
+          "includeSignals": [
+            "publish_external"
+          ],
+          "thresholds": {
+            "minPositiveTruthWeight": 1,
+            "maxNegativeTruthWeight": 0,
+            "minNetTruthWeight": 1
+          },
+          "recommendedAction": "stay_shadow_only"
+        }
+      ]
+    },
+    "catcher": {
+      "signalWeights": {
+        "qualified_lead_created": 1.8,
+        "lead_push_result": 1.5,
+        "lead_id_assigned": 1.3,
+        "lead-ops-results_result": 1.1
+      }
+      ,
+      "suggestionThresholds": {
+        "promoteCandidateMinPositiveWeight": 3.5,
+        "promoteCandidateMinNetWeight": 3.5
+      }
+    },
+    "abacus": {
+      "signalWeights": {
+        "roi_realized": 2.6,
+        "lead_push_result": 1.1,
+        "lead_id_assigned": 0.9,
+        "lead-ops-results_result": 0.8
+      },
+      "suggestionThresholds": {
+        "promoteCandidateMinPositiveWeight": 3,
+        "promoteCandidateMinNetWeight": 3
+      }
+    }
+  }
+}

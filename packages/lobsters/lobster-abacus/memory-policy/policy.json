@@ -1,0 +1,22 @@
+﻿{
+  "schemaVersion": "lobster.memory-policy.v0.1",
+  "roleId": "abacus",
+  "readScope": [
+    "tenant_memory",
+    "mission_memory",
+    "industry_memory"
+  ],
+  "writeScope": [
+    "tenant_memory",
+    "mission_memory"
+  ],
+  "writePolicy": {
+    "allowAutoWrite": true,
+    "requireFeedbackCompileForGlobalPromotion": true
+  },
+  "retentionPolicy": {
+    "sessionDays": 3,
+    "missionDays": 14,
+    "tenantDays": 90
+  }
+}

@@ -1,0 +1,265 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_bbq_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测烧烤店在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "夜宵烧烤店A",
+          "炭火烤串店B"
+        ],
+        "raw_signals": [
+          "抖音本地生活公告要求团购标题里涉及现穿现串、炭火现烤、100 串不限量、全城最低价等表述时必须提供可核验依据，违规会被降权处理",
+          "美团商家后台通知加强烧烤门店营业资质、后厨实拍和食材储存照片抽检",
+          "两家竞品把套餐文案从鲜肉不限量和全网低价改成招牌双人烧烤套餐，菜品以门店当日备货为准"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对价格承诺和食材新鲜度表述边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略资质抽检和规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_bbq_late_night_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城烧烤店夜宵窗口与天气驱动的需求变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "社区烧烤店C",
+          "酒馆烧烤店D"
+        ],
+        "raw_signals": [
+          "同城周末气温回升，搜索词、地图问答和私信里集中出现营业到几点、露天座位、夜宵推荐、排队多久等咨询",
+          "同商圈三家竞品同步把闭店时间从 23 点延到 2 点，并上线啤酒加烤串的夜宵套餐",
+          "探店评论里连续提到晚市排队时间拉长，但午市热度没有同步上升"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城天气变化与夜宵意图聚集应被识别为机会信号",
+        "竞品营业时段变化需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的高关注窗口提醒"
+      ],
+      "mustAvoid": [
+        "把天气变化单独夸大为确定性结论",
+        "用跨城露营烧烤热度替代本地夜宵需求判断"
+      ]
+    },
+    {
+      "id": "radar_bbq_street_operation_notice_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测烧烤店外摆经营与夜间整治带来的线下路线风险",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_market_plus_regulation",
+        "competitor_watchlist": [
+          "露天烧烤店E",
+          "夜市烤串店F"
+        ],
+        "raw_signals": [
+          "街道、城管和消防联合发布夜间整治通知，重点检查占道摆桌、炭火炉具、液化气瓶、油烟净化和 22 点后噪音投诉",
+          "同商圈两家竞品撤掉外摆并在主页提示以室内就餐和提前预约为主",
+          "社区平台问答和短视频评论连续提到周末夜间检查更严、排队客流被分流"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方整治通知应被识别为高可信高影响信号",
+        "需要指出对外摆、营业时段和晚市动线的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品撤外摆当成单店偶发动作",
+        "忽略城管消防通知在烧烤店场景中的高优先级"
+      ]
+    },
+    {
+      "id": "radar_bbq_takeaway_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测烧烤店夜宵外卖成本风险与平台补贴变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "外卖烧烤店G"
+        ],
+        "raw_signals": [
+          "同城商家群截图称美团下周将取消烧烤夜宵补贴并上调抽佣 2%，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区经理口径也不一致",
+          "核心竞品的起送价、配送费、打包费和满减结构暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断夜宵外卖利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_bbq_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别二线城市社区型烧烤店的内容与套餐机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区烤串店H"
+        ],
+        "raw_signals": [
+          "外地海边露营烧烤短视频爆火，大量内容强调日落、帐篷氛围和高客单打卡",
+          "本地平台最近新增搜索和评论集中在夜宵外卖、59 到 99 元 2 到 4 人套餐、停车方便和 30 分钟送达",
+          "本地竞品开始上新家庭夜宵套餐和社区外卖组合，没有跟进高客单露营路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型夜宵需求应高于跨城审美爆款热度",
+        "需要区分露营打卡内容与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单露营路线",
+        "忽略同城搜索与竞品套餐的本地互证"
+      ]
+    },
+    {
+      "id": "radar_bbq_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城烧烤店食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某连锁烧烤店使用隔夜肉并被集中查封，只给出模糊后厨偷拍视频",
+          "该说法被两个营销号转发，但都没有提供执法文书、门店名称或监管链接",
+          "未发现市场监管局通报、平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已经发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_bbq_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度烧烤竞品的真实门店热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "网红烤串店I",
+          "夜市烧烤店J"
+        ],
+        "raw_signals": [
+          "竞品发布排队 200 桌的短视频，但没有给出日期、门店定位或排号系统截图",
+          "地图平台近 7 天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也没有新增预约限制或翻台提示"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    },
+    {
+      "id": "radar_bbq_supply_chain_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测烧烤店原料波动向菜单结构与竞品动作的传导",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_competitor_watch",
+        "competitor_watchlist": [
+          "牛羊烤串店K",
+          "海鲜烧烤店L"
+        ],
+        "raw_signals": [
+          "同城牛羊肉串、海鲜、小龙虾和打包耗材价格阶段性上行",
+          "同商圈三家竞品同步下架低价肉串组合，改推周末限量套餐或啤酒联动升级款",
+          "最近评论里连续出现热门串品售罄更快、分量变化和当日备货不固定的反馈，未发现官方平台规则变化"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要把原料波动翻译成菜单和套餐结构变化",
+        "应明确这是竞品经营动作和市场信号而不是平台规则变化",
+        "关注级别应为中高"
+      ],
+      "mustAvoid": [
+        "把成本新闻单独放大成确定性危机",
+        "忽略评论反馈与竞品动作之间的互证关系"
+      ]
+    }
+  ]
+}

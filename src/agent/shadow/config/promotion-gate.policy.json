@@ -1,0 +1,60 @@
+﻿{
+  "version": "lobster.promotion-gate.policy.v0.2",
+  "name": "Default Shadow Promotion Gate Policy",
+  "defaultTierWeights": {
+    "T1": {
+      "shadowWeight": 1,
+      "liveWeight": 0
+    },
+    "T2": {
+      "shadowWeight": 0.75,
+      "liveWeight": 0
+    }
+  },
+  "bands": {
+    "promote_candidate": {
+      "minTruthLinkedAssignments": 1,
+      "minPositiveTruthCount": 1,
+      "maxNegativeTruthCount": 0,
+      "minPositiveTruthWeight": 2,
+      "maxNegativeTruthWeight": 0,
+      "minNetTruthWeight": 2,
+      "targetShadowWeight": 1,
+      "targetLiveWeight": 0.15,
+      "action": "promote_to_limited_live"
+    },
+    "promote_cautiously": {
+      "minTruthLinkedAssignments": 1,
+      "minPositiveTruthCount": 1,
+      "maxNegativeTruthCount": 2,
+      "minPositiveTruthWeight": 1,
+      "maxNegativeTruthWeight": 3,
+      "minNetTruthWeight": 0,
+      "targetShadowWeight": 1,
+      "targetLiveWeight": 0.05,
+      "action": "promote_with_guardrails"
+    },
+    "continue_shadow_collection": {
+      "minTruthLinkedAssignments": 0,
+      "minPositiveTruthCount": 0,
+      "maxNegativeTruthCount": 99,
+      "minPositiveTruthWeight": 0,
+      "maxNegativeTruthWeight": 999,
+      "minNetTruthWeight": -999,
+      "targetShadowWeight": 1,
+      "targetLiveWeight": 0,
+      "action": "stay_shadow_only"
+    },
+    "hold_and_review": {
+      "minTruthLinkedAssignments": 0,
+      "minPositiveTruthCount": 0,
+      "maxNegativeTruthCount": 99,
+      "minPositiveTruthWeight": 0,
+      "maxNegativeTruthWeight": 999,
+      "minNetTruthWeight": -999,
+      "targetShadowWeight": 0.5,
+      "targetLiveWeight": 0,
+      "action": "hold_and_review"
+    }
+  }
+}

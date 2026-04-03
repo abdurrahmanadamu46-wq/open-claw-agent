@@ -1,0 +1,318 @@
+﻿{
+  "industry": "閰掑簵姘戝_鍩庡競姘戝",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_urban_homestay_late_night_self_checkin_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "鎶婁竴绗斿湴閾佹櫄鐐瑰悗鐨勫煄甯傛皯瀹挎繁澶滃埌搴楄鍗曡浆鎴愬彲鎵ц鐨勫疄鍚嶆牳楠屻€佽嚜鍔╁叆浣忓拰妤兼爧闂ㄧ璁″垝",
+        "routing_context": "浣忓鍘熻鍒?22:10 鍒板簵锛岀幇鏀逛负 23:55 鎶佃揪锛涙埧婧愪綅浜庡眳姘戝叕瀵?12 灞傦紝闇€瑕佸厛閫氳繃灏忓尯闂ㄧ銆佸啀杩涘崟鍏冮棬銆佹渶鍚庤緭鍏ユ埧闂ㄥ瘑鐮侊紱鎴块棿宸?clean_inspected锛屽彲鐢卞€肩彮鎴夸笢杩滅▼鍙戦€佽矾绾垮拰闂ㄩ攣瀵嗙爜锛屼絾蹇呴』鍏堝畬鎴愬疄鍚嶇櫥璁颁笌鍏ヤ綇浜轰竴鑷存€х‘璁ゃ€",
+        "integration_state": {
+          "pms": "healthy",
+          "smart_lock": "healthy",
+          "public_security_uploader": "healthy",
+          "property_access_guide": "healthy",
+          "host_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "瀹炲悕鏍搁獙瀹屾垚鍚庡啀涓嬪彂妤兼爧闂ㄧ涓庢埧闂ㄥ瘑鐮佺殑闂搁棬",
+        "灏忓尯闂ㄧ銆佸崟鍏冮棬銆佺數姊笌鎴块棬鐨勫垎娈靛埌搴楁寚寮",
+        "浣忓澶辫仈鎴栭棬宀楁斁琛屽け璐ユ椂鐨勫闂村洖閫€涓庢埧闂翠繚鐣欒鍒"
+      ],
+      "mustAvoid": [
+        "鍦ㄥ疄鍚嶆湭瀹屾垚鍓嶇洿鎺ュ彂閫佸畬鏁撮棬绂佸拰鎴块棬瀵嗙爜",
+        "榛樿娣卞鍒板簵鏃跺皬鍖哄ぇ闂ㄥ拰闂ㄥ矖閮戒細鑷劧鏀捐"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_early_arrival_no_storage_002",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "澶勭悊涓€绗旇法鍩庢棭鍒扮殑鎻愬墠鍏ヤ綇涓庡瘎瀛橀渶姹傦紝浣嗙洰鏍囨埧浠嶅湪鍚屾棩缈绘埧涓旀皯瀹挎病鏈夊墠鍙板瘎瀛樼┖闂",
+        "routing_context": "浣忓 10:20 鍒板簵锛屽笇鏈涘厛鏀句袱鍙ぇ琛屾潕绠卞苟灏介噺涓崍鍓嶈繘鎴匡紱鐩爣鎴夸笂涓€鍗?11:30 鎵嶉€€鎴匡紝淇濇磥棰勮 13:40 瀹屾垚锛屾埧婧愭湰韬病鏈夊墠鍙般€佽鏉庢埧鎴栧叕鍏变紤鎭尯锛涢檮杩戝晢鍦烘湁鑷姪瀵勫瓨鏌滐紝鍚堜綔鍜栧暋搴楀彲涓存椂鐭椂鐪嬬闅忚韩鑳屽寘銆",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "nearby_locker_partner": "healthy",
+          "host_chat": "healthy",
+          "smart_lock": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鐩爣鎴块€€鎴裤€佷繚娲併€侀獙鎴垮畬鎴愪綔涓烘斁鎴垮墠缃緷璧",
+        "鏃犲墠鍙板瘎瀛樻潯浠朵笅鐨勫瘎瀛樻浛浠ｆ柟妗堜笌棰勮鏀炬埧鏃堕棿鍥炲啓",
+        "濡傛灉浣忓涓嶆帴鍙楀閮ㄥ瘎瀛樻椂鐨勬槑纭嫆缁濇垨鏀规椂娈?fallback"
+      ],
+      "mustAvoid": [
+        "鍦ㄦ埧闂村皻鏈彲浜や粯鏃舵壙璇轰腑鍗堝墠涓€瀹氬彲杩涙埧",
+        "鏄庣煡娌℃湁瀹夊叏瀵勫瓨绌洪棿浠嶅畨鎺掓妸琛屾潕鏀惧湪璧板粖鎴栦繚娲侀棿"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_city_center_parking_reroute_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "鎶婁竴绗斿懆鏈嚜椹惧埌搴楄鍗曟媶鎴愬彲鎵ц鐨勫仠杞﹁惤瀹€侀棬宀楁姤澶囧拰鏈€鍚庝竴鐧剧背鍏ユ埛璺嚎",
+        "routing_context": "鎴挎簮浣嶄簬鑰佸煄鍖烘琛岃杈圭殑灞呮皯妤硷紝妤间笅涓昏矾鍛ㄦ湯浠呭厑璁稿嵆鍋滃嵆璧帮紝鍦颁笅鍋滆溅鍦哄叆鍙ｄ笌鎴挎簮瀹氫綅鐐逛笉鍦ㄥ悓涓€渚э紱浣忓鑷┚骞舵惡甯︿袱涓?28 瀵歌鏉庣锛岄璁?19:30 鎶佃揪锛岄棬宀楅渶瑕佹姤澶囨墜鏈哄彿鍚庢墠鑳芥斁琛屾琛岃繘鍏ャ€",
+        "integration_state": {
+          "property_access_guide": "healthy",
+          "parking_partner": "healthy",
+          "host_chat": "healthy",
+          "smart_lock": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鍋滆溅鐐广€侀棬宀楁姤澶囧拰姝ヨ璺嚎鎷嗗垎鎴愬彲鎵ц閾捐矾",
+        "澶т欢琛屾潕鎼繍涓庨洦澶╂垨澶滈棿鎵句笉鍒板崟鍏冮棬鏃剁殑鍥為€€鏂规",
+        "鍒板簵绐楀彛鍙樺寲鏃堕噸鏂扮‘璁ら棬宀楁姤澶囦笌鍙戠爜鏃剁偣鐨勯€昏緫"
+      ],
+      "mustAvoid": [
+        "鍙彂閫佸湴鍥惧畾浣嶈€屼笉澶勭悊涓村仠鍜岄棬绂侀棶棰",
+        "榛樿浣忓鑳借嚜宸辨嫋鐫€琛屾潕绌胯繃姝ヨ琛楁壘鍒版纭崟鍏冮棬"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_ota_paid_not_synced_last_room_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "閲嶆斁涓€绗?OTA 宸叉敮浠樹絾姘戝鍚庡彴鏈惤鍗曠殑鍏ヤ綇娴佺▼锛屽苟閬垮厤鏈€鍚庝竴闂?loft 鎴胯閲嶅鍗犵敤",
+        "routing_context": "浣忓宸插湪骞冲彴鏀粯鎴愬姛骞跺埌搴楀嚭绀鸿鍗曢〉锛屼絾 PMS 涓病鏈夊搴旇鍗曪紱褰撳墠鍙墿鏈€鍚庝竴闂?loft 鎴匡紝鍚屾椂寰俊绉佸煙涔熸湁涓€绗斿緟纭璁㈤噾鍗曞崰鐫€鍚屾棩鏈熷簱瀛橈紱浣忓甯屾湜浠婃櫄 22:00 鍓嶆嬁鍒板叆浣忔潈闄愩€",
+        "integration_state": {
+          "ota_channel": "degraded",
+          "pms": "healthy",
+          "payment_gateway": "healthy",
+          "smart_lock": "healthy",
+          "host_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鎸変富璁㈠崟鍙枫€佹墜鏈哄彿涓庢敮浠樻祦姘村仛鍘婚噸琛ュ綍鐨勯摼璺",
+        "鏈€鍚庝竴闂?loft 搴撳瓨鍐荤粨涓庝复鏃朵繚搴曞叆浣忎腑闂存€",
+        "娓犻亾鎭㈠鍚庣殑 replay 椤哄簭鍜屽彂鐮佸洖鍐欒鍒"
+      ],
+      "mustAvoid": [
+        "鏈仛鍘婚噸灏遍噸寤虹浜岀瑪璁㈠崟缁х画鍗犵敤鏈€鍚庝竴闂存埧",
+        "鍦ㄦ敮浠樼姸鎬佹湭澶嶆牳鍓嶅啀娆″悜浣忓鏀跺彇鎴胯垂鎴栬閲"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_long_stay_midclean_005",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "鎶婁竴绗斿叚鏅氳繛浣忚鍗曟媶鎴愬彲鎵ц鐨勪腑閫旇ˉ娲併€佽€楁潗琛ョ粰鍜岄棬閿佹巿鏉冭鍒",
+        "routing_context": "浣忓杩炰綇 6 鏅氾紝瑕佹眰绗?3 澶╁拰绗?5 澶╀笅鍗堣ˉ娲佸苟琛ュ厖娴村肪銆佺焊宸惧拰鐭挎硥姘达紱浣忓鐧藉ぉ鍩烘湰澶栧嚭锛屼絾鍙厑璁?13:00 鍒?15:00 鍏ユ埛锛涗繚娲佸洟闃熸瘡澶╁彧鏈変袱涓浐瀹氫笂闂ㄧ獥鍙ｏ紝涓旀埧闂ㄤ负涓€娆℃€т复鏃舵巿鏉冮攣銆",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "smart_lock": "healthy",
+          "supply_inventory": "healthy",
+          "host_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "琛ユ磥鏃ユ湡銆佷笂闂ㄧ獥鍙ｃ€佷竴娆℃€ч棬閿佹潈闄愬拰琛ョ粰娓呭崟",
+        "濡傛灉褰撴棩绐楀彛鍐茬獊鏃剁殑鏀规湡鎴栫畝鍖栬ˉ缁?fallback",
+        "姣忔瀹屾垚鍚庣殑鏈嶅姟鐘舵€佸洖鍐欙紝渚涘悗缁繚娲佷笌鎴夸笢鎺ョ画"
+      ],
+      "mustAvoid": [
+        "绗肩粺鎵胯浣忓闅忔椂鍠婇殢鏃朵笂闂ㄦ墦鎵",
+        "娌℃湁闂ㄩ攣鎺堟潈鍜屾椂闂寸獥灏卞畨鎺掍繚娲佽嚜琛屽叆鎴"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_extra_visitors_waiting_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "澶勭悊涓€绗斿湪浣忓涓存椂鐢宠鍔犺瀹㈠苟鍦ㄦ埧鍐呭簡鐢熺殑璇锋眰锛岀‘淇濅笉瓒婅繃鐗╀笟涓庨潤闊抽椄闂",
+        "routing_context": "浣忓 21:30 鎻愬嚭鎯宠 4 浣嶆湅鍙嬭繘鎴垮垏铔嬬硶骞跺緟鍒?23:00锛涙埧婧愪綅浜庡眳姘戞ゼ锛岀墿涓氳姹傚鏉ヨ瀹㈠厛鐧昏锛屾ゼ鏍?22:30 鍚庣姝㈠枾鍝楋紝闃冲彴绂佹鑱氶泦锛涙埧鍐呮甯镐綇瀹㈠彲缁х画鐣欏锛屼絾棰濆璁垮灏氭湭鐧昏銆",
+        "integration_state": {
+          "visitor_registry": "healthy",
+          "quiet_hours_policy": "healthy",
+          "manager_console": "healthy",
+          "host_chat": "healthy",
+          "access_control": "healthy"
+        },
+        "approval_state": "waiting_manager_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "璁垮鐧昏銆佺墿涓氳鍒欐牎楠屽拰缁忕悊瀹℃壒鑺傜偣",
+        "瀹℃壒鏈畬鎴愬墠鏆傚仠寮€鏀鹃澶栭棬绂佹潈闄愮殑涓棿鐘舵€",
+        "琚嫆缁濇椂鐨勫鍐呯畝鍖栧簡鐢熸垨闄愭椂浼氶潰鏇夸唬鏂规"
+      ],
+      "mustAvoid": [
+        "鍦ㄥ鎵规湭瀹屾垚鏃跺厛鎶婃ゼ鏍嬪瘑鐮佸垎浜粰棰濆璁垮",
+        "蹇界暐灞呮皯妤奸潤闊宠姹傜洿鎺ラ粯璁ゅ簡鐢熷彲鎵ц"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_midnight_lock_offline_007",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "澶勭悊涓€绗旀繁澶滃埌搴楁椂鏅鸿兘闂ㄩ攣绂荤嚎鐨勫紓甯革紝纭繚鏃犲墠鍙板満鏅笅浠嶆湁鍙墽琛屽厹搴",
+        "routing_context": "浣忓 00:40 宸插埌鍗曞厓闂ㄥ彛锛屾埧闂撮棬閿佺绾夸笖涓ゆ杩滅▼閲嶈瘯澶辫触锛涙皯瀹挎病鏈夊墠鍙帮紝鍊肩彮鎴夸笢璺濈 25 鍒嗛挓杞︾▼锛岄檮杩戝悎浣滀繚娲佸憳鎸佹湁澶囩敤閽ュ寵锛屽師鎴垮凡瀹屾垚淇濇磥浣嗘ゼ鏍嬪闂村彧鍏佽宸茬櫥璁颁綇瀹㈣繘鍑恒€",
+        "integration_state": {
+          "smart_lock": "degraded",
+          "host_chat": "healthy",
+          "backup_key_registry": "healthy",
+          "public_security_uploader": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "杩滅▼閲嶈瘯銆佸疄鍚嶅鏍稿拰澶囩敤閽ュ寵鍒板満鐨勪富澶囬摼璺",
+        "鍒板満鏃堕檺銆佽秴鏃堕槇鍊间互鍙婅秴鏃跺悗鐨勬崲鎴挎垨鍚堜綔鎴挎簮鍏滃簳",
+        "閿佸叿鎭㈠鍚庣殑闂ㄧ鐘舵€佸洖鍐欎笌閲嶅鍙戠爜鍘婚噸瑙勫垯"
+      ],
+      "mustAvoid": [
+        "鐩存帴鍙戦€佷笉鍙楁帶鐨勬€绘帶瀵嗙爜鎴栭暱鏁堥棬绂佺爜",
+        "鍙櫥璁伴攣鏁呴殰鍗磋浣忓鍦ㄦゼ涓嬫棤闄愮瓑寰"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_property_access_change_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "鍦ㄧ墿涓氫复鏃惰皟鏁撮棬宀楀拰鐢垫瑙勫垯鏃堕噸鎺掓櫄鍒颁綇瀹㈢殑鍒板簵璁″垝锛岄伩鍏嶅師濮嬪叆浣忔寚鍗楀け鏁",
+        "routing_context": "鏅氶棿 20:00 鐗╀笟涓存椂閫氱煡锛屽綋鏅?22:00 鍚庢墍鏈夊鏉ヤ汉鍛橀渶鍒伴棬宀楀疄鍚嶇櫥璁颁笖鐢垫鍗℃敼涓洪棬宀楅鍙栵紱褰撳墠浠嶆湁 3 绗旀櫄鍒拌鍗曚細鍦?22:30 鑷?00:00 涔嬮棿鍒板簵锛屽叾涓竴绗斾綇瀹㈠甫涓や欢澶ц鏉庯紝鍙︿竴绗斾负棣栨鍏ヤ綇涓斾笉浼氳涓枃銆",
+        "integration_state": {
+          "property_manager_console": "healthy",
+          "host_chat": "healthy",
+          "translation_support": "healthy",
+          "smart_lock": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鏃х増鍏ヤ綇鎸囧崡澶辨晥鍚庣殑缁熶竴鍋滅敤涓庢柊闂ㄥ矖鐧昏閾捐矾",
+        "闂ㄥ矖鍙栧崱銆佽瑷€杈呭姪鍜屽ぇ浠惰鏉庡崗鍔╃殑鍒嗘祦璺敱",
+        "鏃犳硶璧朵笂闂ㄥ矖鐧昏鏃剁殑鏀规椂娈点€佹帴搴旀垨鏀逛綇 fallback"
+      ],
+      "mustAvoid": [
+        "缁х画娌跨敤宸茬粡澶辨晥鐨勮嚜鍔╁叆浣忔寚鍗",
+        "鎶婄墿涓氳鍒欏彉鏇寸暀缁欎綇瀹㈠埌搴楀悗鑷繁澶勭悊"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_room_fit_mismatch_009",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "澶勭悊涓€绗旀埧鍨嬮€傞厤鍐茬獊璁㈠崟锛岀‘淇濆湪闂ㄩ攣涓嬪彂鍓嶅畬鎴愪汉缇や笌鎴挎簮鍖归厤澶嶆牳",
+        "routing_context": "浣忓棰勮浜嗕簲妤兼棤鐢垫 loft 鎴匡紝鍒板簵鍓?3 灏忔椂琛ュ厖璇存槑鍚岃涓湁涓€浣嶈啙鐩栧彈浼ら暱鑰呭拰涓€杈嗗┐鍎胯溅锛涘綋鍓嶅悓鏃ユ湡杩樺墿涓€闂村钩灞傚ぇ搴婃埧鍜屼竴闂村彲鍔犲簥鐨勫弻搴婃埧锛屼綇瀹㈠己璋冧笉鎺ュ彈鐖ゼ涓庨櫋姊紝浣嗚繕娌℃湁鍐冲畾鏄惁鏀规埧銆",
+        "integration_state": {
+          "pms": "healthy",
+          "host_chat": "healthy",
+          "pricing_rules": "healthy",
+          "smart_lock": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鎴垮瀷閫傞厤澶嶆牳銆侀闄╁憡鐭ヤ笌浣忓浜屾纭鑺傜偣",
+        "鍙浛浠ｅ钩灞傛埧婧愮殑鍒囨崲銆佸樊浠蜂笌闂ㄩ攣鏀瑰彂閫昏緫",
+        "鑻ヤ綇瀹笉鎺ュ彈鏇夸唬鎴垮瀷鏃剁殑鏀规湡鎴栧彇娑?fallback"
+      ],
+      "mustAvoid": [
+        "鍦ㄩ€傞厤鍏崇郴涓嶆竻妤氭椂鐩存帴鍙戦€?loft 鎴跨殑鍏ヤ綇鏉冮檺",
+        "榛樿浣忓浼氳嚜琛屾帴鍙楁棤鐢垫鍜岄櫋姊闄"
+      ]
+    },
+    {
+      "id": "dispatcher_urban_homestay_neighbor_complaint_noise_smoke_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "澶勭悊涓€绗斿湪浣忔湡闂村洜闃冲彴鍚哥儫鍜屽櫔闊宠閭诲眳鎶曡瘔鐨勫満鏅紝纭繚娌荤悊鍔ㄤ綔銆佹潈闄愭敹绱у拰鍚庣画灞ョ害閮藉彲鎵ц",
+        "routing_context": "浣忓鍏ヤ綇鍚庣浜屾櫄 22:20 琚偦灞呮姇璇夐槼鍙板惛鐑熷苟鎾斁闊充箰锛岀墿涓氬凡鐢佃瘽鎻愰啋涓€娆★紱鎴挎簮浣嶄簬绂佺儫妤煎眰锛屾ゼ鏍嬭姹傚啀娆℃姇璇夊氨涓婇棬璁板綍锛涙鏃ュ悓鎴块棿杩樻湁鏂拌鍗曞緟鍏ヤ綇锛屾埧涓滄媴蹇冩姇璇夊崌绾у鑷村皝鎴裤€",
+        "integration_state": {
+          "property_manager_console": "healthy",
+          "host_chat": "healthy",
+          "access_control": "healthy",
+          "housekeeping_app": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "鍗虫椂瀹夋姎銆佺墿涓氭矡閫氥€佷綇瀹㈠憡鐭ヤ笌鏉冮檺鏀剁揣閾捐矾",
+        "鑻ユ姇璇夊崌绾ф椂鐨勬彁鍓嶉€€浣忋€佹竻娲佹帓鐑熷拰鎴块棿寰呮鍋滃敭绛栫暐",
+        "瀵规鏃ヨ鍗曠殑椋庨櫓鍥炲啓涓庢槸鍚﹂渶瑕佹敼娲炬埧婧愮殑鍒ゆ柇"
+      ],
+      "mustAvoid": [
+        "鎶婃姇璇変粎褰撲綔鏅€氬鏈嶈褰曡€屼笉璋冩暣闂ㄧ鍜屽悗缁饱绾",
+        "鍦ㄦ埧闂翠粛瀛樺湪娌荤悊椋庨櫓鏃剁户缁妸娆℃棩璁㈠崟榛樿涓哄彲姝ｅ父鎵ц"
+      ]
+    }
+  ]
+}

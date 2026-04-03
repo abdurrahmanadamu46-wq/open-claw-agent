@@ -1,0 +1,41 @@
+{
+  "agent_id": "catcher",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_high_intent_threads",
+      "action": "score_and_classify"
+    },
+    {
+      "check": "pending_lead_assessments",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "risk_flags",
+      "action": "isolate_or_escalate"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 20,
+      "action": "review_scored_leads",
+      "description": "巡检高意向与高风险线索"
+    },
+    {
+      "interval_minutes": 90,
+      "action": "run_dedup_check",
+      "description": "复查重复身份与跨平台线索"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "summarize_lead_quality",
+      "description": "汇总线索质量与污染来源"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_new_leads AND no_pending_assessments",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 60,
+    "idle_behavior": "passive_risk_watch"
+  }
+}

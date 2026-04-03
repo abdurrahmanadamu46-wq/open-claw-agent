@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "ValueScoreCard",
+  "goal": "Estimate which lead deserves more follow-up resources and what the likely business value is.",
+  "assumptions": [
+    "High-fit leads deserve immediate prioritization if short-term close likelihood is strong.",
+    "Some leads are worth nurturing because long-term value outweighs instant conversion odds."
+  ],
+  "evidence": [
+    "Lead is tier A with explicit booking intent.",
+    "Historical close rate for this segment is strong."
+  ],
+  "confidence": 0.88,
+  "riskLevel": "L1",
+  "nextAction": "handoff_to_followup",
+  "short_term_score": "0.87",
+  "long_term_score": "0.79",
+  "roi_estimate": "expected_value=4200; confidence=0.74",
+  "reward_signal": "prioritize_for_fast_followup"
+}

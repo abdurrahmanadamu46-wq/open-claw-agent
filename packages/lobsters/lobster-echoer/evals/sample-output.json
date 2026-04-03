@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "EngagementReplyPack",
+  "goal": "Keep the user emotionally safe while moving them one step closer to a qualified private conversation.",
+  "assumptions": [
+    "A steady human tone increases trust more than a flashy reply.",
+    "Public comment replies should avoid risky promises and heavy sales pressure."
+  ],
+  "evidence": [
+    "User asked about consultation process.",
+    "Interaction context shows repeated interest in the case-study content."
+  ],
+  "confidence": 0.9,
+  "riskLevel": "L1",
+  "nextAction": "handoff_to_catcher",
+  "intent_guess": "high-curiosity with likely commercial interest",
+  "emotion_state": "engaged but cautious",
+  "reply_text": "当然可以，我们先把流程和适合你的方向讲清楚，再看要不要继续。你私信我，我把咨询步骤发给你。",
+  "handoff_suggestion": "route_to_dm_and_lead_qualification"
+}

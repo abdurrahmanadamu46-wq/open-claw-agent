@@ -1,0 +1,107 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "echoer",
+  "primaryArtifact": "EngagementReplyPack",
+  "cases": [
+    {
+      "id": "echoer_high_intent_comment_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I want to know the consultation process. Can I DM you now?",
+        "brand_tone": "helpful and trustworthy",
+        "negative_patterns": [],
+        "context_window": [
+          "user watched the full case-study clip",
+          "user commented twice in 10 minutes"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "calm human reply",
+        "invite to DM naturally",
+        "handoff toward lead qualification"
+      ]
+    },
+    {
+      "id": "echoer_negative_skeptic_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "This sounds fake. Every account says the same thing.",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking response"
+        ],
+        "context_window": [
+          "regulated service category",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "no argument with the user",
+        "invite proof or private clarification carefully"
+      ]
+    },
+    {
+      "id": "echoer_ambiguous_interest_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Can you send details first?",
+        "brand_tone": "friendly but professional",
+        "negative_patterns": [],
+        "context_window": [
+          "user is new",
+          "no previous DM history"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "soft guidance",
+        "no over-escalation to hard sell"
+      ]
+    },
+    {
+      "id": "echoer_regression_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I message now can you guarantee the result?",
+        "brand_tone": "credible and cautious",
+        "negative_patterns": [
+          "result guarantee",
+          "price promise"
+        ],
+        "context_window": [
+          "regulated category",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustAvoid": [
+        "promise-like language",
+        "unsafe reassurance"
+      ]
+    }
+  ]
+}

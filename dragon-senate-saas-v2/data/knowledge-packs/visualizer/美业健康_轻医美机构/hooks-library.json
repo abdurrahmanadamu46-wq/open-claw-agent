@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "concern_consult_visual",
+      "hook_angle": "先判断再谈项目",
+      "hook_line": "真正让人放心的机构，不是上来就讲项目，而是先帮你把问题和边界看清。",
+      "target_scene": "问题型面诊、首次咨询、毛孔痘印路线",
+      "cover_direction": "封面主体给面诊或环境证据，副元素补真实问题语境，不用精修脸做主视觉。",
+      "first_3_shots": [
+        "面诊或咨询镜头",
+        "环境或房间镜头",
+        "问题相关提示镜头"
+      ],
+      "required_proof_assets": [
+        "面诊过程",
+        "环境镜头",
+        "问题相关素材"
+      ],
+      "fallback_if_missing": "若缺少顾客正脸素材，改用咨询台、环境和局部问题提示镜头。"
+    },
+    {
+      "id": "pre_event_visual",
+      "hook_angle": "节前状态窗口",
+      "hook_line": "重要场合前，最怕的不是没时间，而是项目和时机完全不搭。",
+      "target_scene": "婚礼、拍照、节前状态管理",
+      "cover_direction": "封面强调日期窗口和环境信任，不拍成神奇逆袭广告。",
+      "first_3_shots": [
+        "场景或日期提示镜头",
+        "面诊或判断镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "场景提示素材",
+        "面诊镜头",
+        "预约承接"
+      ],
+      "fallback_if_missing": "若缺少场景素材，用字幕补足时间窗口。"
+    },
+    {
+      "id": "trust_process_visual",
+      "hook_angle": "资质和流程信任",
+      "hook_line": "很多人不是不想来，而是不想把自己交给一套看不清边界的流程。",
+      "target_scene": "首次到店、怕踩雷、怕恢复期用户",
+      "cover_direction": "封面主体给环境、前台或面诊流程，副元素补资质或工具细节。",
+      "first_3_shots": [
+        "前台或环境镜头",
+        "资质或工具细节",
+        "面诊流程镜头"
+      ],
+      "required_proof_assets": [
+        "环境",
+        "资质细节",
+        "面诊流程"
+      ],
+      "fallback_if_missing": "若资质素材有限，至少拍环境和流程节点。"
+    },
+    {
+      "id": "maintenance_recheck_visual",
+      "hook_angle": "到了该复查看看的时候",
+      "hook_line": "真正会复查的人，通常不是突然想起你，而是状态一变化就知道该回来看看了。",
+      "target_scene": "老客复查、状态维护、周期提醒",
+      "cover_direction": "封面强调复查和状态回落感，不拍成强促销海报。",
+      "first_3_shots": [
+        "状态提示镜头",
+        "本次维护方向镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "状态提示",
+        "维护建议",
+        "预约承接"
+      ],
+      "fallback_if_missing": "缺少真实复查素材时，用周期字幕和环境镜头替代。"
+    },
+    {
+      "id": "truth_over_before_after_visual",
+      "hook_angle": "不靠前后对比吓人",
+      "hook_line": "好看的结果很多，真正重要的是你先知道自己适不适合。",
+      "target_scene": "反前后对比幻想、真实边界路线",
+      "cover_direction": "封面用环境和判断感，不用强对比图做主视觉。",
+      "first_3_shots": [
+        "环境或咨询镜头",
+        "问题提示镜头",
+        "边界说明镜头"
+      ],
+      "required_proof_assets": [
+        "咨询镜头",
+        "环境",
+        "边界说明"
+      ],
+      "fallback_if_missing": "若案例不足，改做真实流程和边界说明路线。"
+    },
+    {
+      "id": "lunch_break_consult_visual",
+      "hook_angle": "午休看方向",
+      "hook_line": "不是每个人都能腾半天来折腾，但很多人愿意先用一个午休把方向看清。",
+      "target_scene": "写字楼午休面诊、轻量咨询",
+      "cover_direction": "封面突出时间窗口和环境效率感，不拍成重项目广告。",
+      "first_3_shots": [
+        "时间窗口提示",
+        "环境或前台镜头",
+        "咨询镜头"
+      ],
+      "required_proof_assets": [
+        "时间提示素材",
+        "环境",
+        "咨询过程"
+      ],
+      "fallback_if_missing": "若缺时间素材，用字幕明确午休窗口。"
+    }
+  ]
+}

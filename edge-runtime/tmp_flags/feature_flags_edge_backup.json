@@ -1,0 +1,20 @@
+{
+  "saved_at": "2026-04-02T04:33:50.645060",
+  "edge_node_id": "edge-demo",
+  "flags": {
+    "lobster.inkwriter.enabled": {
+      "name": "lobster.inkwriter.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "edge_node_tags": [],
+      "updated_at": ""
+    }
+  }
+}

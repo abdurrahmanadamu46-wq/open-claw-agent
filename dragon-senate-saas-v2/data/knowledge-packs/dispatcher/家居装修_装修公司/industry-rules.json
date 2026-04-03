@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_装修公司","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"visit_and_designer_capacity_gate","title":"高峰量房前必须先校验时段、设计师和工地资源","description":"装修公司的调度核心不是单纯接单，而是把量房时段、设计师、工地、报价能力和后续交付能力一起纳入 task_graph。","examples":["周末晚间量房位已满时，先进入候补和分时段节点。","交房季集中时，先确认设计师和量房排班。"],"priority":"high"},
+{"id":"first_visit_and_return_visit_must_split","title":"首次量房、复访和方案后回访是独立调度变量","description":"首次量房、复访和方案后回访会显著改变单客时长与资源匹配。","examples":["首次到店用户需要先进入量房判断节点。","复访用户应优先路由到熟悉其历史记录的设计师链路。"],"priority":"high"},
+{"id":"service_complexity_before_confirmation","title":"确认预约前先判断需求复杂度和是否适合该时段","description":"局改、旧改、婚房和全屋整装不能共用同一套量房时长假设。","examples":["午休档只适合轻量咨询，不应塞入复杂整装评估。","交房季和多问题到店需提前扩展时长。"],"priority":"high"},
+{"id":"site_prep_gate","title":"工地资料和报价准备是独立调度节点","description":"装修公司不是一位客户量完就能立刻无缝接下一位。","examples":["连续到店时，先插入工地图纸和报价准备步骤。","复杂量房做完后不可直接无缝切换下一单。"],"priority":"high"},
+{"id":"peak_slot_hold_window","title":"热门时段和核心设计师档要设置保留窗口","description":"周末、交房季和核心设计师时段是稀缺资源。","examples":["节前晚间时段要求限时确认。","核心设计师量房位超过一定时间未确认则释放。"],"priority":"medium"},
+{"id":"post_visit_backwrite","title":"量房后必须回写跟进与复访任务","description":"装修公司执行链路不能在量房后断掉。","examples":["量房后自动创建设计师回访任务。","方案记录中同步写入户型关注点和下次建议。"],"priority":"high"}]}

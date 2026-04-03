@@ -1,0 +1,16 @@
+﻿# prod overlay: strict runtime and observability baseline
+services:
+  backend:
+    environment:
+      COMPLIANCE_REQUIRE_HITL: "true"
+      NEW_API_TOKEN: ${NEW_API_TOKEN}
+      DRAGON_AI_TIMEOUT_MS: ${DRAGON_AI_TIMEOUT_MS:-150000}
+  ai-subservice:
+    environment:
+      RAG_ANYTHING_ENABLED: ${DRAGON_AI_RAG_ANYTHING_ENABLED:-true}
+      HITL_ENABLED: ${DRAGON_AI_HITL_ENABLED:-true}
+  web:
+    environment:
+      NEXT_PUBLIC_RUNTIME_ENV: production
+      NEXT_PUBLIC_USE_MOCK: "false"
+      NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: "false"

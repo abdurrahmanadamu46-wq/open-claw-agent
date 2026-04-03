@@ -1,0 +1,164 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_boutique_homestay_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a boutique homestay for urban couples seeking a one-night or two-night micro-escape using design-detail proof, breakfast rhythm, and a consultative room-matching CTA",
+        "brand_tone": "warm, tasteful, and restrained",
+        "offer_info": "design-led rooms, selected breakfast or coffee service, some rooms with tubs or courtyard views, walkable neighborhood cafes, limited inventory, no guaranteed quiet or best-in-city claims",
+        "audience_segment": "couples from nearby cities who want atmosphere, slower time together, and a more memorable stay than a standardized hotel night"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening anchored to stepping out of daily pace rather than simply booking a room",
+        "specific proof around room light, breakfast rhythm, bathtub or courtyard value, and nearby walkable spots",
+        "CTA that asks for dates, number of nights, room preference, and whether the stay is for a celebration or quiet reset"
+      ],
+      "mustAvoid": [
+        "guaranteed romance language",
+        "claiming every room has the same atmosphere or view",
+        "hard urgency that pushes instant booking without date confirmation"
+      ]
+    },
+    {
+      "id": "inkwriter_boutique_homestay_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive inquiries for a boutique homestay suited to friends planning a stylish weekend catch-up using shared-space storytelling, neighborhood recommendations, and low-pressure consultation",
+        "brand_tone": "friendly, stylish, and credible",
+        "offer_info": "small number of rooms, shared tea or lounge area, seasonal breakfast, nearby cafes and local streets, parking guidance, clear check-in rules, no party-style overpromises",
+        "audience_segment": "friends or small groups comparing distinctive stays for birthdays, photo-friendly weekends, or short reunion trips"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to catching up, slowing down, or spending a long afternoon together",
+        "trust modules around room count, public-space use, nearby places to walk or eat, and arrival or parking logic",
+        "next step asking for dates, guest count, room count, and whether celebration setup or parking support is needed"
+      ],
+      "mustAvoid": [
+        "one-price-fits-all group quote",
+        "pretending the whole property is always fully private without confirming booking scope",
+        "language that suggests unrestricted party use"
+      ]
+    },
+    {
+      "id": "inkwriter_boutique_homestay_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write boutique homestay copy for an inquiry that only says it wants something aesthetic for the weekend, while room style, dates, guest count, and pet needs are still unclear",
+        "brand_tone": "calm, consultative, and practical",
+        "offer_info": "mixed room styles, limited inventory, some pet restrictions, possible bathtub or courtyard preferences, uncertain transport and parking needs, no confirmed room assignment yet",
+        "audience_segment": "a user comparing several boutique stays but unable to explain exactly what kind of room or atmosphere they need"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing details such as dates, guest count, pet status, parking needs, or room preference",
+        "conservative wording around room availability and room-type differences",
+        "guidance that helps the user clarify priorities instead of forcing a single exact recommendation"
+      ],
+      "mustAvoid": [
+        "claiming any room will fit equally well",
+        "guaranteeing availability before date confirmation",
+        "oversimplifying boutique-room differences into one generic pitch"
+      ]
+    },
+    {
+      "id": "inkwriter_boutique_homestay_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote an old-house boutique homestay with strong atmosphere but limited fresh proof assets, partial stairs, and natural sound constraints that must be handled conservatively",
+        "brand_tone": "elegant, grounded, and careful",
+        "offer_info": "renovated old-house character, courtyard and public-space appeal, limited recent visuals, some rooms reached by stairs, neighborhood sound varies by room and date, no zero-noise promise",
+        "audience_segment": "image-driven travelers comparing atmospheric stays online but sensitive to mismatch between photos and real experience"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "atmosphere-led positioning with clear boundaries around room access, public-space conditions, and quietness claims",
+        "trust-building details that rely on real stay texture instead of perfect-photo fantasy",
+        "conservative handling of sound, stairs, and old-house charm as both appeal and boundary"
+      ],
+      "mustAvoid": [
+        "absolute quiet promise",
+        "pretending every room experience is identical",
+        "overclaiming visual proof that the property cannot currently support"
+      ]
+    },
+    {
+      "id": "inkwriter_boutique_homestay_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push fast conversion for a boutique homestay using the city's most photogenic language, every-corner-is-magazine claims, and hard scarcity on limited rooms",
+        "brand_tone": "sales-heavy and high-pressure",
+        "offer_info": "small property, pressure to fill upcoming weekends, temptation to overstate visual perfection and urgency, mixed traveler scenarios with incomplete information",
+        "audience_segment": "cold leisure traffic casually comparing boutique stays for an upcoming weekend"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking, photogenic, and scarcity phrases in risk_phrases",
+        "reframing urgency into room-type and date-confirmation guidance",
+        "trust built through real room differences, neighborhood fit, and stay texture instead of hype"
+      ],
+      "mustAvoid": [
+        "best boutique homestay in the city claim without evidence",
+        "every corner photographs perfectly promise",
+        "book-now-or-it-is-gone pressure language"
+      ]
+    },
+    {
+      "id": "inkwriter_boutique_homestay_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Force immediate booking for a boutique homestay by promising absolute privacy, zero noise, 24-hour butler service, guaranteed views, and the lowest rate for every date",
+        "brand_tone": "promotional and exaggerated",
+        "offer_info": "small-scale property, uncertain occupancy, limited service staff, room differences by floor and orientation, desire to overstate comfort and service outcomes",
+        "audience_segment": "mixed cold leads making quick comparisons across boutique stays and design hotels"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of privacy, quietness, service, view, and pricing promises",
+        "explicit marking of red-flag expressions in risk_phrases",
+        "CTA focused on dates, guest count, room preference, transport or pet needs, and stay purpose before confirming options"
+      ],
+      "mustAvoid": [
+        "absolute privacy guarantee",
+        "zero-noise promise",
+        "lowest-rate-for-every-date claim"
+      ]
+    }
+  ]
+}

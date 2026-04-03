@@ -1,0 +1,369 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_coffee_shop_branch_pickup_order_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "今天下班前想去国金店自提 4 杯，2 杯热拿铁换燕麦奶，1 杯冰美式，1 杯低因热拿铁，18:40 左右到，能先帮我排一下吗？",
+        "engagement_history": [
+          "watched full branch menu video",
+          "clicked branch location card",
+          "asked whether preorder is supported"
+        ],
+        "tenant_rules": {
+          "require_branch_for_order": true,
+          "forbid_unapproved_skip_line_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual menu browsing"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_office_coffee_break_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "明天下午 3:30 我们在 IFC 二期 18 楼做客户会，想送 26 杯到前台，人均 25 到 32，冷 14 热 12，其中 4 杯低因，需贴标签和开专票，陆家嘴店能安排吗？",
+        "engagement_history": [
+          "added enterprise wechat after reading office coffee post",
+          "asked about delivery radius and invoice rules",
+          "shared a draft hot-cold preference sheet"
+        ],
+        "tenant_rules": {
+          "require_address_for_delivery": true,
+          "allow_human_quote_review": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "structured bulk-order context",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "downgrading the lead as a normal single-cup inquiry"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_menu_and_bean_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "第一次喝你们家，手冲和拿铁哪个更稳？豆子偏酸吗，先发个菜单我看看。",
+        "engagement_history": [
+          "liked two bean review videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to order-ready"
+      ],
+      "mustAvoid": [
+        "treating menu curiosity as a confirmed coffee order lead"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_membership_redemption_004",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "周六下午去静安寺店，这张会员券能换大杯燕麦拿铁吗？如果到店前半小时下单，是不是能少等一点？",
+        "engagement_history": [
+          "saved membership coupon livestream clip",
+          "clicked branch location card"
+        ],
+        "tenant_rules": {
+          "membership_coupon_rules_require_confirmation": true,
+          "forbid_unapproved_skip_line_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real redemption plan",
+        "medium to high intent",
+        "worth follow-up without overpromising queue exceptions"
+      ],
+      "mustAvoid": [
+        "treating every coupon question as either spam or fully confirmed purchase"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_budget_mismatch_bulk_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "我们学校社团下周活动想要 40 杯，最好分冷热、每杯贴名字、送到体育馆后台，还想开票，但预算控制在 12 块一杯内，可以吗？",
+        "engagement_history": [
+          "asked about invoice policy",
+          "asked whether split hot-cold delivery is supported"
+        ],
+        "tenant_rules": {
+          "preserve_medium_confidence_bulk_orders": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real demand but constrained fit",
+        "budget mismatch needs feasibility review",
+        "do not auto-promote to top tier"
+      ],
+      "mustAvoid": [
+        "marking the lead as high-fit without checking commercial feasibility"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_same_day_frontdesk_delivery_006",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "baidu_map_message",
+        "lead_content": "我们公司今天 5 点前要送 18 杯到来福士 12 楼前台，已经在附近开会了，能做的话我马上把冷热和口味单发你。",
+        "engagement_history": [
+          "clicked branch map card",
+          "asked whether office front-desk delivery is supported"
+        ],
+        "tenant_rules": {
+          "urgent_bulk_queries_need_fast_followup": true,
+          "require_address_for_delivery": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real timing pressure",
+        "worth fast follow-up"
+      ],
+      "mustAvoid": [
+        "guaranteeing exact arrival time before fulfillment confirmation"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_decaf_absolute_claim_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "我在控咖，想订 6 杯给同事，你们低因能保证一点咖啡因都没有吗？孕妇喝也绝对没问题吧？",
+        "engagement_history": [
+          "asked twice about caffeine content and ingredients"
+        ],
+        "tenant_rules": {
+          "forbid_medical_or_absolute_caffeine_claims": true,
+          "regulated_health_claims_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real interest but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making medical or absolute health promises"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_allergy_zero_contact_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "明晚 8 杯送公司，有人对牛奶和榛果风味特别敏感，你们能保证后厨和奶缸百分百零接触吗？",
+        "engagement_history": [
+          "asked for ingredient list",
+          "asked whether all drinks can switch to plant milk"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_allergen_promises": true,
+          "allergy_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real order intent but elevated risk",
+        "human confirmation is required",
+        "do not mark as low-risk"
+      ],
+      "mustAvoid": [
+        "making zero-contact allergen guarantees"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_quality_complaint_009",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "昨天外卖送来的热拿铁是酸的，杯盖还漏液，我有订单号和照片，喝完以后一直不舒服，麻烦现在处理。",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent cup photo"
+        ],
+        "tenant_rules": {
+          "food_safety_or_quality_complaints_go_to_service_escalation": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard order lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a low-risk reorder opportunity"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_supplier_spam_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "老板加我，专业做咖啡豆供应、自动咖啡机、探店拍摄和加盟招商，顺便还能帮你们代运营。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high spam probability",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating unrelated services as a valid coffee order lead"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_cross_channel_repeat_011",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "刚刚我在评论区问过陆家嘴店能不能送写字楼，现在把 22 杯冷热分组、前台地址和联系电话发你，明天下午 4 点会议用。",
+        "engagement_history": [
+          "commented asking about office delivery",
+          "sent hot-cold grouping by DM",
+          "left callback number in enterprise wechat"
+        ],
+        "tenant_rules": {
+          "merge_duplicate_project_leads": true,
+          "forbid_duplicate_followup": true,
+          "require_address_for_delivery": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high confidence due to repeated consistent engagement",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "creating multiple separate high-priority leads for the same coffee request"
+      ]
+    },
+    {
+      "id": "catcher_coffee_shop_returning_client_012",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "上次你们给我们年会送过 30 杯，这次新品发布还想订同一家门店，先按上次地址，人数量差不多 24 到 28 杯，我把老订单截图发你。",
+        "engagement_history": [
+          "historical bulk-order record exists in tenant memory",
+          "shares previous order screenshot",
+          "asks to reuse the same branch and delivery address"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    }
+  ]
+}

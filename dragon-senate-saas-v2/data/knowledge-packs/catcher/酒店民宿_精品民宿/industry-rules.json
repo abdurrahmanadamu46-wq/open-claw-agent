@@ -1,0 +1,108 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "catcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "qualify_by_trip_and_room_facts",
+      "title": "Qualify with stay facts before calling it high intent",
+      "description": "A boutique homestay lead should only be treated as high intent when it includes concrete stay facts such as property or destination, dates, nights, room count, guest structure, room type preference, and a booking action like reserve, hold, confirm package, or confirm pickup.",
+      "examples": [
+        "We want 2 nights at your Dali Erhai house next weekend, 2 adults and 1 child with one small dog, courtyard family room if available.",
+        "Is your courtyard photogenic and can coffee be ordered separately."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "separate_style_interest_from_booking_intent",
+      "title": "Do not confuse style curiosity with booking intent",
+      "description": "Boutique homestay leads often start with questions about interior design, lighting, photo angles, pool aesthetics, coffee, desserts, or nearby spots. Intent should rise only after the conversation moves toward dates, room demand, budget, package scope, or contact details.",
+      "examples": [
+        "The loft room looks great in photos should stay as an interest lead.",
+        "After asking about the style, the guest adds next Saturday, 2 rooms, 2 nights, and pet policy."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "property_specificity_before_top_tier",
+      "title": "Require property specificity before top-tier escalation",
+      "description": "Room layout, stair access, scenery, private bath, pet policy, shuttle support, and dining capability vary widely by boutique property. If the lead only says Dali, old town, or mountain homestay without locking a property or at least a clear area, it should usually remain a nurture lead rather than a top-tier follow-up lead.",
+      "examples": [
+        "Friday at your Shuanglang sea-view house is much stronger than asking whether you have a homestay in Dali.",
+        "Without a clear property, do not auto-classify the lead as followup-ready top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_drives_fit",
+      "title": "Guest structure strongly shapes fit for boutique homestays",
+      "description": "Couples, friends, families, three-generation trips, pet stays, elderly guests, and small private events all place different demands on room distribution, stairs, sound, extra beds, child breakfast rules, pet zones, and privacy. The clearer the guest structure, the more reliable the fit assessment.",
+      "examples": [
+        "2 adults, 2 children ages 5 and 9, asking for adjacent rooms is much stronger than a vague family trip.",
+        "An elderly guest with mobility limits should not be judged as high fit from scenery interest alone."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "occasion_language_needs_scope",
+      "title": "Birthday, anniversary, proposal, and healing language need scoped demand",
+      "description": "Boutique homestays often attract occasion-driven language such as birthday, anniversary, proposal, girls trip, healing stay, or travel photography. Those emotional signals matter only when paired with dates, nights, budget, room type, decor, dining, photography, or transfer scope.",
+      "examples": [
+        "We want somewhere romantic for my partner's birthday is not enough on its own.",
+        "Next Saturday for our anniversary, 2 nights, budget around 3000, with decor and dinner is much stronger."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "buyout_and_group_event_scope",
+      "title": "Buyout, retreat, and private event leads need clear scope",
+      "description": "Entire-courtyard buyouts, birthday parties, small retreats, wedding-eve stays, content shoots, and family gatherings can be high value, but only when room count, nights, food, projection, activity timing, invoice needs, and contact ownership are scoped.",
+      "examples": [
+        "8 rooms for 2 nights plus lawn dinner and projection is a strong group lead.",
+        "We may want to book the full house sometime should stay as nurture."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_vs_resource_mismatch",
+      "title": "Lower fit when budget and boutique resources are badly mismatched",
+      "description": "A guest may truly want the best view, private bath, plunge pool, buyout access, pet-friendly room, photography, or dinner add-ons. If the stated budget is clearly far below the normal resource level, that reflects real desire but weaker commercial fit.",
+      "examples": [
+        "Peak weekend sea-view plunge pool suite with dinner and photography at a clearly unrealistic budget.",
+        "Dates, room type, and package budget broadly match the actual offer range."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaints_are_service_signals",
+      "title": "Complaints and refund issues are service signals, not sales wins",
+      "description": "Room odor, hygiene complaints, scenery mismatch, invoice delays, refund problems, and late-night noise issues deserve fast handling, but they should not be mistaken for high-intent commercial leads.",
+      "examples": [
+        "We stayed last week and still have not received the invoice, and I have the order number.",
+        "The room looked different from the post and we have photos."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "policy_bending_requests_raise_risk",
+      "title": "Absolute promises, over-occupancy, and rule-bending requests raise risk fast",
+      "description": "Requests for guaranteed quiet, guaranteed specific rooms, free early check-in, over-occupancy, no ID registration, pets in non-pet rooms, late-night parties, fireworks, or open-fire barbecue should sharply increase risk_score.",
+      "examples": [
+        "We need guaranteed silence all night and a confirmed late checkout or we will not book.",
+        "Four adults and two children in one room without registering everyone is high risk."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "filter_collab_and_channel_noise",
+      "title": "Filter influencer barter, shoot scouting, and channel cooperation noise",
+      "description": "Requests for influencer swaps, wedding-shoot scouting, channel cooperation, rate sheets, or pure price fishing without real stay facts should not be treated as normal booking leads.",
+      "examples": [
+        "Send me your summer bottom rates and barter policy because I have creator traffic.",
+        "A wedding shoot team that also gives two nights, four rooms, and a concrete scouting date is worth keeping."
+      ],
+      "priority": "high"
+    }
+  ]
+}

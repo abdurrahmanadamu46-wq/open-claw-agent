@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": "lobster.eval.scorecard.v0.2",
+  "roleId": "echoer",
+  "primaryArtifact": "EngagementReplyPack",
+  "metrics": [
+    {
+      "id": "reply_quality",
+      "weight": 0.35,
+      "order": 1
+    },
+    {
+      "id": "dm_conversion_rate",
+      "weight": 0.2,
+      "order": 2
+    },
+    {
+      "id": "complaint_rate",
+      "weight": 0.2,
+      "order": 3
+    },
+    {
+      "id": "emotional_stability",
+      "weight": 0.25,
+      "order": 4
+    }
+  ],
+  "acceptance": {
+    "artifactSchemaPassRate": 0.99,
+    "benchmarkPassRate": 0.91,
+    "regressionBudgetCeilingRatio": 1.03
+  }
+}

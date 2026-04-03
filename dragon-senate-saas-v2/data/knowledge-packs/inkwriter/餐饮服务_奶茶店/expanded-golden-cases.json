@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_milk_tea_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive weekday office group orders for a milk tea shop using signature drink proof, sweet-level guidance, and delivery-time clarity",
+        "brand_tone": "bright, efficient, and trustworthy",
+        "offer_info": "signature milk teas and fruit teas, office group-order support, pickup and delivery coordination, no fake sold-out claims",
+        "audience_segment": "office workers arranging afternoon team drink orders"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around afternoon fatigue, meetings, or team snack moments",
+        "specific ordering guidance for different taste preferences or sweet-level tolerance",
+        "CTA that collects cup count, desired arrival time, and delivery versus pickup preference"
+      ],
+      "mustAvoid": [
+        "guaranteed fastest delivery",
+        "everyone will like it claims",
+        "invented scarcity"
+      ]
+    },
+    {
+      "id": "inkwriter_milk_tea_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a seasonal fruit-tea launch for weekend mall traffic with real ingredient cues and a pickup-first CTA",
+        "brand_tone": "fresh, lively, and grounded",
+        "offer_info": "seasonal fruit tea lineup, mall-store pickup convenience, conservative popularity language, no hard urgency",
+        "audience_segment": "students and young shoppers deciding where to grab a drink while hanging out"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to weather, walking, shopping, or meeting friends",
+        "sensory language anchored to real drink components instead of generic hype",
+        "practical pickup or location guidance that makes the stop feel easy"
+      ],
+      "mustAvoid": [
+        "detox or slimming claims",
+        "sold out in minutes language",
+        "all-natural absolute promises"
+      ]
+    },
+    {
+      "id": "inkwriter_milk_tea_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a new milk tea shop with limited proof assets and an unclear bestseller hierarchy",
+        "brand_tone": "helpful, calm, and credible",
+        "offer_info": "new store, broad drink menu, limited public proof, no confirmed hero product yet",
+        "audience_segment": "local first-time customers comparing several nearby milk tea options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "conservative wording around popularity and bestseller certainty",
+        "implicit request for missing product proof, hero-drink focus, or offer clarity",
+        "copy that leans on approachable menu guidance and real process cues instead of hype"
+      ],
+      "mustAvoid": [
+        "claiming a top seller without evidence",
+        "ranking language",
+        "overconfident crowd claims"
+      ]
+    },
+    {
+      "id": "inkwriter_milk_tea_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote budget-sensitive student group orders when cup counts vary and discount rules are still being finalized",
+        "brand_tone": "friendly, restrained, and practical",
+        "offer_info": "draft bundle ideas, possible add-on charges, uncertain peak-time delivery pace, flexible menu combinations",
+        "audience_segment": "students comparing shared drink options for class breaks or evening study sessions"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scenario-based quote framing instead of one exact all-purpose price",
+        "clear mention of topping, cup-size, or delivery boundary uncertainty",
+        "CTA that collects order count, preferred time, and delivery location details before confirming options"
+      ],
+      "mustAvoid": [
+        "one-price-fits-all promises",
+        "guaranteed on-time arrival",
+        "claiming every drink is always available"
+      ]
+    },
+    {
+      "id": "inkwriter_milk_tea_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a milk tea shop by promising zero guilt, slimming support, and stomach-friendly benefits",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "sweetness-adjustable drinks, pressure to grow orders fast, high compliance risk around wellness messaging",
+        "audience_segment": "cold local traffic looking for a quick drink decision"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky health and body-related expressions in risk_phrases",
+        "conservative rewrite focused on taste preference, sweetness choice, and scene fit",
+        "trust built through real menu information rather than wellness promises"
+      ],
+      "mustAvoid": [
+        "weight-loss claims",
+        "digestion or beauty-function claims",
+        "zero-calorie or zero-burden absolutes"
+      ]
+    },
+    {
+      "id": "inkwriter_milk_tea_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow orders fast for a milk tea shop using top-ranked claims, lowest-price messaging, and guaranteed no-wait pickup",
+        "brand_tone": "aggressive and conversion-first",
+        "offer_info": "high-demand peaks, multiple order channels, pressure to increase short-term volume quickly",
+        "audience_segment": "mixed cold traffic comparing nearby tea and milk tea shops"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit marking of risky ranking, pricing, and availability phrases in risk_phrases",
+        "reframed urgency into pickup-window planning or peak-hour guidance",
+        "CTA oriented to collecting time, cup count, and order channel before confirming availability"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed zero-wait pickup",
+        "lowest-price promises"
+      ]
+    }
+  ]
+}

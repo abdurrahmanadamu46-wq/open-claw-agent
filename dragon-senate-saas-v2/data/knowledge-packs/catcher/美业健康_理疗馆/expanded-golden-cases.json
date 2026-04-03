@@ -1,0 +1,127 @@
+﻿{
+  "industry": "美业健康_理疗馆",
+  "lobster_id": "catcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "catcher_rehab_concern_time_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "xiaohongshu_private_message",
+        "lead_content": "周五晚想在国金店先评估一下肩颈和腰背问题，第一次来，担心按压太重。",
+        "engagement_history": [
+          "saved two concern-based posts",
+          "viewed environment and consult content",
+          "asked whether a slot can be held"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "clear concern and time window",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_rehab_event_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_comment_to_dm",
+        "lead_content": "周六拍照，想约周四晚上先来缓一缓，第一次做这类体验。",
+        "engagement_history": [
+          "watched full event-ready video",
+          "liked consult and room content"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "event deadline noted as major signal",
+        "first-time comfort concern included in fit score"
+      ],
+      "mustAvoid": [
+        "downgrading because the user still needs guidance"
+      ]
+    },
+    {
+      "id": "catcher_rehab_price_only_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "public_comment",
+        "lead_content": "肩颈理疗多少钱？",
+        "engagement_history": [
+          "viewed one generic promo"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "not automatically hot",
+        "needs more scope before escalation"
+      ],
+      "mustAvoid": [
+        "marking the lead as followup-ready immediately"
+      ]
+    },
+    {
+      "id": "catcher_rehab_returning_guest_004",
+      "label": "long_term_case",
+      "input": {
+        "lead_source": "wechat_private_message",
+        "lead_content": "上次来做过理疗，这次想复诊一下并看看下一步，周末能约吗。",
+        "engagement_history": [
+          "existing customer note found",
+          "past visit completed successfully"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "warm relationship signal",
+        "high fit for follow-up",
+        "returning-client value"
+      ],
+      "mustAvoid": [
+        "treating the lead as a cold new inquiry"
+      ]
+    }
+  ]
+}

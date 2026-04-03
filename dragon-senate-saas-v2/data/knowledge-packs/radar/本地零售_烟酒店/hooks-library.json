@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"gift_budget_hook","title":"送礼预算与体面度钩子","description":"当用户同时提到预算、送礼对象和体面度时，应优先标记为高价值信号。","examples":["预算五百左右，送领导什么更稳。","想给客户送一盒白酒礼盒，不想显得太轻。"],"priority":"high"},
+  {"id":"banquet_volume_hook","title":"婚宴与整箱用量钩子","description":"出现桌数、人数、婚期和整箱需求时，说明线索更接近真实成交。","examples":["婚礼 20 桌，大概得备多少白酒和红酒。","下个月办答谢宴，想先看看整箱方案。"],"priority":"high"},
+  {"id":"self_drinking_restock_hook","title":"自饮补货钩子","description":"日常口粮酒、啤酒和家庭聚餐补货如果带着明确时间和数量，也应视为稳定价值信号。","examples":["这周末家庭聚餐，想补两箱啤酒。","口粮酒快喝完了，想再来拿一箱。"],"priority":"medium"},
+  {"id":"authenticity_anxiety_hook","title":"真假与授权焦虑钩子","description":"用户主动追问授权、批次、扫码价和进货渠道时，说明信任是关键影响因子。","examples":["你们家这款有授权证明吗。","为什么扫码价和门店价不一样。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"节庆窗口钩子","description":"节前、拜访、开业和乔迁节点一旦带着明确日期出现，应显著提权。","examples":["中秋前想给客户备一批礼盒。","这周五开业，想先看两款红酒礼盒。"],"priority":"high"},
+  {"id":"enterprise_group_buy_hook","title":"企业团购钩子","description":"企业团购和公司活动采购常常伴随发票、配送和批量折扣要求，应单独关注。","examples":["公司活动要 30 箱啤酒，能开发票吗。","部门送礼要统一礼盒，想周三前敲定。"],"priority":"medium"}
+]}

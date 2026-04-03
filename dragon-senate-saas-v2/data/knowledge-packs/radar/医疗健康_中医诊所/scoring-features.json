@@ -1,0 +1,8 @@
+{"industry":"医疗健康_中医诊所","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"scene_specificity","title":"场景方向清晰度","description":"高分信号会明确提到失眠、脾胃、疼痛调理、体质调理和针灸艾灸等具体方向。","examples":["高分：想调失眠。","低分：想调理身体。"],"priority":"high"},
+  {"id":"timing_clarity","title":"时间窗口清晰度","description":"最近、晚上、换季和寒暑假等时间窗口越清楚，价值越高。","examples":["高分：最近晚上总睡不好。","低分：一直不太舒服。"],"priority":"high"},
+  {"id":"scope_clarity","title":"症状与部位清晰度","description":"症状、部位和调理目标越清楚，后续路线越容易收窄。","examples":["高分：肩颈僵硬伴头痛。","低分：身体不太舒服。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"医生与方案敏感度","description":"当用户高度关注医生资历、针灸疼痛感和方案周期时，需要提升信号权重与风险识别。","examples":["高分：主动问医生擅长方向。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"review_cycle_strength","title":"复诊回流强度","description":"复诊、续方和节气调理周期越明确，优先级越高。","examples":["高分：按周复诊。","低分：有空再来。"],"priority":"medium"},
+  {"id":"urgency_expectation_strength","title":"时效期待强度","description":"近期明显加重、夜里难受和节前想先调理等期待越明确，越需要提权。","examples":["高分：最近夜里难受得厉害。","低分：以后再调。"],"priority":"medium"}
+]}

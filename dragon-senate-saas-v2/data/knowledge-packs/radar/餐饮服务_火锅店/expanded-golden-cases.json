@@ -1,0 +1,265 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_hotpot_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测火锅店在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "鲜切火锅店A",
+          "牛肉火锅店B"
+        ],
+        "raw_signals": [
+          "抖音本地生活公告要求团购标题里涉及鲜切鲜活、零添加、锅底免费、全城最低价等表述时必须提供可核验依据，违规会被降权处理",
+          "美团商家后台通知加强火锅门店资质、后厨实拍和食材来源抽检",
+          "两家竞品把套餐文案从鲜切毛肚不限量和全网低价改成招牌双人餐，菜品以门店当日供应为准"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对价格承诺和食材宣传边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略资质抽检和规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_hotpot_late_night_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城火锅店夜宵窗口与天气驱动的需求变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "潮汕牛肉火锅店C",
+          "川渝火锅店D"
+        ],
+        "raw_signals": [
+          "同城周末出现明显降温和连续降雨，地图问答、搜索词和私信里集中出现凌晨火锅、营业到几点、排队多久等咨询",
+          "同商圈三家竞品同步把闭店时间从 23 点延到 2 点，并上线夜宵双人餐和深夜到店券",
+          "探店评论里连续提到晚市排队时间拉长，但午市热度没有同步上升"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城天气变化与夜宵意图聚集应被识别为机会信号",
+        "竞品营业时段变化需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的高关注窗口提醒"
+      ],
+      "mustAvoid": [
+        "把天气变化单独夸大为确定性结论",
+        "用跨城夜景火锅热度替代本地夜宵需求判断"
+      ]
+    },
+    {
+      "id": "radar_hotpot_group_booking_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现火锅店包间聚餐、生日宴和企业团建机会窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "主题火锅店E",
+          "商务火锅店F"
+        ],
+        "raw_signals": [
+          "同城会展中心和园区公众号发布 4 月活动排期，附近商圈咨询量同步升高",
+          "评论区、私信和问答区连续出现 12 到 16 人包间、可开发票吗、有停车吗、能投屏吗、可做生日布置吗 等咨询",
+          "同商圈三家竞品同步上线商务聚餐套餐和生日包间套餐，并强调停车、投屏和大桌配置"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城活动排期与聚餐需求咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端意图簇分开描述",
+        "输出应形成面向 Commander 的聚餐窗口简报"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求侧询问聚集",
+        "把跨城生日餐饮趋势当作主要依据"
+      ]
+    },
+    {
+      "id": "radar_hotpot_takeaway_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测火锅店外卖成本风险与平台补贴变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "外卖火锅店G"
+        ],
+        "raw_signals": [
+          "同城商家群截图称美团下周将取消火锅夜宵补贴并上调抽佣 2%，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区经理口径也不一致",
+          "核心竞品的起送价、配送费、打包费和满减结构暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断外卖利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_hotpot_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别二线城市社区型火锅店的内容与套餐机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区火锅店H"
+        ],
+        "raw_signals": [
+          "外地旅游城市的单人景观小火锅短视频爆火，大量内容强调高颜值、夜景和打卡氛围",
+          "本地平台最近新增搜索和评论集中在家庭聚餐、儿童座椅、停车方便、工作日晚餐和 3 到 4 人套餐",
+          "本地竞品开始上新家庭组合餐和晚市双人到四人套餐，没有跟进高客单打卡路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型需求应高于跨城打卡爆款热度",
+        "需要区分审美爆款与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单打卡路线",
+        "忽略同城搜索与竞品套餐的本地互证"
+      ]
+    },
+    {
+      "id": "radar_hotpot_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城火锅店食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某连锁火锅店门店被集体查封，只给出模糊后厨偷拍视频",
+          "该说法被两个营销号转发，但都没有提供执法文书、门店名称或监管链接",
+          "未发现市场监管局通报、平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已经发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_hotpot_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度火锅竞品的真实门店热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "网红火锅店I",
+          "潮牌火锅店J"
+        ],
+        "raw_signals": [
+          "竞品发布排队 300 桌的短视频，但没有给出日期、门店定位或叫号系统截图",
+          "地图平台近 7 天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也没有新增预约限制或翻台提示"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    },
+    {
+      "id": "radar_hotpot_supply_chain_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测火锅店原料波动向菜单结构与竞品动作的传导",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_competitor_watch",
+        "competitor_watchlist": [
+          "鲜牛火锅店K",
+          "海鲜火锅店L"
+        ],
+        "raw_signals": [
+          "同城牛羊肉与活鲜供给阶段性偏紧，批发渠道价格明显上行",
+          "同商圈三家竞品同步下架低价鲜牛套餐，改推周末限量鲜切组合或提高升级款套餐占比",
+          "最近评论里连续出现分量变化、当日供应不固定和周末热门菜更快售罄的反馈，未发现官方平台规则变化"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要把原料波动翻译成菜单和套餐结构变化",
+        "应明确这是竞品经营动作而不是平台规则变化",
+        "关注级别应为中高"
+      ],
+      "mustAvoid": [
+        "把成本新闻单独放大成确定性危机",
+        "忽略评论反馈与竞品动作之间的互证关系"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+﻿{
+  "version": "lobster.scope-drift-alert-delivery.policy.v0.1",
+  "name": "Default Scope Drift Alert Delivery Policy",
+  "inboxDirectory": "F:\\openclaw-agent\\run\\scope-drift-alert-inbox",
+  "statePath": "F:\\openclaw-agent\\run\\scope-drift-alert-state.json",
+  "deliverSeverities": [
+    "high",
+    "medium",
+    "low"
+  ]
+}

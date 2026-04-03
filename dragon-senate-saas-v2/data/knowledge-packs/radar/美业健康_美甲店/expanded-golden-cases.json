@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "radar",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "radar_nail_salon_style_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测美甲店在小红书和抖音上的款式趋势变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_beauty_content",
+        "competitor_watchlist": [
+          "商圈美甲店A",
+          "工作室B"
+        ],
+        "raw_signals": [
+          "本地内容里腮红甲和裸透短甲明显增多",
+          "评论区大量追问适合上班的法式短甲",
+          "两家竞品作品集同时减少复杂贴钻款"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "要指出审美从高复杂度向通勤耐看款迁移",
+        "本地内容比泛趋势更重要",
+        "关注级别至少为中高"
+      ],
+      "mustAvoid": [
+        "只把这看成普通流量波动",
+        "忽略竞品同步变化"
+      ]
+    },
+    {
+      "id": "radar_nail_salon_package_change_002",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测美甲店套餐结构与加价项变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "group_buy_and_booking_pages",
+        "competitor_watchlist": [
+          "门店C",
+          "门店D"
+        ],
+        "raw_signals": [
+          "周边门店开始把卸甲包含在基础套餐里",
+          "热门店把加固和延长改为分层加价",
+          "返修保障和手部护理开始写进团购页"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "要指出套餐结构变化比单纯低价更关键",
+        "需要提到含卸甲和返修保障的影响",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "只比较面价高低",
+        "忽略加价项重构"
+      ]
+    },
+    {
+      "id": "radar_nail_salon_hygiene_risk_003",
+      "label": "risk_case",
+      "input": {
+        "mission_scope": "监测美甲店口碑与卫生风险",
+        "time_window": "last_10_days",
+        "platform_or_market_context": "map_reviews_plus_public_comments",
+        "competitor_watchlist": [
+          "门店E"
+        ],
+        "raw_signals": [
+          "近一周评价连续提到修死皮太狠和甲缘出血",
+          "评论区开始出现工具不干净的质疑",
+          "返修和翘边投诉同步增多"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "风险优先级应高",
+        "要区分卫生风险和返修体验风险",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "把这些反馈视为个别情绪",
+        "只关注风格热度不管口碑"
+      ]
+    },
+    {
+      "id": "radar_nail_salon_event_window_004",
+      "label": "opportunity_case",
+      "input": {
+        "mission_scope": "监测美甲店婚礼与节日档机会窗口",
+        "time_window": "last_21_days",
+        "platform_or_market_context": "local_event_and_beauty_content",
+        "competitor_watchlist": [
+          "婚纱店F",
+          "写真馆G"
+        ],
+        "raw_signals": [
+          "婚礼季新娘甲内容大幅增多",
+          "写真馆开始出现拍照前手部精致感内容",
+          "节日前红金色系和闪片款被集中收藏"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "联动和档期窗口要被识别为机会信号",
+        "需要指出新娘甲和节日款的预约价值",
+        "本地相关性应判高"
+      ],
+      "mustAvoid": [
+        "把档期窗口当成普通热点",
+        "忽略婚礼和写真联动"
+      ]
+    }
+  ]
+}

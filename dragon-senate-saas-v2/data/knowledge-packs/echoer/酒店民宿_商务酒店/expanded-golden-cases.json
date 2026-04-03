@@ -1,0 +1,424 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_business_hotel_first_stay_fit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I have a client visit next Tuesday and need a quiet room with a proper desk near your tech park branch. Which room type should I look at?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "generic room list dumping",
+          "salesy pressure"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user has a business-travel purpose",
+          "room preference is partially known"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the business-trip purpose",
+        "anchor the reply in quietness and work setup preference",
+        "guide toward stay dates or room-type clarification without overselling"
+      ],
+      "mustAvoid": [
+        "dumping every room category",
+        "promising a perfectly quiet room"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_team_booking_invoice_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need 8 rooms for two nights next month and need a company invoice. Can your convention center hotel handle that?",
+        "brand_tone": "warm and businesslike",
+        "negative_patterns": [
+          "fixed promise without scope",
+          "ignoring invoice details"
+        ],
+        "context_window": [
+          "group booking lead",
+          "high-intent company stay",
+          "user is organized"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the request as a serious group booking",
+        "ask for dates, room mix, and invoice title or billing details",
+        "guide toward a clear booking follow-up naturally"
+      ],
+      "mustAvoid": [
+        "assuming every property handles corporate groups identically",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_red_eye_early_checkin_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "My flight lands at 7 am tomorrow. If I book tonight, can I check in early when I arrive?",
+        "brand_tone": "calm and considerate",
+        "negative_patterns": [
+          "guaranteed early check-in",
+          "careless reassurance"
+        ],
+        "context_window": [
+          "time-sensitive arrival",
+          "user sounds tired",
+          "live room turnover matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the travel fatigue concern",
+        "state that early check-in depends on property and room status",
+        "guide toward property, date, and booking details"
+      ],
+      "mustAvoid": [
+        "guaranteeing a 7 am room",
+        "ignoring the arrival-time pressure"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_late_checkout_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I have an evening flight. Can you guarantee late checkout until 6 pm?",
+        "brand_tone": "steady and realistic",
+        "negative_patterns": [
+          "absolute late-checkout promise",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "travel schedule pressure",
+          "public comment thread",
+          "user wants certainty"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the departure timing concern",
+        "explain that late checkout depends on occupancy or rate conditions",
+        "guide toward property and stay-date details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "hard pressure to book now"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_meeting_room_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Do you have a small meeting room with a screen for 12 people next Wednesday afternoon?",
+        "brand_tone": "professional and helpful",
+        "negative_patterns": [
+          "instant yes without setup questions",
+          "ignoring timing"
+        ],
+        "context_window": [
+          "meeting-space inquiry",
+          "headcount already known",
+          "business lead"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the request as a real event lead",
+        "ask for date, time block, and setup needs such as screen or refreshments",
+        "guide toward a concrete follow-up path"
+      ],
+      "mustAvoid": [
+        "pretending every property has the same meeting setup",
+        "quoting a package without scope"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_airport_transfer_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Our colleague lands at 11:30 tonight. Does your airport hotel definitely provide shuttle pickup that late?",
+        "brand_tone": "clear and composed",
+        "negative_patterns": [
+          "blanket transport promise",
+          "guessing shuttle hours"
+        ],
+        "context_window": [
+          "late-night travel",
+          "property partly specified",
+          "transport detail matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the late-arrival concern",
+        "mention that transfer support depends on property and operating hours",
+        "guide toward the exact hotel, date, and pickup details"
+      ],
+      "mustAvoid": [
+        "definite yes without verification",
+        "casual guesswork on timing"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_breakfast_rate_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I saw your room on an OTA app. Is breakfast included or do I need to add it separately?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket breakfast claim",
+          "generic upsell"
+        ],
+        "context_window": [
+          "rate-plan question",
+          "channel is partially known",
+          "user may be close to booking"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the rate-inclusion question",
+        "mention that breakfast depends on the room category or rate plan",
+        "guide toward the exact plan or booking channel details"
+      ],
+      "mustAvoid": [
+        "saying breakfast is always included",
+        "ignoring the OTA context"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_parking_ev_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We're driving a van and one EV to your hotel tomorrow. Do you have parking and charging?",
+        "brand_tone": "practical and warm",
+        "negative_patterns": [
+          "parking guarantee",
+          "ignoring vehicle type"
+        ],
+        "context_window": [
+          "arrival logistics",
+          "vehicle details partly known",
+          "user is planning the stay"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the arrival-planning need",
+        "mention that parking or charging can depend on the property and vehicle setup",
+        "guide toward the hotel name and exact vehicle requirement"
+      ],
+      "mustAvoid": [
+        "guaranteeing a parking space or charger",
+        "treating all vehicles the same"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_ota_refund_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I booked a non-refundable room on a third-party app. My schedule changed. Can you refund it anyway?",
+        "brand_tone": "careful and respectful",
+        "negative_patterns": [
+          "instant refund promise",
+          "dismissive policy talk"
+        ],
+        "context_window": [
+          "booking already exists",
+          "channel matters",
+          "user is frustrated"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the inconvenience",
+        "state that refund handling depends on channel and rate rules",
+        "guide toward booking-source and reservation details for the next step"
+      ],
+      "mustAvoid": [
+        "promising a refund before checking the booking context",
+        "treating third-party and direct bookings as identical"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_room_issue_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "The room smells smoky and the Wi-Fi keeps dropping. I've called twice already.",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "active stay complaint",
+          "user is upset",
+          "service recovery scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request the hotel and room or booking details through a safer channel",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming the guest or operations publicly",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_long_stay_rate_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We send consultants every month. If we book 10 nights at a time, do you have a corporate rate?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "instant price quote",
+          "ignoring repeat-stay value"
+        ],
+        "context_window": [
+          "repeat corporate demand",
+          "user is exploring a longer-term relationship",
+          "business lead"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the recurring business value",
+        "ask for expected dates, room volume, and invoice or breakfast needs",
+        "guide toward a concrete business-booking follow-up"
+      ],
+      "mustAvoid": [
+        "quoting a rate without scope",
+        "treating the request like a one-off room question"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to lock the room now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "hard-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "reservation is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request property and stay details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    },
+    {
+      "id": "echoer_business_hotel_claim_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every business hotel says it's quiet and has fast Wi-Fi. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete concern like quiet rest, desk setup, or network stability",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-city bragging",
+        "sarcasm"
+      ]
+    }
+  ]
+}

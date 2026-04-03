@@ -1,0 +1,16 @@
+{
+  "report_id": "l1-76adf9a59a5c",
+  "source_entry_id": "echoer_1775051734",
+  "lobster_id": "echoer",
+  "task_summary": "ok",
+  "decision": "parse_failed",
+  "outcome": "unknown",
+  "next_steps": [],
+  "key_entities": [],
+  "metrics": {},
+  "tenant_id": "tenant_main",
+  "created_at": "2026-04-01T13:55:34.936114+00:00",
+  "token_count": 1,
+  "source_token_count": 63,
+  "promoted_to_l2": false
+}

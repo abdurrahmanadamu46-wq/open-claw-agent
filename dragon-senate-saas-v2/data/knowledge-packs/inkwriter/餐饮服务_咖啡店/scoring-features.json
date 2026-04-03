@@ -1,0 +1,129 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5496\u5561\u5e97",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "coffee_score_hook_strength",
+      "title": "Hook strength",
+      "description": "High-scoring copy makes the coffee moment visible within the first two lines: commute, office entry, afternoon reset, timed pickup, or slower weekend use. Low-scoring copy opens with generic bean or aroma language and never grounds the need.",
+      "examples": [
+        "High signal: the opening includes a concrete time, motion, or use case.",
+        "High signal: the first line frames the drink as a decision aid for a real moment.",
+        "Low signal: the copy starts with vague quality praise and no scene."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_menu_guidance",
+      "title": "Menu guidance quality",
+      "description": "High-scoring copy helps users choose between Americano, latte, flat white, hand brew, seasonal items, hot versus iced, and black versus milk paths. Low-scoring copy only sounds appetizing but never makes the decision easier.",
+      "examples": [
+        "High signal: the copy identifies one or two low-risk first-order routes.",
+        "High signal: the copy distinguishes coffee styles in usable language.",
+        "Low signal: the copy uses only praise words without order logic."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_scene_fit",
+      "title": "Scene, audience, and channel fit",
+      "description": "High-scoring copy maps store advantages to real contexts such as commuting, office coffee runs, neighborhood pickup, or weekend walk traffic. Low-scoring copy uses one flat message for every audience and order channel.",
+      "examples": [
+        "High signal: commute copy discusses speed, route, and pickup timing.",
+        "High signal: group-order copy discusses cup count, split preferences, and timing.",
+        "Low signal: the same broad pitch is used for every use case."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_flavor_translation",
+      "title": "Flavor-to-decision translation",
+      "description": "High-scoring copy converts roast, acidity, body, and milk fit into practical guidance such as easier black-coffee entry, softer first cup, or cleaner warm-weather choice. Low-scoring copy stops at flavor jargon.",
+      "examples": [
+        "High signal: medium-dark roast is translated into a fuller, steadier choice.",
+        "High signal: bright acidity is framed for users who already like clearer black coffee.",
+        "Low signal: tasting-note vocabulary is present without order meaning."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_trust_evidence",
+      "title": "Trust evidence density",
+      "description": "High-scoring coffee copy uses real store evidence such as bean direction, milk base, add-shot availability, pickup flow, house recommendations, and peak-time notes. Low-scoring copy relies on hype, empty popularity claims, or unverifiable ranking signals.",
+      "examples": [
+        "High signal: operational and product details support the sales angle.",
+        "High signal: local convenience is described concretely.",
+        "Low signal: the copy leans on everyone-orders-this language without support."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_offer_clarity",
+      "title": "Offer and add-on clarity",
+      "description": "High-scoring copy explains size, add-shot cost, alt-milk boundaries, syrup options, combo logic, coupon scope, and pickup-versus-delivery differences. Low-scoring copy implies universal discounting or hides the price logic.",
+      "examples": [
+        "High signal: the user can tell what changes the final price.",
+        "High signal: member or combo rules are clearly bounded.",
+        "Low signal: cheapest-language appears without conditions."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_local_convenience",
+      "title": "Local fulfillment completeness",
+      "description": "High-scoring copy reduces logistical friction by clarifying store relevance, timing windows, pickup flow, delivery suitability, and peak-hour expectations. Low-scoring copy ignores the actual fulfillment step.",
+      "examples": [
+        "High signal: the copy tells the user when to order for a smoother pickup.",
+        "High signal: the store's local convenience is made legible.",
+        "Low signal: no fulfillment or route information appears at all."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_score_emotional_resonance",
+      "title": "Emotional resonance",
+      "description": "High-scoring copy captures the real emotional need behind the cup: starting the day well, resetting after lunch, walking into a meeting more composed, or giving a weekend more shape. Low-scoring copy only describes the product and not the human reason for wanting it.",
+      "examples": [
+        "High signal: the user can see their own routine in the copy.",
+        "High signal: the drink feels tied to a lived pace, not just a flavor profile.",
+        "Low signal: the store speaks only from its own perspective."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_score_risk_control",
+      "title": "Risk control",
+      "description": "High-scoring copy avoids health claims, body claims, absolute rankings, unsupported wait-time claims, and universal-seat promises. Low-scoring copy overreaches on wellness, speed, price, popularity, or availability.",
+      "examples": [
+        "High signal: risky expressions are replaced with taste or scene-based language.",
+        "High signal: peak-time expectations are framed conservatively.",
+        "Low signal: the copy promises fat loss, no jitter, zero wait, or best in town."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_cta_clarity",
+      "title": "CTA clarity",
+      "description": "High-scoring CTA asks for useful next-step information such as cup count, timing, hot versus iced, black versus milk, add-shot intent, and pickup route. Low-scoring CTA only says come order or message us without shaping the next move.",
+      "examples": [
+        "High signal: the CTA tells the user exactly what to send back.",
+        "High signal: the CTA changes depending on solo, first-time, or group-order context.",
+        "Low signal: the CTA is generic and does not collect decision inputs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_score_tone_consistency",
+      "title": "Tone consistency",
+      "description": "High-scoring copy keeps the same grounded tone across hook, body, and CTA. Low-scoring copy starts with lifestyle softness and then suddenly shifts into pushy scarcity or hard promotion, which breaks trust.",
+      "examples": [
+        "High signal: the tone stays composed, clear, and useful throughout.",
+        "High signal: persuasion comes from fit and proof, not pressure spikes.",
+        "Low signal: the ending jumps into panic language that the opening did not prepare."
+      ],
+      "priority": "medium"
+    }
+  ]
+}

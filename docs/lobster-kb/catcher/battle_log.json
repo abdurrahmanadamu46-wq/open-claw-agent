@@ -1,0 +1,17 @@
+{
+  "meta": { "lobster": "catcher", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "cat_battle_001",
+      "type": "failure",
+      "date": "2026-03-22",
+      "skill_ref": "cat_score_001",
+      "description": "给一个问了5个问题、但全是行业技术问题（无购买信号）的用户打了4.5分（热线索），结果followup跟进后发现是竞品调研人员",
+      "root_cause": "行为强度（多次互动）打分过高，但没有负向扣分机制来抵消'竞品探子'特征",
+      "action_taken": "在5维评分中加入负向扣分：触发'假意向特征清单'中任意1条，总分自动扣2分",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

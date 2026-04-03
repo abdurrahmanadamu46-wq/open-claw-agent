@@ -1,0 +1,164 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_inn_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote an inn in an old town for couples seeking a one-night or two-night slow stay using courtyard atmosphere, evening walk rhythm, breakfast texture, and a consultative room-matching CTA",
+        "brand_tone": "warm, local, and restrained",
+        "offer_info": "courtyard rooms and selected view rooms, simple breakfast, evening tea or shared sitting area, walkable old-town lanes, some rooms differ by floor and quietness, no guaranteed river view or zero-noise claims",
+        "audience_segment": "couples from nearby cities who want a more memorable overnight stay than a standardized hotel and care about atmosphere from evening through next morning"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening anchored to slowing down in the destination rather than just booking a room",
+        "specific proof around courtyard or sitting space, evening strolling rhythm, breakfast or next-morning experience, and room-type difference",
+        "CTA that asks for dates, number of nights, room preference, and whether the stay is for a celebration or quiet reset"
+      ],
+      "mustAvoid": [
+        "guaranteed romance language",
+        "claiming every room has the same view or same quietness",
+        "hard urgency that pushes instant booking without confirming dates"
+      ]
+    },
+    {
+      "id": "inkwriter_inn_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive inquiries for an inn suited to friends planning a short gathering by highlighting courtyard hangout value, local route suggestions, and low-pressure consultation",
+        "brand_tone": "friendly, grounded, and credible",
+        "offer_info": "small number of rooms, public courtyard or rooftop seating, local food and walking recommendations, possible parking guidance, clear check-in boundaries, no unrestricted party-style overpromises",
+        "audience_segment": "friends or small groups comparing distinctive stays for birthdays, reunion weekends, or old-town catch-up trips"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to catching up, slowing down, or spending the evening together after walking around town",
+        "trust modules around room count, public-space use, local route recommendations, and arrival or parking logic",
+        "next step asking for dates, guest count, room count, and whether courtyard time, celebration setup, or parking support matters most"
+      ],
+      "mustAvoid": [
+        "one-price-fits-all group quote",
+        "pretending the whole inn is always fully private without confirming booking scope",
+        "language that implies unrestricted nightlife or party use"
+      ]
+    },
+    {
+      "id": "inkwriter_inn_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write inn copy for a vague weekend inquiry that only says it wants an atmospheric place, while dates, guest count, transport mode, luggage situation, and room preference are still unclear",
+        "brand_tone": "calm, practical, and consultative",
+        "offer_info": "mixed room styles, some stairs, possible stone-lane walk after parking, limited inventory, uncertain breakfast inclusion, no confirmed room assignment yet",
+        "audience_segment": "a user comparing several old-town or mountain inns but unable to explain whether they care more about quietness, view, access convenience, or public-space atmosphere"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing details such as dates, guest count, self-drive status, luggage load, elder or child travelers, or room preference",
+        "conservative wording around room availability, breakfast inclusion, and access convenience",
+        "guidance that helps the user clarify priorities instead of forcing a single exact recommendation"
+      ],
+      "mustAvoid": [
+        "claiming any room will fit equally well",
+        "guaranteeing easy arrival before confirming transport details",
+        "oversimplifying room differences into one generic inn pitch"
+      ]
+    },
+    {
+      "id": "inkwriter_inn_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote an atmospheric old-house inn with strong courtyard charm but structural boundaries around stairs, street sound, and room differences that must be handled carefully",
+        "brand_tone": "elegant, honest, and careful",
+        "offer_info": "renovated old-house character, courtyard and tea-space appeal, some rooms near street or water, some upper-floor access by stairs only, natural sound varies by room and date, no zero-noise promise",
+        "audience_segment": "image-driven travelers comparing local inns online but sensitive to mismatch between visuals and real stay experience"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "atmosphere-led positioning with clear boundaries around stairs, room type, sound exposure, and old-house structure",
+        "trust-building details that rely on real stay texture instead of perfect-photo fantasy",
+        "conservative treatment of quietness, accessibility, and room differences as both appeal and boundary"
+      ],
+      "mustAvoid": [
+        "absolute quiet promise",
+        "pretending every room experience is identical",
+        "overclaiming privacy or visual proof that the property cannot fully support"
+      ]
+    },
+    {
+      "id": "inkwriter_inn_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push fast conversion for an inn using the best inn in the old town language, every corner is photo-perfect claims, and hard scarcity around upcoming weekends",
+        "brand_tone": "sales-heavy and high-pressure",
+        "offer_info": "small property, pressure to fill near-term dates, temptation to exaggerate atmosphere, views, and urgency, incomplete traveler details",
+        "audience_segment": "cold leisure traffic casually comparing old-town stays for an upcoming short trip"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking, photo-perfect, and scarcity phrases in risk_phrases",
+        "reframing urgency into date-confirmation and room-type confirmation guidance",
+        "trust built through real arrival, room difference, and local-stay texture instead of hype"
+      ],
+      "mustAvoid": [
+        "best inn in the old town claim without evidence",
+        "every corner photographs perfectly promise",
+        "book-now-or-it-is-gone pressure language"
+      ]
+    },
+    {
+      "id": "inkwriter_inn_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Force immediate booking for an inn by promising absolute privacy, zero noise, door-to-door car access, guaranteed views, 24-hour butler help, and the lowest rate for every date",
+        "brand_tone": "promotional and exaggerated",
+        "offer_info": "small inn in lanes or scenic area, uncertain occupancy, limited staffing, room differences by floor and orientation, desire to overstate convenience and service outcomes",
+        "audience_segment": "mixed cold leads making quick comparisons across inns, homestays, and design hotels"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of privacy, quietness, access, service, view, and pricing promises",
+        "explicit marking of red-flag expressions in risk_phrases",
+        "CTA focused on dates, guest count, transport method, luggage or elder-child needs, room preference, and stay purpose before confirming options"
+      ],
+      "mustAvoid": [
+        "absolute privacy guarantee",
+        "zero-noise promise",
+        "lowest-rate-for-every-date claim"
+      ]
+    }
+  ]
+}

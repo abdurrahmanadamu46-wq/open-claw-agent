@@ -1,0 +1,7 @@
+{"industry":"生活服务_开锁服务","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+{"id":"facts_before_slot_commitment","title":"没补齐场景、范围和时间前，本轮目标是锁预约事实，不是先把结果说满","description":"开锁服务线索很多从多少钱、能不能来和多久能到开场，但真正决定能否推进的是场景方向、门型锁型、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问场景和门型。","客户只说最近想找开锁时，先补时间和范围，再决定如何推进。"],"priority":"high"},
+{"id":"first_visit_needs_safety_trust_stage","title":"第一次上门和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会约、怕不正规和怕临时加价的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出预约路径。","先讲清备案和边界，再谈时间。"],"priority":"high"},
+{"id":"seasonal_booking_needs_fast_scope","title":"夜间、交房和返家节点线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间、师傅和场景路线。","examples":["夜间线索先确认几点可上门和这次最在意什么。","交房线索先锁时间，再讲门型与锁型范围。"],"priority":"high"},
+{"id":"first_visit_and_revisit_split","title":"首次上门跟进和复约维护必须拆开","description":"首单跟进的目标通常是帮助用户安心完成第一次上门，复购维护的目标才是提醒换锁节点、复约和下一步选择。","examples":["首单更多围绕场景、门型和时间。","复购更多围绕上次服务感受、路线和下一步。"],"priority":"high"},
+{"id":"post_visit_followup_needs_feedback","title":"上门后的跟进要先收感受和完工状态，再决定是否推进下一步","description":"上门后的 FollowUp 不是默认销售时刻，而是先确认这次开锁、换锁或维护是否顺利、有无后续追加。","examples":["开锁后先问门锁状态和是否还需换芯。","门禁处理后先问是否还需后续维护。"],"priority":"high"},
+{"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复约或换锁理由，不要只催回来","description":"交房节点、返家前、复约和门禁维护等都是合理的回访理由。","examples":["提醒上次开过锁的客户交房窗口到了。","按维护周期提醒再次预约。"],"priority":"medium"}]}

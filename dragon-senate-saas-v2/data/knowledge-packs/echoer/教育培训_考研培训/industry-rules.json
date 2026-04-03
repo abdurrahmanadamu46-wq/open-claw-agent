@@ -1,0 +1,134 @@
+﻿{
+  "industry": "教育培训_考研培训",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "booking_needs_concern_and_time",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a trial or consult is available without concern, time, or branch facts",
+        "User wants a fast answer in a public comment"
+      ],
+      "response_goal": "Keep the reply warm while turning a vague postgraduate-exam inquiry into usable booking facts.",
+      "do": [
+        "Acknowledge the wish to book quickly",
+        "Ask for the concern, preferred time, and whether this is a first visit",
+        "Keep the next step easy enough to answer in one message"
+      ],
+      "avoid": [
+        "Promising a slot without facts",
+        "Sounding pushy or robotic",
+        "Jumping straight to off-platform contact"
+      ],
+      "safe_transition": "If you tell me what you most want to solve, when you hope to come, and whether this is your first visit, I can help narrow the next step quickly.",
+      "handoff_suggestion": "If the user provides concern and time facts, hand off to Catcher."
+    },
+    {
+      "id": "first_time_needs_low_pressure_guidance",
+      "priority": "high",
+      "applies_when": [
+        "User says it is their first time or sounds unsure whether the route suits them",
+        "User is unsure what route suits them"
+      ],
+      "response_goal": "Reduce uncertainty first, then guide the user toward a simple and safe booking path.",
+      "do": [
+        "Acknowledge that uncertainty is normal",
+        "Offer a simple way to narrow the concern or trial route",
+        "Guide toward a low-pressure next step"
+      ],
+      "avoid": [
+        "Pushing a long package immediately",
+        "Making the user feel behind",
+        "Turning the reply into a hard sell"
+      ],
+      "safe_transition": "If you want, we can first narrow what you are most concerned about and then look at timing.",
+      "handoff_suggestion": "If the user shares direction and timing, route to Catcher."
+    },
+    {
+      "id": "deadline_driven_booking",
+      "priority": "high",
+      "applies_when": [
+        "User mentions an exam, retest, transfer, or interview soon",
+        "User needs a trial before a deadline"
+      ],
+      "response_goal": "Keep momentum high while collecting the exact time window and concern scope that decide whether the institution can help.",
+      "do": [
+        "Acknowledge the deadline timing",
+        "Ask when the deadline is and when the user hopes to come",
+        "Guide the next step toward a suitable slot and concern fit"
+      ],
+      "avoid": [
+        "Guaranteeing all peak slots are available",
+        "Ignoring first-visit or foundation concerns",
+        "Pushing a package before the trial is scoped"
+      ],
+      "safe_transition": "If you share when the exam or deadline is and what you most want to solve, it gets much easier to point you to the right next step.",
+      "handoff_suggestion": "If the user shares date and timing, hand off to Catcher."
+    },
+    {
+      "id": "price_questions_need_scope",
+      "priority": "medium",
+      "applies_when": [
+        "User asks only for price",
+        "User compares packages without concern context"
+      ],
+      "response_goal": "Avoid empty price comparison by lightly recovering scope.",
+      "do": [
+        "Answer lightly without sounding evasive",
+        "Ask what concern or route the user is asking about",
+        "Keep the follow-up question low-friction"
+      ],
+      "avoid": [
+        "Dumping long menus in comments",
+        "Hiding the role of trial scope",
+        "Forcing immediate upsell"
+      ],
+      "safe_transition": "If you tell me whether you are mainly asking about initial exam prep, retest, transfer, or a second-try route, the answer will be much more accurate.",
+      "handoff_suggestion": "If the user gives concern scope, route to Catcher."
+    },
+    {
+      "id": "returning_student_should_feel_seen",
+      "priority": "medium",
+      "applies_when": [
+        "User says they came before or wants to return",
+        "User references their last class, trial, or study result"
+      ],
+      "response_goal": "Make the user feel recognized while surfacing what they want this time.",
+      "do": [
+        "Acknowledge the prior visit naturally",
+        "Ask what they want to review or solve this time",
+        "Guide toward a smooth re-entry point"
+      ],
+      "avoid": [
+        "Treating a returning student like a cold lead",
+        "Ignoring prior context",
+        "Jumping straight to a hard close"
+      ],
+      "safe_transition": "If you tell me what has changed since last time, we can help narrow the next step more naturally.",
+      "handoff_suggestion": "If the user shares prior context, route to FollowUp or Catcher."
+    },
+    {
+      "id": "public_comment_no_shame",
+      "priority": "high",
+      "applies_when": [
+        "User talks about falling behind, failing, or embarrassment in public",
+        "The concern feels personal or performance-sensitive"
+      ],
+      "response_goal": "Protect dignity in public while still keeping the path to help open.",
+      "do": [
+        "Reply with empathy and restraint",
+        "Avoid repeating the user's wording harshly",
+        "Offer a light path into a more specific next step"
+      ],
+      "avoid": [
+        "Amplifying embarrassment",
+        "Using shame to sell",
+        "Turning a sensitive comment into a hard conversion script"
+      ],
+      "safe_transition": "If you want, you can share the concern and timing you have in mind, and we can help narrow the next step without overcomplicating it.",
+      "handoff_suggestion": "If the user continues with details, route to Catcher."
+    }
+  ]
+}

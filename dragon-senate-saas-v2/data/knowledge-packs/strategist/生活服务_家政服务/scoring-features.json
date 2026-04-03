@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"strategist","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"scene_focus","feature_name":"场景聚焦度","metric":"route_focus","weight":0.2,"scoring_rule":"深清、开荒、周期保洁和整理等主路线越单一清楚，得分越高。","positive_signals":["内容只围绕一个核心场景展开","CTA 与场景一致"],"negative_signals":["多个场景混推","既讲开荒又讲周保洁又讲收纳"],"route_guidance":"低分时先拆路线，不要急着放量。"},
+  {"id":"trust_proof_strength","feature_name":"信任证据强度","metric":"trust_proof","weight":0.2,"scoring_rule":"阿姨稳定性、工具耗材、保障条款和流程证据越充分，得分越高。","positive_signals":["有真实上门和边界说明","话术能解释加项与赔付"],"negative_signals":["只有低价词没有信任词","绝对干净承诺替代真实证据"],"route_guidance":"信任证据弱时，不宜主推高客单开荒路线。"},
+  {"id":"window_clarity","feature_name":"窗口期清晰度","metric":"timing_clarity","weight":0.16,"scoring_rule":"节前、入住、退租和周末来客时间越明确，得分越高。","positive_signals":["给出入住日或节前时间","有周末急约时段"],"negative_signals":["只有最近看看","没有时间节点"],"route_guidance":"时间清晰时可加大时效路线比重。"},
+  {"id":"capacity_fit","feature_name":"履约容量匹配度","metric":"capacity_fit","weight":0.16,"scoring_rule":"策略是否考虑阿姨排班、时长、面积和加项耗时上限。","positive_signals":["区分深清与周保洁链路","明确高峰时段边界"],"negative_signals":["把所有询单都导向同一承接链路","忽略排班和加项成本"],"route_guidance":"容量不稳时优先收窄路线。"},
+  {"id":"repurchase_potential","feature_name":"复购潜力","metric":"repurchase_potential","weight":0.14,"scoring_rule":"周期保洁、办公室清洁和家庭回补路线越容易形成复购，得分越高。","positive_signals":["存在周期续约逻辑","有复购频率"],"negative_signals":["完全一次性场景","没有回访动作"],"route_guidance":"高复购路线适合配置 followup 资源。"},
+  {"id":"risk_boundary_control","feature_name":"风险边界控制","metric":"risk_control","weight":0.14,"scoring_rule":"避免绝对干净、绝不加价和超范围上门承诺的策略得分更高。","positive_signals":["清楚标注边界与条件","先讲事实后讲优惠"],"negative_signals":["依赖绝对化承诺","用神效式焕新保证刺激成交"],"route_guidance":"风险高时先降火，不要继续扩量。"}
+]}

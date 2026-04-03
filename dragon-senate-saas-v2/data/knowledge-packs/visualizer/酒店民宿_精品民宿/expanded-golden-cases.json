@@ -1,0 +1,267 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u7cbe\u54c1\u6c11\u5bbf",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_boutique_homestay_case_001",
+      "label": "happy_path",
+      "scenario": "Old-town courtyard boutique homestay with host welcome, quiet room pause, real night courtyard access, and handmade breakfast.",
+      "input": {
+        "copy_pack": "Short-form boutique homestay script focused on a hidden old-town courtyard, a real host welcome, a room that feels quiet right after the street, and a memorable breakfast the next morning.",
+        "brand_assets": [
+          "Lane entrance to property gate footage",
+          "Gate, sign, and courtyard footage",
+          "Reception point, key handoff, and welcome note",
+          "Host preparing or serving breakfast",
+          "Hero king room wide shot",
+          "Window, tea corner, table, and luggage detail",
+          "Bathroom and amenities footage",
+          "Night courtyard and return-to-room path",
+          "Breakfast table and departure footage"
+        ],
+        "reference_styles": [
+          "restrained documentary boutique stay",
+          "proof-first host-led short stay"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 4,
+          "host_on_camera_allowed": true,
+          "breakfast_access": true,
+          "night_courtyard_access": true,
+          "guest_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A real lane-to-gate identity chain early in the sequence",
+        "Host or welcome evidence tied to actual arrival",
+        "One consistent room type with bed, tea corner, and bathroom proof",
+        "Night courtyard coverage that includes the path back to the room",
+        "Breakfast and departure to close the one-night stay loop"
+      ],
+      "mustAvoid": [
+        "Pretty old-town footage with no property proof",
+        "Actor-style host warmth with no real authorization",
+        "Night ambience inserts that do not connect to the property path"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the script into a proof-first one-night stay flow from old-town arrival to courtyard entry to room pause to breakfast departure.",
+        "assumptions": [
+          "The host can appear briefly for key handoff or breakfast moments.",
+          "The hero room, courtyard, and breakfast window are all available in the shoot schedule."
+        ],
+        "evidence": [
+          "Assets cover the entrance, host action, room truth, night path, and breakfast closure.",
+          "The core promise is small-property trust and stay rhythm rather than spectacle."
+        ],
+        "confidence": 0.90,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the courtyard gate opening and a host welcome gesture as the main cover image, with a small tea-corner room inset and a headline about switching pace the moment you enter.",
+        "shot_list": "1) Link the old-town lane to the property gate and sign so the place claim is real. 2) Enter the courtyard and show a key handoff or welcome note to ground host warmth. 3) Move into the hero room and prove bed, tea corner, table surface, and bathroom in one consistent room type. 4) Use the night courtyard and the path back to the room to turn atmosphere into executable proof. 5) Show breakfast prep, service, and table environment as the morning payoff. 6) Close with departure or a final gate look-back to complete the one-night stay arc.",
+        "asset_dependencies": "Old-town anchor, property gate, courtyard, host permission, hero king room, tea corner, bathroom, night courtyard access, breakfast window, and departure path. Confirm guest privacy boundaries and exact breakfast timing.",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_boutique_homestay_case_002",
+      "label": "happy_path",
+      "scenario": "Mountain courtyard boutique homestay built around one-night reset, room pause by the window, a real tea room, and a calm breakfast closure.",
+      "input": {
+        "copy_pack": "Short-form boutique homestay script focused on a near-city mountain escape, a room that makes you stay inside longer, a tea room that belongs to the property, and a calm breakfast the next day.",
+        "brand_assets": [
+          "Road or village-path to property gate footage",
+          "Gate, sign, and courtyard footage",
+          "Hero scenic room wide shot",
+          "Window, tea table, reading corner, and bed relation",
+          "Bathroom or tub footage",
+          "Tea room whole-space coverage",
+          "Night courtyard lighting and return path",
+          "Breakfast area and morning courtyard footage"
+        ],
+        "reference_styles": [
+          "quiet mountain reset",
+          "proof-led boutique pause"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3.5,
+          "host_on_camera_allowed": false,
+          "tea_room_access": true,
+          "breakfast_access": true,
+          "night_access": true,
+          "guest_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A real route from outside anchor to the property entrance",
+        "A single room type proving bed, window, tea table, and bathroom relation",
+        "Tea-room ownership and access clarity",
+        "Night lighting plus room-return logic",
+        "Breakfast or morning courtyard to close the reset narrative"
+      ],
+      "mustAvoid": [
+        "Landscape-only coverage with no property grounding",
+        "Borrowing a nearby cafe as the tea room",
+        "Selling night mood with no real night access"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the script into a believable one-night reset chain built on real entrance, room pause, tea-room proof, and morning closure.",
+        "assumptions": [
+          "The tea room is on-site and available to shoot during the assigned window.",
+          "Night access is available for courtyard lighting and return-path shots."
+        ],
+        "evidence": [
+          "Current assets cover the property entrance, hero room, tea room, night courtyard, and breakfast window.",
+          "The concept depends on calm continuity, not on large-scale performance or crowds."
+        ],
+        "confidence": 0.87,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Build the cover from the hero room window and tea-table relationship, supported by a small night-courtyard frame and a headline about a one-night reset that feels complete.",
+        "shot_list": "1) Connect the road or village path to the property gate to establish real arrival. 2) Enter the hero scenic room and keep bed, window, tea table, and bathroom inside one believable room chain. 3) Show the tea room as a real on-site pause space with visible scale and access. 4) Use courtyard lighting and the return-to-room path to validate night atmosphere. 5) Add breakfast or a calm morning courtyard beat as the reset payoff. 6) Close with a departure moment or final courtyard frame to complete the stay.",
+        "asset_dependencies": "Outside route anchor, property gate, scenic room, window and tea table, bathroom, tea room, night courtyard permission, breakfast area, and morning courtyard. Confirm ownership of the tea room and night access timing.",
+        "execution_feasibility_score": "0.87"
+      }
+    },
+    {
+      "id": "visualizer_boutique_homestay_case_003",
+      "label": "edge_case",
+      "scenario": "Boutique homestay with limited assets: entrance, one room, hallway, and a small amount of daytime courtyard footage, but no host, breakfast, full route proof, or night access.",
+      "input": {
+        "copy_pack": "Boutique homestay script that originally wanted to sell host warmth, old-town strolls, night courtyard mood, and breakfast, but the current assets only cover the entrance, reception point, one king room, bathroom, hallway, and a few daytime courtyard shots.",
+        "brand_assets": [
+          "Entrance sign and reception point",
+          "Hero king room wide shot",
+          "Window, table, and bedding detail",
+          "Bathroom and amenities footage",
+          "Daytime courtyard fragments",
+          "Door, key, or room-guidance footage"
+        ],
+        "reference_styles": [
+          "honest room-first explanation",
+          "restrained boutique property route"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "host_on_camera_allowed": false,
+          "breakfast_access": false,
+          "night_access": false,
+          "neighborhood_route_available": false,
+          "guest_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A clear downgrade to property identity and honest room proof",
+        "One room type with bed, table, window, and bathroom evidence",
+        "Explicit callout that breakfast, host, route, and night assets are missing"
+      ],
+      "mustAvoid": [
+        "Continuing to sell host warmth or night mood without proof",
+        "Using tiny courtyard fragments as if they were a rich public-space offer",
+        "Borrowing outside night or neighborhood footage to patch the chain"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Downgrade the original ambition into a truthful boutique homestay room-and-arrival route that a one-person shoot can actually execute.",
+        "assumptions": [
+          "No additional breakfast, host, route, or night coverage can be captured.",
+          "The hero room is stable and can support a complete room-truth explanation."
+        ],
+        "evidence": [
+          "Existing assets are enough for entrance identity, one room, and basic stay proof.",
+          "Current gaps are too large for a warm host, neighborhood, or night-driven narrative."
+        ],
+        "confidence": 0.72,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the entrance sign and hero room wide shot as the cover, with a headline about honest room proof and easy arrival rather than mood promises.",
+        "shot_list": "1) Establish the property identity with the entrance sign and reception point. 2) Use the door, key, or room-guidance footage to show how arrival becomes room entry. 3) Prove the hero room with a wide shot, then table, window, bedding, and bathroom details. 4) Use the daytime courtyard only as a supporting space cue, not as a major feature. 5) Close on the room or entrance to keep the story honest. 6) Explicitly note that breakfast, host, neighborhood route, and night mood are outside the current asset set.",
+        "asset_dependencies": "Entrance sign, reception point, hero room, table and window details, bathroom, hallway, and limited courtyard footage. Missing host, breakfast, neighborhood-route, and night assets must lower the plan ambition.",
+        "execution_feasibility_score": "0.69"
+      }
+    },
+    {
+      "id": "visualizer_boutique_homestay_case_004",
+      "label": "failure_case",
+      "scenario": "Pre-opening boutique homestay with only renders, sample-room stills, and brand materials, but a request for a real stay-style discovery video.",
+      "input": {
+        "copy_pack": "Boutique homestay launch script that wants to promise arrival surprise, beautiful courtyard space, strong design rooms, warm host energy, excellent breakfast, and night lighting, but the property is not open yet and only has renders, sample-room photos, a logo, a launch poster, and a location diagram.",
+        "brand_assets": [
+          "Property renders",
+          "Sample-room stills",
+          "Brand logo",
+          "Opening poster",
+          "Location diagram",
+          "Design overview sheet"
+        ],
+        "reference_styles": [
+          "opening teaser",
+          "brand-direction preview"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "property_open": false,
+          "real_room_assets": false,
+          "real_public_space_assets": false,
+          "host_on_camera_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A clear statement that the property is not open and real stay proof does not exist yet",
+        "A downgrade to opening preview or brand-direction content instead of a fake stay route",
+        "A concrete list of the gate, room, host, breakfast, public-space, and night assets needed after opening"
+      ],
+      "mustAvoid": [
+        "Treating renders or sample-room stills as live-stay footage",
+        "Designing an arrival-to-breakfast chain for a property that is not operational",
+        "Inventing route, host, public-space, or service proof"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Convert the request into an honest opening-preview route rather than a fake boutique homestay stay walkthrough.",
+        "assumptions": [
+          "The current phase can only support brand direction, intended room style, and broad location context.",
+          "Any real stay, host, breakfast, courtyard, or night-mood claim must wait for post-opening footage."
+        ],
+        "evidence": [
+          "The current assets are renders, stills, and launch materials rather than executable property proof.",
+          "The original concept depends on live operations that do not exist yet."
+        ],
+        "confidence": 0.60,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the logo, one render, and an opening-soon message on the cover with no suggestion that the property is already live to stay in.",
+        "shot_list": "1) Introduce the brand with the logo and opening poster. 2) Use renders and sample-room stills only as future-space direction, not as live-stay proof. 3) Use the location diagram only for broad area context without walkable-route claims. 4) State clearly that the property lacks real gate, room, public-space, host, breakfast, and night-operation footage. 5) End by listing the post-opening proof assets needed before a real boutique homestay walkthrough can exist.",
+        "asset_dependencies": "Renders, sample-room stills, logo, opening poster, location diagram, and design overview sheet. Missing gate, live room, public-space, host, breakfast, neighborhood-route, and night footage must be called out explicitly.",
+        "execution_feasibility_score": "0.25"
+      }
+    }
+  ]
+}

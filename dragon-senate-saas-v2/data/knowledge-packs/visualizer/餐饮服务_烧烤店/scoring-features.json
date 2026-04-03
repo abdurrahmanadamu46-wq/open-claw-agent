@@ -1,0 +1,152 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_grill_proof_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "real grill and skewer proof visibility",
+      "weight": 0.16,
+      "definition": "Measures whether the storyboard puts the real grill, hero skewers, fresh handoff, and actual table use early instead of relying on decor, neon, or generic food glamour.",
+      "high_score_signals": [
+        "real grill or skewer handoff appears in the first 3 shots",
+        "the viewer can connect grill, product, and table context quickly",
+        "the store feels like a real operating venue instead of a visual mood board"
+      ],
+      "low_score_signals": [
+        "opening is mostly ambience and environment",
+        "hero food looks like stock or static plate footage",
+        "the audience cannot tell whether the product is real and on sale"
+      ],
+      "score_rule": "The earlier and denser the real grill proof appears, the higher the score."
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "cover and core-offer alignment",
+      "weight": 0.12,
+      "definition": "Measures whether the cover direction matches the true reason to visit the barbecue shop, such as hero skewers, charcoal heat, seafood freshness, night traffic, social tables, or visible value.",
+      "high_score_signals": [
+        "title and image focus on one concrete promise",
+        "the audience can tell what barbecue choice problem the video solves",
+        "cover and opening shot reinforce the same message"
+      ],
+      "low_score_signals": [
+        "cover is atmospheric but vague",
+        "title says skewers while the image shows only environment",
+        "the promise is generic nightlife instead of a store-specific reason"
+      ],
+      "score_rule": "The more clearly the cover answers why the viewer should come here, the higher the score."
+    },
+    {
+      "id": "live_fire_sizzle_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "heat and sizzle authenticity",
+      "weight": 0.12,
+      "definition": "Measures whether the plan shows real heat signals such as charcoal glow, turning, seasoning, smoke, grill sound, and fresh-off-grill motion.",
+      "high_score_signals": [
+        "continuous process from grill control to table handoff",
+        "heat footage matches the product later shown at the table",
+        "the plan does not rely on fake fire or post-produced smoke"
+      ],
+      "low_score_signals": [
+        "static beauty shots stand in for live grilling",
+        "fire or smoke feels synthetic or decorative",
+        "the grill stage and the served product do not match"
+      ],
+      "score_rule": "The more viewers can feel that the skewer just left the grill, the higher the score."
+    },
+    {
+      "id": "raw_to_grill_chain_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "prep-to-grill-to-bite credibility",
+      "weight": 0.12,
+      "definition": "Measures whether freshness or made-to-order claims are supported by a readable chain from item prep or display through grill stage to handoff and bite.",
+      "high_score_signals": [
+        "at least three linked stages are visible",
+        "the same hero item remains identifiable across stages",
+        "the chain feels verifiable instead of patched together"
+      ],
+      "low_score_signals": [
+        "prep footage never reaches the grill or the table",
+        "multiple unrelated items are edited into one fake chain",
+        "freshness claims exist only in text or narration"
+      ],
+      "score_rule": "The more complete and verifiable the item chain is, the higher the score."
+    },
+    {
+      "id": "night_service_business_proof_density",
+      "metric_group": "visual_proof_density",
+      "feature": "late-night business-proof density",
+      "weight": 0.12,
+      "definition": "Measures whether the plan uses real night-service signals such as storefront movement, occupied seating, refills, add-on orders, drinks, and leftover skewers to prove business state.",
+      "high_score_signals": [
+        "real night-service occupancy and service rhythm are visible",
+        "the storyboard clearly identifies the service window",
+        "business proof ties back to the real storefront and table layout"
+      ],
+      "low_score_signals": [
+        "empty tables are edited to fake density",
+        "business claims are mostly voice-over",
+        "customer shots and store space do not connect"
+      ],
+      "score_rule": "The clearer and more verifiable the night-service state is, the higher the score."
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "shootability under live-service constraints",
+      "weight": 0.14,
+      "definition": "Measures whether the storyboard fits real constraints such as service timing, grill access, outdoor seating permission, customer visibility rules, smoke, weather, team size, and shoot duration.",
+      "high_score_signals": [
+        "critical shots match realistic operating windows",
+        "permissions and safety boundaries are surfaced early",
+        "the team can execute the plan without obviously disrupting service"
+      ],
+      "low_score_signals": [
+        "the plan assumes unrestricted fire, faces, and peak-hour access",
+        "too many locations or service beats are packed into a short shoot",
+        "camera movement and business flow conflict directly"
+      ],
+      "score_rule": "The more directly the plan can be executed during real service, the higher the score."
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "asset dependency accuracy",
+      "weight": 0.12,
+      "definition": "Measures whether the plan names the exact hero skewers, tables, service beats, grill access, seating zones, and permissions required to deliver the storyboard.",
+      "high_score_signals": [
+        "hero shots map to specific items and locations",
+        "pickup needs are concrete rather than vague",
+        "missing assets have explicit replacement routes"
+      ],
+      "low_score_signals": [
+        "dependencies are described only as generic store footage",
+        "the plan assumes any item can be recreated on demand",
+        "face, fire, weather, or outdoor constraints are omitted"
+      ],
+      "score_rule": "The more specific and execution-ready the dependencies are, the higher the score."
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "honest downgrade when proof is missing",
+      "weight": 0.10,
+      "definition": "Measures whether the storyboard honestly shifts to a smaller but true route when the store lacks crowd proof, grill access, seafood prep proof, or social-table footage.",
+      "high_score_signals": [
+        "missing proof layers are clearly named",
+        "the execution score drops when proof drops",
+        "the downgraded route still feels like barbecue rather than generic food content"
+      ],
+      "low_score_signals": [
+        "high confidence remains despite missing proof",
+        "external diners or external grill footage fill the gap",
+        "the fallback still pretends to be a hot-traffic exploration video"
+      ],
+      "score_rule": "The more honestly the plan protects deliverability under weaker assets, the higher the score."
+    }
+  ]
+}

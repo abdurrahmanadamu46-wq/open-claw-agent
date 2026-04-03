@@ -1,0 +1,77 @@
+﻿{
+  "schema_version": "handover.v3",
+  "updated_at": "2026-03-29T13:35:00+08:00",
+  "primary_control_plane": {
+    "web": "http://127.0.0.1:3301",
+    "backend": "http://127.0.0.1:48789",
+    "ai_subservice": "http://127.0.0.1:18000"
+  },
+  "default_local_auth": {
+    "username": "admin",
+    "password": "change_me"
+  },
+  "single_entry_commands": {
+    "start_control": "npm run module:up:control",
+    "status": "npm run module:ps",
+    "release_regression": "npm run module:test:release",
+    "contracts_validate": "npm run contracts:validate",
+    "apps_all_test": "npm run apps:test:all",
+    "backup_to_f": "npm run backup:f:sync"
+  },
+  "required_ci_checks": [
+    "contracts",
+    "week3-e2e-live"
+  ],
+  "module_paths": {
+    "web": "web",
+    "backend": "backend",
+    "ai_subservice": "dragon-senate-saas-v2",
+    "edge_runtime": "edge-runtime",
+    "desktop_client": "apps/desktop-client"
+  },
+  "handover_docs": [
+    "docs/handover/00-START-HERE.md",
+    "docs/handover/01-REPO-MAP.md",
+    "docs/handover/02-RUN-AND-VERIFY.md",
+    "docs/handover/03-OPEN-ITEMS.md",
+    "docs/handover/04-CODEX-CLAUDE-ONBOARDING.md",
+    "docs/handover/05-PROGRESS-HIGHLIGHTS.md",
+    "docs/handover/06-OPS-RUNBOOK.md",
+    "docs/handover/07-HANDOVER-CHECKLIST.md",
+    "docs/handover/08-SESSION-LOG-2026-03-26.md",
+    "docs/handover/09-MOAT-VALIDATION-2026-03-28.md",
+    "docs/handover/10-PAYMENT-CUTOVER-RUNBOOK.md",
+    "docs/handover/11-NOTIFICATION-CUTOVER-RUNBOOK.md",
+    "docs/handover/12-FEISHU-CUTOVER-RUNBOOK.md"
+  ],
+  "open_items": [
+    {
+      "id": "P0-PAYMENT-CUTOVER",
+      "priority": "P0",
+      "status": "OPEN",
+      "summary": "真实支付切真（签名、幂等、对账、补偿）",
+      "path": "dragon-senate-saas-v2/payment_gateway.py"
+    },
+    {
+      "id": "P0-FEISHU-PUBLIC-CALLBACK",
+      "priority": "P0",
+      "status": "OPEN",
+      "summary": "飞书公网 challenge + 回调签名联通",
+      "path": "dragon-senate-saas-v2/scripts/preflight_feishu_callback.py"
+    },
+    {
+      "id": "P1-TELEPHONY-PROVIDER",
+      "priority": "P1",
+      "status": "OPEN",
+      "summary": "并发外呼 provider 真实接入（canary + quality gate）",
+      "path": "dragon-senate-saas-v2"
+    },
+    {
+      "id": "P2-FRONTEND-LIVE-DATA-CLEANUP",
+      "priority": "P2",
+      "status": "OPEN",
+      "summary": "逐页清理展示态，全部联动真实 API",
+      "path": "web/src"
+    }
+  ]
+}

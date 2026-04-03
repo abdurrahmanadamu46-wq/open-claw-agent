@@ -1,0 +1,48 @@
+﻿{
+  "industry": "汽车服务_汽车维修",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_auto_repair_case_001",
+      "label": "happy_path",
+      "scenario": "异响检测预约的真实检修分镜",
+      "input": { "copy_pack": "汽车维修脚本，核心卖点是先判断异响和故障状态，再决定适合的到店路径，不夸张承诺结果。", "brand_assets": ["车辆外观与机舱镜头", "检测讲解镜头", "故障细节镜头", "到店承接画面"], "reference_styles": ["克制纪实", "专业信任优先"], "production_constraints": { "team_size": 2, "shoot_time_hours": 2, "customer_closeup_allowed": false } },
+      "expectedSignals": ["cover_direction", "shot_list", "asset_dependencies", "execution_feasibility_score"],
+      "mustInclude": ["前排出现真实车辆和检测细节证据", "问题和到店流程能对应上", "后半段出现到店路径"],
+      "mustAvoid": ["只拍海报和效果图", "把结果承诺拍成主视觉", "没有任何边界说明"],
+      "referenceStoryboardPack": { "goal": "把问题型检修脚本转成一条真实、克制且能承接到店的分镜。", "assumptions": ["可以拍到本店车辆和检测过程。", "前台与预约流程允许出镜。"], "evidence": ["环境和过程素材齐全。", "脚本强调先判断需求再推进。"] }
+    },
+    {
+      "id": "visualizer_auto_repair_case_002",
+      "label": "happy_path",
+      "scenario": "空调与保养路线的过程型分镜",
+      "input": { "copy_pack": "空调和保养路线脚本，重点是当前场景、顾问反馈和检修细节，不做神效承诺。", "brand_assets": ["车辆细节镜头", "顾问点评镜头", "检测过程镜头", "到店咨询承接画面"], "reference_styles": ["过程导向", "低压解释"], "production_constraints": { "team_size": 1, "shoot_time_hours": 1.5, "customer_closeup_allowed": false } },
+      "expectedSignals": ["cover_direction", "shot_list", "asset_dependencies", "execution_feasibility_score"],
+      "mustInclude": ["车辆细节和场景真实可见", "顾问反馈和适配判断同屏出现", "CTA 与到店路径一致"],
+      "mustAvoid": ["把保养包装成绝对神效", "只拍结果不拍过程", "没有说明适合谁"],
+      "referenceStoryboardPack": { "goal": "让空调和保养路线看起来可信、可判断、可到店。", "assumptions": ["车辆细节和顾问讲解素材可用。", "允许用字幕补充阶段说明。"], "evidence": ["过程素材完整。", "脚本以场景判断和检测过程为核心。"] }
+    },
+    {
+      "id": "visualizer_auto_repair_case_003",
+      "label": "happy_path",
+      "scenario": "节前检修窗口的时间感分镜",
+      "input": { "copy_pack": "节前出行和换季窗口脚本，重点是当前车况、顾问判断和近期安排，不制造恐慌。", "brand_assets": ["门店镜头", "顾问讲解镜头", "时间节点字幕素材", "预约承接画面"], "reference_styles": ["时间感明确", "克制紧迫"], "production_constraints": { "team_size": 1, "shoot_time_hours": 1, "customer_closeup_allowed": false } },
+      "expectedSignals": ["cover_direction", "shot_list", "asset_dependencies", "execution_feasibility_score"],
+      "mustInclude": ["前排出现时间窗口和检测证据", "顾问讲解镜头进入主体段落", "收口回到到店或检修路径"],
+      "mustAvoid": ["拍成纯焦虑倒计时海报", "没有实际车辆证据", "跳过适配判断"],
+      "referenceStoryboardPack": { "goal": "把节点季内容拍成高相关、高信任的到店视频。", "assumptions": ["门店具备车辆和顾问讲解镜头。", "可通过字幕补足时间窗口。"], "evidence": ["流程素材完整。", "脚本以时间窗口和状态判断为主。"] }
+    },
+    {
+      "id": "visualizer_auto_repair_case_004",
+      "label": "long_term_case",
+      "scenario": "老客复检与保养回访的阶段型分镜",
+      "input": { "copy_pack": "老客复访脚本，强调当前车况、养护卡点和下一阶段选择，不做强促销。", "brand_assets": ["维修记录镜头", "顾问复盘镜头", "门店镜头", "复访承接画面"], "reference_styles": ["熟悉感", "阶段递进"], "production_constraints": { "team_size": 1, "shoot_time_hours": 1, "customer_closeup_allowed": false } },
+      "expectedSignals": ["cover_direction", "shot_list", "asset_dependencies", "execution_feasibility_score"],
+      "mustInclude": ["展示阶段变化而非单次促销", "顾问复盘与下一步方向清楚", "收口指向复访或保养承接"],
+      "mustAvoid": ["把老客当新客硬推", "没有历史阶段感", "只讲优惠不讲养护理由"],
+      "referenceStoryboardPack": { "goal": "让复访内容建立在真实进度和养护理由上。", "assumptions": ["有历史记录或项目对比素材。", "顾问可出镜做简短复盘。"], "evidence": ["阶段证据存在。", "脚本核心是复访理由和下一步方向。"] }
+    }
+  ]
+}

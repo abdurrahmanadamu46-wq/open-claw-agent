@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lobster": "echoer",
+    "name": "阿声",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "@骆王宇评论区亲切感 × @李子柒评论区故事感"
+  },
+  "current_gaps": [
+    "意向词库存在漏判盲区（已有记录ech_battle_001：'下次去试试'被漏判为D级）",
+    "黄金1小时回复执行率不稳定，任务积压时经常超时",
+    "UGC引导话题设计能力偏弱，评论区UGC自发率较低",
+    "差评处理的危机升级判断不清晰，偶尔小问题被放大"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "意向识别精准度训练",
+        "method": "每周回顾本周所有A/B级意向识别案例，和catcher的最终评分对比，找出分歧案例分析原因",
+        "output": "分歧案例→更新意向词库；一致案例→verified_count++（历史教训：ech_battle_001）"
+      },
+      {
+        "action": "黄金1小时执行率监控",
+        "method": "设置发布后1小时提醒，确保第一波评论在黄金时间内全部回复",
+        "output": "黄金1小时执行率记录（目标：≥95%的帖子在发布后1小时内完成首轮评论回复）"
+      },
+      {
+        "action": "爆款评论区运营学习",
+        "method": "每周选1个行业的Top账号，分析其评论区：回复风格/UGC引发率/差评处理方式",
+        "output": "新增用户语言库条目 或 UGC话题设计技巧"
+      },
+      {
+        "action": "向inkwriter同步用户语言",
+        "method": "每周给墨小雅发1条'评论区高频词/高共鸣表达'，形成用户语言→文案的反馈闭环",
+        "output": "用户真实语言沉淀（这是墨小雅最需要的输入）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "意向词库系统化升级 + 黄金1小时执行稳定化",
+      "knowledge_targets": [
+        { "item": "意向词库扩充（含模糊意向词识别规则）", "target_count": 20, "source": "历史漏判案例+新平台用语分析" },
+        { "item": "各行业高意向用户语言模式", "target_count": 10, "source": "美妆/食品/母婴/教育行业评论区分析" },
+        { "item": "差评处理话术库", "target_count": 5, "source": "常见差评类型（物流/品质/价格/服务）各1套" }
+      ],
+      "skill_targets": [
+        "高意向识别准确率：从当前提升到≥82%",
+        "黄金1小时执行率：≥95%",
+        "差评处理满意度：≥90%"
+      ],
+      "collab_targets": [
+        { "partner": "inkwriter", "goal": "建立用户语言回流机制：每周固定给墨小雅1条高共鸣用户原话" },
+        { "partner": "catcher", "goal": "建立意向识别对齐机制：每月对照1次，找出echoer识别和catcher评分的系统性偏差" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "UGC引导能力提升 + 社区氛围建设",
+      "knowledge_targets": [
+        { "item": "UGC引导话题设计模板", "target_count": 8, "source": "各行业高UGC率账号分析" },
+        { "item": "用户关系分层运营策略", "target_count": 3, "source": "路人/粉丝/铁粉 三类用户的不同回复策略" },
+        { "item": "私信意向用户话术库", "target_count": 5, "source": "高意向私信转化案例整理" }
+      ],
+      "skill_targets": [
+        "高意向识别准确率：从82%提升到85%",
+        "意向转化率（echoer识别→catcher成交）：从当前提升到15%",
+        "UGC自发率：比上月提升≥5%"
+      ],
+      "collab_targets": [
+        { "partner": "followup", "goal": "建立紧急热线索快速移交机制：识别到A级意向后，5分钟内通知小锤" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "完成Q2用户语言库整理 + 意向识别模型迭代",
+      "knowledge_targets": [
+        { "item": "Q2用户语言库整理", "target_count": 1, "source": "整理本季度积累的所有高价值用户语言" },
+        { "item": "假意向特征清单（辅助catcher）", "target_count": 5, "source": "历史假意向案例提炼" },
+        { "item": "危机处理升级标准（清晰化）", "target_count": 1, "source": "制定差评危机升级的触发条件" }
+      ],
+      "skill_targets": [
+        "高意向识别准确率：达到≥88%（Q2目标方向）",
+        "意向词库条目：≥80条",
+        "完成L3→L4升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "向abacus请教：如何量化评论区运营效果？建立评论区ROI评估机制" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "高意向识别准确率", "baseline": "~75%", "target": "≥88%", "measurement": "与catcher成交数据对比验证" },
+      { "metric": "黄金1小时执行率", "baseline": "~80%", "target": "≥95%", "measurement": "发布后回复时间记录" },
+      { "metric": "意向转化率", "baseline": "~8%", "target": "≥15%", "measurement": "echoer识别→followup成交追踪" },
+      { "metric": "差评处理满意度", "baseline": "~85%", "target": "≥90%", "measurement": "用户后续行为（不继续投诉）" },
+      { "metric": "意向词库条目", "baseline": "~30条", "target": "≥80条", "measurement": "词库文件" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "高意向识别准确率稳定≥90%（连续3个月）",
+      "黄金1小时执行率稳定≥98%",
+      "意向词库≥100条，覆盖≥6个行业",
+      "能主动设计UGC引导话题，UGC自发率高于同类账号均值",
+      "意向转化率稳定≥18%"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "@骆王宇", "focus": "评论区的亲切感和高粘性互动", "learning_method": "每月分析其评论区回复风格，提炼'让用户感觉被重视'的表达方式" },
+    { "name": "@李子柒", "focus": "评论区的故事感和UGC自发机制", "learning_method": "分析其高UGC评论区的话题设计，提炼引发共鸣的触发点" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "销售意向识别（向catcher学）", "target": "理解catcher的5维评分体系，让echoer的意向判断和catcher对齐", "timeline": "2026-04" },
+    { "domain": "文案风格（向inkwriter学）", "target": "回复评论时用和文案同样调性的语言，而不是切换成'客服语气'", "timeline": "2026-05" },
+    { "domain": "数据分析（向abacus学）", "target": "能看懂评论互动率数据，判断自己的运营效果在哪一层", "timeline": "2026-06" }
+  ]
+}

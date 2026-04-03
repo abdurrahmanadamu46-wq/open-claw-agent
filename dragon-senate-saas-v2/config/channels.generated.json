@@ -1,0 +1,14 @@
+﻿{
+  "feishu": {
+    "total": 1,
+    "enabled": 1,
+    "accounts": [
+      {
+        "id": "feishu_default",
+        "name": "feishu 默认账号",
+        "enabled": true,
+        "tenant": ""
+      }
+    ]
+  }
+}

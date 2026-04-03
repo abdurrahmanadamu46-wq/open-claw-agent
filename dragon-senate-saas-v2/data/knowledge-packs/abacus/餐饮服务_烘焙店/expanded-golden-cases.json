@@ -1,0 +1,519 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_bakery_birthday_cake_deposit_001",
+      "label": "happy_path",
+      "scenario_tag": "birthday_cake_with_deposit_and_spec_lock",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户确认本周六 18:30 到店自提一个 8 寸草莓鲜奶油生日蛋糕，口味偏低甜，写字内容是“生日快乐安安”，需要 18 岁数字蜡烛和刀叉盘，愿意今天先付定金并冻结最终版本。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.42,
+          "segment_type": "生日蛋糕预订",
+          "lifetime_value": 68000,
+          "past_referral_count_for_segment": 2,
+          "repeat_purchase_probability": 0.34
+        },
+        "cost_data": {
+          "cost_per_lead": 48,
+          "expected_ingredient_cost": 138,
+          "expected_decor_cost": 36,
+          "expected_packaging_cost": 22,
+          "estimated_gross_margin_rate": 0.56
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "短视频生日蛋糕展示",
+            "私信咨询尺寸与写字",
+            "小程序支付定金并确认提货时间"
+          ],
+          "last_meaningful_touch": "小程序支付定金并确认提货时间",
+          "engagement_metrics": {
+            "private_message_rounds": 3,
+            "menu_clicks": 7
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "把定金到账和规格冻结视为主要价值信号",
+        "奖励信号要指向最终版本确认、写字备注回写和提货时间锁定"
+      ],
+      "mustAvoid": [
+        "只因为场景有节日紧迫感就机械高估",
+        "忽略装饰、包材和返工成本"
+      ]
+    },
+    {
+      "id": "abacus_bakery_breakfast_pickup_repeat_002",
+      "label": "happy_path",
+      "scenario_tag": "weekday_breakfast_self_pickup_repeat_pattern",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户已经连续 4 周在工作日 08:10 通过小程序预订同一家门店的吐司加贝果早餐组合，最近还绑定了咖啡加购和早餐次卡，几乎每天到店自提。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.66,
+          "segment_type": "高频早餐自提",
+          "lifetime_value": 28600,
+          "repeat_purchase_probability": 0.74,
+          "member_conversion_rate": 0.79
+        },
+        "cost_data": {
+          "cost_per_lead": 6,
+          "expected_ingredient_cost": 14,
+          "expected_pickup_fulfillment_cost": 2,
+          "breakfast_attach_rate": 0.37,
+          "estimated_gross_margin_rate": 0.63
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序常购页回访",
+            "固定时段早餐预订",
+            "次卡开通与咖啡加购"
+          ],
+          "last_meaningful_touch": "次卡开通与咖啡加购"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分和 ROI 应明显偏高",
+        "把低履约成本和高频复购视为主要价值来源",
+        "奖励信号应指向常购绑定、次卡续费和固定时间窗提醒"
+      ],
+      "mustAvoid": [
+        "因为单笔金额不高就判成低价值",
+        "忽略自提模式带来的履约优势"
+      ]
+    },
+    {
+      "id": "abacus_bakery_office_tea_break_trial_003",
+      "label": "edge_case",
+      "scenario_tag": "office_tea_break_trial_with_recurring_potential",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家设计公司的行政想先试一单周五 15:30 的 26 份下午茶盒，送到写字楼 3 个楼层前台，如果体验稳定计划改成每月 2 次固定茶歇，并需要对公发票。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.21,
+          "segment_type": "企业茶歇试单",
+          "lifetime_value": 132000,
+          "repeat_purchase_probability": 0.47,
+          "multi_floor_expandability": 0.51
+        },
+        "cost_data": {
+          "cost_per_lead": 74,
+          "expected_ingredient_cost": 268,
+          "expected_packaging_cost": 64,
+          "expected_delivery_cost": 58,
+          "coordination_cost": 46,
+          "estimated_gross_margin_rate": 0.34
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询茶歇方案",
+            "发送报价单和温区拆分建议",
+            "确认试单日期与发票需求"
+          ],
+          "last_meaningful_touch": "确认试单日期与发票需求"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应高于短期分",
+        "不能因为当下只是试单就把它当成普通散单",
+        "奖励信号应覆盖试单日期、联系人、发票和后续频次确认"
+      ],
+      "mustAvoid": [
+        "只看首单毛利忽略复购扩张潜力",
+        "漏掉装盒、配送和对接成本"
+      ]
+    },
+    {
+      "id": "abacus_bakery_member_reactivation_004",
+      "label": "happy_path",
+      "scenario_tag": "member_reactivation_with_flavor_reuse",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年给女儿订过生日蛋糕的老会员在生日提醒后主动回复，想下周再订一个 6 寸轻乳酪蛋糕，沿用上次少糖和粉色写字风格，并顺便续充储值。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.58,
+          "segment_type": "老客复订",
+          "lifetime_value": 53800,
+          "historical_order_count": 17,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 12,
+          "member_reactivation_coupon_cost": 9,
+          "expected_ingredient_cost": 72,
+          "expected_packaging_cost": 18,
+          "estimated_gross_margin_rate": 0.61
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "生日提醒消息",
+            "客户主动回复想沿用上次款式",
+            "确认下周提货并准备续充"
+          ],
+          "last_meaningful_touch": "确认下周提货并准备续充"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 应明显高于普通新客线索",
+        "把历史偏好复用和低获客成本视为核心价值来源",
+        "奖励信号要指向复订确认、口味模板复用和续充动作"
+      ],
+      "mustAvoid": [
+        "把老客复订当成普通冷启动需求",
+        "忽略其后续家庭庆祝和转介绍空间"
+      ]
+    },
+    {
+      "id": "abacus_bakery_viral_croissant_heat_005",
+      "label": "failure_case",
+      "scenario_tag": "viral_pastry_heat_without_order_facts",
+      "input": {
+        "lead_assessment_or_campaign_result": "一条爆款可颂出炉视频带来大量评论和私信，用户反复问“今天还有没有”“拍照会不会很好看”“要排多久”，但始终没有补充门店、取货时间和数量，也没有支付动作。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.07,
+          "segment_type": "公域围观咨询",
+          "lifetime_value": 9200,
+          "historical_no_show_rate": 0.44
+        },
+        "cost_data": {
+          "cost_per_lead": 24,
+          "expected_followup_cost": 31,
+          "estimated_gross_margin_rate": 0.19
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "爆款可颂短视频",
+            "评论区问售罄和拍照",
+            "未转成下单或自提预约"
+          ],
+          "last_meaningful_touch": "评论区问售罄和拍照",
+          "engagement_metrics": {
+            "video_like": 8200,
+            "video_comment": 510
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分偏低",
+        "不能把高互动直接换算成高商业价值",
+        "奖励信号应偏向低成本筛选或引导补齐门店和取货事实"
+      ],
+      "mustAvoid": [
+        "按评论热度给高优先级",
+        "建议投入高成本人工逐条深聊"
+      ]
+    },
+    {
+      "id": "abacus_bakery_holiday_gift_box_no_deposit_006",
+      "label": "edge_case",
+      "scenario_tag": "holiday_gift_box_high_intent_without_payment",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家物业公司询问中秋节前配送 80 盒企业礼盒，已经明确包装风格、送达日期和发票需求，但表示要等领导批复后再付定金，希望门店先锁住包装和产能。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.18,
+          "segment_type": "企业礼盒采购",
+          "lifetime_value": 186000,
+          "repeat_purchase_probability": 0.39,
+          "annual_event_recurring_probability": 0.43
+        },
+        "cost_data": {
+          "cost_per_lead": 86,
+          "expected_packaging_cost": 428,
+          "expected_ingredient_cost": 1160,
+          "expected_delivery_cost": 136,
+          "inventory_hold_risk_cost": 210,
+          "estimated_gross_margin_rate": 0.29
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询节庆礼盒",
+            "发送包装方案与报价",
+            "确认日期但等待领导批复"
+          ],
+          "last_meaningful_touch": "确认日期但等待领导批复"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分需要被定金缺失明显封顶",
+        "长期分可以保留中高但置信度要下降",
+        "奖励信号应优先指向定金、包装版本和批次确认"
+      ],
+      "mustAvoid": [
+        "把节庆预算口径直接当成已成交收入",
+        "建议在未付款前正式锁死礼盒产能"
+      ]
+    },
+    {
+      "id": "abacus_bakery_evening_clearance_coupon_007",
+      "label": "failure_case",
+      "scenario_tag": "evening_clearance_coupon_burst_low_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "闭店前平台晚间券和第二件半价带来大量面包和切件订单，单量明显上涨，但客单低、抽佣高、包装需求增加，而且多数用户领完券就走，没有绑定会员。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.29,
+          "segment_type": "晚间清仓促销",
+          "repeat_purchase_probability": 0.12,
+          "refund_rate": 0.05
+        },
+        "cost_data": {
+          "cost_per_lead": 33,
+          "platform_commission_rate": 0.21,
+          "packaging_cost_per_order": 3.6,
+          "discount_rate": 0.32,
+          "estimated_gross_margin_rate": 0.11
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "平台晚间活动位",
+            "第二件半价券核销",
+            "订单完成后未绑定会员"
+          ],
+          "last_meaningful_touch": "第二件半价券核销",
+          "engagement_metrics": {
+            "coupon_claims": 240,
+            "member_bind_rate": 0.06
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把订单量和 GMV 直接当成高 ROI",
+        "短期分和 ROI 都应保持谨慎",
+        "奖励信号应偏向次日预订、会员绑定或门店自提转化"
+      ],
+      "mustAvoid": [
+        "因为清仓单量上涨就默认加大投放",
+        "忽略折扣、抽佣和包材后的净贡献"
+      ]
+    },
+    {
+      "id": "abacus_bakery_duplicate_group_order_merge_008",
+      "label": "happy_path",
+      "scenario_tag": "duplicate_corporate_tea_break_across_channels",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一位企业行政先在小程序表单里填了周三 15:00 的 35 份茶歇，后又电话确认楼层和门禁，最后通过企业微信发来冷藏切件与常温面包的明细，三处信息都指向同一笔订单。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.35,
+          "segment_type": "重复渠道企业茶歇",
+          "lifetime_value": 148000,
+          "duplicate_project_risk": "high",
+          "repeat_purchase_probability": 0.33
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "mini_program_form": 16,
+            "telephone_followup": 18,
+            "enterprise_wechat_followup": 22
+          },
+          "expected_ingredient_cost": 338,
+          "expected_packaging_cost": 78,
+          "estimated_gross_margin_rate": 0.41
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序团单表单留资",
+            "电话确认送达路线和楼层",
+            "企业微信发送明细与发票信息"
+          ],
+          "last_meaningful_touch": "企业微信发送明细与发票信息",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一个机会计算价值",
+        "奖励信号要更偏向真正推进规格和交付确认的关键触点",
+        "不能把多个入口重复记成多份 ROI"
+      ],
+      "mustAvoid": [
+        "让最后一次触达独占全部 credit 并忽略前置跟进成本",
+        "把小程序、电话和企业微信拆成三条高价值线索"
+      ]
+    },
+    {
+      "id": "abacus_bakery_complex_customization_allergen_009",
+      "label": "edge_case",
+      "scenario_tag": "same_day_custom_cake_with_allergen_and_text_change",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户想当天加急做一个 10 寸生日蛋糕，要求不要坚果、不要芒果、儿童可食、少糖、写字内容还可能晚点再改，并希望 4 小时内送到商场餐厅庆生。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.17,
+          "segment_type": "复杂加急定制蛋糕",
+          "lifetime_value": 46000,
+          "repeat_purchase_probability": 0.19,
+          "complaint_sensitivity": "high"
+        },
+        "cost_data": {
+          "cost_per_lead": 28,
+          "expected_ingredient_cost": 184,
+          "expected_manual_review_cost": 24,
+          "expected_refund_risk_cost": 42,
+          "estimated_gross_margin_rate": 0.23
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询当天加急",
+            "补充过敏原与儿童食用备注",
+            "写字内容仍在犹豫"
+          ],
+          "last_meaningful_touch": "补充过敏原与儿童食用备注"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分需要被复杂定制和交付风险明显封顶",
+        "ROI 评估必须纳入人工复核、返工和退款风险",
+        "奖励信号要优先指向人工确认、替代方案和安全边界说明"
+      ],
+      "mustAvoid": [
+        "只按蛋糕金额给高分",
+        "在未确认执行边界前承诺一定能安全准时送达"
+      ]
+    },
+    {
+      "id": "abacus_bakery_heatwave_delivery_risk_010",
+      "label": "edge_case",
+      "scenario_tag": "cream_cake_long_distance_delivery_in_heatwave",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户愿意全款购买一个 12 寸水果鲜奶油蛋糕，要求周日下午 14:00 送到 9 公里外的小区会所，当天预报 35 摄氏度，高峰时段骑手紧张，但客户不想改自提。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.27,
+          "segment_type": "远距离鲜奶油配送",
+          "lifetime_value": 72000,
+          "repeat_purchase_probability": 0.24,
+          "delivery_damage_history_rate": 0.12
+        },
+        "cost_data": {
+          "cost_per_lead": 34,
+          "expected_ingredient_cost": 236,
+          "special_packaging_cost": 38,
+          "ice_pack_cost": 12,
+          "expected_damage_compensation_risk": 66,
+          "estimated_gross_margin_rate": 0.19
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "私信询问大尺寸蛋糕配送",
+            "确认全款支付意愿",
+            "拒绝改自提仍要求准点送达"
+          ],
+          "last_meaningful_touch": "拒绝改自提仍要求准点送达"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和置信度都要被配送风险明显约束",
+        "ROI 不能忽略高温、距离和破损赔付成本",
+        "奖励信号应优先引导改自提、改时段或改稳妥款式"
+      ],
+      "mustAvoid": [
+        "因为客户愿意全款就直接高估价值",
+        "对高温远送做绝对准点和完整度承诺"
+      ]
+    },
+    {
+      "id": "abacus_bakery_complaint_recovery_011",
+      "label": "failure_case",
+      "scenario_tag": "high_value_customer_service_recovery_after_collapse",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位历史高价值企业联系人反馈昨天送到会场的生日蛋糕出现塌边，写字还少了一个字，客户要求店长解释并给出补救方案，但愿意先等门店回复。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.45,
+          "segment_type": "高价值客诉修复",
+          "lifetime_value": 164000,
+          "past_referral_count_for_segment": 5,
+          "dispute_history": "low"
+        },
+        "cost_data": {
+          "cost_per_lead": 10,
+          "expected_refund_cost": 188,
+          "expected_remake_cost": 126,
+          "brand_risk_reserve": 420,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业活动蛋糕交付",
+            "客户反馈塌边和写字错误",
+            "要求店长介入处理"
+          ],
+          "last_meaningful_touch": "要求店长介入处理",
+          "duplicate_merge_required": false
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应显著降低并强调人工处理",
+        "长期价值不能被直接归零，但必须以修复成功为前提",
+        "奖励信号要指向店长介入、证据留存和批次复盘，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把高历史消费误解为当前高成交意向",
+        "建议用优惠券替代质量复盘和修复"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "dispatcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "lifecycle_coverage",
+      "title": "关键节点覆盖率",
+      "description": "评估 ExecutionPlan 是否覆盖门楼项目从线索初判、勘测、方案、报价、审批、排产、安装到验收的必要节点。高分要求没有跳步，也没有把非必要节点堆得过重。",
+      "examples": [
+        "高分：计划里同时含勘测、方案、报价审批和安装前复核。",
+        "低分：客户只问初步报价，却直接生成排产和进场任务。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "routing_target_fit",
+      "title": "路由目标匹配度",
+      "description": "评估 routing_targets 是否把任务发给正确角色、工具和人工节点，例如报价走销售或项目经理，结构承诺走工程负责人，紧急回拨走电话加企微双路。",
+      "examples": [
+        "高分：政企项目自动补邮件发送与正式报价流。",
+        "低分：把需要人工勘测的任务误派给纯自动化节点。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "approval_gate_integrity",
+      "title": "审批门完整度",
+      "description": "评估计划是否对效果图定版、价格折扣、工期承诺、结构安全和政策可办性设置了明确审批门。高分意味着 approval_state 不清晰时会自动暂停。",
+      "examples": [
+        "高分：未审批通过前只允许内部草稿流转。",
+        "低分：客户一催就直接发最终报价或对外承诺工期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "dependency_clarity",
+      "title": "依赖与前置条件清晰度",
+      "description": "评估 task_graph 是否把尺寸、现场条件、天气、吊装、进场证、合同和回款等前置条件显式写明，并与下游节点建立依赖关系。",
+      "examples": [
+        "高分：安装节点依赖进场证、天气确认和物料齐套。",
+        "低分：计划里没有写明夜间施工限制就直接安排班组。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "retry_and_replay_safety",
+      "title": "重试与回放安全性",
+      "description": "评估 retry_policy 是否允许报价发送、供应商切换、勘测改期等动作被安全重试，不会造成重复报价、重复派工或重复催款。",
+      "examples": [
+        "高分：报价重发前先校验版本号和发送记录。",
+        "低分：CRM 超时后重复建单，导致同一客户被两个销售追踪。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "fallback_executability",
+      "title": "兜底方案可执行性",
+      "description": "评估 fallback_plan 是否真实可落地，例如远程踏勘替代现场勘测、人工报价模板替代系统报价、备用安装班组替代主班组。",
+      "examples": [
+        "高分：设计服务失败后自动切到标准模板加人工润色。",
+        "低分：只写“有问题再人工处理”，没有指定接手人和时限。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "rhythm_reasonableness",
+      "title": "节奏合理性",
+      "description": "评估计划的时间窗是否符合门楼 B 端决策节奏、开业节点、节假日物流和安装限制，不拖慢成交，也不压缩到不可执行。",
+      "examples": [
+        "高分：工作日白天确认报价，安装前 48 小时完成天气复核。",
+        "低分：周五晚临时安排周六清晨高空安装，却没有任何确认链路。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "resource_efficiency",
+      "title": "资源利用率",
+      "description": "评估是否按预算带宽和项目价值合理调用设计、报价、安装和审批资源，避免低价值询盘占满高成本节点。",
+      "examples": [
+        "高分：预算未确认时先发标准方案，不立即占用高级渲染。",
+        "低分：每个询盘都上完整定制效果图与现场勘测。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "risk_mitigation_strength",
+      "title": "风险缓释度",
+      "description": "评估计划是否提前识别政策、施工安全、供应链、天气、毛利和客户失约风险，并附带明确 stop-loss 或降级路径。",
+      "examples": [
+        "高分：遇到审批未定或毛利穿底时自动暂停推进。",
+        "低分：明知材料涨价还维持旧报价并继续承诺工期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "observability_and_writeback",
+      "title": "回写与可观测性",
+      "description": "评估执行后是否能沉淀尺寸表、现场照片、报价版本、审批结论、失败原因和下一步动作，支撑 replay recovery 与人工接管。",
+      "examples": [
+        "高分：每个节点完成后都回写版本号、责任人和时间戳。",
+        "低分：任务做完没有留记录，失败后无法重放。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

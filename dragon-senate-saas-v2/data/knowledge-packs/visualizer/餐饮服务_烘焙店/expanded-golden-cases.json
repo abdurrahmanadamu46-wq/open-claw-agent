@@ -1,0 +1,264 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_bakery_case_001",
+      "label": "happy_path",
+      "scenario": "社区烘焙店早晨第一炉可颂与顺路早餐证明",
+      "input": {
+        "copy_pack": "社区街角烘焙店短视频脚本，核心卖点是早上 7 点 30 到 10 点第一炉可颂和吐司新鲜上盘、门店离小区入口和地铁口都近、上班族和附近居民可以顺手带一袋早餐走。脚本希望观众看完知道这不是只拍橱窗的店，而是真的能看到出盘、夹取、装袋和第一口的日常门店。",
+        "brand_assets": [
+          "社区街角门头镜头",
+          "第一炉可颂出盘或补盘视频",
+          "吐司切片与价签画面",
+          "顾客夹取可颂和纸袋装袋镜头",
+          "可颂掰开层次特写",
+          "纸袋离店或边走边吃画面",
+          "早餐价签或菜单牌",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "干净纪实的社区烘焙质感",
+          "早晨顺路带走的真实节奏"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 2,
+          "morning_service": true,
+          "first_batch_window": "07:30-09:00",
+          "baking_room_partially_visible": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "第一炉出盘或补盘作为前段新鲜证据",
+        "可颂掰开层次和第一口作为口感证明",
+        "社区街角或地铁口关系镜头证明顺路属性",
+        "明确写出 7 点 30 到 9 点第一炉拍摄窗口和顾客避脸依赖"
+      ],
+      "mustAvoid": [
+        "空店橱窗镜头撑满前半段",
+        "拿外部可颂层次素材冒充本店当日出品",
+        "用假蒸汽和过度电影感掩盖真实交付动作"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把社区烘焙店脚本转成一条以第一炉新鲜证据、夹取装袋链路和早餐顺路可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在 7 点 30 前后完成门头和第一炉补盘镜头，再在 8 点左右补夹取装袋和离店动作。",
+          "顾客不适合正脸近拍，因此以手部、背影和纸袋离店动作为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、第一炉补盘、夹取装袋、剖面层次和离店画面。",
+          "脚本卖点围绕早晨新鲜出盘和顺路带走，而不是夸大排队和装修感。"
+        ],
+        "confidence": 0.91,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给刚补盘的可颂和纸袋，角落补社区街角门头，标题聚焦“早上这一炉才值得带走”。",
+        "shot_list": "1) 社区街角门头建立早餐顺路位置 2) 第一炉可颂出盘或补盘建立新鲜证据 3) 顾客夹取和纸袋装袋形成真实购买动作 4) 可颂掰开层次与第一口画面证明口感 5) 纸袋离店或边走边吃补足带走场景 6) 价签菜单与门头回收形成早餐 CTA",
+        "asset_dependencies": "社区门头、第一炉可颂出盘或补盘、吐司和可颂价签、夹取装袋、可颂剖面层次、纸袋离店、顾客避脸动作；需锁定 7 点 30 到 9 点第一炉窗口。",
+        "execution_feasibility_score": "0.91"
+      }
+    },
+    {
+      "id": "visualizer_bakery_case_002",
+      "label": "happy_path",
+      "scenario": "写字楼烘焙店下午茶拼盒与办公室分享",
+      "input": {
+        "copy_pack": "写字楼底商烘焙店视频脚本，核心卖点是下午 14 点到 17 点现货甜点和小面包补货稳定，适合办公室下午茶拼盒、会议前顺手带走，门店主打巴斯克切件、黄油卷和迷你可颂。脚本不想拍成只有包装没有食物关系的摆拍，而是想让观众看懂这盒下午茶是今天真实能买、能拎走、能分着吃的。",
+        "brand_assets": [
+          "楼宇入口与门头镜头",
+          "切件柜和小面包陈列画面",
+          "店员下午补盘视频",
+          "夹取多款单品装盒镜头",
+          "拼盒贴标和纸袋画面",
+          "办公室开盒与分食镜头",
+          "价签或菜单牌",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "克制真实的办公室下午茶质感",
+          "看得懂现货与带走关系的烘焙分镜"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2.5,
+          "afternoon_service": true,
+          "display_case_access": true,
+          "customer_closeup_allowed": false,
+          "office_entry_limited": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "下午补盘或真实在售切件作为前段证据",
+        "多款单品装盒贴标形成完整交付链路",
+        "办公室开盒或分食证明不是只拍包装",
+        "明确写出 14 点到 17 点拍摄窗口和写字楼避脸边界"
+      ],
+      "mustAvoid": [
+        "只拍礼盒外观不落到里面实物",
+        "拿前一天剩余单品混充当天下午现货",
+        "用泛办公素材掩盖缺少真实开盒和分食证据"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把写字楼烘焙店脚本转成一条以真实现货、装盒带走和办公室分享可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可先在 14 点前后完成楼宇入口和柜台镜头，再在补盘窗口补装盒与办公室开盒动作。",
+          "办公室场景不适合正脸特写，因此以手部开盒、桌面分食和盒内实物关系为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、切件柜、补盘、装盒贴标和办公室开盒画面。",
+          "脚本重点在下午茶现货与分享体验，而不是营造空泛高端包装感。"
+        ],
+        "confidence": 0.87,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用打开的下午茶拼盒和楼宇门头同框，标题聚焦“这一盒下午茶别只拍包装”。",
+        "shot_list": "1) 楼宇入口与门头建立写字楼顺路位置 2) 切件柜和下午补盘证明真实在售状态 3) 夹取多款单品装盒和贴标形成出货链路 4) 纸袋带走与办公室开盒补足真实交付 5) 分食和近景实物关系证明不是摆拍礼盒 6) 价签菜单与门头回收形成下午茶 CTA",
+        "asset_dependencies": "楼宇入口、门头、切件柜和小面包陈列、下午补盘、装盒贴标、纸袋带走、办公室避脸开盒分食、价签菜单；需确认 14 点到 17 点补盘窗口和办公室可拍边界。",
+        "execution_feasibility_score": "0.87"
+      }
+    },
+    {
+      "id": "visualizer_bakery_case_003",
+      "label": "edge_case",
+      "scenario": "商场烘焙店生日蛋糕提货，成品充足但后厨和裱花不可拍",
+      "input": {
+        "copy_pack": "商场连锁烘焙店脚本，重点想讲生日蛋糕定制不翻车、现场提货方便、盒装和拎走都体面，但门店不允许拍后厨和裱花过程，只有成品蛋糕、写字牌、装盒、提袋和到桌开盒素材。脚本希望观众看完会觉得这家店拿来庆生稳，但不要拍成虚构现场制作大片。",
+        "brand_assets": [
+          "商场楼层标识与门头镜头",
+          "完整生日蛋糕陈列画面",
+          "写字成品近景",
+          "店员装盒和绑带镜头",
+          "提袋离店画面",
+          "蜡烛卡片与蛋糕配件镜头",
+          "到桌开盒或切蛋糕画面",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "克制可信的庆祝场景烘焙",
+          "稳定提货与礼赠感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "mall_service": true,
+          "kitchen_access": false,
+          "cake_decorating_access": false,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确后厨和裱花过程不可拍",
+        "把证明重心放在成品完成度、装盒稳定性和提货链路",
+        "商场门头或楼层镜头证明提货位置方便",
+        "写清顾客避脸和到桌开盒的授权边界"
+      ],
+      "mustAvoid": [
+        "硬写现场裱花和后厨制作大片",
+        "拿外部派对或他店生日蛋糕素材冒充本店交付",
+        "用夸张情绪镜头掩盖缺少工艺证据"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在后厨和裱花过程不可拍的前提下，把生日蛋糕脚本转成一条以成品完成度、装盒提货稳定性和庆祝开盒可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在商场客流相对平稳时完成门头、成品柜和装盒提袋镜头，再补到桌开盒或切蛋糕画面。",
+          "庆祝场景不适合正脸近拍，因此以手部、蛋糕本体和开盒动作作为主体。"
+        ],
+        "evidence": [
+          "现有素材集中在门头、完整蛋糕、写字成品、装盒、提袋和开盒画面。",
+          "脚本的核心购买理由是提货稳和成品体面，而不是后厨制作秀。"
+        ],
+        "confidence": 0.73,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给完整蛋糕和装盒动作，角落补商场门头或提袋镜头，标题聚焦“到手还稳的生日蛋糕”。",
+        "shot_list": "1) 商场楼层标识和门头交代提货位置 2) 完整蛋糕与写字成品证明实物完成度 3) 装盒、绑带和配件镜头建立交付稳定性 4) 提袋离店补足真实提货动作 5) 到桌开盒或切蛋糕证明庆祝场景可落地 6) 门头回收和提货提醒收束到订单 CTA",
+        "asset_dependencies": "商场楼层标识、门头、完整蛋糕陈列、写字成品、装盒绑带、蜡烛卡片、提袋离店、避脸开盒或切蛋糕画面；缺少后厨和裱花过程素材。",
+        "execution_feasibility_score": "0.72"
+      }
+    },
+    {
+      "id": "visualizer_bakery_case_004",
+      "label": "failure_case",
+      "scenario": "未开业烘焙新品牌只有效果图和产品 KV 却想做爆款探店",
+      "input": {
+        "copy_pack": "新烘焙品牌宣传脚本，希望做出开业即排队、柜台面包卖空、生日蛋糕很多人定的感觉，但门店尚未开业，没有真实出炉、没有真实陈列、没有顾客和打包交付，只掌握装修效果图、产品 KV、菜单海报和开业倒计时物料。",
+        "brand_assets": [
+          "装修效果图",
+          "面包与蛋糕产品 KV",
+          "菜单海报",
+          "品牌 Logo",
+          "开业倒计时海报"
+        ],
+        "reference_styles": [
+          "新店预告",
+          "明亮轻克制的品牌视觉"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "store_open": false,
+          "real_product_assets": false,
+          "customer_assets": false,
+          "packaging_assets": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店未开业且没有真实产品、客流和交付证据",
+        "主动降级为开业预告或产品方向说明",
+        "给出低可执行性评分和开业后补拍建议"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实营业门店",
+        "拿外部烘焙店的出炉和排队素材冒充本店",
+        "继续设计售罄、补盘和真实提袋故事"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在门店未开业且没有真实产品与客流素材的前提下，输出一条不冒充爆款探店的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌风格、产品方向和开业时间信息。",
+          "任何真实出炉、陈列、装袋、提货和顾客画面都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、产品 KV、菜单海报、Logo 和开业倒计时物料。",
+          "拍摄条件不支持门头实景、真实出炉、真实陈列、真实客流和真实交付证明。"
+        ],
+        "confidence": 0.64,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，效果图和品牌 Logo 做主体，标题明确写新店即将开业或产品方向抢先看，避免任何已经营业和卖得很快的暗示。",
+        "shot_list": "1) 效果图与品牌 Logo 建立新店印象 2) 面包和蛋糕产品 KV 拆解未来主打方向 3) 菜单海报和开业倒计时说明时间节点 4) 明确当前没有真实出炉、陈列和交付证据 5) 列出开业后需补拍的门头、出盘、陈列、装袋和客流素材 6) 收束到开业提醒和关注 CTA",
+        "asset_dependencies": "装修效果图、产品 KV、菜单海报、品牌 Logo、开业倒计时海报；缺少门头实景、真实产品、真实出炉、陈列补盘、装袋提货和客流证明。",
+        "execution_feasibility_score": "0.24"
+      }
+    }
+  ]
+}

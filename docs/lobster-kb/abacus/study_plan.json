@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "lobster": "abacus",
+    "name": "算无遗策",
+    "current_level": "L4",
+    "target_level": "L5",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "秒针系统/AdMaster广告效果分析标准"
+  },
+  "current_gaps": [
+    "样本量不足时的强行结论问题（aba_battle_001），sample_size_check字段已加入，需验证执行稳定性",
+    "ROI归因模型覆盖行业偏少，目前仅美妆/食品有较完整的基准数据",
+    "预测准确率尚未系统化追踪，目前无法自评'下月ROI预测误差'",
+    "洞察翻译成策略语言的能力有待提升——报告常被strategist反馈'数据看懂了但不知道怎么用'"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "数据报告质量自检",
+        "method": "每次报告发出前，检查：sample_size_check是否填写？结论是否有数据支撑？建议是否可操作？",
+        "output": "报告质量评分自评（100分制：样本达标40分+结论有据30分+建议可操作30分）"
+      },
+      {
+        "action": "本周数据洞察→策略建议转化训练",
+        "method": "每次发出洞察报告后，追加一个'如果我是strategist，我会怎么用这个洞察'的建议段落",
+        "output": "提升洞察的可操作性，目标：strategist采纳率≥80%"
+      },
+      {
+        "action": "行业基准数据库更新",
+        "method": "每周收集1个行业的最新基准数据（CTR均值/完播率均值/转化率均值），对照历史基准确认变化",
+        "output": "行业基准数据库新增或更新条目"
+      },
+      {
+        "action": "向各龙虾同步数据结论",
+        "method": "将本周最重要的1条数据洞察，主动推送给最相关的龙虾（不等他们来问）",
+        "output": "数据驱动决策的文化建立（主动推而不是被动查）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "预测追踪机制建立 + B2B/教育行业基准数据补充",
+      "knowledge_targets": [
+        { "item": "月度ROI预测记录表", "target_count": 1, "source": "建立标准格式，每月月初预测，月末对比实际" },
+        { "item": "B2B行业转化漏斗基准", "target_count": 3, "source": "行业研报+实际案例数据" },
+        { "item": "教育行业ROI分布规律", "target_count": 3, "source": "对标案例+历史数据" },
+        { "item": "A/B实验最小样本量对照表", "target_count": 1, "source": "不同置信度/效果量下的样本量计算" }
+      ],
+      "skill_targets": [
+        "ROI归因误差：维持≤5%",
+        "洞察采纳率：从当前提升到≥78%",
+        "报告质量自评均分：≥85分"
+      ],
+      "collab_targets": [
+        { "partner": "strategist", "goal": "建立月度数据复盘会：abacus提供数据，苏思提供策略解读，共同输出结论" },
+        { "partner": "catcher", "goal": "建立线索评分模型迭代机制：用成交数据反训练catcher的评分规则" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "季节性效果波动规律建立 + KOL性价比分析模型",
+      "knowledge_targets": [
+        { "item": "季节性ROI波动规律（美妆/食品/母婴）", "target_count": 3, "source": "历史数据月度分析" },
+        { "item": "KOL合作性价比分析框架", "target_count": 1, "source": "头部/腰部/尾部KOL的ROI分布研究" },
+        { "item": "汽车/奢侈品长周期ROI归因方法", "target_count": 2, "source": "长决策周期行业的归因模型研究" }
+      ],
+      "skill_targets": [
+        "洞察采纳率：从78%提升到80%（Q2目标）",
+        "月度ROI预测误差：≤12%（建立追踪基线）",
+        "行业基准覆盖：从2个行业扩展到6个行业"
+      ],
+      "collab_targets": [
+        { "partner": "dispatcher", "goal": "向dispatcher提供时间窗效果数据：各时间窗发布的互动数据对比，帮助优化时间窗数据库" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "Q2预测准确率总结 + 行业基准库季度更新",
+      "knowledge_targets": [
+        { "item": "Q2月度预测准确率复盘", "target_count": 1, "source": "对照3个月的预测vs实际数据" },
+        { "item": "Q2最有价值的5条数据洞察", "target_count": 5, "source": "本季度被strategist采纳并验证有效的洞察" },
+        { "item": "全行业基准数据库季度更新", "target_count": 1, "source": "整理Q2各行业数据，更新基准值" }
+      ],
+      "skill_targets": [
+        "月度ROI预测误差：优化到≤10%",
+        "行业基准库：覆盖≥8个行业",
+        "完成L4→L5升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "Q2复盘提交：哪类工作流ROI最高？哪类策略组合最值得继续投入？" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "ROI归因误差", "baseline": "≤5%", "target": "≤3%", "measurement": "预测vs实际对比" },
+      { "metric": "洞察采纳率", "baseline": "~72%", "target": "≥80%", "measurement": "strategist反馈记录" },
+      { "metric": "行业基准覆盖", "baseline": "2个行业", "target": "≥8个行业", "measurement": "基准库文件" },
+      { "metric": "月度ROI预测误差", "baseline": "未追踪", "target": "≤10%", "measurement": "月度预测记录表" },
+      { "metric": "报告质量自评均分", "baseline": "未追踪", "target": "≥85分/份", "measurement": "报告质量自评记录" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L4",
+    "to": "L5",
+    "requirements": [
+      "ROI归因误差稳定≤3%（连续2个季度）",
+      "洞察采纳率稳定≥85%",
+      "月度ROI预测误差稳定≤8%（连续3个月）",
+      "行业基准库覆盖≥10个行业，且每个行业有完整的漏斗基准",
+      "能主动发现其他龙虾察觉不到的数据异常，并在影响扩大前预警"
+    ],
+    "estimated_timeline": "2026-Q4结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "秒针系统", "focus": "多触点归因模型的设计逻辑", "learning_method": "研究其归因报告的维度设计，对标优化自身的归因框架" },
+    { "name": "AdMaster广告效果分析", "focus": "品牌广告ROI的长周期追踪方法", "learning_method": "学习其跨周期归因方法，应用到长决策周期行业的分析中" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "内容策略（向strategist学）", "target": "能理解策略决策的逻辑，让数据洞察更贴近策略需要的'颗粒度'", "timeline": "2026-04" },
+    { "domain": "线索评分（向catcher学）", "target": "理解线索漏斗的运作逻辑，能从线索数据中发现内容→转化的归因链路", "timeline": "2026-05" },
+    { "domain": "发布节奏（向dispatcher学）", "target": "理解发布时间对数据的影响，能区分'内容质量差'和'发布时间不对'导致的数据低", "timeline": "2026-06" }
+  ]
+}

@@ -1,0 +1,474 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_boutique_homestay_weekend_viewroom_deposit_001",
+      "label": "happy_path",
+      "scenario_tag": "weekend_view_room_deposit_lock",
+      "input": {
+        "lead_assessment_or_campaign_result": "客人计划清明后首个周末入住 2 晚山景露台房，2 位成人加 1 位 6 岁儿童，已接受 50% 定金、确认最晚 21:30 到店，并询问儿童早餐与停车规则。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.44,
+          "segment_type": "周末短逃离直订景观房",
+          "lifetime_value": 76000,
+          "referral_conversion_rate": 0.28,
+          "repeat_stay_probability": 0.31
+        },
+        "cost_data": {
+          "cost_per_lead": 36,
+          "breakfast_cost": 48,
+          "parking_cost": 12,
+          "room_hold_opportunity_cost": 180,
+          "estimated_gross_margin_rate": 0.53
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小红书种草咨询",
+            "微信发送真实房态视频",
+            "客人支付定金并确认儿童政策"
+          ],
+          "last_meaningful_touch": "客人支付定金并确认儿童政策"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断应建立在定金、人数结构和到店时间都明确之上",
+        "ROI 需要计入周末景观房机会成本后再判断，但仍应偏健康",
+        "奖励信号应指向定金复核、取消窗口确认和儿童政策补齐"
+      ],
+      "mustAvoid": [
+        "只因为种草内容好看就高估价值",
+        "忽略儿童早餐和稀缺房型占用成本"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_anniversary_paid_package_002",
+      "label": "happy_path",
+      "scenario_tag": "anniversary_paid_celebration_package",
+      "input": {
+        "lead_assessment_or_campaign_result": "情侣预订 2 晚私汤套房庆祝纪念日，额外付费购买花艺布置、双人晚餐和跟拍，已确认第一晚 19:00 布置完成与 20:00 晚餐时段，并支付庆祝套餐全款。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.52,
+          "segment_type": "纪念日付费庆祝直订",
+          "lifetime_value": 88000,
+          "review_share_probability": 0.47,
+          "repeat_celebration_probability": 0.26
+        },
+        "cost_data": {
+          "cost_per_lead": 24,
+          "room_decoration_cost": 260,
+          "private_dinner_cost": 420,
+          "photography_coordination_cost": 180,
+          "estimated_gross_margin_rate": 0.49
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "朋友圈看到纪念日房型更新",
+            "微信确认庆祝偏好与布置风格",
+            "支付庆祝套餐全款"
+          ],
+          "last_meaningful_touch": "支付庆祝套餐全款"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分应建立在房晚、庆祝时段和付费套餐已经锁定",
+        "长期分可以中高位保留，但理由应是直订沉淀和口碑扩散潜力",
+        "奖励信号应指向偏好清单、服务交接和余款之外的执行确认"
+      ],
+      "mustAvoid": [
+        "只因为情绪表达浓度高就把长期价值拉满",
+        "忽略布置、晚餐和摄影协调成本"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_courtyard_buyout_pending_guestlist_003",
+      "label": "edge_case",
+      "scenario_tag": "courtyard_buyout_retreat_pending_guestlist",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家创业团队想在周五到周日包院 6 间房做小团建，接受先付定金，但入住名单尚未回收完整，烧烤和篝火时段也还没与邻里边界确认。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.29,
+          "segment_type": "包院团建",
+          "lifetime_value": 240000,
+          "repeat_event_probability": 0.34,
+          "referral_chain_probability": 0.22
+        },
+        "cost_data": {
+          "cost_per_lead": 92,
+          "staffing_cost": 360,
+          "bbq_setup_cost": 280,
+          "room_block_release_risk": 420,
+          "neighbor_complaint_risk_reserve": 200,
+          "estimated_gross_margin_rate": 0.37
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询包院",
+            "电话沟通活动时段",
+            "等待名单和扰民边界确认"
+          ],
+          "last_meaningful_touch": "等待名单和扰民边界确认"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分可以高于短期分，因为存在复办和团队转介绍潜力",
+        "短期分不能在名单和活动边界未清前被抬到已落地营收水平",
+        "奖励信号应优先指向名单回收、噪音边界和余款节点确认"
+      ],
+      "mustAvoid": [
+        "把包院意向直接等同于已成交大单",
+        "忽略扰民、额外人手和包院释放风险"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_weekday_workation_extension_004",
+      "label": "happy_path",
+      "scenario_tag": "weekday_workation_longstay_extension",
+      "input": {
+        "lead_assessment_or_campaign_result": "一对正在入住的写作者希望把原本 5 晚山景房续住到 12 晚，接受每周结算和每周 2 次清扫，并计划额外加购早餐和茶席体验。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.58,
+          "segment_type": "旅居连住续住",
+          "lifetime_value": 136000,
+          "extension_probability": 0.49,
+          "ancillary_spend_per_stay": 760
+        },
+        "cost_data": {
+          "cost_per_lead": 18,
+          "cleaning_cost_per_visit": 24,
+          "laundry_margin_rate": 0.34,
+          "turnover_saving": 280,
+          "discount_rate_impact": 0.06,
+          "estimated_gross_margin_rate": 0.46
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "在住客提出续住",
+            "主理人确认网络与安静房间",
+            "财务确认周度结算"
+          ],
+          "last_meaningful_touch": "财务确认周度结算"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应显著偏高，体现稳定房晚与淡季价值",
+        "ROI 要体现获客成本摊薄和低换房损耗的好处",
+        "奖励信号应指向续住日期、清扫频率和周度结算锁定"
+      ],
+      "mustAvoid": [
+        "把续住视作普通折扣需求",
+        "只因单晚价格略低就低估价值"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_old_guest_private_reactivation_005",
+      "label": "happy_path",
+      "scenario_tag": "old_guest_private_domain_direct_reactivation",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年通过 OTA 住过的老客看到朋友圈春季房态更新后，直接微信预订同款阁楼房，并一次性确认未来两个月内 2 次周末入住，还要求沿用上次的早餐和发票信息。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.61,
+          "segment_type": "老客私域回流",
+          "lifetime_value": 154000,
+          "direct_booking_rate_after_reactivation": 0.68,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 12,
+          "reactivation_message_cost": 3,
+          "saved_channel_commission_rate": 0.18,
+          "breakfast_cost_per_stay": 60,
+          "estimated_gross_margin_rate": 0.57
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "朋友圈看到春季房态更新",
+            "微信复用历史偏好",
+            "直接确认两次入住日期并索要发票信息"
+          ],
+          "last_meaningful_touch": "直接确认两次入住日期并索要发票信息"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 应明显高于普通 OTA 新客",
+        "长期分应偏高，体现直订资产回流和复住潜力",
+        "奖励信号应指向偏好复用、直订绑定和发票信息复核"
+      ],
+      "mustAvoid": [
+        "把私域回流当成普通低价新客",
+        "忽略节省的平台佣金和解释成本"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_weather_reschedule_credit_006",
+      "label": "edge_case",
+      "scenario_tag": "mountain_rainstorm_reschedule_credit_preservation",
+      "input": {
+        "lead_assessment_or_campaign_result": "情侣原本直订 2 晚日出露台房，但出发前遇到暴雨预警和山路封闭，客人接受 60 天内改期或等额代金券，同时希望保留纪念日晚餐偏好。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.38,
+          "segment_type": "天气受阻改期客",
+          "lifetime_value": 52000,
+          "reschedule_acceptance_rate": 0.66,
+          "repeat_stay_probability": 0.27
+        },
+        "cost_data": {
+          "cost_per_lead": 30,
+          "refund_exposure": 1280,
+          "credit_breakage_rate": 0.11,
+          "reacquisition_cost_if_lost": 90,
+          "estimated_gross_margin_rate": 0.22
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序直订",
+            "客服通知天气风险",
+            "客人接受改期或代金券方案"
+          ],
+          "last_meaningful_touch": "客人接受改期或代金券方案"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应低于正常出行情景但不能直接归零",
+        "长期分要体现关系和未来收入保全概率",
+        "奖励信号应优先指向改期窗口、代金券规则和原套餐权益保留"
+      ],
+      "mustAvoid": [
+        "把改期订单当成已实现营收",
+        "只因当期无法到店就完全抹掉价值"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_duplicate_channel_merge_007",
+      "label": "edge_case",
+      "scenario_tag": "duplicate_inquiry_merge_across_ota_wechat_miniprogram",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一对客人先在 OTA 私信问泳池房价格，随后添加微信索要真房视频，最后在小程序支付同一笔 2 晚订单定金，并接受携宠清洁费。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.41,
+          "segment_type": "多渠道合并直订转化",
+          "lifetime_value": 68000,
+          "duplicate_lead_risk": "high",
+          "repeat_stay_probability": 0.24
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "ota_message": 28,
+            "wechat_followup": 12,
+            "mini_program_retargeting": 8
+          },
+          "pet_cleaning_cost": 120,
+          "estimated_gross_margin_rate": 0.45
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "OTA 私信问价",
+            "微信发送真房视频和携宠规则",
+            "小程序支付定金并确认宠物清洁费"
+          ],
+          "last_meaningful_touch": "小程序支付定金并确认宠物清洁费",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一笔机会来计算价值和 ROI",
+        "奖励信号应更偏向真正推动定金与规则确认落地的关键触点",
+        "不能把多入口重复记成多笔高价值线索"
+      ],
+      "mustAvoid": [
+        "只给最后点击触点全部 credit",
+        "把同一订单重复计算成本与收益"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_ota_live_low_margin_008",
+      "label": "failure_case",
+      "scenario_tag": "ota_live_flash_sale_low_net_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "OTA 直播活动卖出大量周末 1 晚房，套餐含免费下午茶、延迟退房和部分宠物清洁豁免，订单看起来很热，但几乎没有私域绑定和付费升级。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.33,
+          "segment_type": "直播低价套餐客",
+          "lifetime_value": 11000,
+          "repeat_stay_probability": 0.07,
+          "refund_rate": 0.12,
+          "member_bind_rate": 0.04
+        },
+        "cost_data": {
+          "cost_per_lead": 42,
+          "ota_commission_rate": 0.23,
+          "coupon_subsidy_per_order": 68,
+          "afternoon_tea_cost": 46,
+          "late_checkout_cost": 55,
+          "estimated_gross_margin_rate": 0.16
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "直播间领券",
+            "OTA 下单",
+            "入住后未加微信或绑定会员"
+          ],
+          "last_meaningful_touch": "OTA 下单",
+          "engagement_metrics": {
+            "orders_sold": 92,
+            "coupon_claims": 310
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把订单量和领券热度直接等同于高 ROI",
+        "短期分和 ROI 都应保持谨慎甚至偏低",
+        "奖励信号应偏向私域转化和付费升级，而不是继续单纯放量"
+      ],
+      "mustAvoid": [
+        "按 GMV 或入住率直接抬高价值",
+        "忽略佣金、补贴和免费权益的净收益侵蚀"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_vanity_influencer_freebie_009",
+      "label": "failure_case",
+      "scenario_tag": "influencer_free_stay_without_trackable_conversion",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位 15 万粉的生活方式博主想免费住周末私汤房，要求早餐、茶歇和拍照协助，承诺发 2 篇内容，但拒绝淡季档期和任何可追踪转化码。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.11,
+          "segment_type": "达人置换试住",
+          "audience_fit_score": 0.32,
+          "direct_conversion_rate_from_previous_collabs": 0.02,
+          "lifetime_value": 7000
+        },
+        "cost_data": {
+          "room_opportunity_cost": 1800,
+          "photo_assist_cost": 160,
+          "tea_cost": 80,
+          "coordination_cost": 120,
+          "estimated_gross_margin_rate": -0.04
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "私信求合作",
+            "索要免费清单",
+            "拒绝提供可追踪转化方案"
+          ],
+          "last_meaningful_touch": "拒绝提供可追踪转化方案",
+          "engagement_metrics": {
+            "followers": 150000,
+            "average_likes": 3800
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和 ROI 都应偏低或高度谨慎",
+        "不能把粉丝量和互动热度直接当成商业价值",
+        "奖励信号若存在，也应转向淡季档期、可追踪归因和明确转化条件"
+      ],
+      "mustAvoid": [
+        "因为曝光听起来很大就高估价值",
+        "忽略周末稀缺房型机会成本和无法归因的风险"
+      ]
+    },
+    {
+      "id": "abacus_boutique_homestay_service_recovery_hot_tub_noise_010",
+      "label": "failure_case",
+      "scenario_tag": "service_recovery_before_arrival_hot_tub_outage",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位转介绍来的客人预订了周末求婚私汤房，但入住前一天发现私汤故障且附近施工有噪音，客人要求经理先说明修复或改期方案，再决定是否保留订单。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.47,
+          "segment_type": "高期望客诉前置修复",
+          "lifetime_value": 98000,
+          "repeat_stay_probability_if_recovered": 0.29,
+          "referral_chain_probability": 0.21
+        },
+        "cost_data": {
+          "cost_per_lead": 10,
+          "compensation_reserve": 360,
+          "alternative_room_upgrade_cost": 280,
+          "refund_exposure": 1560,
+          "brand_risk_reserve": 400,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "私域转介绍下单",
+            "客服提前通知设备故障",
+            "客人要求经理说明修复或改期方案"
+          ],
+          "last_meaningful_touch": "客人要求经理说明修复或改期方案"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应明显下调并转向止损判断",
+        "长期价值不能直接归零，但必须建立在修复成功的前提上",
+        "奖励信号应指向经理介入、证据留存、改期或修复方案，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把转介绍来源理解成当前高成交意向",
+        "用继续送赠项替代真实修复和边界说明"
+      ]
+    }
+  ]
+}

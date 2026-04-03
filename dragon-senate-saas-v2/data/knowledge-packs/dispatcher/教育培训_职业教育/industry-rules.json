@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_职业教育",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "trial_and_staff_capacity_gate",
+      "title": "高峰试听前必须先校验试听时段、班主任和实操资源",
+      "description": "职业教育的调度核心不是单纯接单，而是把试听时段、老师、班主任、实操位、班型容量和后续跟进能力一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": [
+        "周末晚间试听位已满时，先进入候补和分时段试听节点。",
+        "报名季和实操课集中时，先确认可用时长和老师排班。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "trial_and_reenroll_must_be_routed",
+      "title": "首次试听、续班和试听后回访是独立调度变量",
+      "description": "首次试听、续班和试听后回访会显著改变单客时长与资源匹配。Dispatcher 不能按普通咨询去承接这些场景，必须单独分流。",
+      "examples": [
+        "首次试听用户需要先进入试听判断节点。",
+        "续班用户应优先路由到熟悉其历史记录的班主任链路。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "service_complexity_before_confirmation",
+      "title": "确认预约前先判断问题复杂度和是否适合该时段",
+      "description": "考证、就业转岗、实操课和报名季冲刺不能共用同一套试听时长假设。Dispatcher 需要先按复杂度和老师资源做分流。",
+      "examples": [
+        "午休档只适合轻量咨询，不应塞入长时试听与实操讲解。",
+        "报名季冲刺和多人试听需提前扩展时长。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "classroom_reset_gate",
+      "title": "教室重置和资料准备是独立调度节点",
+      "description": "职业教育机构不是一位学员试听结束就能立刻无缝接下一位。教室重置、资料整理和实操位准备必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": [
+        "连续试听时，先插入教室重置和资料准备步骤。",
+        "长时试听做完后不可直接无缝切换下一单。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "peak_slot_hold_window",
+      "title": "热门时段和核心老师档要设置保留窗口",
+      "description": "周末、报名季晚间和核心老师时段是稀缺资源。Dispatcher 对高需求档期要设置保留时限、提醒节点和释放机制，避免空挂预约。",
+      "examples": [
+        "报名季晚间时段要求限时确认。",
+        "核心老师试听位超过一定时间未确认则释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_trial_backwrite",
+      "title": "试听后必须回写跟进与续班任务",
+      "description": "职业教育执行链路不能在试听结束后断掉。完成后要回写本次试听内容、问题点、意向等级和可能续班点，方便后续 followup 承接。",
+      "examples": [
+        "试听后自动创建班主任回访任务。",
+        "试听记录中同步写入学习痛点和下次建议。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

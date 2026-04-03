@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global product theme tokens */
+:root {
+  --claw-copper: #c66a28;
+  --claw-caramel: #9c4a22;
+  --claw-rust: #7a2a18;
+  --claw-gold: #e5a93d;
+  --claw-gradient: linear-gradient(135deg, #7a2a18 0%, #c66a28 50%, #e5a93d 100%);
+  --claw-gradient-soft: linear-gradient(
+    135deg,
+    rgba(122, 42, 24, 0.2) 0%,
+    rgba(198, 106, 40, 0.25) 50%,
+    rgba(229, 169, 61, 0.15) 100%
+  );
+  --claw-bg: #0f172a;
+  --claw-sidebar: #1e293b;
+  --claw-surface-soft: rgba(255, 255, 255, 0.04);
+  --claw-surface-strong: rgba(17, 27, 45, 0.88);
+  --claw-card-border: rgba(255, 255, 255, 0.1);
+  --claw-ring: rgba(34, 211, 238, 0.28);
+  --claw-text-primary: #f8fafc;
+  --claw-text-secondary: #94a3b8;
+  --claw-shadow-panel: 0 24px 80px -40px rgba(2, 6, 23, 0.7);
+  --skeleton-bg: rgba(255, 255, 255, 0.1);
+  --border: 220 13% 18%;
+  --input: 220 13% 18%;
+
+  /* Commander Center theme tokens */
+  --commander-bg: #0d1117;
+  --commander-pod-bg: rgba(26, 35, 51, 0.5);
+  --commander-header-sidebar-bg: rgba(31, 20, 51, 0.7);
+  --commander-brain: #f5c400;
+  --commander-brain-alt: #8f5bfb;
+  --commander-visualizer: #1d9bf0;
+  --commander-dispatcher: #007aff;
+  --commander-radar: #00cf92;
+  --commander-interaction: #ff4757;
+  --commander-interaction-alt: #ff9f43;
+  --commander-abacus: #ff6b00;
+  --commander-follow-up: #00e676;
+  --commander-text: #ffffff;
+  --commander-log-text: #8b949e;
+}
+
+/* Force the dark product shell at the document level. */
+html,
+body {
+  background-color: var(--claw-bg) !important;
+  color: var(--claw-text-primary) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+/* Lobster activation modal: radar waiting pulse */
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.animate-radar-ping {
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Patrol room: sonar pulse */
+@keyframes patrol-sonar {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.animate-patrol-sonar {
+  animation: patrol-sonar 2s ease-out infinite;
+}
+
+/* Voice node: waveform animation */
+@keyframes voice-wave {
+  0%,
+  100% {
+    transform: scaleY(0.6);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
+}
+.animate-voice-wave {
+  animation: voice-wave 0.6s ease-in-out infinite;
+}
+
+@layer utilities {
+  .claw-input-focus:focus {
+    border-color: var(--claw-copper);
+    box-shadow: 0 0 0 2px rgba(198, 106, 40, 0.25);
+  }
+
+  .claw-bg {
+    background-color: var(--claw-bg) !important;
+  }
+
+  .claw-surface {
+    background-color: var(--claw-sidebar) !important;
+  }
+
+  .claw-surface-soft {
+    background-color: var(--claw-surface-soft) !important;
+  }
+
+  .claw-surface-strong {
+    background-color: var(--claw-surface-strong) !important;
+  }
+
+  .claw-text {
+    color: var(--claw-text-primary) !important;
+  }
+
+  .claw-text-muted {
+    color: var(--claw-text-secondary) !important;
+  }
+
+  .claw-border {
+    border-color: var(--claw-card-border) !important;
+  }
+
+  .claw-panel {
+    border: 1px solid var(--claw-card-border);
+    background: var(--claw-surface-soft);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--claw-shadow-panel);
+  }
+
+  .claw-panel-strong {
+    border: 1px solid var(--claw-card-border);
+    background: var(--claw-surface-strong);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--claw-shadow-panel);
+  }
+}
+
+/* Commander Center: particle backdrop */
+@keyframes commander-particle-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6px, -8px) scale(1.08);
+  }
+}
+.commander-particle-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.commander-particle-bg span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--commander-brain);
+  opacity: 0.12;
+  animation: commander-particle-float 12s ease-in-out infinite;
+}
+.commander-particle-bg span:nth-child(odd) {
+  background: var(--commander-dispatcher);
+  animation-delay: -2s;
+  opacity: 0.08;
+}
+.commander-particle-bg span:nth-child(3n) {
+  background: var(--commander-radar);
+  animation-delay: -4s;
+  opacity: 0.1;
+}
+.commander-particle-bg span:nth-child(5n) {
+  background: var(--commander-interaction);
+  animation-delay: -1s;
+  opacity: 0.06;
+}
+
+/* Commander pod hover glow */
+@keyframes commander-pod-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 12px var(--commander-pod-glow-color);
+  }
+  50% {
+    box-shadow: 0 0 24px var(--commander-pod-glow-color), 0 0 36px rgba(255, 255, 255, 0.08);
+  }
+}
+.commander-pod-hover {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.commander-pod-hover:hover {
+  transform: scale(1.02);
+}

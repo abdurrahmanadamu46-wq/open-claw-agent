@@ -1,0 +1,98 @@
+id: content-campaign
+name: 内容营销工作流
+description: 输入营销目标，输出策略、文案、分发摘要与跟进总结。
+
+agents:
+  - id: commander
+    lobster: commander
+  - id: strategist
+    lobster: strategist
+  - id: inkwriter
+    lobster: inkwriter
+  - id: echoer
+    lobster: echoer
+  - id: catcher
+    lobster: catcher
+  - id: dispatcher
+    lobster: dispatcher
+  - id: followup
+    lobster: followup
+
+steps:
+  - id: strategy_debate
+    agent: strategist
+    type: debate_judge
+    proposer: strategist
+    judge: commander
+    debate_rounds: 1
+    judge_prompt: "从 ROI 和执行可行性角度，选出更适合该商家的增长策略，输出最终方案。"
+    input: |
+      你是本次营销战役的策略负责人。
+
+      任务目标：
+      {{task}}
+
+      账号信息：
+      {{context.account_info}}
+
+      请输出平台策略、内容方向和执行建议。
+      完成后必须包含：STATUS: done
+    expects: "STATUS: done"
+    max_retries: 1
+
+  - id: write_copy_with_review
+    agent: inkwriter
+    type: ccv_loop
+    action_lobster: inkwriter
+    critique_lobsters:
+      - lobster: echoer
+        focus: "评论互动友好度、私信回复钩子、合规表达"
+      - lobster: catcher
+        focus: "线索转化钩子、留资引导语自然度"
+    max_rounds: 2
+    approval_signal: "APPROVED"
+    input: |
+      请基于以下策略生成一套主文案和转化引导文案。
+
+      策略背景：
+      {{steps.strategy_debate.output}}
+
+      账号配置：
+      {{context.account_config}}
+
+      完成后必须包含：
+      STATUS: done
+      CONTENT:
+    expects: "STATUS: done"
+    max_retries: 1
+
+  - id: dispatch
+    agent: dispatcher
+    type: single
+    input: |
+      请基于以下内容方案生成分发执行摘要：
+
+      内容列表：
+      {{steps.write_copy_with_review.output}}
+
+      账号配置：
+      {{context.account_config}}
+
+      完成后必须包含：STATUS: dispatched
+    expects: "STATUS: dispatched"
+    max_retries: 1
+
+  - id: summary
+    agent: followup
+    type: single
+    input: |
+      工作流执行完成，请生成摘要：
+      - 策略：{{steps.strategy_debate.output}}
+      - 内容方案：{{steps.write_copy_with_review.output}}
+      - 分发结果：{{steps.dispatch.output}}
+
+      完成后必须包含：
+      STATUS: done
+      SUMMARY:
+    expects: "STATUS: done"
+    max_retries: 1

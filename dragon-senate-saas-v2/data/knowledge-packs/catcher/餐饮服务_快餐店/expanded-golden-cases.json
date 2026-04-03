@@ -1,0 +1,400 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5feb\u9910\u5e97",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_fast_food_corporate_lunch_combo_order_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "Need 32 lunch combos delivered to Tower 2 lobby before 11:50 tomorrow. 20 chicken burger sets, 12 beef rice sets, 6 no spice, 4 hot drinks. Can you issue an invoice? If yes, I will send the contact and floor now.",
+        "engagement_history": [
+          "added enterprise wechat after reading an office lunch post",
+          "asked about delivery radius and invoice rules",
+          "shared a draft meal split sheet"
+        ],
+        "tenant_rules": {
+          "require_address_for_delivery": true,
+          "allow_human_quote_review": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "structured bulk-order context",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "downgrading the lead as casual menu browsing"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_same_day_self_pickup_order_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "We will pick up 5 sets at IFC store at 18:40 tonight. 2 double beef combos, 2 spicy chicken combos, 1 kids meal, all drinks switched to hot. Can you get them ready first?",
+        "engagement_history": [
+          "watched a full combo recommendation video",
+          "clicked the branch location card",
+          "asked whether pre-order is supported"
+        ],
+        "tenant_rules": {
+          "require_branch_for_order": true,
+          "forbid_unapproved_skip_line_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as generic menu curiosity"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_breakfast_meeting_preorder_003",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "We want to pick up 14 breakfast sets at Jingan Temple store at 8:20 the day after tomorrow for a morning team meeting. 8 egg wrap sets and 6 coffee sandwich sets. Can they be packed in advance?",
+        "engagement_history": [
+          "clicked the breakfast menu card",
+          "asked about breakfast cutoff time",
+          "saved the branch opening-hours card"
+        ],
+        "tenant_rules": {
+          "require_branch_for_order": true,
+          "breakfast_cutoff_requires_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "meal-period specificity",
+        "worth fast follow-up"
+      ],
+      "mustAvoid": [
+        "ignoring the breakfast timing and treating it as a vague future question"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_menu_only_probe_004",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "First time trying your store. Which is the safer pick, the burger or the fried chicken? Send me the menu first.",
+        "engagement_history": [
+          "liked two combo review videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to order-ready"
+      ],
+      "mustAvoid": [
+        "treating menu curiosity as a confirmed order lead"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_coupon_redemption_plan_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Can I use the 19.9 lunch coupon at Xujiahui store on Saturday noon? If I order before 11:40, does that mean I do not need to wait much at pickup?",
+        "engagement_history": [
+          "saved a coupon livestream clip",
+          "clicked the branch location card"
+        ],
+        "tenant_rules": {
+          "coupon_rules_require_confirmation": true,
+          "forbid_unapproved_skip_line_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real redemption plan",
+        "medium to high intent",
+        "worth follow-up without overpromising queue exceptions"
+      ],
+      "mustAvoid": [
+        "treating every coupon question as either spam or a fully confirmed order"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_bulk_budget_mismatch_006",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "Our school club needs 45 meals next week. Ideally each meal should have a name label, the delivery should happen in two waves, and we also need an invoice. The budget has to stay within 12 per meal. Can you do it?",
+        "engagement_history": [
+          "asked about invoice policy",
+          "asked whether split delivery is supported"
+        ],
+        "tenant_rules": {
+          "preserve_medium_confidence_bulk_orders": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real demand but constrained fit",
+        "budget mismatch needs feasibility review",
+        "do not auto-promote to top tier"
+      ],
+      "mustAvoid": [
+        "marking the lead as high-fit without checking commercial feasibility"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_exact_arrival_absolute_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "Tomorrow it must arrive at our meeting room at 11:50 exactly. Every meal has to stay hot, nothing can be missing, and nobody can go downstairs to receive it. Can you guarantee that?",
+        "engagement_history": [
+          "asked whether building delivery is supported",
+          "followed up twice on exact-arrival promises"
+        ],
+        "tenant_rules": {
+          "forbid_unapproved_exact_delivery_guarantees": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute delivery, temperature, or upstairs-handoff guarantees"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_allergy_zero_contact_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "We want 8 meals for the family on Sunday night. One person has a severe peanut and sesame allergy. Can you guarantee zero cross-contact in the back kitchen? The kids meal also must never be spicy.",
+        "engagement_history": [
+          "asked for the ingredient list",
+          "asked whether fryer and prep areas are separated"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_allergen_promises": true,
+          "allergy_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real order intent but elevated risk",
+        "human confirmation is required",
+        "do not mark as low-risk"
+      ],
+      "mustAvoid": [
+        "making zero-contact or absolute safety promises"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_food_safety_complaint_009",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "The fried chicken from yesterday's delivery was still raw inside. I have the order number, receipt, and photos. My child felt unwell after eating it. Please handle this now.",
+        "engagement_history": [
+          "sent the order screenshot",
+          "sent food photos"
+        ],
+        "tenant_rules": {
+          "food_safety_complaints_go_to_service_escalation": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard order lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a reorder opportunity"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_supplier_spam_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "Add me. We do fast-food operations, franchise growth, fryer equipment, and short-video matrices. We can double your order volume in one week.",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high spam probability",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating unrelated services as a valid order lead"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_reseller_price_sheet_011",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "Send me all your combo prices, student meal prices, group meal floor prices, and rebate policy. I have clients who want to compare first. If it works, we can talk later.",
+        "engagement_history": [
+          "added wechat from the profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real order facts"
+      ],
+      "mustAvoid": [
+        "classifying reseller fishing as a followup-ready direct buyer"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_cross_channel_repeat_012",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "I asked in comments already whether your Tech Park store can deliver to our office. Now I am sending the Friday lunch list for 26 meals and my phone number. Same address as discussed, Tower 3 Floor 16 lobby.",
+        "engagement_history": [
+          "commented asking about office delivery",
+          "sent the meal split by direct message",
+          "left a callback number in enterprise wechat"
+        ],
+        "tenant_rules": {
+          "merge_duplicate_project_leads": true,
+          "forbid_duplicate_followup": true,
+          "require_address_for_delivery": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high confidence due to repeated consistent engagement",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "creating multiple separate high-priority leads for the same lunch order"
+      ]
+    },
+    {
+      "id": "catcher_fast_food_returning_client_013",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "Your store delivered 40 lunch sets to our company last month. We want to order again this Wednesday from the same branch, around 36 meals this time, same address. I can send the old order screenshot now.",
+        "engagement_history": [
+          "historical bulk-order record exists in tenant memory",
+          "shared the previous order screenshot",
+          "asked to reuse the same branch and delivery address"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    }
+  ]
+}

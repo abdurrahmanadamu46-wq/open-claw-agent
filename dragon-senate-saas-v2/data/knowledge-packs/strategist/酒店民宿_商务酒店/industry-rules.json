@@ -1,0 +1,168 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "business_hotel_core_demand_first",
+      "rule_name": "先锁定核心住客来源，再放大房量",
+      "priority": "P0",
+      "trigger_signals": [
+        "酒店同时想做园区差旅、展会会务、高铁中转、钟点房和周末本地补房",
+        "预算有限，但实际稳定入住主要集中在少数来源，如周边企业、工业园或会务订单"
+      ],
+      "recommended_primary_route": "先选择证据最强的一类住客来源作为主路线，例如 3 到 5 公里内园区差旅、企业协议房或会务住宿，再统一房型、早餐、停车、发票、洗衣和到店路径。",
+      "recommended_alternative_route": "若现有证据分散，先用小预算并行验证最多 2 个场景，保留入住率、连住率、取消率和差评风险更优的一条，再决定是否扩量。",
+      "hard_constraints": [
+        "不能用同一套套餐和同一套内容同时覆盖所有入住目的",
+        "不能在工作日与周末入住结构不清时盲目追求全时段满房"
+      ],
+      "risk_tradeoff": "接受短期覆盖更窄，换取更稳定的出租率、房价和复住质量。"
+    },
+    {
+      "id": "business_hotel_evidence_over_price_war",
+      "rule_name": "真实差旅便利证据优先于 OTA 最低价",
+      "priority": "P0",
+      "trigger_signals": [
+        "酒店已具备早餐、停车、发票、洗衣、24 小时前台或近园区交通等优势",
+        "团队倾向用限时低价、全网最低价或大额补贴去抢短期房量"
+      ],
+      "recommended_primary_route": "优先走住得稳、离得近、报销方便、晚到可住的便利型路线，用真实通勤时间、房型照片、早餐和商旅配套证明替代单纯价格刺激。",
+      "recommended_alternative_route": "若便利性证据还不够完整，先补齐真实住后评价、位置动线和房内配套证明，再放大投放。",
+      "hard_constraints": [
+        "不能伪造到园区、车站、机场或会展中心的到达时间",
+        "不能在 RevPAR、ADR、房态和取消成本未核清前直接打深折扣"
+      ],
+      "risk_tradeoff": "点击率可能不如低价促销激进，但更能保住房价体系和有效入住。"
+    },
+    {
+      "id": "business_hotel_weekday_weekend_split",
+      "rule_name": "工作日商旅与周末补房必须分路线运营",
+      "priority": "P1",
+      "trigger_signals": [
+        "工作日靠差旅和企业客支撑，周末空房明显",
+        "团队希望用同一套房价、同一套权益覆盖工作日和周末"
+      ],
+      "recommended_primary_route": "将工作日主路线聚焦企业差旅、协议房和项目驻场，把周末补房拆成培训团住、考试短住、探访短住或本地轻会务等轻量路线，分别排序和承接。",
+      "recommended_alternative_route": "资源有限时，先保住工作日商旅主路线，周末仅做轻量验证和低风险补房，不把房价体系一起打穿。",
+      "hard_constraints": [
+        "不能默认工作日商旅权益同样适合周末补房人群",
+        "不能用同一套低价去污染企业协议房和散客房价"
+      ],
+      "risk_tradeoff": "运营复杂度会上升，但能减少价格错配、渠道内耗和评价失真。"
+    },
+    {
+      "id": "business_hotel_corporate_qualification_first",
+      "rule_name": "协议房与会务住宿先做资格筛选，再投入人工承接",
+      "priority": "P0",
+      "trigger_signals": [
+        "线索明确提到企业出差、长期驻场、会议团住或展会订房",
+        "酒店房量有限，人工跟进和保留房量成本较高"
+      ],
+      "recommended_primary_route": "先收集日期、晚数、房间数、房型结构、早餐和停车需求、发票与结算方式、是否需要会议室、最晚确认时间，再判断走标准协议价、团房包量还是会务住宿组合路线。",
+      "recommended_alternative_route": "若信息不完整，先给出分层房量与价带方案，并用资格表单筛掉低质量询价，不急着保留房间。",
+      "hard_constraints": [
+        "不能在房态、结算条件和取消规则未确认前承诺团房可锁定",
+        "不能用散客秒杀价去承接高服务要求的企业和会务线索"
+      ],
+      "risk_tradeoff": "会过滤掉一部分只比价线索，但能显著提升人工利用率和成单确定性。"
+    },
+    {
+      "id": "business_hotel_capacity_before_scale",
+      "rule_name": "房态、保洁、早餐与前台承接力先于扩量",
+      "priority": "P0",
+      "trigger_signals": [
+        "高峰期出现排队入住、房间翻房慢、早餐拥挤或停车位紧张",
+        "团队想在旺季或活动期继续加码短视频、平台促销或团房承接"
+      ],
+      "recommended_primary_route": "在扩量前先核清可售房量、房型占比、保洁翻房时长、早餐座位和时段、停车承接、夜班前台和投诉响应能力，再决定走预订优先、限量房型还是错峰入住路线。",
+      "recommended_alternative_route": "若承接力偏弱，优先保留复住客、企业协议房和高确定性预订，把高风险临时流量降权。",
+      "hard_constraints": [
+        "不能在翻房和前台明显吃紧时继续放大晚到集中入住",
+        "不能承诺一定提前入住、一定延迟退房、一定免费升级或一定有车位"
+      ],
+      "risk_tradeoff": "表面房量增长会慢一些，但能避免差评放大、超售和履约失控。"
+    },
+    {
+      "id": "business_hotel_review_repair_gate",
+      "rule_name": "评分与差评修复不过关，不先放大投放",
+      "priority": "P0",
+      "trigger_signals": [
+        "平台评分持续下滑，近期差评集中在卫生、异味、隔音、空调、服务慢或停车体验",
+        "团队仍希望用大促和低价把流量继续拉高"
+      ],
+      "recommended_primary_route": "先识别最影响转化的 1 到 2 个差评主题，修复对应房型或服务环节，再用真实住后评价、稳定房型和受控时段去恢复评分与直订信任。",
+      "recommended_alternative_route": "若短期内无法彻底修复，先收缩高风险拉新，把重点转到老客解释、企业既有关系和低投诉时段承接。",
+      "hard_constraints": [
+        "不能在差评扩散期继续大规模做低价扩量",
+        "不能刷评、删评承诺或掩盖装修、噪音和设施问题"
+      ],
+      "risk_tradeoff": "短期入住量可能承压，但能避免把口碑问题放大成更高获客成本。"
+    },
+    {
+      "id": "business_hotel_reactivate_before_cold_spend",
+      "rule_name": "证据一般时，先激活老客与企业联系人，再扩冷流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "酒店已有会员、企业微信、历史入住手机号或协议客户名单",
+        "预算有限，陌生渠道获客成本高于老客复住和企业复购"
+      ],
+      "recommended_primary_route": "先按入住目的、常住工作地、连住天数、是否要发票、常用房型和公司标签分层，围绕复住便利、协议续签、连住权益或停车早餐组合设计回流路线。",
+      "recommended_alternative_route": "若 CRM 资产较弱，先做本地企业冷启动和 OTA 评价修复的轻量验证，不直接全量陌生投放。",
+      "hard_constraints": [
+        "不能忽略已有复住资产而直接做泛流量冷启动",
+        "不能给所有老客和企业联系人群发完全相同的话术与权益"
+      ],
+      "risk_tradeoff": "新客增速未必最快，但获客成本更低，且更容易形成稳定房晚。"
+    },
+    {
+      "id": "business_hotel_direct_ota_dual_lane",
+      "rule_name": "直订与 OTA 必须双路线管理，避免相互蚕食",
+      "priority": "P1",
+      "trigger_signals": [
+        "酒店同时依赖 OTA、新媒体和私域复住客",
+        "团队希望用一个最低价套餐打通所有渠道"
+      ],
+      "recommended_primary_route": "把 OTA 作为冷启动和口碑展示入口，把直订和私域作为复住、企业协议、连住续住和会务组合的主承接路线，保持价格治理一致，但权益设计区分清楚。",
+      "recommended_alternative_route": "若直订资产还弱，先让 OTA 承接冷流量，再通过合规的住中住后服务把客人导向下一次更高确定性的直订或企业合作。",
+      "hard_constraints": [
+        "不能用全渠道最低价互相打架",
+        "不能承诺 OTA、直订与企业协议房始终完全同价同权且毫无差异"
+      ],
+      "risk_tradeoff": "渠道管理复杂度会上升，但能减少价盘失真和重复获客成本。"
+    },
+    {
+      "id": "business_hotel_event_inventory_governance",
+      "rule_name": "展会旺季与团房需求先做房态和价格治理，再引流",
+      "priority": "P1",
+      "trigger_signals": [
+        "附近展会、培训、考试、开业活动或大型会议即将发生",
+        "房价和入住需求预计短时间大幅波动"
+      ],
+      "recommended_primary_route": "先确认峰值日期、可售房型、保留房量、价格带、取消规则和最晚确认时间，再决定是走企业预订、团房包量、预售锁房还是临近日期提价路线。",
+      "recommended_alternative_route": "若房态和接待链路不够稳，优先做预付和高确定性订单，不做广撒网低价冲量。",
+      "hard_constraints": [
+        "不能在旺季前承诺固定低价和无限量房间",
+        "不能忽略取消率、No-show 和临近活动的超售风险"
+      ],
+      "risk_tradeoff": "短期曝光可能更克制，但能把高需求窗口真正变成高质量入住而不是投诉高峰。"
+    },
+    {
+      "id": "business_hotel_absolute_claims_veto",
+      "rule_name": "距离、安静、房型与早到晚退的绝对承诺一票否决",
+      "priority": "P0",
+      "trigger_signals": [
+        "内容策划或销售话术出现 5 分钟必到、绝对安静、一定能提前入住、永不涨价、必有车位等说法",
+        "团队试图用夸张承诺在旺季或竞争期快速抢量"
+      ],
+      "recommended_primary_route": "用可核验的步行或驾车区间、房型照片、真实评价、入住政策和配套说明替代绝对化承诺，把信任建立在可兑现边界上。",
+      "recommended_alternative_route": "若品牌坚持高风险承诺，应直接降低该路线优先级，必要时停止上线，改走证据更扎实的住宿便利路线。",
+      "hard_constraints": [
+        "禁止全网最低价、绝对安静、百分百可提前入住、必定有免费车位、所有日期不涨价等表达",
+        "禁止伪造评分、房型照片、会议室条件或企业合作背书"
+      ],
+      "risk_tradeoff": "少了一些刺激点击的话术，但能显著降低投诉、平台处罚和履约纠纷。"
+    }
+  ]
+}

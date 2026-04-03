@@ -1,0 +1,340 @@
+﻿{
+  "industry": "閰掑簵姘戝_鍟嗗姟閰掑簵",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_business_hotel_direct_corporate_booking_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "涓嬪懆浜屽埌鍛ㄥ洓瑕佷綇涓婃捣铏规ˉ搴楋紝2 闂村ぇ搴婁綇 2 鏅氾紝鎴戞槸鍏徃琛屾斂锛岄渶瑕佸鍏彂绁紝鍛樺伐绾㈢溂鑸彮鍑屾櫒 1 鐐瑰埌锛岃兘澶囨敞鏅氬埌淇濈暀鍚楋紵",
+        "engagement_history": [
+          "watched full room-tour video",
+          "clicked branch location card",
+          "asked whether electronic invoice can be issued on checkout day"
+        ],
+        "tenant_rules": {
+          "require_property_for_booking": true,
+          "late_arrival_requires_inventory_confirmation": true,
+          "forbid_unapproved_room_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low to medium risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room hold or upgrade without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_management_trip_pending_002",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "鎴戜滑 6 鏈堜腑鍙兘瀹夋帓 8 涓攢鍞幓鏉窞鍑哄樊锛屾兂鍏堢湅瑗挎箹杈归棬搴?4 鏅?8 闂村乏鍙崇殑浠锋牸鍜屾棭椁愬彂绁ㄦ柟妗堬紝棰嗗杩樻病 final銆?",
+        "engagement_history": [
+          "added enterprise wechat after reading business travel post",
+          "asked about breakfast and company invoice options"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "preserve_medium_confidence_group_stay_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium to high intent",
+        "good fit",
+        "worth structured follow-up",
+        "do not over-escalate before dates lock"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because internal approval is still pending"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_amenity_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "浣犱滑鏃╅鍑犵偣缁撴潫锛熸湁鍏嶈垂鍋滆溅鍜岃嚜鍔╂礂琛ｅ悧锛?",
+        "engagement_history": [
+          "liked one airport-shuttle video"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating amenity curiosity as a confirmed booking lead"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_same_day_red_eye_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "浠婃櫄 11 鐐瑰悗鍒版繁鍦冲寳绔欓檮杩戝簵锛屼綇 1 鏅氾紝涓€闂村ぇ搴婏紝鑳藉紑鍙戠エ鍚楋紵濡傛灉 0 鐐瑰悗鍒拌繕鍙互鍔炲叆浣忓悧锛?",
+        "engagement_history": [
+          "clicked branch navigation card",
+          "asked whether late check-in is supported"
+        ],
+        "tenant_rules": {
+          "late_arrival_requires_inventory_confirmation": true,
+          "forbid_unapproved_room_guarantee": true,
+          "urgent_arrival_queries_need_fast_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real arrival plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing room availability or free late check-in concessions without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_meeting_package_005",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "7 鏈?18 鍒?19 鏃ヨ鍦ㄨ嫃宸炲洯鍖哄簵鍋氫袱澶╁煿璁紝15 闂存埧浣?1 鏅氾紝鍙﹁鍗婂ぉ浼氳瀹ゃ€佹姇褰便€佷袱娆¤尪姝囧拰涓撶エ锛岃兘缁欎釜浼佷笟鏂规鍚楋紵",
+        "engagement_history": [
+          "downloaded meeting package poster",
+          "asked about projector and tea-break setup"
+        ],
+        "tenant_rules": {
+          "group_stay_requires_manual_confirmation": true,
+          "meeting_room_quotes_need_scoped_requirements": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "multi-room meeting demand",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as a simple single-room inquiry"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_absolute_early_checkin_006",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "鎴戜滑鏃╀笂 7 鐐瑰埌鍖椾含鍗楃珯锛? 闂存埧锛屼綘浠兘涓嶈兘淇濊瘉涓€瀹氭彁鍓嶅叆浣忋€佸叏閮ㄥ厤璐瑰崌绾э紝鑰屼笖缁濆瀹夐潤鏃犵儫锛熶笉琛屽氨涓嶈€冭檻浜嗐€?",
+        "engagement_history": [
+          "asked twice whether early check-in can be guaranteed"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_room_promises": true,
+          "high_demand_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute room, upgrade, or environment promises"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_service_complaint_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "涓婂懆浣忎綘浠崡浜笢璺簵锛屾埧闂存湁鐑熷懗锛岄€€鎴垮悗鍙戠エ涔熶竴鐩存病鏀跺埌锛屾垜鏈夎鍗曞彿鍜岀収鐗囷紝楹荤儲灏藉揩澶勭悊銆?",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent room photo"
+        ],
+        "tenant_rules": {
+          "service_complaints_go_to_support_queue": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_long_stay_project_008",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "鎴戜滑椤圭洰缁勪笅涓湀瑕佸湪澶╂触椹诲満 20 澶╋紝鍏堣 6 闂存爣闂磋瘯涓€鍛紝濡傛灉浣撻獙绋冲畾鍐嶈拷鍔狅紝鍚屾鐪嬫湀缁撳拰娲楄。鏈嶅姟銆?",
+        "engagement_history": [
+          "asked about weekly cleaning rhythm",
+          "asked whether monthly invoice is supported"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "support_long_stay_corporate_negotiation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium to high intent",
+        "good fit",
+        "long-stay potential",
+        "worth structured follow-up"
+      ],
+      "mustAvoid": [
+        "rejecting the lead because the first phase is only a trial stay"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_repeat_client_009",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "鍘诲勾骞夸氦浼氬洟闃熶綇杩囦綘浠ぉ娌冲簵锛岃繖娆?5 鏈堣繕鎯宠 10 闂?3 鏅氾紝鎴戞妸涓婃鑱旂郴浜哄拰鍏徃鎶ご鍙戜綘锛岃繕鏄兂鎸変箣鍓嶆祦绋嬭蛋銆?",
+        "engagement_history": [
+          "historical stay record exists in tenant memory",
+          "shares previous invoice title and contact",
+          "asks to continue with the same branch"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_broker_rate_sheet_010",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "鎶婁綘浠叏骞村崗璁环銆佸悇鎴垮瀷搴曚环銆佽繑浣ｆ斂绛栧拰鍙戠エ鐐逛綅閮藉彂鎴戯紝鎴戣繖杈规湁瀹㈡埛锛屽厛鎷垮幓姣旀瘮锛屽悎閫傚啀璇淬€?",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real stay facts"
+      ],
+      "mustAvoid": [
+        "classifying broker price fishing as a followup-ready direct buyer"
+      ]
+    },
+    {
+      "id": "catcher_business_hotel_sensitive_request_011",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "涓嶈鐧昏韬唤璇佸彲浠ヤ綇鍚楋紵椤轰究甯垜澶氬紑鐐逛綇瀹垮彂绁紝浠锋牸濂借銆?",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "forbid_non_compliant_checkin_requests": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating non-compliant stay or invoice requests as a valid hotel lead"
+      ]
+    }
+  ]
+}

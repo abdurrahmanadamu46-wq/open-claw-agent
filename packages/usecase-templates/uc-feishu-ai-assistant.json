@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-feishu-ai-assistant",
+  "name": "飞书 AI 助手",
+  "name_en": "Feishu AI Assistant",
+  "category": "customer_service",
+  "difficulty": "beginner",
+  "description": "把回声虾接入飞书群或机器人入口，负责 FAQ 回答、路由和人工升级。",
+  "pain_point": "团队内部问答高度重复，运营和交付经常被基础问题打断。",
+  "lobsters": ["echoer"],
+  "skills_required": ["echoer_reply_generate", "echoer_dm_auto_reply"],
+  "channels": ["feishu"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "配置飞书机器人",
+      "code_type": "config",
+      "code": "在集成设置里填入飞书机器人 webhook 或 OpenAPI 凭证。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "录入可回答范围",
+      "code_type": "prompt",
+      "code": "说明飞书助手允许回答的问题范围，以及需要升级人工的关键词。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置工作时间",
+      "code_type": "config",
+      "code": "如果需要值班模式，可配置工作时间与静默时间。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用飞书助手",
+      "code_type": "none",
+      "code": "回声虾将开始接收飞书消息，并按边界规则回复或升级。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "飞书助手适合先做 FAQ 和内部 SOP 问答。",
+    "敏感审批和合同问题建议直接升级人工。",
+    "配合记忆面板可以看到常见问题沉淀成哪些知识。"
+  ],
+  "estimated_cost_per_run": "$0.01-0.05",
+  "tags": ["飞书", "助手", "客服", "内部协作"]
+}

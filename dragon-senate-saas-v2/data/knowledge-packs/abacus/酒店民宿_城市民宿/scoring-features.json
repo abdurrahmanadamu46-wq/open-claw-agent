@@ -1,0 +1,248 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "stay_fact_and_trip_route_completeness",
+      "feature_name": "入住事实与行程路线完整度",
+      "metric": "short_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：已明确入住日期、住几晚、人数结构、来城目的地或任务、最晚到店时间和房型偏好；3 分：其中至少明确 3 到 4 项且客人愿意继续补齐；1 分：只有“多少钱”“离某地近不近”这类模糊询问。",
+      "positive_signals": [
+        "入住和离店日期明确",
+        "同行人数和成人儿童结构清楚",
+        "知道这次是看演出、陪诊、过渡长住还是探亲",
+        "到店时间和去向路线已说明"
+      ],
+      "negative_signals": [
+        "只问最低价",
+        "没有日期和住几晚",
+        "没有人数结构",
+        "只说想住市中心但没有真实去向"
+      ],
+      "value_guidance": "城市民宿的短期价值首先来自可执行的入住事实，而不是抽象热度。"
+    },
+    {
+      "id": "real_name_self_checkin_and_payment_commitment",
+      "feature_name": "实名、自助入住与付款承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.09,
+      "scoring_rule": "5 分：已确认押金或预付、实名登记方式、自助入住步骤和夜间联络人；3 分：客人愿意完成其中大部分动作但仍在确认；1 分：拒绝任何预付、拒绝实名或要求先占房再说。",
+      "positive_signals": [
+        "押金或预付已完成",
+        "实名登记信息可提供",
+        "密码锁或门禁链路清楚",
+        "夜间联系人和最晚到店时间明确"
+      ],
+      "negative_signals": [
+        "拒绝押金或预付",
+        "拒绝实名登记",
+        "到店时间完全不确定",
+        "需要深夜入住但没有可联络方式"
+      ],
+      "value_guidance": "对城市民宿来说，付款和实名承诺往往比咨询热度更能代表真实成交可能。"
+    },
+    {
+      "id": "room_layout_and_guest_structure_fit",
+      "feature_name": "房型布局与入住结构适配度",
+      "metric": "short_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：房型、床型、楼层、电梯或楼梯条件与实际入住结构高度匹配；3 分：基本匹配但仍有少量边界待确认；1 分：入住结构与房型明显错配，只是先看价格。",
+      "positive_signals": [
+        "两居或双床与多人结构匹配",
+        "老人小孩场景已核对电梯或低楼层",
+        "携宠房型限制已说明",
+        "长住客确认了洗衣和收纳条件"
+      ],
+      "negative_signals": [
+        "多人住却没有床型方案",
+        "老人同行但无电梯仍未说明",
+        "携宠需求与房型限制冲突",
+        "长住需求与房间功能明显不匹配"
+      ],
+      "value_guidance": "房型适配越高，短期成交越真实，后续纠纷和差评风险越低。"
+    },
+    {
+      "id": "arrival_window_and_after_hours_execution_certainty",
+      "feature_name": "到店窗口与夜间履约确定性",
+      "metric": "short_term_score",
+      "weight": 0.07,
+      "scoring_rule": "5 分：到店窗口、自助入住步骤、门锁说明、寄存或次日离店安排都清楚；3 分：有目标时间但仍有一两个环节待确认；1 分：只有“会晚点到”“凌晨再看”之类模糊表达。",
+      "positive_signals": [
+        "最晚到店时间明确",
+        "密码锁或门禁说明已发送",
+        "行李寄存和次日安排清楚",
+        "夜间问题处理路径明确"
+      ],
+      "negative_signals": [
+        "深夜入住但没有指引",
+        "门锁链路不清楚",
+        "到店时间反复变化",
+        "没有任何夜间联络方式"
+      ],
+      "value_guidance": "晚归需求只有在可履约时才放大价值，否则只会放大风险。"
+    },
+    {
+      "id": "net_room_night_margin_after_platform_cleaning_and_subsidy_cost",
+      "feature_name": "扣除平台、清洁与补贴后的净房晚收益",
+      "metric": "roi_estimate",
+      "weight": 0.14,
+      "scoring_rule": "5 分：扣除平台佣金、补贴、清洁、赠项和售后风险后，净房晚收益仍然健康；3 分：净收益偏紧但仍为正；1 分：表面房价不低，但净收益很薄甚至为负。",
+      "positive_signals": [
+        "直订或低佣金渠道",
+        "清洁和赠项成本可控",
+        "退款率低",
+        "有付费升级或加购"
+      ],
+      "negative_signals": [
+        "高佣金平台订单",
+        "免清洁费或大额补贴",
+        "免费延退和早餐叠加",
+        "退款和售后成本高"
+      ],
+      "value_guidance": "Abacus 的 ROI 必须看净收益，而不是看上去热闹的 GMV。"
+    },
+    {
+      "id": "inventory_pressure_and_turnover_impact",
+      "feature_name": "热门档库存压力与周转影响",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分：需求与闲置档期、非热门房型或低压时段高度匹配，不明显挤占周转；3 分：存在一定占用但整体可承接；1 分：明显压缩热门档期、清洁周转或次日排房能力。",
+      "positive_signals": [
+        "周中或淡季入住",
+        "不挤占关键房型",
+        "清洁排班可承接",
+        "续住安排对库存友好"
+      ],
+      "negative_signals": [
+        "热门周末或活动夜边缘满房",
+        "深夜入住叠加次日高峰退房",
+        "安静房或低楼层库存稀缺",
+        "延退明显影响下一单"
+      ],
+      "value_guidance": "同一笔订单，在不同库存压力下的真实 ROI 差异会很大。"
+    },
+    {
+      "id": "add_on_margin_and_service_load_quality",
+      "feature_name": "附加服务毛利与承接负荷质量",
+      "metric": "roi_estimate",
+      "weight": 0.07,
+      "scoring_rule": "5 分：携宠、寄存、延退、停车、保洁、早餐或庆祝类附加项主要是付费或低协调成本；3 分：附加项有一定免费成分但整体仍有正毛利；1 分：高协调成本附加项主要靠赠送才能成交。",
+      "positive_signals": [
+        "附加服务可单独收费",
+        "清洁和寄存安排标准化",
+        "停车或延退规则清楚",
+        "服务负荷与团队承接匹配"
+      ],
+      "negative_signals": [
+        "免费附加项过多",
+        "高协调成本靠让利成交",
+        "夜间服务需求密集但无人承接",
+        "附加服务没有成本边界"
+      ],
+      "value_guidance": "附加服务只有在真正赚钱或能稳住复购时才有价值，不是越多越好。"
+    },
+    {
+      "id": "transition_longstay_and_extension_probability",
+      "feature_name": "过渡长住与续住概率",
+      "metric": "long_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：存在一周以上过渡住、装修、租房空档、实习入职或明确续住窗口；3 分：连住时长有限但有延长空间；1 分：明显单晚、低续住可能。",
+      "positive_signals": [
+        "已说明长住区间",
+        "确认周结或月结",
+        "有明确续住窗口",
+        "需要洗衣、做饭和收纳"
+      ],
+      "negative_signals": [
+        "明显只住一晚",
+        "没有任何续住迹象",
+        "频繁比价并跳房源",
+        "需求与长住功能不匹配"
+      ],
+      "value_guidance": "长住和续住往往是城市民宿里最稳的长期价值来源。"
+    },
+    {
+      "id": "private_domain_repurchase_and_referral_potential",
+      "feature_name": "私域复住与转介绍潜力",
+      "metric": "long_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：线索来自老客回流、微信直订、朋友圈转介绍或可复用历史偏好；3 分：有一定直订迁移和转介绍空间；1 分：完全依赖平台低价流量且无沉淀空间。",
+      "positive_signals": [
+        "老客主动回流",
+        "朋友或同伴转介绍",
+        "历史偏好可复用",
+        "愿意留在微信或小程序直订"
+      ],
+      "negative_signals": [
+        "只在最低价时出现",
+        "拒绝任何私域留存",
+        "历史爽约或投诉频繁",
+        "平台流量一过就消失"
+      ],
+      "value_guidance": "直订和转介绍资产，是城市民宿最容易被低估的长期价值。"
+    },
+    {
+      "id": "scene_stability_and_repeat_need_strength",
+      "feature_name": "场景稳定性与重复需求强度",
+      "metric": "long_term_score",
+      "weight": 0.06,
+      "scoring_rule": "5 分：场景具备持续或重复发生特征，如复诊、阶段考试、过渡长住、固定探亲或同城活动回流；3 分：场景清楚但重复性一般；1 分：纯冲动型、低价型或一次性氛围尝鲜。",
+      "positive_signals": [
+        "复诊或多轮考试",
+        "固定探亲和节假日回城",
+        "同场馆活动回流",
+        "装修或租房空档过渡"
+      ],
+      "negative_signals": [
+        "纯一次性低价短住",
+        "只为拍照打卡",
+        "没有后续场景延展",
+        "场景本身和房源定位不匹配"
+      ],
+      "value_guidance": "长期分的核心不是这次有多热闹，而是未来还会不会回来。"
+    },
+    {
+      "id": "attribution_merge_and_key_commitment_touch_quality",
+      "feature_name": "归因合并与关键承诺触点质量",
+      "metric": "reward_signal",
+      "weight": 0.05,
+      "scoring_rule": "5 分：能合并多渠道重复线索，并识别真正推动押金、实名、自助入住或边界确认的关键触点；3 分：知道主要渠道但归因仍偏粗；1 分：谁最后出现就把 credit 都给谁。",
+      "positive_signals": [
+        "合并 OTA、微信、电话和小程序重复线索",
+        "区分曝光触点与成交触点",
+        "知道哪一步推动了押金或实名",
+        "统一核算整体跟进成本"
+      ],
+      "negative_signals": [
+        "同一订单重复记功",
+        "只按最后一次点击归因",
+        "忽略私域跟进成本",
+        "把浏览或收藏误算成成交推进"
+      ],
+      "value_guidance": "奖励信号必须建立在正确归因上，否则团队会持续被错误激励带偏。"
+    },
+    {
+      "id": "reputation_risk_and_boundary_governance",
+      "feature_name": "口碑风险与边界治理安全度",
+      "metric": "reward_signal",
+      "weight": 0.03,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动规避锁故障、收费争议、噪音、卫生、超住、携宠纠纷和服务过度承诺等高风险场景；3 分：存在轻微模糊但可纠正；1 分：明知高风险仍鼓励继续硬推成交。",
+      "positive_signals": [
+        "先止损再推进",
+        "对收费和边界解释清楚",
+        "对高风险订单主动降级",
+        "对投诉场景优先经理介入"
+      ],
+      "negative_signals": [
+        "投诉中继续营销",
+        "明知不可承接仍承诺",
+        "对额外收费解释含糊",
+        "只追房晚不看口碑损失"
+      ],
+      "value_guidance": "城市民宿的 reward signal 不只要鼓励成交，也要防止差评和信任流失被不断放大。"
+    }
+  ]
+}

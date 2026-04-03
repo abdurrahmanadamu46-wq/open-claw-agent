@@ -1,0 +1,108 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "catcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "booking_action_explicitness",
+      "title": "Booking action explicitness",
+      "description": "Evaluate whether the lead clearly expresses reserve, hold, confirm stock, confirm package, confirm pickup, confirm dinner, confirm invoice, or confirm stay feasibility.",
+      "examples": [
+        "High score example: Please hold one private-bath room for Saturday to Monday.",
+        "Low score example: Is your courtyard very photogenic."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stay_fact_completeness",
+      "title": "Stay fact completeness",
+      "description": "Evaluate whether the lead includes property or area, dates, nights, room count, adult and child or pet counts, room type, arrival timing, budget, and contact identity.",
+      "examples": [
+        "High score example: property, dates, nights, room count, guest structure, and room preference are all present.",
+        "Low score example: We want to find a homestay to relax sometime."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "property_specificity",
+      "title": "Property specificity",
+      "description": "Evaluate whether the inquiry is tied to a specific boutique homestay, old-town house, lake-side house, or mountain property.",
+      "examples": [
+        "High score example: Friday at your Shuanglang sea-view house.",
+        "Low score example: Do you have anything suitable in Dali."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_clarity",
+      "title": "Guest structure and policy clarity",
+      "description": "Evaluate whether the lead clearly states adult and child counts, child ages, pet status, elderly needs, extra bed requests, adjacent room requests, low-floor preference, child breakfast rules, or pet cleaning rules.",
+      "examples": [
+        "High score example: 2 adults, 2 children ages 5 and 9, one small dog, and two adjacent rooms needed.",
+        "Low score example: It is a family trip and we will figure out the rest later."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "occasion_scope_clarity",
+      "title": "Occasion and event scope clarity",
+      "description": "Evaluate whether birthday, proposal, buyout, retreat, family gathering, wedding-eve, or travel-shoot scenarios include room count, nights, decor, dinner, photography, invoice needs, and contact ownership.",
+      "examples": [
+        "High score example: anniversary for 2 nights around 3000 with decor and dinner.",
+        "Low score example: We just want a place that feels right for a proposal."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "package_and_addon_match",
+      "title": "Package and add-on match",
+      "description": "Evaluate whether the guest's interest in breakfast, dinner, pickup, private bath, tea by the fire, photography, craft sessions, or pet support broadly matches what the property can actually supply.",
+      "examples": [
+        "High score example: room plus dinner plus pickup for a two-night stay.",
+        "Low score example: wants everything but does not know nights or room type."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_and_resource_feasibility",
+      "title": "Budget and resource feasibility",
+      "description": "Evaluate whether the stated budget broadly matches peak dates, view rooms, private bath rooms, plunge pool rooms, buyout access, pet-friendly rooms, and adjacent-room needs.",
+      "examples": [
+        "High score example: off-peak mountain-view room budget aligns with room type and dinner add-on.",
+        "Low score example: holiday buyout with photography and dinner at a very low budget."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "timing_and_arrival_clarity",
+      "title": "Timing and arrival clarity",
+      "description": "Evaluate whether urgency is backed by real travel facts such as tonight stay, train arrival, self-drive arrival time, pickup need, or return timing.",
+      "examples": [
+        "High score example: We drive in at 9 p.m. tonight and can book immediately.",
+        "Low score example: Send the lowest price now or we are gone."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "decision_ownership_and_reachability",
+      "title": "Decision ownership and reachability",
+      "description": "Evaluate whether the person asking is the actual booker, family organizer, company admin, wedding planner, or shoot lead, versus someone casually asking for another person.",
+      "examples": [
+        "High score example: I am the one booking and the dates and room count are fixed.",
+        "Low score example: I am just asking for a friend."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risk_and_noise_intensity",
+      "title": "Risk and noise intensity",
+      "description": "Absolute promises, over-occupancy, no registration, rule-breaking parties, pet-policy violations, refund complaints, influencer barter, shoot scouting, and pure channel cooperation should all increase risk_score and can override commercial temptation.",
+      "examples": [
+        "High risk example: guarantee a specific room, let us party late, and skip full registration.",
+        "Low risk example: normal stay confirmation around dates, rooms, and package details."
+      ],
+      "priority": "high"
+    }
+  ]
+}

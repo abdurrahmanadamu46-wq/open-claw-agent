@@ -1,0 +1,14 @@
+﻿{
+  "industry": "汽车服务_汽车维修",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    { "id": "first_visit_inquiry", "title": "首次到店问询触发优先调度", "description": "当来单中出现第一次来、想先到店、想先看看故障和具体问题时，Dispatcher 应优先匹配到店链路，而不是塞进泛咨询队列。", "examples": ["客户第一次来，想周末先查异响。", "客户想先看看空调不冷是不是大问题。"], "priority": "high" },
+    { "id": "seasonal_window_inquiry", "title": "节前与换季窗口询单触发时效优先调度", "description": "当来单明确说明节前出行、夏季空调和冬季电瓶节点时，Dispatcher 要立即优先判断热门时段可用性和施工边界。", "examples": ["客户这周要返乡，想周四晚先到店。", "客户说明夏季将至，希望今晚先来了解。"], "priority": "high" },
+    { "id": "short_window_consult", "title": "短时段询单触发快流程调度", "description": "当用户明确只有 45 到 60 分钟窗口时，Dispatcher 应优先匹配轻量检测说明，不应给出复杂长施工承接。", "examples": ["客户只有下班后 50 分钟。", "上班族想约一单晚间快速到店沟通。"], "priority": "medium" },
+    { "id": "core_master_slot_hold", "title": "核心技师与热门时段询单触发保留确认链路", "description": "当用户点名技师或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。", "examples": ["客户指定周六 18:30 的核心技师工位。", "客户想抢节前最后一个晚间检修档。"], "priority": "medium" },
+    { "id": "multi_need_visit", "title": "多问题到店触发扩展时长链路", "description": "当用户同时提到异响、保养、空调和电瓶等多个问题时，Dispatcher 要立即扩展时长和顾问匹配，不可按单一轻量到店处理。", "examples": ["客户同时提到空调和保养。", "客户又想查异响又想做年检前检查。"], "priority": "high" },
+    { "id": "post_visit_revisit_task", "title": "维修后触发复访和回访任务", "description": "当系统收到维修完成信号时，Dispatcher 应自动创建回访、复检和 followup 提醒，而不是让链路断在交车之后。", "examples": ["维修后创建顾问回访任务。", "交车后创建复检和保养提醒。"], "priority": "high" }
+  ]
+}

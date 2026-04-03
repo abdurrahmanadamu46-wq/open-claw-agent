@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_智能家居","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+{"id":"smart_score_problem_specificity","title":"问题指向清晰度","description":"高分文案能在前两句就让用户看见明确问题或场景，例如门锁、灯光、窗帘、安防和兼容，而不是只说智能和高级。","examples":["高分：开头直接点出门锁或联动问题。 ","低分：一开始只有科技感和豪宅感。 "],"priority":"high"},
+{"id":"smart_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给协议、调试和售后说明，让用户感到门店不会乱推。","examples":["高分：先写判断和边界，再写到店。 ","低分：只靠场景图吸引。 "],"priority":"high"},
+{"id":"smart_score_compliance_safety","title":"合规安全性","description":"高分文案避免绝对稳定和绝对兼容承诺；低分文案容易出现绝对化表述和违规导向。","examples":["高分：用协议说明和适用提示替代强承诺。 ","低分：保证全兼容、零延迟、永不掉线。 "],"priority":"high"},
+{"id":"smart_score_scene_match","title":"场景匹配度","description":"高分文案会让交房焕新、日常补装和老客复访各归其位。","examples":["高分：节点文案重日期和场景，老客文案重补装理由。 ","低分：所有文案都只会喊来看看。 "],"priority":"medium"},
+{"id":"smart_score_respectfulness","title":"尊重感与情绪稳定度","description":"高分文案会陪用户一起判断状态，而不是拿预算有限和第一次做智能化刺激逼单。","examples":["高分：用先看方向和先到店这类语气。 ","低分：用再不装就落后这类恐吓。 "],"priority":"high"},
+{"id":"smart_score_cta_quality","title":"CTA 收口质量","description":"高分 CTA 会自然收品类、日期和是否第一次来等到店事实。","examples":["高分：先发品类和想约时间。 ","低分：快来店里看看。 "],"priority":"high"}]}

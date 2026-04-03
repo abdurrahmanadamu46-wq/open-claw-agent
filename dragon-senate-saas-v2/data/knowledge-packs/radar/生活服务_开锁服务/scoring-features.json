@@ -1,0 +1,7 @@
+{"industry":"生活服务_开锁服务","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"scene_specificity","title":"场景方向清晰度","description":"高分信号会明确提到上门开锁、换锁换芯、智能锁和车锁门禁等具体方向。","examples":["高分：门反锁了要开锁。","低分：想问下锁的问题。"],"priority":"high"},
+  {"id":"timing_clarity","title":"时间窗口清晰度","description":"夜间、现在、交房前和返家前等时间窗口越清楚，价值越高。","examples":["高分：现在就需要。","低分：有空再问。"],"priority":"high"},
+  {"id":"scope_clarity","title":"锁型门型清晰度","description":"锁型、门型和是否换锁换芯越清楚，后续路线越容易收窄。","examples":["高分：防盗门反锁。","低分：门锁有问题。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"备案与核验敏感度","description":"当用户高度关注备案、身份核验和是否正规时，需要提升信号权重与风险识别。","examples":["高分：主动问有没有备案。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"arrival_expectation_strength","title":"到场时效强度","description":"上门时效和夜间值守需求越明确，优先级越高。","examples":["高分：30 分钟内能到吗。","低分：明天也行。"],"priority":"medium"},
+  {"id":"repeat_referral_strength","title":"转介绍与复约强度","description":"物业转介绍、老客换锁和门禁维护回流越明确，越需要提权。","examples":["高分：物业推荐过来。","低分：纯路过咨询。"],"priority":"medium"}]}

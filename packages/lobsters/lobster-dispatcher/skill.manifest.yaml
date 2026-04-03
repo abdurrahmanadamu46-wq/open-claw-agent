@@ -1,0 +1,23 @@
+id: dispatcher_execution_delivery
+lobster_id: dispatcher
+name: 执行调度与分发
+description: "负责任务拆包、定时发布、多账号轮转与紧急下架，确保执行链路稳定落地。"
+trigger_keywords:
+  - 调度
+  - 发布
+  - 轮转
+  - 分发
+  - 下架
+allowed_tools:
+  - scheduler
+  - edge_dispatch
+  - approval_gate
+industry_tags: []
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 6000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

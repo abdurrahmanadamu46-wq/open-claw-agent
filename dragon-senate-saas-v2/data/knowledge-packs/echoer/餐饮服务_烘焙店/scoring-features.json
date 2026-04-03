@@ -1,0 +1,677 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_pickup_time",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_pickup_time",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "pick up at 7",
+        "tomorrow morning at 8",
+        "ready by 6 pm",
+        "after school pickup"
+      ],
+      "why_it_matters": "Specific timing shifts a bakery conversation from browsing into real ordering behavior.",
+      "echoer_action": "Use the timing signal to guide toward store, quantity, and pickup or delivery details."
+    },
+    {
+      "id": "branch_specified",
+      "applies_to": "incoming_message",
+      "feature_name": "branch_specified",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mall branch",
+        "campus store",
+        "downtown bakery",
+        "the riverside location"
+      ],
+      "why_it_matters": "Store detail makes stock, cake cutoff, and promotion answers far more actionable.",
+      "echoer_action": "Reply with branch-aware language instead of generic statements."
+    },
+    {
+      "id": "occasion_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "occasion_declared",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "birthday",
+        "anniversary",
+        "baby shower",
+        "teacher visit gift"
+      ],
+      "why_it_matters": "Occasion detail makes cake and gifting guidance more precise and usually indicates stronger intent.",
+      "echoer_action": "Anchor the reply in the event instead of offering generic recommendations."
+    },
+    {
+      "id": "headcount_or_serving_size",
+      "applies_to": "incoming_message",
+      "feature_name": "headcount_or_serving_size",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "for 6 people",
+        "8 coworkers",
+        "small family dinner",
+        "serves 10"
+      ],
+      "why_it_matters": "Serving-size detail helps Echoer move the user from vague cake interest into workable selection guidance.",
+      "echoer_action": "Use the headcount signal to narrow size or quantity questions."
+    },
+    {
+      "id": "cake_size_or_shape_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "cake_size_or_shape_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "6 inch",
+        "8 inch",
+        "two-tier",
+        "heart-shaped cake"
+      ],
+      "why_it_matters": "Size or shape language usually means the user is already picturing a real purchase path.",
+      "echoer_action": "Keep the reply focused on feasibility, occasion fit, and timing."
+    },
+    {
+      "id": "flavor_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "flavor_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "strawberry",
+        "chocolate",
+        "taro",
+        "something buttery"
+      ],
+      "why_it_matters": "Flavor detail helps Echoer make replies feel human and specific rather than broad.",
+      "echoer_action": "Anchor the response in the user's flavor lane before asking for more detail."
+    },
+    {
+      "id": "sweetness_or_texture_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "sweetness_or_texture_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "not too sweet",
+        "soft bread",
+        "flaky pastry",
+        "lighter cream"
+      ],
+      "why_it_matters": "Sweetness and texture language is often the fastest path to a useful bakery recommendation.",
+      "echoer_action": "Offer one practical direction and ask only the next taste-splitting question."
+    },
+    {
+      "id": "inscription_or_candle_need",
+      "applies_to": "incoming_message",
+      "feature_name": "inscription_or_candle_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "write happy birthday",
+        "need candles",
+        "add a number topper",
+        "can you write a name on it"
+      ],
+      "why_it_matters": "Customization detail usually signals a real celebration order rather than casual interest.",
+      "echoer_action": "Guide toward exact text, accessory need, and the timing window."
+    },
+    {
+      "id": "delivery_or_pickup_mode",
+      "applies_to": "incoming_message",
+      "feature_name": "delivery_or_pickup_mode",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "deliver it",
+        "self-pickup",
+        "pick it up myself",
+        "send it to the office"
+      ],
+      "why_it_matters": "Order mode narrows the operational path and often exposes risk boundaries such as fragile delivery.",
+      "echoer_action": "Match the reply to pickup or delivery constraints instead of staying abstract."
+    },
+    {
+      "id": "quantity_or_box_count",
+      "applies_to": "incoming_message",
+      "feature_name": "quantity_or_box_count",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "20 pastry boxes",
+        "12 croissants",
+        "4 gift boxes",
+        "30 pieces for the office"
+      ],
+      "why_it_matters": "Multi-item orders usually carry stronger operational intent than single-item curiosity.",
+      "echoer_action": "Collect store, timing, and invoice or delivery details."
+    },
+    {
+      "id": "office_or_school_use_case",
+      "applies_to": "incoming_message",
+      "feature_name": "office_or_school_use_case",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "team meeting",
+        "class party",
+        "teacher gift",
+        "school pickup snack"
+      ],
+      "why_it_matters": "A concrete use case creates a clearer route for bakery suggestions and order logistics.",
+      "echoer_action": "Gather branch, timing, quantity, and whether invoice or delivery matters."
+    },
+    {
+      "id": "invoice_or_business_need",
+      "applies_to": "incoming_message",
+      "feature_name": "invoice_or_business_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "need invoice",
+        "office order",
+        "company event",
+        "client gift"
+      ],
+      "why_it_matters": "Business-related bakery orders tend to be more organized and higher value.",
+      "echoer_action": "Treat it as a serious lead and narrow the logistics quickly."
+    },
+    {
+      "id": "ready_to_order",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_order",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "place the order now",
+        "book it now",
+        "I want to confirm",
+        "can I order right away"
+      ],
+      "why_it_matters": "Direct order language is one of the clearest conversion signals.",
+      "echoer_action": "Keep the reply warm and funnel toward the minimum order facts."
+    },
+    {
+      "id": "limited_or_seasonal_bake_request",
+      "applies_to": "incoming_message",
+      "feature_name": "limited_or_seasonal_bake_request",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "still have the strawberry box",
+        "seasonal tart",
+        "limited cookie tin",
+        "when is the matcha roll back"
+      ],
+      "why_it_matters": "Limited-item questions often indicate the user is close to visiting or ordering.",
+      "echoer_action": "Move quickly toward store and timing details."
+    },
+    {
+      "id": "dietary_restriction_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "dietary_restriction_declared",
+      "category": "service_complexity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "dairy free",
+        "egg allergy",
+        "nut allergy",
+        "avoid wheat"
+      ],
+      "why_it_matters": "Ingredient restrictions often signal real purchase intent, but they also raise handling sensitivity.",
+      "echoer_action": "Treat it carefully and guide toward exact confirmation."
+    },
+    {
+      "id": "pregnancy_child_or_low_sugar_concern",
+      "applies_to": "incoming_message",
+      "feature_name": "pregnancy_child_or_low_sugar_concern",
+      "category": "service_complexity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "pregnant",
+        "for a child",
+        "low sugar please",
+        "trying to avoid too much sugar"
+      ],
+      "why_it_matters": "Suitability questions usually come from serious decision-making, but they require careful wording.",
+      "echoer_action": "Avoid casual reassurance and gather the exact product plus the concern."
+    },
+    {
+      "id": "complaint_order_info_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_order_info_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "order number",
+        "I have photos",
+        "picked it up at 4:30",
+        "wrong writing on the cake"
+      ],
+      "why_it_matters": "Complaint recovery moves faster when the user is ready with usable order facts.",
+      "echoer_action": "Acknowledge the frustration and route to service handling."
+    },
+    {
+      "id": "skeptic_but_engaged",
+      "applies_to": "incoming_message",
+      "feature_name": "skeptic_but_engaged",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "every bakery says that",
+        "is it actually fresh",
+        "sounds like marketing",
+        "why should I believe it"
+      ],
+      "why_it_matters": "A skeptical user who keeps asking is still a live engagement opportunity.",
+      "echoer_action": "De-escalate and invite a concrete quality point or preference."
+    },
+    {
+      "id": "exact_ready_time_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "exact_ready_time_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee it by 5",
+        "definitely ready in 2 hours",
+        "promise it will be done on time",
+        "exact pickup guarantee"
+      ],
+      "why_it_matters": "Exact timing guarantees create avoidable service risk during live bakery operations.",
+      "echoer_action": "Shift from guarantee language to store, order scope, and pickup-time guidance."
+    },
+    {
+      "id": "exact_stock_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "exact_stock_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 7,
+      "trigger_patterns": [
+        "guarantee it will still be there",
+        "definitely not sold out",
+        "hold the croissants for me",
+        "promise the tart will be available tonight"
+      ],
+      "why_it_matters": "Live bakery stock changes by batch and traffic, so exact stock promises are risky.",
+      "echoer_action": "Reframe toward branch, timing, and check-next-step language."
+    },
+    {
+      "id": "intact_delivery_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "intact_delivery_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee it arrives perfect",
+        "promise no damage",
+        "definitely will not melt",
+        "100 percent intact delivery"
+      ],
+      "why_it_matters": "Decorated cakes and cream products carry real delivery fragility and temperature risk.",
+      "echoer_action": "Use condition-based wording and move toward a store or human check."
+    },
+    {
+      "id": "allergen_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "allergen_guarantee_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guarantee zero cross-contact",
+        "100 percent nut free",
+        "absolutely no dairy contact",
+        "promise it is allergy safe"
+      ],
+      "why_it_matters": "Allergen guarantee language is a high-risk safety topic that should never be answered casually.",
+      "echoer_action": "Treat it as a careful-confirmation case and escalate."
+    },
+    {
+      "id": "pregnancy_safe_or_medical_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "pregnancy_safe_or_medical_guarantee_request",
+      "category": "medical_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "definitely safe in pregnancy",
+        "guarantee it is okay for my child",
+        "promise this is low sugar enough",
+        "is it medically safe"
+      ],
+      "why_it_matters": "Bakery suitability requests can drift into medical reassurance if Echoer sounds too confident.",
+      "echoer_action": "Stay careful, avoid advice, and move toward exact ingredient confirmation."
+    },
+    {
+      "id": "freshness_absolute_claim_request",
+      "applies_to": "incoming_message",
+      "feature_name": "freshness_absolute_claim_request",
+      "category": "credibility_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "always baked today",
+        "real butter only guaranteed",
+        "never frozen",
+        "absolutely pure ingredients"
+      ],
+      "why_it_matters": "Absolute freshness and ingredient claims create trust and compliance risk if answered loosely.",
+      "echoer_action": "Move toward the exact product or store detail instead of broad promises."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave your phone",
+        "call me now",
+        "drop the contact in comments"
+      ],
+      "why_it_matters": "Moving private contact into public comments creates platform and privacy risk.",
+      "echoer_action": "Use platform DM as the safe bridge."
+    },
+    {
+      "id": "impossible_last_minute_customization",
+      "applies_to": "incoming_message",
+      "feature_name": "impossible_last_minute_customization",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "two-tier cake in 2 hours",
+        "custom fondant today",
+        "full theme cake by tonight",
+        "complex design right now"
+      ],
+      "why_it_matters": "Late, complex customization requests can create disappointment if Echoer sounds too optimistic.",
+      "echoer_action": "Separate simple same-day options from true custom work and guide toward a careful check."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give the cheapest",
+        "price only",
+        "quote now no details",
+        "lowest cost immediately"
+      ],
+      "why_it_matters": "Price-only traffic is not always useless, but it needs reframing before it becomes a workable bakery lead.",
+      "echoer_action": "Move from price pressure to quantity, use case, or product category."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never convert into healthy bakery intent.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges urgency",
+        "acknowledges frustration",
+        "acknowledges caution"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior for hospitality conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_order_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_order_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for store",
+        "asks for pickup or delivery",
+        "asks for timing",
+        "asks for quantity or size"
+      ],
+      "why_it_matters": "A strong bakery reply turns vague interest into usable order or availability data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_anchors_recommendation_in_preference",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_anchors_recommendation_in_preference",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions sweet or savory",
+        "mentions soft or flaky",
+        "mentions lighter or richer",
+        "mentions fruit versus chocolate"
+      ],
+      "why_it_matters": "Bakery recommendations feel more human when they reflect the user's actual taste language.",
+      "echoer_action": "Use preference-based wording instead of a generic sales list."
+    },
+    {
+      "id": "reply_sets_condition_based_expectation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_sets_condition_based_expectation",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "depends on branch timing",
+        "varies by batch and traffic",
+        "depends on cake type and delivery path",
+        "needs exact item confirmation"
+      ],
+      "why_it_matters": "Condition-based wording keeps bakery replies useful without overpromising live operations.",
+      "echoer_action": "Use realistic qualifiers while still guiding the user forward."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send store and timing in DM",
+        "share the exact product",
+        "send the order info",
+        "confirm branch plus quantity"
+      ],
+      "why_it_matters": "One clear next step is easier for guests to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_high_risk_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_high_risk_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "allergy topic escalated",
+        "pregnancy or child concern escalated",
+        "service issue escalated"
+      ],
+      "why_it_matters": "Echoer should not improvise past safety, service, or liability boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps order details minimal in comments"
+      ],
+      "why_it_matters": "Bakery conversations often involve order or complaint details that should not be collected publicly.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_reframes_budget_question_constructively",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_reframes_budget_question_constructively",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "asks what kind of order it is",
+        "asks whether budget matters more than gifting feel",
+        "asks bread versus pastry range",
+        "gives a practical trade-off"
+      ],
+      "why_it_matters": "Budget-first bakery questions convert better when Echoer gives structure instead of resistance.",
+      "echoer_action": "Respect the budget and guide toward the most useful trade-off."
+    },
+    {
+      "id": "reply_absolute_guarantee",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_guarantee",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed ready time",
+        "guaranteed stock",
+        "guaranteed intact delivery",
+        "absolutely safe"
+      ],
+      "why_it_matters": "Absolute promises create avoidable service and safety risk.",
+      "echoer_action": "Replace with condition-based and careful wording."
+    },
+    {
+      "id": "reply_medical_or_safety_assurance",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_medical_or_safety_assurance",
+      "category": "medical_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "safe in pregnancy",
+        "safe for every child",
+        "no issue for allergies",
+        "medical reassurance"
+      ],
+      "why_it_matters": "Bakery suitability answers should not drift into medical or zero-risk reassurance.",
+      "echoer_action": "Use careful confirmation language instead."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "customer is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_fake_scarcity_or_hard_sell",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_fake_scarcity_or_hard_sell",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "order now or miss it",
+        "only today cheapest deal",
+        "pressure to buy fast",
+        "fake scarcity"
+      ],
+      "why_it_matters": "High-pressure sales language clashes with Echoer's steady, human mission.",
+      "echoer_action": "Keep urgency calm and grounded in real next steps."
+    },
+    {
+      "id": "reply_ignores_customization_cutoff",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_ignores_customization_cutoff",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "sure we can customize anything today",
+        "no need to check the writing details",
+        "any design is fine last minute",
+        "custom cake immediately"
+      ],
+      "why_it_matters": "Ignoring decoration scope and cutoff timing creates avoidable disappointment.",
+      "echoer_action": "Separate simple options from true custom work and ask the key feasibility questions."
+    }
+  ]
+}

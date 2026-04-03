@@ -1,0 +1,139 @@
+﻿{
+  "industry": "教育培训_艺术培训",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "echoer_art_first_visit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "第一次来，我主要想看看作品集这周末能不能先试听一下，你们有时间吗？",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "pushy upsell",
+          "slot guarantee without checking"
+        ],
+        "context_window": [
+          "public comment thread",
+          "first-time trial inquiry",
+          "route-based request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge first-time uncertainty",
+        "ask for route and timing details",
+        "guide toward an easy next step"
+      ],
+      "mustAvoid": [
+        "hard-sell package",
+        "guaranteed slot promise",
+        "confidence shaming"
+      ]
+    },
+    {
+      "id": "echoer_art_deadline_002",
+      "label": "happy_path",
+      "input": {
+        "user_message": "我下周有比赛，能不能周四晚上先来听一下，看看现在这样还来不来得及？",
+        "brand_tone": "helpful and reassuring",
+        "negative_patterns": [
+          "guarantee all peak slots",
+          "ignore first-visit concerns"
+        ],
+        "context_window": [
+          "private message",
+          "deadline-window booking",
+          "time-sensitive request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the deadline timing",
+        "ask for Thursday slot details and concern focus",
+        "carry timing facts forward"
+      ],
+      "mustAvoid": [
+        "magic timing promise",
+        "ignoring first-visit uncertainty",
+        "package push"
+      ]
+    },
+    {
+      "id": "echoer_art_price_003",
+      "label": "edge_case",
+      "input": {
+        "user_message": "多少钱？",
+        "brand_tone": "light and helpful",
+        "negative_patterns": [
+          "menu dump",
+          "defensive tone"
+        ],
+        "context_window": [
+          "public comment thread",
+          "no route scope yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "light answer without evasion",
+        "one scope question around route",
+        "natural bridge to next step"
+      ],
+      "mustAvoid": [
+        "cold price wall",
+        "forced off-platform diversion",
+        "instant upsell"
+      ]
+    },
+    {
+      "id": "echoer_art_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "user_message": "上次来试听过，这次可能还想接着学，想看看接下来练什么更合适。",
+        "brand_tone": "familiar and calm",
+        "negative_patterns": [
+          "treating the client like a stranger",
+          "jumping into hard closing"
+        ],
+        "context_window": [
+          "private message",
+          "returning student",
+          "possible follow-up path"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the prior visit naturally",
+        "ask what they want to continue this time",
+        "guide toward a smooth re-entry step"
+      ],
+      "mustAvoid": [
+        "cold restart tone",
+        "ignoring prior context",
+        "pushing a package too early"
+      ]
+    }
+  ]
+}

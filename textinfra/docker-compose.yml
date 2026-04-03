@@ -1,0 +1,67 @@
+# ClawCommerce 本地/联调一键启动（UI/UX & DevOps 交付）
+# 包含：Redis + Agent（本仓）+ Web（本仓）
+# 后端 NestJS 需单独启动或使用团队提供的 backend 镜像
+# 启动：在仓库根目录执行 docker compose -f textinfra/docker-compose.yml up -d
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: claw_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    networks:
+      - claw_net
+
+  agent:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: claw_agent
+    restart: unless-stopped
+    command: node dist/server/agent-dashboard-server.js
+    environment:
+      REDIS_URL: redis://redis:6379
+      MAX_NODES: 10
+      IDLE_RELEASE_MINUTES: 30
+      LOG_LEVEL: info
+      PORT: 38789
+      # 后端内部地址（联调时改为 backend:3000）
+      BACKEND_INTERNAL_URL: ${BACKEND_INTERNAL_URL:-http://host.docker.internal:3000}
+      INTERNAL_API_SECRET: ${INTERNAL_API_SECRET:-super_secret_internal_token}
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "38789:38789"
+    networks:
+      - claw_net
+
+  web:
+    build:
+      context: ../web
+      dockerfile: ../textinfra/docker/web.Dockerfile
+    container_name: claw_web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # 浏览器访问的后端 API（联调时改为 http://host.docker.internal:3000 或后端实际地址）
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:3000}
+    ports:
+      - "3001:3000"
+    networks:
+      - claw_net
+
+networks:
+  claw_net:
+    driver: bridge
+
+volumes:
+  redis_data: {}

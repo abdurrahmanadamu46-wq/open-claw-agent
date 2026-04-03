@@ -1,0 +1,108 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "fast_callback_after_high_intent_signal",
+      "title": "高意向线索 5 分钟内回拨触发器",
+      "description": "当表单、私信或电话回拨请求中出现“报价”“尺寸”“效果图”“施工”“工期”等高意向词，且来源为门楼项目时，Dispatcher 立即创建销售首响任务，并同步备用提醒。",
+      "examples": [
+        "客户留言“厂区门楼多少钱一米”时，优先电话加企微双路回拨。",
+        "客户提交门楼尺寸表后，自动把勘测确认排进 30 分钟内待办。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "weekday_b2b_publish_window",
+      "title": "工作日白天优先的发布窗口触发器",
+      "description": "门楼项目多为 B 端决策，内容发布和跟进安排优先放在工作日 9:30-11:30、14:00-17:30；夜间只适合轻咨询承接，不适合复杂报价确认。",
+      "examples": [
+        "案例视频计划排期时，优先选择周二到周四上午发布。",
+        "需要客户确认尺寸或施工条件时，避免在晚上 10 点后发起关键沟通。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "channel_priority_by_customer_type",
+      "title": "按客户类型切换渠道优先级",
+      "description": "当客户被识别为厂区老板、工程承包、景区运营、商业物业或政企采买时，Dispatcher 立即调整 routing_targets 的主渠道与备用渠道，减少信息丢失。",
+      "examples": [
+        "工程承包商优先电话加 PDF 方案，商业物业优先企微加图文说明。",
+        "政企联系人要求留痕时，自动补充邮件发送节点。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "survey_within_24h_after_address_or_site_photo",
+      "title": "已给地址或现场照片时触发 24 小时内勘测",
+      "description": "一旦客户提供具体地址、门洞照片、旧门楼结构图或明确改造时点，Dispatcher 应把勘测预约排进 24 小时窗口，并创建改期 fallback。",
+      "examples": [
+        "客户发来厂区大门照片和定位后，先锁定勘测员时段。",
+        "外地项目无法当天到场时，切换成远程视频踏勘加二次线下复核。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_band_split_hook",
+      "title": "预算带宽触发的方案分层钩子",
+      "description": "当客户预算被识别为低预算试探、中等可成交、或高预算定制时，Dispatcher 自动切换方案颗粒度、报价节奏和需要调动的设计资源。",
+      "examples": [
+        "预算模糊时先发标准档位方案，不直接拉高级渲染。",
+        "高预算景区门楼项目可直接并行启动概念图与现场复核。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "bid_deadline_or_opening_emergency_lane",
+      "title": "截标期或开业节点触发紧急通道",
+      "description": "当需求中出现“开业前”“领导验收前”“招投标截止前”“五一前完工”等时间锚点，Dispatcher 提升任务优先级，压缩等待队列，并明确 stop-loss 条件。",
+      "examples": [
+        "客户说下周一要给甲方汇报时，先交付概念版而非等待精修版。",
+        "项目赶在节前安装时，必须同时检查物流、吊装和天气依赖。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "weather_stop_or_reschedule_hook",
+      "title": "天气与高空作业风险触发改期钩子",
+      "description": "安装节点前若出现大风、暴雨、高温、道路管制或景区活动封控，Dispatcher 自动暂停上门执行，改为客户沟通、物料保管或室内预装任务。",
+      "examples": [
+        "强风预警下不下发高空吊装任务。",
+        "景区活动临时封路时，先改为图纸确认和二次排期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "gray_release_new_offer_hook",
+      "title": "新优惠或新话术的灰度放量触发器",
+      "description": "当新话术、新价格锚点或新案例开始上线，Dispatcher 先限定到单渠道、单销售或单城市样本，观察留资率、询盘质量和审批反馈，再决定扩量。",
+      "examples": [
+        "“免费出门楼概念图”先给视频号自然流量样本。",
+        "新报价模板先给一个销售组试用 3 天。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "provider_flapping_failover_trigger",
+      "title": "供应商抖动触发降级与改路由",
+      "description": "效果图服务、报价系统、安装班组或 CRM 出现反复超时、失败率升高、或排期失真时，Dispatcher 立即切换备用路径，并写明 replay 规则。",
+      "examples": [
+        "报价系统 2 次超时后，改用人工报价模板。",
+        "设计服务连续退回任务时，自动换备用设计师并保留原始输入。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "manual_approval_for_high_risk_claims",
+      "title": "涉及结构安全与政策承诺时触发人工审批",
+      "description": "只要输出包含“抗风等级”“消防可过”“城管可办”“七天完工”“最低价”“永久不掉色”等高风险承诺，Dispatcher 必须挂起自动执行，转人工审批或法务、工程负责人复核。",
+      "examples": [
+        "视频脚本里出现“城管包过”时，直接拦截而不是排进发布队列。",
+        "报价里要写质保年限时，先核对合同模板与施工条件。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

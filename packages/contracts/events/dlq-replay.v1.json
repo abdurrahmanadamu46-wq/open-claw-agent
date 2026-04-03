@@ -1,0 +1,19 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "liaoyuan.events.dlq-replay.v1",
+  "type": "object",
+  "required": ["eventType", "traceId", "tenantId", "sourceQueue", "jobId", "replayCount", "result", "ts"],
+  "properties": {
+    "eventType": { "const": "autopilot.dlq.replay" },
+    "traceId": { "type": "string" },
+    "tenantId": { "type": "string" },
+    "operator": { "type": ["string", "null"] },
+    "sourceQueue": { "type": "string" },
+    "jobId": { "type": "string" },
+    "replayCount": { "type": "integer", "minimum": 1 },
+    "result": { "enum": ["accepted", "rejected", "duplicate_locked", "not_found"] },
+    "reason": { "type": ["string", "null"] },
+    "ts": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

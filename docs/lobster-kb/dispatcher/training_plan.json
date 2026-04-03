@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "lobster": "dispatcher",
+    "name": "老将",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "dsp_battle_001：未核实目标账号登录态就提交发布，任务失败",
+    "dsp_battle_002：收到内容包时未核查格式规格，发布后平台压缩导致画质损失"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "DSP-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "20min",
+      "sim_time": "不到1天",
+      "mission": "写出发布前强制执行的2条铁律（针对battle_001和battle_002）",
+      "deliverable": "2条写入skills.json的硬规则：1.登录态核验规则（什么情况下必须重新验证）2.格式核查清单（收到内容包后必须检查的5个格式项）",
+      "pass_criteria": [
+        "登录态规则有具体触发条件（如'超过X小时未发布过，必须重新验证'）",
+        "格式核查清单每项有具体标准数字，不是'检查格式'"
+      ],
+      "fail_action": "重做，无具体数字→FAIL",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "DSP-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "完成一次真实发布（或模拟一次完整发布流程），从收到内容包到发布成功",
+      "deliverable": "发布记录：内容包接收时间/格式核查结果/登录态确认/发布时间/发布后截图或确认消息",
+      "pass_criteria": [
+        "格式核查清单每项都有填写结果（通过/不通过+处理方式）",
+        "发布成功（内容在平台可见）",
+        "发布时间在目标时间窗口内（±5分钟以内）"
+      ],
+      "fail_action": "发布失败或超时→FAIL，找出根因，重新执行",
+      "collab_required": "visualizer（内容包来源）"
+    },
+    {
+      "task_id": "DSP-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "45min",
+      "sim_time": "1.5天",
+      "mission": "查当前目标行业（美妆）最近4周的互动数据，找出最佳发布时间窗口",
+      "deliverable": "时间窗口分析报告：按星期×时段的互动数据矩阵，标出Top3时间窗口+理由",
+      "pass_criteria": [
+        "数据来源真实（能说明从哪里获取的）",
+        "矩阵有具体的互动数字，不是颜色深浅",
+        "Top3时间窗口各自说明为什么互动高（用户行为规律）"
+      ],
+      "fail_action": "重做，无真实数据→FAIL",
+      "collab_required": "abacus（数据验证）"
+    },
+    {
+      "task_id": "DSP-T003",
+      "type": "TYPE-C",
+      "real_time_limit": "20min",
+      "sim_time": "不到1天",
+      "mission": "向visualizer主动发出格式规格通知：下周目标平台的最新规格是什么",
+      "deliverable": "格式规格通知：平台名/分辨率/码率/时长/字幕规格（每项具体数字）+ 说明变化的地方",
+      "pass_criteria": [
+        "visualizer收到后确认：这份规格我可以直接用",
+        "有标注哪些规格相比上周有变化（新规格必须查证，不能靠记忆）"
+      ],
+      "fail_action": "重做，靠记忆填的数字必须查证",
+      "collab_required": "visualizer"
+    },
+    {
+      "task_id": "DSP-T004",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "复盘dsp_battle_002：为什么收到内容包时没有发现格式问题？",
+      "deliverable": "复盘：当时收到包的第一个动作是什么/格式检查在哪一步被跳过/为什么跳过/以后如何强制不跳过",
+      "pass_criteria": [
+        "找出'为什么跳过'的真实原因（不能写'忘了'）",
+        "给出一个不依赖记忆的强制执行机制（如checklist/触发条件/提醒规则）"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    },
+    {
+      "task_id": "DSP-T005",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "处理一次异常：假设目标时间窗口发布失败，在10分钟内给出补救方案并执行",
+      "deliverable": "异常处置记录：失败原因/补救方案/执行结果/下次预防方法",
+      "pass_criteria": [
+        "补救方案在10分钟内给出（从发现失败到出方案）",
+        "补救发布在次优时间窗口内完成（不是随便找个时间）",
+        "必须通知commander和相关龙虾"
+      ],
+      "fail_action": "重做，超过10分钟才给方案→FAIL",
+      "collab_required": "commander（通知）"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "DSP-DRILL-001",
+      "description": "全流程发布演练：从收到内容包到发布成功，执行完整的格式核查+登录态验证+定时发布",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "格式核查清单全部填写",
+        "发布成功",
+        "在目标时间窗口±5分钟内发出"
+      ],
+      "evaluation": "发布截图 + abacus后续数据监控"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "DSP-T001到DSP-T005全部PASS",
+      "连续20次发布成功率100%（零失败）",
+      "DSP-DRILL-001 PASS ≥ 5次",
+      "时间窗口数据库覆盖≥3个行业",
+      "无格式问题导致的重新发布（连续30天）"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "strategist",
+  "artifactType": "StrategyRoute",
+  "playbookId": "strategist_starter",
+  "title": "Strategist Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read_signal_brief_and_memory",
+    "rank_levers_by_expected_value",
+    "draft_primary_route_and_one_backup",
+    "write_priority_order_and_tradeoffs",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

@@ -1,0 +1,199 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_business_hotel_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测商务酒店在携程、美团酒店和抖音本地生活上的房价、标签与服务承诺规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "ota_plus_local_life",
+        "competitor_watchlist": [
+          "城际商务酒店A",
+          "高铁站商务酒店B"
+        ],
+        "raw_signals": [
+          "携程商家后台公告要求涉及“免费取消”“免费停车”“接送机”“近地铁”“可开发票”等标签的页面信息必须可验证，违规可能降权处理",
+          "美团酒店更新价格一致性规则，强调促销价、到店价和房型权益不得误导展示",
+          "两家竞品同步把标题中的“全网最低价”“免费接送机”改为“商旅优选双早房”“接送服务以门店说明为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案调整",
+        "需要指出对价格承诺、设施标签和服务承诺边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略官方商家公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_business_hotel_exhibition_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现会展中心周边商务酒店的差旅与会务住宿机会窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "会展商务酒店C",
+          "园区酒店D"
+        ],
+        "raw_signals": [
+          "本地会展中心和产业园公众号连续发布下月行业展会、客户大会和培训活动排期",
+          "地图问答、OTA 评论和私信中连续出现“可开发票”“双床房还有吗”“有会议室吗”“停车方便吗”“凌晨入住可以吗”等问题",
+          "同商圈三家竞品同步上线“会展双床房”“企业协议价咨询”“连住三晚含双早”套餐"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城活动排期与需求咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求窗口",
+        "把跨城会展热度当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_business_hotel_review_cluster_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测高铁站周边商务酒店的服务风险变化",
+        "time_window": "last_72_hours",
+        "platform_or_market_context": "ota_plus_map_reviews",
+        "competitor_watchlist": [
+          "高铁商务酒店E"
+        ],
+        "raw_signals": [
+          "近 72 小时地图评论和 OTA 评论连续提到“热水不稳”“Wi-Fi 很差”“隔音差影响休息”",
+          "两条企业客户公开评价提到前台承诺可开发票但实际开票延迟超过一周",
+          "没有新的平台规则变化，也没有出现同商圈竞品同步类似问题"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "多平台差评聚类应被识别为高价值风险信号",
+        "需要指出这是经营交付风险而非平台规则变化",
+        "关注级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "因为没有官方公告就忽略重复客诉",
+        "把零散差评和结构性聚类混为一谈"
+      ]
+    },
+    {
+      "id": "radar_business_hotel_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测商务酒店在 OTA 平台上的补贴与流量分配变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "ota_platform",
+        "competitor_watchlist": [
+          "机场商务酒店F"
+        ],
+        "raw_signals": [
+          "商家群截图称“下周起没有会议室的商务酒店会被平台降权，且免费取消资源位全部收紧”，但截图没有公告来源",
+          "未发现携程、美团酒店或飞猪商家后台的正式通知，服务商口径也互相矛盾",
+          "核心竞品的房型标签、取消政策和详情页文案暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源传闻应被降级处理",
+        "缺少官方通知和竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断平台算法已经确认变更",
+        "把群聊截图表述成已落地政策"
+      ]
+    },
+    {
+      "id": "radar_business_hotel_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别二线城市工业园区周边商务酒店的内容与产品机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "园区商务酒店G"
+        ],
+        "raw_signals": [
+          "外地旅游城市的设计型酒店短视频爆火，内容大量强调夜景、拍照和周末打卡",
+          "本地搜索、评论和问答则集中在“可开发票”“有洗衣房吗”“停车方便吗”“离园区多远”“能否连住一周”“早餐几点开始”",
+          "本地竞品开始强调“长住优惠”“双早双床”“园区接驳”和“协议价咨询”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型商旅需求应高于跨城审美爆款热度",
+        "需要区分内容热度与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向网红打卡路线",
+        "忽略同城搜索和竞品动作形成的本地互证"
+      ]
+    },
+    {
+      "id": "radar_business_hotel_false_occupancy_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描机场周边商务酒店是否出现爆满与涨价行情",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“机场商务酒店全部满房，价格翻倍”，只给出一段模糊大堂排队视频，没有日期和门店定位",
+          "OTA 房态日历和地图评论量近几天基本平稳，没有出现明显订满、涨价或入住讨论激增",
+          "没有发现航班大面积取消、会展排期或交通异常等外部事件与之互证"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有房态、评论和外部事件互证时不能判定为市场已变化"
+      ],
+      "mustAvoid": [
+        "把自媒体爆料描述成已确认的需求激增",
+        "用单条排队视频替代可验证的市场证据"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "radar",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "radar_hair_salon_style_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测美发店在小红书和抖音上的发型趋势变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "local_beauty_content",
+        "competitor_watchlist": [
+          "商圈美发店A",
+          "工作室B"
+        ],
+        "raw_signals": [
+          "本地内容里锁骨发和低维护层次剪明显增多",
+          "评论区大量追问显白棕和免漂染发色",
+          "两家竞品同时减少高维护夸张卷发内容"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "要指出审美向低维护和显白方向迁移",
+        "本地内容比泛趋势更重要",
+        "关注级别至少为中高"
+      ],
+      "mustAvoid": [
+        "只把这看成普通流量波动",
+        "忽略竞品同步变化"
+      ]
+    },
+    {
+      "id": "radar_hair_salon_package_change_002",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测美发店套餐结构与加价项变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "group_buy_and_booking_pages",
+        "competitor_watchlist": [
+          "门店C",
+          "门店D"
+        ],
+        "raw_signals": [
+          "周边门店开始把洗吹和护理包含在染发套餐里",
+          "热门店把漂发和长发加价改为分层前置",
+          "补色保障和七天修剪承诺开始写进商品页"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "要指出套餐结构变化比单纯低价更关键",
+        "需要提到护理、漂发和长发加价的影响",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "只比较面价高低",
+        "忽略附加项重构"
+      ]
+    },
+    {
+      "id": "radar_hair_salon_damage_risk_003",
+      "label": "risk_case",
+      "input": {
+        "mission_scope": "监测美发店口碑与发质风险",
+        "time_window": "last_10_days",
+        "platform_or_market_context": "map_reviews_plus_public_comments",
+        "competitor_watchlist": [
+          "门店E"
+        ],
+        "raw_signals": [
+          "近一周评价连续提到染后颜色翻车和烫后毛躁",
+          "评论区开始出现漂后断发和售后扯皮",
+          "地图评价对补救态度的负面反馈增多"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "风险优先级应高",
+        "要区分发质受损和售后态度风险",
+        "建议级别应为高"
+      ],
+      "mustAvoid": [
+        "把这些反馈视为个别情绪",
+        "只关注风格热度不管口碑"
+      ]
+    },
+    {
+      "id": "radar_hair_salon_event_window_004",
+      "label": "opportunity_case",
+      "input": {
+        "mission_scope": "监测美发店婚礼与节日档机会窗口",
+        "time_window": "last_21_days",
+        "platform_or_market_context": "local_event_and_beauty_content",
+        "competitor_watchlist": [
+          "婚纱店F",
+          "写真馆G"
+        ],
+        "raw_signals": [
+          "婚礼季新娘染整与盘发内容大幅增多",
+          "写真馆开始出现拍照前发型管理建议",
+          "节日前快速焕新剪发和显白发色被集中收藏"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "联动和档期窗口要被识别为机会信号",
+        "需要指出新娘发型和节日前焕新的预约价值",
+        "本地相关性应判高"
+      ],
+      "mustAvoid": [
+        "把档期窗口当成普通热点",
+        "忽略婚礼和写真联动"
+      ]
+    }
+  ]
+}

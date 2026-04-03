@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_成人技能培训",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐问题、时间和试听范围前，本轮目标是锁预约事实，不是先把结果说满",
+      "description": "成人技能培训线索很多从有没有位、多少钱和能不能学会开场，但真正决定能否推进的是问题范围、预约时间、校区和是否第一次来。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定能就业或一定能赚钱。",
+      "examples": [
+        "客户只问周末能不能试听时，先问问题和是试听还是咨询。",
+        "客户只说最近很焦虑时，先补时间和校区，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_safety_trust_stage",
+      "title": "第一次试听和担心跟不上的用户必须先进入信任建立阶段",
+      "description": "第一次来、担心零基础、怕跟不上和怕被骗的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入信任建立阶段，围绕试听、适合性和边界做收口。",
+      "examples": [
+        "先确认最担心的是什么，再给出试听路径。",
+        "先讲清基础差异和流程，再谈时间。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "deadline_booking_needs_fast_scope",
+      "title": "转岗、晋升和面试节点线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和课程方向。FollowUp 应先确认日期、时段和当前问题，再帮助其进入合适试听，而不是在时间紧张时展开长篇销售。",
+      "examples": [
+        "面试线索先确认周几可来和这次最在意什么。",
+        "转岗线索先锁时间，再讲试听范围。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_revisit_split",
+      "title": "首次预约跟进和续班维护必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心完成一次试听，续班维护的目标才是提醒周期、反馈状态和下一步选择。两阶段不能共用同一套推进动作。",
+      "examples": [
+        "首单更多围绕问题、时间和风险边界。",
+        "续班更多围绕上次效果、学习状态和下一步。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_feedback",
+      "title": "试听后的跟进要先收感受和状态变化，再决定是否推进",
+      "description": "试听后的 FollowUp 不是默认销售时刻。应先确认感受、难度适配和满意度，再根据反馈决定是安抚、续班还是下一步建议。",
+      "examples": [
+        "试听后先问有没有听懂和是否跟得上。",
+        "转岗试听后先问节奏是否合适。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老学员回访要给具体续班或复训理由，不要只催回来",
+      "description": "续班节点到了、学习状态回落、转岗节点临近和上次建议的进阶节点，都是合理的回访理由。FollowUp 应用这些具体理由引导老学员回来，而不是泛泛问要不要再来。",
+      "examples": [
+        "提醒上次试听的老学员续班节点到了。",
+        "按转岗和晋升节奏提醒学习推进。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

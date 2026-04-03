@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_理疗馆",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐问题、时间和评估范围前，本轮目标是锁预约事实，不是先把感觉说满",
+      "description": "理疗馆线索很多从有没有位、多少钱和能不能缓一缓开场，但真正决定能否推进的是问题范围、预约时间、门店和是否第一次来。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定会轻松很多。",
+      "examples": [
+        "客户只问周末能不能做时，先问问题和是评估还是理疗。",
+        "客户只说最近状态不好时，先补时间和门店，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_safety_trust_stage",
+      "title": "第一次评估和担心不适的用户必须先进入信任建立阶段",
+      "description": "第一次来、担心按压太重、怕更痛和怕踩雷的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入信任建立阶段，围绕评估、适合性和边界做收口。",
+      "examples": [
+        "先确认最担心的是什么，再给出评估路径。",
+        "先讲清力度和感受边界，再谈时间。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_booking_needs_fast_scope",
+      "title": "拍照和节日前线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和理疗方向。FollowUp 应先确认日期、时段和当前问题，再帮助其进入合适评估，而不是在时间紧张时展开长篇销售。",
+      "examples": [
+        "拍照线索先确认周几可来和这次最在意什么。",
+        "节前放松线索先锁时间，再讲评估范围。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_revisit_split",
+      "title": "首次预约跟进和复诊维护必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心完成一次评估或理疗，复诊维护的目标才是提醒周期、反馈状态和下一步选择。两阶段不能共用同一套推进动作。",
+      "examples": [
+        "首单更多围绕问题、时间和风险边界。",
+        "复诊更多围绕上次效果、状态变化和下一步。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_reaction_feedback",
+      "title": "做完后的跟进要先收感受和状态变化，再决定是否推进",
+      "description": "做完理疗后的 FollowUp 不是默认销售时刻。应先确认感受、是否更酸、更紧或满意度，再根据反馈决定是安抚、复诊还是下一步建议。",
+      "examples": [
+        "做完后先问有没有不适或更酸。",
+        "节前放松后先问状态是否达到预期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老客回访要给具体复诊或维护理由，不要只催回来",
+      "description": "复诊周期到了、状态回落、节前放松和上次建议的维护节点，都是合理的回访理由。FollowUp 应用这些具体理由引导老客回来，而不是泛泛问要不要再来。",
+      "examples": [
+        "提醒上次做完理疗的老客复诊节点到了。",
+        "按节前放松节奏提醒状态维护。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_service_time_completion",
+      "scene": "dm_followup",
+      "lead_state": "vague_booking_inquiry",
+      "intent": "qualify_service_time_and_scope",
+      "hook": "这单先别急着把同款说满，我先帮你把真正决定能不能约上的信息锁住。",
+      "bridge": "美发预约最怕的是项目没定、时间没定、头发基础没说清，后面怎么聊都会空转。先把这些补齐，推进会稳很多。",
+      "next_step": "请客户确认大致项目、想约时间和当前头发状态，目标是尽快进入可预约或待确认状态。",
+      "cadence_hint": "客户刚回复时优先在 15 到 30 分钟内接上；若当轮未补齐信息，当天只保留一次轻提醒。",
+      "approval_guard": "未确认项目和范围前，不承诺具体老师、具体效果或热门时段。"
+    },
+    {
+      "id": "hook_first_visit_direction_help",
+      "scene": "trust_followup",
+      "lead_state": "first_time_unsure",
+      "intent": "reduce_choice_anxiety",
+      "hook": "你这单最关键的不是赶紧定大改，而是先把最适合你的方向缩小。",
+      "bridge": "第一次做头发的人，很多不是不想做，而是不知道怎么从那么多项目里选一个不会后悔的。",
+      "next_step": "先确认是想好打理、想显气色还是想做气质变化，再结合时段推进预约，目标是把首次不确定感变成可执行选择。",
+      "cadence_hint": "首次用户以低压力、高清晰度为主，不连续催单。",
+      "approval_guard": "不能用高客单项目和储值直接压用户做决定。"
+    },
+    {
+      "id": "hook_event_slot_lock",
+      "scene": "urgent_followup",
+      "lead_state": "before_event_request",
+      "intent": "lock_slot_fast",
+      "hook": "这单先从你能来的时间窗口下手，比先聊一堆项目更有用。",
+      "bridge": "重要场合前的美发预约，最关键的是日期、时段和当前头发状态，而不是讲得越多越好。",
+      "next_step": "请客户确认事件日期、可来时段和当前头发基础，目标是快速进入可执行预约。",
+      "cadence_hint": "节前线索以快节奏闭环为主，优先在当前半天内推进关键事实。",
+      "approval_guard": "未核到时段和范围前，不承诺一定来得及或一定可做。"
+    },
+    {
+      "id": "hook_post_visit_feedback",
+      "scene": "post_visit_followup",
+      "lead_state": "service_completed",
+      "intent": "collect_feedback_before_next_step",
+      "hook": "这次做完先别急着谈下次，我先想知道你现在的真实感受。",
+      "bridge": "做完头发后的第一步不是销售，而是确认颜色、卷度、打理和满意度，这样后面的建议才站得住。",
+      "next_step": "先确认本次感受、当前状态和是否有不适，目标是决定是补救、护理建议还是推进维护预约。",
+      "cadence_hint": "在完成后 24 到 48 小时内进行第一次轻回访，避免太早也避免太晚。",
+      "approval_guard": "未确认感受前，不要直接强推储值。"
+    },
+    {
+      "id": "hook_returning_client_reason",
+      "scene": "reengagement_followup",
+      "lead_state": "returning_or_sleeping_client",
+      "intent": "reopen_with_cycle_reason",
+      "hook": "这次联系你，不是泛泛问一句要不要再来，而是想把现在这个刚好的维护理由说清楚。",
+      "bridge": "对老客来说，真正有效的回访不是打扰，而是用补色、修剪、护理和节前焕新这样具体的理由重新接上。",
+      "next_step": "结合历史记录说明这次回访理由，并确认用户最近是否也想调整，目标是推进维护判断。",
+      "cadence_hint": "老客复联宜低频高相关，不连续追问。",
+      "approval_guard": "没有具体理由时，不硬造稀缺和紧迫感。"
+    },
+    {
+      "id": "hook_price_to_scope_shift",
+      "scene": "price_recovery_followup",
+      "lead_state": "price_only",
+      "intent": "recover_scope_before_close",
+      "hook": "价格当然重要，但先搞清你是剪、染、烫还是护理，聊起来才不会越来越乱。",
+      "bridge": "美发价格差异很多时候不在一个 headline 上，而在项目、长度和附加服务范围里。",
+      "next_step": "请客户确认大致项目和当前头发基础，目标是把价格咨询转成可承接线索。",
+      "cadence_hint": "价格型线索不要高频追问，优先用一问一答收窄范围。",
+      "approval_guard": "不要用模糊优惠压客户，也不要在范围不清时乱推荐高客单。"
+    }
+  ]
+}

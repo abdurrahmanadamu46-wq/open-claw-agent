@@ -1,0 +1,408 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_gatehouse_factory_survey_ready_001",
+      "label": "happy_path",
+      "scenario_tag": "factory_gatehouse_ready_to_quote",
+      "input": {
+        "lead_assessment_or_campaign_result": "厂区新建门楼线索，已给出开间 18 米、高 7 米、现场照片、预算 28 万，本周可安排勘测，希望五一前完成安装。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.34,
+          "segment_type": "厂区门楼",
+          "segment_lifetime_value": 420000,
+          "repeat_purchase_probability": 0.24,
+          "past_referral_count_for_segment": 2
+        },
+        "cost_data": {
+          "cost_per_lead": 180,
+          "expected_survey_cost": 600,
+          "expected_design_cost": 1200,
+          "estimated_installation_cost": 32000,
+          "estimated_gross_margin_rate": 0.31
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "厂区门楼完工案例视频",
+            "私信要报价",
+            "电话确认本周勘测"
+          ],
+          "last_meaningful_touch": "电话确认本周勘测",
+          "engagement_metrics": {
+            "video_like": 12,
+            "video_comment": 1
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "把勘测和首版方案成本计入后 ROI 仍为正",
+        "奖励信号要指向立即回拨和锁勘测"
+      ],
+      "mustAvoid": [
+        "因为社媒互动不高就低估价值",
+        "只看预算不看勘测准备度"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_industrial_park_cluster_002",
+      "label": "edge_case",
+      "scenario_tag": "industrial_park_multi_site",
+      "input": {
+        "lead_assessment_or_campaign_result": "工业园运营方咨询一期门楼翻新，同时提到后续还有 5 个园区入口要统一升级，但当前只愿先看样板方案。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.16,
+          "segment_type": "园区运营方",
+          "lifetime_value": 1600000,
+          "past_multi_site_win_rate": 0.29,
+          "average_project_cycle_days": 75
+        },
+        "cost_data": {
+          "cost_per_lead": 260,
+          "expected_solution_cost": 2000,
+          "expected_account_nurture_cost": 1800,
+          "estimated_gross_margin_rate": 0.27
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "园区门楼案例合集",
+            "官网表单提交",
+            "销售回访"
+          ],
+          "last_meaningful_touch": "表单中明确提到多园区统一改造"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分高于短期分",
+        "不能因为首单不够热就过早放弃",
+        "奖励信号应包含摸清试点点位和组织结构"
+      ],
+      "mustAvoid": [
+        "把它当成普通慢线索直接降权",
+        "只看当前一期预算忽略批量复制潜力"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_reactivation_old_client_003",
+      "label": "happy_path",
+      "scenario_tag": "old_client_reactivation",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年做过厂区门楼的老客户，要在新厂房复制一套类似方案，只改颜色和字牌，本周要预算。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.52,
+          "segment_type": "老客复购",
+          "lifetime_value": 680000,
+          "historical_project_count_with_account": 1,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 25,
+          "expected_survey_cost": 300,
+          "expected_design_cost": 400,
+          "asset_reuse_savings": 1800,
+          "estimated_gross_margin_rate": 0.33
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "CRM 老客回访短信",
+            "客户直接回电",
+            "历史图纸调取"
+          ],
+          "last_meaningful_touch": "客户确认沿用原结构做法"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 要明显高于普通新线索",
+        "把历史图纸和旧报价复用价值算进去",
+        "奖励信号应指向快速调档和差异复核"
+      ],
+      "mustAvoid": [
+        "把老客复购当成普通冷启动线索",
+        "忽略新旧现场差异校验"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_scenic_approval_pending_004",
+      "label": "edge_case",
+      "scenario_tag": "scenic_gatehouse_pending_approval",
+      "input": {
+        "lead_assessment_or_campaign_result": "景区入口门楼项目预算高、展示价值强，但景区方尚未确认城管、消防和进场审批要求，只想先看效果图和概算。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.14,
+          "segment_type": "景区入口",
+          "lifetime_value": 900000,
+          "referral_value_if_won": "high"
+        },
+        "cost_data": {
+          "cost_per_lead": 340,
+          "expected_render_cost": 2500,
+          "expected_revision_rounds": 3,
+          "estimated_gross_margin_rate": 0.29
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "文旅案例视频",
+            "私信咨询",
+            "线下会面"
+          ],
+          "last_meaningful_touch": "线下会面表达预算充足但审批未落地"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分需要被审批风险封顶",
+        "长期分可保持中高但置信度要下降",
+        "奖励信号应优先补审批和进场条件信息"
+      ],
+      "mustAvoid": [
+        "把高预算直接当成高短期价值",
+        "给出包审批或必过验收暗示"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_viral_low_fit_005",
+      "label": "failure_case",
+      "scenario_tag": "viral_effect_only",
+      "input": {
+        "lead_assessment_or_campaign_result": "短视频里一条仿古门楼效果图爆了，评论区很多人问价，其中一位只说“做个差不多的最低多少钱”，未给地区和尺寸。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.05,
+          "segment_type": "泛询价",
+          "lifetime_value": 120000,
+          "historical_no_show_rate": 0.63
+        },
+        "cost_data": {
+          "cost_per_lead": 85,
+          "expected_followup_cost": 260,
+          "estimated_gross_margin_rate": 0.18
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "viral 效果图视频",
+            "评论区问最低价"
+          ],
+          "last_meaningful_touch": "评论区问最低价",
+          "engagement_metrics": {
+            "video_like": 3200,
+            "video_comment": 180
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分偏低",
+        "不能把高互动直接换算成高价值",
+        "奖励信号应偏向低成本筛选或继续收集资料"
+      ],
+      "mustAvoid": [
+        "把评论热度当成高成交概率",
+        "建议投入重设计和重人工跟进"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_deadline_without_feasibility_006",
+      "label": "edge_case",
+      "scenario_tag": "urgent_but_incomplete",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户说领导下周检查，要求 7 天内把旧门楼翻新完，但还没给准确尺寸，也没确认夜间施工和物业放行。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.21,
+          "segment_type": "旧改急单",
+          "lifetime_value": 260000,
+          "average_delay_penalty_rate": 0.18
+        },
+        "cost_data": {
+          "cost_per_lead": 150,
+          "expected_rush_cost_multiplier": 1.35,
+          "expected_survey_cost": 500,
+          "estimated_gross_margin_rate": 0.22
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信咨询",
+            "电话催进度"
+          ],
+          "last_meaningful_touch": "电话要求先给工期承诺"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能仅凭紧迫感给高短期分",
+        "要降低置信度并强调先补尺寸和进场条件",
+        "奖励信号应指向可行性倒排和标准化替代方案"
+      ],
+      "mustAvoid": [
+        "直接把工期诉求翻译成高价值",
+        "忽略加急成本和返工风险"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_cross_region_margin_risk_007",
+      "label": "failure_case",
+      "scenario_tag": "cross_region_low_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "外省大型厂区门楼项目预算 60 万，看起来单笔金额高，但需要跨省运输、吊装和驻场安装，客户还要求价格再打折。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.19,
+          "segment_type": "异地厂区门楼",
+          "lifetime_value": 300000,
+          "service_radius_fit": "weak"
+        },
+        "cost_data": {
+          "cost_per_lead": 210,
+          "expected_logistics_cost": 68000,
+          "expected_installation_cost": 72000,
+          "expected_after_sales_reserve": 15000,
+          "estimated_gross_margin_rate": 0.11
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "百度爱采购",
+            "电话询价",
+            "邮件收图"
+          ],
+          "last_meaningful_touch": "邮件要求在低价基础上再打折"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "合同额高不代表 ROI 高",
+        "如果不是战略区域，长期分不应乐观",
+        "奖励信号应强调守住毛利和争取定金"
+      ],
+      "mustAvoid": [
+        "按金额自动排高优先级",
+        "忽略异地安装和售后准备金"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_attribution_merge_008",
+      "label": "happy_path",
+      "scenario_tag": "duplicate_lead_merge",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一厂区门楼项目先从抖音留资，后又通过百度爱采购提交表单并加企微，客户已提供同一现场照片和联系人。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.28,
+          "segment_type": "厂区门楼",
+          "lifetime_value": 380000,
+          "duplicate_project_risk": "high"
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "douyin": 140,
+            "baidu": 260,
+            "enterprise_wechat_followup": 35
+          },
+          "expected_survey_cost": 550,
+          "estimated_gross_margin_rate": 0.3
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "抖音完工案例视频",
+            "百度表单提交",
+            "企微发送现场照片并确认勘测时间"
+          ],
+          "last_meaningful_touch": "企微发送现场照片并确认勘测时间",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一个项目计算价值",
+        "奖励信号要更偏向推动勘测和资料补齐的触点",
+        "不能把多个入口重复记成多份 ROI"
+      ],
+      "mustAvoid": [
+        "把最后一次点击视为全部贡献",
+        "让多个渠道各自领取完整 credit"
+      ]
+    },
+    {
+      "id": "abacus_gatehouse_claim_and_deposit_risk_009",
+      "label": "failure_case",
+      "scenario_tag": "unsafe_claim_without_deposit",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户要求把“包审批包验收”写进方案，同时不愿付定金，只想先排产锁价格。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.07,
+          "segment_type": "高纠纷风险线索",
+          "lifetime_value": 180000,
+          "refund_or_dispute_rate": 0.31
+        },
+        "cost_data": {
+          "cost_per_lead": 130,
+          "expected_preproduction_hold_cost": 2400,
+          "estimated_gross_margin_rate": 0.16
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "私信咨询",
+            "电话议价"
+          ],
+          "last_meaningful_touch": "电话坚持包审批且不付定金"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和 ROI 都应偏低",
+        "奖励信号应倾向人工复核、缩边界或直接降级",
+        "不能把高摩擦和高催促错当成高意向"
+      ],
+      "mustAvoid": [
+        "建议无定金先排产",
+        "把包审批包验收视为可接受卖点"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+﻿{
+  "protocol": "marionette/v1",
+  "taskId": "campaign-lipstick-01-slot-2",
+  "campaignId": "campaign-lipstick-01",
+  "fromCabinet": "algorithm_scheduler",
+  "targetNodeId": "node-002",
+  "scheduledAt": "2026-03-10T14:00:00+08:00",
+  "humanLike": {
+    "typingCharsPerMinute": 60,
+    "delayBetweenActionsMs": [800, 2000],
+    "humanLikeMouse": true
+  },
+  "steps": [
+    {
+      "step_id": "1",
+      "action": "DOWNLOAD_ASSET",
+      "params": {
+        "asset_url": "https://cdn.clawcommerce.com/campaigns/lipstick-01/video_01.mp4",
+        "save_as": "local_01.mp4"
+      }
+    },
+    {
+      "step_id": "2",
+      "action": "NAVIGATE",
+      "params": {
+        "url": "https://www.xiaohongshu.com",
+        "platform": "xiaohongshu"
+      }
+    },
+    {
+      "step_id": "3",
+      "action": "WAIT",
+      "params": { "wait_ms": 2000 }
+    },
+    {
+      "step_id": "4",
+      "action": "INPUT_TEXT",
+      "params": {
+        "selector": "[data-placeholder='写正文']",
+        "text": "姐妹们！这款口红真的绝了💄 显白不拔干，黄皮亲妈～ 链接已放评论区～",
+        "typing_chars_per_minute": 60
+      }
+    },
+    {
+      "step_id": "5",
+      "action": "UPLOAD_VIDEO",
+      "params": {
+        "file_path": "local_01.mp4",
+        "title": "口红试色｜黄皮必入",
+        "description": "无"
+      }
+    },
+    {
+      "step_id": "6",
+      "action": "CLICK_SELECTOR",
+      "params": { "selector": "button[type='submit']" }
+    },
+    {
+      "step_id": "7",
+      "action": "WAIT",
+      "params": { "wait_ms": 3000 }
+    },
+    {
+      "step_id": "8",
+      "action": "REPORT_BACK",
+      "params": {
+        "message": "任务完成🟢",
+        "result": { "published_url": "", "platform": "xiaohongshu" }
+      }
+    }
+  ],
+  "reportBack": {
+    "onSuccess": true,
+    "onFailure": true,
+    "screenshots": ["after_publish"]
+  },
+  "createdAt": "2026-03-10T13:55:00+08:00"
+}

@@ -1,0 +1,168 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_metro_citywalk",
+      "scene": "comment_or_dm",
+      "intent": "location_fit",
+      "emotion": "practical",
+      "hook": "That makes sense if you want the stay itself to feel easy, not just cheap.",
+      "bridge": "With city homestays, the useful split is usually the area, the dates, and whether you care most about metro access, walkability, or the room layout.",
+      "next_step": "Ask for the district or landmark, stay dates, guest count, and the main location priority.",
+      "handoff_suggestion": "Good location-fit clarification signal."
+    },
+    {
+      "id": "hook_same_day_self_checkin",
+      "scene": "comment_or_dm",
+      "intent": "same_day_booking",
+      "emotion": "time_sensitive",
+      "hook": "That is worth sorting out before the trip gets more stressful.",
+      "bridge": "For same-day city-homestay stays, the key details are usually the exact property, arrival window, and whether the booking is already in place.",
+      "next_step": "Ask for the property, arrival time, booking status, and guest count.",
+      "handoff_suggestion": "Reservation or host-confirmation path."
+    },
+    {
+      "id": "hook_concert_late_return",
+      "scene": "comment_or_dm",
+      "intent": "late_return_after_event",
+      "emotion": "organized",
+      "hook": "Good call to check that before the night gets hectic.",
+      "bridge": "After an event, the useful things to clarify first are usually the venue, how many people are staying, and how late you expect to get back.",
+      "next_step": "Ask for the venue or area, headcount, and latest return time.",
+      "handoff_suggestion": "Access-and-occupancy confirmation lead."
+    },
+    {
+      "id": "hook_family_or_friends_group",
+      "scene": "comment_or_dm",
+      "intent": "multi_person_room_fit",
+      "emotion": "planning_mode",
+      "hook": "That is a sensible thing to check early with this kind of stay.",
+      "bridge": "With city homestays, the useful details are usually how many adults and children are coming, what bed setup you need, and whether stairs or luggage matter.",
+      "next_step": "Ask for guest count, child age if relevant, and the main concern: bed count, privacy, or keeping everyone together.",
+      "handoff_suggestion": "Room-fit clarification lead."
+    },
+    {
+      "id": "hook_kitchen_laundry",
+      "scene": "comment_or_dm",
+      "intent": "home_style_amenity_question",
+      "emotion": "practical",
+      "hook": "That can make a short city stay much easier.",
+      "bridge": "Kitchen, laundry, and projector answers usually depend on the exact room type or listing rather than the property name alone.",
+      "next_step": "Ask which room or listing they mean, how many nights they plan to stay, and which feature matters most.",
+      "handoff_suggestion": "Room-type clarification path."
+    },
+    {
+      "id": "hook_real_room_photo",
+      "scene": "public_comment",
+      "intent": "photo_truth_check",
+      "emotion": "skeptical",
+      "hook": "That hesitation is fair.",
+      "bridge": "With city stays, people usually want one concrete proof point first, like the real loft size, the window view, the projector effect, or whether the room feels as open as the video.",
+      "next_step": "Invite the user to name the exact room detail they want clarified first.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_parking_stairs_access",
+      "scene": "comment_or_dm",
+      "intent": "arrival_access_question",
+      "emotion": "practical",
+      "hook": "Good call to sort that out before arrival.",
+      "bridge": "Access answers usually change with the exact building, whether you are driving or not, and whether the concern is parking, stairs, or luggage.",
+      "next_step": "Ask which property they mean and whether the main concern is parking, elevator access, or carrying luggage in.",
+      "handoff_suggestion": "Property-specific arrival confirmation."
+    },
+    {
+      "id": "hook_pet_boundary",
+      "scene": "comment_or_dm",
+      "intent": "pet_policy_question",
+      "emotion": "practical",
+      "hook": "Good idea to check that before the plan gets locked in.",
+      "bridge": "Pet-friendly answers usually change with the room type, pet size, and the cleaning or building rules tied to that stay.",
+      "next_step": "Ask what pet they are bringing, how big it is, and which room or dates they mean.",
+      "handoff_suggestion": "Pet-policy confirmation path."
+    },
+    {
+      "id": "hook_weekday_transition_stay",
+      "scene": "comment_or_dm",
+      "intent": "weekday_functional_stay",
+      "emotion": "steady",
+      "hook": "That sounds more like a practical stay need than a casual browse.",
+      "bridge": "For a few nights in the city, the useful split is usually the area you need, how many people are coming, and whether laundry, simple cooking, or quiet rest matters most.",
+      "next_step": "Ask for the dates, required area, guest count, and top stay priority.",
+      "handoff_suggestion": "Fit-and-needs clarification lead."
+    },
+    {
+      "id": "hook_exam_or_medical_companion",
+      "scene": "comment_or_dm",
+      "intent": "exam_or_medical_companion_stay",
+      "emotion": "tired_but_orderly",
+      "hook": "That is the kind of stay where convenience matters more than fancy wording.",
+      "bridge": "The useful next step is usually to narrow the dates, the area you need to be near, and whether the key need is washer access, simple cooking, or keeping everyone together.",
+      "next_step": "Ask for the dates, landmark or hospital or exam area, and the one facility that matters most.",
+      "handoff_suggestion": "Practical short-stay lead."
+    },
+    {
+      "id": "hook_early_or_late_timing",
+      "scene": "comment_or_dm",
+      "intent": "timing_flexibility",
+      "emotion": "schedule_pressure",
+      "hook": "Makes sense to line that up before the day gets messy.",
+      "bridge": "With city homestays, early check-in and late checkout usually depend on live room turnover and the property's handling flow more than people expect.",
+      "next_step": "Ask for the property, stay date, and the arrival or departure time they are trying to cover.",
+      "handoff_suggestion": "Live timing-flexibility check."
+    },
+    {
+      "id": "hook_deposit_or_cleaning_fee",
+      "scene": "comment_or_dm",
+      "intent": "fee_clarification",
+      "emotion": "stressed",
+      "hook": "I can see why you would want that clarified clearly.",
+      "bridge": "The next useful split is usually where the booking was made and what the order or listing says about deposit, cleaning fee, or cancellation terms.",
+      "next_step": "Ask whether the booking already exists, which channel it came through, and what the fee wording says.",
+      "handoff_suggestion": "Policy-confirmation path."
+    },
+    {
+      "id": "hook_cancellation_after_plan_change",
+      "scene": "comment_or_dm",
+      "intent": "refund_or_change",
+      "emotion": "frustrated",
+      "hook": "Plan changes can be a hassle, especially when the booking details are already in motion.",
+      "bridge": "For city homestays, the useful next step is usually the booking source and the exact policy wording rather than broad reassurance.",
+      "next_step": "Ask where the booking was made and whether the order is flexible, deposit-based, or non-refundable.",
+      "handoff_suggestion": "Booking-policy confirmation path."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would take the ease out of the stay.",
+      "bridge": "The fastest review usually starts with the property, stay date, and the exact room or booking details tied to the issue.",
+      "next_step": "Move the user to DM for the stay details and a short issue summary.",
+      "handoff_suggestion": "Escalate to reservation support, guest service, or the host."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to help move it forward quickly.",
+      "bridge": "The safest first step is still platform DM so booking details, access questions, and contact info do not get scattered in public comments.",
+      "next_step": "Ask for the property, stay dates, and guest count in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    },
+    {
+      "id": "hook_price_only_reframe",
+      "scene": "comment_or_dm",
+      "intent": "price_first",
+      "emotion": "efficient",
+      "hook": "Happy to help narrow it down without making this complicated.",
+      "bridge": "With city homestays, the price only really means something once the dates, area, and how many people are staying are clear.",
+      "next_step": "Ask for dates, area, and guest count before trying to answer on rate.",
+      "handoff_suggestion": "Lead-quality clarification path."
+    }
+  ]
+}

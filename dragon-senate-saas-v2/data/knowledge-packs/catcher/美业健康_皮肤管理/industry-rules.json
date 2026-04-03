@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_皮肤管理",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_concern_time_scope",
+      "title": "先看问题、时间和咨询范围，再判断是不是高意向",
+      "description": "皮肤管理线索只有在明确提到想改善的问题、预约时间或时间窗口、门店或商圈、是否第一次咨询和大致护理方向时，才能被视为高意向。只有“多少钱”“最近想做做皮肤”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周五晚想去国金店先咨询黑头闭口，第一次来，想了解适不适合清洁加修护。",
+        "低确定性信号：最近想做皮肤，先看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_driven_booking_is_high_intent",
+      "title": "拍照和节日前出现明确日期时要显著提权",
+      "description": "节前状态管理、拍照前提亮和重要见人前护理，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实预约动作，应进入高意向候选。",
+      "examples": [
+        "周六拍照，想约周四晚先来咨询一下。",
+        "下周见人，这周想先来看看怎么把状态提起来。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_and_sensitivity_questions_are_not_low_intent",
+      "title": "第一次咨询和敏感顾虑不应被误判成低意向",
+      "description": "第一次做、担心敏感、怕刺痛、怕刷酸不适合，并不等于低意向。只要用户同时愿意给出时间和问题范围，这类线索依然值得快速承接。",
+      "examples": [
+        "第一次来，担心敏感，这周末有空想先看看。",
+        "没做过护理，但下周拍照想先了解方案。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "price_only_needs_scope_before_upgrade",
+      "title": "只问价格不等于高意向，除非同时带着问题和时间",
+      "description": "价格问题本身并不低意向，但如果没有问题范围、时间窗口和是否第一次咨询等事实，Catcher 不能把它直接提到最高层，必须等更多信息出现。",
+      "examples": [
+        "高意向：这周末想来看看黑头和闭口，大概什么价位。",
+        "普通意向：清洁多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_client_signal_upgrade",
+      "title": "老客回流和朋友推荐要抬高拟合度",
+      "description": "老客回流、朋友推荐和之前来过等信号，通常意味着信任门槛已经降低。这类线索在问题和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来做过护理，这次想复查一下并看看下一步。",
+        "朋友推荐来的，这周末能先咨询吗。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_sensitivity_should_not_hide_intent",
+      "title": "公开场合的敏感与焦虑表达不应掩盖真实意向",
+      "description": "有些用户会在评论区用很轻的语气掩饰强烈需求，比如黑头闭口太明显还能不能救、最近状态很差适不适合做。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "最近状态很差，这周末还能约吗。",
+        "黑头闭口有点重，下班后能来看看吗。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

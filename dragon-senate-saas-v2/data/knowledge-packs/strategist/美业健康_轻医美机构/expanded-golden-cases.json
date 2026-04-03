@@ -1,0 +1,144 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_light_med_concern_001",
+      "label": "happy_path",
+      "scenario_tag": "problem_based_consult_growth",
+      "input": {
+        "mission_goal": "在 21 天内为轻医美机构新增 100 个毛孔与痘印问题型面诊预约，并提升到店率。",
+        "signal_brief": "最近本地内容里毛孔、痘印和节前状态管理的提问明显增多，竞品也在上新面诊加检测组合。",
+        "tenant_context": {
+          "budget_limit": 6200,
+          "brand_tone": "克制、专业、不过度承诺",
+          "asset_state": "有真实面诊和环境素材",
+          "location_type": "商场与写字楼混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把问题型面诊设为主路线",
+        "强调面诊与边界",
+        "至少一个面诊后 followup 承接动作"
+      ],
+      "mustAvoid": [
+        "同时强推所有方向",
+        "使用医疗化或绝对化承诺"
+      ]
+    },
+    {
+      "id": "strategist_light_med_event_002",
+      "label": "happy_path",
+      "scenario_tag": "pre_event_state_route",
+      "input": {
+        "mission_goal": "围绕婚礼和拍照档做 14 天短周期预约冲刺。",
+        "signal_brief": "本地婚礼和拍照前状态管理内容升温，机构近期咨询也多与重要场合前见人有关。",
+        "tenant_context": {
+          "budget_limit": 5200,
+          "brand_tone": "稳妥、讲边界、讲节奏",
+          "asset_state": "有面诊流程和预约时效素材",
+          "location_type": "商场门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把节前状态管理作为独立路线",
+        "强调时效和恢复边界",
+        "不能把短期状态管理写成长效结果"
+      ],
+      "mustAvoid": [
+        "把节前路线和长期维护混为一谈",
+        "忽略日期临近带来的时效需求"
+      ]
+    },
+    {
+      "id": "strategist_light_med_capacity_003",
+      "label": "edge_case",
+      "scenario_tag": "low_barrier_consult_with_capacity_risk",
+      "input": {
+        "mission_goal": "用低门槛面诊引流，但晚间时段房间和核心医生已接近满负荷。",
+        "signal_brief": "咨询上涨明显，近期差评开始提到等待时间变长和现场被强推。",
+        "tenant_context": {
+          "budget_limit": 7600,
+          "brand_tone": "高效、亲和",
+          "asset_state": "面诊素材完整，但高峰排班紧张",
+          "location_type": "核心商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "先处理承接能力而不是直接放量",
+        "至少一个分时段或限问题范围动作",
+        "指出等待与强推风险"
+      ],
+      "mustAvoid": [
+        "在承接不足时继续冲低价引流",
+        "忽视高峰资源稀缺"
+      ]
+    },
+    {
+      "id": "strategist_light_med_maintenance_004",
+      "label": "long_term_case",
+      "scenario_tag": "maintenance_recheck_route",
+      "input": {
+        "mission_goal": "在 30 天内提升老客复查和状态维护复诊率。",
+        "signal_brief": "新客获客成本上升，但机构已有稳定老客和历史记录。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "熟悉、专业、不过度促销",
+          "asset_state": "有基础复查记录和项目历史",
+          "location_type": "社区门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把老客复查作为独立主路线",
+        "按问题和周期做分层",
+        "用复查理由承接而不是只靠折扣"
+      ],
+      "mustAvoid": [
+        "无差别群发优惠",
+        "完全依赖新客流量"
+      ]
+    }
+  ]
+}

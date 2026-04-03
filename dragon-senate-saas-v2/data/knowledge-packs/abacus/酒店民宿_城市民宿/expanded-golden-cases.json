@@ -1,0 +1,478 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_city_homestay_concert_self_checkin_001",
+      "label": "happy_path",
+      "scenario_tag": "concert_late_return_self_checkin",
+      "input": {
+        "lead_assessment_or_campaign_result": "两位女生看完体育馆演唱会后预计 23:50 到店，选择地铁口一居室，已接受 30% 预付和实名自助入住，第二天中午前退房并寄存小件行李。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.43,
+          "segment_type": "演出晚归自助入住直订",
+          "lifetime_value": 52000,
+          "repeat_stay_probability": 0.33,
+          "referral_probability": 0.21
+        },
+        "cost_data": {
+          "cost_per_lead": 26,
+          "after_hours_support_cost": 18,
+          "smart_lock_reset_risk_cost": 6,
+          "cleaning_cost": 34,
+          "estimated_gross_margin_rate": 0.52
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小红书演唱会住宿攻略收藏",
+            "微信确认最晚到店和地铁回程",
+            "小程序完成预付并提交实名信息"
+          ],
+          "last_meaningful_touch": "小程序完成预付并提交实名信息",
+          "engagement_metrics": {
+            "guide_collects": 84,
+            "wechat_response_minutes": 5
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断应建立在到店窗口、实名和自助入住链路已经锁定之上",
+        "ROI 需要把夜间支持和门锁风险计入后再判断，但整体仍应偏健康",
+        "奖励信号应指向实名确认、最晚到店时间和自助入住指引送达"
+      ],
+      "mustAvoid": [
+        "仅因为活动热度和房价上涨就直接给高 ROI",
+        "忽略夜间门锁链路和实名要求"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_medical_quiet_extension_002",
+      "label": "edge_case",
+      "scenario_tag": "recurring_medical_quiet_stay",
+      "input": {
+        "lead_assessment_or_campaign_result": "家属陪老人到市医院复诊，先订 2 晚电梯一居室，如果检查结果需要住院陪护可能再延 3 晚，重点看安静、可热饭和早晨打车是否方便，已接受首晚预付。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.31,
+          "segment_type": "陪诊复诊安静连住",
+          "lifetime_value": 118000,
+          "revisit_probability": 0.38,
+          "extension_probability": 0.44,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 22,
+          "quiet_room_opportunity_cost": 90,
+          "early_cleaning_coordination_cost": 28,
+          "refund_adjustment_risk": 70,
+          "estimated_gross_margin_rate": 0.41
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "携程问答咨询医院路线",
+            "电话确认电梯和安静边界",
+            "微信完成首晚预付并说明可能延住"
+          ],
+          "last_meaningful_touch": "微信完成首晚预付并说明可能延住"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应高于短期分，因为存在复诊和延住潜力",
+        "不能把未确定的延住天数直接算成已实现营收",
+        "奖励信号应优先指向路线说明、安静边界和延住窗口确认"
+      ],
+      "mustAvoid": [
+        "把焦虑感直接翻译成高价值",
+        "承诺绝对安静或绝对近医院而不提示边界"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_transition_longstay_003",
+      "label": "happy_path",
+      "scenario_tag": "transition_longstay_with_weekly_payment",
+      "input": {
+        "lead_assessment_or_campaign_result": "一对情侣因新房装修需要在城里过渡 18 晚，要求洗衣机、冰箱、餐桌和可做简餐，接受周结和每 4 天保洁一次，已确认入住区间和押金。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.55,
+          "segment_type": "装修过渡长住私域",
+          "lifetime_value": 186000,
+          "extension_probability": 0.47,
+          "referral_probability": 0.29
+        },
+        "cost_data": {
+          "cost_per_lead": 18,
+          "linen_replenishment_cost": 120,
+          "utilities_allowance": 260,
+          "turnover_saving": 480,
+          "estimated_gross_margin_rate": 0.46
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "老客微信转介绍",
+            "视频看房确认洗衣和做饭条件",
+            "周结和押金确认"
+          ],
+          "last_meaningful_touch": "周结和押金确认"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应显著偏高",
+        "ROI 要体现水电和保洁成本，同时也体现获客成本摊薄和周转损耗下降",
+        "奖励信号应指向完整入住区间、周结节奏和保洁频率锁定"
+      ],
+      "mustAvoid": [
+        "只因为日均房价低于周末短住就低估价值",
+        "把过渡长住当成普通散客询价"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_family_two_bed_004",
+      "label": "happy_path",
+      "scenario_tag": "family_weekend_two_bed_visit",
+      "input": {
+        "lead_assessment_or_campaign_result": "两家人周末来城里探亲，4 大 2 小订 2 晚两居室，明确需要电梯、停车位和简单热奶区，已确认成人儿童结构、到店时间和 30% 预付。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.48,
+          "segment_type": "探亲家庭多人住",
+          "lifetime_value": 92000,
+          "repeat_stay_probability": 0.26,
+          "holiday_return_probability": 0.24
+        },
+        "cost_data": {
+          "cost_per_lead": 34,
+          "extra_linen_cost": 72,
+          "parking_coordination_cost": 20,
+          "child_supply_cost": 28,
+          "estimated_gross_margin_rate": 0.45
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "美团民宿咨询两居房态",
+            "电话确认床型和电梯",
+            "微信预付并确认停车与儿童需求"
+          ],
+          "last_meaningful_touch": "微信预付并确认停车与儿童需求"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应建立在人数结构和房型适配已经清楚之上",
+        "ROI 需要扣除额外布草和停车协助后再判断，但整体仍应偏健康",
+        "奖励信号应指向床型、电梯、停车和到店协同确认"
+      ],
+      "mustAvoid": [
+        "只因总人数多就高估价值",
+        "忽略多人入住对舒适度和清洁时长的影响"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_pet_old_guest_direct_005",
+      "label": "happy_path",
+      "scenario_tag": "pet_old_guest_direct_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年住过 3 次的老客带一只中型犬回城看朋友，想订 3 晚一室一厅，接受携宠清洁费和押金，说明晚上遛狗时间并继续走微信直订。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.62,
+          "segment_type": "携宠老客直订",
+          "lifetime_value": 136000,
+          "repeat_stay_probability": 0.43,
+          "pet_referral_probability": 0.27,
+          "dispute_history": "low"
+        },
+        "cost_data": {
+          "cost_per_lead": 12,
+          "deep_clean_cost": 110,
+          "odor_control_cost": 35,
+          "deposit_handling_cost": 8,
+          "estimated_gross_margin_rate": 0.49
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "微信回访触发复住",
+            "复用上次携宠规则",
+            "确认清洁费、押金和活动边界"
+          ],
+          "last_meaningful_touch": "确认清洁费、押金和活动边界"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和长期分都应处于中高位，因为边界清楚且存在老客直订优势",
+        "ROI 需要把深度清洁和除味成本扣除后再判断",
+        "奖励信号应指向宠物信息复核、清洁费押金确认和携宠标签沉淀"
+      ],
+      "mustAvoid": [
+        "把所有携宠线索都等同为高价值",
+        "忽略清洁和邻里风险成本"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_duplicate_channel_merge_006",
+      "label": "edge_case",
+      "scenario_tag": "duplicate_channel_merge_for_same_order",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一位住客先在携程问演唱会后能不能凌晨入住，又加微信要真实视频，最后在小程序支付同一笔周末 2 晚订单，同行人数、房型和最晚到店时间完全一致。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.39,
+          "segment_type": "多渠道合并城市短住",
+          "lifetime_value": 68000,
+          "duplicate_lead_risk": "high",
+          "repeat_stay_probability": 0.25
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "ota_message": 21,
+            "wechat_followup": 9,
+            "mini_program_retargeting": 5
+          },
+          "after_hours_support_cost": 18,
+          "estimated_gross_margin_rate": 0.44
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "携程私信询问凌晨入住",
+            "微信发送真实房态视频",
+            "小程序支付押金并确认实名信息"
+          ],
+          "last_meaningful_touch": "小程序支付押金并确认实名信息",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须把它合并成一笔机会来计算价值和 ROI",
+        "奖励信号应更偏向真正推动押金和实名确认的关键触点",
+        "不能把多个入口重复记成多笔高价值线索"
+      ],
+      "mustAvoid": [
+        "让最后一个触点独占全部 credit 而忽略前置跟进成本",
+        "把同一笔订单在多个渠道重复计算 ROI"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_douyin_coupon_low_margin_007",
+      "label": "failure_case",
+      "scenario_tag": "douyin_coupon_bundle_low_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "抖音团购 499 两晚套餐在周末卖爆，含免清洁费、免费延迟退房和一份双人早餐，订单量很高但退款咨询和客服工作量也在上升。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.36,
+          "segment_type": "团购低价周末套餐",
+          "lifetime_value": 15000,
+          "direct_conversion_rate_after_package": 0.07,
+          "refund_rate": 0.14
+        },
+        "cost_data": {
+          "cost_per_lead": 40,
+          "platform_commission_rate": 0.2,
+          "breakfast_cost_per_order": 36,
+          "late_checkout_cost_per_order": 42,
+          "customer_service_cost_per_order": 24,
+          "estimated_gross_margin_rate": 0.17
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "抖音直播间领券",
+            "抖音下单",
+            "入住后没有绑定微信或二次直订"
+          ],
+          "last_meaningful_touch": "抖音下单",
+          "engagement_metrics": {
+            "orders_sold": 96,
+            "coupon_claims": 340
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把订单量和领券热度直接等同于高 ROI",
+        "短期分和 ROI 都应保持谨慎甚至偏低",
+        "奖励信号应偏向私域转化、付费升级和后续直订，而不是继续加大放量"
+      ],
+      "mustAvoid": [
+        "按 GMV 或入住率直接抬高价值",
+        "忽略平台佣金、早餐、延退和客服成本"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_influencer_free_stay_008",
+      "label": "failure_case",
+      "scenario_tag": "influencer_free_stay_without_tracking",
+      "input": {
+        "lead_assessment_or_campaign_result": "本地生活方式博主想免费住周五周六两晚两居室，要求投影、延迟退房、免费停车和拍摄协助，承诺发 3 条笔记但不接受优惠码或可追踪链接。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.12,
+          "segment_type": "达人置换试住",
+          "audience_fit_score": 0.35,
+          "direct_conversion_rate_from_previous_collabs": 0.03,
+          "lifetime_value": 8000
+        },
+        "cost_data": {
+          "room_opportunity_cost": 1600,
+          "shooting_support_cost": 120,
+          "parking_cost": 18,
+          "cleaning_cost": 48,
+          "estimated_gross_margin_rate": -0.02
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小红书私信求合作",
+            "索要免费清单",
+            "拒绝提供可追踪归因方式"
+          ],
+          "last_meaningful_touch": "拒绝提供可追踪归因方式",
+          "engagement_metrics": {
+            "followers": 96000,
+            "average_likes": 2600
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和 ROI 都应偏低或高度谨慎",
+        "不能把粉丝量和点赞热度直接当成商业价值",
+        "如果存在任何奖励信号，也应转向淡季档期、可追踪归因和清晰转化条件"
+      ],
+      "mustAvoid": [
+        "因为曝光听起来很大就高估价值",
+        "忽略周末热门房型机会成本和无法归因的风险"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_old_guest_reactivation_009",
+      "label": "happy_path",
+      "scenario_tag": "old_guest_private_domain_reactivation",
+      "input": {
+        "lead_assessment_or_campaign_result": "去年住过 4 次的老客在微信回流活动后，直接预订未来 6 周里的两次周中 3 晚住宿，复用了上次的楼层偏好、门锁方式和晚到自助入住习惯。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.67,
+          "segment_type": "老客私域回流直订",
+          "lifetime_value": 210000,
+          "direct_booking_rate_after_reactivation": 0.74,
+          "referral_probability": 0.32,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 6,
+          "reactivation_message_cost": 2,
+          "saved_channel_commission_rate": 0.18,
+          "support_cost": 10,
+          "estimated_gross_margin_rate": 0.59
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信回流消息",
+            "老客直接回复可住日期",
+            "确认两次入住和历史偏好复用"
+          ],
+          "last_meaningful_touch": "确认两次入住和历史偏好复用"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 应明显高于普通平台新客",
+        "长期分应偏高，体现直订资产回流和后续转介绍潜力",
+        "奖励信号应指向历史偏好复用、重复入住锁定和私域沉淀"
+      ],
+      "mustAvoid": [
+        "把老客回流视作普通折扣订单",
+        "忽略节省的平台佣金和解释成本"
+      ]
+    },
+    {
+      "id": "abacus_city_homestay_self_checkin_failure_recovery_010",
+      "label": "failure_case",
+      "scenario_tag": "self_checkin_failure_service_recovery",
+      "input": {
+        "lead_assessment_or_campaign_result": "住客到店后因密码锁失灵和楼道噪音投诉，要求先解决换房或退款，再决定是否继续住满剩余 2 晚，当前情绪明显不满。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.41,
+          "segment_type": "自助入住故障修复",
+          "lifetime_value": 76000,
+          "repeat_stay_probability_if_recovered": 0.22,
+          "negative_review_spread_risk": "high"
+        },
+        "cost_data": {
+          "cost_per_lead": 8,
+          "emergency_locksmith_cost": 120,
+          "compensation_reserve": 260,
+          "refund_exposure": 680,
+          "brand_risk_reserve": 300,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序直订",
+            "到店后反馈密码锁打不开",
+            "管家提出换房或退款方案"
+          ],
+          "last_meaningful_touch": "管家提出换房或退款方案"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应明显下调并转向止损判断",
+        "长期价值不能直接归零，但必须建立在修复成功的前提上",
+        "奖励信号应指向经理介入、证据留存、换房或退款方案与回访闭环"
+      ],
+      "mustAvoid": [
+        "在投诉处理中继续硬推加购或续住",
+        "因为客人历史价值不低就忽视当前履约失败风险"
+      ]
+    }
+  ]
+}

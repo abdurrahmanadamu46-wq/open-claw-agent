@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "problem_route_clarity",
+      "feature_name": "核心问题路线清晰度",
+      "metric": "route_quality",
+      "weight": 0.16,
+      "scoring_rule": "5 分：已明确唯一主问题路线，如黑头闭口、敏感修护或节前急救；3 分：有 2 条候选路线但优先级可判断；1 分：所有项目都想一起推。",
+      "positive_signals": [
+        "主问题与咨询证据一致",
+        "路线有明确人群和场景",
+        "主线和备选线分层清楚"
+      ],
+      "negative_signals": [
+        "同时推所有项目",
+        "项目很多但问题不清",
+        "主线和证据错位"
+      ],
+      "route_guidance": "问题越清晰，越适合集中内容和预算。"
+    },
+    {
+      "id": "trust_proof_density",
+      "feature_name": "信任证明密度",
+      "metric": "route_quality",
+      "weight": 0.15,
+      "scoring_rule": "5 分：路线清楚包含流程透明、环境卫生和边界说明；3 分：只有部分信任证明；1 分：主要依赖夸张效果图和低价。",
+      "positive_signals": [
+        "流程与环境证据充分",
+        "边界说明清楚",
+        "素材真实可验证"
+      ],
+      "negative_signals": [
+        "全靠前后对比",
+        "缺真实流程",
+        "忽略卫生与安全感"
+      ],
+      "route_guidance": "对美容院来说，信任证明通常比低价更决定预约质量。"
+    },
+    {
+      "id": "first_visit_vs_package_separation",
+      "feature_name": "首次体验与套卡承接分离度",
+      "metric": "conversion_safety",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首次体验、复访和套卡成交的目标与动作完全拆开；3 分：大体拆开但仍有混用；1 分：所有内容都在同一轮里推高客单。",
+      "positive_signals": [
+        "体验卡目标明确是到店和建立信任",
+        "复访节点独立设计",
+        "高客单承接放在后链路"
+      ],
+      "negative_signals": [
+        "体验卡文案直接卖大卡",
+        "评论区就开始强推疗程",
+        "承接节奏过重"
+      ],
+      "route_guidance": "分离得越清楚，越能降低反感和退款风险。"
+    },
+    {
+      "id": "capacity_alignment",
+      "feature_name": "承接能力匹配度",
+      "metric": "execution_feasibility",
+      "weight": 0.14,
+      "scoring_rule": "5 分：预算、预约时段、房间、技师和单客时长互相匹配；3 分：略有挤压但可调整；1 分：在承接不足时仍然计划大促放量。",
+      "positive_signals": [
+        "有高峰时段控制",
+        "预约窗口清楚",
+        "技师与房间能承接"
+      ],
+      "negative_signals": [
+        "只看咨询量不看预约能力",
+        "高峰满载还继续冲量",
+        "服务时长被过度压缩"
+      ],
+      "route_guidance": "执行能力越稳，路线越值得放量。"
+    },
+    {
+      "id": "scenario_specificity",
+      "feature_name": "场景特异性",
+      "metric": "route_quality",
+      "weight": 0.13,
+      "scoring_rule": "5 分：路线清楚区分节前急救、日常管理、午休快护理和老客复访；3 分：场景有区分但仍有混用；1 分：所有人群只用一套套路。",
+      "positive_signals": [
+        "节前和日常路线分开",
+        "写字楼和社区路线不同",
+        "老客与新客承接不同"
+      ],
+      "negative_signals": [
+        "所有场景都讲同一句话",
+        "没有区分预约窗口",
+        "无视消费动机差异"
+      ],
+      "route_guidance": "场景越具体，越容易做出高相关预约链路。"
+    },
+    {
+      "id": "repurchase_path_strength",
+      "feature_name": "复购路径强度",
+      "metric": "long_term_value",
+      "weight": 0.14,
+      "scoring_rule": "5 分：复访提醒、换季提醒和会员续卡都有清晰路径；3 分：只做单次提醒；1 分：完全靠新客流量续命。",
+      "positive_signals": [
+        "复访周期明确",
+        "老客分层清楚",
+        "换季或节前提醒自然"
+      ],
+      "negative_signals": [
+        "老客没有回访逻辑",
+        "只会打折续卡",
+        "没有历史记录承接"
+      ],
+      "route_guidance": "老客路径越强，路线的长期 ROI 越健康。"
+    }
+  ]
+}

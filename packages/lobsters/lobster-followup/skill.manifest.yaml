@@ -1,0 +1,23 @@
+id: followup_multi_touch_ops
+lobster_id: followup
+name: 多触点跟进
+description: "生成跟进 SOP、组织多触点推进和沉默客户唤醒，承接成交前后的持续沟通。"
+trigger_keywords:
+  - 跟进
+  - SOP
+  - 唤醒
+  - 多触点
+  - 回访
+allowed_tools:
+  - followup_store
+  - notification_center
+  - memory_read
+industry_tags: []
+priority: medium
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 7000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

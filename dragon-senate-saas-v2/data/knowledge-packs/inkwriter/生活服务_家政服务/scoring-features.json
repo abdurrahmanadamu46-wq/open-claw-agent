@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"housekeeping_score_scene_specificity","title":"场景指向清晰度","description":"高分文案能在前两句就让用户看见明确场景，例如节前深清、入住开荒、周保洁和退租保洁，而不是只说家政和优惠。","examples":["高分：开头直接点出节前深清或入住开荒。 ","低分：一开始只有低价和爆款。 "],"priority":"high"},
+  {"id":"housekeeping_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给阿姨、工具和服务边界，让用户感到门店不会乱夸口。","examples":["高分：先写场景和边界，再写价格。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+  {"id":"housekeeping_score_scope_clarity","title":"范围清晰度","description":"高分文案会把房型、面积和重点区域拆开，让用户快速判断自己属于哪一档。","examples":["高分：两居深清、三居开荒分开说。 ","低分：所有房型混写。 "],"priority":"medium"},
+  {"id":"housekeeping_score_cta_quality","title":"CTA 收事实能力","description":"高分 CTA 会收集房型、时间、门店和加项，不只是催下单。","examples":["高分：先把房型和想约时间发我。 ","低分：直接私聊下单。 "],"priority":"high"},
+  {"id":"housekeeping_score_window_fit","title":"节点适配度","description":"文案是否自然承接节前、入住、退租和周末来客等时间窗口。","examples":["高分：节前深清写时效但不制造恐慌。 ","低分：全年都像节前抢单。 "],"priority":"medium"},
+  {"id":"housekeeping_score_repurchase_voice","title":"复购语气自然度","description":"周期保洁和补做类文案越像真实提醒，越容易形成高分。","examples":["高分：承接上次服务和这次补做。 ","低分：把熟客也当冷流量重新轰炸。 "],"priority":"medium"}
+]}

@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lobsterpool.local/schemas/abacus/value-score-card.schema.json",
+  "title": "ValueScoreCard Schema",
+  "type": "object",
+  "required": [
+    "goal",
+    "assumptions",
+    "evidence",
+    "confidence",
+    "riskLevel",
+    "nextAction",
+    "short_term_score",
+    "long_term_score",
+    "roi_estimate",
+    "reward_signal"
+  ],
+  "properties": {
+    "goal": {
+      "type": "string"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "riskLevel": {
+      "type": "string"
+    },
+    "nextAction": {
+      "type": "string"
+    },
+    "short_term_score": {
+      "type": "string"
+    },
+    "long_term_score": {
+      "type": "string"
+    },
+    "roi_estimate": {
+      "type": "string"
+    },
+    "reward_signal": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

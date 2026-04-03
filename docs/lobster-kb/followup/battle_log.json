@@ -1,0 +1,28 @@
+{
+  "meta": { "lobster": "followup", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "flp_battle_001",
+      "type": "failure",
+      "date": "2026-03-15",
+      "skill_ref": "flp_open_001",
+      "description": "收到热线索后第2天才发出第一条消息（超过24小时），用户已经找到竞品，无法挽回",
+      "root_cause": "当天任务积压，热线索没有被优先处理",
+      "action_taken": "热线索（4分+）收到后设立6小时倒计时提醒，超时未发出第一条消息必须上报commander",
+      "status": "已修复",
+      "verified_fixed": true
+    },
+    {
+      "log_id": "flp_battle_002",
+      "type": "failure",
+      "date": "2026-02-28",
+      "skill_ref": "flp_cadence_001",
+      "description": "连续3天每天向同一用户发消息（内容不同），用户第3天拉黑，线索彻底丢失",
+      "root_cause": "误以为'内容不同就不算骚扰'，忽视了频率问题",
+      "action_taken": "明确规则：无论内容是否不同，同一用户48小时内最多发1条，超过1条必须有commander审批",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

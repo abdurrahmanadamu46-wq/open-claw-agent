@@ -1,0 +1,118 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "complete_brief_high_value_hook",
+      "hook_name": "完整项目简报钩子",
+      "trigger_pattern": "客户一次性给出尺寸、现场图、预算区间、项目地址和目标节点。",
+      "value_hypothesis": "这类门楼线索通常已经过内部初筛，更接近可勘测、可报价、可进入排期判断的状态。",
+      "short_term_score_hint": "直接上调到高短期分候选，前提是预算、尺寸和现场条件之间没有明显冲突。",
+      "long_term_score_hint": "如果客户属于厂区、园区、景区、学校等高复用场景，可再叠加中等长期分。",
+      "roi_estimate_hint": "把勘测和首版方案成本算进去后通常仍有较好 ROI，因为后续无效沟通更少。",
+      "reward_signal": "奖励 5 分钟内回拨、当天锁勘测和补齐决策链信息的动作。",
+      "caution": "如果尺寸只是口头估算而现场约束不明，不能把它当成精确报价线索。"
+    },
+    {
+      "id": "survey_booking_hook",
+      "hook_name": "勘测预约钩子",
+      "trigger_pattern": "客户愿意在 24 小时内安排现场勘测、远程视频踏勘或线下看现场。",
+      "value_hypothesis": "对门楼项目而言，愿意走到勘测节点意味着采购意愿明显高于普通比价咨询。",
+      "short_term_score_hint": "短期分应明显上调，因为线索已从信息获取转向实质推进。",
+      "long_term_score_hint": "若勘测同时涉及多个点位或多个入口，长期分也应同步提高。",
+      "roi_estimate_hint": "即便勘测有成本，只要能换来准确报价和更高成交率，ROI 往往优于反复线上空聊。",
+      "reward_signal": "奖励优先完成勘测预约、回写现场限制和推动报价前置条件明确的动作。",
+      "caution": "勘测意愿要和联系人权限、现场开放度一起判断，避免把随口答应当成真实承诺。"
+    },
+    {
+      "id": "multi_site_cluster_hook",
+      "hook_name": "多点位复制钩子",
+      "trigger_pattern": "客户提到一个主体下有多个厂区、多个景区节点、多个园区入口或连锁项目。",
+      "value_hypothesis": "首单可能只是试点，但只要打通一单，后续批量复制会显著抬高长期价值。",
+      "short_term_score_hint": "短期分可以先保持中等，不需要因为首单不快就直接降级。",
+      "long_term_score_hint": "长期分应强上调，尤其适用于可标准化模板和区域复制的门楼项目。",
+      "roi_estimate_hint": "可以接受略高的前期方案成本，因为首单拿下后边际获客成本会下降。",
+      "reward_signal": "奖励拿到组织结构、试点站点、后续点位数量和统一预算逻辑的信息。",
+      "caution": "必须确认交付半径、安装能力和模板可复制性，不能空想批量价值。"
+    },
+    {
+      "id": "reactivation_asset_reuse_hook",
+      "hook_name": "老客复购与资产复用钩子",
+      "trigger_pattern": "线索来自 CRM 重激活、老客户转介绍或历史项目延伸，且旧图纸、旧尺寸、旧报价仍可复用。",
+      "value_hypothesis": "这类门楼项目获客成本低、信任门槛低、设计复用率高，通常是 Abacus 应重点加权的 ROI 型机会。",
+      "short_term_score_hint": "若只是微调颜色、字牌或材质，短期分可高于普通新线索。",
+      "long_term_score_hint": "老客往往带来追加项目和转介绍，长期分应至少维持中高水平。",
+      "roi_estimate_hint": "把历史资产复用节省的方案和沟通成本显式体现在 ROI 里。",
+      "reward_signal": "奖励快速调档、复核新旧差异、调用历史报价模板和推进复购确认的动作。",
+      "caution": "若现场已大改或基础条件不同，不能机械沿用旧方案。"
+    },
+    {
+      "id": "design_fee_or_deposit_hook",
+      "hook_name": "设计费或定金承诺钩子",
+      "trigger_pattern": "客户愿意支付设计费、勘测费、锁产定金或先确认合同版本。",
+      "value_hypothesis": "付费意愿是比“我很急”“我很有意向”更强的真实商业信号。",
+      "short_term_score_hint": "可大幅上调短期分，通常应进入优先跟进和优先报价通道。",
+      "long_term_score_hint": "若客户主体本身属于高复购群体，长期分也应同步提高。",
+      "roi_estimate_hint": "有前置付费的线索更值得投入设计和工程前置资源，ROI 置信度更高。",
+      "reward_signal": "奖励推动设计费、定金、报价确认和合同节点推进的动作。",
+      "caution": "不能把“先发合同看看”当成已支付承诺，支付行为和浏览行为要严格区分。"
+    },
+    {
+      "id": "approval_assistance_hook",
+      "hook_name": "审批配合需求钩子",
+      "trigger_pattern": "客户频繁询问城管、消防、物业、进场证、验收配合或施工许可边界。",
+      "value_hypothesis": "这类项目短期未必快，但通常预算更正式、决策更严肃、失败成本更高。",
+      "short_term_score_hint": "短期分只宜给中等，除非审批资料已清晰且联系人权限明确。",
+      "long_term_score_hint": "如果客户主体优质、项目示范性强、后续可复制，长期分可以上调。",
+      "roi_estimate_hint": "需要把多轮改稿、合规沟通和等待周期算入 ROI，不宜乐观估算。",
+      "reward_signal": "奖励补齐审批清单、确认责任边界、沉淀合规沟通要点的动作。",
+      "caution": "绝不能因为客户担心审批就反向鼓励“包审批包验收”式承诺。"
+    },
+    {
+      "id": "opening_deadline_hook",
+      "hook_name": "开业与验收节点钩子",
+      "trigger_pattern": "客户提到节庆开业、领导检查、招投标截止、开园启用或节前亮相等硬日期。",
+      "value_hypothesis": "硬节点会放大采购动力，但只有在排产、勘测和现场条件都可执行时，才是真正的高短期价值。",
+      "short_term_score_hint": "时间节点明确且可倒排时上调；只有焦虑情绪、没有资料时不应虚高。",
+      "long_term_score_hint": "急单本身不一定有高长期分，除非客户主体还能带来后续项目或标杆案例。",
+      "roi_estimate_hint": "必须扣除加急物流、夜间施工、备用班组和潜在返工成本。",
+      "reward_signal": "奖励先做可行性倒排、切标准化方案、及时暴露 stop-loss 条件的动作。",
+      "caution": "避免把“客户很着急”误判为“项目很值钱”。"
+    },
+    {
+      "id": "cross_region_delivery_hook",
+      "hook_name": "异地交付边界钩子",
+      "trigger_pattern": "项目来自跨市、跨省甚至高风、高腐蚀环境区域，且要求运输、吊装和现场安装全包。",
+      "value_hypothesis": "这类项目单笔金额可能大，但高成本、高协同和高售后风险会显著改变真实价值。",
+      "short_term_score_hint": "客户热度高也只能先给中等候选，必须结合交付半径和资源可达性评估。",
+      "long_term_score_hint": "如果该区域是战略市场且具备落地基础，可保留中等长期分；否则不应高估。",
+      "roi_estimate_hint": "要显式加入运输、吊装、驻场安装、售后准备金和材料适配成本。",
+      "reward_signal": "奖励守住毛利底线、明确交付边界、争取定金或分阶段签约的动作。",
+      "caution": "不能因为合同额高就自动高分，也不能默认“全国都能做”。"
+    },
+    {
+      "id": "vanity_engagement_trap_hook",
+      "hook_name": "高互动低资格陷阱钩子",
+      "trigger_pattern": "某条效果图或案例视频爆量，但私信、表单和现场资料转化很弱。",
+      "value_hypothesis": "这说明内容吸引了围观和审美兴趣，不等于吸引了真实门楼采购需求。",
+      "short_term_score_hint": "短期分要压低，除非出现了尺寸、地址、勘测或预算等强业务行为。",
+      "long_term_score_hint": "长期分只保留给内容学习和人群洞察，不直接给销售资源高优先级。",
+      "roi_estimate_hint": "高曝光不能直接折算线索 ROI，应和实际可推进项目分开核算。",
+      "reward_signal": "奖励把围观流量转成表单、私信、电话或现场图提交的动作。",
+      "caution": "避免用评论数、点赞数替代线索质量。"
+    },
+    {
+      "id": "budget_mismatch_hook",
+      "hook_name": "预算错配降级钩子",
+      "trigger_pattern": "客户想做大跨度、高复杂度门楼，但预算只够门头翻新或标准款水平。",
+      "value_hypothesis": "门楼行业里预算错配会快速吞噬报价、设计和沟通资源，是典型的高噪声低价值场景。",
+      "short_term_score_hint": "短期分应主动下调，除非客户接受缩范围、分阶段或标准化替代方案。",
+      "long_term_score_hint": "如果客户愿意调整目标或后续有升级空间，长期分可以保留低到中等；否则维持低位。",
+      "roi_estimate_hint": "过度投入深定制方案通常会让 ROI 快速转负，应优先切到低成本判断路径。",
+      "reward_signal": "奖励主动收缩范围、改成预算带沟通、推动客户确认取舍的动作。",
+      "caution": "不要为了保住表面意向，把不健康预算硬算成高价值机会。"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "report_id": "l1-d899c9a30ec4",
+  "source_entry_id": "bb04c60a-a5d0-4760-ab5b-122606d84b3d:summarize",
+  "lobster_id": "radar",
+  "task_summary": "STATUS: done\nSUMMARY: ok",
+  "decision": "parse_failed",
+  "outcome": "unknown",
+  "next_steps": [],
+  "key_entities": [],
+  "metrics": {},
+  "tenant_id": "tenant-a",
+  "created_at": "2026-04-02T18:10:47.021849+00:00",
+  "token_count": 4,
+  "source_token_count": 112,
+  "promoted_to_l2": false
+}

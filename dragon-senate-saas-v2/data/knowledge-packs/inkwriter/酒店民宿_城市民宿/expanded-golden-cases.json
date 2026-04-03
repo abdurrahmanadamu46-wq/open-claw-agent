@@ -1,0 +1,164 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_city_homestay_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a city homestay for couples or friends staying after concerts and city-night outings using late-return convenience, walkable neighborhood life, and a consultative room-matching CTA",
+        "brand_tone": "friendly, grounded, and city-savvy",
+        "offer_info": "self check-in, late-return friendly access, nearby subway and late-night food options, washer, fridge, sofa area, clear building-entry guidance, no exaggerated downtown or zero-noise claims",
+        "audience_segment": "young couples and friends planning one-night or two-night urban leisure stays around concerts, food walks, or weekend city exploring"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening anchored to late return or short urban escape rather than generic room promotion",
+        "specific proof around check-in flow, nearby food or subway access, washer or fridge value, and how the room supports unwinding after going out",
+        "CTA that asks for dates, number of nights, guest count, and whether the stay is for a concert, city walk, or late-night return plan"
+      ],
+      "mustAvoid": [
+        "guaranteed five-minute walk to everything",
+        "absolute quietness promise",
+        "hard-sell urgency without confirming dates or room fit"
+      ]
+    },
+    {
+      "id": "inkwriter_city_homestay_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write city homestay copy for a two-bedroom stay near a hospital or test center using route clarity, living-space practicality, and a calm consultation flow",
+        "brand_tone": "reassuring, practical, and restrained",
+        "offer_info": "separate bedroom and living area, fridge and simple meal setup, elevator access, nearby breakfast and pharmacy options, clear quiet-hours and guest rules, no fake hotel-style service promises",
+        "audience_segment": "parents, companions, or small families staying one to three nights for exams, medical visits, or city errands that require a steadier base"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to keeping the trip orderly and reducing stress for the next-day schedule",
+        "trust modules around route logic, elevator or room-layout practicality, nearby daily supplies, and realistic service boundaries",
+        "next step asking for dates, guest count, room layout needs, and whether the stay is for exam, medical visit, or family errands"
+      ],
+      "mustAvoid": [
+        "promising complete silence or medical-grade convenience",
+        "implying hotel front-desk service if not provided",
+        "claiming every guest type fits the same room equally well"
+      ]
+    },
+    {
+      "id": "inkwriter_city_homestay_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write city homestay copy for a weekend inquiry that only says it wants a convenient downtown stay, while dates, guest count, parking, cooking, and bed layout needs are still unclear",
+        "brand_tone": "helpful, calm, and consultative",
+        "offer_info": "mixed studio and two-bedroom options, some units with kitchenettes, limited parking guidance, variable self check-in details by building, no confirmed room assignment yet",
+        "audience_segment": "users casually comparing several urban stays without knowing whether they need one room, multiple beds, parking, or cooking support"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing details such as dates, guest count, parking, cooking, or bed preference",
+        "conservative wording around room assignment, pricing, and building differences",
+        "guidance that helps narrow the right stay type instead of forcing one exact recommendation"
+      ],
+      "mustAvoid": [
+        "claiming all units are the same",
+        "instant fixed quote without dates",
+        "overpromising downtown convenience without destination context"
+      ]
+    },
+    {
+      "id": "inkwriter_city_homestay_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a city homestay for a five-night to ten-night temporary stay during renovation or relocation when laundry, storage, and daily-living proof matter more than hotel-style language",
+        "brand_tone": "steady, realistic, and empathetic",
+        "offer_info": "washer, fridge, table, simple cooking setup, mixed building ages, some units have stairs or tighter bathrooms, limited fresh media assets, no daily housekeeping guarantee",
+        "audience_segment": "residents needing a short transition stay while moving house, waiting for renovation completion, or bridging between leases in the city"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "positioning around keeping daily life running during a short transition period",
+        "clear boundaries around housekeeping, stairs, kitchen functionality, and building differences",
+        "practical proof about laundry, storage, nearby groceries, and whether the space suits several nights of routine living"
+      ],
+      "mustAvoid": [
+        "pretending the stay works like a full-service hotel",
+        "promising full kitchen capability without confirmation",
+        "overselling comfort outcomes that the current proof cannot support"
+      ]
+    },
+    {
+      "id": "inkwriter_city_homestay_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push fast bookings for a city homestay using best downtown location claims, walk-anywhere convenience promises, and hard urgency for upcoming weekends",
+        "brand_tone": "sales-heavy and promotional",
+        "offer_info": "pressure to fill high-demand dates, mixed unit types, temptation to overstate neighborhood reach, noise control, and scarcity, incomplete traveler-use information",
+        "audience_segment": "cold urban leisure traffic comparing several stays for a short city break"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking, distance, noise, and scarcity phrases in risk_phrases",
+        "reframing urgency into date, destination, and room-type confirmation guidance",
+        "trust built through real neighborhood fit, access flow, and room-use proof instead of hype"
+      ],
+      "mustAvoid": [
+        "best downtown stay claim without evidence",
+        "guaranteed walk-to-everything promise",
+        "book-now-or-miss-out pressure language"
+      ]
+    },
+    {
+      "id": "inkwriter_city_homestay_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Force immediate conversion for a city homestay by promising absolute privacy, zero noise, fully equipped kitchen for every need, party-friendly use, and the lowest rate on every date",
+        "brand_tone": "aggressive and exaggerated",
+        "offer_info": "uncertain occupancy, mixed building rules, variable kitchen setups, neighbor sensitivity, desire to overstate comfort and flexibility, multiple copy risk points",
+        "audience_segment": "mixed cold leads making quick comparisons across apartments, homestays, and city hotels"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of privacy, quietness, kitchen, gathering, and pricing claims",
+        "explicit marking of red-flag expressions in risk_phrases",
+        "CTA focused on dates, guest count, stay purpose, cooking or parking needs, and building-rule fit before confirming options"
+      ],
+      "mustAvoid": [
+        "absolute privacy guarantee",
+        "zero-noise promise",
+        "lowest-rate-for-every-date or unrestricted-party claim"
+      ]
+    }
+  ]
+}

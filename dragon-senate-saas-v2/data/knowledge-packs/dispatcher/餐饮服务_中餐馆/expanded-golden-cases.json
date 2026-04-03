@@ -1,0 +1,304 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_chinese_restaurant_private_room_birthday_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条周六晚 12 人生日宴包间询单转成可执行的订座、定金、菜单确认和备菜计划",
+        "routing_context": "客户已说明要包间、儿童座椅和无花生菜品，希望先锁定 19:00 档期，门店仍有 1 个包间空档",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "payment_gateway": "healthy",
+          "kitchen_scheduler": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "包间锁定前的定金节点",
+        "过敏原和儿童座椅备注回写",
+        "包间不可用时的候补或散台拼接 fallback"
+      ],
+      "mustAvoid": [
+        "未收定金就长期锁死包间",
+        "忽略无花生要求直接下发后厨"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_lunch_delivery_peak_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在工作日午高峰下发一批写字楼外卖订单的稳定履约计划",
+        "routing_context": "11:40 开始订单快速增长，当前骑手运力正常但后厨炒锅档口接近满载，商圈电梯午间拥堵明显",
+        "integration_state": {
+          "delivery_platform": "healthy",
+          "rider_dispatch": "healthy",
+          "kitchen_display": "healthy",
+          "self_pickup_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "高峰限流或承诺时间拉长",
+        "后厨负荷和配送半径依赖",
+        "必要时切换自提或分批出餐的 fallback"
+      ],
+      "mustAvoid": [
+        "按平峰时长继续承诺 30 分钟必达",
+        "只顾接单不检查后厨档口负荷"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_replay_after_platform_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放午市因平台故障中断的外卖履约流程，并避免重复出单",
+        "routing_context": "平台在支付成功后未回传出单状态，现已恢复，门店需要确认哪些订单要继续配送、哪些已改自提",
+        "integration_state": {
+          "delivery_platform": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号去重后再 replay",
+        "对已改自提订单保持新状态而不是重新派骑手",
+        "顾客通知和门店补录路线"
+      ],
+      "mustAvoid": [
+        "平台恢复后直接整批重新出单",
+        "不校验支付和履约状态就重复联系顾客"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_dinner_waitlist_overflow_004",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "把周五晚散台爆满后的 walk-in 客流转成可控的等位与回流计划",
+        "routing_context": "门店 18:30 起散台满座，当前已有 14 组等位，仍有顾客持续到店询位，包间也全部占满",
+        "integration_state": {
+          "queue_manager": "healthy",
+          "sms_gateway": "healthy",
+          "reservation_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "等位队列和预计等待时间节点",
+        "短信回流或错峰到店通知",
+        "停止继续给出模糊的马上有位承诺"
+      ],
+      "mustAvoid": [
+        "满台状态下继续确认新散台入座",
+        "没有候补和通知机制就让顾客原地空等"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_allergy_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带严重过敏备注的家庭聚餐预订，并确保后厨执行安全",
+        "routing_context": "客户预订 6 人晚餐，备注对花生和芝麻严重过敏，希望部分菜品少盐，且有一位老人同行",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "front_desk": "healthy",
+          "kitchen_display": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前厅人工确认过敏和少盐要求",
+        "后厨备注回写与复核节点",
+        "如无法完全规避则给出替代菜品 fallback"
+      ],
+      "mustAvoid": [
+        "把备注原样扔给后厨后不再确认",
+        "对交叉污染风险做绝对化承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_live_seafood_stock_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市前处理一笔点名招牌活鱼和蟹类的大桌预订，但当日活鲜库存未锁定",
+        "routing_context": "客户想要 8 人商务宴请，要求一定有活鱼和蟹，当前库存系统只显示低库存，采购补货能否赶上尚不确定",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "procurement_channel": "degraded",
+          "reservation_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "库存确认作为前置节点",
+        "库存不足时的替代菜单或改期 fallback",
+        "禁止在原料未锁定前做绝对菜品承诺"
+      ],
+      "mustAvoid": [
+        "先确认整套菜单再临时通知缺货",
+        "无视采购不确定性继续锁定高规格宴席承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_holiday_promo_waiting_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进节假日双人套餐上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店想在清明小长假前上线新套餐，直播间素材已备好，但价格和赠饮规则还在等待负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "delivery_platform": "healthy",
+          "cashier_system": "healthy",
+          "marketing_scheduler": "healthy"
+        },
+        "approval_state": "waiting_promo_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许做内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶节假日窗口先上架再补审批",
+        "把未确认价格直接同步到前厅和平台"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_food_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似食品安全投诉，既要保护顾客沟通也要控制门店风险扩散",
+        "routing_context": "顾客反映昨晚外卖中的凉菜有异味并伴随腹泻，社交平台上已发帖，门店需要立即决定是否停售相关批次",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "auto_compensation": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关批次排查或停售决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查批次就继续正常推广同款菜品"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_banquet_without_deposit_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认婚宴但迟迟未付定金的高价值订单，避免资源被长期占用",
+        "routing_context": "客户希望先锁 10 桌和最大包间，称两天后财务转账，目前还要求门店提前采购部分高价海鲜",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "payment_gateway": "healthy",
+          "procurement_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放资源节点",
+        "高价食材采购必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收定金就正式锁死 10 桌资源",
+        "为了成交先采购不可退高价食材"
+      ]
+    },
+    {
+      "id": "dispatcher_chinese_restaurant_storm_delivery_provider_flap_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在暴雨和平台运力抖动下为晚市外卖建立止损执行计划",
+        "routing_context": "18:00 后暴雨升级，平台骑手接单失败率上升，门店仍不断收到远距离订单，当前没有可靠的跨区自配送资源",
+        "integration_state": {
+          "delivery_platform": "unstable",
+          "rider_dispatch": "degraded",
+          "self_delivery": "limited",
+          "weather_api": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "配送半径收缩或暂停远单的 stop-loss",
+        "改自提或延后送达的顾客通知路径",
+        "无法可靠履约时的主动降级策略"
+      ],
+      "mustAvoid": [
+        "在没有可靠运力时继续承诺正常时效",
+        "没有替代路线还盲目接受所有远距离订单"
+      ]
+    }
+  ]
+}

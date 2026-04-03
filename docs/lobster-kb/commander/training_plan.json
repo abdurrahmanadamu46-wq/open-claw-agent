@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "lobster": "commander",
+    "name": "陈",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "cmd_battle_001：龙虾能力评估只执行1次，方法论未验证",
+    "工作流首次成功率82%，距离85%目标有差距，根因未找到"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "CMD-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "把已知的最近一次工作流失败（首次成功率不达标的那次）彻底复盘",
+      "deliverable": "在battle_log.json中新增1条记录：任务ID/失败类型/根因/修复动作/验证方法",
+      "pass_criteria": [
+        "根因必须具体到'哪个步骤/哪个接口出了什么问题'，不能写'协作问题'这种模糊描述",
+        "修复动作必须是一句具体的规则，不是'下次注意'"
+      ],
+      "fail_action": "30分钟内重做，不进行下一个任务",
+      "collab_required": null
+    },
+    {
+      "task_id": "CMD-BOOT-002",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "设计一个完整的5步工作流降级预案：当某个龙虾无响应时，任务不能卡死",
+      "deliverable": "一个JSON格式的降级流程：触发条件 → 降级动作 → 通知对象 → 超时时限 → 兜底输出",
+      "pass_criteria": [
+        "覆盖至少3种不同的龙虾无响应场景（inkwriter/visualizer/dispatcher各1套）",
+        "每种降级路径的时限必须填写具体分钟数",
+        "兜底输出必须是可发布的（而不是'等待中'）"
+      ],
+      "fail_action": "重做，不能用'视情况而定'等模糊表述",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "CMD-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "对一个真实执行过的任务做'工作流解剖'：找出每个步骤的耗时+卡点",
+      "deliverable": "一张工作流时序表：步骤名/负责龙虾/计划耗时/实际耗时/差值/差值原因",
+      "pass_criteria": [
+        "必须是真实执行过的任务，不能是假设",
+        "时序表中所有时间字段必须填数字，不能写'未记录'",
+        "找出差值最大的1个步骤，写出这个步骤为什么慢的根因"
+      ],
+      "fail_action": "重做，必须用真实数据",
+      "collab_required": null
+    },
+    {
+      "task_id": "CMD-T002",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "和abacus联合做月度复盘：abacus给数据，commander说出本月工作流的3个最需要改的地方",
+      "deliverable": "3条改进行动：每条格式为'[问题]→[下次如何做]→[如何验证改没改'",
+      "pass_criteria": [
+        "3条改进行动必须都有abacus的数据支撑（不能只是直觉）",
+        "验证方式必须具体（如'下次同类任务的时间差减少20%'）"
+      ],
+      "fail_action": "重做，补充数据支撑",
+      "collab_required": "abacus"
+    },
+    {
+      "task_id": "CMD-T003",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "分析本月所有任务，找出哪两只龙虾配合最容易出现格式返工",
+      "deliverable": "一份配合质量报告：龙虾对/返工次数/返工原因分类/建议接口改进方案",
+      "pass_criteria": [
+        "必须基于真实任务记录，不能靠印象",
+        "必须找出≥1个导致返工的接口问题（比如'inkwriter给的格式visualizer看不懂的具体字段是哪个'）",
+        "改进方案必须具体到'谁在什么时候做什么'"
+      ],
+      "fail_action": "重做，如果缺少记录先去收集记录",
+      "collab_required": null
+    },
+    {
+      "task_id": "CMD-T004",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "设计美妆行业的'起步工作流'：从接到客户需求到第一条内容发布，每步谁做什么",
+      "deliverable": "一个YAML格式的工作流：steps/assignee/input/output/time_limit/fallback",
+      "pass_criteria": [
+        "覆盖全部关键步骤（情报→策略→文案→视觉→发布），不能跳步骤",
+        "每个步骤都有具体的time_limit（分钟数）",
+        "每个步骤都有fallback（上游没给时怎么继续）"
+      ],
+      "fail_action": "重做，缺少fallback的步骤不合格",
+      "collab_required": null
+    },
+    {
+      "task_id": "CMD-T005",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "和strategist对齐一次接口格式：strategist发一个真实brief，commander检查完整性并给出评分",
+      "deliverable": "一份brief评分表：5个必填字段各自是否填写/是否达标/不达标的具体原因",
+      "pass_criteria": [
+        "评分必须字段级别，不能只说'整体不错'",
+        "如果有字段不达标，必须写出'应该填什么样的内容'"
+      ],
+      "fail_action": "重做",
+      "collab_required": "strategist"
+    },
+    {
+      "task_id": "CMD-T006",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "给每只龙虾做一次'行业专精度'快速评估：哪个行业做得好，哪个行业做得差",
+      "deliverable": "一张龙虾×行业矩阵表：10只龙虾 × 5个行业，每格填：强/中/弱/未测试",
+      "pass_criteria": [
+        "评级必须有依据（哪次任务体现了强/弱），不能全写'未测试'敷衍",
+        "找出至少1个'弱'的格子，分析为什么弱、怎么补"
+      ],
+      "fail_action": "重做，'未测试'超过一半不合格",
+      "collab_required": null
+    },
+    {
+      "task_id": "CMD-T007",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "处理一个真实发生的紧急异常（或用最近一次异常作为案例）：在限定时间内给出处置方案",
+      "deliverable": "异常处置记录：事件描述/影响范围/处置动作/恢复时间/事后防范规则",
+      "pass_criteria": [
+        "处置动作必须按时间顺序排列（T+0/T+5min/T+15min做了什么）",
+        "必须有1条具体的防范规则写入skills.json"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "CMD-DRILL-001",
+      "description": "模拟真实客户任务全流程指挥（从接单到交付），commander负责全程调度",
+      "real_time_limit": "3h",
+      "sim_time": "6天（约1周）",
+      "pass_criteria": [
+        "全流程无卡死超过15分钟",
+        "最终交付物符合客户需求",
+        "发布成功，无格式错误"
+      ],
+      "evaluation": "commander自评 + abacus数据验证"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "CMD-T001到CMD-T007全部PASS（无PARTIAL）",
+      "CMD-DRILL-001 PASS ≥ 2次",
+      "连续5次真实任务工作流首次成功率≥85%",
+      "无CRITICAL FAIL记录（连续30天）",
+      "battle_log中有≥3条完整的失败→修复→验证记录"
+    ]
+  }
+}

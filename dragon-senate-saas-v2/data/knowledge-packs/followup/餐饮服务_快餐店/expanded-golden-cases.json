@@ -1,0 +1,301 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_fastfood_lunch_pickup_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_lunch_pickup_completion",
+      "input": {
+        "lead_assessment": "A 级高意向当日午市工作餐线索，客户刚在私信里回复今天 12:20 左右到店自提 2 份双拼套餐，核心诉求是快且别踩雷。",
+        "value_score_card": "short_term high; lunch conversion likelihood high; fast follow-up inside lunch window should convert",
+        "contact_history": [
+          "18 分钟前客户评论“现在点来得及吗”",
+          "9 分钟前已转入私信并补充了大致到店时间和门店偏好"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以完成午市自提预点单或下单确认为明确目标",
+        "私信里确认门店、到店时间、套餐数量、饮品和取餐方式等关键信息",
+        "不越过审批改打电话或索要站外联系方式"
+      ],
+      "mustAvoid": [
+        "直接保证到店即取或午高峰完全不用等",
+        "在未核门店承接前写成已经正式接单成功"
+      ]
+    },
+    {
+      "id": "followup_fastfood_breakfast_preorder_002",
+      "label": "happy_path",
+      "scenario_tag": "breakfast_preorder_lock",
+      "input": {
+        "lead_assessment": "B+ 级通勤早餐高意向线索，客户说明天早上 8:10 顺路带走一份早餐组合，核心诉求是不排队。",
+        "value_score_card": "short_term medium_high; breakfast window is narrow; timely follow-up should improve conversion",
+        "contact_history": [
+          "今晚客户先问过早餐套餐几点开始供应",
+          "刚补充会经过地铁口门店，但还未确认饮品和取餐方式"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重点放在早餐窗口核验和预点单锁定",
+        "确认门店、到店时间、早餐组合、饮品和自提方式",
+        "语气围绕省时间和顺路带走，而不是纯催付款"
+      ],
+      "mustAvoid": [
+        "把早餐窗口写成全天都可用",
+        "承诺明早到店绝对零等待"
+      ]
+    },
+    {
+      "id": "followup_fastfood_group_meal_003",
+      "label": "happy_path",
+      "scenario_tag": "office_group_meal_qualification",
+      "input": {
+        "lead_assessment": "A- 级办公室会议餐线索，客户明确要明天下午 15:00 左右送 18 份工作餐到写字楼，重视准时、分装和发票。",
+        "value_score_card": "short_term high; group meal value high; next best action is qualification plus prepayment path",
+        "contact_history": [
+          "昨天已问过大概价格和餐标区间",
+          "今天上午补充了份数和送达时间，但还没确认地址楼层、分装细节和预付款"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进阶段放在团餐资格确认而不是直接催全额支付",
+        "推进确认门店、地址楼层、送达时间、分装、发票需求和预付款节点",
+        "为后续锁制作与配送档期保留明确下一步"
+      ],
+      "mustAvoid": [
+        "未核产能就承诺准时送达",
+        "不问地址和规格就直接强推最高价套餐"
+      ]
+    },
+    {
+      "id": "followup_fastfood_lto_stock_004",
+      "label": "happy_path",
+      "scenario_tag": "limited_time_item_stock_verification",
+      "input": {
+        "lead_assessment": "B+ 级限时联名套餐线索，客户今晚想买 3 份儿童套餐并指定联名玩具，核心诉求是不白跑一趟。",
+        "value_score_card": "short_term medium_high; conversion likely if stock risk is handled well",
+        "contact_history": [
+          "客户刚发来联名海报截图问今晚还能不能拿到指定玩具",
+          "目前只知道想去商场店，尚未确认时间和备选方案"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在核门店、时段、库存和替代方案",
+        "若指定玩具不稳，提供换门店、改时段或改常规赠品的路径",
+        "语气以帮助客户少扑空为主"
+      ],
+      "mustAvoid": [
+        "未经核实承诺联名玩具和限时套餐一定都有",
+        "为了留单忽略库存波动继续强催下单"
+      ]
+    },
+    {
+      "id": "followup_fastfood_reactivation_member_005",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_reason",
+      "input": {
+        "lead_assessment": "沉睡但已合格的会员线索，客户两周前问过家庭晚餐套餐和下班自提方案，后来停在“我再看看”。",
+        "value_score_card": "short_term medium; long_term high; reactivation with new reason likely",
+        "contact_history": [
+          "16 天前客户咨询过 2 到 3 人家庭餐和晚高峰自提",
+          "最近无回复",
+          "门店本周新增了更适合下班带走的双人餐和会员日晚餐权益"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "带着新的家庭餐组合、会员日规则或更稳的晚餐自提窗口复联",
+        "语气轻，不默认客户仍按原时间下单",
+        "给低压力回复入口，例如只回人数、门店或是否继续考虑"
+      ],
+      "mustAvoid": [
+        "只发“还要吗”",
+        "连续两天重复追问"
+      ]
+    },
+    {
+      "id": "followup_fastfood_allergy_callback_approval_wait_006",
+      "label": "edge_case",
+      "scenario_tag": "allergy_and_callback_approval_wait",
+      "input": {
+        "lead_assessment": "高意向家长线索，客户说孩子鸡蛋过敏并要求电话说明配料与接触风险，仍有当日下单可能。",
+        "value_score_card": "high intent but safety and approval sensitive",
+        "contact_history": [
+          "客户刚留言询问某款汉堡和酱料能否做到绝对无蛋且没有交叉接触",
+          "门店内部尚未完成 outbound call 与成分安全口径审批"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "审批感知暂停",
+        "若私信允许则先收集具体限制、门店、时间和目标餐品",
+        "不做未经核实的成分安全承诺"
+      ],
+      "mustAvoid": [
+        "先打电话再补审批",
+        "承诺绝对无交叉接触、绝对安全或绝对适合儿童食用"
+      ]
+    },
+    {
+      "id": "followup_fastfood_overcontact_cooldown_007",
+      "label": "edge_case",
+      "scenario_tag": "overcontact_same_day_family_meal",
+      "input": {
+        "lead_assessment": "中高意向晚餐带走线索，客户白天问过家庭套餐但一直没继续回复，仍有转化价值。",
+        "value_score_card": "short_term medium; annoyance risk rising",
+        "contact_history": [
+          "上午 11:20 已私信询问门店和人数一次",
+          "下午 14:30 又提醒过一次",
+          "目前 4 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频",
+        "把下一次触达放到更合适的晚餐窗口或次日",
+        "给客户更低成本的回复方式，例如只回门店或人数"
+      ],
+      "mustAvoid": [
+        "当天第三次强追问",
+        "把沉默直接解读为永久拒绝并施压"
+      ]
+    },
+    {
+      "id": "followup_fastfood_bulk_prepayment_gate_008",
+      "label": "edge_case",
+      "scenario_tag": "bulk_order_prepayment_gate",
+      "input": {
+        "lead_assessment": "A 级活动大单线索，客户口头认可周五中午 30 份盒餐方向，但想今天先占档，明早再付定金。",
+        "value_score_card": "short_term high but production slot gate unresolved",
+        "contact_history": [
+          "客户已确认大致份数和活动时间",
+          "表示今天先口头定下，明天再转预付款"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进目标设为预付款或正式确认条件",
+        "说明未到预付款前只能做短时保留或待支付跟进",
+        "保留产能和物料风险提示"
+      ],
+      "mustAvoid": [
+        "承诺正式锁定第二天高峰制作档期",
+        "把口头确认等同于完成预订"
+      ]
+    },
+    {
+      "id": "followup_fastfood_service_recovery_reorder_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_reorder",
+      "input": {
+        "lead_assessment": "曾有漏餐和薯条变凉投诉但仍愿意继续沟通的老客，客户表示如果这次备注到位还愿意再下一单。",
+        "value_score_card": "trust recovery can reopen reorder probability",
+        "contact_history": [
+          "两天前客户投诉漏了一份小食且薯条偏凉",
+          "售后已完成记录并得到客户“知道了”的回复",
+          "今天客户在私信里问周末再点能不能特别备注做稳一点"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力重下单或备注确认",
+        "若涉及补偿只引用已批准内容"
+      ],
+      "mustAvoid": [
+        "跳过问题回写直接硬推大额复购",
+        "擅自追加未批准补偿"
+      ]
+    },
+    {
+      "id": "followup_fastfood_coupon_lto_boundary_010",
+      "label": "failure_case",
+      "scenario_tag": "coupon_and_lto_rules_unverified",
+      "input": {
+        "lead_assessment": "高紧急优惠线索，客户发来优惠券截图，想今晚直接用于联名限时套餐和玩具加购，但门店、时段和叠加规则都没核清。",
+        "value_score_card": "short_term medium_high; conversion possible but promise risk high",
+        "contact_history": [
+          "客户连续追问“这张券今晚能不能直接用在联名套餐上”",
+          "目前只收到截图，没有明确门店、时段和目标套餐细节"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先核门店、时段、目标套餐和优惠规则关键信息",
+        "把下一步转成适用条件确认，再决定是否推进下单",
+        "不把未验证优惠写成已可用"
+      ],
+      "mustAvoid": [
+        "一口答应所有门店、联名套餐和玩具加购都能叠券",
+        "为了留单绕开限制条件"
+      ]
+    }
+  ]
+}

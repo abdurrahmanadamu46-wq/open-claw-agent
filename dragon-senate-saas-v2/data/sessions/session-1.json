@@ -1,0 +1,13 @@
+{
+  "session_id": "session-1",
+  "peer_id": "session-1",
+  "lobster_id": "radar",
+  "tenant_id": "tenant_main",
+  "channel": "bootstrap",
+  "mode": "per-peer",
+  "messages": [],
+  "created_at": "2026-04-02T16:46:43.405001+00:00",
+  "last_active_at": "2026-04-02T16:46:43.405001+00:00",
+  "message_count": 0,
+  "metadata": {}
+}

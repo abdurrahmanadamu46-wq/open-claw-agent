@@ -1,0 +1,86 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "booking_needs_budget_time_and_need",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a car can be viewed without budget, use case, or time facts",
+        "User wants a fast answer in a public comment"
+      ],
+      "response_goal": "Keep the reply warm while turning a vague new-car inquiry into usable visit facts.",
+      "do": ["Acknowledge the wish to come quickly", "Ask for budget, main use case, preferred time, and whether this is a first visit", "Keep the next step easy enough to answer in one message"],
+      "avoid": ["Promising a specific car or policy without facts", "Sounding pushy or robotic", "Jumping straight to off-platform contact"],
+      "safe_transition": "如果你告诉我预算、主要是家用还是通勤、想来的时间，我可以先帮你把下一步收窄。",
+      "handoff_suggestion": "If the user provides budget and time facts, hand off to Catcher."
+    },
+    {
+      "id": "first_time_needs_low_pressure_guidance",
+      "priority": "high",
+      "applies_when": [
+        "User says it is their first time or sounds unsure whether the car route suits them",
+        "User is unsure what model or config route suits them"
+      ],
+      "response_goal": "Reduce uncertainty first, then guide the user toward a simple and safe visit path.",
+      "do": ["Acknowledge that uncertainty is normal", "Offer a simple way to narrow the model or budget route", "Guide toward a low-pressure next step"],
+      "avoid": ["Pushing financing immediately", "Making the user feel behind", "Turning the reply into a hard sell"],
+      "safe_transition": "第一次来看新车先看适不适合很正常，我们可以先把你最在意的点和可来的时间理清楚。",
+      "handoff_suggestion": "If the user shares direction and timing, route to Catcher."
+    },
+    {
+      "id": "deadline_driven_visit",
+      "priority": "high",
+      "applies_when": [
+        "User mentions a return-home, wedding, or replacement deadline soon",
+        "User needs a visit before a deadline"
+      ],
+      "response_goal": "Keep momentum high while collecting the exact time window and vehicle scope that decide whether the dealership can help.",
+      "do": ["Acknowledge the deadline timing", "Ask when the node is and when the user hopes to come", "Guide the next step toward a suitable slot and vehicle fit"],
+      "avoid": ["Guaranteeing all peak slots are available", "Ignoring first-visit or budget concerns", "Pushing a finance plan before the visit is scoped"],
+      "safe_transition": "如果你把提车、返乡或婚礼的时间点和最想解决的部分告诉我，会更容易判断先约哪一类看车。",
+      "handoff_suggestion": "If the user shares date and timing, hand off to Catcher."
+    },
+    {
+      "id": "price_questions_need_scope",
+      "priority": "medium",
+      "applies_when": [
+        "User asks only for price",
+        "User compares cars without use-case context"
+      ],
+      "response_goal": "Avoid empty price comparison by lightly recovering scope.",
+      "do": ["Answer lightly without sounding evasive", "Ask what budget, config direction, or use case the user is asking about", "Keep the follow-up question low-friction"],
+      "avoid": ["Dumping long inventory lists in comments", "Hiding the role of budget scope", "Forcing immediate upsell"],
+      "safe_transition": "如果你告诉我是更偏家用、通勤、SUV 还是新能源，价格回答会更准确一些。",
+      "handoff_suggestion": "If the user gives scope, route to Catcher."
+    },
+    {
+      "id": "returning_buyer_should_feel_seen",
+      "priority": "medium",
+      "applies_when": [
+        "User says they came before or wants to return",
+        "User references their last visit, test drive, or family discussion"
+      ],
+      "response_goal": "Make the user feel recognized while surfacing what they want this time.",
+      "do": ["Acknowledge the prior visit naturally", "Ask what they want to continue or solve this time", "Guide toward a smooth re-entry point"],
+      "avoid": ["Treating a returning buyer like a cold lead", "Ignoring prior context", "Jumping straight to a hard close"],
+      "safe_transition": "如果你告诉我这次更想接着看哪一类车，我们就能更自然地帮你收窄下一步。",
+      "handoff_suggestion": "If the user shares prior context, route to FollowUp or Catcher."
+    },
+    {
+      "id": "public_budget_shame_no_shame",
+      "priority": "high",
+      "applies_when": [
+        "User talks about having a limited budget or being afraid of being fooled in public",
+        "The concern feels personal or money-sensitive"
+      ],
+      "response_goal": "Protect dignity in public while still keeping the path to help open.",
+      "do": ["Reply with empathy and restraint", "Avoid repeating the user's wording harshly", "Offer a light path into a more specific next step"],
+      "avoid": ["Amplifying embarrassment", "Using shame to sell", "Turning a sensitive comment into a hard conversion script"],
+      "safe_transition": "这种担心很常见，不用急着给自己下结论。你如果愿意说下预算、场景和大概什么时间方便，我们可以先帮你看路径。",
+      "handoff_suggestion": "If the user continues with details, route to Catcher."
+    }
+  ]
+}

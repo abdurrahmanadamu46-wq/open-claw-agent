@@ -1,0 +1,13 @@
+﻿{
+  "name": "@liaoyuan/web-bridge",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix ../../web run dev",
+    "build": "npm --prefix ../../web run build",
+    "start": "npm --prefix ../../web run start",
+    "test:e2e": "npm --prefix ../../web run test:e2e:ci",
+    "up": "docker compose -f ../../docker-compose.yml up -d web",
+    "down": "docker compose -f ../../docker-compose.yml stop web",
+    "logs": "docker compose -f ../../docker-compose.yml logs -f web"
+  }
+}

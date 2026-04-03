@@ -1,0 +1,16 @@
+﻿{
+  "schema_version": "cloud_brain.run_contracts.v1",
+  "roles": [
+    { "role_id": "commander" },
+    { "role_id": "radar" },
+    { "role_id": "strategist" },
+    { "role_id": "inkwriter" },
+    { "role_id": "visualizer" },
+    { "role_id": "dispatcher" },
+    { "role_id": "echoer" },
+    { "role_id": "catcher" },
+    { "role_id": "abacus" },
+    { "role_id": "followup" },
+    { "role_id": "feedback" }
+  ]
+}

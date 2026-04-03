@@ -1,0 +1,199 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_resort_hotel_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测度假酒店在 OTA 与本地生活平台上的套餐标签、景观承诺、温泉权益和取消规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "ota_plus_local_life",
+        "competitor_watchlist": [
+          "山谷温泉度假酒店A",
+          "海岸亲子度假酒店B"
+        ],
+        "raw_signals": [
+          "携程商家后台公告要求海景房、私汤、含温泉门票、景区接驳、儿童早餐和免费升级等标签必须可验证，违规可能降权处理",
+          "美团酒店更新促销价与到店权益一致性规则，强调不得用含门票、无限次温泉和部分房型可见海等权益做误导展示",
+          "两家竞品同步把标题里的无敌海景、私汤不限次改成部分房型可见海和温泉权益以订单说明为准"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案调整",
+        "需要指出对套餐承诺、景观描述和权益展示边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略商家后台公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_resort_hotel_holiday_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现山地温泉度假酒店在长假前的亲子与连住机会窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "destination_market_plus_search",
+        "competitor_watchlist": [
+          "山谷温泉度假酒店C",
+          "森林亲子度假酒店D"
+        ],
+        "raw_signals": [
+          "景区运营方和文旅公众号连续发布长假期间缆车、夜游和温泉区延时开放安排",
+          "地图问答、OTA 评论和私信中连续出现两大一小儿童早餐、连住两晚、私汤、儿童乐园、晚餐套餐、接驳车和能否延迟退房等问题",
+          "同目的地三家竞品同步上新两晚连住含双早加温泉加亲子活动套餐"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同目的地运营安排与需求咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求窗口",
+        "把跨城爆款内容当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_resort_hotel_review_cluster_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测海滨度假酒店在周末旺季前的履约风险变化",
+        "time_window": "last_72_hours",
+        "platform_or_market_context": "ota_plus_map_reviews",
+        "competitor_watchlist": [
+          "海湾度假酒店E"
+        ],
+        "raw_signals": [
+          "过去 72 小时地图评价和 OTA 评论连续提到无边泳池关闭、温泉水温不稳、接驳班车迟到和早餐排队过长",
+          "多条亲子客公开评价提到儿童俱乐部实际未开放，且宣传中的海景房被建筑遮挡",
+          "没有新的平台规则变化，也没有出现官方景区停运公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "多平台差评聚类应被识别为高价值风险信号",
+        "需要指出这是经营交付风险而非平台规则变化",
+        "关注级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "因为没有官方公告就忽略重复客诉",
+        "把零散情绪评价和结构性聚类混为一谈"
+      ]
+    },
+    {
+      "id": "radar_resort_hotel_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测度假酒店在 OTA 平台上的补贴与流量分配变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "ota_platform",
+        "competitor_watchlist": [
+          "湖畔度假酒店F"
+        ],
+        "raw_signals": [
+          "商家群截图称下周开始没有儿童乐园或室内泳池的度假酒店会被平台降权，且免费退改资源位会全面收紧，但截图没有公告来源",
+          "未发现携程、美团酒店或飞猪商家后台的正式通知，服务商口径也互相矛盾",
+          "核心竞品的套餐标题、取消政策和详情页文案暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源传闻应被降级处理",
+        "缺少官方通知和竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断平台算法已经确认变更",
+        "把群聊截图表述成已落地政策"
+      ]
+    },
+    {
+      "id": "radar_resort_hotel_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别内陆温泉度假酒店的内容热度与真实机会差异",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "温泉度假酒店G"
+        ],
+        "raw_signals": [
+          "外地海景度假酒店短视频爆火，内容大量强调日落、出片和无边泳池打卡",
+          "本地搜索、评论和问答则集中在周末两晚温泉、室内亲子项目、老人无障碍、晚餐套餐、高铁接驳和雨天室内活动",
+          "本地竞品开始强化家庭房、私汤、全包价和延迟退房"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地同目的地需求应高于跨城审美爆款热度",
+        "需要区分内容热度与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就直接建议转向网红打卡路线",
+        "忽略本地搜索和竞品动作形成的互证"
+      ]
+    },
+    {
+      "id": "radar_resort_hotel_false_sellout_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描某目的地度假酒店是否出现爆满与涨价行情",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某目的地度假酒店全线售罄价格翻倍，只给出一段模糊大堂排队视频，没有日期和酒店定位",
+          "OTA 房态日历和地图评论量近几天基本平稳，没有出现明显订满、涨价或入住讨论激增",
+          "没有发现天气预警、道路管制、交通增班或景区运营变化与之互证"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有房态、评论和外部事件互证时不能判定为市场已变化"
+      ],
+      "mustAvoid": [
+        "把自媒体爆料描述成已确认的需求激增",
+        "用单条排队视频替代可验证的市场证据"
+      ]
+    }
+  ]
+}

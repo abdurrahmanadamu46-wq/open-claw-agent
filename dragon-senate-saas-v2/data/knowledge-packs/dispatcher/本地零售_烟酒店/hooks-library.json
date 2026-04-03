@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次到店问询触发优先调度","description":"当来单中出现第一次来、想先到店、想先看看礼盒或具体预算问题时，Dispatcher 应优先匹配到店链路。","examples":["客户第一次来，想周末先看礼盒。","客户想先看白酒和红酒送礼路线是否适合自己。"],"priority":"high"},
+  {"id":"seasonal_window_inquiry","title":"节庆与送礼窗口询单触发时效优先调度","description":"当来单明确说明节前、拜访和送礼节点时，Dispatcher 要立即优先判断热门时段可用性和库存边界。","examples":["客户这周要送礼，想周四晚先到店。","客户说明中秋前要备一批礼盒。"],"priority":"high"},
+  {"id":"banquet_volume_inquiry","title":"婚宴整箱询单触发整单优先调度","description":"当用户明确桌数、日期和数量时，Dispatcher 应优先分配整箱盘点与配送链路。","examples":["客户 20 桌婚宴，想看白酒红酒搭配。","客户年会要 30 箱啤酒。"],"priority":"high"},
+  {"id":"late_night_pickup_trigger","title":"晚间急用触发门店时段优先调度","description":"当用户需要今晚拿酒或临时聚餐补货时，Dispatcher 要优先判断门店时段和交付方式。","examples":["今晚聚餐想 9 点前拿到两箱啤酒。","临时送礼想先留一盒白酒。"],"priority":"medium"},
+  {"id":"invoice_groupbuy_trigger","title":"企业发票询单触发团购链路","description":"企业团购一旦出现发票和批量需求，应直接进入标准化团购链路。","examples":["公司活动要 30 箱啤酒并开发票。","客户答谢要统一礼盒和发票。"],"priority":"medium"},
+  {"id":"return_visit_restock_trigger","title":"老客补货触发熟客链路","description":"老客复购和节后追加应优先走熟客链路，而不是重新走完整新客教育流程。","examples":["上次买过，这周再补一箱。","婚宴结束后还要追加几瓶。"],"priority":"medium"}
+]}

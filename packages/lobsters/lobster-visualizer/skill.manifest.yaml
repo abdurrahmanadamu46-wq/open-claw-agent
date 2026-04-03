@@ -1,0 +1,23 @@
+id: visualizer_media_production
+lobster_id: visualizer
+name: 视觉与视频生产
+description: "生成分镜、AI 绘图提示词、封面方案与视频脚本，承接内容生产后的视觉执行。"
+trigger_keywords:
+  - 分镜
+  - 视觉
+  - 封面
+  - 视频
+  - 数字人
+allowed_tools:
+  - image_gen
+  - video_toolkit
+  - libtv
+industry_tags: []
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 10000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

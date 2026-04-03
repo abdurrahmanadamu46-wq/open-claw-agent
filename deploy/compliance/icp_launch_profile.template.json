@@ -1,0 +1,31 @@
+﻿{
+  "project_name": "Lobster Pool",
+  "entity": {
+    "company_name": "REPLACE_WITH_LEGAL_ENTITY",
+    "registration_number": "REPLACE_WITH_UNIFIED_SOCIAL_CREDIT_CODE",
+    "registered_address": "REPLACE_WITH_REGISTERED_ADDRESS",
+    "legal_representative": "REPLACE_WITH_LEGAL_REPRESENTATIVE"
+  },
+  "domain": {
+    "primary_domain": "REPLACE_WITH_DOMAIN",
+    "owner_name": "REPLACE_WITH_DOMAIN_OWNER",
+    "registrar": "REPLACE_WITH_REGISTRAR",
+    "dns_provider": "REPLACE_WITH_DNS_PROVIDER"
+  },
+  "operator_contact": {
+    "contact_name": "REPLACE_WITH_CONTACT_NAME",
+    "email": "REPLACE_WITH_CONTACT_EMAIL",
+    "phone": "REPLACE_WITH_CONTACT_PHONE"
+  },
+  "deployment": {
+    "region_priority": "cn-shanghai",
+    "data_residency": "mainland-china-first"
+  },
+  "offline_materials": [
+    "business_license_scan",
+    "domain_real_name_verification",
+    "authorization_letter",
+    "responsible_person_id_scan",
+    "merchant_payment_contracts"
+  ]
+}

@@ -1,0 +1,43 @@
+﻿{
+  "session_id": "03bbe92e946d7792",
+  "peer_id": "radar",
+  "lobster_id": "radar",
+  "tenant_id": "tenant_main",
+  "channel": "runner",
+  "mode": "shared",
+  "messages": [
+    {
+      "role": "user",
+      "content": "usr",
+      "timestamp": "2026-03-31T13:45:55.734440+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-03-31T13:45:55.734440+00:00"
+    },
+    {
+      "role": "user",
+      "content": "usr",
+      "timestamp": "2026-03-31T14:51:16.519326+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-03-31T14:51:16.519326+00:00"
+    },
+    {
+      "role": "user",
+      "content": "usr",
+      "timestamp": "2026-03-31T15:12:29.349162+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-03-31T15:12:29.349162+00:00"
+    }
+  ],
+  "created_at": "2026-03-31T13:43:40.834998+00:00",
+  "last_active_at": "2026-03-31T15:12:29.349162+00:00",
+  "message_count": 6
+}

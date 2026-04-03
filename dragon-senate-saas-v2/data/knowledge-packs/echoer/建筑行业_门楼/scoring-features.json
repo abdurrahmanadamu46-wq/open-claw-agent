@@ -1,0 +1,316 @@
+﻿{
+  "industry": "\u5efa\u7b51\u884c\u4e1a_\u95e8\u697c",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_dimensions",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_dimensions",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "span in meters",
+        "total height",
+        "column width",
+        "clear width"
+      ],
+      "why_it_matters": "Real gatehouse projects usually surface dimensions early once the user is serious.",
+      "echoer_action": "Acknowledge the detail and keep gathering finish, city, and style."
+    },
+    {
+      "id": "explicit_scene",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_scene",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "factory entrance",
+        "village gateway",
+        "scenic spot entrance",
+        "community gate"
+      ],
+      "why_it_matters": "A clear scene sharply improves reply relevance and lead realism.",
+      "echoer_action": "Answer with scene-specific language, not generic sales wording."
+    },
+    {
+      "id": "asks_for_design_direction",
+      "applies_to": "incoming_message",
+      "feature_name": "asks_for_design_direction",
+      "category": "design_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "similar cases",
+        "effect drawing",
+        "style reference",
+        "new-Chinese or modern"
+      ],
+      "why_it_matters": "Style questions often signal genuine project imagination, not just browsing.",
+      "echoer_action": "Catch the design intent first, then request site photos."
+    },
+    {
+      "id": "asks_for_budget_range",
+      "applies_to": "incoming_message",
+      "feature_name": "asks_for_budget_range",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "rough budget",
+        "how much",
+        "give me a range",
+        "what does this usually cost"
+      ],
+      "why_it_matters": "Budget-range questions are strong commercial signals when paired with project facts.",
+      "echoer_action": "Do not lock a number too early; gather scope first."
+    },
+    {
+      "id": "deadline_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "deadline_signal",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "before opening",
+        "before holiday",
+        "before event",
+        "must finish by date"
+      ],
+      "why_it_matters": "A firm date usually means the project is already active.",
+      "echoer_action": "Stabilize emotion first and route toward human timing review."
+    },
+    {
+      "id": "material_compare",
+      "applies_to": "incoming_message",
+      "feature_name": "material_compare",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "stone vs steel",
+        "finish comparison",
+        "which method is better",
+        "durability comparison"
+      ],
+      "why_it_matters": "Option comparison means the user is moving deeper into solution choice.",
+      "echoer_action": "Compare with context instead of absolute language."
+    },
+    {
+      "id": "site_photo_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "site_photo_ready",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "I can send photos",
+        "I have the site picture",
+        "I will send the location image"
+      ],
+      "why_it_matters": "Willingness to send photos strongly predicts DM conversion and usable follow-up.",
+      "echoer_action": "Give a clear list of what to send next."
+    },
+    {
+      "id": "remote_delivery_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "remote_delivery_scope",
+      "category": "project_complexity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "out of province",
+        "transport and installation",
+        "can you do this in my city"
+      ],
+      "why_it_matters": "These are often real projects, but with stronger logistics complexity.",
+      "echoer_action": "Collect city, access, and schedule before making the reply more concrete."
+    },
+    {
+      "id": "renovation_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "renovation_scope",
+      "category": "project_complexity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "upgrade old gatehouse",
+        "wrap without demolition",
+        "renovate existing entrance"
+      ],
+      "why_it_matters": "Old-gate projects are usually real, but uncertainty is high.",
+      "echoer_action": "Ask for current-state photos and avoid easy promises."
+    },
+    {
+      "id": "skeptic_but_engaged",
+      "applies_to": "incoming_message",
+      "feature_name": "skeptic_but_engaged",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "looks fake",
+        "all cases look the same",
+        "is this real"
+      ],
+      "why_it_matters": "Skepticism still carries opportunity when the user keeps asking instead of leaving.",
+      "echoer_action": "De-escalate and answer with proof angles, not defense."
+    },
+    {
+      "id": "guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "guarantee_request",
+      "category": "compliance_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed approval",
+        "guaranteed acceptance",
+        "guarantee no problem"
+      ],
+      "why_it_matters": "These prompts try to pull the reply across compliance and engineering limits.",
+      "echoer_action": "Refuse the guarantee frame and shift to local rules plus human review."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave phone number",
+        "add contact now"
+      ],
+      "why_it_matters": "Public off-platform contact creates both platform and brand risk.",
+      "echoer_action": "Use platform DM as the safe bridge."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording"
+      ],
+      "why_it_matters": "Low-quality public fighting raises complaint risk and rarely converts.",
+      "echoer_action": "Stay calm, keep the reply short, and do not overinvest."
+    },
+    {
+      "id": "cheapest_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "cheapest_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "lowest only",
+        "cheapest possible",
+        "quote now no details"
+      ],
+      "why_it_matters": "Not always useless, but it is weak unless the conversation can be reframed into trade-offs.",
+      "echoer_action": "Move from lowest-price pressure to image-durability-speed trade-off."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges urgency",
+        "acknowledges caution",
+        "acknowledges frustration"
+      ],
+      "why_it_matters": "This is core Echoer behavior and directly supports complaint-rate control.",
+      "echoer_action": "Always calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_specs",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_specs",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for width",
+        "asks for height",
+        "asks for city",
+        "asks for style or material"
+      ],
+      "why_it_matters": "A strong reply not only sounds human, it also turns vague traffic into usable lead data.",
+      "echoer_action": "Limit the ask to the next three to five most important facts."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send site photo in DM",
+        "send rough size",
+        "share city and style"
+      ],
+      "why_it_matters": "A single clear next step is easier to act on and easier for downstream roles to use.",
+      "echoer_action": "Prefer one action instead of many scattered asks."
+    },
+    {
+      "id": "reply_escalates_high_risk",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_escalates_high_risk",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "approval topic escalated",
+        "safety topic escalated",
+        "complaint topic escalated"
+      ],
+      "why_it_matters": "Echoer should not overperform into engineering, compliance, or service liability.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_absolute_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_promise",
+      "category": "compliance_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed",
+        "definitely safe",
+        "no problem at all",
+        "never fails"
+      ],
+      "why_it_matters": "Absolute wording creates avoidable legal, service, and credibility risk.",
+      "echoer_action": "Replace with condition-based, conservative wording."
+    },
+    {
+      "id": "reply_hard_sell",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_hard_sell",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "DM now or miss the chance",
+        "add contact immediately",
+        "high-pressure CTA"
+      ],
+      "why_it_matters": "Pressure hurts the human tone and weakens long-term conversion quality.",
+      "echoer_action": "Use a calm, useful invite instead of urgency pressure."
+    }
+  ]
+}

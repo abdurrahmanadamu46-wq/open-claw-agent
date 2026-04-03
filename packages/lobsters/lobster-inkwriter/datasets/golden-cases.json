@@ -1,0 +1,90 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "inkwriter",
+  "primaryArtifact": "CopyPack",
+  "cases": [
+    {
+      "id": "inkwriter_case_story_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Use case-proof content plus consultation booking CTA for a dental clinic",
+        "brand_tone": "professional and trustworthy",
+        "offer_info": "consultation-first, no aggressive claims",
+        "audience_segment": "local high-intent treatment seekers"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear evidence-led opening",
+        "non-aggressive CTA",
+        "medical risk phrases identified"
+      ]
+    },
+    {
+      "id": "inkwriter_reactivation_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Reactivate dormant education leads with low-pressure consultation messaging",
+        "brand_tone": "helpful and credible",
+        "offer_info": "course planning session",
+        "audience_segment": "parents who previously inquired"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "soft reactivation tone",
+        "clear next step",
+        "no false urgency"
+      ]
+    },
+    {
+      "id": "inkwriter_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Drive more leads under strict budget and compliance constraints",
+        "brand_tone": "premium but restrained",
+        "offer_info": "limited clarity on concrete offers",
+        "audience_segment": "mixed cold and warm traffic"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "copy should ask for missing offer clarity implicitly",
+        "should stay conservative"
+      ]
+    },
+    {
+      "id": "inkwriter_regression_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow leads fast in a regulated service category",
+        "brand_tone": "high conversion",
+        "offer_info": "sensitive category",
+        "audience_segment": "cold paid traffic"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustAvoid": [
+        "guaranteed outcome claims",
+        "fake scarcity",
+        "unapproved price promises"
+      ]
+    }
+  ]
+}

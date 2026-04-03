@@ -1,0 +1,11 @@
+﻿{
+  "ok": true,
+  "profile": "feedback",
+  "total": 90,
+  "success": 90,
+  "skipped": 0,
+  "failed": 0,
+  "elapsed_sec": 1330.24,
+  "output_dir": "C:\\Users\\Administrator\\Desktop\\openclaw-agent\\dragon-senate-saas-v2\\tmp\\agent_rag_generated_run\\feedback",
+  "failed_items": []
+}

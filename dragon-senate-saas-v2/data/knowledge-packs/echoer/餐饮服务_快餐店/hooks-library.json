@@ -1,0 +1,168 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_first_order_combo",
+      "scene": "public_comment",
+      "intent": "what_to_order",
+      "emotion": "open",
+      "hook": "Happy to help you skip the menu spiral.",
+      "bridge": "With fast food, the quickest shortcut is usually whether this is lunch, dinner, a snack, or a group order.",
+      "next_step": "Ask whether this is for one person or a group and whether they want pickup, delivery, or dine-in.",
+      "handoff_suggestion": "Menu-guidance opportunity if the user answers with meal context."
+    },
+    {
+      "id": "hook_lunch_rush_pickup",
+      "scene": "comment_or_dm",
+      "intent": "fast_lunch",
+      "emotion": "rushed",
+      "hook": "Makes sense to optimize for speed if your break is tight.",
+      "bridge": "For a quick-service meal, the store, pickup versus delivery, and item count matter more than a blanket ready-time promise.",
+      "next_step": "Ask for store, time, order mode, and roughly how many items.",
+      "handoff_suggestion": "High-intent order if timing and store are confirmed."
+    },
+    {
+      "id": "hook_after_work_takeaway",
+      "scene": "public_comment",
+      "intent": "easy_dinner",
+      "emotion": "tired",
+      "hook": "That sounds like a do-not-make-me-think dinner moment.",
+      "bridge": "For an after-work order, the most useful split is usually solo meal versus two-person share and pickup versus delivery.",
+      "next_step": "Ask how many people are eating and whether they want something quick to carry home or delivered.",
+      "handoff_suggestion": "Good conversion signal if the user confirms group size and channel."
+    },
+    {
+      "id": "hook_bulk_office_invoice",
+      "scene": "comment_or_dm",
+      "intent": "bulk_order",
+      "emotion": "organized",
+      "hook": "That already sounds like a real coordination order, not casual browsing.",
+      "bridge": "For a fast-food bulk order, timing, meal count, packaging, and invoice needs usually matter as much as the menu itself.",
+      "next_step": "Ask for store, delivery window, meal count, and invoice requirement.",
+      "handoff_suggestion": "Route as a high-intent operational lead."
+    },
+    {
+      "id": "hook_breakfast_commute",
+      "scene": "public_comment",
+      "intent": "breakfast_pickup",
+      "emotion": "time_sensitive",
+      "hook": "Good call to check breakfast timing before you leave home.",
+      "bridge": "Breakfast availability can shift by store and pickup time, especially on commute-heavy locations.",
+      "next_step": "Ask which store and what time they want to pick up or arrive.",
+      "handoff_suggestion": "Breakfast-order opportunity if store and timing are confirmed."
+    },
+    {
+      "id": "hook_family_kids_order",
+      "scene": "comment_or_dm",
+      "intent": "family_meal",
+      "emotion": "careful",
+      "hook": "Ordering for adults and kids together is easier if we keep it simple.",
+      "bridge": "For a mixed group, spice level, shareable sides, and whether you want separate meals matter more than chasing every popular item.",
+      "next_step": "Ask how many adults and kids are eating and whether they want separate meals or shared sides.",
+      "handoff_suggestion": "Menu-guidance opportunity for a family order."
+    },
+    {
+      "id": "hook_coupon_member_offer",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you place the order.",
+      "bridge": "Fast-food deals often depend on store, time slot, and whether you order in app, in person, or by delivery.",
+      "next_step": "Ask for store and order channel.",
+      "handoff_suggestion": "Useful bridge into ordering if the user confirms details."
+    },
+    {
+      "id": "hook_limited_item_stock",
+      "scene": "public_comment",
+      "intent": "availability_check",
+      "emotion": "ready_now",
+      "hook": "Happy to help narrow that down before you make the trip.",
+      "bridge": "Limited items can change by store and by time of day, so the fastest useful answer starts there.",
+      "next_step": "Ask for the store and whether they want it now or later today.",
+      "handoff_suggestion": "High-intent availability check."
+    },
+    {
+      "id": "hook_customization_request",
+      "scene": "comment_or_dm",
+      "intent": "item_customization",
+      "emotion": "practical",
+      "hook": "That is worth checking on the exact item instead of guessing broadly.",
+      "bridge": "With quick-service orders, sauce swaps, removed ingredients, and side changes can vary by product and store flow.",
+      "next_step": "Ask for the exact item and the exact change they want.",
+      "handoff_suggestion": "Store-aware order clarification opportunity."
+    },
+    {
+      "id": "hook_vegetarian_no_pork",
+      "scene": "comment_or_dm",
+      "intent": "ingredient_restriction",
+      "emotion": "careful",
+      "hook": "Glad you checked before ordering.",
+      "bridge": "Ingredient and build details should be treated carefully item by item, especially when the restriction matters more than taste.",
+      "next_step": "Ask for the exact restriction, the item they are considering, and the store if known.",
+      "handoff_suggestion": "Flag for careful confirmation if the restriction affects the purchase decision."
+    },
+    {
+      "id": "hook_allergy_high_risk",
+      "scene": "comment_or_dm",
+      "intent": "allergy_safety",
+      "emotion": "serious",
+      "hook": "I am glad you asked before placing the order.",
+      "bridge": "Allergy questions should be handled as safety checks, not casual menu advice.",
+      "next_step": "Ask for the exact allergen and the item, then escalate for confirmation.",
+      "handoff_suggestion": "Human or store confirmation required."
+    },
+    {
+      "id": "hook_delivery_eta_urgent",
+      "scene": "comment_or_dm",
+      "intent": "delivery_timing",
+      "emotion": "urgent",
+      "hook": "I get why you do not want to wait around without a real signal.",
+      "bridge": "Delivery timing depends on store load, rider flow, distance, and how many items are in the order.",
+      "next_step": "Ask for store, timing target, delivery or pickup mode, and order size.",
+      "handoff_suggestion": "Route quickly if the user is close to ordering."
+    },
+    {
+      "id": "hook_takeout_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a missing or damaged order is usually the store, order time, and a photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales or store operations."
+    },
+    {
+      "id": "hook_freshness_skeptic",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With fast food, people often care about different proof points such as timing, texture, made-to-order feel, or whether pickup is the better route.",
+      "next_step": "Invite the user to name the exact freshness or quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity if the user gets more specific."
+    },
+    {
+      "id": "hook_late_night_quick_meal",
+      "scene": "public_comment",
+      "intent": "late_night_order",
+      "emotion": "low_energy",
+      "hook": "That sounds like a keep-it-simple order.",
+      "bridge": "For a late-night quick meal, the useful split is usually one-person versus shareable order and pickup versus delivery.",
+      "next_step": "Ask how many people are eating and whether they want something quick to grab or delivered.",
+      "handoff_suggestion": "Good conversion signal if the user confirms timing and order route."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The safest first step is still platform DM so order details, screenshots, or store questions do not get scattered in public.",
+      "next_step": "Ask for the store plus order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

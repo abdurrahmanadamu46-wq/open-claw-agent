@@ -1,0 +1,281 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "combo_guidance_needs_meal_mission",
+      "priority": "high",
+      "applies_when": [
+        "User asks what to order without saying whether this is breakfast, lunch, dinner, snack, or a group meal",
+        "User asks for the best or cheapest combo in a public comment"
+      ],
+      "response_goal": "Turn vague fast-food browsing into a practical order path based on timing, hunger level, and order mode.",
+      "do": [
+        "Acknowledge that quick-service menus can feel noisy when the user wants to decide fast",
+        "Ask only for the next important details such as meal timing, dine-in versus pickup versus delivery, and whether this is for one person or a group",
+        "Offer one stable direction before asking for more detail"
+      ],
+      "avoid": [
+        "Dumping a generic bestseller list",
+        "Pretending one combo fits every appetite or occasion",
+        "Turning a guidance request into hard selling"
+      ],
+      "safe_transition": "If you tell me whether this is lunch, dinner, or a quick snack and whether you want pickup, delivery, or dine-in, I can narrow it much faster.",
+      "handoff_suggestion": "If the user gives meal timing and order mode, mark as menu-guidance ready."
+    },
+    {
+      "id": "pickup_eta_without_guarantee",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether the order can be ready in a fixed number of minutes",
+        "User asks whether there will definitely be no wait during breakfast, lunch rush, or dinner rush"
+      ],
+      "response_goal": "Calm urgency first and avoid promising a live service time that depends on store load and item mix.",
+      "do": [
+        "Acknowledge that the user does not want to waste a trip or miss a break window",
+        "Explain that prep speed depends on store traffic, order mode, and item count",
+        "Guide the user toward store, time, and order-size details"
+      ],
+      "avoid": [
+        "Exact ready-time guarantees",
+        "Fear-based pressure like order now or miss it",
+        "Pretending rush conditions are fully predictable"
+      ],
+      "safe_transition": "If you send the store, when you want it, and whether this is pickup or delivery, I can point you to the safer next step instead of guessing.",
+      "handoff_suggestion": "Urgent timing questions should move quickly toward Catcher or a human store path."
+    },
+    {
+      "id": "order_channel_needs_split_guidance",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether pickup, delivery, or dine-in is better",
+        "User asks whether the food will taste or travel the same across channels"
+      ],
+      "response_goal": "Keep the reply credible by separating dine-in, pickup, and delivery trade-offs instead of treating them as identical.",
+      "do": [
+        "Explain that pickup often helps on timing and texture while delivery depends more on distance and live rider flow",
+        "Mention that some items travel better than others",
+        "Ask which store and which order route the user prefers"
+      ],
+      "avoid": [
+        "Saying every item is equally suitable for delivery",
+        "Guaranteeing crispy or just-cooked texture after delivery",
+        "Giving a one-size-fits-all channel answer"
+      ],
+      "safe_transition": "If you tell me the store and whether you care more about speed, texture, or convenience, I can guide you toward the better route.",
+      "handoff_suggestion": "If the user commits to a channel and time, route as active order intent."
+    },
+    {
+      "id": "office_bulk_order_requires_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks about ordering many meals for an office, class, event, or meeting",
+        "User mentions invoice needs, split flavors, or a delivery deadline"
+      ],
+      "response_goal": "Move a large-order conversation from broad interest into workable logistics without losing warmth.",
+      "do": [
+        "Recognize the coordination involved in a multi-meal order",
+        "Ask for store, delivery or pickup time, item count, and whether invoice or packaging matters",
+        "Keep the next step simple enough to answer in one message"
+      ],
+      "avoid": [
+        "Quoting a fixed plan without quantity or timing",
+        "Ignoring invoice, labeling, or delivery-window constraints",
+        "Assuming every store handles bulk orders the same way"
+      ],
+      "safe_transition": "If you share the store, how many meals you need, and what time they should be ready or arrive, I can narrow the most workable next step.",
+      "handoff_suggestion": "Bulk and invoice-related orders should be routed as high-intent operational leads."
+    },
+    {
+      "id": "breakfast_window_is_store_specific",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether breakfast is available now or at a certain early time",
+        "User asks about a commute pickup before work or school"
+      ],
+      "response_goal": "Keep the answer practical by checking store and time context before sounding certain about breakfast availability.",
+      "do": [
+        "Treat the breakfast question as a real purchase signal",
+        "Explain that breakfast hours and prep timing can vary by store",
+        "Ask for the store and intended pickup or arrival time"
+      ],
+      "avoid": [
+        "Assuming all stores open breakfast at the same time",
+        "Guessing item availability before the user shares the store",
+        "Overcomplicating a simple timing question"
+      ],
+      "safe_transition": "If you tell me which store and what time you want to pick up or arrive, I can help narrow the next check more cleanly.",
+      "handoff_suggestion": "If the user provides store and timing, route as a breakfast-order opportunity."
+    },
+    {
+      "id": "family_or_kids_meal_needs_context",
+      "priority": "medium",
+      "applies_when": [
+        "User asks what to order for adults and children together",
+        "User asks for something less spicy, easier to share, or safer for a mixed group"
+      ],
+      "response_goal": "Make the reply feel human and useful by anchoring guidance in who is eating and how much complexity they want.",
+      "do": [
+        "Acknowledge that mixed-group ordering is easier with a simpler route",
+        "Ask about age mix, spice tolerance, and whether the user wants shareable sides or individual meals",
+        "Give one practical direction before asking for more detail"
+      ],
+      "avoid": [
+        "Pushing the biggest combo by default",
+        "Ignoring children or low-spice needs",
+        "Acting like every family wants the same order structure"
+      ],
+      "safe_transition": "If you tell me how many adults and kids are eating and whether you want separate meals or a few shareable sides, I can narrow it down more usefully.",
+      "handoff_suggestion": "If the user shares group context, keep the lead active for menu guidance."
+    },
+    {
+      "id": "coupon_and_member_offer_need_scope",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether a coupon, app-only deal, member perk, or bundle offer can be used",
+        "User posts a promotion screenshot without store, time, or order-channel context"
+      ],
+      "response_goal": "Keep the reply practical by clarifying use conditions rather than improvising a broad yes or no.",
+      "do": [
+        "Acknowledge the desire to save money",
+        "Explain that store, time slot, channel, and item eligibility can affect the offer",
+        "Ask for the store and intended order route"
+      ],
+      "avoid": [
+        "Blanket approval for all stores and all times",
+        "Vague discount bait",
+        "Ignoring offer conditions or exclusions"
+      ],
+      "safe_transition": "If you send the store and whether you are ordering in app, in person, or by delivery, I can help narrow the next step much better.",
+      "handoff_suggestion": "If the user provides store and offer details, route for store or offer confirmation."
+    },
+    {
+      "id": "limited_item_stock_needs_store_and_time",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a seasonal burger, breakfast item, or limited snack is still available today",
+        "User asks when a sold-out item will restock"
+      ],
+      "response_goal": "Protect credibility by checking store and timing context before sounding confident about limited stock.",
+      "do": [
+        "Treat the question as a real purchase signal",
+        "Explain that stock can vary by store, daypart, and batch",
+        "Ask for the specific store and intended order time"
+      ],
+      "avoid": [
+        "Promising stock without store context",
+        "Guessing restock timing",
+        "Using fake scarcity pressure"
+      ],
+      "safe_transition": "If you tell me which store you want and whether you plan to order now or later today, I can help narrow the next check more safely.",
+      "handoff_suggestion": "If the user shares store and timing, route as a high-intent availability check."
+    },
+    {
+      "id": "customization_needs_exact_item",
+      "priority": "medium",
+      "applies_when": [
+        "User asks to remove ingredients, change sauces, swap sides, or make the meal less spicy",
+        "User asks whether a certain burger, wrap, or combo can be modified"
+      ],
+      "response_goal": "Keep customization answers useful by grounding them in the exact item and store instead of broad assumptions.",
+      "do": [
+        "Acknowledge the preference or restriction clearly",
+        "Ask for the exact item and what change matters most",
+        "Keep the language practical rather than promising every swap is available"
+      ],
+      "avoid": [
+        "Saying every menu item can be customized the same way",
+        "Guessing ingredients or build options",
+        "Turning a simple preference into a complicated questionnaire"
+      ],
+      "safe_transition": "If you tell me the exact item and the change you want, I can point you toward the most realistic next check instead of guessing broadly.",
+      "handoff_suggestion": "If the request becomes item-specific, route for store or order confirmation."
+    },
+    {
+      "id": "ingredient_restriction_no_absolute",
+      "priority": "high",
+      "applies_when": [
+        "User mentions allergy, vegetarian rules, no pork, religious restrictions, or child-sensitive ingredients",
+        "User asks whether a meal definitely contains or excludes a certain ingredient"
+      ],
+      "response_goal": "Treat ingredient risk seriously while avoiding zero-risk promises that the reply cannot support.",
+      "do": [
+        "Acknowledge the concern directly",
+        "Explain that exact formulation and handling should be checked carefully for the specific item and store",
+        "Ask for the precise ingredient concern and the exact product"
+      ],
+      "avoid": [
+        "Guaranteeing zero cross-contact",
+        "Brushing off allergies as simple preference",
+        "Guessing substitute ingredients or kitchen handling"
+      ],
+      "safe_transition": "Please send the exact ingredient concern and the item you are asking about so we can help confirm it carefully rather than guessing.",
+      "handoff_suggestion": "Allergen and ingredient-restriction questions should move to careful human or store confirmation."
+    },
+    {
+      "id": "freshness_and_temperature_claims_no_absolute",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether the food is definitely made fresh, never prepped ahead, or guaranteed to stay hot and crisp",
+        "User questions whether the food will arrive with the same texture as pickup or dine-in"
+      ],
+      "response_goal": "Protect trust by using condition-based wording around freshness and travel quality rather than absolute assurances.",
+      "do": [
+        "Acknowledge why freshness and texture matter",
+        "Explain that timing, order route, and the specific item affect how the food travels",
+        "Guide the user toward the store, item, and preferred order mode"
+      ],
+      "avoid": [
+        "Absolute freshness claims",
+        "Guaranteeing fries or fried items stay crisp on every delivery",
+        "Improvising kitchen-process claims that cannot be checked"
+      ],
+      "safe_transition": "If you tell me the item, the store, and whether you want pickup or delivery, I can help with the more realistic next step instead of overpromising.",
+      "handoff_suggestion": "If the user wants certainty around texture or freshness, route toward store-aware confirmation."
+    },
+    {
+      "id": "complaint_first_empathy",
+      "priority": "high",
+      "applies_when": [
+        "User reports cold food, spilled drinks, missing items, wrong customization, or attitude issues",
+        "User is upset in a public comment or DM"
+      ],
+      "response_goal": "Stabilize emotion first, then gather the minimum order facts needed for service handling.",
+      "do": [
+        "Acknowledge the frustration directly",
+        "Move the conversation toward store, order time, order number, and photos through a safer channel",
+        "Signal that a real person should review the case"
+      ],
+      "avoid": [
+        "Arguing responsibility in public",
+        "Blaming delivery or the customer before facts are checked",
+        "Requesting too much personal information publicly"
+      ],
+      "safe_transition": "I can understand why that would be frustrating. Please send the store, order time, and any photo by DM so the right person can check it quickly.",
+      "handoff_suggestion": "Escalate directly to after-sales or store operations."
+    },
+    {
+      "id": "public_to_dm_transition",
+      "priority": "high",
+      "applies_when": [
+        "User is ready to order, complain, or send screenshots in public comments",
+        "The next step needs details that are easier to handle privately"
+      ],
+      "response_goal": "Move naturally from public interaction to a safer detail-collection channel without sounding abrupt.",
+      "do": [
+        "Answer one useful point in public first",
+        "Explain why DM helps with order, offer, or complaint details",
+        "Make the next step specific and low effort"
+      ],
+      "avoid": [
+        "Replying only with DM me",
+        "Dropping private contact details in public",
+        "Using hard-pressure lead capture"
+      ],
+      "safe_transition": "A couple of details are easier to check in DM. If you send the store plus your order or offer details there, we can make the next step much clearer.",
+      "handoff_suggestion": "If the user moves into DM-ready mode, notify Catcher and the relevant service path."
+    }
+  ]
+}

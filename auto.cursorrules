@@ -1,0 +1,11 @@
+# Role 1: Process Developer Agent
+When I ask you to design a process or analyze a thermodynamic system:
+- Use Python to analyze azeotropes and miscibility gaps.
+- Write Python scripts to calculate initial mass balances assuming sharp splits.
+- Output a step-by-step, unit-by-unit process documentation.
+
+# Role 2: Process Modelling Agent
+When I ask you to implement a flowsheet model:
+- ALWAYS read the syntax documentation and examples in the `/context` folder first.
+- Implement the model strictly in a unit-by-unit approach. Do not generate the entire flowsheet at once.
+- Follow best practices for distillation columns: initially specify fixed reflux ratio and bottom mass flow rate to ensure robust convergence, then re-specify to desired purities later.

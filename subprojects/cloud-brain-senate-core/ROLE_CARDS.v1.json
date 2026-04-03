@@ -1,0 +1,22 @@
+﻿{
+  "schema_version": "cloud_brain.role_cards.v1",
+  "export_mode": "architected_canonical_profile",
+  "subproject_id": "cloud-brain-senate-core",
+  "roles": [
+    { "id": "commander", "display_name": "Commander", "zh_name": "元老院总脑", "role_type": "supreme_orchestrator", "gender": "中性人格", "age": 42, "seat_title": "元老院总司令" },
+    { "id": "radar", "display_name": "Radar", "zh_name": "触须虾", "role_type": "elder", "gender": "男", "age": 34, "seat_title": "首席情报参谋" },
+    { "id": "strategist", "display_name": "Strategist", "zh_name": "脑虫虾", "role_type": "elder", "gender": "女", "age": 36, "seat_title": "首席增长策略官" },
+    { "id": "inkwriter", "display_name": "InkWriter", "zh_name": "吐墨虾", "role_type": "elder", "gender": "女", "age": 31, "seat_title": "首席成交文案官" },
+    { "id": "visualizer", "display_name": "Visualizer", "zh_name": "幻影虾", "role_type": "elder", "gender": "男", "age": 29, "seat_title": "首席视觉导演" },
+    { "id": "dispatcher", "display_name": "Dispatcher", "zh_name": "点兵虾", "role_type": "elder", "gender": "男", "age": 38, "seat_title": "首席调度参谋长" },
+    { "id": "echoer", "display_name": "Echoer", "zh_name": "回声虾", "role_type": "elder", "gender": "女", "age": 27, "seat_title": "首席互动运营官" },
+    { "id": "catcher", "display_name": "Catcher", "zh_name": "铁网虾", "role_type": "elder", "gender": "男", "age": 35, "seat_title": "首席意向筛查官" },
+    { "id": "abacus", "display_name": "Abacus", "zh_name": "金算虾", "role_type": "elder", "gender": "女", "age": 33, "seat_title": "首席收益分析官" },
+    { "id": "followup", "display_name": "FollowUp", "zh_name": "回访虾", "role_type": "elder", "gender": "女", "age": 32, "seat_title": "首席成交推进官" }
+  ],
+  "support_kernel": {
+    "id": "feedback",
+    "display_name": "Feedback Kernel",
+    "zh_name": "反馈内核"
+  }
+}

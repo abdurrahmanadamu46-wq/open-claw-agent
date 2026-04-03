@@ -1,0 +1,139 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "echoer_nail_salon_first_time_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "It would be my first time and I want something simple for work this weekend. Do you have time?",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "pushy upsell",
+          "slot guarantee without checking"
+        ],
+        "context_window": [
+          "public comment thread",
+          "first-time nail inquiry",
+          "daily style request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge first-time uncertainty",
+        "ask for style direction and timing details",
+        "guide toward an easy next step"
+      ],
+      "mustAvoid": [
+        "hard-sell membership",
+        "guaranteed slot promise",
+        "style shaming"
+      ]
+    },
+    {
+      "id": "echoer_nail_salon_event_002",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I have a wedding on Saturday. Can I come Thursday night for something elegant? I also need removal.",
+        "brand_tone": "helpful and reassuring",
+        "negative_patterns": [
+          "guarantee all peak slots",
+          "ignore removal time"
+        ],
+        "context_window": [
+          "private message",
+          "event-driven booking",
+          "with removal"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the event timing",
+        "ask for Thursday slot details and style direction",
+        "carry the removal fact forward"
+      ],
+      "mustAvoid": [
+        "magic timing promise",
+        "ignoring removal",
+        "membership push"
+      ]
+    },
+    {
+      "id": "echoer_nail_salon_price_003",
+      "label": "edge_case",
+      "input": {
+        "user_message": "How much?",
+        "brand_tone": "light and helpful",
+        "negative_patterns": [
+          "menu dump",
+          "defensive tone"
+        ],
+        "context_window": [
+          "public comment thread",
+          "no style scope yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "light answer without evasion",
+        "one scope question around style or removal",
+        "natural bridge to next step"
+      ],
+      "mustAvoid": [
+        "cold price wall",
+        "forced off-platform diversion",
+        "instant upsell"
+      ]
+    },
+    {
+      "id": "echoer_nail_salon_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "user_message": "I came before and might want to come back soon. I want something different this time.",
+        "brand_tone": "familiar and calm",
+        "negative_patterns": [
+          "treating the client like a stranger",
+          "jumping into storage-value closing"
+        ],
+        "context_window": [
+          "private message",
+          "returning guest",
+          "possible follow-up path"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the prior visit naturally",
+        "ask what they want to change this time",
+        "guide toward a smooth re-entry step"
+      ],
+      "mustAvoid": [
+        "cold restart tone",
+        "ignoring prior style context",
+        "pushing storage too early"
+      ]
+    }
+  ]
+}

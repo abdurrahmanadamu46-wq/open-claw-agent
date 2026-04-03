@@ -1,0 +1,125 @@
+﻿{
+  "industry": "教育培训_考研培训",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_postgrad_concern_time_001",
+      "label": "happy_path",
+      "scenario_tag": "concern_based_trial_completion",
+      "input": {
+        "lead_assessment": "A 级预约线索，用户想试听复试班，计划周五晚来校区。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on concern, slot, and trial-scope completion",
+        "contact_history": [
+          "刚从小红书评论区转私信",
+          "已说明是第一次试听",
+          "暂未确认是只试听还是想了解某类班型"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "本轮目标放在补齐试听范围和具体时段",
+        "不先推高客单班型",
+        "把预约事实收口清楚"
+      ],
+      "mustAvoid": [
+        "没定范围就承诺一定有位",
+        "直接转入成交节奏"
+      ]
+    },
+    {
+      "id": "followup_postgrad_first_time_002",
+      "label": "happy_path",
+      "scenario_tag": "first_visit_confidence_guidance",
+      "input": {
+        "lead_assessment": "A- 级第一次试听线索，用户说自己担心零基础跟不上，但这周末有空想先来看看。",
+        "value_score_card": "short_term medium-high; conversion depends on confidence trust and slot clarity",
+        "contact_history": [
+          "用户已表示这周末有空",
+          "看过环境和试听流程内容"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先做安全感建立而不是直接成交",
+        "推进到可执行试听",
+        "不让用户觉得被压迫"
+      ],
+      "mustAvoid": [
+        "直接推高客单班型",
+        "忽略首次基础顾虑"
+      ]
+    },
+    {
+      "id": "followup_postgrad_deadline_003",
+      "label": "happy_path",
+      "scenario_tag": "deadline_slot_lock",
+      "input": {
+        "lead_assessment": "A 级节点季线索，用户周六复试，想周四晚做一次试听判断。",
+        "value_score_card": "short_term high; conversion depends on slot confirmation and full scope clarity",
+        "contact_history": [
+          "已明确复试日期",
+          "暂未确认周四晚具体时间段"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "快速锁时间窗口",
+        "把问题范围带进承接",
+        "不夸张承诺结果"
+      ],
+      "mustAvoid": [
+        "拖太久导致窗口错过",
+        "忽略首次试听的边界"
+      ]
+    },
+    {
+      "id": "followup_postgrad_post_visit_004",
+      "label": "long_term_case",
+      "scenario_tag": "post_trial_feedback_before_reenroll",
+      "input": {
+        "lead_assessment": "试听已完成，用户昨天参加了试听，今天等待回访。",
+        "value_score_card": "long_term medium-high; next value depends on feedback before reenroll",
+        "contact_history": [
+          "首单已完成",
+          "尚未回收感受和满意度"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先问感受和满意度",
+        "根据反馈决定是否推进续课",
+        "避免直接推下一单"
+      ],
+      "mustAvoid": [
+        "跳过感受反馈直接成交",
+        "忽略跟不上信号"
+      ]
+    }
+  ]
+}

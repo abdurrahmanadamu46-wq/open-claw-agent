@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "StrategyRoute",
+  "goal": "Produce a safe, high-conviction route for healthcare lead growth under tighter platform scrutiny.",
+  "assumptions": [
+    "Evidence-backed hooks outperform aggressive claims in the current review environment.",
+    "Response speed on warm leads is a stronger lever than broadening top-of-funnel spend."
+  ],
+  "evidence": [
+    "Radar signal on policy tightening",
+    "Competitor move toward consultation-first call-to-action"
+  ],
+  "confidence": 0.86,
+  "riskLevel": "L2",
+  "nextAction": "handoff_to_inkwriter_and_dispatcher",
+  "primary_route": "Case-proof content plus fast warm-lead routing into consultation booking.",
+  "alternative_routes": "Run low-risk remarketing reactivation before expanding paid acquisition.",
+  "priority_order": "1) trust-building content 2) warm lead response speed 3) dormant lead reactivation",
+  "risk_tradeoff": "Avoid high-claim growth angles; accept lower top-of-funnel volume for higher governance safety."
+}

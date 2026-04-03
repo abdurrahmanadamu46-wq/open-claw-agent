@@ -1,0 +1,153 @@
+# docker-compose.full.yml — 全量启动（主服务 + 1.5层微服务 + 边缘仿真）
+# 用法：docker compose -f docker-compose.yml -f docker-compose.full.yml up
+#
+# 扩展自 docker-compose.yml，补充：
+#   - policy-router    :8010  内容政策路由（合规过滤）
+#   - trust-verification:8020 信任验证（账号/内容可信度）
+#   - cti-engine       :8030  竞品情报引擎
+#   - xai-scorer       :8040  可解释性评分服务
+#   - edge-sim-full    :      完整边缘仿真节点（带 browser + marionette）
+
+x-runtime-image: &runtime_image dragon-senate-saas-v2-runtime:local
+
+x-sidecar-defaults: &sidecar_defaults
+  image: *runtime_image
+  env_file:
+    - .env
+  environment:
+    DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/dragon_db}
+    REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+    DRAGON_SENATE_URL: ${DRAGON_SENATE_URL:-http://app:8000}
+  depends_on:
+    app:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  restart: unless-stopped
+
+services:
+
+  # ─── 1.5层：支撑微服务集群 ────────────────────────────────────────
+
+  policy-router:
+    <<: *sidecar_defaults
+    container_name: dragon-senate-v2-policy-router
+    command:
+      - python
+      - -m
+      - uvicorn
+      - microservices.policy_router:app
+      - --host=0.0.0.0
+      - --port=8010
+    ports:
+      - "127.0.0.1:${POLICY_ROUTER_PORT:-8010}:8010"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8010/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    profiles: ["full", "sidecar"]
+
+  trust-verification:
+    <<: *sidecar_defaults
+    container_name: dragon-senate-v2-trust-verification
+    command:
+      - python
+      - -m
+      - uvicorn
+      - microservices.trust_verification:app
+      - --host=0.0.0.0
+      - --port=8020
+    ports:
+      - "127.0.0.1:${TRUST_VERIFY_PORT:-8020}:8020"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8020/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    profiles: ["full", "sidecar"]
+
+  cti-engine:
+    <<: *sidecar_defaults
+    container_name: dragon-senate-v2-cti-engine
+    command:
+      - python
+      - -m
+      - uvicorn
+      - microservices.cti_engine:app
+      - --host=0.0.0.0
+      - --port=8030
+    ports:
+      - "127.0.0.1:${CTI_ENGINE_PORT:-8030}:8030"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8030/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    profiles: ["full", "sidecar"]
+
+  xai-scorer:
+    <<: *sidecar_defaults
+    container_name: dragon-senate-v2-xai-scorer
+    command:
+      - python
+      - -m
+      - uvicorn
+      - microservices.xai_scorer:app
+      - --host=0.0.0.0
+      - --port=8040
+    ports:
+      - "127.0.0.1:${XAI_SCORER_PORT:-8040}:8040"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8040/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    profiles: ["full", "sidecar"]
+
+  # ─── 边缘层：完整边缘仿真（含 content_publish 能力声明）────────────
+
+  edge-sim-full:
+    image: *runtime_image
+    container_name: dragon-senate-v2-edge-sim-full
+    env_file:
+      - .env
+    environment:
+      EDGE_MAX_CONCURRENT_TASKS: "3"
+      EDGE_LOG_LEVEL: INFO
+    command:
+      - python
+      - edge_agent.py
+      - --central_url=http://app:8000
+      - --edge_id=edge-sim-full-001
+      - --account_id=acct-sim-001
+      - --account_token=token-sim-001
+      - --simulate_dm
+      - --poll_interval=5
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles: ["full", "edge"]
+
+  # ─── 边缘层：edge-runtime wss_receiver 模式（Socket.IO 实时连接）──
+
+  edge-wss:
+    image: *runtime_image
+    container_name: dragon-senate-v2-edge-wss
+    env_file:
+      - .env
+    working_dir: /app/edge-runtime
+    command:
+      - python
+      - client_main.py
+      - --gateway_url=http://app:8000
+      - --node_id=edge-wss-001
+      - --tenant_id=${DEFAULT_TENANT_ID:-tenant_main}
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles: ["full", "edge-wss"]

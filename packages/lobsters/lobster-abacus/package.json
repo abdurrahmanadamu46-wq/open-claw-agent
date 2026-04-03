@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-abacus",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Abacus lobster subproject template"
+}

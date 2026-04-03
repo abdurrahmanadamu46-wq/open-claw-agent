@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+{"id":"pet_score_problem_specificity","title":"问题指向清晰度","description":"高分文案能在前两句就让用户看见明确问题或场景，例如奶粉、尿裤、辅食、洗护和月龄，而不是只说宠物和优惠。","examples":["高分：开头直接点出主粮或猫砂问题。 ","低分：一开始只有低价和正品。 "],"priority":"high"},
+{"id":"pet_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给正品、适配和赔付说明，让用户感到门店不会乱推荐。","examples":["高分：先写判断和边界，再写到店。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+{"id":"pet_score_compliance_safety","title":"合规安全性","description":"高分文案避免绝对安全和绝对不过敏承诺；低分文案容易出现绝对化表述和违规导向。","examples":["高分：用说明和适用提示替代强承诺。 ","低分：保证绝对安全、绝不过敏、绝对正品。 "],"priority":"high"},
+{"id":"pet_score_scene_match","title":"场景匹配度","description":"高分文案会让换季囤货、日常补货和老客复购各归其位。","examples":["高分：节点文案重日期和场景，老客文案重补货理由。 ","低分：所有文案都只会喊来看看。 "],"priority":"medium"},
+{"id":"pet_score_respectfulness","title":"尊重感与情绪稳定度","description":"高分文案会陪用户一起判断状态，而不是拿预算有限和第一次养宠刺激逼单。","examples":["高分：用先看方向和先到店这类语气。 ","低分：用再不买就断粮这类恐吓。 "],"priority":"high"},
+{"id":"pet_score_cta_quality","title":"CTA 收口质量","description":"高分 CTA 会自然收品类、日期和是否第一次来等到店事实。","examples":["高分：先发品类和想约时间。 ","低分：快来店里看看。 "],"priority":"high"}]}

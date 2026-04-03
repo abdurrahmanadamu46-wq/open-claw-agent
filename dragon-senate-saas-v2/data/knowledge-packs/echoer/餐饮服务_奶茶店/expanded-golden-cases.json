@@ -1,0 +1,456 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_milk_tea_first_order_less_sweet_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "First time ordering from you. I do not like drinks that are too sweet. What should I get?",
+        "brand_tone": "helpful and human",
+        "negative_patterns": [
+          "generic bestseller dumping",
+          "salesy pressure"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is open to guidance",
+          "taste preference already surfaced"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the first-order uncertainty",
+        "anchor the reply in sweetness preference",
+        "guide toward one practical next detail such as milk tea versus fruit tea"
+      ],
+      "mustAvoid": [
+        "one-size-fits-all recommendations",
+        "ignoring the not-too-sweet request"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_office_bulk_invoice_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need 18 drinks for a team meeting tomorrow afternoon and an invoice. Can you handle that?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "fixed promise without store check",
+          "ignoring invoice needs"
+        ],
+        "context_window": [
+          "business order lead",
+          "high-intent group purchase",
+          "user is organized"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize this as a real group order",
+        "ask for store, timing, and cup count confirmation",
+        "guide toward clear order follow-up naturally"
+      ],
+      "mustAvoid": [
+        "assuming every store handles bulk orders identically",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_limited_drink_stock_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Do you still have the seasonal strawberry drink at your mall store tonight?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket stock promise",
+          "fake urgency pressure"
+        ],
+        "context_window": [
+          "store partially specified",
+          "user is close to ordering",
+          "limited-item question"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the limited-item question",
+        "mention that stock can vary by store and timing",
+        "guide toward the next availability check"
+      ],
+      "mustAvoid": [
+        "guaranteeing stock without confirmation",
+        "using panic wording like last chance unless verified"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_queue_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I order at 6 tonight can you guarantee it will be ready in 10 minutes?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "exact ready-time guarantee",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "rush period",
+          "public comment thread",
+          "user is in a hurry"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid waiting",
+        "state that timing depends on store traffic and order size",
+        "guide toward store and order-mode details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_pregnancy_caffeine_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I am pregnant. Is your jasmine milk tea definitely safe for me to drink?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "medical advice",
+          "pregnancy-safe guarantee"
+        ],
+        "context_window": [
+          "ingredient and suitability topic",
+          "high-risk wording",
+          "user wants reassurance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the concern as important",
+        "avoid making a safety guarantee",
+        "move toward exact ingredient or caffeine confirmation with careful escalation"
+      ],
+      "mustAvoid": [
+        "definite medical reassurance",
+        "guessing the caffeine level casually"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_child_dairy_allergy_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My child has a milk allergy. Can you guarantee zero cross-contact if I order one of your fruit teas?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "absolute allergen guarantee",
+          "casual reassurance"
+        ],
+        "context_window": [
+          "allergy topic",
+          "family purchase intent",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the allergy as serious",
+        "avoid making a zero-risk promise",
+        "move toward exact drink and store confirmation with human review"
+      ],
+      "mustAvoid": [
+        "100 percent safe language",
+        "guessing preparation handling"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_delivery_spill_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My delivery arrived half spilled and the pearls are missing. Is this how you handle orders?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request store or order details through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming delivery in public",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_coupon_question_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I use this buy-one-get-one coupon at your campus store tonight if I order in the app?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket yes",
+          "discount bait"
+        ],
+        "context_window": [
+          "promotion check",
+          "store and channel partially known",
+          "user may be close to ordering"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the offer question",
+        "mention that coupon rules can depend on store and channel",
+        "guide toward confirming the next usable detail"
+      ],
+      "mustAvoid": [
+        "approving the coupon without conditions",
+        "vague promotional hype"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_quality_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every milk tea shop claims real fruit and low sugar online. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete quality concern like tea aroma, fruit texture, or sweetness balance",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-town bragging",
+        "sarcasm"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_kid_friendly_low_caffeine_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "My child wants to try something from your shop. What would be a less sweet and lower-caffeine option?",
+        "brand_tone": "warm and measured",
+        "negative_patterns": [
+          "child-safe guarantee",
+          "generic menu dumping"
+        ],
+        "context_window": [
+          "family order question",
+          "suitability matters",
+          "user is open to guidance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the family concern",
+        "anchor the reply in sweetness and caffeine preference",
+        "ask for the type of drink or ingredient they want to avoid"
+      ],
+      "mustAvoid": [
+        "promising the drink is definitely suitable for every child",
+        "ignoring the lower-caffeine request"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_custom_event_labels_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can you do custom cup labels for 12 birthday drinks tomorrow evening?",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "instant yes",
+          "ignoring lead time"
+        ],
+        "context_window": [
+          "special arrangement request",
+          "time-sensitive event",
+          "user is close to placing a group order"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "validate the birthday request",
+        "mention that store capability and notice time matter",
+        "ask for store, timing, and the exact custom need"
+      ],
+      "mustAvoid": [
+        "promising every detail can be arranged immediately",
+        "overlooking the event timing"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_budget_group_order_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We need 10 drinks. What is the cheapest way to order from you? I do not care about anything fancy.",
+        "brand_tone": "respectful and practical",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "price-led inquiry",
+          "group order",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget focus",
+        "explain that the workable range still depends on cup size or drink type",
+        "reframe toward one or two useful trade-offs"
+      ],
+      "mustAvoid": [
+        "instant fixed quote without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_freshness_claim_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "Is your mango drink absolutely made with fresh fruit and never syrup? I only want the purest option.",
+        "brand_tone": "careful and credible",
+        "negative_patterns": [
+          "absolute freshness promise",
+          "purity guarantee"
+        ],
+        "context_window": [
+          "ingredient quality question",
+          "user is cautious",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the ingredient concern",
+        "avoid making an absolute freshness or purity claim",
+        "guide toward exact drink and store confirmation"
+      ],
+      "mustAvoid": [
+        "never syrup guarantee",
+        "improvised sourcing claims"
+      ]
+    },
+    {
+      "id": "echoer_milk_tea_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to place the order now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "order is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request store plus order details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    }
+  ]
+}

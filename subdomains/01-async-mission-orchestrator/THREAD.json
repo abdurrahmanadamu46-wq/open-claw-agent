@@ -1,0 +1,19 @@
+﻿{
+  "thread_id": "sd-01",
+  "name": "Async Mission Orchestrator",
+  "owner_scope": "mission execution queue and lifecycle",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "submit": "REST async",
+    "status": "REST",
+    "push": "Webhook or MQ"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/app.py"
+  ]
+}

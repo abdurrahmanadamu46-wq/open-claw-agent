@@ -1,0 +1,24 @@
+id: radar_signal_discovery
+lobster_id: radar
+name: 信号发现
+description: "监测热点、规则变更、竞品动作与舆情变化，输出结构化 SignalBrief。"
+trigger_keywords:
+  - 信号
+  - 热点
+  - 竞品
+  - 舆情
+  - 监测
+allowed_tools:
+  - agent_reach
+  - industry_kb_read
+  - competitor_db_rw
+industry_tags:
+  - general
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 8000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

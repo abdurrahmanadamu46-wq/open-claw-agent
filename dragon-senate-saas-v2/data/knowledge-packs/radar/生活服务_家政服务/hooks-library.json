@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"urgent_cleaning_window_hook","title":"清洁节点与时间窗口钩子","description":"当用户同时提到节前、明天入住、周末来客等时间窗口和具体清洁方向时，应优先标记为高价值信号。","examples":["周末来客，想这两天先做一次深度保洁。","明天入住，今晚想确认开荒保洁。"],"priority":"high"},
+  {"id":"room_type_scope_hook","title":"房型面积与范围钩子","description":"出现几居、面积、是否开荒、是否带玻璃和厨卫深清时，说明线索更接近真实成交。","examples":["89 平两居想做深度保洁。","120 平新房开荒想带玻璃和柜体。"],"priority":"high"},
+  {"id":"cycle_cleaning_hook","title":"周期保洁钩子","description":"周保洁、月保洁和固定阿姨需求如果带着明确频率和时段，也应视为稳定价值信号。","examples":["每周想固定来一次。","每月月初都想做一次全屋保洁。"],"priority":"medium"},
+  {"id":"trust_and_damage_hook","title":"阿姨信任与赔付焦虑钩子","description":"用户主动追问阿姨稳定性、是否专业、会不会损坏和有没有赔付时，说明信任是关键影响因子。","examples":["会不会一直换阿姨。","如果打碎了东西怎么处理。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"节前、入住和退租窗口钩子","description":"节前大扫除、搬家入住和退租节点一旦带着明确日期出现，应显著提权。","examples":["春节前想把家里彻底打扫一下。","下周退租，想约一次退租保洁。"],"priority":"high"},
+  {"id":"addon_bundle_hook","title":"加项组合钩子","description":"厨房重油污、卫生间除垢、玻璃、沙发和收纳整理等加项一旦同时出现，往往意味着更高客单和更强意图。","examples":["想做厨房油污加卫生间深清。","开荒想一起做玻璃和收纳。"],"priority":"medium"}
+]}

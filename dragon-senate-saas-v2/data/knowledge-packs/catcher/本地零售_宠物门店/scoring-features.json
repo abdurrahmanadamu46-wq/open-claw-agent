@@ -1,0 +1,8 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"catcher","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"intent_explicitness","title":"到店动作显性度","description":"评估线索是否明确表达想约、想来、这个周末能不能安排、有没有到店或送货时段等动作。","examples":["高分：周五晚能不能帮我留点幼猫粮，我下班过去。","低分：最近想给毛孩子买点东西。"],"priority":"high"},
+  {"id":"project_specificity","title":"品类方向清晰度","description":"高分线索会明确提到主粮、猫砂、零食、洗护、驱虫、玩具和出行用品等具体方向。","examples":["高分：最近猫砂和主粮都想换。","低分：想买点宠物用品。"],"priority":"high"},
+  {"id":"pet_status_clarity","title":"宠物状态清晰度","description":"评估线索是否给出猫狗品种、年龄阶段、体型、敏感点和是否第一次养等关键事实。","examples":["高分：三个月幼猫，最近换粮怕软便。","低分：家里宠物吃东西挑。"],"priority":"high"},
+  {"id":"timing_urgency","title":"时间窗口紧迫度","description":"换季、出行、节礼、断粮和洗护节点越明确，分值越高。","examples":["高分：下周出门，这周一定要补粮。","低分：有空再来看看。"],"priority":"medium"},
+  {"id":"trust_readiness","title":"信任推进 readiness","description":"看用户是否愿意继续补充品牌、预算、门店和到店时间，而不是停留在泛咨询。","examples":["高分：可以，我把想看的品牌和时间发你。","低分：先看看再说。"],"priority":"medium"},
+  {"id":"risk_boundary","title":"风险边界稳定度","description":"涉及绝对功效、医疗替代和未经验证喂养效果的线索要扣分，避免把高风险话题误算成高价值。","examples":["高风险：有没有保证发腮、保证不软便的粮。","低风险：想找适口性好一点、配料更清楚的主粮。"],"priority":"medium"}
+]}

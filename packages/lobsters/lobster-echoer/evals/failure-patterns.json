@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "echoer",
+  "patterns": [
+    {
+      "id": "echoer_argumentative",
+      "label": "argumentative",
+      "description": "Reply becomes defensive or combative instead of calming the interaction."
+    },
+    {
+      "id": "echoer_hard_sell",
+      "label": "hard_sell",
+      "description": "Reply pushes too aggressively before the user has enough trust."
+    },
+    {
+      "id": "echoer_risk_slip",
+      "label": "risk_slip",
+      "description": "Reply casually uses guarantee or promise-like wording in sensitive contexts."
+    }
+  ]
+}

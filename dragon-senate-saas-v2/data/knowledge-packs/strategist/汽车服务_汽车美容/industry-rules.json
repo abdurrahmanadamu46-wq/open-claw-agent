@@ -1,0 +1,104 @@
+﻿{
+  "industry": "汽车服务_汽车美容",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "goal_route_first",
+      "rule_name": "先锁一个核心养护问题路线，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店同时想做洗护、贴膜、镀晶、车衣和内饰精洗",
+        "预算有限，但真实咨询集中在少数项目和节点"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的目标路线作为主线，例如新车保护、隔热贴膜、深度精洗或季节性养护，再统一内容、到店承接和 followup 话术。",
+      "recommended_alternative_route": "若证据分散，先并行验证最多 2 条路线，保留到店率和复购率更优的一条。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有施工项目",
+        "不能在证据尚弱时同时主推太多高低客单路线"
+      ],
+      "risk_tradeoff": "接受覆盖面更窄，换取更清晰的到店链路和更低的承接损耗。"
+    },
+    {
+      "id": "first_visit_and_high_ticket_split",
+      "rule_name": "首次到店路线和高客单施工承接必须拆开设计",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店既想靠低门槛洗护获客，又想快速转贴膜、车衣和镀晶",
+        "新客咨询很多，但到店和成交表现不稳定"
+      ],
+      "recommended_primary_route": "把首次到店目标定义为建立施工信任和判断适合性，把高客单承接放在到店后的 followup 与二次检测节点，不要同一轮硬推。",
+      "recommended_alternative_route": "若门店已有成熟接待与检测机制，可测试少量到店后升级脚本，但仍要保留温和承接路径。",
+      "hard_constraints": [
+        "不能把低门槛洗护文案直接写成高客单成交文案",
+        "不能要求评论区和首次私信完成高客单成交"
+      ],
+      "risk_tradeoff": "短期单客产出可能更慢，但能显著降低反感、返工和投诉。"
+    },
+    {
+      "id": "trust_and_process_proof",
+      "rule_name": "汽车美容转化先看真实施工、材料和边界信任感",
+      "priority": "P0",
+      "trigger_signals": [
+        "用户持续追问施工步骤、质保、材料品牌和返工规则",
+        "内容播放不错，但到店和成交转化偏低"
+      ],
+      "recommended_primary_route": "优先走真实施工与材料证明路线，用施工过程、产品说明、返工边界和质保说明建立安全感，再承接到店预约。",
+      "recommended_alternative_route": "若真实施工和材料素材不足，先补齐证据再做放量测试。",
+      "hard_constraints": [
+        "不能用绝对效果和终身质保承诺掩盖真实边界",
+        "不能用单一夸张前后对比替代信任证明"
+      ],
+      "risk_tradeoff": "点击率可能不如强刺激文案，但能提高真实到店和降低返工风险。"
+    },
+    {
+      "id": "seasonal_goal_split",
+      "rule_name": "新车保护节点和日常洗护复购是两条不同策略路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "一部分用户只在提车、雨季、夏季隔热和节前节点短期决策",
+        "另一部分用户更在意长期洗护、复洗和年度养护"
+      ],
+      "recommended_primary_route": "把节点路线聚焦时效、保护需求和施工节奏，把日常路线聚焦复购、维护周期和使用成本。",
+      "recommended_alternative_route": "资源有限时，先做占比更高的一类，另一类只用轻量内容验证。",
+      "hard_constraints": [
+        "不能把短期节点承诺写成长期绝对保护结果",
+        "不能用雨季逻辑覆盖所有常规洗护用户"
+      ],
+      "risk_tradeoff": "拆路线能减少错配和预期落差。"
+    },
+    {
+      "id": "capacity_before_discount",
+      "rule_name": "施工时段、工位和师傅资源先于低价放量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店准备上线低门槛引流或节日活动",
+        "周末和晚间已出现施工挤压和等待"
+      ],
+      "recommended_primary_route": "先校验施工时段、工位、师傅和取送车资源，再决定是否扩投低门槛引流。",
+      "recommended_alternative_route": "若容量不足，优先分流时段和项目方向，而不是继续压价冲咨询。",
+      "hard_constraints": [
+        "不能在承接不足时继续加大低价引流",
+        "不能承诺复杂施工也能极短时间完成判断"
+      ],
+      "risk_tradeoff": "短期咨询量可能更少，但交付体验和复购更稳。"
+    },
+    {
+      "id": "return_visit_route",
+      "rule_name": "复购、返工回流和会员续费要作为独立增长路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "门店已有一定会员和老客资源",
+        "新客获客成本上升，复购和会员更值得经营"
+      ],
+      "recommended_primary_route": "围绕复洗、补膜、年度养护和会员续费，设计复访提醒与老客专属路线。",
+      "recommended_alternative_route": "若老客记录弱，先从最近 60 天施工客户做分层回访。",
+      "hard_constraints": [
+        "不能无差别群发所有老客同一条优惠",
+        "不能只靠降价而没有复购理由"
+      ],
+      "risk_tradeoff": "老客复购起量更慢，但 ROI 通常高于纯冷启动流量。"
+    }
+  ]
+}

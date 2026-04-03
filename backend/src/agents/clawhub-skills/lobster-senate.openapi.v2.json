@@ -1,0 +1,104 @@
+﻿{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Lobster Senate Skill Gateway",
+    "version": "2.0.0",
+    "description": "9-agent skill registry for Liaoyuan OS."
+  },
+  "paths": {
+    "/api/v1/skills/{toolName}/invoke": {
+      "post": {
+        "summary": "Invoke a registered ClawHub skill",
+        "parameters": [
+          {
+            "name": "toolName",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["tenantId", "input"],
+                "properties": {
+                  "tenantId": { "type": "string" },
+                  "traceId": { "type": "string" },
+                  "input": { "type": "object", "additionalProperties": true }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Skill execution result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["ok", "timestamp", "data"],
+                  "properties": {
+                    "ok": { "type": "boolean" },
+                    "traceId": { "type": "string" },
+                    "timestamp": { "type": "string", "format": "date-time" },
+                    "data": { "type": "object", "additionalProperties": true }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SkillCatalogPlan": {
+        "type": "object",
+        "required": ["discoverySkill", "maxSkills", "pageSize", "maxPages", "sortBy", "safetyGate"],
+        "properties": {
+          "discoverySkill": { "type": "string", "const": "find-skills" },
+          "maxSkills": { "type": "integer", "default": 10000 },
+          "pageSize": { "type": "integer", "default": 200 },
+          "maxPages": { "type": "integer", "default": 50 },
+          "sortBy": { "type": "string", "const": "downloads_stars_desc" },
+          "safetyGate": { "type": "string", "const": "skill-vetter" }
+        }
+      }
+    }
+  },
+  "x-agentSkillMatrix": {
+    "intelligence": {
+      "radar": ["agent_browser_execute", "summarize_page"],
+      "strategist": ["self_improving_agent_record", "ontology_query", "proactive_agent_scan"]
+    },
+    "content_factory": {
+      "ink-writer": ["humanizer_text", "summarize_for_dedup"],
+      "visualizer": ["nano_banana_pro_image"]
+    },
+    "orchestration": {
+      "dispatcher": ["proactive_agent_node_health", "auto_updater_run"]
+    },
+    "conversion": {
+      "echoer": ["humanizer_reply"],
+      "catcher": ["summarize_intent", "ontology_extract_lead"],
+      "abacus": ["api_gateway_webhook", "gog_push_lead"],
+      "follow-up": ["openai_whisper_transcribe"]
+    }
+  },
+  "x-skillDependencies": [
+    { "from": "radar.agent_browser_execute", "to": "radar.summarize_page", "artifact": "radar.raw_page" },
+    { "from": "radar.summarize_page", "to": "strategist.ontology_query", "artifact": "radar.market_intel" },
+    { "from": "strategist.proactive_agent_scan", "to": "ink-writer.humanizer_text", "artifact": "strategist.campaign_params" },
+    { "from": "ink-writer.summarize_for_dedup", "to": "visualizer.nano_banana_pro_image", "artifact": "ink_writer.template_json" },
+    { "from": "visualizer.nano_banana_pro_image", "to": "dispatcher.proactive_agent_node_health", "artifact": "visualizer.prompt_pack" },
+    { "from": "dispatcher.auto_updater_run", "to": "echoer.humanizer_reply", "artifact": "dispatcher.updated_nodes" },
+    { "from": "echoer.humanizer_reply", "to": "catcher.summarize_intent", "artifact": "echoer.reply_output" },
+    { "from": "catcher.ontology_extract_lead", "to": "abacus.api_gateway_webhook", "artifact": "catcher.lead_signals" },
+    { "from": "abacus.gog_push_lead", "to": "follow-up.openai_whisper_transcribe", "artifact": "abacus.crm_sync" }
+  ]
+}

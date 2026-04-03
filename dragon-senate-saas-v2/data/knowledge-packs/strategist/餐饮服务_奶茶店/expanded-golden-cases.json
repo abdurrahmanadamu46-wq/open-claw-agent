@@ -1,0 +1,234 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_milk_tea_office_afternoon_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "office_afternoon_pickup_growth",
+      "input": {
+        "mission_goal": "在 21 天内为写字楼园区奶茶店新增 380 单工作日下午茶自提或团单核销，并把 15 点到 17 点设备利用率从 52% 提升到 78%。",
+        "signal_brief": "周边 3 栋写字楼复工稳定，附近竞品用 9.9 元券抢量，但门店已有 2 个稳定奶茶系列、1 个高复购果茶系列、线上评分 4.7，平均单杯出品 85 秒，更适合走下午茶自提和办公室团单路线。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "清爽、稳定、效率友好",
+          "asset_state": "有 2400 名会员、近 60 天企业微信沉睡用户 680 人、下午茶时段复购客标签较完整",
+          "location_type": "写字楼园区底商",
+          "operations_state": "15 点到 17 点设备利用率有余量，18 点后晚高峰排队上升"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日下午茶主路线",
+        "本地 1 到 3 公里优先",
+        "主力系列证据和高峰出杯稳定性",
+        "至少一个会员召回或团单预约备选路线",
+        "明确优先顺序与履约风险权衡"
+      ],
+      "mustAvoid": [
+        "把早高峰、下午茶、晚高峰同时主推",
+        "用深折扣把高峰散单与团单一起拉爆"
+      ]
+    },
+    {
+      "id": "strategist_milk_tea_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "mall_new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的商场奶茶店验证第一个值得持续投放的增长场景，并决定预算优先压在周末逛街、工作日晚高峰带走还是平台外卖。",
+        "signal_brief": "门店开业仅 5 天，装修和包装出片不错，但线上只有 26 条评价，主力杯型还没有稳定销量数据，团队同时想做探店、团购券和外卖满减，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "年轻、明亮、适合拍照",
+          "asset_state": "有开业素材和上新海报，但缺少真实复购与高评价产品证据",
+          "location_type": "新商场 4 楼餐饮休闲区",
+          "operations_state": "店员还在磨合，周末高峰平均等待时长波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实评价和主力杯型证据",
+        "把到店与外卖拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和包装直接大规模扩量",
+        "开业初期同时冲团购低价和外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_milk_tea_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "seasonal_member_reactivation",
+      "input": {
+        "mission_goal": "在 18 天内激活 1600 名近 90 天未下单会员，并带回 260 单老客复购订单。",
+        "signal_brief": "门店刚上新一条草莓酸奶和一条经典鲜奶茶系列，预算不高，但历史订单标签完整，老客回店成本显著低于公域冷启动，适合优先走会员召回路线。",
+        "tenant_context": {
+          "budget_limit": 3200,
+          "brand_tone": "熟客感、轻松、不打扰",
+          "crm_state": "可按鲜果茶偏好、奶茶偏好、下午茶时段和距离门店半径分层",
+          "asset_state": "有过去 6 个月的下单记录、积分体系和 2 次上新测试反馈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "会员分层重激活节奏",
+        "季节上新或经典系列回归作为回店理由",
+        "低成本优先级高于陌生人投流",
+        "至少一个本地冷启动备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略历史口味偏好和下单时段"
+      ]
+    },
+    {
+      "id": "strategist_milk_tea_group_order_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "office_group_order_growth",
+      "input": {
+        "mission_goal": "在 30 天内为办公室会议茶歇和团队下午茶场景获取 42 条高意向团单咨询，并落地 20 单 20 杯以上的实际订单。",
+        "signal_brief": "门店周边 2 公里内有多个产业园和联合办公空间，散单稳定，但 16 点后仍有一段产能空窗，门店已做过 8 次 30 杯以上团单，包装和配送流程相对成熟。",
+        "tenant_context": {
+          "budget_limit": 8500,
+          "brand_tone": "靠谱、准时、适合集体下单",
+          "asset_state": "有标准团单菜单、企业微信客服和 5 条大单好评截图",
+          "location_type": "产业园和写字楼交界",
+          "operations_state": "即时大单会挤压 18 点晚高峰，需要提前预约分流"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "团单资格筛选",
+        "送达时间、杯数、预算和地址收集",
+        "标准团单方案与预约承接路线",
+        "明确主路线和 fallback"
+      ],
+      "mustAvoid": [
+        "把即时散单优惠直接套到团单报价",
+        "未查产能就承诺所有时段都能接大单"
+      ]
+    },
+    {
+      "id": "strategist_milk_tea_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_fulfillment_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复晚高峰订单转化，并在 21 天内把有效自提订单量拉回到上月平均水平。",
+        "signal_brief": "近 3 周平台评分从 4.6 掉到 4.2，差评集中在排队太久、甜度出错、封口漏液和水果品质波动，但老板仍想继续加码短视频探店和平台大促。",
+        "tenant_context": {
+          "budget_limit": 7000,
+          "brand_tone": "诚恳、愿意改、接地气",
+          "asset_state": "仍有 2 个评分高的稳定杯型和一批老客好评截图",
+          "operations_state": "晚高峰排班不足、部分原料预测不准、骑手取单点位拥挤"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和履约再扩量",
+        "限定杯型或限定时段路线",
+        "真实回评和稳定杯型回收信任",
+        "明确停止或降级高风险投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或隐瞒履约风险"
+      ]
+    },
+    {
+      "id": "strategist_milk_tea_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_delivery_overexpansion",
+      "input": {
+        "mission_goal": "用 9.9 元双杯券和全城配送口号在 10 天内把订单量翻倍。",
+        "signal_brief": "周边竞品持续用低价券抢量，但门店当前毛利已经偏薄，周末和晚高峰常排队，外卖差评开始上升，继续压价和扩半径很可能带来更多超时、漏单和报损。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 3 个主力杯型，但缺少承接深折扣和全城配送的人手",
+          "operations_state": "封杯、打包和骑手交接已接近上限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价和全城配送中心路线",
+        "把单店承接、毛利和口碑风险说透",
+        "给出更稳的替代增长路径"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量团购或无限半径配送承诺",
+        "忽略吧台、打包和骑手交接上限"
+      ]
+    }
+  ]
+}

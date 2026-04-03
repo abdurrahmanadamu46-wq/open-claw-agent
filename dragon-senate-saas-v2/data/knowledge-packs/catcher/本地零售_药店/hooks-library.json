@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"scene_plus_time_hook","title":"场景加时间同时出现时的高意向钩子","description":"当线索同时出现急用/备药/补药方向和到店时间时，应优先判为高意向候选。","examples":["今晚想先看退烧药。","这周末想先备一套家庭常备药。"],"priority":"high"},
+  {"id":"first_visit_process_hook","title":"首次到店与说明顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心买错时，说明其到店意图更具体。","examples":["第一次来，周末想先看适不适合家里备着。","担心孩子用的买错，想先来了解一下。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"流感季与返乡窗口钩子","description":"换季、返乡、开学和夜间急用节点如果带着明确时间进入私信，应显著提权。","examples":["返乡前想先看一套常备药。","今晚孩子发烧想先备退烧药。"],"priority":"high"},
+  {"id":"pharmacist_specific_hook","title":"药师说明细问钩子","description":"当用户明确提到药师、用法、搭配和年龄角色时，往往意味着真实购买需求已经收窄。","examples":["晚上还有药师在吗。","这个是给老人还是孩子备更合适。"],"priority":"high"},
+  {"id":"old_client_restock_hook","title":"老客补药与推荐回流钩子","description":"老客复购、朋友推荐和之前买过同规格又回来问新批次，通常有更高的成交确定性。","examples":["上次在你们家买过，这周想再补一盒。","朋友推荐你们店，说夜里问得清楚。"],"priority":"medium"},
+  {"id":"price_plus_scope_hook","title":"价格叠加场景范围钩子","description":"只问价格不一定高意向，但如果同时出现角色、场景和到店时间，质量明显更高。","examples":["今晚想来看儿童退烧药，大概什么价位。","返乡备药一家三口大概什么预算。"],"priority":"medium"}
+]}

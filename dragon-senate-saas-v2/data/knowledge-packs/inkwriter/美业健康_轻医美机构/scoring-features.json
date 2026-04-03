@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "med_score_concern_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分文案能在前两句就让用户看见明确问题或场景，例如毛孔、痘印、细纹、节前状态管理和第一次咨询，而不是只说变好看。",
+      "examples": [
+        "高分：开头直接点出毛孔和痘印。 ",
+        "低分：一开始只有精致和逆龄。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "med_score_trust_tone",
+      "title": "信任与边界感",
+      "description": "高分文案会主动给流程、资质、适用边界和低压力感，让用户感到机构不会乱推。低分文案往往只强调效果和优惠。",
+      "examples": [
+        "高分：先写判断和边界，再写预约。 ",
+        "低分：只靠效果和前后对比吸引。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "med_score_compliance_safety",
+      "title": "合规安全性",
+      "description": "高分文案避免药效化、绝对化和虚假恢复期承诺；低分文案容易出现根治、永久、无恢复期等高风险表述。",
+      "examples": [
+        "高分：用面诊判断和风险提示替代强承诺。 ",
+        "低分：一次解决、绝对安全、零恢复。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "med_score_scene_match",
+      "title": "场景匹配度",
+      "description": "高分文案会让节前焕新、日常维护和复查回访各归其位；低分文案把所有人群都用一套语气去写。",
+      "examples": [
+        "高分：节前文案重日期和时效，老客文案重复查理由。 ",
+        "低分：所有文案都只会喊来做项目。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "med_score_respectfulness",
+      "title": "尊重感与情绪稳定度",
+      "description": "高分文案会陪用户一起判断问题，而不是拿容貌羞耻和焦虑刺激逼单。轻医美文案的情绪越稳，越有助于真实预约。",
+      "examples": [
+        "高分：用先看方向和先判断这类语气。 ",
+        "低分：用再不做就晚了这类恐吓。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "med_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收问题、日期和是否第一次来等预约事实，方便后续承接；低分 CTA 只有欢迎到店或私信了解。",
+      "examples": [
+        "高分：先发问题和想约时间。 ",
+        "低分：快来做同款。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

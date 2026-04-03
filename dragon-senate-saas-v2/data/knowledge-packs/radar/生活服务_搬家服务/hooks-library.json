@@ -1,0 +1,7 @@
+{"industry":"生活服务_搬家服务","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+{"id":"move_time_hook","title":"搬家时间窗口钩子","description":"当用户同时提到搬家日期和大致场景时，应优先标记为高价值信号。","examples":["周六想从两居搬到新小区。","月底退租前想先把搬家定下来。"],"priority":"high"},
+{"id":"floor_elevator_hook","title":"楼层电梯钩子","description":"出现几楼、有无电梯和停车距离时，说明线索更接近真实成交。","examples":["老小区五楼没电梯怎么搬。","地下车库到电梯口有点远。"],"priority":"high"},
+{"id":"packing_and_disassembly_hook","title":"打包拆装钩子","description":"打包、衣柜床拆装和大件搬运如果带着明确范围，也应视为更高价值信号。","examples":["想包打包和床柜拆装。","冰箱洗衣机和大床都要搬。"],"priority":"high"},
+{"id":"cross_city_storage_hook","title":"跨城与仓储钩子","description":"跨城搬家和临时仓储需求常伴随更高客单和更复杂履约，应单独关注。","examples":["跨城搬家能不能先存两天。","下周再入住，想先放仓库。"],"priority":"high"},
+{"id":"office_move_hook","title":"办公室搬迁钩子","description":"办公室搬迁常常伴随工位、文件柜和电脑设备迁移，应识别为专项场景。","examples":["小办公室换址要搬电脑和文件柜。","周末想搬办公室，周一恢复办公。"],"priority":"medium"},
+{"id":"repeat_referral_hook","title":"复约与转介绍钩子","description":"老客复约、同小区推荐和朋友介绍通常有更高的成交确定性。","examples":["上次搬过，这次换房还想找你们。","朋友推荐你们，说上次搬得稳。"],"priority":"medium"}]}

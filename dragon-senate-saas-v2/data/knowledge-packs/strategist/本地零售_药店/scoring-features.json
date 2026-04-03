@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"strategist","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"scene_focus","feature_name":"场景聚焦度","metric":"route_focus","weight":0.2,"scoring_rule":"夜间急用、家庭备药、慢病续购等主路线越单一清楚，得分越高。","positive_signals":["内容只围绕一个核心场景展开","CTA 与场景一致"],"negative_signals":["多个症状与人群混推","既讲急送又讲慢病又讲保健"],"route_guidance":"低分时先拆路线，不要急着放量。"},
+  {"id":"compliance_proof_strength","feature_name":"合规证据强度","metric":"trust_proof","weight":0.2,"scoring_rule":"药师在岗、资质、说明边界和流程证据越充分，得分越高。","positive_signals":["有门店真实资质和药师说明","话术能解释适用人群与边界"],"negative_signals":["只有促销词没有信任词","用见效承诺替代真实证据"],"route_guidance":"合规证据弱时，不宜主推高风险症状路线。"},
+  {"id":"window_clarity","feature_name":"窗口期清晰度","metric":"timing_clarity","weight":0.16,"scoring_rule":"流感季、花粉季、夜间急用和返乡节点越明确，得分越高。","positive_signals":["给出今晚、返乡前或季节窗口","有夜间急用时段"],"negative_signals":["只有最近看看","没有时间节点"],"route_guidance":"时间清晰时可加大时效路线比重。"},
+  {"id":"capacity_fit","feature_name":"履约容量匹配度","metric":"capacity_fit","weight":0.16,"scoring_rule":"策略是否考虑药师在岗、配送范围、夜间值守和库存上限。","positive_signals":["区分急送与复购链路","明确高峰时段边界"],"negative_signals":["把所有询单都导向同一承接链路","忽略值守与库存成本"],"route_guidance":"容量不稳时优先收窄路线。"},
+  {"id":"repurchase_potential","feature_name":"复购潜力","metric":"repurchase_potential","weight":0.14,"scoring_rule":"慢病续购、试纸耗材和家庭常备药路线越容易形成复购，得分越高。","positive_signals":["存在慢病与家庭补货逻辑","有补货周期"],"negative_signals":["完全一次性场景","没有回访动作"],"route_guidance":"高复购路线适合配置 followup 资源。"},
+  {"id":"risk_boundary_control","feature_name":"风险边界控制","metric":"risk_control","weight":0.14,"scoring_rule":"避免诊断承诺、疗效夸张和超范围送药承诺的策略得分更高。","positive_signals":["清楚标注边界与条件","先讲事实后讲便利"],"negative_signals":["依赖绝对化见效承诺","用恐慌式话术刺激下单"],"route_guidance":"风险高时先降火，不要继续扩量。"}
+]}

@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": "lobster.eval.scorecard.v0.2",
+  "roleId": "strategist",
+  "primaryArtifact": "StrategyRoute",
+  "metrics": [
+    {
+      "id": "route_quality",
+      "weight": 0.35,
+      "order": 1
+    },
+    {
+      "id": "priority_accuracy",
+      "weight": 0.2,
+      "order": 2
+    },
+    {
+      "id": "resource_estimation_accuracy",
+      "weight": 0.2,
+      "order": 3
+    },
+    {
+      "id": "risk_tradeoff_quality",
+      "weight": 0.25,
+      "order": 4
+    }
+  ],
+  "acceptance": {
+    "artifactSchemaPassRate": 0.99,
+    "benchmarkPassRate": 0.92,
+    "regressionBudgetCeilingRatio": 1.04
+  }
+}

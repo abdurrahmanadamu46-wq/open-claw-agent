@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_家电门店","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+{"id":"facts_before_slot_commitment","title":"没补齐品类、时间和选品方向前，本轮目标是锁预约事实，不是先把结果说满","description":"家电门店线索很多从有没有货、多少钱和能不能装开场，但真正决定能否推进的是品类方向、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问品类和选品方向。","客户只说最近想买家电时，先补时间和门店，再决定如何推进。"],"priority":"high"},
+{"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕被坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会选型号、怕安装乱收费和怕售后扯皮的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出到店路径。","先讲清参数和送装，再谈时间。"],"priority":"high"},
+{"id":"seasonal_booking_needs_fast_scope","title":"交房、婚房和节点焕新线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间和品类方向。","examples":["交房线索先确认周几可来和这次最在意什么。","入住线索先锁时间，再讲品类范围。"],"priority":"high"},
+{"id":"first_visit_and_revisit_split","title":"首次预约跟进和复访维护必须拆开","description":"首单跟进的目标通常是帮用户安心完成一次到店，复访维护的目标才是提醒节点、订单状态和下一步选择。","examples":["首单更多围绕品类、时间和风险边界。","复访更多围绕上次选品感受、居住变化和下一步。"],"priority":"high"},
+{"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收感受和状态变化，再决定是否推进","description":"到店后的 FollowUp 不是默认销售时刻。","examples":["到店后先问感觉和最在意的点。","选品后先问方案和后续想法。"],"priority":"high"},
+{"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复访或补单理由，不要只催回来","description":"交房节点、入住节点和补购需求等都是合理的回访理由。","examples":["提醒上次来选品的客户交房节点到了。","按入住周期提醒补单。"],"priority":"medium"}]}

@@ -1,0 +1,7 @@
+{"industry":"生活服务_开锁服务","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"first_visit_inquiry","title":"首次预约问询触发优先调度","description":"当来单中出现第一次来、想先上门、想先看看方案或具体锁型问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先看急开门方案。","客户想先看换锁路线是否适合自己。"],"priority":"high"},
+{"id":"window_inquiry","title":"夜间与交房窗口询单触发时效优先调度","description":"当来单明确说明夜间、交房和返家节点时，Dispatcher 要立即优先判断热门时段可用性和排班边界。","examples":["客户今晚想先上门。","客户说明下周交房，希望今晚先确认。"],"priority":"high"},
+{"id":"lock_scope_trigger","title":"锁型范围触发高工时优先调度","description":"当用户明确门锁类型、门型和换锁范围时，Dispatcher 应优先分配专项路线。","examples":["客户防盗门换锁芯。","客户智能锁安装带旧锁拆卸。"],"priority":"high"},
+{"id":"peak_schedule_trigger","title":"高峰时段触发排班优先调度","description":"当用户需要今晚或节假日上门时，Dispatcher 要优先判断候补与改时段路径。","examples":["今晚能不能先到。","节假日返家想先安排。"],"priority":"medium"},
+{"id":"repeat_trigger","title":"复约维护触发复购链路","description":"复约维护一旦出现时段和设备需求，应直接进入标准化复购链路。","examples":["这个月想再换一次锁。","上次那个门禁还想继续维护。"],"priority":"medium"},
+{"id":"smart_lock_trigger","title":"智能锁安装触发专项链路","description":"智能锁和门禁安装应优先走专项链路，而不是普通开锁流程。","examples":["新装智能锁。","门禁设备升级。"],"priority":"medium"}]}

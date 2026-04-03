@@ -1,0 +1,81 @@
+{
+  "lobster_id": "abacus",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "roi-report",
+      "prompts": [
+        {
+          "id": "abacus.roi-report.campaign-roi.v1",
+          "file": "roi-report/campaign-roi.prompt.md",
+          "skill_id": "abacus_roi_calc",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "education", "local-service", "health"],
+          "variants": ["v1-single-campaign", "v1-monthly-rollup", "v1-channel-compare"]
+        },
+        {
+          "id": "abacus.roi-report.content-value.v1",
+          "file": "roi-report/content-value.prompt.md",
+          "skill_id": "abacus_roi_calc",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "food", "fashion", "ecommerce", "education"],
+          "variants": ["v1-viral-content", "v1-evergreen-content", "v1-paid-amplified"]
+        },
+        {
+          "id": "abacus.roi-report.cost-breakdown.v1",
+          "file": "roi-report/cost-breakdown.prompt.md",
+          "skill_id": "abacus_roi_calc",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "education", "health", "local-service"],
+          "variants": ["v1-by-channel", "v1-by-content-type", "v1-by-lobster"]
+        },
+        {
+          "id": "abacus.roi-report.value-scorecard.v1",
+          "file": "roi-report/value-scorecard.prompt.md",
+          "skill_id": "abacus_strategy_report",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "food", "education", "health"],
+          "variants": ["v1-executive-summary", "v1-ops-detail"]
+        }
+      ]
+    },
+    {
+      "category": "attribution",
+      "prompts": [
+        {
+          "id": "abacus.attribution.multi-touch.v1",
+          "file": "attribution/multi-touch.prompt.md",
+          "skill_id": "abacus_multi_touch_attribution",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "education", "health", "local-service"],
+          "variants": ["v1-first-touch", "v1-last-touch", "v1-linear", "v1-time-decay"]
+        },
+        {
+          "id": "abacus.attribution.channel-contribution.v1",
+          "file": "attribution/channel-contribution.prompt.md",
+          "skill_id": "abacus_multi_touch_attribution",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "fashion", "food", "education"],
+          "variants": ["v1-xiaohongshu-vs-douyin", "v1-paid-vs-organic", "v1-influencer-vs-brand"]
+        },
+        {
+          "id": "abacus.attribution.conversion-path.v1",
+          "file": "attribution/conversion-path.prompt.md",
+          "skill_id": "abacus_multi_touch_attribution",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "education", "health"],
+          "variants": ["v1-awareness-to-purchase", "v1-dm-to-order"]
+        },
+        {
+          "id": "abacus.attribution.feedback-loop.v1",
+          "file": "attribution/feedback-loop.prompt.md",
+          "skill_id": "abacus_feedback_loop",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "education", "health", "local-service"],
+          "variants": ["v1-strategy-adjust", "v1-content-priority-adjust"]
+        }
+      ]
+    }
+  ]
+}

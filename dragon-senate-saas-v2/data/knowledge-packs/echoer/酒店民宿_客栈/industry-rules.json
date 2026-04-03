@@ -1,0 +1,323 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "weekend_old_town_stay_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether rooms are still available for a weekend or holiday stay without sharing exact dates, guest count, or preferred room style",
+        "User says they want a quick inn stay in an old-town or scenic area but the trip scope is still broad"
+      ],
+      "response_goal": "Turn broad inn interest into the minimum stay details needed for a useful guesthouse reply.",
+      "do": [
+        "Acknowledge that the user wants a simple answer instead of a long reservation script",
+        "Ask only for the next critical facts such as stay dates, guest count, and the room style they care about most",
+        "Keep the tone warm and steady instead of sounding like a hard booking funnel"
+      ],
+      "avoid": [
+        "Guessing availability from a broad question",
+        "Dumping every room category before the trip basics are known",
+        "Pushing the user to book before the stay scope is clear"
+      ],
+      "safe_transition": "If you send the stay dates, how many guests are coming, and which room style you have in mind, I can help narrow the next step much more clearly.",
+      "handoff_suggestion": "If the trip basics are complete, mark as inn-booking ready."
+    },
+    {
+      "id": "late_arrival_needs_checkin_window",
+      "priority": "high",
+      "applies_when": [
+        "User asks for a same-day room or says they may arrive very late tonight",
+        "User wants to know whether the inn can still handle check-in after the usual front-desk or host hours"
+      ],
+      "response_goal": "Calm arrival-time pressure first and move the conversation toward workable check-in details instead of loose reassurance.",
+      "do": [
+        "Acknowledge that late arrival can feel stressful, especially with a smaller host-led property",
+        "Ask for the property, arrival window, whether the booking already exists, and how many guests are coming",
+        "Frame the answer around live room status and host check-in handling instead of certainty"
+      ],
+      "avoid": [
+        "Guaranteeing that someone will wait no matter how late it gets",
+        "Acting as if every inn has a 24-hour staffed desk",
+        "Using pressure language such as book now or lose it"
+      ],
+      "safe_transition": "If you tell me which property you mean and roughly what time you expect to arrive, I can point you to the safer next step.",
+      "handoff_suggestion": "Late-arrival cases with timing details should move quickly toward reservation or host confirmation."
+    },
+    {
+      "id": "scenic_area_parking_and_luggage_access_need_context",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether they can park right at the inn or whether luggage can be taken directly to the room",
+        "User mentions older guests, strollers, large suitcases, or a larger car without sharing the exact property or access concern"
+      ],
+      "response_goal": "Protect arrival expectations by clarifying the access details that actually shape the guesthouse experience.",
+      "do": [
+        "Acknowledge that guests want to avoid arrival friction in scenic or old-town areas",
+        "Ask for the property, vehicle type if relevant, and whether the main concern is parking, walking distance, stairs, or luggage transfer",
+        "Mention that access conditions can vary by lane width, scenic-area rules, and room location"
+      ],
+      "avoid": [
+        "Guaranteeing doorstep parking or zero walking without property context",
+        "Ignoring larger vehicles, late-night arrival, or mobility needs",
+        "Treating every inn as equally easy to access"
+      ],
+      "safe_transition": "If you tell me which property you mean and whether the main concern is parking, stairs, or luggage access, I can guide the next step more safely.",
+      "handoff_suggestion": "Access-sensitive cases should route toward property-specific arrival confirmation."
+    },
+    {
+      "id": "family_room_and_extra_bed_need_age_context",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether a child can stay in the room, whether an extra bed is possible, or whether a loft or tatami room is suitable",
+        "User asks about two adults plus child occupancy without sharing child age or sleeping setup"
+      ],
+      "response_goal": "Make family-fit replies useful by collecting the occupancy facts that actually affect room fit and safety.",
+      "do": [
+        "Acknowledge that inn rooms can vary a lot in layout and bedding setup",
+        "Ask for the number of adults and children, child ages, and whether the main need is one bed, extra bedding, or a safer low-stair layout",
+        "Keep the next questions simple enough to answer in one message"
+      ],
+      "avoid": [
+        "Assuming every room can add bedding the same way",
+        "Ignoring child age or loft and stair safety concerns",
+        "Guaranteeing an extra bed before room context is known"
+      ],
+      "safe_transition": "If you send the child age and the bedding setup you are hoping for, I can help narrow which room direction makes the most sense.",
+      "handoff_suggestion": "Family-fit questions with ages and bedding details should route as room-fit clarification leads."
+    },
+    {
+      "id": "pet_stay_needs_pet_and_room_context",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether the inn is pet friendly",
+        "User asks about pet fees, size limits, cleaning rules, or whether a specific room can take a dog or cat"
+      ],
+      "response_goal": "Keep pet-stay guidance accurate by clarifying the pet and room details that change the answer.",
+      "do": [
+        "Acknowledge that guests want to avoid pet-related arrival friction",
+        "Ask for the property, pet type and size, stay dates, and whether the user already has a room type in mind",
+        "Mention that pet handling can vary by room, public-space boundaries, and cleaning rules"
+      ],
+      "avoid": [
+        "Saying pets are always allowed without room context",
+        "Ignoring size, count, or cleaning boundaries",
+        "Overlooking how pet rules can affect other guests and room assignment"
+      ],
+      "safe_transition": "If you tell me what pet you are bringing, when you want to stay, and which room you are considering, I can guide the next check more safely.",
+      "handoff_suggestion": "Pet-stay questions with concrete details should route to property policy confirmation."
+    },
+    {
+      "id": "real_room_view_photo_expectation_need_room_context",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a river-view room, balcony room, tub room, or courtyard room can be guaranteed exactly as pictured",
+        "User asks whether the inn really looks the same in person as the photos or short videos"
+      ],
+      "response_goal": "Protect trust by grounding the reply in real room context instead of staged or absolute promises.",
+      "do": [
+        "Acknowledge why the room atmosphere matters to the stay decision",
+        "Explain that exact view angle, floor level, lighting, and room placement can vary by room type and live assignment",
+        "Ask for the property, stay date, room type, and the one feature they care about most"
+      ],
+      "avoid": [
+        "Guaranteeing that every room will look exactly like a hero photo",
+        "Promising perfect river view, sunset, or balcony angle",
+        "Answering with vague yes wording that creates expectation risk"
+      ],
+      "safe_transition": "If you send the room type you are looking at and the detail you care about most, I can help narrow the next step more realistically.",
+      "handoff_suggestion": "High-expectation room questions should route toward room-type clarification or reservation notes."
+    },
+    {
+      "id": "quiet_room_street_side_requests_are_not_certainties",
+      "priority": "high",
+      "applies_when": [
+        "User asks for a quiet room, a room away from the bar street, or one not facing a busy alley",
+        "User says they are a light sleeper and wants a room location to be guaranteed"
+      ],
+      "response_goal": "Respect the rest concern while making it clear that room placement requests depend on live assignment.",
+      "do": [
+        "Acknowledge why rest quality matters, especially in old-town or scenic areas",
+        "Explain that quiet placement, away-from-street requests, and similar preferences can often be noted but still depend on room status at the time",
+        "Ask for stay date, room type, and the preference that matters most"
+      ],
+      "avoid": [
+        "Guaranteeing a perfectly silent or exact-position room",
+        "Overpromising on floor, view, or distance from street noise",
+        "Downplaying the user's sleep concern"
+      ],
+      "safe_transition": "If you tell me your stay date and which room preference matters most, I can help point you to the best next step.",
+      "handoff_suggestion": "Preference-heavy stays should be tagged for reservation notes or host follow-up."
+    },
+    {
+      "id": "celebration_setup_are_requests_not_certainties",
+      "priority": "medium",
+      "applies_when": [
+        "User mentions an anniversary, birthday, proposal, or another small celebration",
+        "User asks whether lanterns, cake, flowers, room decor, or a private-feeling setup can definitely be arranged"
+      ],
+      "response_goal": "Welcome the celebration context while keeping guesthouse arrangements realistic and low-pressure.",
+      "do": [
+        "Acknowledge the emotional importance of the stay",
+        "Ask what matters most such as room mood, simple decor, cake, breakfast timing, or privacy, along with stay date and guest count",
+        "Frame celebration support as a coordination request rather than an automatic promise"
+      ],
+      "avoid": [
+        "Guaranteeing free upgrades, surprise setups, or exact decor outcomes",
+        "Treating every celebration the same way across every property",
+        "Downplaying the emotional importance of the request"
+      ],
+      "safe_transition": "If you share the stay date and the one or two celebration details that matter most, I can help point you to the best next check.",
+      "handoff_suggestion": "Celebration stays should be tagged for host-note or reservation follow-up."
+    },
+    {
+      "id": "breakfast_tea_pickup_and_experience_inclusions_depend_plan",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether breakfast, local tea service, station pickup, or another hosted experience is included",
+        "User references an OTA plan, package page, or social post and wants confirmation of what comes with the stay"
+      ],
+      "response_goal": "Tie inclusion questions back to the actual plan and stay date instead of improvising broad promises.",
+      "do": [
+        "Acknowledge that inclusions matter before booking or arrival",
+        "Ask whether the user already booked, which package or channel they are looking at, and the exact benefit they want to confirm",
+        "Use clear language that inclusions can vary by room type, season, dates, and booking channel"
+      ],
+      "avoid": [
+        "Assuming every room includes the same breakfast or hosted extras",
+        "Ignoring date, package, or channel differences",
+        "Using vague wording like usually included when the answer is plan-dependent"
+      ],
+      "safe_transition": "If you send the plan or booking channel plus the benefit you want to confirm, I can help guide the next step much more accurately.",
+      "handoff_suggestion": "Inclusion questions with plan context should route as booking-clarification leads."
+    },
+    {
+      "id": "courtyard_buyout_and_friend_gathering_need_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks about a full buyout, a birthday gathering, a friend reunion, or several rooms for one group",
+        "User asks whether they can use the courtyard, tea table, rooftop, or shared lounge for a gathering"
+      ],
+      "response_goal": "Move group interest into workable scope while protecting quiet-hour, capacity, and host-boundary expectations.",
+      "do": [
+        "Recognize that this is a serious multi-part stay need rather than casual browsing",
+        "Ask for dates, guest count, room count, whether they want full buyout or several rooms, and whether dining or gathering space matters",
+        "Use calm boundary language around quiet hours, shared-space use, and host coordination"
+      ],
+      "avoid": [
+        "Promising a party-friendly setup without scope or house-rule context",
+        "Assuming every inn can handle full buyout the same way",
+        "Quoting a fixed plan before dates and group size are clear"
+      ],
+      "safe_transition": "If you share the dates, total headcount, and whether this is several rooms or a full buyout, I can point you to the next step much more clearly.",
+      "handoff_suggestion": "Buyout and group-stay cases should route as high-value reservation leads with boundary review."
+    },
+    {
+      "id": "station_or_scenic_transfer_depends_schedule",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether the inn can provide station pickup, scenic-area shuttle help, or luggage transfer",
+        "User wants to know whether pickup runs at a specific late-night or early-morning time"
+      ],
+      "response_goal": "Keep transfer answers credible by grounding them in property, date, and schedule context.",
+      "do": [
+        "Acknowledge the convenience concern",
+        "Explain that pickup or transfer support can vary by property, route, arrival hour, and advance notice rules",
+        "Ask for the inn, travel date, train or flight timing, and whether pickup, drop-off, or luggage help is needed"
+      ],
+      "avoid": [
+        "Promising pickup coverage without property context",
+        "Guessing cut-off times",
+        "Treating transfer arrangements as automatic"
+      ],
+      "safe_transition": "If you share the inn, your travel date, and the pickup or drop-off time you need, I can narrow the next step much better.",
+      "handoff_suggestion": "Transfer questions with fixed timing should move to property-specific confirmation."
+    },
+    {
+      "id": "weather_and_season_view_need_condition_language",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether blossoms, snow, river view, terrace weather, or outdoor tea time will definitely look the same as in content",
+        "User is worried that rain or seasonal timing may affect the stay atmosphere"
+      ],
+      "response_goal": "Keep the reply reassuring but realistic when scenery and outdoor experience depend on changing conditions.",
+      "do": [
+        "Acknowledge the disappointment risk if the trip atmosphere changes",
+        "Explain that outdoor view experience can depend on season, weather, and same-day conditions",
+        "Guide toward the stay dates, property, and the exact scene or experience that matters most"
+      ],
+      "avoid": [
+        "Guaranteeing blossom timing, snowfall, sunset, or perfect weather",
+        "Minimizing seasonal uncertainty",
+        "Giving a blanket answer that ignores dates"
+      ],
+      "safe_transition": "If you tell me the stay dates and which view or outdoor moment matters most, I can help point you to the right next check.",
+      "handoff_suggestion": "Season-sensitive cases should route to property confirmation when dates are near."
+    },
+    {
+      "id": "cancellation_or_change_depends_channel_deposit_and_peak_rules",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a booking can be canceled, moved, or refunded",
+        "User says they booked through an app, a deposit link, or a holiday plan and their schedule changed"
+      ],
+      "response_goal": "Protect trust by grounding cancellation talk in booking channel, deposit terms, and peak-date rules instead of loose reassurance.",
+      "do": [
+        "Acknowledge that changing a getaway plan can be frustrating",
+        "Ask whether the booking already exists, through which channel, and whether the plan is flexible, deposit-based, or non-refundable if they know",
+        "Guide the user toward the correct policy-check path"
+      ],
+      "avoid": [
+        "Promising refunds before checking booking context",
+        "Treating direct, OTA, and deposit-link bookings as identical",
+        "Sounding dismissive about weather, family, or schedule changes"
+      ],
+      "safe_transition": "If you send where the booking was made and what the rate or deposit terms say, I can help point you to the right next step instead of guessing.",
+      "handoff_suggestion": "Refund and change cases should be routed for booking-policy confirmation."
+    },
+    {
+      "id": "complaint_first_empathy_and_case_facts",
+      "priority": "high",
+      "applies_when": [
+        "User reports a room issue, cleanliness problem, noise, service delay, pet-policy friction, or mismatch between pictures and the real stay",
+        "User is visibly upset in public comments or DM about a current or recent inn stay"
+      ],
+      "response_goal": "Stabilize emotion first and gather the minimum facts needed for real service recovery.",
+      "do": [
+        "Acknowledge the frustration directly and calmly",
+        "Move the conversation toward the property, stay date, room or booking details, and the exact issue through a safer channel",
+        "Signal that a real person should review the case"
+      ],
+      "avoid": [
+        "Arguing responsibility in public",
+        "Blaming the host, housekeeping, or the guest before facts are checked",
+        "Requesting excessive personal information in a public thread"
+      ],
+      "safe_transition": "I can understand why that would be frustrating. Please send the property, stay date, and room or booking details by DM so the right person can check it quickly.",
+      "handoff_suggestion": "Escalate directly to guest service, reservation support, or the property host."
+    },
+    {
+      "id": "public_to_dm_transition",
+      "priority": "high",
+      "applies_when": [
+        "User is ready to book, complain, or send screenshots in a public comment thread",
+        "The next step needs booking details, policy screenshots, room preferences, or stay information that should be handled privately"
+      ],
+      "response_goal": "Move naturally from public interaction to a safer detail-collection channel without sounding abrupt or evasive.",
+      "do": [
+        "Answer one useful point in public first",
+        "Explain why DM helps with booking, policy, or complaint details",
+        "Make the next step specific and low-effort"
+      ],
+      "avoid": [
+        "Replying only with DM me",
+        "Dropping off-platform contact details in public",
+        "Using hard-pressure lead capture language"
+      ],
+      "safe_transition": "A couple of details are easier to check in DM. If you send the property plus your stay or booking details there, we can make the next step much clearer.",
+      "handoff_suggestion": "If the user is ready to continue privately, notify Catcher and the relevant service path."
+    }
+  ]
+}

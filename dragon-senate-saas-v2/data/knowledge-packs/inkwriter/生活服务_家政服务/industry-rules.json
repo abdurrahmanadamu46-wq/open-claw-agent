@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"inkwriter","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"housekeeping_rule_scene_first","title":"开头先锚定深清、开荒或周保洁场景，不要一上来堆价格词","description":"家政服务文案第一句话要先让用户看见自己要解决什么，例如节前大扫除、厨房重油污、入住开荒、退租保洁、周保洁和收纳整理，而不是先堆低价、秒杀和爆款词。","examples":["不要先写今天多便宜，而要先写这次是节前深清、入住开荒还是固定周保洁。","不要先写活动名，而要先写你现在更卡在时间、范围还是阿姨信任。","开头可以直接锚定节前、入住或来客节点。"],"priority":"high"},
+  {"id":"housekeeping_rule_no_absolute_claims","title":"避免绝对干净、绝不加价和绝不损坏承诺","description":"家政服务文案不能把服务写成绝对干净、绝不加价、绝不损坏和绝对适合所有家庭，也不能模糊加项与时段边界。","examples":["不要写一次彻底焕新，要写先看房型和范围。","不要写绝不加价，要写先按房型和加项说明。","不要写谁家都适合，要写会先看当前场景。"],"priority":"high"},
+  {"id":"housekeeping_rule_trust_before_discount","title":"信任和过程说明应早于折扣信息出现","description":"家政文案最怕用户觉得门店只会喊便宜不会讲阿姨、工具和边界，所以文案要先建立可信度，再讲优惠与活动。","examples":["先写阿姨稳定性、工具和上门场景，再写保洁活动。","先写房型、时段和加项边界，再写套餐价格。"],"priority":"high"},
+  {"id":"housekeeping_rule_scope_clear","title":"房型与范围要说清，但别把所有情况混成一锅","description":"高分文案会把两居深清、三居开荒、周保洁和收纳整理拆开呈现，让用户快速进入自己的那一档。","examples":["89 平两居深清是一条线。","退租保洁和周期保洁是另一条线。"],"priority":"medium"},
+  {"id":"housekeeping_rule_cta_collect_facts","title":"CTA 要收场景、房型和时间，不要只催成交","description":"家政 CTA 的核心不是立刻下单，而是收集场景、房型面积、日期和是否需要加项。","examples":["可以先告诉我这次更像深清、开荒还是周保洁。","把房型和时间发我，我先帮你收窄路线。"],"priority":"high"},
+  {"id":"housekeeping_rule_return_visit_language","title":"复购文案要像补做提醒，不像重新教育新客","description":"老客续约和周期保洁文案要承接历史服务感，不要又从头开始讲所有服务内容。","examples":["上次做过的区域快到补做时间时，再提醒会更自然。","周期保洁更需要频率和阿姨时段说明。"],"priority":"medium"}
+]}

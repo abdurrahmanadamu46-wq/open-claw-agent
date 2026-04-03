@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-ecommerce-sales-assistant",
+  "name": "电商销售助手",
+  "name_en": "E-commerce Sales Assistant",
+  "category": "ecommerce",
+  "difficulty": "intermediate",
+  "description": "围绕电商商品投放、定价策略和销售复盘，生成可执行的每日运营建议。",
+  "pain_point": "店铺运营往往要同时盯流量、客单价和活动节奏，人工决策很难持续高频优化。",
+  "lobsters": ["radar", "strategist", "abacus"],
+  "skills_required": ["radar_metrics_feedback", "strategist_budget_suggestion", "abacus_roi_calc"],
+  "channels": ["douyin", "xiaohongshu", "wechat"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "接入商品和投放数据",
+      "code_type": "config",
+      "code": "配置商品目录、历史投放报表和核心转化指标。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "指定销售目标",
+      "code_type": "prompt",
+      "code": "填写 GMV、ROI、客单价或线索目标，供脑虫虾做策略分解。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "确定执行窗口",
+      "code_type": "config",
+      "code": "建议每天固定两个时段回看数据，分别用于午间微调和收盘复盘。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用销售助手",
+      "code_type": "none",
+      "code": "触须虾拉取信号，脑虫虾拆解投放策略，金算虾给出 ROI 与价值判断。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "先从单一店铺或单一品牌开始，避免指标口径混乱。",
+    "策略建议适合每日复盘，不建议直接替代大促决策。",
+    "如果已经有促销日历，记得把活动节点同步给脑虫虾。"
+  ],
+  "estimated_cost_per_run": "$0.08-0.20",
+  "tags": ["电商", "销售策略", "ROI", "复盘"]
+}

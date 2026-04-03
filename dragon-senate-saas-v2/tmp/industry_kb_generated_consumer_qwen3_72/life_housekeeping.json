@@ -1,0 +1,856 @@
+﻿{
+  "industry_tag": "life_housekeeping",
+  "industry_name": "life_housekeeping",
+  "category_name": "生活服务",
+  "tenant_id": "tenant_demo",
+  "attempt": 1,
+  "trace_id": "industry_profile_7a3a41762447",
+  "fallback_used": false,
+  "profile": {
+    "industry_name": "life_housekeeping",
+    "pain_points": [
+      "Consumer pain point 1: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 2: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 3: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 4: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 5: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 6: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 7: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 8: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 9: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 10: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 11: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 12: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 13: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 14: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 15: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 16: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 17: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 18: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 19: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 20: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 21: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 22: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 23: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 24: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 25: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 26: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 27: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 28: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 29: worries about hidden fees and inconsistent service quality",
+      "Consumer pain point 30: worries about hidden fees and inconsistent service quality"
+    ],
+    "jargon_terms": [
+      "consumer_term_1",
+      "consumer_term_2",
+      "consumer_term_3",
+      "consumer_term_4",
+      "consumer_term_5",
+      "consumer_term_6",
+      "consumer_term_7",
+      "consumer_term_8",
+      "consumer_term_9",
+      "consumer_term_10",
+      "consumer_term_11",
+      "consumer_term_12",
+      "consumer_term_13",
+      "consumer_term_14",
+      "consumer_term_15",
+      "consumer_term_16",
+      "consumer_term_17",
+      "consumer_term_18",
+      "consumer_term_19",
+      "consumer_term_20",
+      "consumer_term_21",
+      "consumer_term_22",
+      "consumer_term_23",
+      "consumer_term_24",
+      "consumer_term_25",
+      "consumer_term_26",
+      "consumer_term_27",
+      "consumer_term_28",
+      "consumer_term_29",
+      "consumer_term_30",
+      "consumer_term_31",
+      "consumer_term_32",
+      "consumer_term_33",
+      "consumer_term_34",
+      "consumer_term_35",
+      "consumer_term_36",
+      "consumer_term_37",
+      "consumer_term_38",
+      "consumer_term_39",
+      "consumer_term_40",
+      "consumer_term_41",
+      "consumer_term_42",
+      "consumer_term_43",
+      "consumer_term_44",
+      "consumer_term_45",
+      "consumer_term_46",
+      "consumer_term_47",
+      "consumer_term_48",
+      "consumer_term_49",
+      "consumer_term_50",
+      "consumer_term_51",
+      "consumer_term_52",
+      "consumer_term_53",
+      "consumer_term_54",
+      "consumer_term_55",
+      "consumer_term_56",
+      "consumer_term_57",
+      "consumer_term_58",
+      "consumer_term_59",
+      "consumer_term_60",
+      "consumer_term_61",
+      "consumer_term_62",
+      "consumer_term_63",
+      "consumer_term_64",
+      "consumer_term_65",
+      "consumer_term_66",
+      "consumer_term_67",
+      "consumer_term_68",
+      "consumer_term_69",
+      "consumer_term_70",
+      "consumer_term_71",
+      "consumer_term_72",
+      "consumer_term_73",
+      "consumer_term_74",
+      "consumer_term_75",
+      "consumer_term_76",
+      "consumer_term_77",
+      "consumer_term_78",
+      "consumer_term_79",
+      "consumer_term_80",
+      "consumer_term_81",
+      "consumer_term_82",
+      "consumer_term_83",
+      "consumer_term_84",
+      "consumer_term_85",
+      "consumer_term_86",
+      "consumer_term_87",
+      "consumer_term_88",
+      "consumer_term_89",
+      "consumer_term_90",
+      "consumer_term_91",
+      "consumer_term_92",
+      "consumer_term_93",
+      "consumer_term_94",
+      "consumer_term_95",
+      "consumer_term_96",
+      "consumer_term_97",
+      "consumer_term_98",
+      "consumer_term_99",
+      "consumer_term_100",
+      "consumer_term_101",
+      "consumer_term_102",
+      "consumer_term_103",
+      "consumer_term_104",
+      "consumer_term_105",
+      "consumer_term_106",
+      "consumer_term_107",
+      "consumer_term_108",
+      "consumer_term_109",
+      "consumer_term_110",
+      "consumer_term_111",
+      "consumer_term_112",
+      "consumer_term_113",
+      "consumer_term_114",
+      "consumer_term_115",
+      "consumer_term_116",
+      "consumer_term_117",
+      "consumer_term_118",
+      "consumer_term_119",
+      "consumer_term_120"
+    ],
+    "solutions": [
+      "Hook 1: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 2: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 3: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 4: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 5: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 6: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 7: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 8: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 9: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 10: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 11: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 12: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 13: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 14: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 15: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 16: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 17: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 18: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 19: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 20: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 21: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 22: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 23: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 24: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 25: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 26: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 27: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 28: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 29: transparent pricing, clear process, and reliable after-sales support",
+      "Hook 30: transparent pricing, clear process, and reliable after-sales support"
+    ],
+    "objections": [
+      {
+        "objection": "Objection 1: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 2: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 3: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 4: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 5: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 6: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 7: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 8: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 9: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 10: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 11: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 12: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 13: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 14: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 15: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 16: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 17: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 18: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 19: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      },
+      {
+        "objection": "Objection 20: this looks expensive",
+        "response_logic": "explain value proof with clear evidence and low-risk trial path"
+      }
+    ],
+    "banned_absolute": [
+      {
+        "term": "absolute_term_1",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_2",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_3",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_4",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_5",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_6",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_7",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_8",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_9",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_10",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_11",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_12",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_13",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_14",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_15",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_16",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_17",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_18",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_19",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_20",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_21",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_22",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_23",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_24",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_25",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_26",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_27",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_28",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_29",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_30",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_31",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_32",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_33",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_34",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_35",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_36",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_37",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_38",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_39",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      },
+      {
+        "term": "absolute_term_40",
+        "reason": "absolute or guaranteed claims are high risk",
+        "safer_alternative": "use verifiable and non-guarantee wording"
+      }
+    ],
+    "banned_industry": [
+      {
+        "term": "industry_redline_1",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_2",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_3",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_4",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_5",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_6",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_7",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_8",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_9",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_10",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_11",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_12",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_13",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_14",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_15",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_16",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_17",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_18",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_19",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_20",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_21",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_22",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_23",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_24",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_25",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_26",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_27",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_28",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_29",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_30",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_31",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_32",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_33",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_34",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_35",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_36",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_37",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_38",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_39",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      },
+      {
+        "term": "industry_redline_40",
+        "reason": "industry-sensitive compliance expression",
+        "safer_alternative": "replace with neutral compliance-safe description"
+      }
+    ],
+    "risk_behaviors": [
+      {
+        "behavior": "Risk behavior 1: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 2: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 3: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 4: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 5: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 6: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 7: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 8: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 9: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 10: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 11: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 12: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 13: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 14: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 15: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 16: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 17: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 18: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 19: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 20: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 21: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 22: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 23: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 24: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      },
+      {
+        "behavior": "Risk behavior 25: redirect users to off-platform contact",
+        "risk_type": "off-platform diversion",
+        "platform_hint": "Douyin/Video Channel/Kuaishou/Rednote",
+        "safer_alternative": "use in-platform lead forms and official contact tools"
+      }
+    ]
+  },
+  "ingest_result": {
+    "ok": true,
+    "tenant_id": "tenant_demo",
+    "industry_tag": "life_housekeeping",
+    "scope_user_id": "tenant_tenant_demo__industry_life_housekeeping",
+    "received_count": 305,
+    "ingested_count": 305,
+    "accepted_count": 305,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "rejected_samples": [],
+    "duplicate_samples": [],
+    "thresholds": {
+      "min_quality_score": 45.0,
+      "min_effect_score": 0.0,
+      "min_content_len": 24.0,
+      "min_title_len": 4.0
+    },
+    "vector_count": 305
+  }
+}

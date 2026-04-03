@@ -1,0 +1,261 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_milk_tea_case_001",
+      "label": "happy_path",
+      "scenario": "写字楼奶茶店工作日下午茶自提与真实出杯证明",
+      "input": {
+        "copy_pack": "写字楼底商奶茶店短视频脚本，核心卖点是主打奶茶茶感稳定、工作日下午茶顺路自提、省等待，适合附近白领在 15 点到 17 点之间快速带走或拼单。",
+        "brand_assets": [
+          "楼宇入口与门头镜头",
+          "主打奶茶茶底萃取视频",
+          "杯身层次与成杯特写",
+          "封杯贴单镜头",
+          "自提架多杯待取画面",
+          "白领拿杯离店或到工位画面",
+          "小程序下单页截图",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "克制纪实奶茶质感",
+          "办公场景顺路自提"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 2,
+          "afternoon_service": true,
+          "counter_access": true,
+          "customer_closeup_allowed": false,
+          "office_entry_limited": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "主打杯型或封杯贴单作为开场证据",
+        "自提架或多杯待取证明真实下午茶取杯节奏",
+        "写字楼入口或门头镜头证明顺路位置",
+        "明确列出 15 点到 17 点拍摄窗口和顾客避脸依赖"
+      ],
+      "mustAvoid": [
+        "空店环境镜头撑满前半段",
+        "拿外部办公素材冒充本店白领客流",
+        "用过度广告化运镜盖过自提效率信息"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把写字楼奶茶店脚本转成一条以真实主打杯型、下午茶自提节奏和顺路位置可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在下午茶高峰前补门头和空位镜头，再在 15 点到 17 点补封杯与取杯节奏。",
+          "白领顾客不适合正脸近拍，因此需要以后背、手部和工位拿杯动作为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、萃茶、成杯、封杯、自提架和拿杯画面。",
+          "脚本卖点围绕工作日下午茶顺路自提与主打奶茶稳定口感。"
+        ],
+        "confidence": 0.9,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给主打奶茶成杯和杯身标签，右下角补一个白领手持拿杯动作与门头一角，标题聚焦下午三点顺路拿走这杯。",
+        "shot_list": "1) 楼宇入口与门头建立写字楼底商位置 2) 主打奶茶茶底萃取与成杯层次建立真实产品记忆点 3) 封杯贴单和放上自提架证明真实出杯链路 4) 多杯待取与依次拿杯证明下午茶节奏 5) 白领拿杯离店或到工位第一口补足使用场景 6) 门店位置与下单提醒收束到自提 CTA",
+        "asset_dependencies": "楼宇入口、门头、主打奶茶萃茶镜头、成杯特写、封杯贴单、自提架多杯待取、白领避脸拿杯画面、小程序下单页；需确认 15 点到 17 点可拍窗口",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_milk_tea_case_002",
+      "label": "edge_case",
+      "scenario": "商场奶茶新店周末逛街场景，杯型颜值够但缺少真实排队证明",
+      "input": {
+        "copy_pack": "商场新开奶茶店视频脚本，重点想讲逛街顺手一杯、新品颜值高、门店很容易被看到，但目前没有稳定排队和爆单素材，吧台深处也不能拍。",
+        "brand_assets": [
+          "商场楼层标识与档口门头镜头",
+          "新品杯型成片",
+          "包装袋与杯托画面",
+          "朋友手持饮品边走边聊镜头",
+          "柜台取杯口画面",
+          "Logo 墙与新品海报"
+        ],
+        "reference_styles": [
+          "明亮真实的商场饮品纪实",
+          "克制的顺手带走感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "weekend_mall_service": true,
+          "backbar_access": false,
+          "customer_closeup_allowed": false,
+          "queue_stability": "uncertain"
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确当前缺少稳定排队和翻杯证据",
+        "把说服力放在门店位置、新品杯型和逛街顺手带走场景",
+        "清楚写出只能拍门头、取杯口和成杯素材的边界"
+      ],
+      "mustAvoid": [
+        "硬写成商场爆火新店",
+        "虚构现萃现切吧台大场面",
+        "用夸张电影感运镜掩盖证据不足"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在没有稳定排队素材且吧台深处不可拍的前提下，把商场新店脚本转成一条以位置便利、真实杯型和逛街带走感为核心的可执行分镜。",
+        "assumptions": [
+          "可在周末客流存在时完成门头、档口和拿杯离店镜头，但不承诺一定拍到可用排队素材。",
+          "新品杯型已稳定成杯，可用于单杯主打与手持行走场景。"
+        ],
+        "evidence": [
+          "现有素材集中在门头、楼层标识、新品成杯、包装袋和逛街手持画面。",
+          "脚本核心卖点是逛街顺手一杯和新品颜值，而不是爆单翻台。"
+        ],
+        "confidence": 0.69,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用手持新品杯型和商场档口同框，标题聚焦逛街顺手一杯，不使用排队和爆款暗示。",
+        "shot_list": "1) 商场楼层标识和档口门头交代位置便利 2) 新品杯型成片建立第一眼记忆点 3) 柜台取杯口与包装袋证明真实拿走场景 4) 朋友手持饮品边走边聊补足逛街场景适配 5) Logo 墙和新品海报补充门店识别 6) 收束到顺手带走和门店位置 CTA",
+        "asset_dependencies": "商场楼层标识、档口门头、新品杯型成片、柜台取杯口、包装袋与杯托、朋友避脸手持饮品、Logo 墙、新品海报；缺少稳定排队和吧台深处素材",
+        "execution_feasibility_score": "0.68"
+      }
+    },
+    {
+      "id": "visualizer_milk_tea_case_003",
+      "label": "happy_path",
+      "scenario": "校园奶茶店放学后鲜果茶现切到取杯链路",
+      "input": {
+        "copy_pack": "校园周边奶茶店脚本，核心卖点是当季鲜果茶现切现做、放学后顺手买、价格带清晰，想让观众看到从原料到成杯再到拿走的完整链路。",
+        "brand_assets": [
+          "校门口或街区门头镜头",
+          "当季水果切配视频",
+          "茶底与果肉加料镜头",
+          "鲜果茶成杯特写",
+          "封杯与贴单画面",
+          "取杯窗口或自提架镜头",
+          "学生避脸拿杯或第一口反应",
+          "价签或菜单牌"
+        ],
+        "reference_styles": [
+          "干净明亮的校园饮品纪实",
+          "真实可喝的鲜果茶证明"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2.5,
+          "after_school_window": true,
+          "prep_station_access": true,
+          "customer_closeup_allowed": false,
+          "peak_flow": "moderate"
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "鲜果切配或加料作为前段证据",
+        "从切果到成杯到取杯的至少三段链路",
+        "校园入口或周边街区镜头证明放学后顺路场景",
+        "明确放学后窗口和学生避脸拍摄依赖"
+      ],
+      "mustAvoid": [
+        "只拍水果和原料不落到成杯",
+        "把不同口味和不同杯型混成一条故事",
+        "过度滤镜让水果和杯型失真"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把校园奶茶店脚本转成一条以鲜果切配证据、放学后顺手取杯和清晰价格带为核心的可执行分镜。",
+        "assumptions": [
+          "可在放学前拍门头与吧台切配工位，再在放学后补取杯和学生拿杯镜头。",
+          "学生顾客不适合正脸近拍，因此需要以手持、侧身和窗口交付为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备切果、加料、成杯、封杯、取杯窗口和学生拿杯画面。",
+          "脚本重点是鲜果茶真料感与校园放学后顺手消费。"
+        ],
+        "confidence": 0.88,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给鲜果茶透明杯层次与果肉感，角落补校门口或街区门头，标题围绕放学后这一杯看得见的真料。",
+        "shot_list": "1) 校门口或街区门头建立放学后顺路位置 2) 当季水果切配与茶底加料证明真料现做 3) 鲜果茶成杯特写接封杯贴单形成出杯链路 4) 取杯窗口与自提架补足真实交付 5) 学生避脸拿杯或第一口反应表达真实使用场景 6) 菜单价签和主打口味收束到到店 CTA",
+        "asset_dependencies": "校门口或街区门头、当季水果切配、茶底与果肉加料、鲜果茶成杯、封杯贴单、取杯窗口、自提架、学生避脸拿杯画面、菜单价签；需锁定放学后可拍窗口",
+        "execution_feasibility_score": "0.88"
+      }
+    },
+    {
+      "id": "visualizer_milk_tea_case_004",
+      "label": "failure_case",
+      "scenario": "未开业奶茶新品牌仅有效果图和海报却想做爆款探店",
+      "input": {
+        "copy_pack": "新奶茶品牌宣传脚本，希望做出排队探店、新店很火、杯型上新必喝的感觉，但门店还没正式开业，没有真实成杯、没有顾客、也没有吧台拍摄条件。",
+        "brand_assets": [
+          "装修效果图",
+          "菜单海报",
+          "限定口味海报",
+          "品牌 Logo",
+          "开业倒计时海报"
+        ],
+        "reference_styles": [
+          "新店预告",
+          "轻明亮品牌视觉"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "store_open": false,
+          "real_cup_assets": false,
+          "customer_assets": false,
+          "counter_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店未开业且没有真实成杯和客流证据",
+        "主动降级为开业预告或菜单方向说明",
+        "给出低可执行性评分和开业后补拍建议"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实营业现场",
+        "拿外部杯型和排队素材冒充本店",
+        "继续设计真实取杯链路和爆款探店叙事"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在门店未开业且没有真实成杯与客流素材的前提下，输出一条不冒充探店现场的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌视觉、菜单方向和开业时间信息。",
+          "任何真实成杯、封杯、拿杯和门店客流镜头都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、菜单海报、限定海报、Logo 和开业倒计时。",
+          "拍摄条件不支持门头实景、吧台、真实顾客和真实饮品证明。"
+        ],
+        "confidence": 0.63,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，效果图和 Logo 做主体，标题明确写新店即将开业或主打口味抢先看，避免任何已经营业的暗示。",
+        "shot_list": "1) 效果图与品牌 Logo 建立新店印象 2) 菜单海报和限定口味方向拆解 3) 开业倒计时说明时间节点 4) 明确当前没有真实成杯和取杯证据 5) 列出开业后需补拍的门头、吧台、成杯、封杯和客流素材 6) 收束到开业提醒和关注 CTA",
+        "asset_dependencies": "装修效果图、菜单海报、限定口味海报、品牌 Logo、开业倒计时海报；缺少门头实景、真实成杯、封杯交付、顾客取杯和任何营业时段证据",
+        "execution_feasibility_score": "0.27"
+      }
+    }
+  ]
+}

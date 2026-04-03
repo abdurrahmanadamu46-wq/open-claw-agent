@@ -1,0 +1,307 @@
+﻿{
+  "industry": "餐饮服务_烧烤店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_bbq_terrace_birthday_group_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条周六晚 12 人露台生日烧烤询单转成可执行的订位、定金、串品预点和到店提醒计划",
+        "routing_context": "客户说明要露台大桌、自带蛋糕、2 名儿童同桌、有人不吃牛肉且不要香菜，希望 19:30 到店后再确认是否上啤酒塔，门店当前还剩 1 个露台大桌，室内大厅可作为备选",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "payment_gateway": "healthy",
+          "prep_station_scheduler": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "露台大桌锁定前的定金节点",
+        "儿童同桌、不吃牛肉、不要香菜和酒水待确认备注回写",
+        "露台不可用时切到室内大桌或候补的 fallback"
+      ],
+      "mustAvoid": [
+        "未收定金就长时间锁死露台黄金档",
+        "忽略备注直接按通用生日套餐下发备串"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_nightsnack_peak_waitlist_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把周末 21:30 之后持续增长的夜宵 walk-in 客流转成可控的等位、限流和分批执行计划",
+        "routing_context": "大厅与外摆接近满台，当前已有 18 组等位，烤台负载接近上限，外卖未出串订单也在上涨，但门口仍不断有散客到店询位",
+        "integration_state": {
+          "queue_manager": "healthy",
+          "sms_gateway": "healthy",
+          "reservation_system": "healthy",
+          "grill_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "等位队列和预估等待时间节点",
+        "基于烤台负载的承诺时效拉长或分批上串策略",
+        "必要时切换自提优先或暂停远距离外卖的 fallback"
+      ],
+      "mustAvoid": [
+        "满台状态下继续给出马上有位的模糊承诺",
+        "只顾继续接客而不检查烤台和未出串积压"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_takeaway_replay_after_platform_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放夜宵时段因平台故障中断的烧烤外卖履约流程，并避免重复备串和重复烤制",
+        "routing_context": "平台在支付成功后未回传出串状态，门店曾把部分订单人工改为自提，当前平台已恢复，门店需要确认哪些订单应继续配送，哪些应保持自提状态",
+        "integration_state": {
+          "delivery_platform": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号和支付状态去重后的 replay 逻辑",
+        "对已改自提订单保持新状态而不是重新派骑手",
+        "门店补录和顾客通知路线"
+      ],
+      "mustAvoid": [
+        "平台恢复后整批重新烤制全部订单",
+        "不校验支付和履约状态就重复联系顾客或重复出餐"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_rainy_outdoor_and_delivery_degrade_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市突发降雨和大风的情况下，为外摆预订与烧烤外卖建立稳定降级计划",
+        "routing_context": "19:00 之后天气突变，已有 6 桌顾客正在等待外摆或露台座位，骑手接单速度同步下降，室内只剩少量散台可调配",
+        "integration_state": {
+          "weather_api": "healthy",
+          "reservation_system": "healthy",
+          "delivery_platform": "degraded",
+          "self_pickup_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "外摆改室内、改候补或改期的分流节点",
+        "外卖时效调整和自提替代路线",
+        "对已预约顾客和在途订单的通知路径"
+      ],
+      "mustAvoid": [
+        "天气已恶化仍继续承诺露台原位接待",
+        "骑手明显不足时仍维持平峰配送时效"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_allergy_and_alcohol_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带严重过敏、特殊熟度和酒水边界问题的家庭烧烤预订，并确保烤台执行安全",
+        "routing_context": "客户预订 6 人晚餐，备注对贝类和芝麻严重过敏，希望羊肉串全程低辣，桌上有 1 名儿童，同行成年人还询问生蚝能否偏生以及啤酒塔能否提前上桌",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "front_desk": "healthy",
+          "grill_station_monitor": "healthy",
+          "cashier_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前厅人工确认过敏、熟度和酒水服务边界",
+        "烤台和前厅共享备注回写与复核节点",
+        "若无法安全满足则给出替代串品或不提供相关菜品的 fallback"
+      ],
+      "mustAvoid": [
+        "把偏生生蚝和严重过敏备注直接丢给烤台后不再确认",
+        "在未确认成人服务边界前自动放行酒水任务"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_signature_skewer_stock_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市前处理一笔点名招牌羊排串、烤生蚝和烤鱼的大桌预订，但当日库存与备串尚未锁定",
+        "routing_context": "客户计划 8 人商务聚餐，要求必须有招牌羊排串、烤生蚝和烤鱼，当前库存系统显示鲜货和备串只剩低库存，备串台反馈下一批腌制完成时间仍不确定",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "prep_station_scheduler": "degraded",
+          "reservation_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "库存和腌制完成确认作为前置节点",
+        "库存不足时的替代菜单或改期 fallback",
+        "禁止在核心串品未锁定前做绝对菜品承诺"
+      ],
+      "mustAvoid": [
+        "先确认整套菜单再临时通知缺货",
+        "无视备串不确定性继续锁定高规格接待承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_night_campaign_waiting_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进节前夜宵双人烧烤套餐和啤酒联动活动上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店想在清明小长假前上线 22:00 之后的夜宵套餐，直播素材和小程序页面已备好，但价格、赠饮规则和未成年人服务边界仍在等待负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "marketing_scheduler": "healthy",
+          "cashier_system": "healthy",
+          "voucher_system": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶节前窗口先上架再补审批",
+        "把未确认价格和赠饮规则直接同步到前厅或平台"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_food_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似食品安全投诉，既要保护顾客沟通也要控制门店风险扩散",
+        "routing_context": "顾客反馈昨晚外卖中的烤生蚝有异味且鸡翅未熟，并已在社交平台发帖，门店需要立刻决定是否暂停相关批次销售和如何留存证据",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "auto_compensation": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关批次排查或暂停销售决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查批次就继续正常售卖同类菜品"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_group_booking_without_deposit_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认公司夜宵团建但迟迟未付定金的高价值订单，避免资源长期被占用",
+        "routing_context": "客户希望先锁 5 张大桌和一片外摆区域，两天后统一转账，同时要求门店提前备好高价牛肉串、海鲜和成箱啤酒",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "payment_gateway": "healthy",
+          "inventory_system": "healthy",
+          "procurement_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放资源节点",
+        "高价串品和酒水备货必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收定金就正式锁定 5 张大桌和外摆区",
+        "为了成交提前采购不可退高价食材和整箱酒水"
+      ]
+    },
+    {
+      "id": "dispatcher_bbq_exhaust_or_grill_fault_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市高峰排烟与烤位异常时建立止损执行计划，避免继续超卖接待能力",
+        "routing_context": "18:20 之后一片排烟区域故障，约三成烤位无法继续使用，但门店仍有排队顾客和线上预订持续进入，当前外卖订单也在同步出串",
+        "integration_state": {
+          "exhaust_monitor": "unstable",
+          "grill_station_monitor": "degraded",
+          "queue_manager": "healthy",
+          "reservation_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "受影响区域隔离和接待容量收缩",
+        "对排队顾客和已预订顾客的通知路线",
+        "必要时转外带、自提或暂停新增堂食的 stop-loss"
+      ],
+      "mustAvoid": [
+        "在设备异常未处理时继续按正常容量接待",
+        "没有替代方案却继续确认新增大桌入座"
+      ]
+    }
+  ]
+}

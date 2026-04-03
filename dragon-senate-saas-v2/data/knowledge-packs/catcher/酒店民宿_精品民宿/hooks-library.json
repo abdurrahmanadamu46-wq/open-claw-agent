@@ -1,0 +1,108 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "catcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "property_dates_room_type_hook",
+      "title": "Property plus dates plus room type",
+      "description": "When a lead includes a specific property or area, stay dates, room count, and a room type or package request, it should be treated as a strong intent hook.",
+      "examples": [
+        "Next Friday at your Aranya beach house for 2 nights, 1 plunge pool room, please check if it can be held.",
+        "Two rooms for two nights at your Shuanglang house after Qingming, and we can confirm quickly."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_hook",
+      "title": "Adults, children, pets, or elderly details in one place",
+      "description": "When the guest clearly gives adult and child counts, child ages, pet size, elderly mobility limits, extra bed needs, or adjacent room needs, the lead becomes much more actionable and fit becomes easier to judge.",
+      "examples": [
+        "2 adults, 2 children ages 4 and 8, and we need two adjacent rooms.",
+        "Parents are joining and need fewer stairs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "buyout_or_multi_room_hook",
+      "title": "Entire courtyard or multi-room event demand",
+      "description": "When the lead mentions a full buyout, multiple rooms, lawn dinner, projection, barbecue, tea break, or invoice setup together, it usually reflects a high-value group or event decision stage.",
+      "examples": [
+        "We want the full courtyard for 2 nights with 8 rooms, plus lawn dinner and projection.",
+        "Ten coworkers, five rooms, tea break, and a simple meeting setup."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "same_day_arrival_hook",
+      "title": "Tonight stay and already-on-the-way signals",
+      "description": "Phrases like tonight, arriving soon, just got off the train, just landed, already near the property, or can book right now usually mean browsing is ending and action is starting.",
+      "examples": [
+        "We will reach Moganshan in one hour and can book now if the room works.",
+        "We just got off the train and want a family room at your old-town house tonight."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "occasion_package_hook",
+      "title": "Occasion language plus date plus budget plus setup needs",
+      "description": "Birthday, anniversary, proposal, girls trip, or healing language becomes a real hook only when combined with dates, room type, budget, decor, dinner, photography, or transfer requests.",
+      "examples": [
+        "Our anniversary is next Saturday and we want 2 nights in a skylight suite with decor and dinner around 3000.",
+        "We want a place that looks romantic for a birthday."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pet_friendly_hook",
+      "title": "Pet-friendly request with pet size and stay facts",
+      "description": "When the guest includes pet type or size, dates, room preference, or cleaning concerns, the lead is much closer to a real order than a vague can-we-bring-a-dog message.",
+      "examples": [
+        "Two nights this weekend with one 8 kg corgi in a small-yard room.",
+        "Can pets come if we decide later."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "style_only_probe_hook",
+      "title": "Style-only and photo-only curiosity",
+      "description": "If the user only asks about design style, coffee, photos, the courtyard, or nearby vibes without dates, room demand, guest structure, or booking actions, the lead should be downgraded into nurture rather than pushed to the top.",
+      "examples": [
+        "Is your place wabi-sabi style and does afternoon tea look nice in photos.",
+        "Does the courtyard lighting look good at night."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "collaboration_or_rate_sheet_hook",
+      "title": "Influencer swap, shoot scouting, and rate-sheet fishing",
+      "description": "If the lead immediately asks for bottom rates, barter policy, creator cooperation, wedding-shoot scouting, or a full property quote without real stay facts, it looks more like channel or resource noise than a direct guest lead.",
+      "examples": [
+        "Send me your summer bottom rates and creator barter policy.",
+        "Our wedding-shoot team wants venue pricing and cooperation terms first."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risky_policy_request_hook",
+      "title": "Guaranteed rooms, no registration, over-occupancy, and late-night party requests",
+      "description": "Statements about guaranteeing a specific room, complete silence, no registration, extra people in one room, pets in restricted rooms, or late-night parties should immediately raise risk and prevent automatic promotion.",
+      "examples": [
+        "We need the deepest room guaranteed and want to keep hanging out in the courtyard until 2 a.m.",
+        "Four adults and two children in one room is fine if nobody checks registration."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaint_refund_hook",
+      "title": "Hygiene complaint, refund delay, and invoice issue",
+      "description": "When a message includes an order number, stay date, photos, and a complaint about hygiene, refund delays, or invoice problems, it should be treated as a service escalation hook instead of a sales hook.",
+      "examples": [
+        "We still have not received the refund and I have the order screenshot.",
+        "The room smelled bad and the invoice never came through."
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "followup",
+  "artifactType": "FollowUpActionPlan",
+  "playbookId": "followup_starter",
+  "title": "FollowUp Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read lead tier and value score",
+    "check contact history and approval state",
+    "design next best contact plan",
+    "enforce cadence and escalation boundaries",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

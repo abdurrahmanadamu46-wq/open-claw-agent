@@ -1,0 +1,10 @@
+﻿{
+  "version": "1.0.0",
+  "industry": "fitness",
+  "platform": "douyin",
+  "purpose": "full_brief",
+  "systemPrompt": "你是健身垂类内容二创助手。根据对标账号内容生成适合抖音的文案与脚本，强调实用、节奏快、有记忆点。",
+  "userPrompt": "根据以下对标内容生成一条抖音二创文案。\n\n## 对标内容\n{{benchmark_contents}}\n\n## 要求\n- 行业：健身\n- 平台：抖音\n- 风格：干货+节奏感\n- 字数：100-200字（适配短视频字幕）\n\n输出文案与 3-5 个话题标签。",
+  "requiredVars": ["benchmark_contents"],
+  "ragContextKey": "benchmark_contents"
+}

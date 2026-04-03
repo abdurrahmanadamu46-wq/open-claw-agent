@@ -1,0 +1,369 @@
+﻿{
+  "profile": "feedback",
+  "agent_id": "inkwriter",
+  "knowledge_pack_id": "ad_copy",
+  "knowledge_pack_name": "广告文案模板库",
+  "trace_id": "agent_rag_9647a6173207",
+  "attempt": 2,
+  "fallback_used": true,
+  "error": "llm route failed: cloud error=All connection attempts failed; local error=Connection error.",
+  "pack": {
+    "agent_id": "inkwriter",
+    "agent_name": "吐墨虾",
+    "default_task_type": "content_generation",
+    "knowledge_pack_id": "ad_copy",
+    "knowledge_pack_name": "广告文案模板库",
+    "knowledge_pack_goal": "沉淀不同投放目标下的广告标题、正文、利益点和合规替代表达。",
+    "why_now": "广告文案模板库是吐墨虾当前阶段提效关键资产。",
+    "downstream_use_cases": [
+      "use_case_1",
+      "use_case_2",
+      "use_case_3",
+      "use_case_4",
+      "use_case_5",
+      "use_case_6"
+    ],
+    "source_map": [
+      {
+        "source_type": "platform_docs",
+        "priority": "high",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "daily"
+      },
+      {
+        "source_type": "crm_logs",
+        "priority": "high",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "daily"
+      },
+      {
+        "source_type": "comment_stream",
+        "priority": "medium",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "daily"
+      },
+      {
+        "source_type": "campaign_reports",
+        "priority": "medium",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "daily"
+      },
+      {
+        "source_type": "competitor_snapshots",
+        "priority": "medium",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "weekly"
+      },
+      {
+        "source_type": "policy_updates",
+        "priority": "medium",
+        "why_it_matters": "吐墨虾需要该来源支持广告文案模板库决策。",
+        "update_frequency": "weekly"
+      }
+    ],
+    "document_blueprints": [
+      {
+        "doc_type": "doc_type_1",
+        "must_include_fields": [
+          "field_1_1",
+          "field_1_2",
+          "field_1_3",
+          "field_1_4",
+          "field_1_5",
+          "field_1_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_1_1",
+          "qc_1_2",
+          "qc_1_3",
+          "qc_1_4"
+        ]
+      },
+      {
+        "doc_type": "doc_type_2",
+        "must_include_fields": [
+          "field_2_1",
+          "field_2_2",
+          "field_2_3",
+          "field_2_4",
+          "field_2_5",
+          "field_2_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_2_1",
+          "qc_2_2",
+          "qc_2_3",
+          "qc_2_4"
+        ]
+      },
+      {
+        "doc_type": "doc_type_3",
+        "must_include_fields": [
+          "field_3_1",
+          "field_3_2",
+          "field_3_3",
+          "field_3_4",
+          "field_3_5",
+          "field_3_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_3_1",
+          "qc_3_2",
+          "qc_3_3",
+          "qc_3_4"
+        ]
+      },
+      {
+        "doc_type": "doc_type_4",
+        "must_include_fields": [
+          "field_4_1",
+          "field_4_2",
+          "field_4_3",
+          "field_4_4",
+          "field_4_5",
+          "field_4_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_4_1",
+          "qc_4_2",
+          "qc_4_3",
+          "qc_4_4"
+        ]
+      },
+      {
+        "doc_type": "doc_type_5",
+        "must_include_fields": [
+          "field_5_1",
+          "field_5_2",
+          "field_5_3",
+          "field_5_4",
+          "field_5_5",
+          "field_5_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_5_1",
+          "qc_5_2",
+          "qc_5_3",
+          "qc_5_4"
+        ]
+      },
+      {
+        "doc_type": "doc_type_6",
+        "must_include_fields": [
+          "field_6_1",
+          "field_6_2",
+          "field_6_3",
+          "field_6_4",
+          "field_6_5",
+          "field_6_6"
+        ],
+        "chunking_strategy": "semantic_section_chunking",
+        "quality_checks": [
+          "qc_6_1",
+          "qc_6_2",
+          "qc_6_3",
+          "qc_6_4"
+        ]
+      }
+    ],
+    "metadata_schema": [
+      {
+        "field_name": "meta_field_1",
+        "field_type": "number",
+        "required": true,
+        "description": "广告文案模板库元数据字段1"
+      },
+      {
+        "field_name": "meta_field_2",
+        "field_type": "string",
+        "required": true,
+        "description": "广告文案模板库元数据字段2"
+      },
+      {
+        "field_name": "meta_field_3",
+        "field_type": "string",
+        "required": true,
+        "description": "广告文案模板库元数据字段3"
+      },
+      {
+        "field_name": "meta_field_4",
+        "field_type": "number",
+        "required": true,
+        "description": "广告文案模板库元数据字段4"
+      },
+      {
+        "field_name": "meta_field_5",
+        "field_type": "string",
+        "required": true,
+        "description": "广告文案模板库元数据字段5"
+      },
+      {
+        "field_name": "meta_field_6",
+        "field_type": "string",
+        "required": true,
+        "description": "广告文案模板库元数据字段6"
+      },
+      {
+        "field_name": "meta_field_7",
+        "field_type": "number",
+        "required": true,
+        "description": "广告文案模板库元数据字段7"
+      },
+      {
+        "field_name": "meta_field_8",
+        "field_type": "string",
+        "required": true,
+        "description": "广告文案模板库元数据字段8"
+      },
+      {
+        "field_name": "meta_field_9",
+        "field_type": "string",
+        "required": false,
+        "description": "广告文案模板库元数据字段9"
+      },
+      {
+        "field_name": "meta_field_10",
+        "field_type": "number",
+        "required": false,
+        "description": "广告文案模板库元数据字段10"
+      },
+      {
+        "field_name": "meta_field_11",
+        "field_type": "string",
+        "required": false,
+        "description": "广告文案模板库元数据字段11"
+      },
+      {
+        "field_name": "meta_field_12",
+        "field_type": "string",
+        "required": false,
+        "description": "广告文案模板库元数据字段12"
+      }
+    ],
+    "retrieval_queries": [
+      "query_1",
+      "query_2",
+      "query_3",
+      "query_4",
+      "query_5",
+      "query_6",
+      "query_7",
+      "query_8",
+      "query_9",
+      "query_10",
+      "query_11",
+      "query_12"
+    ],
+    "ranking_rules": [
+      "ranking_rule_1",
+      "ranking_rule_2",
+      "ranking_rule_3",
+      "ranking_rule_4",
+      "ranking_rule_5",
+      "ranking_rule_6",
+      "ranking_rule_7",
+      "ranking_rule_8"
+    ],
+    "freshness_rules": [
+      "freshness_rule_1",
+      "freshness_rule_2",
+      "freshness_rule_3",
+      "freshness_rule_4",
+      "freshness_rule_5",
+      "freshness_rule_6",
+      "freshness_rule_7",
+      "freshness_rule_8"
+    ],
+    "dedup_rules": [
+      "dedup_rule_1",
+      "dedup_rule_2",
+      "dedup_rule_3",
+      "dedup_rule_4",
+      "dedup_rule_5",
+      "dedup_rule_6",
+      "dedup_rule_7",
+      "dedup_rule_8"
+    ],
+    "risk_guardrails": [
+      "risk_guardrail_1",
+      "risk_guardrail_2",
+      "risk_guardrail_3",
+      "risk_guardrail_4",
+      "risk_guardrail_5",
+      "risk_guardrail_6",
+      "risk_guardrail_7",
+      "risk_guardrail_8"
+    ],
+    "evaluation_metrics": [
+      {
+        "metric": "metric_1",
+        "definition": "衡量广告文案模板库质量的指标1",
+        "success_threshold": ">=80%"
+      },
+      {
+        "metric": "metric_2",
+        "definition": "衡量广告文案模板库质量的指标2",
+        "success_threshold": ">=80%"
+      },
+      {
+        "metric": "metric_3",
+        "definition": "衡量广告文案模板库质量的指标3",
+        "success_threshold": ">=80%"
+      },
+      {
+        "metric": "metric_4",
+        "definition": "衡量广告文案模板库质量的指标4",
+        "success_threshold": ">=80%"
+      },
+      {
+        "metric": "metric_5",
+        "definition": "衡量广告文案模板库质量的指标5",
+        "success_threshold": ">=70%"
+      },
+      {
+        "metric": "metric_6",
+        "definition": "衡量广告文案模板库质量的指标6",
+        "success_threshold": ">=70%"
+      },
+      {
+        "metric": "metric_7",
+        "definition": "衡量广告文案模板库质量的指标7",
+        "success_threshold": ">=70%"
+      },
+      {
+        "metric": "metric_8",
+        "definition": "衡量广告文案模板库质量的指标8",
+        "success_threshold": ">=70%"
+      }
+    ],
+    "continuous_improvement_loops": [
+      "improvement_loop_1",
+      "improvement_loop_2",
+      "improvement_loop_3",
+      "improvement_loop_4",
+      "improvement_loop_5",
+      "improvement_loop_6",
+      "improvement_loop_7",
+      "improvement_loop_8",
+      "improvement_loop_9",
+      "improvement_loop_10"
+    ]
+  },
+  "saved": {
+    "tenant_id": "tenant_demo",
+    "profile": "feedback",
+    "agent_id": "inkwriter",
+    "knowledge_pack_id": "ad_copy",
+    "knowledge_pack_name": "广告文案模板库",
+    "model_name": "",
+    "trace_id": "agent_rag_9647a6173207",
+    "fallback_used": true,
+    "updated_by": "admin",
+    "updated_at": "2026-03-22T20:37:02Z"
+  }
+}

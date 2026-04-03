@@ -1,0 +1,32 @@
+﻿{
+  "envelopeId": "envelope:dispatch:sim_005:qualify:catcher",
+  "dispatchId": "dispatch:sim_005:qualify:catcher",
+  "missionId": "sim_005",
+  "missionType": "lead_qualification",
+  "stageId": "qualify",
+  "ownerRole": "catcher",
+  "bridgeTarget": "lead-ops-runner",
+  "dispatchStrategy": "invoke_lead_ops_runner",
+  "payload": {
+    "mission_id": "sim_005",
+    "tenant_id": "shadow-tenant-sim_005",
+    "lead_context": {
+      "role": "catcher",
+      "stage_id": "qualify"
+    },
+    "lead_submission": {
+      "tenant_id": "shadow-tenant-sim_005",
+      "campaign_id": "sim_005",
+      "contact_info": "placeholder-contact",
+      "intention_score": 80,
+      "source_platform": "shadow"
+    }
+  },
+  "guardrails": [
+    "execution_mode=limited_live",
+    "queue_lane=live_priority",
+    "sampled_live_rollout_only",
+    "truth_feedback_must_be_captured"
+  ],
+  "createdAt": "2026-03-30T01:12:27.796Z"
+}

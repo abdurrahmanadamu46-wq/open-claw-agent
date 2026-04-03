@@ -1,0 +1,116 @@
+﻿{
+  "industry": "教育培训_少儿素质教育",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_environment_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实教学环境可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本机构教室、互动区和真实流程放在前排位置，而不是依赖海报和精修图。",
+      "high_score_signals": [
+        "前 3 镜内出现教室或互动区",
+        "看得出是本机构真实空间",
+        "环境与流程能接上"
+      ],
+      "low_score_signals": [
+        "开场长时间只有海报和广告图",
+        "看不出是机构还是广告棚拍",
+        "空间证据太弱"
+      ],
+      "score_rule": "真实空间证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "trial_process_visibility",
+      "metric_group": "trust_building",
+      "feature": "试听与过程可见度",
+      "weight": 0.17,
+      "definition": "分镜是否把试听、互动、讲解和反馈串成可信路径，而不是只展示结果感。",
+      "high_score_signals": [
+        "有试听或互动步骤",
+        "有真实教学准备",
+        "有边界或适龄说明"
+      ],
+      "low_score_signals": [
+        "只有结果没有过程",
+        "步骤跳跃严重",
+        "流程看起来像宣传秀"
+      ],
+      "score_rule": "流程越可见、越完整，得分越高。"
+    },
+    {
+      "id": "route_distinction",
+      "metric_group": "message_match",
+      "feature": "路线区分度",
+      "weight": 0.16,
+      "definition": "专注力、表达力、思维训练和幼小衔接是否都有不同的视觉语言，而不是所有视频都长得一样。",
+      "high_score_signals": [
+        "不同路线画面明显不同",
+        "问题和场景一一对应",
+        "镜头和文案同题"
+      ],
+      "low_score_signals": [
+        "所有路线都只靠口号和海报",
+        "场景和问题混乱",
+        "看不出适合谁"
+      ],
+      "score_rule": "路线和场景越匹配，得分越高。"
+    },
+    {
+      "id": "truth_gap_control",
+      "metric_group": "brand_safety",
+      "feature": "结果幻想控制力",
+      "weight": 0.18,
+      "definition": "视频是否主动通过真实流程、边界和判断逻辑控制家长期待，而不是制造完美孩子幻想。",
+      "high_score_signals": [
+        "真实流程替代神童幻想",
+        "边界清楚",
+        "不过度夸大结果"
+      ],
+      "low_score_signals": [
+        "大量完美成长视觉",
+        "看不出边界",
+        "结果被过度理想化"
+      ],
+      "score_rule": "越能控制结果幻想，品牌安全得分越高。"
+    },
+    {
+      "id": "booking_path_visibility",
+      "metric_group": "conversion_readiness",
+      "feature": "试听路径可见度",
+      "weight": 0.15,
+      "definition": "内容是否留出试听、前台、班型或课程说明的承接，而不是只拍环境和结果感。",
+      "high_score_signals": [
+        "后半段出现试听承接画面",
+        "CTA 与画面一致",
+        "班型或试听范围可感知"
+      ],
+      "low_score_signals": [
+        "没有任何下一步",
+        "只剩氛围展示",
+        "CTA 与画面脱节"
+      ],
+      "score_rule": "家长越容易知道如何试听，得分越高。"
+    },
+    {
+      "id": "respectful_child_representation",
+      "metric_group": "brand_safety",
+      "feature": "孩子状态尊重感",
+      "weight": 0.18,
+      "definition": "分镜是否尊重慢热、坐不住和不开口，不用羞辱式拍法制造焦虑。",
+      "high_score_signals": [
+        "镜头克制",
+        "判断导向而非羞辱导向",
+        "问题近景处理得当"
+      ],
+      "low_score_signals": [
+        "放大焦虑逼单",
+        "羞辱式对比",
+        "吓人数据主导内容"
+      ],
+      "score_rule": "越能守住尊重感，品牌安全得分越高。"
+    }
+  ]
+}

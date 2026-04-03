@@ -1,0 +1,170 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_building_identity_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "房源真实身份可见度",
+      "weight": 0.14,
+      "definition": "分镜是否在前段交代了楼栋、门牌、单元入口、门锁、街角锚点等真实房源识别，而不是让观众只看到一间来源不明的好看房间。",
+      "high_score_signals": [
+        "前 3 镜就能看见可验证的楼栋、入口或门锁身份信息",
+        "房源身份和后续房间、街区镜头存在明确关系",
+        "观众能快速判断这是具体且真实的一套城市民宿"
+      ],
+      "low_score_signals": [
+        "开场只有床品、灯串、窗帘和装饰摆件",
+        "房源身份完全依赖字幕补充",
+        "外部和内部看不出是否属于同一房源"
+      ],
+      "score_rule": "房源身份出现越早、越清楚、越可复核，得分越高。"
+    },
+    {
+      "id": "cover_alignment_with_city_stay_offer",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与城市入住卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应城市民宿最真实的成交理由，如到店顺、自助入住、楼下生活、上楼安静、小房型住得顺、短住功能完整，而不是泛泛拍得有氛围。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体入住理由",
+        "封面能自然接到前 3 镜的真实证据链",
+        "观众一眼就知道这套房源的核心价值是什么"
+      ],
+      "low_score_signals": [
+        "封面只有摆拍软装和情绪滤镜",
+        "标题讲位置或入住效率，画面却只给装饰特写",
+        "封面承诺很大，但现有素材只能支持基础房型说明"
+      ],
+      "score_rule": "越能用真实画面回答“为什么这套城市民宿值得住”，得分越高。"
+    },
+    {
+      "id": "arrival_chain_clarity",
+      "metric_group": "storyboard_feasibility",
+      "feature": "街到房门链路清晰度",
+      "weight": 0.12,
+      "definition": "分镜是否让观众看懂从街区锚点到楼栋入口、门禁、电梯或楼梯，再到房门和进房的真实路径，而不是把到店过程留给想象。",
+      "high_score_signals": [
+        "至少三段镜头构成可理解的到店链路",
+        "街区、楼栋和房门之间的关系顺畅不跳戏",
+        "拖箱、上楼、开门等关键动作都能被执行"
+      ],
+      "low_score_signals": [
+        "只有街景和房间，中间完全断开",
+        "到店路线靠地图、字幕或口播硬补",
+        "链路需要借用其他楼栋或库存素材才能成立"
+      ],
+      "score_rule": "到店链路越完整、越能被真实拍出来，得分越高。"
+    },
+    {
+      "id": "room_truth_and_usability",
+      "metric_group": "visual_proof_density",
+      "feature": "房型真实度与可住性",
+      "weight": 0.16,
+      "definition": "分镜是否锚定真实可订房型，并证明床位、桌面、卫浴、收纳、窗边、设备等实际住感，而不是只拍好看的角落和构图。",
+      "high_score_signals": [
+        "同一房型连续出现且空间关系清楚",
+        "床、桌、窗、卫浴、设备中的关键区位被真实交代",
+        "承诺的浴缸、投影、厨房、洗衣机等功能有直接证据"
+      ],
+      "low_score_signals": [
+        "多个房型混剪成一个假主力房",
+        "只拍最美角落，不交代实际布局",
+        "靠滤镜和特写掩盖空间局促或功能缺失"
+      ],
+      "score_rule": "房型越真实、越完整、越贴近日常入住视角，得分越高。"
+    },
+    {
+      "id": "city_block_verifiability",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "街区与周边卖点可验证度",
+      "weight": 0.10,
+      "definition": "涉及地铁、街区、夜宵、咖啡馆、菜市场、展馆或 citywalk 路线时，分镜是否用房源入口和街区锚点建立真实关系，而不是借无关城市镜头抬氛围。",
+      "high_score_signals": [
+        "房源入口和周边锚点之间存在清楚的起终点关系",
+        "周边生活卖点和回房路径能互相验证",
+        "位置承诺与可拍证据一一对应"
+      ],
+      "low_score_signals": [
+        "只拍城市氛围镜头没有房源关系",
+        "地图截图替代真实步行或回房关系",
+        "借别的街区、地标或商户冒充周边环境"
+      ],
+      "score_rule": "周边卖点越具体、越可复核、越能落回房源入口，得分越高。"
+    },
+    {
+      "id": "self_checkin_and_security_evidence",
+      "metric_group": "visual_proof_density",
+      "feature": "自助入住与安全感证据密度",
+      "weight": 0.10,
+      "definition": "脚本若讲自助入住、晚到也能住、进楼方便或回房安心，分镜是否给到门禁、智能门锁、楼道、电梯、照明和房门动作等可验证证据。",
+      "high_score_signals": [
+        "出现门禁、智能门锁、钥匙盒或到门指引等真实环节",
+        "楼道、电梯、照明和房门开启关系清楚",
+        "晚到或自助入住承诺有实拍支撑"
+      ],
+      "low_score_signals": [
+        "入住方式只写在字幕里没有过程镜头",
+        "走廊和入口条件不清却强说安全和顺畅",
+        "借其他房源或别的物业系统补自助入住能力"
+      ],
+      "score_rule": "自助入住和安全感越能被画面直接验证，得分越高。"
+    },
+    {
+      "id": "living_features_and_partner_space_truthfulness",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "生活功能与合作空间真实性",
+      "weight": 0.08,
+      "definition": "洗衣机、厨房、投影、办公位、露台、楼下咖啡馆或共享空间等卖点，是否被如实归属、如实展示、如实说明使用边界。",
+      "high_score_signals": [
+        "功能设备被完整展示且能看出真实可用状态",
+        "合作或共享空间与房源关系清楚、边界明确",
+        "卖点不夸张、不越权、不把 bonus 拍成刚需配套"
+      ],
+      "low_score_signals": [
+        "只拍局部特写看不出设备和空间归属",
+        "把楼下商户和共享空间包装成房源自带配套",
+        "功能边界模糊却承诺长住或全能生活感"
+      ],
+      "score_rule": "功能和配套归属越清晰、边界越诚实，得分越高。"
+    },
+    {
+      "id": "time_window_and_night_honesty",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "时段与夜间条件诚实度",
+      "weight": 0.10,
+      "definition": "夜景、晚到、夜归、晨起、citywalk 收尾等时段感是否来自真实可拍窗口，条件缺失时是否主动降级，而不是靠库存夜景和调色硬做氛围。",
+      "high_score_signals": [
+        "夜间或傍晚镜头与真实楼栋、街道、房间状态一致",
+        "没有夜拍时能主动改写成白天或傍晚版本",
+        "时段变化和脚本叙事逻辑一致不跳轴"
+      ],
+      "low_score_signals": [
+        "承诺夜归安心却没有任何夜间回房证据",
+        "靠库存霓虹、天际线或过度调色制造夜感",
+        "白天、夜晚、早晨乱拼导致叙事失真"
+      ],
+      "score_rule": "时段和夜间条件越真实、降级越诚实，得分越高。"
+    },
+    {
+      "id": "dependency_honesty_under_residential_constraints",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "住宅与混合业态场景下的依赖诚实度",
+      "weight": 0.08,
+      "definition": "方案是否明确写清可拍房型、街道机位、楼道和电梯权限、邻里隐私、合作空间授权、夜拍窗口和替代路线，而不是把执行风险留到后面。",
+      "high_score_signals": [
+        "每个关键镜头都能对应到具体空间、时段或授权",
+        "素材缺口有明确替代路线和分数下调逻辑",
+        "没有把无法拍到的街景、公区或人像假装成已拥有资产"
+      ],
+      "low_score_signals": [
+        "依赖写得很泛，只说“需要场地支持”",
+        "素材缺口很大却仍给高可行性和高野心方案",
+        "合作空间、楼道和街拍权限模糊却继续主打相关卖点"
+      ],
+      "score_rule": "依赖越具体、假设越少、降级越及时，得分越高。"
+    }
+  ]
+}

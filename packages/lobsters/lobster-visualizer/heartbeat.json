@@ -1,0 +1,41 @@
+{
+  "agent_id": "visualizer",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_copy_pack",
+      "action": "convert_to_storyboard"
+    },
+    {
+      "check": "pending_storyboards",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "missing_assets",
+      "action": "mark_risk_and_fallback"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "review_asset_dependencies",
+      "description": "检查本轮分镜的素材依赖是否齐全"
+    },
+    {
+      "interval_minutes": 120,
+      "action": "refresh_cover_directions",
+      "description": "回看封面方向与平台适配性"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "summarize_visual_patterns",
+      "description": "沉淀高 CTR 视觉模式和失败模式"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_copy_input AND no_pending_storyboards",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 90,
+    "idle_behavior": "passive_asset_review"
+  }
+}

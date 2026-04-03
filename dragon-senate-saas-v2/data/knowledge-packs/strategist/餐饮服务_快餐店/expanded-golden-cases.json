@@ -1,0 +1,234 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_fast_food_lunch_rush_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_lunch_pickup_growth",
+      "input": {
+        "mission_goal": "在 21 天内为办公商圈快餐店新增 420 单工作日午市到店或自提套餐核销，并把 12 点到 13 点 30 的单位时段出单能力从 58 单提升到 86 单。",
+        "signal_brief": "周边写字楼复工稳定，竞品持续用 19.9 元工作餐抢量，但门店已有 3 组稳定主力套餐、平均 5 分钟内完成出餐与打包、线上评分 4.6，更适合走快而稳的午市路线。",
+        "tenant_context": {
+          "budget_limit": 8500,
+          "brand_tone": "直接、靠谱、效率友好",
+          "asset_state": "有 3600 名会员、近 60 天午市复购客 620 人、两组饭类套餐和一组炸物套餐评价稳定",
+          "location_type": "写字楼与园区混合商圈",
+          "operations_state": "午高峰后厨仍有少量余量，但 18 点后晚高峰打包区会变拥挤"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日午市主路线",
+        "本地 1 到 3 公里办公人群优先级",
+        "主力套餐证据和出餐稳定性",
+        "至少一个会员或自提备选路线",
+        "明确优先顺序与履约风险权衡"
+      ],
+      "mustAvoid": [
+        "早餐午市晚高峰同时主推",
+        "深折扣引流超过后厨和打包区承接"
+      ]
+    },
+    {
+      "id": "strategist_fast_food_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的快餐店验证首个值得持续投入的增长场景，并决定预算优先压在午市工作餐、自提早餐还是社区晚餐带走。",
+        "signal_brief": "门店开业仅 6 天，装修和包装出片不错，但平台只有 28 条评价，主力套餐还没有稳定销量数据，团队同时想做短视频、团购券和外卖满减，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "年轻、干净、出餐快",
+          "asset_state": "只有开业素材和 1 周订单数据，没有明确的主力套餐复购证据",
+          "location_type": "社区与新办公楼交界底商",
+          "operations_state": "店员与后厨仍在磨合，午高峰平均等待时长波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实套餐和评价证据",
+        "把堂食、自提和外卖拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和包装直接大规模扩量",
+        "开业初期同时冲团购低价和外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_fast_food_group_meal_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "office_group_meal_growth",
+      "input": {
+        "mission_goal": "在 30 天内为办公室会议餐和团队工作餐场景获取 40 条高意向咨询，并落地 22 单 20 份以上的实际团餐订单。",
+        "signal_brief": "门店周边 2 公里内有多个产业园和联合办公空间，散单午市稳定，但 14 点到 17 点仍有产能空窗，门店过去两个月做过 9 次 25 份以上团餐，打包和分装流程相对成熟。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "准时、靠谱、适合集体下单",
+          "asset_state": "有标准团餐菜单、企业微信客服和 6 条大单好评截图",
+          "location_type": "产业园与写字楼交界",
+          "operations_state": "即时大单会挤压 12 点和 18 点散单，需要预约分流"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "团餐资格筛选",
+        "送达时间、份数、预算和地址信息收集",
+        "标准团餐方案与预约承接路线",
+        "明确主路线和 fallback"
+      ],
+      "mustAvoid": [
+        "把散单拉新优惠直接套到团餐报价",
+        "未查产能就承诺所有时段都能接大单"
+      ]
+    },
+    {
+      "id": "strategist_fast_food_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_member_reactivation",
+      "input": {
+        "mission_goal": "重激活 1800 名近 60 天未下单会员，并在 18 天内带回 300 单老客复购订单。",
+        "signal_brief": "门店有完整会员手机号和历史下单标签，最近准备上新一组早餐组合和一组双人晚餐套餐，预算不高，但熟客回流成本明显低于公域冷启动投流。",
+        "tenant_context": {
+          "budget_limit": 3200,
+          "brand_tone": "熟客感、轻松、不打扰",
+          "crm_state": "可按早餐用户、午市工作餐用户、晚间带走用户和距离门店半径分层",
+          "asset_state": "有过去 6 个月的订单标签、积分规则和 2 次小规模上新反馈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "会员分层重激活节奏",
+        "早餐组合或晚餐套餐作为回店理由",
+        "低成本优先级高于陌生投流",
+        "至少一个本地冷启动备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略历史套餐偏好和下单时段"
+      ]
+    },
+    {
+      "id": "strategist_fast_food_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_fulfillment_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复晚高峰订单转化，并在 21 天内把有效自提和到店订单量拉回到上月平均水平。",
+        "signal_brief": "近 3 周平台评分从 4.5 掉到 4.1，差评集中在等待太久、漏餐、薯条不脆和包装破损，但老板仍想继续加码短视频探店和平台券包。",
+        "tenant_context": {
+          "budget_limit": 7200,
+          "brand_tone": "诚恳、愿意改、接地气",
+          "asset_state": "仍有 2 组评分高的稳定主力套餐和一批老客好评截图",
+          "operations_state": "晚高峰排班不足、补料预测不准、骑手取餐区经常拥堵"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和履约再扩量",
+        "限定套餐或限定时段路线",
+        "真实回评和稳定套餐回收信任",
+        "明确停止或降级高风险投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或隐瞒履约风险"
+      ]
+    },
+    {
+      "id": "strategist_fast_food_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_delivery_overexpansion",
+      "input": {
+        "mission_goal": "用 9.9 元套餐和全城 30 分钟送达口号在 10 天内把订单量翻倍。",
+        "signal_brief": "周边竞品持续用低价券抢量，但门店当前毛利已经偏薄，午高峰和晚高峰常排队，外卖差评开始上升，继续压价和扩半径很可能带来更多超时、漏餐和退款。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 3 组主力套餐，但缺少承接深折扣和广域配送的人手",
+          "operations_state": "炸炉、打包和骑手交接已接近上限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价和全城送达中心路线",
+        "把单店承接、毛利和口碑风险说透",
+        "给出更稳的替代增长路径"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量低价券或无限半径配送承诺",
+        "忽略后厨、打包和骑手交接上限"
+      ]
+    }
+  ]
+}

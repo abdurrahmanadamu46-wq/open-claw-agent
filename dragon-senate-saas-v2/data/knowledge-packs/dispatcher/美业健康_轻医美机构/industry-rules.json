@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "room_and_consult_capacity_gate",
+      "title": "高峰预约前必须先校验面诊时段、房间和核心医生资源",
+      "description": "轻医美机构的调度核心不是单纯接单，而是把面诊时段、房间、顾问、核心医生和术后跟进能力一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": [
+        "周末晚间面诊位已满时，先进入候补和分时段预约节点。",
+        "节日前状态管理集中时，先确认可用时长和核心资源排班。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "consult_and_review_must_be_routed",
+      "title": "首次面诊、复查和术后回访是独立调度变量",
+      "description": "首次面诊、复查和术后回访会显著改变单客时长与资源匹配。Dispatcher 不能按普通咨询去承接这些场景，必须单独分流。",
+      "examples": [
+        "首次到店用户需要先进入咨询判断节点。",
+        "复查用户应优先路由到熟悉其历史记录的顾问链路。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "concern_complexity_before_confirmation",
+      "title": "确认预约前先判断问题复杂度和是否适合该时段",
+      "description": "毛孔痘印咨询、节前状态管理和复杂问题面诊不能共用同一套预约时长假设。Dispatcher 需要先按复杂度和顾问资源做分流。",
+      "examples": [
+        "午休档只适合轻量咨询，不应塞入复杂多问题判断。",
+        "婚礼前焕新和多人同行需提前扩展时长。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "room_reset_and_hygiene_gate",
+      "title": "房间重置和环境准备是独立调度节点",
+      "description": "轻医美机构不是一位顾客结束就能立刻无缝接下一位。房间重置、备品整理和环境准备必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": [
+        "连续预约时，先插入房间重置和准备步骤。",
+        "复杂咨询做完后不可直接无缝切换下一单。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "peak_slot_hold_window",
+      "title": "热门时段和核心医生档要设置保留窗口",
+      "description": "周末、节日前夜和核心医生时段是稀缺资源。Dispatcher 对高需求档期要设置保留时限、提醒节点和释放机制，避免空挂预约。",
+      "examples": [
+        "节日前晚间时段要求限时确认。",
+        "核心医生周末预约超过一定时间未确认则释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_backwrite",
+      "title": "做完后必须回写恢复观察与复查任务",
+      "description": "轻医美执行链路不能在结账后结束。完成后要回写本次项目、恢复观察、术后说明和可能复查点，方便后续 followup 承接。",
+      "examples": [
+        "状态管理完成后自动创建恢复观察任务。",
+        "面诊后创建复查和 followup 提醒。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

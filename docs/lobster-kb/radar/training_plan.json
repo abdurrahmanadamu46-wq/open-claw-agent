@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "lobster": "radar",
+    "name": "林探",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "rdr_battle_001：未等满最短观察时间就发出情报，导致热点昙花一现，策略白做",
+    "情报格式不统一，strategist收到后还要来回确认基本信息"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "RDR-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "20min",
+      "sim_time": "不到1天",
+      "mission": "写出一条硬规则：情报发出前必须满足的最短观察时间条件",
+      "deliverable": "一条写入skills.json的规则：'如果[信号类型]的观察时间<[X分钟]，禁止发出，等满后才能发'",
+      "pass_criteria": [
+        "针对不同信号类型（突发热点/缓慢增长/节假日话题）各有不同的时间要求",
+        "规则包含例外情况（哪种情况可以缩短观察时间，前提条件是什么）"
+      ],
+      "fail_action": "重做，例外情况必须有前提条件",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "RDR-T001",
+      "type": "TYPE-B",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "现在去找一个真实的热点（今天/昨天发生的），按标准情报包格式整理后发给strategist",
+      "deliverable": "一份标准情报包：话题名/平台/当前热度数据/增速（每小时增多少）/预判持续时间/可用钩子方向（2个）/是否值得追（是/否+理由）",
+      "pass_criteria": [
+        "热度数据必须是真实数字（不是'很热'这种表述）",
+        "增速必须是具体数字（如'过去3小时从2w互动增到8w互动'）",
+        "strategist收到后5分钟内能做出追/不追的决定，不需要追问"
+      ],
+      "fail_action": "strategist追问超过1个问题→FAIL",
+      "collab_required": "strategist（验证方）"
+    },
+    {
+      "task_id": "RDR-T002",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "找出rdr_battle_001的那次昙花一现热点，回头复盘：如果当时等满观察时间，会发现什么信号？",
+      "deliverable": "复盘记录：当时发出情报时的数据/等满观察时间后的数据变化/如果等了会怎么判断/以后碰到类似信号怎么识别",
+      "pass_criteria": [
+        "必须有真实数据对比（当时vs之后）",
+        "识别规则具体到'如果看到X信号，下一步检查Y'"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    },
+    {
+      "task_id": "RDR-T003",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "建立一个竞品账号监控名单：选5个行业各1个Top竞品，记录他们上周发了什么、效果如何",
+      "deliverable": "竞品监控表：账号名/行业/上周发布内容概要/最高互动数/内容结构特征（标题模式/封面风格）",
+      "pass_criteria": [
+        "5个账号必须真实存在，能在平台上查到",
+        "内容结构特征具体到'标题公式是什么'，不是'文案写得好'",
+        "有≥1条从竞品中提炼的可用规律写入skills.json"
+      ],
+      "fail_action": "重做，内容结构特征不具体→FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "RDR-T004",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "向inkwriter主动推送情报：在情报包里附上2个可用的标题钩子方向",
+      "deliverable": "情报包（标准格式）+ 额外字段：suggested_hooks（2个具体的标题方向，不是模糊的'走情感路线'）",
+      "pass_criteria": [
+        "2个标题方向具体到能直接开始写（如'以25岁女性视角，讲述第一次尝试XX的真实体验'）",
+        "inkwriter收到后能直接参考，不需要再追问钩子怎么写"
+      ],
+      "fail_action": "重做",
+      "collab_required": "inkwriter（验证方）"
+    },
+    {
+      "task_id": "RDR-T005",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "分析1个你误判过的热点（发出去但没有爆），找出为什么误判",
+      "deliverable": "误判复盘：情报发出时的数据/最终结果数据/误判的根因（是哪个指标骗了你）/下次遇到同样信号如何识别",
+      "pass_criteria": [
+        "根因具体到'我看了X指标，但忽略了Y指标，因为Z原因'",
+        "写出1条新的识别规则进skills.json（诚实标注：从误判中提炼）"
+      ],
+      "fail_action": "重做，根因不能写'经验不足'",
+      "collab_required": null
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "RDR-DRILL-001",
+      "description": "限时30分钟：找到一个今天的热点，完成情报包并发给strategist，strategist必须能在5分钟内决策",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "情报包格式完整（7个必填字段全填）",
+        "热度数据真实（有具体数字）",
+        "strategist 5分钟内做出追/不追决定"
+      ],
+      "evaluation": "strategist决策时间记录"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "RDR-T001到RDR-T005全部PASS",
+      "连续5次情报包，strategist不需要追问",
+      "RDR-DRILL-001 PASS ≥ 5次",
+      "零昙花一现误判（连续30天内）",
+      "竞品监控名单覆盖≥5个行业"
+    ]
+  }
+}

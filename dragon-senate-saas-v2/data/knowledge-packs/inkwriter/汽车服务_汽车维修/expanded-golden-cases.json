@@ -1,0 +1,60 @@
+﻿{
+  "industry": "汽车服务_汽车维修",
+  "lobster_id": "inkwriter",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "inkwriter_auto_repair_problem_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote an auto-repair shop around fault diagnosis and maintenance consultation using trust-first messaging and a booking CTA",
+        "brand_tone": "gentle, grounded, and low-pressure",
+        "offer_info": "visit-first route, no guarantee claims, clear suitability framing",
+        "audience_segment": "local users dealing with noise, warning lights, and maintenance concerns"
+      },
+      "expectedSignals": ["core_message", "hooks", "script_body", "risk_phrases"],
+      "mustInclude": ["problem-based opening", "trust and process proof before price", "CTA that collects concern and visit window"],
+      "mustAvoid": ["guarantee claims", "fear-based copy", "promised outcomes"]
+    },
+    {
+      "id": "inkwriter_auto_repair_window_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write copy for a seasonal visit-booking route",
+        "brand_tone": "reassuring, specific, and low-pressure",
+        "offer_info": "deadline-window visit route, no exaggerated promise",
+        "audience_segment": "users preparing for holiday travel, inspections, and seasonal maintenance windows"
+      },
+      "expectedSignals": ["core_message", "hooks", "script_body", "risk_phrases"],
+      "mustInclude": ["deadline-based opening", "time-sensitive but not pushy CTA", "boundary that this is a visit and fit-check route"],
+      "mustAvoid": ["long-term outcome promises", "fake scarcity", "hard push for high-ticket close"]
+    },
+    {
+      "id": "inkwriter_auto_repair_revisit_003",
+      "label": "long_term_case",
+      "input": {
+        "strategy_route": "Write a soft re-engagement message for existing repair customers approaching a revisit or maintenance point",
+        "brand_tone": "familiar, warm, and not sales-heavy",
+        "offer_info": "maintenance reminder based on timing and car state",
+        "audience_segment": "past customers who completed an earlier project and may now be ready for a next step"
+      },
+      "expectedSignals": ["core_message", "hooks", "script_body", "risk_phrases"],
+      "mustInclude": ["a concrete reason to return", "respectful tone without guilt", "CTA tied to timing or car state"],
+      "mustAvoid": ["mass-sales tone", "vague comeback messaging", "fearful pressure"]
+    },
+    {
+      "id": "inkwriter_auto_repair_risk_004",
+      "label": "risk_case",
+      "input": {
+        "strategy_route": "Rewrite an auto-repair promo that currently overuses guarantee claims and absolute wording",
+        "brand_tone": "calm and professional",
+        "offer_info": "visit route with booking support",
+        "audience_segment": "first-time local leads"
+      },
+      "expectedSignals": ["core_message", "hooks", "script_body", "risk_phrases"],
+      "mustInclude": ["compliant alternative wording", "less absolute repair language", "focus on process and suitability"],
+      "mustAvoid": ["guarantee language", "promised transformation", "repair or part guarantees"]
+    }
+  ]
+}

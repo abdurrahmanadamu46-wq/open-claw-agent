@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN}
+    command: >
+      --model Qwen/Qwen3-72B-Instruct
+      --tensor-parallel-size 2
+      --max-num-seqs 256
+      --max-model-len 32768
+      --enable-prefix-caching
+      --dtype bfloat16
+      --port 8000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+    volumes:
+      - /data/model_cache:/root/.cache/huggingface
+    restart: unless-stopped
+
+  vllm-health-monitor:
+    image: python:3.12-slim
+    command: python /scripts/vllm_health_monitor.py
+    environment:
+      - VLLM_HOST=vllm
+      - VLLM_PORT=8000
+      - ALERT_WEBHOOK=${FEISHU_WEBHOOK}
+    volumes:
+      - ./scripts:/scripts
+    restart: unless-stopped

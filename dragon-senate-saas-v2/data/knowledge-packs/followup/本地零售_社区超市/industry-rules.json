@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_社区超市","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+{"id":"facts_before_slot_commitment","title":"没补齐品类、时间和购物方向前，本轮目标是锁预约事实，不是先把结果说满","description":"社区超市线索很多从有没有货、多少钱和能不能送开场，但真正决定能否推进的是品类方向、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问品类和购物方向。","客户只说最近想买点东西时，先补时间和门店，再决定如何推进。"],"priority":"high"},
+{"id":"first_visit_needs_safety_trust_stage","title":"第一次到店和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会挑货、怕不新鲜和怕缺斤少两的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出到店路径。","先讲清鲜度和赔付，再谈时间。"],"priority":"high"},
+{"id":"seasonal_booking_needs_fast_scope","title":"节前、聚餐和节点备货线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间和品类方向。","examples":["聚餐线索先确认周几可来和这次最在意什么。","节前线索先锁时间，再讲品类范围。"],"priority":"high"},
+{"id":"first_visit_and_revisit_split","title":"首次预约跟进和复购维护必须拆开","description":"首单跟进的目标通常是帮用户安心完成一次到店，复购维护的目标才是提醒节点、到货状态和下一步选择。","examples":["首单更多围绕品类、时间和风险边界。","复购更多围绕上次购买感受、家庭变化和下一步。"],"priority":"high"},
+{"id":"post_visit_followup_needs_feedback","title":"到店后的跟进要先收感受和状态变化，再决定是否推进","description":"到店后的 FollowUp 不是默认销售时刻。","examples":["到店后先问感觉和最在意的点。","收货后先问鲜度和后续想法。"],"priority":"high"},
+{"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复购或补货理由，不要只催回来","description":"节前节点、聚餐节点和补货需求等都是合理的回访理由。","examples":["提醒上次来买货的客户节前节点到了。","按到货周期提醒补货。"],"priority":"medium"}]}

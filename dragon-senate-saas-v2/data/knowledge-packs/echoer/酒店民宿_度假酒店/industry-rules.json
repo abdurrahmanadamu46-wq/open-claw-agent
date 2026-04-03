@@ -1,0 +1,302 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "getaway_dates_need_stay_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether there are still rooms without sharing check-in date, check-out date, room count, or the property they mean",
+        "User says they want a quick weekend or holiday getaway but the booking scope is still broad"
+      ],
+      "response_goal": "Turn broad resort browsing into the minimum stay facts needed for useful guidance.",
+      "do": [
+        "Acknowledge that the user wants a quick answer without making them repeat the whole trip",
+        "Ask only for the next critical facts such as dates, number of guests or rooms, and which property or area they mean",
+        "Keep the tone warm and vacation-friendly instead of sounding like a rigid reservation script"
+      ],
+      "avoid": [
+        "Guessing availability from a broad question",
+        "Dumping a long list of room categories before the trip basics are known",
+        "Pushing the user to book before clarifying the stay scope"
+      ],
+      "safe_transition": "If you send the stay dates, how many adults and children are traveling, and which property you mean, I can guide the next step much more clearly.",
+      "handoff_suggestion": "If the trip scope is complete, mark as booking-intent ready."
+    },
+    {
+      "id": "family_stay_requires_age_and_bedding_context",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether two adults and children can stay in one room",
+        "User asks about family rooms, extra beds, connecting rooms, cribs, or child breakfast without sharing child ages"
+      ],
+      "response_goal": "Make family-trip replies useful by collecting the occupancy facts that actually affect room fit.",
+      "do": [
+        "Acknowledge that family travel details can get complicated quickly",
+        "Ask for the number of adults and children, child ages, and whether the main need is one room, connecting rooms, or extra bedding",
+        "Keep the questions simple enough to answer in one message"
+      ],
+      "avoid": [
+        "Assuming all children can be accommodated the same way",
+        "Guaranteeing extra beds or connecting rooms without context",
+        "Ignoring child-age differences when discussing occupancy or package benefits"
+      ],
+      "safe_transition": "If you send the number of adults, the kids' ages, and whether you prefer one room or connecting rooms, I can narrow the next step more safely.",
+      "handoff_suggestion": "Family-stay questions with age details should route as room-fit clarification leads."
+    },
+    {
+      "id": "view_room_villa_and_private_pool_are_requests_not_promises",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether an ocean-view room, sunset-facing villa, private pool room, or top-floor suite can be guaranteed",
+        "User asks for a free upgrade tied to a better view or specific villa position"
+      ],
+      "response_goal": "Respect the vacation preference while avoiding rigid promises about inventory or upgrades.",
+      "do": [
+        "Acknowledge why the view or villa type matters to the trip experience",
+        "Explain that room placement, upgrades, and certain premium categories depend on live inventory, booked rate, and stay date",
+        "Ask for the property, stay date, booked or intended room type, and the preference that matters most"
+      ],
+      "avoid": [
+        "Guaranteeing a specific view, villa number, or free upgrade",
+        "Treating every sea-view or private-pool request as interchangeable",
+        "Answering with vague reassurance that creates expectation risk"
+      ],
+      "safe_transition": "If you share the property, your stay date, and whether the main priority is the view, villa style, or pool setup, I can guide the next step more realistically.",
+      "handoff_suggestion": "Premium room preference requests should be tagged for reservation-note or sales follow-up."
+    },
+    {
+      "id": "package_inclusions_depend_rate_plan_and_date",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether breakfast, dinner, hot spring entry, afternoon tea, activity tickets, or lounge benefits are included",
+        "User references a package page, campaign offer, or holiday bundle and wants confirmation"
+      ],
+      "response_goal": "Tie inclusion questions back to the actual rate plan and travel date instead of improvising broad answers.",
+      "do": [
+        "Acknowledge that package inclusions matter before booking or arrival",
+        "Ask whether the user already booked, which package or channel they are looking at, and the exact dates involved",
+        "Use clear language that inclusions can vary by room type, package, and holiday period"
+      ],
+      "avoid": [
+        "Assuming every rate includes the same meals or activity access",
+        "Ignoring peak-date or campaign differences",
+        "Using vague wording such as usually included when the answer is plan-dependent"
+      ],
+      "safe_transition": "If you send the package name or booking channel plus the stay dates and the benefit you want to confirm, I can guide the next step much more accurately.",
+      "handoff_suggestion": "Package-inclusion questions with plan context should route as booking-clarification leads."
+    },
+    {
+      "id": "early_arrival_or_late_departure_need_live_context",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether they can definitely check in early after a morning flight, overnight train, or ferry arrival",
+        "User asks whether late checkout can be guaranteed because of a return flight or family schedule"
+      ],
+      "response_goal": "Show empathy for the travel timeline while avoiding absolute promises around room turnover.",
+      "do": [
+        "Acknowledge the travel fatigue or family timing pressure directly",
+        "Explain that early check-in or late checkout depends on live occupancy, housekeeping progress, and booked rate plan",
+        "Ask for the property, stay date, expected arrival or departure time, and whether the booking already exists"
+      ],
+      "avoid": [
+        "Guaranteeing early check-in or late checkout",
+        "Speaking as if every rate includes flexible timing",
+        "Giving a vague yes that creates avoidable expectation risk"
+      ],
+      "safe_transition": "If you send the property, stay date, and the arrival or departure time you are trying to cover, I can help narrow what should be checked next.",
+      "handoff_suggestion": "Time-flexibility requests should route toward live reservation or front-desk confirmation."
+    },
+    {
+      "id": "airport_station_or_ferry_transfer_depends_property_schedule",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether the resort has airport, station, or ferry terminal pickup",
+        "User wants to know whether a shuttle runs at a specific late-night or early-morning time"
+      ],
+      "response_goal": "Keep transport answers credible by grounding them in property, route, and schedule context.",
+      "do": [
+        "Acknowledge that arrival logistics matter for a vacation start",
+        "Explain that transfer support can vary by property, route, operating hours, and advance notice rules",
+        "Ask for the property, travel date, arrival timing, and whether pickup or drop-off is needed"
+      ],
+      "avoid": [
+        "Promising shuttle coverage without property context",
+        "Guessing last-run times or terminal meeting points",
+        "Treating transport arrangements as automatic"
+      ],
+      "safe_transition": "If you share the resort, your travel date, and the pickup or drop-off time you need, I can narrow the next step much better.",
+      "handoff_suggestion": "Transport questions with fixed timing should move to property-specific confirmation."
+    },
+    {
+      "id": "spa_kids_club_and_activities_need_reservation_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether the spa, kids club, snorkeling, hot spring session, paddleboard, or other activities are still available",
+        "User asks whether an activity is included or can be booked on arrival without giving date or headcount"
+      ],
+      "response_goal": "Move activity questions into a workable reservation scope without overpromising availability.",
+      "do": [
+        "Acknowledge the experience the guest is trying to protect or plan around",
+        "Ask for the stay date, number of people, child ages if relevant, and the specific activity or time slot they care about",
+        "Mention that some activities can depend on session limits, weather, age rules, or advance booking"
+      ],
+      "avoid": [
+        "Guaranteeing a session or activity slot without date context",
+        "Treating seasonal or weather-sensitive activities as always open",
+        "Ignoring age or headcount requirements"
+      ],
+      "safe_transition": "If you send the date, how many people are joining, and the activity or time slot you care about most, I can point you to the safer next step.",
+      "handoff_suggestion": "Activity questions with dates should route toward concierge, recreation, or reservation handling."
+    },
+    {
+      "id": "weather_sensitive_amenities_need_condition_based_language",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether the beach, outdoor pool, bonfire, water sports, or stargazing will definitely be available",
+        "User is worried about rain, wind, typhoon alerts, or cold weather affecting the resort experience"
+      ],
+      "response_goal": "Keep the reply reassuring but realistic when weather and safety conditions can change operations.",
+      "do": [
+        "Acknowledge the disappointment risk if the trip experience changes",
+        "Explain that outdoor amenities or sea activities can depend on weather, safety conditions, and same-day operations",
+        "Guide toward the property, stay dates, and the exact amenity or activity that matters most"
+      ],
+      "avoid": [
+        "Guaranteeing sunshine, calm sea conditions, or activity operation",
+        "Minimizing safety considerations",
+        "Giving a blanket answer that ignores the date or season"
+      ],
+      "safe_transition": "If you tell me the resort, the stay dates, and which outdoor experience matters most, I can help point you to the right next check.",
+      "handoff_suggestion": "Weather-sensitive cases should route to property operations or concierge when dates are near."
+    },
+    {
+      "id": "celebration_requests_are_notes_not_certainties",
+      "priority": "medium",
+      "applies_when": [
+        "User mentions a honeymoon, anniversary, birthday, proposal, or family celebration",
+        "User asks whether room decor, cake, surprise setup, or a special arrangement can be guaranteed for the stay"
+      ],
+      "response_goal": "Welcome the celebration context while keeping special-arrangement promises realistic.",
+      "do": [
+        "Acknowledge the emotional importance of the celebration",
+        "Ask what matters most, such as decor, cake, dining timing, or room atmosphere, along with stay date and property",
+        "Frame special arrangements as requests or coordination items rather than automatic promises"
+      ],
+      "avoid": [
+        "Guaranteeing free celebration setups or upgrades",
+        "Treating every celebration the same way across properties",
+        "Downplaying the emotional importance of the request"
+      ],
+      "safe_transition": "If you share the stay date, property, and the one or two celebration details that matter most, I can guide the next step more helpfully.",
+      "handoff_suggestion": "Celebration stays should be tagged for concierge or reservation-note follow-up."
+    },
+    {
+      "id": "pet_policy_needs_pet_and_room_context",
+      "priority": "medium",
+      "applies_when": [
+        "User asks whether pets are allowed",
+        "User asks about pet fees, weight limits, outdoor access, or whether a specific room type can take a dog or cat"
+      ],
+      "response_goal": "Keep pet-stay guidance accurate by clarifying the pet and room details that change policy handling.",
+      "do": [
+        "Acknowledge that guests want to avoid arrival friction with pets",
+        "Ask for the property, pet type and size, stay dates, and whether the user already has a room type in mind",
+        "Mention that pet rules can vary by property, room category, and outdoor-area setup"
+      ],
+      "avoid": [
+        "Saying pets are always allowed or never restricted across all properties",
+        "Ignoring size or room-category differences",
+        "Overlooking cleaning, fee, or amenity rules"
+      ],
+      "safe_transition": "If you tell me which resort, what pet you are bringing, and when you want to stay, I can guide the next check more safely.",
+      "handoff_suggestion": "Pet-stay questions should route to property policy confirmation when details are specific."
+    },
+    {
+      "id": "cancellation_or_change_depends_channel_package_and_peak_rules",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a booking can be canceled, moved, or refunded",
+        "User says they booked through an app, campaign package, or holiday offer and their plan changed because of weather or family reasons"
+      ],
+      "response_goal": "Protect trust by grounding cancellation talk in booking channel, rate rules, and package terms instead of loose reassurance.",
+      "do": [
+        "Acknowledge that changing a vacation plan can be stressful",
+        "Ask whether the stay is already booked, through which channel, and whether the rate or package is flexible or non-refundable if they know",
+        "Guide the user toward the correct policy-check path"
+      ],
+      "avoid": [
+        "Promising refunds before checking booking context",
+        "Treating direct bookings, OTA bookings, and package bookings as identical",
+        "Sounding dismissive about schedule, weather, or family changes"
+      ],
+      "safe_transition": "If you send where the booking was made and what the package or rate says, I can help point you to the right next step instead of guessing.",
+      "handoff_suggestion": "Refund and change cases should be routed for booking-policy confirmation."
+    },
+    {
+      "id": "group_retreat_or_small_event_needs_scope",
+      "priority": "high",
+      "applies_when": [
+        "User asks about a family reunion, company retreat, small wedding, or villa buyout",
+        "User asks for several rooms plus dining or activity coordination for one group"
+      ],
+      "response_goal": "Move larger resort demand into workable scope without losing the warm tone.",
+      "do": [
+        "Recognize that this is a serious multi-part booking need rather than casual browsing",
+        "Ask for stay dates, room count or villa count, headcount, and whether dining, meeting, or celebration coordination is needed",
+        "Keep the next step focused on the facts that matter most for a real follow-up"
+      ],
+      "avoid": [
+        "Quoting a fixed plan without dates or headcount",
+        "Ignoring event or dining coordination needs",
+        "Assuming every property handles group stays the same way"
+      ],
+      "safe_transition": "If you share the dates, how many rooms or villas you need, and whether this includes dining or event coordination, I can guide the next step much more usefully.",
+      "handoff_suggestion": "Retreat and event-style stays should route as high-value group leads."
+    },
+    {
+      "id": "complaint_first_empathy_and_case_facts",
+      "priority": "high",
+      "applies_when": [
+        "User reports a dirty room, noisy neighbors, pool issue, service problem, missing package benefit, or disappointing activity experience",
+        "User is visibly upset in public comments or DM about a current or recent resort stay"
+      ],
+      "response_goal": "Stabilize emotion first and gather the minimum facts needed for real service recovery.",
+      "do": [
+        "Acknowledge the frustration directly and calmly",
+        "Move the conversation toward the property, stay date, room or booking details, and the exact issue through a safer channel",
+        "Signal that a real person should review the case"
+      ],
+      "avoid": [
+        "Arguing responsibility in public",
+        "Blaming operations, weather, or the guest before facts are checked",
+        "Requesting excessive personal information in a public thread"
+      ],
+      "safe_transition": "I can understand why that would be frustrating. Please send the resort, stay date, and room or booking details by DM so the right person can check it quickly.",
+      "handoff_suggestion": "Escalate directly to guest service, concierge, or resort operations."
+    },
+    {
+      "id": "public_to_dm_transition",
+      "priority": "high",
+      "applies_when": [
+        "User is ready to book, complain, or send screenshots in a public comment thread",
+        "The next step needs booking details, package screenshots, or stay information that should be handled privately"
+      ],
+      "response_goal": "Move naturally from public interaction to a safer detail-collection channel without sounding abrupt or evasive.",
+      "do": [
+        "Answer one useful point in public first",
+        "Explain why DM helps with booking, package, or complaint details",
+        "Make the next step specific and low-effort"
+      ],
+      "avoid": [
+        "Replying only with DM me",
+        "Dropping off-platform contact details in public",
+        "Using hard-pressure lead capture language"
+      ],
+      "safe_transition": "A couple of details are easier to check in DM. If you send the resort plus your stay or booking details there, we can make the next step much clearer.",
+      "handoff_suggestion": "If the user is ready to continue privately, notify Catcher and the relevant service path."
+    }
+  ]
+}

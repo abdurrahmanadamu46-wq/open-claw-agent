@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "first_visit_consult_inquiry",
+      "title": "首次到店问题型咨询触发优先调度",
+      "description": "当来单中出现第一次来、想先面诊、想先看看适不适合和具体问题时，Dispatcher 应优先匹配咨询链路，而不是塞进泛预约队列。",
+      "examples": [
+        "客户第一次来，想周末先看毛孔和痘印。",
+        "节日前想先来面诊看看适不适合。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_window_inquiry",
+      "title": "婚礼和节日前询单触发时效优先调度",
+      "description": "当来单明确说明婚礼、拍照和节日前窗口时，Dispatcher 要立即优先判断热门时段可用性和项目适配边界。",
+      "examples": [
+        "客户周六婚礼，想约周四晚面诊。",
+        "客户说明明天拍照，希望今晚先来看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "lunch_break_fast_consult",
+      "title": "午休短时段询单触发快流程调度",
+      "description": "当用户明确只有午休 45 到 60 分钟窗口时，Dispatcher 应优先匹配轻量咨询，不应给出复杂链路承接。",
+      "examples": [
+        "客户只有 12:20 到 13:10。",
+        "白领想约一单午休面诊。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "core_doctor_slot_hold",
+      "title": "核心医生与热门时段询单触发保留确认链路",
+      "description": "当用户点名核心医生或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。",
+      "examples": [
+        "客户指定周六 18:30 的核心医生。",
+        "客户想抢节前最后一个晚间档。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "multi_concern_consult",
+      "title": "多问题咨询触发扩展时长链路",
+      "description": "当用户同时提到多个问题，例如毛孔、痘印和节前状态，Dispatcher 要立即扩展时长和顾问匹配，不可按单一轻量咨询处理。",
+      "examples": [
+        "客户同时提到毛孔和痘印。",
+        "客户又想做节前焕新又担心恢复期。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_recheck_task",
+      "title": "完成后触发复查和恢复观察任务",
+      "description": "当系统收到服务完成信号时，Dispatcher 应自动创建恢复观察、复查和 followup 提醒，而不是让链路断在付款之后。",
+      "examples": [
+        "状态管理完成后创建恢复观察任务。",
+        "面诊后创建后续复查提醒。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

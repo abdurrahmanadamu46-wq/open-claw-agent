@@ -1,0 +1,125 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_nail_salon_style_time_001",
+      "label": "happy_path",
+      "scenario_tag": "office_short_nail_booking_completion",
+      "input": {
+        "lead_assessment": "A 级预约线索，用户想做通勤短甲法式，计划周四晚来店。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on style, slot, and service-scope completion",
+        "contact_history": [
+          "刚从小红书评论区转私信",
+          "已说明是第一次做甲",
+          "暂未确认是否需要卸甲"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "本轮目标放在补齐是否卸甲和具体时段",
+        "不先推复杂款或储值",
+        "把预约事实收口清楚"
+      ],
+      "mustAvoid": [
+        "没定范围就承诺一定有位",
+        "直接转入卖卡节奏"
+      ]
+    },
+    {
+      "id": "followup_nail_salon_first_time_002",
+      "label": "happy_path",
+      "scenario_tag": "first_visit_style_guidance",
+      "input": {
+        "lead_assessment": "A- 级首次做甲线索，用户说自己不会选款，但这周末想来做一个低调一点的风格。",
+        "value_score_card": "short_term medium-high; conversion depends on low-pressure style narrowing and slot clarity",
+        "contact_history": [
+          "用户已表示这周末有空",
+          "看过通勤短甲作品内容"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先做风格缩窄而不是直接成交",
+        "推进到可执行预约",
+        "不让用户觉得被推销"
+      ],
+      "mustAvoid": [
+        "直接推复杂款",
+        "忽略首次不确定感"
+      ]
+    },
+    {
+      "id": "followup_nail_salon_event_003",
+      "label": "happy_path",
+      "scenario_tag": "event_slot_lock",
+      "input": {
+        "lead_assessment": "A 级节前线索，用户周六婚礼，想周四晚做新娘甲并带旧甲卸除。",
+        "value_score_card": "short_term high; conversion depends on slot confirmation and full scope clarity",
+        "contact_history": [
+          "已明确婚礼日期",
+          "暂未确认周四晚具体时间段"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "快速锁时间窗口",
+        "把卸甲事实带进承接",
+        "不夸张承诺交付"
+      ],
+      "mustAvoid": [
+        "拖太久导致窗口错过",
+        "忽略旧甲卸除时间"
+      ]
+    },
+    {
+      "id": "followup_nail_salon_post_visit_004",
+      "label": "long_term_case",
+      "scenario_tag": "post_visit_wear_feedback_before_rebook",
+      "input": {
+        "lead_assessment": "项目已完成，用户昨天做了节日贴饰款，今天等待回访。",
+        "value_score_card": "long_term medium-high; next value depends on wear feedback and satisfaction before rebook",
+        "contact_history": [
+          "首单已完成",
+          "尚未回收佩戴感受和是否担心掉钻"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先问佩戴感受和满意度",
+        "根据反馈决定是否推进复做",
+        "避免直接推储值"
+      ],
+      "mustAvoid": [
+        "跳过体验反馈直接成交",
+        "忽略返修风险信号"
+      ]
+    }
+  ]
+}

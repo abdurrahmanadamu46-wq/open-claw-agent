@@ -1,0 +1,291 @@
+﻿{
+  "schemaVersion": "lobster.operating-model.v0.1",
+  "generatedAt": "2026-03-30",
+  "clawhubDecision": {
+    "requiredNow": false,
+    "recommendedLater": true,
+    "principle": "先锁定每只龙虾的 baseline agent、starter skills、知识库和工作流，再把 ClawHub 作为统一 skill 分发与版本管理层接入。"
+  },
+  "localKnowledgeBases": [
+    {
+      "kbId": "industry_profile",
+      "label": "行业基础画像库",
+      "purpose": "行业细分、服务模式、客单价、典型决策链和购买场景。"
+    },
+    {
+      "kbId": "persona_painpoints",
+      "label": "客户痛点与转化阻力库",
+      "purpose": "不同客群的痛点、顾虑、咨询话术、成交阻力。"
+    },
+    {
+      "kbId": "offer_advantage",
+      "label": "产品卖点与差异化优势库",
+      "purpose": "品牌卖点、服务优势、老师/医生/老板人设、证据素材。"
+    },
+    {
+      "kbId": "platform_rules",
+      "label": "平台规则与风险表达库",
+      "purpose": "抖音/小红书/视频号等内容规则、违禁词、敏感承诺、审核风险。"
+    },
+    {
+      "kbId": "content_templates",
+      "label": "内容模板与选题脚本库",
+      "purpose": "选题框架、标题模板、脚本模板、封面模式、字幕样式。"
+    },
+    {
+      "kbId": "visual_asset_patterns",
+      "label": "视觉素材与分镜模式库",
+      "purpose": "镜头语言、素材依赖、场景模板、数字人驱动参数。"
+    },
+    {
+      "kbId": "interaction_reply",
+      "label": "评论私信承接库",
+      "purpose": "高频评论意图、私信模板、负面回复、情绪安抚、引导动作。"
+    },
+    {
+      "kbId": "lead_scoring_rules",
+      "label": "线索评分与风险过滤库",
+      "purpose": "意向分、匹配分、风险分、垃圾线索模式、高价值线索规则。"
+    },
+    {
+      "kbId": "followup_sop",
+      "label": "跟进SOP与电话推进库",
+      "purpose": "预约推进、二触节奏、外呼脚本、审批触发规则、止损规则。"
+    },
+    {
+      "kbId": "roi_attribution",
+      "label": "ROI与归因知识库",
+      "purpose": "投放归因、成交回传、奖励信号、长期价值与短期价值平衡。"
+    },
+    {
+      "kbId": "competitive_signals",
+      "label": "竞品与市场信号库",
+      "purpose": "竞品动态、热点、平台趋势、规则变化、市场机会。"
+    },
+    {
+      "kbId": "execution_fallbacks",
+      "label": "执行回放与补偿策略库",
+      "purpose": "任务拆包、回放、补偿、重试、边缘执行回退。"
+    }
+  ],
+  "roles": [
+    {
+      "roleId": "radar",
+      "clawhubSkills": {
+        "required": ["agent-browser", "source-ranking", "trend-detection", "platform-policy-scan"],
+        "recommended": ["competitor-clustering", "rss-monitor", "semantic-alerting"]
+      },
+      "localKnowledgeBases": ["industry_profile", "competitive_signals", "platform_rules"],
+      "canonicalWorkflows": ["wf_signal_scan", "wf_strategy_seed", "wf_weekly_review"],
+      "skills": ["radar_web_search", "radar_trend_analysis", "radar_hotspot_monitor", "radar_competitor_track", "radar_keyword_radar", "radar_user_profiling", "radar_metrics_feedback", "radar_sentiment_alert"],
+      "capabilityBoundary": "信号发现层：全网热点监控、竞品追踪、关键词雷达、用户画像、内容效果反馈接收、舆情预警。闭环位置：① → ② 将 SignalBrief 传给脑虫虾。",
+      "businessStage": "① 信号发现"
+    },
+    {
+      "roleId": "strategist",
+      "clawhubSkills": {
+        "required": ["goal-decomposer", "playbook-planner", "priority-optimizer", "route-scorer"],
+        "recommended": ["scenario-simulator", "offer-positioning", "portfolio-balancer"]
+      },
+      "localKnowledgeBases": ["industry_profile", "persona_painpoints", "offer_advantage", "competitive_signals"],
+      "canonicalWorkflows": ["wf_strategy_seed", "wf_topic_scoring", "wf_growth_retrofit"],
+      "skills": ["strategist_goal_decompose", "strategist_platform_allocation", "strategist_content_calendar", "strategist_ab_test_design", "strategist_budget_suggestion", "strategist_adaptive_adjust", "strategist_competitor_playbook"],
+      "capabilityBoundary": "策略制定层：目标拆解、多平台投放策略、内容日历排期、A/B测试设计、预算分配、策略自适应调整、竞品打法对标。闭环位置：② → ③ 将 StrategyRoute 传给吐墨虾/幻影虾。",
+      "businessStage": "② 策略制定"
+    },
+    {
+      "roleId": "inkwriter",
+      "clawhubSkills": {
+        "required": ["hook-writer", "script-writer", "cta-writer", "risk-phrase-checker"],
+        "recommended": ["brand-tone-cloner", "headline-optimizer", "landing-copy-adapter"]
+      },
+      "localKnowledgeBases": ["persona_painpoints", "offer_advantage", "platform_rules", "content_templates"],
+      "canonicalWorkflows": ["wf_topic_scoring", "wf_copy_compliance", "wf_title_cover"],
+      "skills": ["inkwriter_copy_generate", "inkwriter_multiplatform_adapt", "inkwriter_hashtag_gen", "inkwriter_banned_word_check", "inkwriter_dm_script"],
+      "capabilityBoundary": "文案生产层：成交文案生成、多平台适配(抖音/小红书/微信/B站)、话题标签、违禁词检测、私信话术链。闭环位置：③-A → ③-B 或 ④。",
+      "businessStage": "③-A 内容生产(文案)"
+    },
+    {
+      "roleId": "visualizer",
+      "clawhubSkills": {
+        "required": ["storyboard-planner", "scene-matcher", "subtitle-style-packager", "avatar-voice-render"],
+        "recommended": ["cover-composer", "asset-proof-enhancer", "bgm-selector"]
+      },
+      "localKnowledgeBases": ["content_templates", "visual_asset_patterns", "offer_advantage", "platform_rules"],
+      "canonicalWorkflows": ["wf_copy_compliance", "wf_visual_production", "wf_title_cover"],
+      "skills": ["visualizer_storyboard", "visualizer_ai_prompt", "visualizer_image_gen", "visualizer_cover_design", "visualizer_digital_human_script", "visualizer_digital_human_video", "visualizer_video_edit", "visualizer_subtitle_gen"],
+      "capabilityBoundary": "视觉/视频生产层：分镜脚本、AI绘图提示词、AI图片生成、封面图设计、数字人视频脚本+生成、视频剪辑、字幕生成。闭环位置：③-B → ④ 素材打包给点兵虾。",
+      "businessStage": "③-B 内容生产(视觉/视频)"
+    },
+    {
+      "roleId": "dispatcher",
+      "clawhubSkills": {
+        "required": ["task-graph-builder", "edge-dispatcher", "retry-replay", "approval-aware-router"],
+        "recommended": ["cost-router", "multi-channel-scheduler", "fallback-orchestrator"]
+      },
+      "localKnowledgeBases": ["execution_fallbacks", "platform_rules", "followup_sop"],
+      "canonicalWorkflows": ["wf_visual_production", "wf_cloud_archive", "wf_edge_publish", "wf_recovery_replay"],
+      "skills": ["dispatcher_task_split", "dispatcher_scheduled_publish", "dispatcher_multi_account_rotate", "dispatcher_emergency_takedown"],
+      "capabilityBoundary": "分发调度层：任务拆包、定时发布、多账号轮转、紧急下架。闭环位置：④ → ⑤ 发布后进入互动阶段。",
+      "businessStage": "④ 渠道分发"
+    },
+    {
+      "roleId": "echoer",
+      "clawhubSkills": {
+        "required": ["comment-reply", "dm-bridging", "emotion-stabilizer", "handoff-detector"],
+        "recommended": ["negative-response-handler", "live-room-reply-pack", "soft-cta-generator"]
+      },
+      "localKnowledgeBases": ["interaction_reply", "persona_painpoints", "platform_rules", "offer_advantage"],
+      "canonicalWorkflows": ["wf_edge_inbox", "wf_interaction_triage", "wf_complaint_guard"],
+      "skills": ["echoer_reply_generate", "echoer_comment_manage", "echoer_dm_auto_reply", "echoer_wechat_funnel"],
+      "capabilityBoundary": "互动转化层：真人感回复、评论区管理、私信自动回复、私信→微信引流。闭环位置：⑤-A → ⑤-B 高意向用户传给铁网虾。",
+      "businessStage": "⑤-A 互动转化"
+    },
+    {
+      "roleId": "catcher",
+      "clawhubSkills": {
+        "required": ["intent-detector", "risk-filter", "fit-scorer", "lead-tier-router"],
+        "recommended": ["spam-classifier", "warm-lead-detector", "sensitive-lead-escalator"]
+      },
+      "localKnowledgeBases": ["lead_scoring_rules", "interaction_reply", "persona_painpoints", "platform_rules"],
+      "canonicalWorkflows": ["wf_interaction_triage", "wf_lead_scoring", "wf_conversion_push"],
+      "skills": ["catcher_lead_score", "catcher_crm_push", "catcher_cross_platform_dedup"],
+      "capabilityBoundary": "线索识别层：高意向识别+评分、线索自动入CRM、跨平台去重。闭环位置：⑤-B → ⑥ 高意向线索传给回访虾 + ⑤-B → ⑦ 数据传给金算虾。",
+      "businessStage": "⑤-B 线索识别"
+    },
+    {
+      "roleId": "abacus",
+      "clawhubSkills": {
+        "required": ["lead-value-scorer", "roi-estimator", "reward-writeback", "attribution-mapper"],
+        "recommended": ["ltv-predictor", "budget-reallocator", "experiment-analyzer"]
+      },
+      "localKnowledgeBases": ["lead_scoring_rules", "roi_attribution", "offer_advantage", "industry_profile"],
+      "canonicalWorkflows": ["wf_lead_scoring", "wf_conversion_push", "wf_weekly_review"],
+      "skills": ["abacus_roi_calc", "abacus_multi_touch_attribution", "abacus_strategy_report", "abacus_feedback_loop"],
+      "capabilityBoundary": "ROI复盘层：ROI归因、多触点归因分析、策略效果报告、策略反馈闭环。闭环位置：⑦ → ① 反馈给触须虾+脑虫虾开启下轮循环。",
+      "businessStage": "⑦ ROI 复盘"
+    },
+    {
+      "roleId": "followup",
+      "clawhubSkills": {
+        "required": ["cadence-planner", "appointment-pusher", "outbound-call-orchestrator", "approval-aware-followup"],
+        "recommended": ["reactivation-engine", "objection-handler", "close-signal-detector"]
+      },
+      "localKnowledgeBases": ["followup_sop", "persona_painpoints", "offer_advantage", "platform_rules"],
+      "canonicalWorkflows": ["wf_conversion_push", "wf_high_score_call", "wf_reactivation"],
+      "skills": ["followup_sop_generate", "followup_multi_touch", "followup_dormant_wake"],
+      "capabilityBoundary": "成交跟进层：跟进SOP生成、多触点跟进编排(私信→微信→电话→邮件)、沉默用户唤醒。闭环位置：⑥ → ⑦ 成交数据传给金算虾。",
+      "businessStage": "⑥ 成交跟进"
+    }
+  ],
+  "workflowCatalog": [
+    {
+      "workflowId": "wf_signal_scan",
+      "label": "情报扫描工作流",
+      "roles": ["commander", "radar", "strategist"],
+      "goal": "扫描行业、热点、竞品和平台规则变化，生成结构化情报。"
+    },
+    {
+      "workflowId": "wf_strategy_seed",
+      "label": "策略种子工作流",
+      "roles": ["commander", "radar", "strategist"],
+      "goal": "从情报和行业画像生成增长路线、优先级和测试方向。"
+    },
+    {
+      "workflowId": "wf_topic_scoring",
+      "label": "选题打分工作流",
+      "roles": ["commander", "strategist", "inkwriter"],
+      "goal": "生成选题池、打分并产出首批垂直内容方向。"
+    },
+    {
+      "workflowId": "wf_copy_compliance",
+      "label": "文案与合规工作流",
+      "roles": ["commander", "inkwriter", "visualizer"],
+      "goal": "生成脚本和文案，并做风险表达和平台规则预审。"
+    },
+    {
+      "workflowId": "wf_visual_production",
+      "label": "多模态生产工作流",
+      "roles": ["commander", "inkwriter", "visualizer", "dispatcher"],
+      "goal": "把文案转成分镜、画面、字幕、BGM、数字人素材，并准备执行任务。"
+    },
+    {
+      "workflowId": "wf_title_cover",
+      "label": "标题封面工作流",
+      "roles": ["commander", "inkwriter", "visualizer"],
+      "goal": "生成标题、封面方向和点击率优化建议。"
+    },
+    {
+      "workflowId": "wf_cloud_archive",
+      "label": "云端归档工作流",
+      "roles": ["commander", "dispatcher"],
+      "goal": "把内容包、素材、审批结果和执行清单归档到云端。"
+    },
+    {
+      "workflowId": "wf_edge_publish",
+      "label": "云边发布工作流",
+      "roles": ["commander", "dispatcher"],
+      "goal": "将已审核内容派发到边缘端，按账号和渠道完成发布。"
+    },
+    {
+      "workflowId": "wf_edge_inbox",
+      "label": "评论私信回流工作流",
+      "roles": ["commander", "echoer", "catcher"],
+      "goal": "监听评论和私信，完成承接、识别与回流。"
+    },
+    {
+      "workflowId": "wf_interaction_triage",
+      "label": "互动分诊工作流",
+      "roles": ["commander", "echoer", "catcher", "abacus"],
+      "goal": "对互动事件做情绪承接、意向识别、价值排序。"
+    },
+    {
+      "workflowId": "wf_lead_scoring",
+      "label": "线索评分工作流",
+      "roles": ["commander", "catcher", "abacus"],
+      "goal": "对线索做意向、匹配、价值和风险评估。"
+    },
+    {
+      "workflowId": "wf_conversion_push",
+      "label": "成交推进工作流",
+      "roles": ["commander", "catcher", "abacus", "followup"],
+      "goal": "把高意向线索推进到预约、复联和成交动作。"
+    },
+    {
+      "workflowId": "wf_high_score_call",
+      "label": "高分外呼工作流",
+      "roles": ["commander", "followup"],
+      "goal": "对高分线索在审批后发起电话推进。"
+    },
+    {
+      "workflowId": "wf_reactivation",
+      "label": "沉默线索再激活工作流",
+      "roles": ["commander", "abacus", "followup"],
+      "goal": "针对沉默客户进行再激活与节奏控制。"
+    },
+    {
+      "workflowId": "wf_recovery_replay",
+      "label": "恢复回放工作流",
+      "roles": ["commander", "dispatcher", "feedback"],
+      "goal": "对执行失败、外部依赖失败和审批拒绝进行回放与补偿。"
+    },
+    {
+      "workflowId": "wf_weekly_review",
+      "label": "周复盘进化工作流",
+      "roles": ["commander", "radar", "abacus", "feedback"],
+      "goal": "汇总结果、归因、复盘并回写 playbook。"
+    },
+    {
+      "workflowId": "wf_complaint_guard",
+      "label": "投诉与风险护栏工作流",
+      "roles": ["commander", "echoer", "catcher", "followup"],
+      "goal": "识别投诉苗头、敏感承诺和高风险触达，及时降级与止损。"
+    },
+    {
+      "workflowId": "wf_growth_retrofit",
+      "label": "打法升级工作流",
+      "roles": ["commander", "strategist", "abacus", "feedback"],
+      "goal": "根据复盘结果升级行业打法、优先级和资源分配。"
+    }
+  ]
+}

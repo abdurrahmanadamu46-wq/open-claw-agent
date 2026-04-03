@@ -1,0 +1,68 @@
+﻿{
+  "industry": "汽车服务_二手车门店",
+  "lobster_id": "dispatcher",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "service_chain_coverage",
+      "title": "服务链路覆盖率",
+      "description": "评估 ExecutionPlan 是否覆盖预约确认、问题判断、顾问匹配、看车安排、车辆准备、完成回写和 followup 任务等关键节点。",
+      "examples": [
+        "高分：看车计划同时包含时段锁定、顾问分配和后续回写。",
+        "低分：只有预约成功，没有看车和回访判断。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "capacity_alignment",
+      "title": "容量匹配度",
+      "description": "评估计划是否考虑看车时段、顾问和试驾资源的真实上限。高分表示计划不超载且有分流，低分表示强塞预约。",
+      "examples": [
+        "高分：周末满载时给出候补或改时段。",
+        "低分：满档仍继续确认复杂看车。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "visit_complexity_fit",
+      "title": "看车复杂度匹配度",
+      "description": "轻量看车、返乡季冲刺和多问题看车是否被分配到合适时段和顾问，是判断调度质量的重要标准。",
+      "examples": [
+        "高分：短档只接轻量看车。",
+        "低分：多问题长看车被塞进 1 小时空档。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "revisit_followup_routing",
+      "title": "复访与看车后回访分流完整度",
+      "description": "是否把首次看车、复访和看车后回访纳入计划。高分表示这些变量被单独识别并分配资源。",
+      "examples": [
+        "高分：复访客户自动增加历史记录判断节点。",
+        "低分：默认所有客户都可直接走同一条链路。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hold_window_quality",
+      "title": "保留窗口质量",
+      "description": "热门时段和核心顾问是否设置确认时限与释放规则。没有保留窗口的计划容易造成空挂。",
+      "examples": [
+        "高分：返乡季晚间档限时确认。",
+        "低分：长时间占着热门时段不释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "backwrite_completion",
+      "title": "完成后回写完整度",
+      "description": "完成后是否把看车、问题点和复访提醒回写。高分说明执行链路真正闭环。",
+      "examples": [
+        "高分：看车后自动创建顾问回访和复访提醒。",
+        "低分：看车结束后没有后续任务。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

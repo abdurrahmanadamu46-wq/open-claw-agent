@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"abacus","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"short_term_conversion_probability","feature_name":"短期上门转化概率","metric":"conversion_probability","weight":0.24,"scoring_rule":"场景、时间、房型和上门动作越齐全，分值越高。","positive_signals":["明确同城/跨城/补运方向","给出本周末、月底或具体日期","愿意预约上门"],"negative_signals":["只有泛咨询没有时间","只问价格不补充场景"],"value_guidance":"这是搬家服务短期分最核心的指标。"},
+  {"id":"trust_building_readiness","feature_name":"信任建立就绪度","metric":"trust_readiness","weight":0.18,"scoring_rule":"用户越愿意补充房型、范围和顾虑，分值越高。","positive_signals":["愿意讲楼层和大件","愿意继续确认赔付、门店和时段"],"negative_signals":["持续回避任何事实","只要求先承诺结果"],"value_guidance":"首次预约线索的价值高度依赖信任推进。"},
+  {"id":"repurchase_potential","feature_name":"复购潜力","metric":"repurchase_potential","weight":0.18,"scoring_rule":"复约补运、企业搬迁和仓储补单等周期性需求越明确，分值越高。","positive_signals":["补运周期明确","用户提到原路线或常用车型"],"negative_signals":["一次性低关联购买","纯围观无后续计划"],"value_guidance":"搬家服务要重视长期复约而不是只看首单。"},
+  {"id":"scene_clarity","feature_name":"场景清晰度","metric":"fit_clarity","weight":0.14,"scoring_rule":"同城、跨城、入住和办公室搬迁场景越清楚，拟合度越高。","positive_signals":["月底退租","跨城搬家","办公室搬迁"],"negative_signals":["完全不说用途","只说想找搬家公司"],"value_guidance":"场景越清楚，越容易做真实适配。"},
+  {"id":"deadline_pressure","feature_name":"节点紧迫度","metric":"urgency","weight":0.12,"scoring_rule":"月底、入住、返城和周末来客节点越明确，分值越高。","positive_signals":["这周末前要搬完","下周入住前要完成"],"negative_signals":["没有时间窗口","长期模糊观望"],"value_guidance":"节点会提高短期效率，但仍需和边界一起看。"},
+  {"id":"risk_penalty","feature_name":"风险扣分","metric":"risk_penalty","weight":0.14,"scoring_rule":"绝不加价、绝不磕碰和无限时上门承诺越强，扣分越多。","positive_signals":["关注赔付和真实履约条件"],"negative_signals":["要求保证不加价","要求今天一定上门"],"value_guidance":"任何看似高价值的线索，只要风险失控，就不能给高总分。"}
+]}

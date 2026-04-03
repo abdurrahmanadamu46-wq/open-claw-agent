@@ -1,0 +1,206 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_light_med_case_001",
+      "label": "happy_path",
+      "scenario": "问题型面诊预约的真实环境分镜",
+      "input": {
+        "copy_pack": "轻医美脚本，核心卖点是先判断毛孔和痘印困扰，再决定适合性和下一步，不夸张承诺结果。",
+        "brand_assets": [
+          "环境与前台镜头",
+          "面诊或咨询镜头",
+          "房间准备镜头",
+          "预约承接画面"
+        ],
+        "reference_styles": [
+          "克制纪实",
+          "信任感优先"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现环境和面诊证据",
+        "问题和流程对应",
+        "后半段出现预约路径"
+      ],
+      "mustAvoid": [
+        "只拍海报脸和对比图",
+        "空镜撑满前半段",
+        "没有边界说明"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把问题型面诊脚本转成一条真实、克制且能承接预约的分镜。",
+        "assumptions": [
+          "可以拍到本机构环境和咨询过程。",
+          "前台与房间允许出镜。"
+        ],
+        "evidence": [
+          "环境和过程素材齐全。",
+          "脚本强调先判断再推进。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_light_med_case_002",
+      "label": "happy_path",
+      "scenario": "节前状态管理的时间窗口分镜",
+      "input": {
+        "copy_pack": "节前状态管理脚本，重点是婚礼和拍照前的时间窗口、面诊判断和恢复边界。",
+        "brand_assets": [
+          "环境镜头",
+          "咨询镜头",
+          "预约承接镜头",
+          "时间窗口字幕素材"
+        ],
+        "reference_styles": [
+          "低压力",
+          "时间感明确"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现重要场合或日期压力",
+        "面诊与预约同在",
+        "不过度承诺结果"
+      ],
+      "mustAvoid": [
+        "拍成长期高客单广告",
+        "没有时效感",
+        "只有结果没有判断"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把节前状态管理路线拍成高相关、高信任的预约视频。",
+        "assumptions": [
+          "可以通过字幕补足场景。",
+          "机构具备咨询和承接镜头。"
+        ],
+        "evidence": [
+          "流程素材完整。",
+          "脚本以时间窗口和边界为主。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_light_med_case_003",
+      "label": "happy_path",
+      "scenario": "首次信任路线的环境与流程分镜",
+      "input": {
+        "copy_pack": "首次到店友好脚本，强调资质、环境和面诊流程，不靠夸张前后对比。",
+        "brand_assets": [
+          "前台与环境镜头",
+          "资质或细节镜头",
+          "咨询流程镜头"
+        ],
+        "reference_styles": [
+          "信任感",
+          "边界感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "资质与环境证据",
+        "流程镜头而非效果幻想",
+        "适合首次用户的低压力感"
+      ],
+      "mustAvoid": [
+        "用结果图代替信任证明",
+        "忽略合规和边界",
+        "没有任何下一步"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让观众先相信机构可信，再进入预约。",
+        "assumptions": [
+          "环境和流程素材存在。",
+          "资质细节可拍。"
+        ],
+        "evidence": [
+          "环境和资质存在。",
+          "脚本核心是首次信任。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_light_med_case_004",
+      "label": "risk_case",
+      "scenario": "缺少案例时的安全降级拍法",
+      "input": {
+        "copy_pack": "机构信任脚本，强调环境、流程和面诊，但当前顾客案例素材较少。",
+        "brand_assets": [
+          "环境镜头",
+          "前台镜头",
+          "工具准备镜头"
+        ],
+        "reference_styles": [
+          "降级保真",
+          "环境与流程优先"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确以环境和流程建立可信度",
+        "不硬造外部案例",
+        "保留预约承接画面"
+      ],
+      "mustAvoid": [
+        "拿外部图补素材",
+        "把缺素材伪装成爆款现场",
+        "完全没有流程或环境证据"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在缺少大量案例时，仍用真实环境和流程建立最低可信度。",
+        "assumptions": [
+          "案例授权有限。",
+          "前台与房间可拍。"
+        ],
+        "evidence": [
+          "环境和前台素材存在。",
+          "脚本主卖点是信任。"
+        ]
+      }
+    }
+  ]
+}

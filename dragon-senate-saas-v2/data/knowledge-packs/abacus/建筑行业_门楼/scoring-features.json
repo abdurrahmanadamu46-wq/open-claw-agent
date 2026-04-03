@@ -1,0 +1,208 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "project_brief_completeness",
+      "feature_name": "项目简报完整度",
+      "metric": "short_term_score",
+      "weight": 0.13,
+      "scoring_rule": "5 分=已有尺寸、现场图、地址、预算和目标节点；3 分=只有其中 2 到 3 项；1 分=只有一句模糊问价。",
+      "positive_signals": [
+        "开间和高度明确",
+        "有现场照片或视频",
+        "预算区间清楚",
+        "知道何时要勘测或报价"
+      ],
+      "negative_signals": [
+        "只问最低价",
+        "没有项目地点",
+        "没有现场条件"
+      ],
+      "value_guidance": "这项越完整，越适合提高短期分和投入快速响应资源。"
+    },
+    {
+      "id": "next_step_commitment_strength",
+      "feature_name": "下一步承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分=已预约勘测、支付设计费或确认定金节点；3 分=愿意电话深聊或发 CAD；1 分=只有口头兴趣。",
+      "positive_signals": [
+        "锁定勘测时间",
+        "发送 CAD 或结构图",
+        "愿意确认合同版本",
+        "愿意支付设计费或定金"
+      ],
+      "negative_signals": [
+        "只说回头再看",
+        "拒绝提供任何资料",
+        "反复比价但不进入下一步"
+      ],
+      "value_guidance": "强承诺动作比高频沟通更值得抬高短期分。"
+    },
+    {
+      "id": "margin_after_delivery_cost",
+      "feature_name": "扣除交付成本后的利润质量",
+      "metric": "roi_estimate",
+      "weight": 0.12,
+      "scoring_rule": "5 分=扣除勘测、运输、安装、售后准备金后仍有健康毛利；3 分=毛利偏紧但可接受；1 分=账面金额高但利润很薄或为负。",
+      "positive_signals": [
+        "本地交付成本低",
+        "毛利率健康",
+        "客户接受合理付款节奏"
+      ],
+      "negative_signals": [
+        "跨省运输和吊装成本高",
+        "强折扣要求",
+        "需要长期占用关键班组"
+      ],
+      "value_guidance": "Abacus 不能被大单金额迷惑，真实 ROI 取决于净利润而不是合同额。"
+    },
+    {
+      "id": "site_and_schedule_feasibility",
+      "feature_name": "现场与工期可执行性",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分=现场限制清楚、排产可锁定、安装条件可执行；3 分=存在少量待确认条件；1 分=夜间施工、吊装、基础或物业放行明显不确定。",
+      "positive_signals": [
+        "现场吊装空间清楚",
+        "物业或甲方可放行",
+        "排产窗口可用"
+      ],
+      "negative_signals": [
+        "夜间施工未确认",
+        "吊装条件未知",
+        "没有安装窗口"
+      ],
+      "value_guidance": "可执行性不足时，即便线索很热也要下调 ROI 和资源投入。"
+    },
+    {
+      "id": "approval_cycle_clarity",
+      "feature_name": "审批链清晰度",
+      "metric": "short_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分=审批要求、责任人和关键材料已清楚；3 分=知道部分要求但仍需核实；1 分=审批边界模糊却想直接推进定版和工期承诺。",
+      "positive_signals": [
+        "知道是否涉及城管、消防、物业或进场证",
+        "清楚谁负责审批沟通",
+        "客户接受先做草案或概算"
+      ],
+      "negative_signals": [
+        "审批要求未知",
+        "期待直接包审批包验收",
+        "没有人能确认进场条件"
+      ],
+      "value_guidance": "审批链越不清楚，短期分越不该乐观。"
+    },
+    {
+      "id": "segment_ltv_and_batch_potential",
+      "feature_name": "客群长期价值与批量潜力",
+      "metric": "long_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分=客户主体有多个点位、复购概率高或属于高 LTV 场景；3 分=单项目但主体稳定；1 分=一次性、低复购、低扩展空间。",
+      "positive_signals": [
+        "一个主体多个厂区或入口",
+        "园区和景区统一升级",
+        "连锁品牌或集团采购"
+      ],
+      "negative_signals": [
+        "纯一次性临时项目",
+        "联系人没有后续项目权限",
+        "无法复制到其他点位"
+      ],
+      "value_guidance": "这项是门楼行业里区分普通询盘和战略客户的重要长期分来源。"
+    },
+    {
+      "id": "portfolio_case_and_referral_value",
+      "feature_name": "案例沉淀与转介绍价值",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分=项目有明显示范价值，完工后可转成强案例或带来同区域转介绍；3 分=有一定展示价值；1 分=难形成案例且负反馈风险高。",
+      "positive_signals": [
+        "景区入口或园区形象门",
+        "当地标杆厂区项目",
+        "客户愿意允许拍摄完工节点"
+      ],
+      "negative_signals": [
+        "客户禁止公开案例",
+        "项目争议大",
+        "交付难以形成可验证证据"
+      ],
+      "value_guidance": "长期分不只看复购，也看项目完成后能否成为下一个获客资产。"
+    },
+    {
+      "id": "reactivation_and_asset_reuse_leverage",
+      "feature_name": "重激活与资产复用杠杆",
+      "metric": "roi_estimate",
+      "weight": 0.08,
+      "scoring_rule": "5 分=来自老客户或历史项目，旧图纸、旧尺寸、旧方案可直接复用；3 分=有部分历史资料可参考；1 分=完全从零开始且历史资产不可用。",
+      "positive_signals": [
+        "已有历史图纸",
+        "已有旧报价模板",
+        "客户对原交付满意"
+      ],
+      "negative_signals": [
+        "现场已完全变化",
+        "旧方案无法复用",
+        "历史项目存在纠纷"
+      ],
+      "value_guidance": "复用价值越高，ROI 越容易被低估，因此需要单独加权。"
+    },
+    {
+      "id": "multi_touch_attribution_quality",
+      "feature_name": "多触点归因质量",
+      "metric": "reward_signal",
+      "weight": 0.1,
+      "scoring_rule": "5 分=能识别最后一次关键推进触点，并合并重复线索统一算账；3 分=知道主要渠道但归因不够细；1 分=谁最后出现就把 credit 全给谁。",
+      "positive_signals": [
+        "区分浏览触点和推进触点",
+        "合并抖音、百度、企微重复项目",
+        "能看出是谁推动了勘测或报价"
+      ],
+      "negative_signals": [
+        "重复计算同一项目价值",
+        "只按最后点击分功",
+        "忽略线下电话和勘测的推进作用"
+      ],
+      "value_guidance": "奖励信号必须服务于正确归因，否则会把团队引向错误动作。"
+    },
+    {
+      "id": "engagement_business_fit_ratio",
+      "feature_name": "互动与商业匹配比",
+      "metric": "short_term_score",
+      "weight": 0.04,
+      "scoring_rule": "5 分=互动后很快转成私信、表单、电话或现场图；3 分=互动和转化一般；1 分=只有点赞评论，没有任何业务推进。",
+      "positive_signals": [
+        "评论后转私信",
+        "视频后提交表单",
+        "内容热度和勘测量同步增长"
+      ],
+      "negative_signals": [
+        "只涨播放不涨有效线索",
+        "围观多、项目资料少",
+        "高互动但无勘测预约"
+      ],
+      "value_guidance": "这是防止门楼案例内容把 Abacus 带偏的校正项。"
+    },
+    {
+      "id": "governance_and_claim_risk",
+      "feature_name": "治理与承诺风险",
+      "metric": "reward_signal",
+      "weight": 0.04,
+      "scoring_rule": "5 分=价值判断和奖励建议都能避开绝对承诺与不健康订单；3 分=偶有模糊但可纠正；1 分=鼓励包审批、包验收、几天必完工或无定金先排产。",
+      "positive_signals": [
+        "先做人审或降级范围",
+        "明确风险边界",
+        "要求定金或正式确认后再推进重资源动作"
+      ],
+      "negative_signals": [
+        "包审批包验收承诺",
+        "无定金先锁产能",
+        "以绝对安全或绝对工期换成交"
+      ],
+      "value_guidance": "奖励信号不只追求成交，也要防止坏单放大。"
+    }
+  ]
+}

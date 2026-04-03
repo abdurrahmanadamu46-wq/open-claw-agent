@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-personal-crm",
+  "name": "个人 CRM",
+  "name_en": "Personal CRM",
+  "category": "lead_gen",
+  "difficulty": "beginner",
+  "description": "把私域聊天、评论互动和个人联系人跟进整理成轻量 CRM 工作流。",
+  "pain_point": "个人销售或顾问常常靠记忆跟进客户，容易忘记回访时间和关键需求。",
+  "lobsters": ["catcher", "followup"],
+  "skills_required": ["catcher_lead_score", "followup_sop_generate", "followup_dormant_wake"],
+  "channels": ["wechat", "wecom"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "录入联系人来源",
+      "code_type": "config",
+      "code": "整理微信、企微、评论区和活动收集来的联系人来源。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "设定跟进标签",
+      "code_type": "prompt",
+      "code": "定义咨询中、待报价、沉默中、已成交等状态标签。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "配置回访提醒",
+      "code_type": "config",
+      "code": "建议设置首次跟进、二次提醒和沉睡唤醒三个节奏。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "开始 CRM 自动整理",
+      "code_type": "none",
+      "code": "铁网虾负责评分归档，回访虾负责生成个性化跟进建议。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "个人 CRM 最重要的是标签和状态切换规则。",
+    "不要一开始追求复杂字段，先确保回访节奏稳定。",
+    "如果你有固定成交 SOP，可以直接喂给回访虾。"
+  ],
+  "estimated_cost_per_run": "$0.02-0.06",
+  "tags": ["CRM", "个人业务", "跟进", "私域"]
+}

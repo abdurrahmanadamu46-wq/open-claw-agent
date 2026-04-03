@@ -1,0 +1,127 @@
+﻿{
+  "industry": "教育培训_成人技能培训",
+  "lobster_id": "catcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "catcher_adult_skills_concern_time_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "xiaohongshu_private_message",
+        "lead_content": "周五晚想在国金校区先试听一下 AI 工具课，第一次来，担心零基础跟不上。",
+        "engagement_history": [
+          "saved two concern-based posts",
+          "viewed classroom and trial content",
+          "asked whether a slot can be held"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "clear concern and time window",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_adult_skills_deadline_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_comment_to_dm",
+        "lead_content": "周六面试，想约周四晚上先来看看怎么把转岗节奏理顺，第一次来试听。",
+        "engagement_history": [
+          "watched full deadline-window video",
+          "liked trial and classroom content"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "deadline noted as major signal",
+        "first-time foundation concern included in fit score"
+      ],
+      "mustAvoid": [
+        "downgrading because the user still needs guidance"
+      ]
+    },
+    {
+      "id": "catcher_adult_skills_price_only_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "public_comment",
+        "lead_content": "课程多少钱？",
+        "engagement_history": [
+          "viewed one generic promo"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "not automatically hot",
+        "needs more scope before escalation"
+      ],
+      "mustAvoid": [
+        "marking the lead as followup-ready immediately"
+      ]
+    },
+    {
+      "id": "catcher_adult_skills_returning_004",
+      "label": "long_term_case",
+      "input": {
+        "lead_source": "wechat_private_message",
+        "lead_content": "上次来试听过，这次想续班一下并看看下一步，周末能约吗。",
+        "engagement_history": [
+          "existing customer note found",
+          "past visit completed successfully"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "warm relationship signal",
+        "high fit for follow-up",
+        "returning-student value"
+      ],
+      "mustAvoid": [
+        "treating the lead as a cold new inquiry"
+      ]
+    }
+  ]
+}

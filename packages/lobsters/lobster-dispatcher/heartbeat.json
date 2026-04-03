@@ -1,0 +1,41 @@
+{
+  "agent_id": "dispatcher",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "approved_assets",
+      "action": "build_execution_queue"
+    },
+    {
+      "check": "pending_dispatch_jobs",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "publish_failures",
+      "action": "rollback_or_escalate"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 15,
+      "action": "review_publish_schedule",
+      "description": "巡检即将到来的任务与错峰计划"
+    },
+    {
+      "interval_minutes": 60,
+      "action": "check_account_health",
+      "description": "检查账号状态、额度和异常执行"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "summarize_execution_results",
+      "description": "汇总执行成功率、失败点和回滚记录"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_pending_dispatch_jobs AND no_failed_jobs",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 60,
+    "idle_behavior": "passive_schedule_watch"
+  }
+}

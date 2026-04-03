@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_style_time_removal",
+      "title": "先看风格、时间和是否卸甲，再判断是不是高意向",
+      "description": "美甲店线索只有在明确提到想做的风格方向、预约时间或时间窗口、是否需要卸甲或重做、门店或商圈等事实时，才能被视为高意向。只有“做甲多少钱”“最近想做做甲”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周四晚想在国金店做通勤短甲法式，手上还有旧甲需要卸掉。",
+        "低确定性信号：最近想换个指甲，先看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_driven_nail_booking",
+      "title": "婚礼、旅行和节日前出现明确日期时要显著提权",
+      "description": "婚礼甲、旅行前脚甲、节日款和拍照前预约，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实预约动作，应进入高意向候选。",
+      "examples": [
+        "周六婚礼，想约周四晚新娘甲。",
+        "下周去海边，想这周先做脚甲。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_uncertainty_is_not_low_intent",
+      "title": "第一次做甲的犹豫不应被误判成低意向",
+      "description": "第一次做甲、不会选款和担心不适合，并不等于低意向。只要用户同时愿意给出时间和大致风格方向，这类线索依然值得快速承接。",
+      "examples": [
+        "第一次做，周末有空，想做简单一点。",
+        "不会选款，但这周下班后想来一次。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_only_needs_scope_before_upgrade",
+      "title": "只问价格不等于高意向，除非同时带着款式和时间",
+      "description": "价格问题本身并不低意向，但如果没有风格范围、时间窗口和是否卸甲等事实，Catcher 不能把它直接提到最高层，必须等更多信息出现。",
+      "examples": [
+        "高意向：短甲法式这周末想做，大概多少钱。",
+        "普通意向：做甲多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_client_signal_upgrade",
+      "title": "老客回流和朋友推荐要抬高拟合度",
+      "description": "老客回流、朋友推荐和上次来过等信号，通常意味着信任门槛已经降低。这类线索在风格和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来做过纯色，这次想换个通勤法式。",
+        "朋友推荐来的，这周末能安排吗。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_shyness_should_not_hide_intent",
+      "title": "公开场合的手型羞怯不应掩盖真实意向",
+      "description": "有些用户会在评论区用很轻的语气掩饰强烈需求，比如手短能不能做、现在甲面很丑怎么办。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "手很短，这周末还能做得自然一点吗。",
+        "最近指甲长出来很乱，下班后能约吗。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+﻿{
+  "version": "1.0",
+  "control_plane": {
+    "owner": "core",
+    "paths": ["web", "backend"],
+    "entrypoints": ["http://127.0.0.1:3301", "http://127.0.0.1:48789"],
+    "depends_on": ["ai_subservice", "redis", "postgres", "qdrant", "ollama"]
+  },
+  "ai_subservice": {
+    "owner": "ai",
+    "paths": ["dragon-senate-saas-v2"],
+    "entrypoints": ["http://127.0.0.1:18000"],
+    "depends_on": ["redis", "postgres", "qdrant", "ollama"]
+  },
+  "ai_subservice_heavy": {
+    "owner": "ai",
+    "paths": ["dragon-senate-saas-v2"],
+    "entrypoints": ["http://127.0.0.1:18001"],
+    "depends_on": ["redis", "postgres", "qdrant", "ollama"],
+    "profile": "ai-heavy"
+  },
+  "edge_runtime": {
+    "owner": "edge",
+    "paths": ["edge-runtime"],
+    "entrypoints": [],
+    "depends_on": []
+  },
+  "optional_modules": {
+    "routing": {
+      "paths": ["docker-compose.yml#claw-router"],
+      "profile": "routing"
+    },
+    "monitoring": {
+      "paths": ["monitoring", "dragon-senate-saas-v2/monitoring"],
+      "profile": "monitoring"
+    },
+    "telegram": {
+      "paths": ["dragon-senate-saas-v2/telegram_bot.py"],
+      "profile": "telegram"
+    },
+    "anythingllm": {
+      "paths": [],
+      "profile": "anythingllm"
+    }
+  },
+  "release_gate": {
+    "primary": ".github/workflows/mainline-gate.yml",
+    "required_checks": ["contracts", "week3-e2e-live"],
+    "legacy_manual_gate": ".github/workflows/week3-e2e.yml",
+    "note": "mainline-gate-matrix is the only branch-protection gate; legacy workflow is manual-only"
+  },
+  "handover": {
+    "start_here": "docs/handover/00-START-HERE.md",
+    "open_items": "docs/handover/03-OPEN-ITEMS.md",
+    "manifest": "docs/handover/handover_manifest.json"
+  }
+}

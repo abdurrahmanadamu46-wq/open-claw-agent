@@ -1,0 +1,33 @@
+# ClawCommerce Agent - multi-node local stack
+# Single-node one-shot: docker compose up -d
+# Backend mounts agent API; Redis used for node pool + lock.
+version: "3.9"
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  agent:
+    build: .
+    environment:
+      REDIS_URL: redis://redis:6379
+      MAX_NODES: 10
+      IDLE_RELEASE_MINUTES: 30
+      LOG_LEVEL: info
+    depends_on:
+      redis:
+        condition: service_healthy
+    # Backend service will mount GET /api/agent/nodes/status and WS;
+    # this service runs the NodeManager + health loop.
+    restart: unless-stopped
+
+volumes:
+  redis_data: {}

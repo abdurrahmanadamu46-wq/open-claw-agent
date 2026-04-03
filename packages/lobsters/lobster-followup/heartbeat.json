@@ -1,0 +1,41 @@
+{
+  "agent_id": "followup",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_high_value_leads",
+      "action": "schedule_followup_path"
+    },
+    {
+      "check": "pending_followup_threads",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "reactivation_opportunities",
+      "action": "wake_or_hold"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "review_due_followups",
+      "description": "巡检到期应跟进的线索"
+    },
+    {
+      "interval_minutes": 120,
+      "action": "scan_dormant_leads",
+      "description": "识别沉默线索和可唤醒机会"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "summarize_followup_effectiveness",
+      "description": "汇总跟进命中率、流失点和回流机会"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_due_followups AND no_reactivation_opportunities",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 120,
+    "idle_behavior": "passive_pipeline_watch"
+  }
+}

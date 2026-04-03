@@ -1,0 +1,200 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lobster://commander/industry-workflow-blueprint.schema.json",
+  "title": "IndustryWorkflowBlueprint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "blueprintVersion",
+    "generatedAt",
+    "workflowId",
+    "industry",
+    "channels",
+    "merchantDigest",
+    "topicScoringRubric",
+    "cloudOutputs",
+    "edgeOutputs",
+    "baselineAgentBindings",
+    "canonicalWorkflowRefs",
+    "approvalSummary",
+    "businessSteps"
+  ],
+  "properties": {
+    "blueprintVersion": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "workflowId": { "type": "string" },
+    "industry": {
+      "type": "object",
+      "required": ["categoryId", "categoryLabel", "subIndustryId", "subIndustryLabel"],
+      "properties": {
+        "categoryId": { "type": "string" },
+        "categoryLabel": { "type": "string" },
+        "subIndustryId": { "type": "string" },
+        "subIndustryLabel": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "channels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "merchantDigest": {
+      "type": "object",
+      "required": [
+        "brandName",
+        "customerPainPoints",
+        "solvedProblems",
+        "personaBackground",
+        "competitiveAdvantages"
+      ],
+      "properties": {
+        "brandName": { "type": "string" },
+        "customerPainPoints": { "type": "array", "items": { "type": "string" } },
+        "solvedProblems": { "type": "array", "items": { "type": "string" } },
+        "personaBackground": { "type": "string" },
+        "competitiveAdvantages": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "topicScoringRubric": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cloudOutputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "edgeOutputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "baselineAgentBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "roleId",
+          "baselineAgentId",
+          "agentMode",
+          "starterSkills",
+          "shadowStage",
+          "clawhubRequiredNow"
+        ],
+        "properties": {
+          "roleId": { "type": "string" },
+          "packageName": { "type": ["string", "null"] },
+          "primaryArtifact": { "type": ["string", "null"] },
+          "baselineAgentId": { "type": "string" },
+          "agentMode": { "type": "string" },
+          "starterSkills": { "type": "array", "items": { "type": "string" } },
+          "defaultBridgeTarget": { "type": ["string", "null"] },
+          "defaultScopeId": { "type": ["string", "null"] },
+          "defaultMissionTypes": { "type": "array", "items": { "type": "string" } },
+          "shadowStage": { "type": "string" },
+          "clawhubRequiredNow": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "canonicalWorkflowRefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["workflowId", "workflowLabel", "workflowCategory"],
+        "properties": {
+          "workflowId": { "type": "string" },
+          "workflowLabel": { "type": "string" },
+          "workflowCategory": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "approvalSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stepNumber", "stepId", "actions"],
+        "properties": {
+          "stepNumber": { "type": "number" },
+          "stepId": { "type": "string" },
+          "actions": { "type": "array", "items": { "type": "string" } },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "businessSteps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "stepNumber",
+          "stepId",
+          "label",
+          "goal",
+          "ownerRole",
+          "supportRoles",
+          "missionType",
+          "commanderDecision",
+          "outputs",
+          "approval",
+          "runtimeAction"
+        ],
+        "properties": {
+          "stepNumber": { "type": "number" },
+          "stepId": { "type": "string" },
+          "label": { "type": "string" },
+          "goal": { "type": "string" },
+          "workflowRef": {
+            "type": "object",
+            "required": ["workflowId", "workflowLabel", "workflowCategory", "workflowStageId"],
+            "properties": {
+              "workflowId": { "type": "string" },
+              "workflowLabel": { "type": "string" },
+              "workflowCategory": { "type": "string" },
+              "workflowStageId": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "ownerRole": { "type": "string" },
+          "ownerBaselineAgent": {
+            "type": ["object", "null"]
+          },
+          "supportRoles": { "type": "array", "items": { "type": "string" } },
+          "supportBaselineAgents": {
+            "type": "array",
+            "items": { "type": "object" }
+          },
+          "missionType": { "type": "string" },
+          "commanderDecision": { "type": "object" },
+          "outputs": { "type": "array", "items": { "type": "string" } },
+          "approval": {
+            "type": "object",
+            "required": ["required", "actions"],
+            "properties": {
+              "required": { "type": "boolean" },
+              "actions": { "type": "array", "items": { "type": "string" } },
+              "note": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "runtimeAction": {
+            "type": "object",
+            "required": ["bridgeTarget", "operation", "payloadTemplate", "feedbackSignals"],
+            "properties": {
+              "bridgeTarget": { "type": "string" },
+              "scopeId": { "type": "string" },
+              "operation": { "type": "string" },
+              "payloadTemplate": { "type": "object" },
+              "feedbackSignals": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

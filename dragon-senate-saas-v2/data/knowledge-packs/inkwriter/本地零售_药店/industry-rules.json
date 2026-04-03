@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"inkwriter","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"pharmacy_rule_scene_first","title":"开头先锚定症状场景、家庭角色或备药节点，不要一上来堆促销词","description":"药店文案第一句话要先让用户看见自己要解决什么，例如感冒发烧、肠胃不适、过敏、家庭常备药、返乡备药和慢病补药，而不是先堆低价、秒杀和爆款词。","examples":["不要先写今天多便宜，而要先写这次是夜间急用、家庭备药还是慢病续购。","不要先写活动名，而要先写你现在更卡在时效、说明还是清单。","开头可以直接锚定今晚、返乡前或换季节点。"],"priority":"high"},
+  {"id":"pharmacy_rule_no_diagnosis_or_cure_claim","title":"避免诊断判断、绝对见效和绝对安全承诺","description":"药店文案不能把商品写成明确诊断结论、绝对见效、绝对安全和绝对适合所有人，也不能模糊药师说明与送药边界。","examples":["不要写吃了就一定好，要写先看场景和说明边界。","不要写适合所有孩子，要写会先看年龄和当前情况。","不要写一定能送到，要写门店和时段范围。"],"priority":"high"},
+  {"id":"pharmacy_rule_trust_before_discount","title":"合规说明和门店证据应早于价格信息出现","description":"药店文案最怕用户觉得门店只会喊便宜不会讲边界，所以文案要先建立可信度，再讲活动与便利性。","examples":["先写药师在岗、门店和场景，再写常备药活动。","先写家庭清单、时段和配送，再写组合优惠。"],"priority":"high"},
+  {"id":"pharmacy_rule_group_by_role_and_need","title":"家庭角色与场景要拆开表达，不要把所有人群混成一锅","description":"高分文案会把大人急用、儿童护理、老人慢病和家庭备药拆开呈现，让用户快速进入自己的路线。","examples":["儿童护理是一条线。","返乡备药和慢病续购是另一条线。"],"priority":"medium"},
+  {"id":"pharmacy_rule_cta_collect_facts","title":"CTA 要收场景、时间和家庭角色，不要只催成交","description":"药店 CTA 的核心不是立刻下单，而是收集场景、时间、家庭角色和门店或送达需求。","examples":["可以先告诉我这次更像夜间急用、家庭备药还是慢病补药。","把时间和大人小孩场景发我，我先帮你收窄路线。"],"priority":"high"},
+  {"id":"pharmacy_rule_return_visit_language","title":"复购文案要像补药提醒，不像重新教育新客","description":"老客慢病续购和家庭补货文案要承接历史购买感，不要又从头开始讲所有用药内容。","examples":["上次拿的那盒快用完时，再提醒会更自然。","家庭药箱补货更需要清单和规格说明。"],"priority":"medium"}
+]}

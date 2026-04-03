@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_家电门店","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+{"id":"hook_appliance_cluster","title":"空调冰洗和套购问题簇集中冒头触发器","description":"当空调、冰箱、洗衣机、烟灶和套购问题在评论、私信和本地热门内容中密集出现时，应立即触发趋势监测。","examples":["评论区连续出现空调匹数和冰箱容量问题","洗烘套装和厨电套系内容被密集追问","全屋家电和交房购置咨询明显增多"],"priority":"high"},
+{"id":"hook_compliance_shift","title":"补贴和节能承诺规则变化触发器","description":"当平台或监管更新国补、以旧换新、节能承诺和导流规则时，应立即触发高优先级监测。","examples":["平台新增对国补和省电绝对化表述的限制","商家后台要求补充型号说明和资质","导流方式被平台进一步收紧"],"priority":"high"},
+{"id":"hook_service_structure_change","title":"送装售后权益结构变化触发器","description":"周边家电门店一旦调整送装、旧机回收、延保和高空费服务结构，通常代表本地竞争逻辑发生变化。","examples":["送装一体被写进主卖点","高空费和拆机费被拆成组合权益","延保和退换保障被写进服务说明"],"priority":"high"},
+{"id":"hook_complaint_cluster","title":"送装和售后投诉簇触发器","description":"当评论区开始集中出现价格不一、送装拖延、收费不透明和售后推诿等反馈时，必须立即提升为高优先级风险信号。","examples":["一周内多条评价提到安装乱收费","多平台同时出现送货延期的吐槽","评论区开始集中投诉售后和旧机回收问题"],"priority":"high"},
+{"id":"hook_seasonal_window_signal","title":"换季和交房窗口触发器","description":"夏季空调、冬季热水器、交房入住和节前焕新窗口会让家电门店咨询与到店快速变化。","examples":["夏季空调内容增多","交房季套购内容升温","节前焕新咨询明显增加"],"priority":"high"},
+{"id":"hook_repeat_purchase_signal","title":"复购与流失信号触发器","description":"当老客户和准客户更频繁地讨论补单、延保、净水器补购和比价犹豫时，说明稳定成交和流失风险在抬头。","examples":["老客户更多在问净水器和洗碗机","私域里反复提到还在比较别家","送装体验和报价单被反复收藏"],"priority":"medium"}]}

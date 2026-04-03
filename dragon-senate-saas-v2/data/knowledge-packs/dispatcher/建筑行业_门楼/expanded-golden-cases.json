@@ -1,0 +1,300 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_gatehouse_survey_plan_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "将抖音高意向门楼线索转成 24 小时内勘测和初版方案任务图",
+        "routing_context": "工业园区新建门楼项目，客户已给出大致门洞宽度、预算区间和联系人，要求先预约现场勘测再出效果图",
+        "integration_state": {
+          "crm": "healthy",
+          "enterprise_wechat": "healthy",
+          "survey_scheduler": "healthy",
+          "cad_preview": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "销售首响与勘测预约双节点",
+        "勘测完成后再进入效果图与报价",
+        "若客户临时无法到场则回退到远程视频踏勘"
+      ],
+      "mustAvoid": [
+        "未勘测就直接承诺精确报价",
+        "只创建单一路由而没有客户失联补救"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_renovation_rush_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在商业街门楼翻新项目开业前 72 小时内完成方案确认、报价审批和安装排期",
+        "routing_context": "客户已提供旧门楼照片与尺寸，夜间施工窗口固定，物业可在提交施工清单后放行",
+        "integration_state": {
+          "quotation_engine": "healthy",
+          "render_service": "healthy",
+          "install_vendor": "healthy",
+          "logistics": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "夜间施工窗口约束",
+        "报价审批后才允许排产和发施工清单",
+        "安装前一天复核物料、吊装和物业放行"
+      ],
+      "mustAvoid": [
+        "白天直接安排进场施工",
+        "未锁定施工窗口就承诺完工"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_replay_returning_client_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "复用老客户历史图纸，为连锁厂区第二个园区门楼项目快速重放执行计划",
+        "routing_context": "客户三个月前做过一期门楼，当前只改颜色和字牌，要求沿用既有合同模板与供应商",
+        "integration_state": {
+          "crm": "healthy",
+          "historical_drawings": "healthy",
+          "supplier_network": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "读取历史项目资料并校验新旧现场差异",
+        "重放前去重避免重复创建供应商任务",
+        "若历史图纸版本过旧要插入复核节点"
+      ],
+      "mustAvoid": [
+        "直接照搬旧排产而不核对新现场",
+        "忽略版本差异导致重复下单"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_permit_wait_004",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进景区门楼项目的前期方案沟通，但审批未落定",
+        "routing_context": "客户希望尽快看到效果图和预算，景区方尚未确认城管、消防和进场许可要求",
+        "integration_state": {
+          "enterprise_wechat": "healthy",
+          "render_service": "healthy",
+          "permit_tracker": "healthy"
+        },
+        "approval_state": "waiting"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停态",
+        "只允许内部草案和补资料任务",
+        "明确在许可未定前禁止排产和进场"
+      ],
+      "mustAvoid": [
+        "把草案当成最终可施工方案发出",
+        "无审批结论就直接安排安装"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_duplicate_leads_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "归并来自抖音和百度爱采购的同一门楼项目询盘，再生成统一执行计划",
+        "routing_context": "同一联系人同一天从两个渠道留资，诉求都是厂区门楼改造，但两个销售各自准备报价",
+        "integration_state": {
+          "crm": "healthy",
+          "dedup_service": "healthy",
+          "sales_queue": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "线索去重与项目合并",
+        "保留双渠道来源归因",
+        "合并后只保留一个对外报价节点"
+      ],
+      "mustAvoid": [
+        "让两个销售各自对外报价",
+        "因为合并而丢失来源渠道信息"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_missing_dimensions_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "客户要求当天拿到门楼预算，但现场尺寸不完整",
+        "routing_context": "客户只发来远景照片和大概高度，说领导晚上就要看预算",
+        "integration_state": {
+          "crm": "healthy",
+          "remote_survey": "healthy",
+          "quotation_engine": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "先补关键尺寸或发区间报价",
+        "把远程踏勘放进首要节点",
+        "为当晚汇报准备概念级版本而非精确施工报价"
+      ],
+      "mustAvoid": [
+        "假设尺寸后直接给精确总价",
+        "跳过补资料节点"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_weather_block_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "为次日安装门楼项目制定可回退执行图，但气象预警可能升级",
+        "routing_context": "项目已排到明早高空吊装，当前预报有大风并可能临时道路管制",
+        "integration_state": {
+          "weather_api": "healthy",
+          "install_vendor": "healthy",
+          "logistics": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "天气复核节点",
+        "大风触发改期或室内预装 fallback",
+        "对客户与班组的双向通知路径"
+      ],
+      "mustAvoid": [
+        "忽视预警照常派工",
+        "没有物料保管和改期方案"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_supplier_outage_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "关键钢结构加工厂节前停线，仍需守住项目风险边界",
+        "routing_context": "客户催促节前发货，但主供应商停线，备用供应商也未完成资质校验",
+        "integration_state": {
+          "fabrication_vendor": "unstable",
+          "backup_vendor": "degraded",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "止损或延期决策节点",
+        "人工升级到项目经理或老板审批",
+        "对客户说明风险并保留可恢复任务状态"
+      ],
+      "mustAvoid": [
+        "在无可靠产能下继续承诺交付",
+        "没有备用路线还盲目下单"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_claim_review_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条准备用于获客的视频发布计划，但文案含高风险工程承诺",
+        "routing_context": "视频脚本写了“城管包过、七天完工、十年不掉色”，销售希望今晚直接发布",
+        "integration_state": {
+          "video_publish": "healthy",
+          "legal_review": "unavailable",
+          "approval_center": "healthy"
+        },
+        "approval_state": "pending_compliance_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "合规拦截节点",
+        "改写或退回文案的 fallback_plan",
+        "在审批通过前禁止发布"
+      ],
+      "mustAvoid": [
+        "跳过审批直接发布",
+        "保留绝对化或无法核验的承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_gatehouse_no_deposit_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "客户口头确认方案但未付定金，要求先排产并锁定安装班组",
+        "routing_context": "项目工期紧，客户说款项两天后到账，希望今天先安排材料和班组",
+        "integration_state": {
+          "payment_gateway": "healthy",
+          "production_scheduler": "healthy",
+          "install_vendor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "回款确认前的冻结状态",
+        "仅允许准备性任务不允许正式排产",
+        "若客户继续拖延要触发重新评估和资源释放"
+      ],
+      "mustAvoid": [
+        "未收定金就占用正式产能",
+        "把口头承诺当成可执行开工指令"
+      ]
+    }
+  ]
+}

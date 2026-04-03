@@ -1,0 +1,18 @@
+﻿{
+    "outboxDirectory":  "F:\\openclaw-agent\\run\\scope-drift-webhook-test\\outbox",
+    "version":  "lobster.scope-drift-webhook-dispatch.policy.test.v0.1",
+    "failedDirectory":  "F:\\openclaw-agent\\run\\scope-drift-webhook-test\\failed",
+    "targets":  [
+                    {
+                        "id":  "generic-webhook",
+                        "urlEnvVar":  "LOBSTER_SCOPE_ALERT_WEBHOOK_URL",
+                        "secretEnvVar":  "LOBSTER_SCOPE_ALERT_WEBHOOK_SECRET",
+                        "secretHeaderName":  "x-lobster-scope-secret",
+                        "payloadMode":  "raw_json",
+                        "enabled":  true
+                    }
+                ],
+    "name":  "Local Test Webhook Dispatch Policy",
+    "processedDirectory":  "F:\\openclaw-agent\\run\\scope-drift-webhook-test\\processed",
+    "requestTimeoutMs":  10000
+}

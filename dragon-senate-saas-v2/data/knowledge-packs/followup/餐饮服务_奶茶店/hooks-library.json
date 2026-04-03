@@ -1,0 +1,140 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_pickup_facts",
+      "scene": "dm_followup",
+      "lead_state": "fresh_same_day_order",
+      "intent": "lock_pickup_or_delivery_facts",
+      "hook": "这杯奶茶先别让你白等，我先把最关键的出杯信息和取杯方式锁住。",
+      "bridge": "奶茶店同一波高峰的排队、制茶和配送变化很快，门店、取餐方式、时间和杯数一清楚，后面的预点单或自取方案就能立刻推进。",
+      "next_step": "请客户确认门店、取餐方式、时间、杯数，以及甜度、冰量和是否要加料，目标是尽快进入预点单、自取或更稳妥的下单确认。",
+      "cadence_hint": "用户刚回复时优先在 15-30 分钟内接上；若未回，在下一饮品窗口前做一次轻提醒。",
+      "approval_guard": "未确认门店和出杯条件前，不写成已接单、马上做好或到店即取。"
+    },
+    {
+      "id": "hook_office_group_order_qualification",
+      "scene": "group_order_followup",
+      "lead_state": "event_high_intent",
+      "intent": "qualify_bulk_order_and_delivery_slot",
+      "hook": "这单下午茶先不急着催付款，先把人数、时间和配送条件对齐，后面会更稳。",
+      "bridge": "奶茶店团单最怕只聊价格，不聊杯数、冷热杯比例、地址、楼层、发票和送达时间，后面很容易来回返工。",
+      "next_step": "请客户确认门店、送达或自取时间、杯数、地址、冷热杯比例、发票需求和预算区间，再推进预付款和制作档期。",
+      "cadence_hint": "团单线索优先在当天工作时段完成一轮信息补齐，未回则隔半天或下一个工作时段再跟一次。",
+      "approval_guard": "未到预付款或未核配送能力前，不承诺正式锁单、准点送达或全部口味都可做。"
+    },
+    {
+      "id": "hook_peak_eta_relief",
+      "scene": "peak_window_followup",
+      "lead_state": "urgent_within_hour",
+      "intent": "shift_to_preorder_or_safer_eta",
+      "hook": "你这杯最重要的是别扑空或久等，我们先把更稳妥的取杯方案找出来。",
+      "bridge": "午后和晚高峰能不能马上出杯受排队、制茶和骑手运力影响很大，比起空口保证，先给更稳的方案更有用。",
+      "next_step": "请客户确认门店、预计到店或送达时间、杯数和取餐方式，优先推进预点单、自取、错峰、换门店或改常规款中的一个明确方案。",
+      "cadence_hint": "同窗口线索快速响应，但一次只推进一个明确动作，不连续追问。",
+      "approval_guard": "不写“保证马上做好”“一定准点送到”或“到店不用等”。"
+    },
+    {
+      "id": "hook_customization_to_order",
+      "scene": "menu_guidance_followup",
+      "lead_state": "preference_shared",
+      "intent": "convert_preference_into_order",
+      "hook": "口味方向已经有了，下一步把这杯什么时候拿、怎么配落下来会更省心。",
+      "bridge": "很多奶茶线索卡在“想喝几分糖、要不要加料”这一层，真正能推进成交的是把门店、时间和取杯方式一起带进来。",
+      "next_step": "请客户确认是自己喝、朋友拼单还是办公室下午茶，以及用杯时间、杯数和口味偏好，目标是把口味咨询转成可执行的下单或预点单方案。",
+      "cadence_hint": "给完饮品建议后，尽量在同一轮沟通里顺手推进下单条件，不要隔太久再追。",
+      "approval_guard": "未核当日供应和制作规则前，不把限定加料、去咖啡因或替换奶基底写成必做。"
+    },
+    {
+      "id": "hook_coupon_verification_first",
+      "scene": "promotion_followup",
+      "lead_state": "offer_interested",
+      "intent": "verify_branch_time_and_stack_rules",
+      "hook": "优惠先别急着拍板，先把能不能用、在哪家用核清楚，省得到店或下单落空。",
+      "bridge": "奶茶店券包、买一送一和会员权益常受门店、日期、时段、新品范围和是否可叠加影响，跟进里先核条件比直接说能用更稳。",
+      "next_step": "请客户发门店、时间、目标饮品和券规则截图，目标是先确认适用条件，再推进下单或预约自取。",
+      "cadence_hint": "优惠类线索回复要快，但确认条件后再继续推进，不做连续轰炸。",
+      "approval_guard": "未经核实，不一概承诺所有门店、新品和大杯都可用。"
+    },
+    {
+      "id": "hook_limited_item_stock_verify",
+      "scene": "limited_offer_followup",
+      "lead_state": "limited_item_interest",
+      "intent": "verify_stock_before_conversion",
+      "hook": "这单真正卡的不是想不想买，而是联名和限定物料现在还在不在，我先帮你把这个核清楚。",
+      "bridge": "奶茶店的联名杯套、限定贴纸、小料和新品高峰期消耗很快，先把门店和库存核清，比先答应再缺货更能保住信任。",
+      "next_step": "请客户确认门店、预计下单时间、目标饮品和最在意的联名物料，优先推进库存核验、替代方案或改门店建议。",
+      "cadence_hint": "限定类线索要快接，但一轮里先拿到一个确定结论，不叠加多个催问。",
+      "approval_guard": "未核库存前，不承诺联名杯套、限定小料或周边一定有。"
+    },
+    {
+      "id": "hook_dietary_restriction_safe_followup",
+      "scene": "safety_sensitive_followup",
+      "lead_state": "allergy_or_special_diet",
+      "intent": "collect_precise_restriction",
+      "hook": "这个顾虑值得认真对待，我们先把限制说准，后面才敢往下安排。",
+      "bridge": "奶茶店的牛奶、奶精、坚果碎、芝士奶盖和茶底咖啡因问题，不能靠模糊经验回复，先把具体饮品和限制收全更安全。",
+      "next_step": "请客户确认具体限制、涉及饮品、门店和取杯时间，目标是先完成人工核实输入。",
+      "cadence_hint": "安全类线索以稳为先，拿到关键信息后再跟下一步，不靠高频催促。",
+      "approval_guard": "未核实前，不承诺绝对无咖啡因、零交叉接触、完全无奶或一定适合所有人。"
+    },
+    {
+      "id": "hook_service_recovery_remake_rebuild",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_engaged",
+      "intent": "repair_trust_then_reorder",
+      "hook": "上次让你体验不好，这次先不急着推消费，先把能修复的地方说明白。",
+      "bridge": "奶茶店售后后的复联重点不是立刻再卖一单，而是让客户看到做错甜度、漏加料、封口洒漏或配送延误的问题已被记录、处理和避免重演。",
+      "next_step": "先确认上次问题点、期望补救和这次是否还考虑下单，若对方愿意，再推进低压力的重做、复购或服务备注确认。",
+      "cadence_hint": "售后恢复期减少频次，以一次明确说明和一次后续确认为主。",
+      "approval_guard": "未经批准，不擅自承诺退款、免单、补送或额外补偿券。"
+    },
+    {
+      "id": "hook_reactivation_with_new_drink_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，是有个更贴近你那杯奶茶的新理由。",
+      "bridge": "奶茶沉睡线索更容易对新品回归、低糖替代、办公室多人组合、稳定自取窗口或已核清的券规则产生回应，而不是对“还要吗”产生回应。",
+      "next_step": "带一个具体新变化复联，比如新品、低糖版本、团单组合或恢复供应的小料，并给客户低压力回复入口。",
+      "cadence_hint": "沉睡复联单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_waiting_for_callback_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你的问题我先记下，先把信息收齐，等允许的动作一到位就能更快推进。",
+      "bridge": "在奶茶店线索里，电话回拨、特殊成分说明或补偿承诺如果审批没到位，先把门店、时间、饮品和问题清单收好，后面会更顺。",
+      "next_step": "请客户留下方便联系的时间、关心的问题点和订单或门店基础信息，作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼或口头给出例外承诺。"
+    },
+    {
+      "id": "hook_prepayment_before_bulk_slot_hold",
+      "scene": "payment_followup",
+      "lead_state": "ready_but_unpaid",
+      "intent": "advance_prepayment_gate",
+      "hook": "这单已经很接近落了，下一步关键是把制作档期和交付条件补齐。",
+      "bridge": "奶茶店的大单、活动单和下午茶团单会占用真实产能，未到预付款前能做的是推进确认，不是提前替客户把档期全部锁死。",
+      "next_step": "推动客户确认预付款、杯数、时间、门店、交付方式和口味结构，并同步说明保留时长与产能风险。",
+      "cadence_hint": "付款前可更聚焦，但一次只推进一个明确确认动作。",
+      "approval_guard": "未达付款条件前，不写成已锁排期、已保留配送窗口或已备齐全部物料。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更容易回复一点。",
+      "bridge": "奶茶线索里，沉默不一定是拒绝，很多时候只是还在约人、没收齐口味或暂时不方便下单，高频追问反而更容易把人推远。",
+      "next_step": "发一个低成本回复入口，例如只回门店、杯数、时间中的一个，随后进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回应时，拉开到下一饮品窗口或次日再判断。",
+      "approval_guard": "避免多人、多渠道重复跟同一位客户。"
+    }
+  ]
+}

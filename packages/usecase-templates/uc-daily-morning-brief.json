@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-daily-morning-brief",
+  "name": "每日早报",
+  "name_en": "Daily Morning Brief",
+  "category": "analytics",
+  "difficulty": "beginner",
+  "description": "每天固定时间汇总行业热点、昨日表现和今日建议动作，输出轻量晨报。",
+  "pain_point": "管理者每天都要手工汇总热点和前一日数据，信息分散、容易漏掉关键变化。",
+  "lobsters": ["radar", "inkwriter"],
+  "skills_required": ["radar_web_search", "radar_trend_analysis", "inkwriter_copy_generate"],
+  "channels": ["wechat", "feishu"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "定义晨报关注维度",
+      "code_type": "prompt",
+      "code": "输入你最关心的行业、竞品和关键指标，例如曝光、线索、转化。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "选择接收渠道",
+      "code_type": "config",
+      "code": "选择微信、飞书或控制台收件箱作为晨报送达位置。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置生成时间",
+      "code_type": "config",
+      "code": "建议工作日 08:00 生成，确保早会前可直接使用。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用晨报任务",
+      "code_type": "none",
+      "code": "触须虾抓取信号后由吐墨虾整理成适合管理层快速浏览的日报摘要。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "cron",
+    "schedule": "0 8 * * 1-5",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "晨报尽量控制在 3-5 个重点主题，避免信息过载。",
+    "如果你有行业知识库，优先让报告附带昨日对比趋势。",
+    "共享会话模式适合持续观察同一业务的连续变化。"
+  ],
+  "estimated_cost_per_run": "$0.03-0.08",
+  "tags": ["日报", "管理者", "趋势监控", "轻量自动化"]
+}

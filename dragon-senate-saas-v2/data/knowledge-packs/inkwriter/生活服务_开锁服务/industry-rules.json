@@ -1,0 +1,8 @@
+{"industry":"生活服务_开锁服务","lobster_id":"inkwriter","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"unlock_rule_scene_first","title":"开头先锚定急开门、换锁或门禁场景，不要一上来堆低价词","description":"开锁文案第一句话要先让用户看见自己要解决什么，例如夜间急开门、租房换锁、锁芯升级、智能锁安装、办公室门禁和车锁开锁，而不是先堆低价、秒开和爆款词。","examples":["不要先写今天多便宜，而要先写这次是门反锁、租房换锁还是门禁故障。","不要先写活动名，而要先写你现在更卡在时效、备案还是锁型。"],"priority":"high"},
+  {"id":"unlock_rule_no_absolute_claims","title":"避免无需核验、绝对秒开和绝不留痕承诺","description":"开锁文案不能把服务写成无需核验、绝对秒开、绝不留痕和绝对适合所有锁型，也不能模糊备案、赔付和时段边界。","examples":["不要写不用核验也能开，要写先看场景和核验流程。","不要写绝对秒开，要写先按锁型和门型判断。"],"priority":"high"},
+  {"id":"unlock_rule_trust_before_discount","title":"备案与流程说明应早于价格信息出现","description":"开锁文案最怕用户觉得门店只会喊便宜不会讲备案、赔付和流程，所以文案要先建立可信度，再讲优惠与活动。","examples":["先写备案、核验和上门场景，再写开锁活动。","先写锁型、时段和流程，再写套餐价格。"],"priority":"high"},
+  {"id":"unlock_rule_scope_clear","title":"锁型与范围要说清，不要把所有情况混成一锅","description":"高分文案会把急开门、换锁换芯、智能锁安装和门禁车锁拆开呈现，让用户快速进入自己的那一档。","examples":["防盗门急开是一条线。","智能锁安装是另一条线。"],"priority":"medium"},
+  {"id":"unlock_rule_cta_collect_facts","title":"CTA 要收锁型、时间和位置，不要只催成交","description":"开锁 CTA 的核心不是立刻下单，而是收集锁型门型、日期、位置和是否需要换锁换芯。","examples":["可以先告诉我这次更像开锁、换锁还是门禁问题。","把门型和时间发我，我先帮你收窄路线。"],"priority":"high"},
+  {"id":"unlock_rule_return_visit_language","title":"复约文案要像后续维护提醒，不像重新教育新客","description":"老客换锁和门禁维护文案要承接历史服务感，不要又从头开始讲所有开锁内容。","examples":["上次开过的门锁如果想换芯，再提醒会更自然。","门禁维护更需要设备和时段说明。"],"priority":"medium"}
+]}

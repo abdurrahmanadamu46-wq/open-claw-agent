@@ -1,0 +1,116 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "new_car_visit_visual",
+      "hook_angle": "先看车",
+      "hook_line": "真正想买车的人，不是想看一段炫酷视频，而是想先知道这台车到底适不适合自己。",
+      "target_scene": "预算购车、家庭代步、首次看车",
+      "cover_direction": "封面主体给真实车身或内饰细节，副元素补配置和门店，不用价格口号主导。",
+      "first_3_shots": [
+        "配置或细节镜头",
+        "门店或讲解镜头",
+        "问题场景提示镜头"
+      ],
+      "required_proof_assets": [
+        "真实车辆细节",
+        "门店镜头",
+        "问题相关素材"
+      ],
+      "fallback_if_missing": "若缺少试驾镜头，改用展车和门店素材建立信任。"
+    },
+    {
+      "id": "family_scene_visual",
+      "hook_angle": "场景先看适配",
+      "hook_line": "很多人不是不想买，而是怕花了钱，最后发现这台车根本不适合自己的日子。",
+      "target_scene": "家用、返乡、大空间和日常通勤",
+      "cover_direction": "封面强调空间和使用场景，不拍成空泛广告片。",
+      "first_3_shots": [
+        "后排或后备厢镜头",
+        "用车场景镜头",
+        "到店承接镜头"
+      ],
+      "required_proof_assets": [
+        "空间展示",
+        "使用场景",
+        "到店承接"
+      ],
+      "fallback_if_missing": "若缺少场景素材，用尺寸、功能和门店口播补足路径感。"
+    },
+    {
+      "id": "config_process_visual",
+      "hook_angle": "流程和配置信任",
+      "hook_line": "很多人不是不想买，而是不想把钱交给一台自己根本没看懂配置的车。",
+      "target_scene": "首次到店、怕踩雷、信任路线",
+      "cover_direction": "封面主体给车辆细节、顾问讲解或配置说明，副元素补门店环境和权益细节。",
+      "first_3_shots": [
+        "讲解或对比镜头",
+        "细节或环境镜头",
+        "看车流程镜头"
+      ],
+      "required_proof_assets": [
+        "配置说明",
+        "细节素材",
+        "流程说明"
+      ],
+      "fallback_if_missing": "若环境素材有限，至少拍车辆细节和流程节点。"
+    },
+    {
+      "id": "seasonal_window_visual",
+      "hook_angle": "节点购车窗口",
+      "hook_line": "车展季和节前提车最怕的不是没优惠，而是你还没看清哪一类更适合自己。",
+      "target_scene": "车展季、节前提车、年底冲量窗口",
+      "cover_direction": "封面强调时间窗口和真实看车感，不拍成夸张促销海报。",
+      "first_3_shots": [
+        "时间窗口提示镜头",
+        "门店或看车镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "时间提示素材",
+        "门店或看车素材",
+        "预约承接"
+      ],
+      "fallback_if_missing": "若缺少活动素材，用字幕补足窗口信息。"
+    },
+    {
+      "id": "return_visit_visual",
+      "hook_angle": "到了该复访的时候",
+      "hook_line": "真正会回来的人，通常不是突然想起你，而是比了一圈之后终于知道自己该继续看什么。",
+      "target_scene": "老客复访、置换升级、试驾后回访",
+      "cover_direction": "封面强调复访和阶段感，不拍成强促销海报。",
+      "first_3_shots": [
+        "阶段提示镜头",
+        "换车方向镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "阶段提示",
+        "车型方向",
+        "预约承接"
+      ],
+      "fallback_if_missing": "缺少复访素材时，用门店镜头和历史记录字幕替代。"
+    },
+    {
+      "id": "truth_over_discount_visual",
+      "hook_angle": "不靠抄底幻想",
+      "hook_line": "优惠很多，真正重要的是你先知道这台车适不适合你的日子。",
+      "target_scene": "反夸张优惠幻想、真实边界路线",
+      "cover_direction": "封面用车辆细节和判断感，不用优惠海报做主视觉。",
+      "first_3_shots": [
+        "车辆细节镜头",
+        "问题提示镜头",
+        "边界说明镜头"
+      ],
+      "required_proof_assets": [
+        "细节镜头",
+        "环境",
+        "边界说明"
+      ],
+      "fallback_if_missing": "若案例不足，改做真实配置和边界说明路线。"
+    }
+  ]
+}

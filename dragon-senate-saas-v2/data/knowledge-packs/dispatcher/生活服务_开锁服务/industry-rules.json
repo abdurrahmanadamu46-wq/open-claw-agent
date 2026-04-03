@@ -1,0 +1,7 @@
+{"industry":"生活服务_开锁服务","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"visit_and_capacity_gate","title":"高峰预约前必须先校验时段、师傅和区域资源","description":"开锁调度的核心不是单纯接单，而是把预约时段、师傅、门锁类型、区域和高峰上门能力一起纳入 task_graph。","examples":["夜间高峰时段已满时，先进入候补和分时段节点。","节假日返家集中时，先确认区域和排班。"],"priority":"high"},
+{"id":"first_visit_and_return_visit_must_split","title":"首次预约、复约和后续维护是独立调度变量","description":"首次预约、复约和后续维护会显著改变单客时长与资源匹配。","examples":["首次预约用户需要先进入锁型与核验判断节点。","复约用户应优先路由到熟悉其历史记录的链路。"],"priority":"high"},
+{"id":"unlock_and_change_routes","title":"急开门和换锁必须走不同执行链路","description":"急开门更依赖时效和核验，换锁安装更依赖锁型、品牌和施工边界。","examples":["急开门线索优先安排核验判断。","换锁线索优先锁锁型和安装范围。"],"priority":"high"},
+{"id":"peak_schedule_check","title":"高峰急单必须先确认门店、时段和锁型","description":"夜间和节假日急单不能直接默认安排，需要先判断候补、改时段或先做核验预约。","examples":["今晚优先判断是否还能安排。","时段较紧时先走核验和候补。"],"priority":"medium"},
+{"id":"writeback_gate","title":"服务状态与完工条件必须写回执行链路","description":"开锁和换锁类任务如果不把时效、完工和签收条件写进链路，后续极易出错。","examples":["开锁服务必须带上完工回写节点。","换锁服务要带签收与回访。"],"priority":"high"},
+{"id":"post_service_followup_reserve","title":"高峰急单和老客复约都要预留 followup 任务","description":"开锁成交后仍有换锁、复约、满意度和下次预约提醒需要跟进。","examples":["夜间开锁后预留后续换锁节点。","复约后预留下次提醒。"],"priority":"medium"}]}

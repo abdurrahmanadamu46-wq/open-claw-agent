@@ -1,0 +1,168 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u4e2d\u9910\u9986",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_booking_without_details",
+      "scene": "public_comment",
+      "intent": "table_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you lock this in.",
+      "bridge": "For a Chinese restaurant booking, the branch, arrival time, and party size matter more than a quick yes or no.",
+      "next_step": "Ask for branch, time, and number of guests.",
+      "handoff_suggestion": "Route to Catcher if the user replies with reservation facts."
+    },
+    {
+      "id": "hook_booking_with_details",
+      "scene": "comment_or_dm",
+      "intent": "active_reservation",
+      "emotion": "practical",
+      "hook": "That is already enough to start narrowing it down.",
+      "bridge": "Once the time and group size are clear, the next question is usually seating type and any food preferences.",
+      "next_step": "Ask whether they need a private room and any taste restrictions.",
+      "handoff_suggestion": "High-intent dining lead."
+    },
+    {
+      "id": "hook_private_room",
+      "scene": "comment_or_dm",
+      "intent": "private_room_booking",
+      "emotion": "hosting_focused",
+      "hook": "Private room planning makes sense if the meal matters.",
+      "bridge": "The right fit usually depends on date, party size, budget, and whether the group is family, business, or celebration.",
+      "next_step": "Ask for dining date, guest count, and event type.",
+      "handoff_suggestion": "Group dining lead for Catcher."
+    },
+    {
+      "id": "hook_family_recommendation",
+      "scene": "public_comment",
+      "intent": "dish_recommendation",
+      "emotion": "careful",
+      "hook": "Choosing for a mixed family table is worth doing a little carefully.",
+      "bridge": "With Chinese food, elders, children, and spice tolerance can change the whole ordering direction.",
+      "next_step": "Ask about party mix and flavor preference.",
+      "handoff_suggestion": "Menu-guidance opportunity."
+    },
+    {
+      "id": "hook_company_banquet",
+      "scene": "comment_or_dm",
+      "intent": "business_dinner",
+      "emotion": "businesslike",
+      "hook": "Company meals usually need both atmosphere and logistics to line up.",
+      "bridge": "Guest count, invoice needs, and whether you want private seating all shape the right arrangement.",
+      "next_step": "Ask for date, headcount, private room need, and invoice requirement.",
+      "handoff_suggestion": "Route as a high-value banquet lead."
+    },
+    {
+      "id": "hook_wait_time_tonight",
+      "scene": "public_comment",
+      "intent": "queue_check",
+      "emotion": "urgent",
+      "hook": "I get why you do not want to gamble on a long wait.",
+      "bridge": "Queue time can change a lot by branch, arrival time, and how many people are coming.",
+      "next_step": "Ask for branch, time, and party size, then guide toward reservation or safer timing.",
+      "handoff_suggestion": "Send to human or booking flow quickly."
+    },
+    {
+      "id": "hook_signature_dish",
+      "scene": "public_comment",
+      "intent": "what_to_order",
+      "emotion": "curious",
+      "hook": "Happy to point you in a practical direction instead of letting you guess.",
+      "bridge": "The best picks usually depend on whether you want classic flavors, spicy dishes, or something more home-style.",
+      "next_step": "Ask about flavor style and how many people are sharing.",
+      "handoff_suggestion": "Good engagement signal if the user answers with preferences."
+    },
+    {
+      "id": "hook_budget_sensitive_group",
+      "scene": "comment_or_dm",
+      "intent": "budget_planning",
+      "emotion": "price_focused",
+      "hook": "A tighter budget can still work if we cut the right things.",
+      "bridge": "For group dining, table size, dish count, and whether this is hosting or everyday eating all change the range.",
+      "next_step": "Ask for headcount and whether fullness or hosting impression matters more.",
+      "handoff_suggestion": "Workable lead if the user engages on trade-offs."
+    },
+    {
+      "id": "hook_dietary_restriction",
+      "scene": "comment_or_dm",
+      "intent": "dietary_check",
+      "emotion": "careful",
+      "hook": "That is exactly the kind of thing worth checking carefully before you order.",
+      "bridge": "Ingredient details and kitchen handling can vary by dish and branch, so it is better to confirm the exact restriction than guess.",
+      "next_step": "Ask for the restriction, dish, and branch.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_allergy_high_risk",
+      "scene": "comment_or_dm",
+      "intent": "allergy_safety",
+      "emotion": "serious",
+      "hook": "I am glad you asked before ordering.",
+      "bridge": "Allergy questions should be treated as safety issues, not casual taste preferences.",
+      "next_step": "Ask for the exact allergen and branch, then escalate for confirmation.",
+      "handoff_suggestion": "Human or branch confirmation required."
+    },
+    {
+      "id": "hook_skeptic_authenticity",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With Chinese food, people usually care about different things such as wok aroma, handmade texture, soup depth, or regional style.",
+      "next_step": "Invite the user to name the exact flavor point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_coupon_offer",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you make the trip.",
+      "bridge": "Coupon and group-buy rules often change by branch, meal period, and date.",
+      "next_step": "Ask for branch and dining time.",
+      "handoff_suggestion": "Useful bridge into booking if the user confirms details."
+    },
+    {
+      "id": "hook_takeout_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a delivery issue is usually the order time, branch, and a clear photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales."
+    },
+    {
+      "id": "hook_custom_event_request",
+      "scene": "comment_or_dm",
+      "intent": "special_arrangement",
+      "emotion": "hopeful",
+      "hook": "That kind of extra touch can be worth planning ahead.",
+      "bridge": "Custom dishes or birthday arrangements usually depend on branch capability and notice time.",
+      "next_step": "Ask for date, branch, and the exact arrangement they want.",
+      "handoff_suggestion": "Needs branch or manager confirmation."
+    },
+    {
+      "id": "hook_holiday_hours",
+      "scene": "public_comment",
+      "intent": "hours_check",
+      "emotion": "practical",
+      "hook": "Good call to check holiday timing first.",
+      "bridge": "Holiday opening and queue pressure can differ a lot by branch and meal period.",
+      "next_step": "Ask which branch and what time they plan to arrive.",
+      "handoff_suggestion": "Booking-ready if the user has a fixed time."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The safest first step is still platform DM so reservation or order details do not get scattered in public.",
+      "next_step": "Ask for branch plus booking or order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

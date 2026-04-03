@@ -1,0 +1,424 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_boutique_homestay_weekend_escape_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We are thinking of driving over this Saturday for one night. Do you still have a courtyard room with breakfast for two?",
+        "brand_tone": "warm and calm",
+        "negative_patterns": [
+          "generic room dumping",
+          "hard-sell urgency"
+        ],
+        "context_window": [
+          "weekend getaway scenario",
+          "user already sounds close to booking",
+          "room mood matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the easy weekend-break intention",
+        "anchor the reply in dates, guest count, and courtyard-room preference",
+        "guide toward the next booking detail without overselling"
+      ],
+      "mustAvoid": [
+        "promising availability without live context",
+        "dumping every room option"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_anniversary_setup_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "It is our anniversary next month. If we book the tub room, can you arrange something simple with a cake and make it feel private?",
+        "brand_tone": "gentle and thoughtful",
+        "negative_patterns": [
+          "guaranteed setup promise",
+          "careless reassurance"
+        ],
+        "context_window": [
+          "celebration stay",
+          "special arrangement matters",
+          "expectation risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the anniversary context",
+        "state that celebration details depend on the property and stay setup",
+        "guide toward the date and the one or two arrangement details that matter most"
+      ],
+      "mustAvoid": [
+        "guaranteeing free decor or exact setup results",
+        "treating the occasion like a standard booking"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_pet_friendly_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We want to bring our small dog for two nights. Is the courtyard room pet friendly, and are there any extra rules?",
+        "brand_tone": "friendly and practical",
+        "negative_patterns": [
+          "blanket pet approval",
+          "ignoring room boundaries"
+        ],
+        "context_window": [
+          "pet-stay planning",
+          "room policy matters",
+          "stay length is known"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the desire to avoid pet-related friction",
+        "ask for pet details plus the exact room or dates if needed",
+        "guide toward policy confirmation without oversimplifying"
+      ],
+      "mustAvoid": [
+        "saying all rooms allow pets",
+        "skipping pet size or count context"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_real_view_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Your videos look nice, but does the mountain-view room actually look like that in real life?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "overpromising the room"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but engaged",
+          "photo truth matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite one concrete room detail such as view angle, tub, or terrace setup",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-view bragging",
+        "guaranteeing exact match to social content"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_late_arrival_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We may not get there until 11:30 tonight. If we book now, can someone still check us in?",
+        "brand_tone": "steady and considerate",
+        "negative_patterns": [
+          "guaranteed late check-in",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "same-day arrival",
+          "smaller property with host-led check-in",
+          "timing pressure matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the late-arrival stress",
+        "state that check-in handling depends on the property and timing",
+        "guide toward the exact property and arrival window"
+      ],
+      "mustAvoid": [
+        "guaranteeing midnight check-in without verification",
+        "pushing the user to pay first and ask later"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_small_group_buyout_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We are planning a birthday weekend for 8 friends and might want to book the whole place. Is that possible?",
+        "brand_tone": "warm and organized",
+        "negative_patterns": [
+          "instant yes without scope",
+          "ignoring quiet-hour boundaries"
+        ],
+        "context_window": [
+          "group-stay inquiry",
+          "high-intent booking signal",
+          "shared-space use may matter"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the request as a serious group booking",
+        "ask for the dates, headcount, and whether they want full buyout or several rooms",
+        "keep boundaries around shared-space use or quiet hours calm and natural"
+      ],
+      "mustAvoid": [
+        "promising a party setup without scope",
+        "ignoring house-rule implications"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_family_loft_extra_bed_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Can two adults and our 4-year-old stay in the loft room, or can you add an extra bed there?",
+        "brand_tone": "clear and caring",
+        "negative_patterns": [
+          "blanket extra-bed promise",
+          "ignoring child-safety context"
+        ],
+        "context_window": [
+          "family room-fit question",
+          "child age matters",
+          "room layout may affect safety"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the family-fit concern",
+        "ask for the child's age and bedding need while noting that layout matters",
+        "guide toward room-fit clarification instead of a broad yes"
+      ],
+      "mustAvoid": [
+        "guaranteeing the loft works for every child",
+        "ignoring the extra-bed limitation risk"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_weather_view_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We want the terrace room for blossom season next week. Will the view definitely still look like the photos if it rains?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "weather guarantee",
+          "absolute scenery promise"
+        ],
+        "context_window": [
+          "season-sensitive stay",
+          "room atmosphere matters a lot",
+          "weather can change the experience"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the concern about the trip atmosphere",
+        "state that view experience depends on dates and weather conditions",
+        "guide toward the exact dates and the scene they care about most"
+      ],
+      "mustAvoid": [
+        "guaranteeing blossoms or perfect terrace weather",
+        "brushing off seasonal uncertainty"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_package_inclusion_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I saw your room on an OTA app. Does that rate include breakfast and afternoon tea, or is that a different package?",
+        "brand_tone": "helpful and clear",
+        "negative_patterns": [
+          "blanket inclusion claim",
+          "generic upsell"
+        ],
+        "context_window": [
+          "rate-plan question",
+          "channel is partly known",
+          "user may be close to booking"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the inclusion question",
+        "mention that breakfast and tea depend on the plan or channel",
+        "guide toward the exact rate or package details"
+      ],
+      "mustAvoid": [
+        "saying every room includes the same extras",
+        "ignoring the OTA context"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_cancellation_deposit_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I already paid a deposit through your booking link, but our plan changed. Can you just refund it in full?",
+        "brand_tone": "careful and respectful",
+        "negative_patterns": [
+          "instant refund promise",
+          "dismissive policy talk"
+        ],
+        "context_window": [
+          "booking already exists",
+          "deposit terms matter",
+          "user is frustrated"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the inconvenience",
+        "state that refund handling depends on the booking terms and channel",
+        "guide toward the reservation details for the next step"
+      ],
+      "mustAvoid": [
+        "promising a refund before checking the booking context",
+        "treating every deposit policy as identical"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_service_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "The room smells damp, the tub was not clean, and the photos made it look much better than this.",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "active stay complaint",
+          "expectation mismatch is visible",
+          "user is upset"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request the property and room or booking details through a safer channel",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming the guest publicly",
+        "arguing about the pictures in public"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to lock the tub room tonight.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "replying only with DM me"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "reservation is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move quickly",
+        "use platform DM as the safe bridge",
+        "request the property or stay details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "sounding evasive or robotic"
+      ]
+    },
+    {
+      "id": "echoer_boutique_homestay_workation_quiet_fit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I want a quiet weekday stay where I can read and do a little laptop work. Which room type should I look at?",
+        "brand_tone": "soft and practical",
+        "negative_patterns": [
+          "generic lifestyle fluff",
+          "absolute silence promise"
+        ],
+        "context_window": [
+          "weekday stay fit question",
+          "user wants quietness and some work comfort",
+          "room selection matters more than price first"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the quiet slow-stay purpose",
+        "ask whether quietness, desk setup, or natural light matters most",
+        "guide toward a room-fit clarification without overpromising"
+      ],
+      "mustAvoid": [
+        "guaranteeing total silence",
+        "dumping every room category with no fit logic"
+      ]
+    }
+  ]
+}

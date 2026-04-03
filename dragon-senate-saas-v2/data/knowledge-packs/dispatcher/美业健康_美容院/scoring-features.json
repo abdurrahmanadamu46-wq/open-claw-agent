@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "dispatcher",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "service_chain_coverage",
+      "title": "服务链路覆盖率",
+      "description": "评估 ExecutionPlan 是否覆盖预约确认、咨询判断、老师匹配、房间安排、用品准备、项目执行、完成回写和 followup 回传等关键节点。",
+      "examples": [
+        "高分：首次到店计划同时包含咨询、房间安排和回访回写。",
+        "低分：只写了预约成功，没有后续节点。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "capacity_alignment",
+      "title": "容量匹配度",
+      "description": "评估执行计划是否考虑房间、技师和单客时长的真实上限。高分表示计划不超载且有分流，低分表示强塞预约。",
+      "examples": [
+        "高分：晚高峰时段设置候补或转时段。",
+        "低分：明知满载还继续确认黄金时段。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "consultation_safety",
+      "title": "咨询安全性",
+      "description": "首次到店、敏感和问题型预约是否保留咨询判断节点。没有咨询节点的执行计划应降分。",
+      "examples": [
+        "高分：先咨询再进项目。",
+        "低分：首次到店用户直接进房开做。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "turnover_readiness",
+      "title": "翻房与卫生准备度",
+      "description": "是否把翻房、床单更换、用品补齐和工具准备写进计划。美容院高峰场景缺这一步会直接影响体验。",
+      "examples": [
+        "高分：连续预约间预留翻房和准备时间。",
+        "低分：把房间视作随时可用。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hold_window_quality",
+      "title": "保留窗口质量",
+      "description": "热门时段和节前档期是否设置确认时限、提醒动作和释放规则。没有保留窗口的计划容易造成空挂。",
+      "examples": [
+        "高分：黄金档预约设有限时确认。",
+        "低分：长时间占着热门时段不释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "backwrite_completion",
+      "title": "完成后回写完整度",
+      "description": "项目完成后是否把老师备注、顾客状态和 followup 任务完整回写。高分说明执行链路真正闭环。",
+      "examples": [
+        "高分：护理后自动创建回访和备注。",
+        "低分：核销完成后没有任何后续动作。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次预约问询触发优先调度","description":"当来单中出现第一次来、想先上门、想先看看方案或具体范围问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先看同城搬家方案。","客户想先看跨城路线是否适合自己。"],"priority":"high"},
+  {"id":"window_inquiry","title":"月底与入住窗口询单触发时效优先调度","description":"当来单明确说明月底、入住和返城节点时，Dispatcher 要立即优先判断热门时段可用性和排班边界。","examples":["客户这周要退租，想周四晚先上门。","客户说明下周入住，希望今晚先确认。"],"priority":"high"},
+  {"id":"high_scope_trigger","title":"大件加项触发高工时优先调度","description":"当用户明确房型、件数和加项时，Dispatcher 应优先分配高工时路线。","examples":["客户两居带冰箱洗衣机和床柜。","客户办公室搬迁带工位和文件柜。"],"priority":"high"},
+  {"id":"peak_schedule_trigger","title":"高峰时段触发排班优先调度","description":"当用户需要这周末或月底上门时，Dispatcher 要优先判断候补与改时段路径。","examples":["这周六前想先搬完。","月底这两天想约一次同城搬家。"],"priority":"medium"},
+  {"id":"repeat_trigger","title":"复约补运触发复购链路","description":"复约补运一旦出现时段和件数需求，应直接进入标准化复购链路。","examples":["这个月想再补一车。","上次那条路线想再约一次。"],"priority":"medium"},
+  {"id":"crosscity_trigger","title":"跨城仓储触发专项链路","description":"跨城和仓储应优先走专项链路，而不是普通同城搬家流程。","examples":["跨城搬家想先存两天。","长途搬家想拼车。"],"priority":"medium"}
+]}

@@ -1,0 +1,8 @@
+{"industry":"生活服务_管道维修","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次预约问询触发优先调度","description":"当来单中出现第一次来、想先上门、想先看看方案或具体位置问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先看疏通方案。","客户想先看查漏路线是否适合自己。"],"priority":"high"},
+  {"id":"window_inquiry","title":"夜间与交房窗口询单触发时效优先调度","description":"当来单明确说明夜间、交房和返家节点时，Dispatcher 要立即优先判断热门时段可用性和排班边界。","examples":["客户今晚想先上门。","客户说明下周交房，希望今晚先确认。"],"priority":"high"},
+  {"id":"scope_trigger","title":"位置范围触发高工时优先调度","description":"当用户明确问题位置、区域和拆修范围时，Dispatcher 应优先分配专项路线。","examples":["客户卫生间查漏带墙面渗水。","客户厨房主管堵塞带反水。"],"priority":"high"},
+  {"id":"peak_schedule_trigger","title":"高峰时段触发排班优先调度","description":"当用户需要今晚或梅雨季上门时，Dispatcher 要优先判断候补与改时段路径。","examples":["今晚能不能先到。","梅雨季这两天想先安排。"],"priority":"medium"},
+  {"id":"repeat_trigger","title":"返修维护触发复购链路","description":"返修维护一旦出现时段和位置需求，应直接进入标准化复购链路。","examples":["这个月想再来看看反味。","上次那个漏水点还想复查。"],"priority":"medium"},
+  {"id":"detection_trigger","title":"查漏检测触发专项链路","description":"查漏和热成像检测应优先走专项链路，而不是普通疏通流程。","examples":["卫生间查漏。","热水管检测。"],"priority":"medium"}
+]}

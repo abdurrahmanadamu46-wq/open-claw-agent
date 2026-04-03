@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_少儿素质教育",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_concern_time_scope",
+      "title": "先看问题、时间和年龄段，再判断是不是高意向",
+      "description": "少儿素质教育线索只有在明确提到想解决的问题、试听时间或时间窗口、孩子年龄段、校区和是否第一次来时，才能被视为高意向。只有“多少钱”“最近想给孩子报个班”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周五晚想去国金校区先试听表达力课，孩子 6 岁，第一次来，想看看现在不开口的问题适不适合先从这里开始。",
+        "低确定性信号：最近想给孩子报个班，先看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "seasonal_booking_is_high_intent",
+      "title": "开学、假期和升年级节点出现明确日期时要显著提权",
+      "description": "开学、寒暑假和升年级节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实试听动作，应进入高意向候选。",
+      "examples": [
+        "下周开学，想约周四晚先试听判断路线。",
+        "寒假马上到了，这周想先来看看班型是否合适。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_and_caution_are_not_low_intent",
+      "title": "第一次试听和慢热顾虑不应被误判成低意向",
+      "description": "第一次来、担心孩子慢热、怕不适应和怕跟不上，并不等于低意向。只要家长同时愿意给出时间和问题范围，这类线索依然值得快速承接。",
+      "examples": [
+        "第一次来，担心孩子不适应，这周末有空想先看看。",
+        "孩子慢热但想先来听一下表达力课。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "price_only_needs_scope_before_upgrade",
+      "title": "只问价格不等于高意向，除非同时带着问题和时间",
+      "description": "价格问题本身并不低意向，但如果没有问题范围、时间窗口和年龄段等事实，Catcher 不能把它直接提到最高层，必须等更多信息出现。",
+      "examples": [
+        "高意向：这周末想来看看专注力路线，大概什么价位。",
+        "普通意向：课程多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_family_signal_upgrade",
+      "title": "老家庭回流和朋友推荐要抬高拟合度",
+      "description": "老家庭回流、朋友推荐和之前来过等信号，通常意味着信任门槛已经降低。这类线索在问题和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来试听过，这次想续费并看看下一步。",
+        "朋友推荐来的，这周末能先试听吗。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_parent_anxiety_should_not_hide_intent",
+      "title": "公开场合的家长焦虑表达不应掩盖真实意向",
+      "description": "有些家长会在评论区用很轻的语气掩饰强烈需求，比如现在开始是不是太晚了、孩子坐不住还能不能来。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "现在开始还来得及吗，这周末能试听吗。",
+        "孩子坐不住也能先来看看吗。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

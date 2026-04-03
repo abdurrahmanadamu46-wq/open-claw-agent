@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "hook_booking_without_scope",
+      "scene": "public_comment",
+      "intent": "beauty_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you narrow this down.",
+      "bridge": "For a beauty appointment, the concern, time window, and branch matter more than a quick yes or no.",
+      "next_step": "Ask what concern the user wants to solve, when they want to come, and which branch or area is convenient.",
+      "handoff_suggestion": "Route to Catcher if the user replies with booking facts."
+    },
+    {
+      "id": "hook_sensitive_skin_reassurance",
+      "scene": "public_comment",
+      "intent": "sensitive_skin_help",
+      "emotion": "cautious",
+      "hook": "That kind of concern is totally understandable.",
+      "bridge": "With sensitive skin, people usually feel better when the next step starts with understanding the current state, not with a hard push.",
+      "next_step": "Acknowledge the concern and ask for a light description of the current condition plus the preferred booking window.",
+      "handoff_suggestion": "Route to Catcher if the user shares current skin state and time."
+    },
+    {
+      "id": "hook_pre_event_urgency",
+      "scene": "private_message",
+      "intent": "pre_event_booking",
+      "emotion": "time_pressure",
+      "hook": "We can keep this simple and work from your time window first.",
+      "bridge": "When the event is close, the date and available slot matter more than a generic treatment pitch.",
+      "next_step": "Ask when the event is and what day or time the user can come in.",
+      "handoff_suggestion": "Route to Catcher once the user shares event timing."
+    },
+    {
+      "id": "hook_price_only_recovery",
+      "scene": "public_comment",
+      "intent": "price_check",
+      "emotion": "comparing",
+      "hook": "I can help make the price answer more useful.",
+      "bridge": "Beauty pricing usually depends on whether you are trying to solve blackheads, sensitivity, a before-event need, or something else.",
+      "next_step": "Ask one low-friction scope question before sharing the next step.",
+      "handoff_suggestion": "Route to Catcher if the user shares concern scope."
+    },
+    {
+      "id": "hook_returning_client",
+      "scene": "private_message",
+      "intent": "return_visit",
+      "emotion": "warm",
+      "hook": "Glad you came back to this.",
+      "bridge": "For returning salon guests, it helps to start from what changed since the last time instead of treating it like a first contact.",
+      "next_step": "Ask what they most want to improve this time and when they hope to come in.",
+      "handoff_suggestion": "Route to FollowUp or Catcher depending on the user's reply."
+    },
+    {
+      "id": "hook_sensitive_public_privacy",
+      "scene": "public_comment",
+      "intent": "sensitive_issue",
+      "emotion": "embarrassed",
+      "hook": "We can keep this gentle.",
+      "bridge": "Some beauty concerns feel personal, so the goal is to stay helpful without making the user feel exposed.",
+      "next_step": "Reply with empathy and lightly invite the user to share timing or concern details in a less exposed way.",
+      "handoff_suggestion": "Route to Catcher if the user continues with details."
+    }
+  ]
+}

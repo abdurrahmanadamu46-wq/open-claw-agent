@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "catcher",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "intent_explicitness",
+      "title": "预约动作显性度",
+      "description": "评估线索是否明确表达想约、想来、这个周末能不能安排、有没有时段等动作。高分表示用户已经从泛兴趣进入行动准备。",
+      "examples": [
+        "高分：周五晚能不能帮我安排一单短甲法式。",
+        "低分：最近想做做甲。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "style_specificity",
+      "title": "风格清晰度",
+      "description": "高分线索会明确提到法式、猫眼、通勤短甲、婚礼甲和节日款等具体方向，而不是只有好看、精致和想换款这类笼统表达。",
+      "examples": [
+        "高分：想做裸透短甲。",
+        "低分：想做个好看的。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "time_window_strength",
+      "title": "时间窗口强度",
+      "description": "高分线索通常会给出周末、周四晚、午休、婚礼前两天等可执行时间窗口。没有时间线索的咨询不应高估。",
+      "examples": [
+        "高分：这周日或者周四下班后都可以。",
+        "低分：有空再来。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "removal_complexity_visibility",
+      "title": "卸甲与复杂度可见度",
+      "description": "是否带旧甲、是否要延长和是否做复杂款，会直接影响承接难度。能明确这些变量的线索拟合度更高。",
+      "examples": [
+        "高分：手上有旧甲，要卸掉重做。",
+        "低分：只说做同款，不提任何附加情况。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "location_specificity",
+      "title": "门店位置明确度",
+      "description": "明确门店、商圈和商场，代表用户已经在做实际选择，通常比泛泛咨询更接近真实预约。",
+      "examples": [
+        "高分：想约国金店。",
+        "低分：你们在哪里。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "relationship_warmth",
+      "title": "关系温度",
+      "description": "老客回流、朋友推荐和之前来过等关系信号，应提升拟合度和后续跟进优先级，因为其成交和复做概率通常更高。",
+      "examples": [
+        "高分：上次来过，这次还想约。",
+        "高分：朋友推荐我来问问。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

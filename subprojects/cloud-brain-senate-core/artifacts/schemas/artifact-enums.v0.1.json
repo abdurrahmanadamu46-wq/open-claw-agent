@@ -1,0 +1,15 @@
+﻿{
+  "status_enum": ["draft", "review", "approved", "rejected", "final", "expired"],
+  "risk_level_enum": ["L0", "L1", "L2", "L3"],
+  "artifact_type_enum": [
+    "MissionPlan",
+    "SignalBrief",
+    "StrategyRoute",
+    "CopyPack",
+    "StoryboardPack",
+    "ExecutionPlan",
+    "LeadAssessment",
+    "ValueScoreCard",
+    "FollowUpActionPlan"
+  ]
+}

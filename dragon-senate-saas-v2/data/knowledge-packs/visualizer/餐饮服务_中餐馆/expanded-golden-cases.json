@@ -1,0 +1,254 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_chinese_restaurant_case_001",
+      "label": "happy_path",
+      "scenario": "社区中餐馆晚市招牌菜与翻台证明",
+      "input": {
+        "copy_pack": "社区中餐馆短视频脚本，核心卖点是招牌现炒、晚市饭点生意稳定、菜量扎实，适合家庭聚餐和附近上班族下班来吃。",
+        "brand_assets": [
+          "门头夜景视频",
+          "晚市等位区镜头",
+          "厨师现炒招牌菜视频",
+          "招牌菜成片特写",
+          "服务员连续上菜镜头",
+          "顾客夹菜和桌面就餐画面",
+          "菜单与店铺 Logo"
+        ],
+        "reference_styles": [
+          "纪实烟火气",
+          "克制的食欲放大"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "dinner_service": true,
+          "kitchen_access": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "招牌菜真实出锅或上桌开场",
+        "晚市门头或等位区证明真实餐期",
+        "服务节奏与桌面占用画面",
+        "明确列出晚市窗口和顾客避脸拍摄依赖"
+      ],
+      "mustAvoid": [
+        "空店环境镜头撑满前半段",
+        "外部食客素材冒充本店热闹",
+        "把纯美食广告风拍法盖过门店真实性"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把社区中餐馆脚本转成一条以招牌菜热感、晚市真实节奏和门店可信度为核心的可执行堂食分镜。",
+        "assumptions": [
+          "可在晚市高峰开始前完成门头和空位建立镜头，再在上客后补服务节奏。",
+          "顾客不适合正脸近拍，因此需要以后背、侧手和桌面动筷为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、等位、现炒、上菜和桌面用餐镜头。",
+          "脚本卖点围绕招牌现炒、晚市稳定客流和扎实分量。"
+        ],
+        "confidence": 0.9,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给招牌菜出锅后的热气近景，左下角带门头灯箱和小范围等位动作，标题聚焦“晚市来这家就点这锅”。",
+        "shot_list": "1) 门头夜景与等位区建立晚市状态 2) 厨师现炒招牌菜给出锅气证据 3) 热菜装盘落桌接顾客动筷 4) 服务员连续上菜和桌面占用证明饭点节奏 5) 整桌关系和菜量参照补足性价比 6) 门店定位总结与到店 CTA",
+        "asset_dependencies": "门头夜景、等位区镜头、招牌菜现炒视频、热菜成片、服务员上菜画面、顾客避脸用餐镜头、晚市拍摄窗口确认",
+        "execution_feasibility_score": "0.89"
+      }
+    },
+    {
+      "id": "visualizer_chinese_restaurant_case_002",
+      "label": "edge_case",
+      "scenario": "商务宴请型中餐馆，包厢素材充足但后厨不可拍",
+      "input": {
+        "copy_pack": "商务宴请型中餐馆视频脚本，重点想讲请客体面、包厢私密、整桌完整度和服务稳，但门店不允许拍后厨，也不能清晰拍到客人正脸。",
+        "brand_assets": [
+          "门头与迎宾台镜头",
+          "包厢环境视频",
+          "整桌菜品成片",
+          "服务员分菜与换盘镜头",
+          "多人举杯和夹菜的避脸画面",
+          "菜单封面与店铺 Logo"
+        ],
+        "reference_styles": [
+          "克制的宴请质感",
+          "可信的堂食纪实"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "dinner_service": true,
+          "kitchen_access": false,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确后厨不可拍的限制",
+        "把证明重心放在包厢、整桌完整度和服务流程",
+        "采用避脸或半身互动来表达宴请场景"
+      ],
+      "mustAvoid": [
+        "硬写现炒后厨大片",
+        "未经授权拍清晰客人正脸",
+        "用夸张运镜伪装高端感却失去真实用餐信息"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在后厨不可拍和顾客隐私受限的前提下，把商务宴请脚本转成一条以包厢体验、整桌体面和服务秩序为核心的可执行分镜。",
+        "assumptions": [
+          "包厢可在开席前完成整桌和环境镜头，开席后补服务员动作和避脸互动。",
+          "整桌菜品已经准备稳定，不需要为拍摄额外复刻大量新菜。"
+        ],
+        "evidence": [
+          "现有素材集中在门头、包厢、整桌菜和服务流程。",
+          "脚本的核心卖点是请客体面和服务稳定，而不是后厨表演。"
+        ],
+        "confidence": 0.76,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面以包厢整桌和上菜动作做主体，门头 logo 做小窗，标题聚焦“请客体面不慌桌”。",
+        "shot_list": "1) 门头和迎宾台交代门店定位 2) 包厢整桌建立宴请场景 3) 服务员分菜、换盘和连续上菜证明服务稳 4) 多人夹菜和举杯的避脸互动表达真实聚餐 5) 重点大菜与整桌回看形成体面感收束 6) 预订和适用场景 CTA",
+        "asset_dependencies": "门头外景、迎宾台、包厢环境、整桌菜品成片、服务员动作、顾客避脸互动、包厢拍摄授权；缺少后厨和明火镜头",
+        "execution_feasibility_score": "0.71"
+      }
+    },
+    {
+      "id": "visualizer_chinese_restaurant_case_003",
+      "label": "happy_path",
+      "scenario": "粤式海鲜中餐馆，强调鲜度处理与整桌体验",
+      "input": {
+        "copy_pack": "粤式海鲜中餐馆脚本，核心卖点是食材处理透明、现点现做、包厢和大厅都适合家庭聚餐，想让观众看见从食材到上桌的完整链路。",
+        "brand_assets": [
+          "门头白天外景",
+          "海鲜池与食材陈列镜头",
+          "称重与处理食材视频",
+          "蒸箱或炒锅出品镜头",
+          "整桌海鲜菜成片",
+          "家庭聚餐用餐画面",
+          "包厢与大厅概览"
+        ],
+        "reference_styles": [
+          "干净明亮的纪实餐饮",
+          "可信的新鲜食材证明"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "lunch_service": true,
+          "kitchen_access": true,
+          "private_room_access": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "食材陈列或处理作为前段证据",
+        "食材到成品再到上桌的至少三段链路",
+        "大厅或包厢中的真实聚餐场景",
+        "明确区分可拍后厨与可拍包厢范围"
+      ],
+      "mustAvoid": [
+        "只拍食材池不落到成品和用餐",
+        "把不同桌型和不同时段混成一条伪连续故事",
+        "过度抛光画面让新鲜度看起来失真"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把粤式海鲜中餐馆脚本转成一条以食材鲜度证据、现点现做链路和家庭聚餐场景为核心的可执行分镜。",
+        "assumptions": [
+          "门店允许在午市前拍食材陈列与处理，再在午市开始后补上桌和聚餐画面。",
+          "包厢与大厅都可拍，但需要区分不同桌型和不同菜品的使用场景。"
+        ],
+        "evidence": [
+          "品牌素材同时具备海鲜池、处理过程、出品、整桌和聚餐画面。",
+          "脚本强调看得见的新鲜和从食材到上桌的完整链路。"
+        ],
+        "confidence": 0.88,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给海鲜处理或蒸汽出品镜头，右下角补整桌海鲜和包厢一角，标题聚焦“看得见的新鲜上桌”。",
+        "shot_list": "1) 门头和海鲜池建立门店定位 2) 称重与处理动作证明食材鲜度 3) 蒸箱或炒锅出品接成品大菜 4) 服务员把海鲜主菜落桌 5) 大厅或包厢家庭聚餐补足场景适配 6) 门店分区和到店建议收束",
+        "asset_dependencies": "门头外景、海鲜池陈列、称重处理镜头、蒸箱或现炒出品、整桌海鲜成片、聚餐画面、包厢和大厅拍摄权限",
+        "execution_feasibility_score": "0.87"
+      }
+    },
+    {
+      "id": "visualizer_chinese_restaurant_case_004",
+      "label": "failure_case",
+      "scenario": "新中式中餐馆未开业，只有效果图和菜单海报却想做爆款探店",
+      "input": {
+        "copy_pack": "新中式中餐馆宣传脚本，希望做出人气探店和高端烟火气，但门店尚未开业，没有真实顾客、没有实际出品，也没有后厨拍摄条件。",
+        "brand_assets": [
+          "装修效果图",
+          "菜单海报",
+          "品牌 Logo",
+          "试营业通知海报"
+        ],
+        "reference_styles": [
+          "高端新中式",
+          "热门探店感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "dine_in_available": false,
+          "kitchen_access": false,
+          "customer_assets": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店尚未开业与没有真实出品的限制",
+        "主动降级为开业预告或菜单概念说明",
+        "低可执行性评分和清晰的后续补拍建议"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实门店环境",
+        "拿外部菜图和食客素材冒充探店",
+        "继续设计排队、翻台、锅气和堂食链路"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在未开业且没有真实顾客与真实出品素材的前提下，输出一条不冒充旺店探店的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌风格、菜单方向和开业时间信息。",
+          "任何真实堂食、后厨和出品镜头都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、菜单海报、Logo 和试营业通知。",
+          "拍摄条件不支持堂食、人流、后厨和真实菜品证明。"
+        ],
+        "confidence": 0.63,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，效果图占主画面，标题明确写“新店即将开业”或“菜单方向抢先看”，避免任何已开门营业暗示。",
+        "shot_list": "1) 效果图与品牌 Logo 建立新店印象 2) 菜单海报和主打方向拆解 3) 空间风格和座位类型说明 4) 明确当前没有真实堂食和出品证据 5) 列出开业后需要补拍的门头、菜品、餐期和后厨素材 6) 试营业时间与到店提醒",
+        "asset_dependencies": "装修效果图、菜单海报、品牌 Logo、试营业通知；缺少门头实景、真实菜品、顾客用餐、后厨和任何餐期证明",
+        "execution_feasibility_score": "0.29"
+      }
+    }
+  ]
+}

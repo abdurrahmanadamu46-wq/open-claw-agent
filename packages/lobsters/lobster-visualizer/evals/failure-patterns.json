@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "visualizer",
+  "patterns": [
+    {
+      "id": "visualizer_overdesign",
+      "label": "overdesign",
+      "description": "Storyboard looks impressive but is not executable with the available assets and time."
+    },
+    {
+      "id": "visualizer_proof_loss",
+      "label": "proof_loss",
+      "description": "Visual plan loses the evidence density required by the route."
+    },
+    {
+      "id": "visualizer_asset_blindness",
+      "label": "asset_blindness",
+      "description": "Missing assets are not called out and cause downstream execution failure."
+    }
+  ]
+}

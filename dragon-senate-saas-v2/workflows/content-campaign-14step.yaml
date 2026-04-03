@@ -1,0 +1,528 @@
+id: content-campaign-14step
+name: 内容营销全链路14步自动执行
+description: |
+  从行业标签确认 → 客户信息录入 → 选题生成 → 合规审核 → 文案声音生成
+  → 画面分镜 → 字幕配乐 → 封面标题 → 云端归档 → 下发边缘
+  → 评论监视 → 线索评分 → 高分跟进 → 飞书反馈回传
+  全流程14步，覆盖内容生产 → 发布 → 互动 → 线索 → 成交全漏斗
+
+# ─────────────────────────────────────────────────────────────────
+# 版本化（借鉴 Temporal Workflow Versioning）
+# 旧实例继续跑当前版本，新实例自动使用最新版本
+# ─────────────────────────────────────────────────────────────────
+version: "2.1"
+schema_version: "1"
+
+# ─────────────────────────────────────────────────────────────────
+# 全局超时（借鉴 Temporal workflowExecutionTimeout）
+# 防止工作流永久挂起；超时后自动标记失败并通知运营
+# ─────────────────────────────────────────────────────────────────
+workflow_timeout:
+  total_timeout_min: 120          # 整体超时（2小时）
+  step_default_timeout_sec: 300   # 单步默认超时（5分钟），可被步骤级覆盖
+  approval_default_timeout_hr: 24 # 人工审批默认超时（24小时）
+  on_timeout: fail_and_notify     # 超时行为：标记失败 + 发飞书通知
+
+# ─────────────────────────────────────────────────────────────────
+# 默认重试策略（借鉴 Temporal Activity RetryPolicy）
+# 每个步骤可独立覆盖此默认策略
+# ─────────────────────────────────────────────────────────────────
+default_retry_policy:
+  max_attempts: 3                 # 最大尝试次数（含首次执行）
+  initial_interval_sec: 5         # 首次重试等待（秒）
+  backoff_coefficient: 2.0        # 指数退避系数
+  max_interval_sec: 60            # 最大退避间隔（秒）
+  non_retryable_errors:           # 不触发重试的错误类型
+    - "ValidationError"
+    - "ComplianceViolation"
+    - "TenantQuotaExceeded"
+
+trigger:
+  type: manual
+  params:
+    - name: tenant_id
+      type: string
+      required: true
+    - name: industry_tag
+      type: string
+      required: true
+      description: "行业标签，如 餐饮服务_火锅店、酒店民宿_商务酒店"
+    - name: customer_brief
+      type: object
+      required: true
+      description: "客户简报：包含痛点、优势、人设、目标平台"
+    - name: target_platforms
+      type: array
+      default: ["xiaohongshu", "douyin"]
+      description: "目标发布平台"
+
+steps:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段一：策略准备
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_1_industry_tag
+    name: "步骤1：确认行业标签"
+    mode: auto
+    lobsters:
+      - radar
+      - strategist
+    skills:
+      - radar_industry_tag_confirm
+      - strategist_industry_tag_lock
+    input:
+      industry_tag: "{{ trigger.industry_tag }}"
+    output:
+      - name: industry_route
+        desc: "行业路由策略（知识池ID + 策略模板ID）"
+    # 步骤级超时（覆盖全局默认，借鉴 Temporal scheduleToCloseTimeout）
+    timeout_seconds: 60
+    # 步骤级重试策略（覆盖全局默认，借鉴 Temporal Activity RetryPolicy）
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 5
+      backoff_coefficient: 2.0
+      max_interval_sec: 30
+    on_failure: abort
+
+  - id: step_2_customer_profile
+    name: "步骤2：录入客户信息"
+    mode: auto
+    lobsters:
+      - strategist
+    skills:
+      - strategist_customer_profile_ingest
+    input:
+      customer_brief: "{{ trigger.customer_brief }}"
+      industry_route: "{{ step_1_industry_tag.industry_route }}"
+    output:
+      - name: customer_profile
+        desc: "客户画像档案（痛点/优势/人设/关键词）"
+        store_memory: true
+        memory_layer: l0
+    timeout_seconds: 90
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 5
+      backoff_coefficient: 2.0
+      max_interval_sec: 30
+    on_failure: abort
+
+  - id: step_3_topic_score
+    name: "步骤3：选题生成与评分"
+    mode: auto
+    lobsters:
+      - strategist
+      - inkwriter
+      - abacus
+    skills:
+      - strategist_topic_generate
+      - abacus_topic_score
+    input:
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+      industry_route: "{{ step_1_industry_tag.industry_route }}"
+      target_platforms: "{{ trigger.target_platforms }}"
+    output:
+      - name: topic_list
+        desc: "高分选题清单（含转化评分、平台适配度）"
+    timeout_seconds: 120
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 2.0
+      max_interval_sec: 60
+    on_failure: abort
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段二：内容合规审核（人工审批节点）
+  # 借鉴 Temporal Signal：审批通过后向工作流发送 "human_approved" signal
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_4_compliance_audit
+    name: "步骤4：合规审核"
+    mode: approval
+    # 人工审批暂停（借鉴 Temporal workflow.GetSignalChannel().Receive()）
+    pause_for_signal: human_approved  # 等待此 signal 才继续
+    approval_timeout_hours: 24
+    approval_timeout_action: escalate_to_commander
+    lobsters:
+      - catcher
+    skills:
+      - catcher_compliance_audit
+      - catcher_sensitive_word_filter
+    input:
+      topic_list: "{{ step_3_topic_score.topic_list }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+    output:
+      - name: compliance_report
+        desc: "合规审核报告（通过/拒坑/需修改）"
+      - name: approved_topics
+        desc: "审核通过的选题清单"
+    # 审批步骤无重试（人工操作，不适合自动重试）
+    retry_policy:
+      max_attempts: 1
+    on_failure: abort
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段三：内容生产（并行）
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_5_copy_voice
+    name: "步骤5：文案与声音生成"
+    mode: auto
+    lobsters:
+      - inkwriter
+      - followup
+    skills:
+      - inkwriter_industry_vertical_copy
+      - inkwriter_voiceover_script
+      - followup_voiceover_collab
+    input:
+      approved_topics: "{{ step_4_compliance_audit.approved_topics }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+      industry_route: "{{ step_1_industry_tag.industry_route }}"
+      target_platforms: "{{ trigger.target_platforms }}"
+    output:
+      - name: copy_pack
+        desc: "文案资产包（正文/钩子/话术）"
+      - name: voiceover_scripts
+        desc: "口播脚本（含平台适配版本）"
+    timeout_seconds: 180
+    # inkwriter 创意步骤：失败重试2次，退避较短（LLM 偶尔超时）
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 1.5
+      max_interval_sec: 30
+      non_retryable_errors:
+        - "ContentPolicyViolation"
+    on_failure: retry
+
+  - id: step_6_storyboard
+    name: "步骤6：画面匹配与分镜"
+    mode: auto
+    depends_on:
+      - step_5_copy_voice
+    lobsters:
+      - visualizer
+    skills:
+      - visualizer_semantic_material_match
+      - visualizer_storyboard
+    input:
+      copy_pack: "{{ step_5_copy_voice.copy_pack }}"
+      voiceover_scripts: "{{ step_5_copy_voice.voiceover_scripts }}"
+      industry_route: "{{ step_1_industry_tag.industry_route }}"
+    output:
+      - name: storyboard_pack
+        desc: "分镜素材包（画面序列/素材引用/时间轴）"
+    timeout_seconds: 300
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 15
+      backoff_coefficient: 2.0
+      max_interval_sec: 60
+    on_failure: retry
+
+  - id: step_7_subtitle_bgm
+    name: "步骤7：字幕特效与配乐"
+    mode: auto
+    depends_on:
+      - step_6_storyboard
+    lobsters:
+      - visualizer
+      - dispatcher
+    skills:
+      - visualizer_subtitle_fx_bgm
+      - dispatcher_bgm_pack
+    input:
+      storyboard_pack: "{{ step_6_storyboard.storyboard_pack }}"
+      copy_pack: "{{ step_5_copy_voice.copy_pack }}"
+    output:
+      - name: video_draft
+        desc: "成片草案（视频文件路径 / 素材清单）"
+    # 视频合成步骤耗时长，超时设置更宽松
+    timeout_seconds: 600
+    retry_policy:
+      max_attempts: 2
+      initial_interval_sec: 30
+      backoff_coefficient: 2.0
+      max_interval_sec: 120
+    on_failure: retry
+
+  - id: step_8_title_cover
+    name: "步骤8：标题封面生成"
+    mode: auto
+    depends_on:
+      - step_5_copy_voice
+      - step_6_storyboard
+    lobsters:
+      - inkwriter
+      - visualizer
+    skills:
+      - inkwriter_title_ab_generate
+      - visualizer_cover_ab_generate
+    input:
+      copy_pack: "{{ step_5_copy_voice.copy_pack }}"
+      storyboard_pack: "{{ step_6_storyboard.storyboard_pack }}"
+      approved_topics: "{{ step_4_compliance_audit.approved_topics }}"
+    output:
+      - name: title_cover_set
+        desc: "标题封面组合（3-5组AB版本，含评分）"
+    timeout_seconds: 180
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 1.5
+      max_interval_sec: 30
+    on_failure: retry
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段四：归档与下发
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_9_cloud_archive
+    name: "步骤9：云端归档"
+    mode: auto
+    depends_on:
+      - step_7_subtitle_bgm
+      - step_8_title_cover
+    lobsters:
+      - dispatcher
+      - abacus
+    skills:
+      - dispatcher_cloud_archive
+      - abacus_archive_report
+    input:
+      video_draft: "{{ step_7_subtitle_bgm.video_draft }}"
+      title_cover_set: "{{ step_8_title_cover.title_cover_set }}"
+      copy_pack: "{{ step_5_copy_voice.copy_pack }}"
+      compliance_report: "{{ step_4_compliance_audit.compliance_report }}"
+      tenant_id: "{{ trigger.tenant_id }}"
+    output:
+      - name: archive_bundle
+        desc: "归档任务包（OSS路径 / 审计ID / 版本号）"
+    timeout_seconds: 120
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 2.0
+      max_interval_sec: 60
+      non_retryable_errors:
+        - "StorageQuotaExceeded"
+    on_failure: abort
+
+  - id: step_10_edge_dispatch
+    name: "步骤10：下发边缘任务"
+    mode: auto
+    depends_on:
+      - step_9_cloud_archive
+    lobsters:
+      - dispatcher
+    skills:
+      - dispatcher_edge_health_check
+      - dispatcher_edge_task_push
+      - dispatcher_scheduled_publish
+    input:
+      archive_bundle: "{{ step_9_cloud_archive.archive_bundle }}"
+      title_cover_set: "{{ step_8_title_cover.title_cover_set }}"
+      target_platforms: "{{ trigger.target_platforms }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+      tenant_id: "{{ trigger.tenant_id }}"
+    output:
+      - name: edge_execution_plan
+        desc: "边缘执行计划（节点ID / 发布时间窗 / 账号序列）"
+    timeout_seconds: 60
+    # 边缘调度重试策略（借鉴 Temporal Edge Task Retry）
+    retry_policy:
+      max_attempts: 4
+      initial_interval_sec: 15
+      backoff_coefficient: 2.0
+      max_interval_sec: 120
+      non_retryable_errors:
+        - "NoOnlineEdgeNode"   # 无在线边缘节点，不重试（人工介入）
+    on_failure: retry
+    # 边缘节点能力要求（借鉴 Temporal Task Queue 能力标签）
+    edge_requirements:
+      capabilities:             # 需要匹配的边缘节点能力标签
+        - "{{ trigger.target_platforms }}"
+      min_online_nodes: 1       # 至少1个在线节点
+    # 持久化定时器（借鉴 Temporal Timer）
+    scheduled_publish:
+      enabled: true
+      persist_to_db: true       # 定时发布存入 DB（机器重启不丢）
+      heartbeat_required: true  # 边缘执行时必须心跳（超时则重新分配）
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段五：发布后监控（异步持续）
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_11_monitor_comments
+    name: "步骤11：监视评论私信"
+    mode: auto
+    async: true
+    depends_on:
+      - step_10_edge_dispatch
+    lobsters:
+      - echoer
+      - catcher
+    skills:
+      - echoer_realtime_comment_stream
+      - echoer_dm_lead_capture
+      - catcher_sensitive_word_filter
+    input:
+      edge_execution_plan: "{{ step_10_edge_dispatch.edge_execution_plan }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+    output:
+      - name: lead_event_stream
+        desc: "线索事件流（评论/私信/点赞关注行为）"
+    monitor_duration_hours: 72
+    poll_interval_seconds: 30
+    timeout_seconds: 259200      # 72小时（监控步骤宽松超时）
+    retry_policy:
+      max_attempts: 5
+      initial_interval_sec: 30
+      backoff_coefficient: 1.5
+      max_interval_sec: 300
+    on_failure: continue
+
+  - id: step_12_lead_score
+    name: "步骤12：线索评分"
+    mode: auto
+    depends_on:
+      - step_11_monitor_comments
+    lobsters:
+      - abacus
+      - catcher
+    skills:
+      - abacus_lead_score_model
+      - catcher_complaint_risk_flag
+      - catcher_lead_score
+    input:
+      lead_event_stream: "{{ step_11_monitor_comments.lead_event_stream }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+    output:
+      - name: lead_scores
+        desc: "线索评分结果（高/中/低意向 + 投诉风险标记）"
+    timeout_seconds: 120
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 2.0
+      max_interval_sec: 60
+    on_failure: continue
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段六：高分跟进（人工审批节点）
+  # 借鉴 Temporal Signal：审批通过后发送 "approval_granted" signal
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_13_high_lead_followup
+    name: "步骤13：高分线索跟进"
+    mode: approval
+    pause_for_signal: approval_granted  # 等待审批 signal
+    approval_timeout_hours: 4
+    approval_timeout_action: auto_proceed_low_risk
+    depends_on:
+      - step_12_lead_score
+    condition: "{{ step_12_lead_score.lead_scores.high_intent_count }} > 0"
+    lobsters:
+      - followup
+    skills:
+      - followup_phone_trigger
+      - followup_multi_touch
+    input:
+      lead_scores: "{{ step_12_lead_score.lead_scores }}"
+      customer_profile: "{{ step_2_customer_profile.customer_profile }}"
+    output:
+      - name: followup_records
+        desc: "电话跟进记录（时间/接通状态/意向确认）"
+    retry_policy:
+      max_attempts: 1   # 人工审批步骤不自动重试
+    on_failure: continue
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 阶段七：结果回传（闭环）
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  - id: step_14_feishu_feedback
+    name: "步骤14：飞书反馈与录音回传"
+    mode: auto
+    depends_on:
+      - step_13_high_lead_followup
+    lobsters:
+      - followup
+      - abacus
+    skills:
+      - followup_feishu_notify
+      - followup_call_summary_push
+      - abacus_call_log_ingest
+      - abacus_feedback_loop
+    input:
+      followup_records: "{{ step_13_high_lead_followup.followup_records }}"
+      lead_scores: "{{ step_12_lead_score.lead_scores }}"
+      archive_bundle: "{{ step_9_cloud_archive.archive_bundle }}"
+      tenant_id: "{{ trigger.tenant_id }}"
+    output:
+      - name: feishu_notification
+        desc: "飞书线索通知（摘要卡片 + 对话录音附件）"
+      - name: crm_update
+        desc: "CRM线索状态更新记录"
+    timeout_seconds: 120
+    retry_policy:
+      max_attempts: 3
+      initial_interval_sec: 10
+      backoff_coefficient: 2.0
+      max_interval_sec: 60
+      non_retryable_errors:
+        - "FeishuWebhookDisabled"
+    on_failure: continue
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 全局配置
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+global_config:
+  memory_write_back: true
+  audit_all_steps: true
+  # 事件日志持久化（借鉴 Temporal Event Sourcing）
+  event_log:
+    enabled: true
+    backend: workflow_event_log   # 使用 dragon-senate-saas-v2/workflow_event_log.py
+    resume_on_restart: true       # 机器重启后从断点续跑
+  hitl_steps:
+    - step_4_compliance_audit
+    - step_13_high_lead_followup
+  guardian_check_steps:
+    - step_4_compliance_audit
+    - step_11_monitor_comments
+  cost_center: "content_campaign"
+  max_total_duration_hours: 96   # 绝对最大执行时长（兜底）
+
+on_complete:
+  - action: generate_report
+    template: campaign_summary_v1
+    recipients:
+      - feishu
+      - crm
+  - action: update_memory
+    lobster: abacus
+    skill: abacus_feedback_loop
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 变更日志（版本化）
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━
+changelog:
+  - version: "2.1"
+    date: "2026-04-01"
+    changes:
+      - "借鉴 Temporal RetryPolicy：每步骤加独立重试策略（max_attempts/backoff_coefficient/non_retryable_errors）"
+      - "借鉴 Temporal workflowExecutionTimeout：加全局超时 total_timeout_min=120"
+      - "借鉴 Temporal Signal 机制：step_4/step_13 审批节点加 pause_for_signal 字段"
+      - "借鉴 Temporal Timer：step_10 定时发布加 persist_to_db=true + heartbeat_required=true"
+      - "借鉴 Temporal Task Queue 能力标签：step_10 加 edge_requirements.capabilities"
+      - "借鉴 Temporal Event Sourcing：global_config.event_log.resume_on_restart=true"
+      - "借鉴 Temporal Workflow Versioning：schema_version 字段，版本升级时旧实例继续跑旧版"
+  - version: "2.0"
+    date: "2026-03-15"
+    changes:
+      - "初始14步工作流定义"

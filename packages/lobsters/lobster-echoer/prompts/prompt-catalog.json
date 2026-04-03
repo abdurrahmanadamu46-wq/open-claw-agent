@@ -1,0 +1,247 @@
+﻿{
+    "lobster_id":  "echoer",
+    "version":  "1.0.0",
+    "total_prompts":  15,
+    "categories":  [
+                       {
+                           "category":  "positive-comment",
+                           "prompts":  [
+                                           {
+                                               "id":  "echoer.positive-comment.gratitude-reply.v1",
+                                               "file":  "positive-comment/gratitude-reply.prompt.md",
+                                               "skill_id":  "echoer_reply_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "retail",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-warm",
+                                                                "v1-friendlike"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.positive-comment.lead-capture.v1",
+                                               "file":  "positive-comment/lead-capture.prompt.md",
+                                               "skill_id":  "echoer_wechat_funnel",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-soft",
+                                                                "v1-resource"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.positive-comment.social-proof-boost.v1",
+                                               "file":  "positive-comment/social-proof-boost.prompt.md",
+                                               "skill_id":  "echoer_comment_manage",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "retail",
+                                                                  "food"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-proof",
+                                                                "v1-community"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.positive-comment.soft-upsell.v1",
+                                               "file":  "positive-comment/soft-upsell.prompt.md",
+                                               "skill_id":  "echoer_reply_generate",
+                                               "effectiveness_rating":  3,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-gentle",
+                                                                "v1-benefit"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.positive-comment.community-warmth.v1",
+                                               "file":  "positive-comment/community-warmth.prompt.md",
+                                               "skill_id":  "echoer_comment_manage",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "food",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-cheer",
+                                                                "v1-host"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "negative-comment",
+                           "prompts":  [
+                                           {
+                                               "id":  "echoer.negative-comment.empathy-defuse.v1",
+                                               "file":  "negative-comment/empathy-defuse.prompt.md",
+                                               "skill_id":  "echoer_reply_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "health"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-empathy",
+                                                                "v1-service"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.negative-comment.redirect-dm.v1",
+                                               "file":  "negative-comment/redirect-dm.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "local-service",
+                                                                  "retail"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-private",
+                                                                "v1-service"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.negative-comment.fact-clarify.v1",
+                                               "file":  "negative-comment/fact-clarify.prompt.md",
+                                               "skill_id":  "echoer_reply_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "health",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-factual",
+                                                                "v1-soften"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.negative-comment.after-sales-buffer.v1",
+                                               "file":  "negative-comment/after-sales-buffer.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "beauty",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-recover",
+                                                                "v1-ticket"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.negative-comment.troll-deescalate.v1",
+                                               "file":  "negative-comment/troll-deescalate.prompt.md",
+                                               "skill_id":  "echoer_comment_manage",
+                                               "effectiveness_rating":  3,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "food"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-ignore",
+                                                                "v1-neutralize"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "dm-conversation",
+                           "prompts":  [
+                                           {
+                                               "id":  "echoer.dm-conversation.first-touch.v1",
+                                               "file":  "dm-conversation/first-touch.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-warm",
+                                                                "v1-quick"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.dm-conversation.need-discovery.v1",
+                                               "file":  "dm-conversation/need-discovery.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-curious",
+                                                                "v1-diagnostic"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.dm-conversation.wechat-bridge.v1",
+                                               "file":  "dm-conversation/wechat-bridge.prompt.md",
+                                               "skill_id":  "echoer_wechat_funnel",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-resource",
+                                                                "v1-booking"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.dm-conversation.price-objection.v1",
+                                               "file":  "dm-conversation/price-objection.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-budget",
+                                                                "v1-value"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "echoer.dm-conversation.dormant-rekindle.v1",
+                                               "file":  "dm-conversation/dormant-rekindle.prompt.md",
+                                               "skill_id":  "echoer_dm_auto_reply",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "retail",
+                                                                  "education"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-checkin",
+                                                                "v1-update"
+                                                            ]
+                                           }
+                                       ]
+                       }
+                   ]
+}

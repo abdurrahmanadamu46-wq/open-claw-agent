@@ -1,0 +1,112 @@
+﻿{
+  "industry": "美业健康_轻医美机构",
+  "lobster_id": "inkwriter",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "inkwriter_light_med_concern_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a light-medical clinic around pore and acne-mark consultation using trust-first messaging and a booking CTA",
+        "brand_tone": "gentle, transparent, and grounded",
+        "offer_info": "consult-first route, no medical cure claims, clear suitability framing",
+        "audience_segment": "local users dealing with visible pores, acne marks, and hesitation about first visits"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "problem-based opening",
+        "trust and process proof before price",
+        "CTA that collects concern and booking window"
+      ],
+      "mustAvoid": [
+        "medical cure claims",
+        "fear-based copy",
+        "guaranteed immediate effect"
+      ]
+    },
+    {
+      "id": "inkwriter_light_med_event_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write copy for a pre-event state-management consult route",
+        "brand_tone": "reassuring, specific, and low-pressure",
+        "offer_info": "event-window consult route, no exaggerated promise",
+        "audience_segment": "users preparing for weddings, photoshoots, and major events"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "event-based opening",
+        "time-sensitive but not pushy CTA",
+        "boundary that this is suitability and state management"
+      ],
+      "mustAvoid": [
+        "long-term outcome promises",
+        "fake scarcity",
+        "hard push for high-ticket packages"
+      ]
+    },
+    {
+      "id": "inkwriter_light_med_recheck_003",
+      "label": "long_term_case",
+      "input": {
+        "strategy_route": "Write a soft re-engagement message for existing light-medical clients approaching a review or maintenance point",
+        "brand_tone": "familiar, warm, and not sales-heavy",
+        "offer_info": "recheck reminder based on timing and current state",
+        "audience_segment": "past clients who completed an earlier visit and may now be ready for a review"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "a concrete reason to return",
+        "respectful tone without guilt",
+        "CTA tied to timing or current state"
+      ],
+      "mustAvoid": [
+        "mass-sales tone",
+        "vague comeback messaging",
+        "fearful pressure"
+      ]
+    },
+    {
+      "id": "inkwriter_light_med_risk_004",
+      "label": "risk_case",
+      "input": {
+        "strategy_route": "Rewrite a light-medical promo that currently overuses before-after claims and absolute efficacy wording",
+        "brand_tone": "calm and professional",
+        "offer_info": "consult route with booking support",
+        "audience_segment": "first-time local leads"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "compliant alternative wording",
+        "less absolute efficacy language",
+        "focus on process and suitability"
+      ],
+      "mustAvoid": [
+        "root-cause cure language",
+        "guaranteed visible transformation",
+        "medicalized framing"
+      ]
+    }
+  ]
+}

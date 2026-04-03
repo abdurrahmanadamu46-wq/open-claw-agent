@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"moving_score_scene_specificity","title":"场景指向清晰度","description":"高分文案能在前两句就让用户看见明确场景，例如同城、跨城、办公室搬迁和仓储，而不是只说搬家和优惠。","examples":["高分：开头直接点出月底同城搬家。 ","低分：一开始只有低价和爆款。 "],"priority":"high"},
+  {"id":"moving_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给车型、赔付和流程边界，让用户感到门店不会乱夸口。","examples":["高分：先写场景和边界，再写价格。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+  {"id":"moving_score_scope_clarity","title":"范围清晰度","description":"高分文案会把房型、件数和大件拆开，让用户快速判断自己属于哪一档。","examples":["高分：两居同城、办公室搬迁分开说。 ","低分：所有情况混写。 "],"priority":"medium"},
+  {"id":"moving_score_cta_quality","title":"CTA 收事实能力","description":"高分 CTA 会收集房型、时间、楼层和加项，不只是催下单。","examples":["高分：先把房型和想搬时间发我。 ","低分：直接私聊下单。 "],"priority":"high"},
+  {"id":"moving_score_window_fit","title":"节点适配度","description":"文案是否自然承接月底、入住和返城等时间窗口。","examples":["高分：月底搬家写时效但不制造恐慌。 ","低分：全年都像月底抢单。 "],"priority":"medium"},
+  {"id":"moving_score_repurchase_voice","title":"复购语气自然度","description":"复约和补运类文案越像真实提醒，越容易形成高分。","examples":["高分：承接上次服务和这次补运。 ","低分：把熟客也当冷流量重新轰炸。 "],"priority":"medium"}
+]}

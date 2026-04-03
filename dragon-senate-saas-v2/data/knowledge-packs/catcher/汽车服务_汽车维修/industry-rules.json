@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车维修","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"qualify_by_fault_time_scope","title":"先看问题、时间和车况方向，再判断是不是高意向","description":"汽车维修线索只有在明确提到故障方向、到店时间或时间窗口、车况问题、是否第一次来和是否有返修、保养或年检需求时，才能被视为高意向。只有“多少钱”“最近想修车”这类泛问，不能直接升到最高优先级。","examples":["高价值信号：周五晚想去国金门店先查发动机灯，第一次来，想知道现在先查电脑还是先做基础检测。","低确定性信号：最近想把车修修，先了解下。"],"priority":"high"},
+{"id":"deadline_visit_is_high_intent","title":"返乡、年检和节点检修出现明确日期时要显著提权","description":"返乡、年检、节前出行和换季节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实到店动作，应进入高意向候选。","examples":["周六返乡，想约周四晚先来看看。","下周年检，这周想先做个全面检查。"],"priority":"high"},
+{"id":"first_time_and_process_questions_are_not_low_intent","title":"第一次到店和检测顾虑不应被误判成低意向","description":"第一次来、怕被坑、担心乱换件和不懂项目区别，并不等于低意向。只要用户同时愿意给出时间和问题范围，这类线索依然值得快速承接。","examples":["第一次来，担心不会选项目，这周末有空想先看看。","想先查空调，但比较怕维修翻车。"],"priority":"high"},
+{"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着项目和时间","description":"价格问题本身并不低意向，但如果没有项目范围、时间窗口和车况方向等事实，Catcher 不能把它直接提到最高层，必须等更多信息出现。","examples":["高意向：这周末想来看看空调问题，大概什么价位。","普通意向：保养多少钱。"],"priority":"medium"},
+{"id":"returning_owner_signal_upgrade","title":"老客复购和朋友推荐要抬高拟合度","description":"老客复购、朋友推荐和之前来过等信号，通常意味着信任门槛已经降低。这类线索在问题和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。","examples":["上次来店里修过，这次想继续看看。","朋友推荐来的，这周末能先来检测吗。"],"priority":"medium"},
+{"id":"public_budget_anxiety_should_not_hide_intent","title":"公开场合的预算和怕被坑表达不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如预算不高还能不能修、第一次修车怕被骗。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。","examples":["预算不高也能先来看看吗，这周末能到店吗。","第一次修车怕踩坑，也能先来检测吗。"],"priority":"medium"}]}

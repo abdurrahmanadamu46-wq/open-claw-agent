@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "StoryboardPack",
+  "goal": "Translate proof-led copy into a storyboard that one small local team can actually shoot.",
+  "assumptions": [
+    "真实素材和证据感镜头比炫技更能支撑高客单服务转化。",
+    "素材依赖必须提前暴露，否则执行端会卡住。"
+  ],
+  "evidence": [
+    "CopyPack favors trust-building consultation route.",
+    "Brand assets include consultation room photos and testimonials."
+  ],
+  "confidence": 0.87,
+  "riskLevel": "L1",
+  "nextAction": "handoff_to_dispatcher",
+  "cover_direction": "真人出镜+一句经营损失问题+真实门店证据元素",
+  "shot_list": "1) 痛点开场 2) 咨询场景 3) 真实证明 4) 咨询CTA",
+  "asset_dependencies": "logo, consultation_room_photos, testimonial_cards",
+  "execution_feasibility_score": "0.9"
+}

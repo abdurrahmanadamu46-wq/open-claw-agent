@@ -1,0 +1,199 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_chinese_restaurant_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测中餐馆在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "川菜馆A",
+          "粤菜馆B"
+        ],
+        "raw_signals": [
+          "抖音本地生活商家公告要求团购页如涉及“现炒现做”“0预制”“全网最低价”等表述，必须提供可核验依据，违规会降权处理",
+          "美团商家后台通知加强营业执照、食品经营许可证和门店实拍图抽检",
+          "两家竞品把套餐文案从“必吃榜同款全城最低”改成“门店招牌双人餐，菜品以当日供应为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对价格承诺和菜品表述边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略资质抽检与规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_chinese_restaurant_banquet_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城中餐馆商务宴请和包间预订机会窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "本帮菜馆C",
+          "湘菜馆D"
+        ],
+        "raw_signals": [
+          "同城三家产业园和会展场馆公众号发布4月企业客户答谢会与行业活动排期",
+          "地图评论、搜索词和私信中连续出现“10人包间”“可开发票”“有无投屏”“停车方便吗”等咨询",
+          "同商圈三家竞品同步上线8到12人商务宴套餐，并强调包间、停车和投影设备"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城活动排期与需求咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略同城需求窗口",
+        "把跨城宴席趋势当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_chinese_restaurant_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测中餐馆外卖成本风险与平台补贴变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "快餐馆E"
+        ],
+        "raw_signals": [
+          "同城商家群截图称“美团下周全面取消午市补贴并上调抽佣3%”，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区经理口径也不一致",
+          "核心竞品的起送价、配送费和满减结构暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断外卖利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_chinese_restaurant_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别二线城市社区型中餐馆的内容和套餐机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "家常菜馆F"
+        ],
+        "raw_signals": [
+          "外省旅游城市“国潮江景餐厅”短视频爆火，大量内容强调夜景打卡和高客单",
+          "本地生活平台最近新增搜索和评论集中在“工作日快餐”“家常菜外卖”“20到30元单人餐”",
+          "本地竞品开始上新工作餐和双人快手套餐，未跟进高客单打卡路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型需求应高于跨城打卡爆款热度",
+        "需要区分审美爆款与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单打卡路线",
+        "忽略同城搜索与竞品套餐的本地互证"
+      ]
+    },
+    {
+      "id": "radar_chinese_restaurant_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城中餐馆食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“某连锁中餐馆门店被集体查封”，仅给出模糊偷拍视频",
+          "该说法被两个营销号转发，但都没有提供执法文书、门店名称或通报链接",
+          "未发现市场监管局通报、外卖平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_chinese_restaurant_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度中餐馆竞品的真实热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "火锅馆G",
+          "江浙菜馆H"
+        ],
+        "raw_signals": [
+          "竞品发布“门口排队100桌”的短视频，但没有给出日期、门店定位或排号系统截图",
+          "地图平台近7天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也未新增翻台提示或预约限制"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    }
+  ]
+}

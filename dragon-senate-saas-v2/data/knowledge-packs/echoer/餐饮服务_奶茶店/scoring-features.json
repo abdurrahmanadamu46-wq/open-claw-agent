@@ -1,0 +1,532 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_store",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_store",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "downtown store",
+        "mall branch",
+        "campus location",
+        "specific milk tea shop branch"
+      ],
+      "why_it_matters": "Store detail makes timing, stock, coupon, and delivery answers much more actionable.",
+      "echoer_action": "Reply with store-aware language instead of generic statements."
+    },
+    {
+      "id": "explicit_pickup_or_delivery_time",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_pickup_or_delivery_time",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "ready by 4 pm",
+        "pick up at 6",
+        "deliver before the meeting",
+        "tonight after work"
+      ],
+      "why_it_matters": "Time detail moves the conversation from browsing into a real order path.",
+      "echoer_action": "Use the time signal to guide toward store, quantity, and order mode."
+    },
+    {
+      "id": "cup_count_or_large_order",
+      "applies_to": "incoming_message",
+      "feature_name": "cup_count_or_large_order",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "12 cups",
+        "20 drinks",
+        "order for the whole office",
+        "bulk milk tea order"
+      ],
+      "why_it_matters": "Cup count is one of the clearest signals that the user is close to an actual order.",
+      "echoer_action": "Acknowledge the scale and gather store, timing, and invoice details."
+    },
+    {
+      "id": "sweetness_or_ice_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "sweetness_or_ice_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "30 percent sugar",
+        "less ice",
+        "no ice",
+        "not too sweet"
+      ],
+      "why_it_matters": "Customization detail makes product guidance much more usable and signals genuine consideration.",
+      "echoer_action": "Keep the reply practical and build from the stated preference."
+    },
+    {
+      "id": "topping_or_flavor_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "topping_or_flavor_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "want pearls",
+        "no toppings",
+        "more tea aroma",
+        "fruitier option"
+      ],
+      "why_it_matters": "Flavor and topping signals help Echoer avoid generic recommendations.",
+      "echoer_action": "Use the stated preference to suggest the next smallest decision."
+    },
+    {
+      "id": "limited_drink_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "limited_drink_reference",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "seasonal drink",
+        "limited peach tea",
+        "still have the new item",
+        "when will it restock"
+      ],
+      "why_it_matters": "Limited-item questions often mean the user is close to purchasing if availability is confirmed.",
+      "echoer_action": "Gather store and timing instead of making a stock promise."
+    },
+    {
+      "id": "budget_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "budget_signal",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "per cup budget",
+        "budget for 10 drinks",
+        "cheapest workable option",
+        "under a certain total"
+      ],
+      "why_it_matters": "Budget questions can still be strong buying signals when paired with quantity or timing.",
+      "echoer_action": "Respect the budget and move toward cup count and trade-offs."
+    },
+    {
+      "id": "office_or_event_context",
+      "applies_to": "incoming_message",
+      "feature_name": "office_or_event_context",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "team meeting",
+        "office tea round",
+        "class event",
+        "birthday drinks"
+      ],
+      "why_it_matters": "Event context usually indicates coordination needs and a higher-value order.",
+      "echoer_action": "Collect timing, cup count, and any custom or invoice needs."
+    },
+    {
+      "id": "invoice_need",
+      "applies_to": "incoming_message",
+      "feature_name": "invoice_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "need invoice",
+        "fapiao",
+        "reimbursement",
+        "company expense"
+      ],
+      "why_it_matters": "Invoice language often signals a real business purchase rather than casual browsing.",
+      "echoer_action": "Acknowledge it and route toward structured order follow-up."
+    },
+    {
+      "id": "dietary_or_allergen_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "dietary_or_allergen_declared",
+      "category": "service_complexity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "milk allergy",
+        "lactose intolerance",
+        "nut allergy",
+        "soy-free"
+      ],
+      "why_it_matters": "Ingredient restrictions often signal real intent, but they also raise safety sensitivity.",
+      "echoer_action": "Treat the issue carefully and guide toward exact product confirmation."
+    },
+    {
+      "id": "caffeine_or_pregnancy_sensitivity",
+      "applies_to": "incoming_message",
+      "feature_name": "caffeine_or_pregnancy_sensitivity",
+      "category": "service_complexity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "pregnant",
+        "caffeine sensitive",
+        "for my child",
+        "avoid tea caffeine"
+      ],
+      "why_it_matters": "Suitability questions often precede a purchase but require careful handling.",
+      "echoer_action": "Avoid medical reassurance and ask for the exact drink and concern."
+    },
+    {
+      "id": "ready_to_order_now",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_order_now",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "order now",
+        "place it now",
+        "confirm now",
+        "I want to buy it today"
+      ],
+      "why_it_matters": "Direct order language is one of the clearest conversion signals for a beverage shop.",
+      "echoer_action": "Keep the reply warm and collect only the next necessary facts."
+    },
+    {
+      "id": "complaint_order_info_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_order_info_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "order number",
+        "have a photo",
+        "ordered at 3 pm",
+        "missing topping proof"
+      ],
+      "why_it_matters": "Complaint handling moves faster when the user is ready with order facts.",
+      "echoer_action": "Acknowledge the frustration and move the case toward after-sales handling."
+    },
+    {
+      "id": "membership_or_coupon_specific",
+      "applies_to": "incoming_message",
+      "feature_name": "membership_or_coupon_specific",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "buy one get one",
+        "member points",
+        "size upgrade coupon",
+        "promotion screenshot"
+      ],
+      "why_it_matters": "Specific offer language often means the user is close to placing an order if the rule is clarified.",
+      "echoer_action": "Ask for store and order channel instead of improvising the answer."
+    },
+    {
+      "id": "skeptic_but_engaged",
+      "applies_to": "incoming_message",
+      "feature_name": "skeptic_but_engaged",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "every milk tea shop says that",
+        "is it really fresh",
+        "looks overhyped",
+        "why should I believe this"
+      ],
+      "why_it_matters": "A skeptical user who keeps asking is still a live engagement opportunity.",
+      "echoer_action": "De-escalate and invite a concrete concern or preference."
+    },
+    {
+      "id": "guarantee_stock_or_eta_request",
+      "applies_to": "incoming_message",
+      "feature_name": "guarantee_stock_or_eta_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee it is in stock",
+        "promise it is ready in 10 minutes",
+        "definitely no queue",
+        "hold it for me no matter what"
+      ],
+      "why_it_matters": "Absolute timing or availability demands create disappointment and service risk if answered too confidently.",
+      "echoer_action": "Shift from guarantee language to store, timing, and order-mode clarification."
+    },
+    {
+      "id": "medical_or_zero_risk_request",
+      "applies_to": "incoming_message",
+      "feature_name": "medical_or_zero_risk_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guarantee it is safe in pregnancy",
+        "100 percent caffeine free",
+        "absolutely no allergen",
+        "promise my child can drink it"
+      ],
+      "why_it_matters": "Zero-risk suitability questions are high-risk and should not be handled casually.",
+      "echoer_action": "Treat it as a careful-confirmation case and escalate."
+    },
+    {
+      "id": "absolute_freshness_or_purity_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_freshness_or_purity_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "absolutely fresh fruit",
+        "never syrup",
+        "pure milk only",
+        "no additives at all"
+      ],
+      "why_it_matters": "Absolute ingredient claims are risky when they are not tied to exact product confirmation.",
+      "echoer_action": "Acknowledge the concern and move toward specific drink and store confirmation."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave phone number",
+        "call me now",
+        "drop your contact in comments"
+      ],
+      "why_it_matters": "Moving contact into public comments creates privacy and platform risk.",
+      "echoer_action": "Use platform DM as the safe bridge."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give the cheapest",
+        "price only",
+        "lowest total no details",
+        "quote now no context"
+      ],
+      "why_it_matters": "Price-only traffic needs reframing before it becomes a workable order lead.",
+      "echoer_action": "Move from price pressure to quantity, timing, and drink scope."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights almost never convert and can damage brand tone quickly.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges frustration",
+        "acknowledges urgency",
+        "acknowledges caution"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior for customer-facing drink orders and complaints.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_order_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_order_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for store",
+        "asks for order mode",
+        "asks for timing",
+        "asks for cup count"
+      ],
+      "why_it_matters": "A strong milk tea reply turns vague interest into usable ordering data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_guides_customization",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_guides_customization",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "asks about sweetness",
+        "asks about ice level",
+        "asks about toppings",
+        "asks whether they want milk or fruit"
+      ],
+      "why_it_matters": "Customization guidance is central to making milk tea recommendations feel useful rather than generic.",
+      "echoer_action": "Use the user's preference to narrow choices instead of listing everything."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send the store and time",
+        "share the drink name and ingredient concern",
+        "send the order details in DM"
+      ],
+      "why_it_matters": "One clear next step is easier for users to act on and easier for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_high_risk_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_high_risk_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "allergy topic escalated",
+        "pregnancy or caffeine topic escalated",
+        "complaint escalated"
+      ],
+      "why_it_matters": "Echoer should not improvise beyond safety, service, or liability boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps order details minimal in comments"
+      ],
+      "why_it_matters": "Order and complaint details are safer to handle privately once the conversation becomes specific.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_acknowledges_store_variation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_acknowledges_store_variation",
+      "category": "credibility",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "depends on the store",
+        "depends on timing",
+        "depends on order channel",
+        "depends on the exact drink"
+      ],
+      "why_it_matters": "Many milk tea questions are only answerable safely when store and product variation are acknowledged.",
+      "echoer_action": "Stay specific about what still needs confirmation."
+    },
+    {
+      "id": "reply_absolute_guarantee",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_guarantee",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed in stock",
+        "definitely ready in 10 minutes",
+        "100 percent safe",
+        "absolutely no allergen"
+      ],
+      "why_it_matters": "Absolute promises create avoidable service, health, and trust risk.",
+      "echoer_action": "Replace with condition-based and careful wording."
+    },
+    {
+      "id": "reply_health_or_weight_claim",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_health_or_weight_claim",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "healthy drink guarantee",
+        "weight-loss friendly promise",
+        "totally guilt free",
+        "safe for pregnancy for sure"
+      ],
+      "why_it_matters": "Health and body-related claims go beyond safe recommendation behavior.",
+      "echoer_action": "Keep guidance on ingredient choices and escalate when needed."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "customer is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_generic_best_seller_dump",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_generic_best_seller_dump",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 6,
+      "trigger_patterns": [
+        "just lists bestsellers",
+        "no customization guidance",
+        "one-size-fits-all recommendation",
+        "ignores the stated taste concern"
+      ],
+      "why_it_matters": "Generic drink lists feel inhuman and waste the user's actual preference signal.",
+      "echoer_action": "Narrow the reply around the user's stated taste, risk, or order context."
+    }
+  ]
+}

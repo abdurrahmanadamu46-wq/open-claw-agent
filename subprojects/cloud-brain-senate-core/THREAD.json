@@ -1,0 +1,11 @@
+﻿{
+  "thread_id": "brain-core-01",
+  "subproject_id": "cloud-brain-senate-core",
+  "name": "Cloud Brain Senate Core",
+  "ownership_mode": "same_repo_independent_thread",
+  "scope": "commander_plus_9_elders",
+  "nature": "cloud_brain_role_system",
+  "integration_mode": "api_webhook_mq_only",
+  "share_database": false,
+  "share_memory": false
+}

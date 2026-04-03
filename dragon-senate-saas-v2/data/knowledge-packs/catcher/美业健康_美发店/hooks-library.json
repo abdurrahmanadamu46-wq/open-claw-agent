@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "catcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "service_plus_time_hook",
+      "title": "项目加时间同时出现时的高意向钩子",
+      "description": "当线索同时出现具体项目方向和预约时间时，应优先判为高意向候选，因为这类表达比纯种草或纯价格更接近真实到店动作。",
+      "examples": [
+        "周五晚想做低维护剪发。",
+        "这周日想做一个显白发色。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "current_hair_scope_hook",
+      "title": "当前头发状态事实钩子",
+      "description": "用户主动提到旧色、漂过、长发、受损或头皮问题时，说明其预约意图更具体，也更适合进入高优先级承接。",
+      "examples": [
+        "头发之前漂过，周末想补色。",
+        "长发想修层次，不想剪太短。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_deadline_hook",
+      "title": "重要场合截止日期钩子",
+      "description": "婚礼、拍照、旅行和节日前的明确日期，是美发店线索中非常强的行动信号。只要再补足门店和时段，就可以进入高优先级承接。",
+      "examples": [
+        "周六婚礼，想周四晚上来。",
+        "出游前这两天想先染个头发。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_guidance_hook",
+      "title": "第一次做染烫引导钩子",
+      "description": "当用户同时出现第一次做、不会选项目和想约某个时段时，说明其并不是低意向，而是需要更清晰、更低压力的承接路径。",
+      "examples": [
+        "第一次染，周末有空，不知道选什么。",
+        "没烫过头发，想做自然一点的。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "branch_specific_booking_hook",
+      "title": "门店或商圈明确钩子",
+      "description": "当用户直接说出门店、商场、地铁站附近或写字楼附近时，说明其已经在做实际选择阶段，线索确定性明显提高。",
+      "examples": [
+        "想约你们国金那家。",
+        "万象城店这周末有位吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "returning_client_hook",
+      "title": "老客回流钩子",
+      "description": "用户提到之前来过、朋友推荐或上次做得不错时，通常意味着信任成本更低。只要再补齐本次项目和时间，就可快速交给 followup-ready 队列。",
+      "examples": [
+        "上次剪过锁骨发，这次想补个颜色。",
+        "朋友推荐我来问问这周能不能做。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

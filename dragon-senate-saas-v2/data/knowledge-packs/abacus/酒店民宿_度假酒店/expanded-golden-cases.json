@@ -1,0 +1,483 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_resort_hotel_peak_family_package_001",
+      "label": "happy_path",
+      "scenario_tag": "peak_holiday_family_package_with_deposit",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家三口计划在暑期周末入住 3 晚海景亲子套房，套餐含双早、温泉、儿童乐园和一次亲子旅拍，客人已支付 50% 定金，并愿意提前确认 6 岁儿童早餐补差和加床规则。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.44,
+          "segment_type": "暑期亲子直订套餐",
+          "lifetime_value": 116000,
+          "repeat_stay_probability": 0.31,
+          "referral_probability": 0.18
+        },
+        "cost_data": {
+          "cost_per_lead": 68,
+          "breakfast_cost": 156,
+          "hot_spring_redemption_cost": 180,
+          "kids_club_cost": 90,
+          "room_hold_opportunity_cost": 260,
+          "estimated_gross_margin_rate": 0.48
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序套餐页浏览",
+            "企业微信确认儿童年龄和床型",
+            "支付定金锁房"
+          ],
+          "last_meaningful_touch": "支付定金锁房",
+          "engagement_metrics": {
+            "package_page_views": 3,
+            "wechat_response_minutes": 4
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "扣除套餐兑现成本和旺季库存机会成本后 ROI 仍然健康",
+        "奖励信号应指向定金复核、儿童政策确认和活动预约落地"
+      ],
+      "mustAvoid": [
+        "因为是亲子需求就默认高利润",
+        "忽略儿童权益和旅拍兑现成本"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_weather_reschedule_credit_002",
+      "label": "edge_case",
+      "scenario_tag": "typhoon_reschedule_credit_preservation",
+      "input": {
+        "lead_assessment_or_campaign_result": "情侣已预订周末 2 晚私汤套餐，但出发前遇到台风预警导致离岛船班停运，客人不要求立即退款，接受 30 天内改期或等额代金券，并询问是否能保留已选好的 SPA 时段。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.37,
+          "segment_type": "天气受阻情侣改期",
+          "lifetime_value": 54000,
+          "reschedule_acceptance_rate": 0.63,
+          "direct_booking_rate": 0.46
+        },
+        "cost_data": {
+          "cost_per_lead": 52,
+          "refund_exposure": 980,
+          "voucher_breakage_rate": 0.12,
+          "spa_slot_holding_cost": 130,
+          "reacquisition_cost_if_lost": 110,
+          "estimated_gross_margin_rate": 0.29
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小程序直订",
+            "客服通知船班停运",
+            "客人提出改期或代金券方案"
+          ],
+          "last_meaningful_touch": "客人提出改期或代金券方案"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应低于原始正常出行场景但不应直接归零",
+        "长期分要体现关系和改期收入的保留价值",
+        "奖励信号应优先指向改期窗口、代金券规则和替代日期确认"
+      ],
+      "mustAvoid": [
+        "把受天气阻断的原订单继续当成已锁定营收",
+        "只因为不是立即退款就高估短期价值"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_destination_wedding_block_003",
+      "label": "happy_path",
+      "scenario_tag": "destination_wedding_room_block_with_lawn",
+      "input": {
+        "lead_assessment_or_campaign_result": "婚礼策划方希望为海边目的地婚礼预订 22 间房 2 晚，含草坪仪式、欢迎晚宴、次日早餐和机场接驳，已支付 30% 定金，并承诺 10 天内回传嘉宾名单和雨天备选方案。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.33,
+          "segment_type": "目的地婚礼房块",
+          "lifetime_value": 780000,
+          "planner_repeat_probability": 0.39,
+          "referral_chain_probability": 0.28
+        },
+        "cost_data": {
+          "cost_per_lead": 210,
+          "venue_staffing_cost": 1800,
+          "transport_cost": 760,
+          "weather_backup_cost": 680,
+          "room_block_release_risk_cost": 420,
+          "estimated_gross_margin_rate": 0.41
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "婚礼策划微信咨询",
+            "销售视频看场和报价",
+            "定金到账与档期锁定"
+          ],
+          "last_meaningful_touch": "定金到账与档期锁定"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和长期分都应偏高",
+        "ROI 需要覆盖场地、人力、接驳、雨天预案和房块释放风险",
+        "奖励信号应指向嘉宾名单、活动流程和余款节点确认"
+      ],
+      "mustAvoid": [
+        "只按房晚总额判断价值",
+        "忽略雨天和房块释放带来的履约风险"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_honeymoon_paid_celebration_004",
+      "label": "happy_path",
+      "scenario_tag": "honeymoon_paid_celebration_package",
+      "input": {
+        "lead_assessment_or_campaign_result": "新婚情侣直订 2 晚泳池别墅，额外购买求婚晚餐、房间布置和双人 SPA，已确认晚餐时段和布置偏好，并支付庆祝套餐全款。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.57,
+          "segment_type": "蜜月庆祝直订",
+          "lifetime_value": 69000,
+          "celebration_repeat_probability": 0.24,
+          "review_sharing_probability": 0.42
+        },
+        "cost_data": {
+          "cost_per_lead": 26,
+          "room_decoration_cost": 220,
+          "private_dinner_cost": 460,
+          "spa_service_cost": 300,
+          "complimentary_wine_cost": 80,
+          "estimated_gross_margin_rate": 0.52
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "公众号庆祝内容浏览",
+            "企业微信确认晚餐和布置偏好",
+            "庆祝套餐付款"
+          ],
+          "last_meaningful_touch": "庆祝套餐付款"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分应建立在付费庆祝包落地上",
+        "长期分可中高位保留，但理由应是直订和可能复购而非单纯浪漫情绪",
+        "奖励信号应指向庆祝时段、偏好确认和服务交接"
+      ],
+      "mustAvoid": [
+        "把情绪表达直接等同于高业务价值",
+        "忽略布置、酒水和 SPA 的履约成本"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_family_freebies_price_shopper_005",
+      "label": "failure_case",
+      "scenario_tag": "family_guest_asking_only_for_freebies",
+      "input": {
+        "lead_assessment_or_campaign_result": "客人反复咨询周末亲子房，要求免费加床、两名儿童早餐、儿童乐园票和延迟退房，但始终不肯确认日期，只说看天气和比价再定，也不接受任何定金。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.09,
+          "segment_type": "亲子价格比对客",
+          "lifetime_value": 14000,
+          "historical_no_show_rate": 0.22,
+          "complaint_conversion_rate": 0.19
+        },
+        "cost_data": {
+          "cost_per_lead": 38,
+          "extra_bed_cannibalization_cost": 160,
+          "child_breakfast_cost": 72,
+          "kids_ticket_cost": 120,
+          "late_checkout_cost": 90,
+          "estimated_gross_margin_rate": 0.21
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "电话比价",
+            "发送其他度假酒店套餐截图",
+            "再次要求免费儿童权益"
+          ],
+          "last_meaningful_touch": "再次要求免费儿童权益"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应偏低",
+        "免费加床和赠票诉求不能被当成价值信号",
+        "奖励信号应偏向筛选或改造为付费套餐而非继续让利"
+      ],
+      "mustAvoid": [
+        "因为诉求很多就误判成高意向",
+        "忽略儿童权益和晚退对净收益的侵蚀"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_workation_long_stay_006",
+      "label": "happy_path",
+      "scenario_tag": "workation_multi_night_extension",
+      "input": {
+        "lead_assessment_or_campaign_result": "一对远程办公住客原订 5 晚山景套房，希望继续连住到 14 晚，接受每周 3 次保洁和付费洗衣，并计划加购温泉年卡和两次晚餐。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.49,
+          "segment_type": "旅居续住",
+          "lifetime_value": 188000,
+          "extension_probability": 0.53,
+          "ancillary_spend_per_stay": 920
+        },
+        "cost_data": {
+          "cost_per_lead": 74,
+          "housekeeping_cost_per_visit": 24,
+          "laundry_margin_rate": 0.36,
+          "discount_rate_impact": 0.07,
+          "turnover_saving": 380,
+          "estimated_gross_margin_rate": 0.46
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "在住客提出续住",
+            "前台确认工作区和网络需求",
+            "财务确认分段结算"
+          ],
+          "last_meaningful_touch": "财务确认分段结算"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应显著偏高",
+        "ROI 需要体现获客成本摊薄和翻房损耗下降",
+        "奖励信号应指向续住日期、保洁频率和附加权益确认"
+      ],
+      "mustAvoid": [
+        "只因为长住折扣就低估价值",
+        "把在住续住当成普通低价询单"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_ota_live_package_low_margin_007",
+      "label": "failure_case",
+      "scenario_tag": "ota_live_sale_low_net_margin",
+      "input": {
+        "lead_assessment_or_campaign_result": "直播间售出大量 1 晚温泉双早套餐，附送延迟退房和儿童水乐园门票，订单量很大但周末可售海景房被快速占满，会员绑定率极低，退款改期也偏高。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.34,
+          "segment_type": "直播低价温泉套餐",
+          "lifetime_value": 12000,
+          "repeat_stay_probability": 0.08,
+          "refund_rate": 0.13
+        },
+        "cost_data": {
+          "cost_per_lead": 45,
+          "ota_commission_rate": 0.22,
+          "livestream_coupon_subsidy": 88,
+          "hot_spring_redemption_cost": 96,
+          "kids_ticket_cost": 60,
+          "estimated_gross_margin_rate": 0.17
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "直播间下单",
+            "限时券核销",
+            "入住后未转小程序会员"
+          ],
+          "last_meaningful_touch": "限时券核销",
+          "engagement_metrics": {
+            "orders_sold": 168,
+            "member_bind_rate": 0.06
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把订单量和入住热度直接等同于高 ROI",
+        "短期分和 ROI 都应保持谨慎甚至偏低",
+        "奖励信号应偏向会员沉淀、下一次直订和付费加购"
+      ],
+      "mustAvoid": [
+        "忽略佣金、补贴、赠票和旺季机会成本",
+        "因为直播热度高就抬高长期分"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_duplicate_member_referral_008",
+      "label": "happy_path",
+      "scenario_tag": "private_domain_referral_duplicate_across_channels",
+      "input": {
+        "lead_assessment_or_campaign_result": "老会员把酒店推荐给朋友家庭后，对方先在 OTA 私信问价，又通过企业微信索要亲子套餐，最终在小程序直订 2 间房 3 晚并支付定金，三条线索都对应同一趟暑期出游。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.41,
+          "segment_type": "老客推荐亲子直订",
+          "lifetime_value": 132000,
+          "referral_conversion_rate": 0.35,
+          "direct_booking_rate_after_referral": 0.58
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "ota_message": 30,
+            "wechat_followup": 14,
+            "mini_program_retargeting": 10
+          },
+          "package_redemption_cost": 260,
+          "saved_commission_rate": 0.16,
+          "estimated_gross_margin_rate": 0.49
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "OTA 私信问价",
+            "企业微信确认儿童乐园规则",
+            "小程序支付定金"
+          ],
+          "last_meaningful_touch": "小程序支付定金",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一个机会计算价值",
+        "长期分应体现推荐链路和直订资产价值",
+        "奖励信号应偏向定金落地、推荐来源标记和偏好沉淀"
+      ],
+      "mustAvoid": [
+        "把同一家庭出游当成多条高价值线索重复记分",
+        "只把最后一个触点记成功劳而忽略前置跟进"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_influencer_barter_009",
+      "label": "failure_case",
+      "scenario_tag": "influencer_room_swap_without_trackable_conversion",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位 18 万粉丝旅行博主希望旺季周末免费体验 2 晚泳池别墅、双人 SPA 和晚餐，回报是 3 条短视频和若干图文，但没有明确粉丝客群、优惠码归因或保底转化承诺。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.12,
+          "segment_type": "达人置换合作",
+          "audience_fit_score": 0.28,
+          "direct_conversion_rate_from_previous_collabs": 0.03,
+          "lifetime_value": 8000
+        },
+        "cost_data": {
+          "room_opportunity_cost": 2400,
+          "spa_cost": 320,
+          "dinner_cost": 460,
+          "coordination_cost": 180,
+          "estimated_gross_margin_rate": -0.05
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "达人私信合作",
+            "索要免费体验清单",
+            "未提供可追踪投放方案"
+          ],
+          "last_meaningful_touch": "未提供可追踪投放方案",
+          "engagement_metrics": {
+            "followers": 180000,
+            "average_likes_per_post": 6200
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和 ROI 都应保持低位或高度谨慎",
+        "不能把粉丝量和互动热度直接当成业务价值",
+        "奖励信号应转向淡季档期、优惠码归因和数据回传条件"
+      ],
+      "mustAvoid": [
+        "因为曝光听起来大就高估价值",
+        "忽略旺季房晚机会成本和无法归因的风险"
+      ]
+    },
+    {
+      "id": "abacus_resort_hotel_facility_closure_recovery_010",
+      "label": "failure_case",
+      "scenario_tag": "facility_closure_service_recovery_before_arrival",
+      "input": {
+        "lead_assessment_or_campaign_result": "一家四口已订 2 晚温泉套餐，出发前得知户外主泡池临时维护关闭，要求经理说明补救方案后再决定是否保留订单，当前情绪不满并担心孩子体验缩水。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.47,
+          "segment_type": "设施关闭前置客诉修复",
+          "lifetime_value": 86000,
+          "repeat_stay_probability_if_recovered": 0.27,
+          "complaint_spread_risk": 0.21
+        },
+        "cost_data": {
+          "cost_per_lead": 20,
+          "compensation_reserve": 260,
+          "alternative_activity_cost": 180,
+          "refund_exposure": 1680,
+          "brand_risk_reserve": 450,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "短信通知设施维护",
+            "客服接到质询电话",
+            "经理回电解释补救方案"
+          ],
+          "last_meaningful_touch": "经理回电解释补救方案",
+          "duplicate_merge_required": false
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应明显压低并转向止损",
+        "长期价值不能直接归零，但必须建立在修复成功前提上",
+        "奖励信号应指向经理介入、替代活动和回访闭环，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把历史消费理解成当前高成交意向",
+        "用继续送无关赠项替代真实修复和边界控制"
+      ]
+    }
+  ]
+}

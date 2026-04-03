@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"catcher","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"intent_explicitness","title":"上门动作显性度","description":"评估线索是否明确表达想约、想来、这周末能不能安排、有没有上门时段等动作。","examples":["高分：周六能不能帮我安排一辆车。","低分：最近想找搬家。"],"priority":"high"},
+  {"id":"scene_specificity","title":"场景方向清晰度","description":"高分线索会明确提到同城、跨城、办公室搬迁和仓储等具体方向。","examples":["高分：最近想做跨城搬家。","低分：想搬点东西。"],"priority":"high"},
+  {"id":"scope_clarity","title":"房型范围清晰度","description":"评估线索是否给出房型、楼层、电梯和重点大件。","examples":["高分：89 平两居，无电梯五楼。","低分：来帮我搬一下。"],"priority":"high"},
+  {"id":"timing_urgency","title":"时间窗口紧迫度","description":"月底、入住、返城和周末来客节点越明确，分值越高。","examples":["高分：这周六前一定要搬。","低分：有空再约。"],"priority":"medium"},
+  {"id":"trust_readiness","title":"信任推进 readiness","description":"看用户是否愿意继续补充房型、范围、门店和时间，而不是停留在泛咨询。","examples":["高分：可以，我把件数和时间发你。","低分：先看看再说。"],"priority":"medium"},
+  {"id":"risk_boundary","title":"风险边界稳定度","description":"涉及绝不加价、绝不磕碰和超范围上门的线索要扣分，避免把高风险话题误算成高价值。","examples":["高风险：保证不加价、今天一定上门。","低风险：想找适合我家情况、门店能说明清楚的路线。"],"priority":"medium"}
+]}

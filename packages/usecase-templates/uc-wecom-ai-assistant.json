@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-wecom-ai-assistant",
+  "name": "企业微信 AI 助手",
+  "name_en": "WeCom AI Assistant",
+  "category": "customer_service",
+  "difficulty": "beginner",
+  "description": "在企业微信场景中接入回声虾，实现常见咨询回复和线索预分流。",
+  "pain_point": "企微会话通常直接连着客户，人工漏回消息的代价高，但全手动值守成本也很高。",
+  "lobsters": ["echoer"],
+  "skills_required": ["echoer_dm_auto_reply", "echoer_wechat_funnel"],
+  "channels": ["wecom", "wechat"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "接入企业微信入口",
+      "code_type": "config",
+      "code": "配置企业微信机器人或企业微信消息转发入口。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "设计回复语气",
+      "code_type": "prompt",
+      "code": "定义品牌语气、禁用表述和升级人工规则。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "配置线索标记逻辑",
+      "code_type": "config",
+      "code": "设定何时把对话标为潜在线索，并推送给销售或回访虾。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用企微助手",
+      "code_type": "none",
+      "code": "回声虾开始值守企微会话，必要时把高意向客户转给回访流程。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "企微是强信任场景，建议默认保留人工接管入口。",
+    "可先只让 AI 做首轮接待和信息收集。",
+    "如果要引导加微信或预约，务必检查平台合规边界。"
+  ],
+  "estimated_cost_per_run": "$0.01-0.05",
+  "tags": ["企业微信", "客户沟通", "线索", "助手"]
+}

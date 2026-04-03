@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_社区超市","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+{"id":"hook_daily_supply_cluster","title":"家庭补货和便民问题簇集中冒头触发器","description":"当零食、牛奶、纸品、饮料和晚市补货在评论、私信和本地热门内容中密集出现时，应立即触发趋势监测。","examples":["评论区连续出现牛奶和纸巾有没有活动的问题","零食和饮料内容被密集追问","晚高峰补货咨询明显增多"],"priority":"high"},
+{"id":"hook_compliance_shift","title":"价格和送达承诺规则变化触发器","description":"当平台或监管更新绝对低价、极速送达和导流规则时，应立即触发高优先级监测。","examples":["平台新增对绝对低价表述的限制","商家后台要求补充商品说明和资质","导流方式被平台进一步收紧"],"priority":"high"},
+{"id":"hook_service_structure_change","title":"配送与会员权益结构变化触发器","description":"周边社区超市一旦调整配送、自提、会员、满减和售后服务结构，通常代表本地竞争逻辑发生变化。","examples":["会员日被写进主卖点","自提价和满额配送被拆成组合权益","退换和赔付被写进服务保障"],"priority":"high"},
+{"id":"hook_complaint_cluster","title":"缺货和配送投诉簇触发器","description":"当评论区开始集中出现缺货、价格不一致、配送超时和替换品争议等反馈时，必须立即提升为高优先级风险信号。","examples":["一周内多条评价提到价格变动","多平台同时出现配送超时的吐槽","评论区开始集中投诉售后和替换问题"],"priority":"high"},
+{"id":"hook_seasonal_window_signal","title":"节前和开学补给窗口触发器","description":"节前囤货、开学补给和高温饮料窗口会让社区超市咨询与到店快速变化。","examples":["节前囤货内容增多","开学补给内容升温","高温季饮料咨询明显增加"],"priority":"high"},
+{"id":"hook_repeat_purchase_signal","title":"复购与流失信号触发器","description":"当老客户和准客户更频繁地讨论会员、补货、团购和比价犹豫时，说明稳定成交和流失风险在抬头。","examples":["老客户更多在问会员价","私域里反复提到还在比较别家","到货提醒和团购单被反复收藏"],"priority":"medium"}]}

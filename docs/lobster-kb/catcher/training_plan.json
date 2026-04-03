@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "lobster": "catcher",
+    "name": "铁钩",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "cat_fail_001：评分通胀——为了数字好看给线索打高分，导致followup接到大量低质量'热线索'",
+    "cat_fail_002：漏掉沉默高意向——只关注主动评论用户，忽略私信中长时间浏览同一内容但未询问的用户"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "CAT-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "针对cat_fail_001：写一条每月强制执行的评分准确性校验规则",
+      "deliverable": "一条if-then规则写入skills.json：'每月底，核查4分以上热线索的实际成交率，如果低于[X%]，则判定评分虚高，必须启动评分标准复盘'",
+      "pass_criteria": [
+        "规则必须指定成交率阈值（对照skills.json中cat_score_001的已验证数据设定）",
+        "规则是可自动执行的检查，不靠记忆",
+        "规则写入skills.json的known_failure_patterns.prevention字段"
+      ],
+      "fail_action": "重做，没有明确阈值的规则不算可执行规则",
+      "collab_required": "abacus（提供成交率数据）"
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "CAT-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "对一批真实评论/私信记录执行5维意向评分，并输出完整线索移交包",
+      "deliverable": "≥10条线索的评分表（含5维分项得分+总分+等级），以及每条热线索的标准移交包（7字段）",
+      "pass_criteria": [
+        "每条评分的分项得分有明确依据（'行为强度=2分，因为用户主动私信'）",
+        "热线索移交包的context字段≥2句话，回答'用户看了什么'和'用户表达了什么需求'",
+        "followup收到后不需要追问任何补充信息"
+      ],
+      "fail_action": "followup追问超过1个问题→FAIL，重做移交包",
+      "collab_required": "followup（验证移交包完整性）"
+    },
+    {
+      "task_id": "CAT-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "针对一个真实行业（美妆/餐饮/B2B任选），建立该行业的线索时效规则",
+      "deliverable": "一张行业线索时效表：行业名/决策周期/热线索有效期/温线索有效期/降级触发条件",
+      "pass_criteria": [
+        "必须基于真实行业案例（不能是凭空设定的数字）",
+        "每条规则说明'为什么这个行业是这个时效'",
+        "写入skills.json并标注verified_count=0（待实战验证）"
+      ],
+      "fail_action": "重做，没有逻辑说明的时效规则直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "CAT-T003",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "从历史线索记录中识别出≥3个假意向案例，并总结新的识别特征",
+      "deliverable": "假意向案例分析：每个案例的识别特征、为什么最初判断错误、写入skills.json一条新的假意向特征",
+      "pass_criteria": [
+        "案例必须真实，每个案例说明'什么信号让我误判为真意向'",
+        "新识别特征必须是skills.json中cat_fake_001没有覆盖的新类型",
+        "新特征写入skills.json后verified_count=0（诚实标注）"
+      ],
+      "fail_action": "重做，重复已有特征的新增条目不算PASS",
+      "collab_required": null
+    },
+    {
+      "task_id": "CAT-T004",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "设计一套识别'沉默高意向'用户的监控方案",
+      "deliverable": "方案文档：监控指标定义/触发条件/触达时机/话术建议（给echoer用）",
+      "pass_criteria": [
+        "监控指标必须具体（不能是'浏览时间长'，要说'同一内容查看≥X次且未询问'）",
+        "触达时机有明确的时间窗口",
+        "话术建议说明为什么不能用通用开场白"
+      ],
+      "fail_action": "重做，指标模糊的方案不可执行",
+      "collab_required": "echoer（执行触达）"
+    },
+    {
+      "task_id": "CAT-T005",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "回顾上月评分结果，与followup成交反馈做校验，验证评分准确性",
+      "deliverable": "评分准确性报告：4分以上线索的实际成交率/评分与成交的相关性/需要调整的评分项",
+      "pass_criteria": [
+        "4分以上线索实际成交率必须用真实数据计算（不能估算）",
+        "如果成交率低于15%，必须指出哪个评分维度虚高",
+        "给出下月评分标准调整建议（至少1条）"
+      ],
+      "fail_action": "重做，没有真实数据支撑的准确性报告直接FAIL",
+      "collab_required": "followup（提供成交结果）、abacus（数据核验）"
+    },
+    {
+      "task_id": "CAT-T006",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "处理一批混合线索（包含真假意向），做完整的筛选+评分+分拣",
+      "deliverable": "线索分拣结果：热线索移交包/温线索列表/冷线索归档/假意向观察池，各类数量与占比",
+      "pass_criteria": [
+        "假意向识别准确率≥80%（由abacus事后用成交数据反验证）",
+        "热线索移交包格式完整（7字段无遗漏）",
+        "观察池中每条记录说明'观察原因'"
+      ],
+      "fail_action": "重做",
+      "collab_required": "abacus（准确率验证）"
+    },
+    {
+      "task_id": "CAT-T007",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "和followup做一次完整的协作复盘：哪些移交包让followup难以开场，找出根因改进",
+      "deliverable": "协作复盘报告：问题移交包案例（≥3个）/根因/移交包模板改进方案",
+      "pass_criteria": [
+        "每个问题案例指出具体是哪个字段缺失或质量差",
+        "改进方案是可以立刻执行的（不是'以后注意'）",
+        "改进后模板写入skills.json的cat_handoff_001"
+      ],
+      "fail_action": "重做",
+      "collab_required": "followup"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "CAT-DRILL-001",
+      "description": "接到一批评论区+私信的混合信号，30分钟内完成评分+分拣+热线索移交包输出",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "热线索移交包7字段全部填写",
+        "followup收到后无需追问",
+        "假意向全部归入观察池（不转followup）"
+      ],
+      "evaluation": "followup反馈 + abacus事后准确率验证"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "CAT-T001到CAT-T007全部PASS",
+      "连续3个月4分以上热线索实际成交率≥20%",
+      "移交包质量合格率≥95%（followup收到后无需追问）",
+      "假意向识别准确率≥80%（abacus数据验证）",
+      "CAT-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

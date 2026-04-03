@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_cup_proof_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实杯型与出杯证据可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实主打饮品、杯身标签、封杯动作和拿杯交付放在前排位置，而不是依赖海报、装修和样片式静物代替真实出杯。",
+      "high_score_signals": [
+        "前 3 镜内出现真实主打杯型或封杯交付画面",
+        "杯型、标签和门店关系可验证",
+        "观众能快速判断这是本店真实在售饮品"
+      ],
+      "low_score_signals": [
+        "开场长时间只有门头、装修和海报墙",
+        "饮品像修图样杯或外部广告图",
+        "看不出这杯是否真实出自本店"
+      ],
+      "score_rule": "真实杯型和真实交付证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应奶茶店最核心的来单理由，例如主打杯、顺路自提、真料茶底、拼单稳定、季节限定或热饮切换，而不是泛泛拍得好看。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体饮品或场景理由",
+        "一眼能知道视频在解决哪种下单犹豫",
+        "封面杯型或场景与正文首镜一致"
+      ],
+      "low_score_signals": [
+        "封面只有氛围感没有具体杯型理由",
+        "标题写主打饮品，画面却是空店或门头",
+        "卖点过空，只写颜值、新店或高级感"
+      ],
+      "score_rule": "越能用真实画面回答为什么现在要点这杯，得分越高。"
+    },
+    {
+      "id": "fresh_making_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "现做与原料处理真实感",
+      "weight": 0.12,
+      "definition": "镜头是否展示萃茶、切果、量杯加料、打奶盖、摇杯、封杯等真实操作证据，让现做和真料感可被感知。",
+      "high_score_signals": [
+        "出现萃茶、切果、加料或封杯等连续动作",
+        "前后镜头能对上对应成杯",
+        "真实操作而非纯装饰性动作"
+      ],
+      "low_score_signals": [
+        "只拍成杯静物却强调现做现萃",
+        "工位画面好看但信息不足",
+        "制作动作和后续成杯对不上"
+      ],
+      "score_rule": "越能让观众感到这杯是刚做好的、原料是真的，得分越高。"
+    },
+    {
+      "id": "texture_and_topping_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "层次料感与口感可置信度",
+      "weight": 0.12,
+      "definition": "当脚本强调奶盖、珍珠、果肉、芋泥、低糖茶感或满料体验时，镜头是否用杯身层次、手持比例和入口反馈来建立真实预期。",
+      "high_score_signals": [
+        "透明杯侧拍能看清层次和料量",
+        "有吸管带料、插管或入口反馈对应",
+        "杯型大小和多料感有真实参照"
+      ],
+      "low_score_signals": [
+        "只有顶视角和包装，没有料感信息",
+        "层次全靠后期调色和补光硬撑",
+        "文案说满料厚奶盖，画面看不出来"
+      ],
+      "score_rule": "越能让观众提前判断这杯喝起来是什么感觉，得分越高。"
+    },
+    {
+      "id": "pickup_turnover_and_scene_fit",
+      "metric_group": "visual_proof_density",
+      "feature": "取杯节奏与场景适配证明密度",
+      "weight": 0.12,
+      "definition": "分镜是否用排队、自提架翻杯、多人拿单、骑手取单、通勤拿走或工位分发等真实节奏，证明门店适合对应的下午茶、逛街、放学后或顺路场景。",
+      "high_score_signals": [
+        "出现真实取杯、自提架或多人交付节奏",
+        "能区分工作日下午茶、晚高峰、周末或放学后场景",
+        "位置和人流证据彼此呼应"
+      ],
+      "low_score_signals": [
+        "空店或单杯素材硬说高峰人气",
+        "场景判断完全依赖旁白或字幕",
+        "拿杯画面和门店位置毫无关系"
+      ],
+      "score_rule": "真实取杯和真实场景越清楚、越可验证，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "营业窗口限制下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配奶茶店常见限制，包括下午茶与晚高峰窗口、吧台拥挤、可拍工位、顾客避脸、季节原料时效、热饮与冷饮并线和拍摄时长。",
+      "high_score_signals": [
+        "关键镜头与真实营业窗口匹配",
+        "吧台、门头、办公室、校园或商场权限有前置说明",
+        "小团队也能在给定时长内完成拍摄"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计跨多时段、多场景和全流程高峰链路",
+        "关键镜头默认顾客和员工一定配合",
+        "拍摄动线明显和营业节奏冲突"
+      ],
+      "score_rule": "越能在真实门店状态下直接执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确性",
+      "weight": 0.12,
+      "definition": "分镜是否准确列出奶茶店内容所依赖的现有杯型素材、补拍口味、吧台工位、门头位置、人物授权和取杯场景，不留模糊假设。",
+      "high_score_signals": [
+        "封面和关键镜头都对应具体杯型、具体时段或具体区域",
+        "补拍需求写到杯数、标签、工位和人群层面",
+        "缺失素材有明确替代路径"
+      ],
+      "low_score_signals": [
+        "只写需要门店素材这种空话",
+        "默认所有口味和原料都能随时补拍",
+        "不写人物授权、吧台边界和高峰限制"
+      ],
+      "score_rule": "依赖越具体、假设越少、越方便执行，得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.1,
+      "definition": "当门店缺少客流、制作权限、真实杯型或交付场景时，方案是否诚实降级为单杯推荐、位置便利、限定预告或开业预告，而不是硬做爆款探店。",
+      "high_score_signals": [
+        "明确标注当前缺口和阶段限制",
+        "分镜和执行分数随着素材边界同步调整",
+        "替代路线仍保留奶茶店特征和可信度"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高执行分和高人气叙事",
+        "用海报、效果图或外部素材冒充营业现场",
+        "后续执行大概率因权限和时段失败"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

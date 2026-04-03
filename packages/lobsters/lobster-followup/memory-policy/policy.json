@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.memory-policy.v0.1",
+  "roleId": "followup",
+  "readScope": [
+    "tenant_memory",
+    "mission_memory"
+  ],
+  "writeScope": [
+    "mission_memory",
+    "tenant_memory"
+  ],
+  "writePolicy": {
+    "allowAutoWrite": true,
+    "requireFeedbackCompileForGlobalPromotion": true
+  },
+  "retentionPolicy": {
+    "sessionDays": 3,
+    "missionDays": 14,
+    "tenantDays": 90
+  }
+}

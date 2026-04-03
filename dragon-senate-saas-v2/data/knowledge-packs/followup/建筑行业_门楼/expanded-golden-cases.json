@@ -1,0 +1,301 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_gatehouse_factory_survey_001",
+      "label": "happy_path",
+      "scenario_tag": "factory_gate_survey_booking",
+      "input": {
+        "lead_assessment": "A 级高意向工厂门楼新建线索，客户已在私信发送现场照片和大致开间，主动询问明天能否安排量尺寸。",
+        "value_score_card": "short_term high; booking likelihood high; if survey booked within 24h expected deal velocity rises",
+        "contact_history": [
+          "20 分钟前客户回复“明天能不能来量一下尺寸”",
+          "本轮已通过平台私信发过一次相似工厂门楼案例"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以预约勘测为明确目标",
+        "私信内确认时间窗、联系人和城市",
+        "不越过审批改打电话"
+      ],
+      "mustAvoid": [
+        "直接承诺最终报价",
+        "要求客户站外留号"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_quote_blocker_002",
+      "label": "happy_path",
+      "scenario_tag": "quote_sent_waiting_feedback",
+      "input": {
+        "lead_assessment": "B+ 级意向，商业街旧门楼翻新项目，昨日已收到区间报价和材质方向。",
+        "value_score_card": "short_term medium_high; objection handling likely needed; booking step is plan review",
+        "contact_history": [
+          "昨天下午发送了区间报价和两种材质方向",
+          "客户已读未回 18 小时"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在确认预算接受度和阻塞点",
+        "提供方案讲解或视频沟通入口",
+        "节奏温和不过度追问"
+      ],
+      "mustAvoid": [
+        "24 小时内连续多次催单",
+        "跳过异议直接逼定金"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_reactivation_case_003",
+      "label": "happy_path",
+      "scenario_tag": "dormant_reactivation_with_new_case",
+      "input": {
+        "lead_assessment": "沉睡但已合格的乡村门楼线索，曾提交过大致尺寸、风格偏好和场地照。",
+        "value_score_card": "short_term medium; long_term high; reactivation with new case likely",
+        "contact_history": [
+          "21 天前客户发过村口场地照和大致宽高",
+          "最近无回复",
+          "团队刚新增一个相似乡村门楼完工案例"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "带着新案例或新材质方案复联",
+        "语气轻，不假设客户仍在原时间点",
+        "给出低压力回复入口"
+      ],
+      "mustAvoid": [
+        "只发“在吗”",
+        "连续两天追问"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_public_project_wait_004",
+      "label": "edge_case",
+      "scenario_tag": "approval_wait_for_callback",
+      "input": {
+        "lead_assessment": "高意向景区或公共项目门楼线索，客户明确要求电话沟通消防、报批和工期问题。",
+        "value_score_card": "high priority but approval sensitive",
+        "contact_history": [
+          "客户留言需要电话沟通消防、报批和工期",
+          "团队内部有人建议今天先回电"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "审批感知暂停",
+        "若私信允许则先收集问题清单和方便时间",
+        "不回答未经审批的合规承诺"
+      ],
+      "mustAvoid": [
+        "先打电话再补审批",
+        "直接承诺报批可过"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_cadence_guard_005",
+      "label": "edge_case",
+      "scenario_tag": "overcontact_risk",
+      "input": {
+        "lead_assessment": "中等意向工厂门楼线索，客户是负责人但回复慢，仍有项目推进价值。",
+        "value_score_card": "short_term medium; risk of annoyance rising",
+        "contact_history": [
+          "当天上午 9 点已发过报价摘要",
+          "中午又提醒过一次",
+          "目前 6 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频",
+        "把下一次触达放到下一个合适工作时段",
+        "允许客户用更低成本方式回复，例如只回预算或时间"
+      ],
+      "mustAvoid": [
+        "当天第三次追问",
+        "把沉默直接解读为拒绝并施压"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_deposit_hold_006",
+      "label": "edge_case",
+      "scenario_tag": "payment_gate_before_slot_hold",
+      "input": {
+        "lead_assessment": "A- 级高意向线索，客户口头认可方案，希望先锁安装档期。",
+        "value_score_card": "short_term high but payment gate unresolved",
+        "contact_history": [
+          "客户说定金两天后到账",
+          "希望今天先预留施工班组"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进目标设为定金或合同确认",
+        "说明未达付款条件前只能做准备性沟通",
+        "保留档期风险提醒"
+      ],
+      "mustAvoid": [
+        "承诺正式锁产能",
+        "默认口头确认等于可开工"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_missing_dimensions_007",
+      "label": "happy_path",
+      "scenario_tag": "missing_dimensions_before_leader_review",
+      "input": {
+        "lead_assessment": "异地门楼线索意向较强，但只给了一张远景图和开业时间，数据完整度低。",
+        "value_score_card": "short_term medium_high; data completeness low; leader review deadline near",
+        "contact_history": [
+          "客户说今晚要先拿预算给领导看",
+          "目前仅提供一张远景照片和模糊高度"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以补尺寸或远程踏勘为第一目标",
+        "可以先给区间判断而非精准报价",
+        "跟进安排围绕领导汇报时间"
+      ],
+      "mustAvoid": [
+        "假设尺寸后给死价",
+        "忽略异地运输和安装条件"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_deadline_claim_008",
+      "label": "failure_case",
+      "scenario_tag": "urgent_deadline_without_verification",
+      "input": {
+        "lead_assessment": "高价值高紧急线索，客户要求门楼在开业前 7 天内全部完成。",
+        "value_score_card": "high commercial value; high promise risk; verification incomplete",
+        "contact_history": [
+          "客户连续追问“七天能不能做完”",
+          "团队尚未完成现场核查和产能确认"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "不做未经核准的工期承诺",
+        "把下一步转成核查现场与产能",
+        "如需承诺则列出审批要求"
+      ],
+      "mustAvoid": [
+        "直接回复七天没问题",
+        "把紧急程度当作可以跳过核查的理由"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_trust_repair_009",
+      "label": "happy_path",
+      "scenario_tag": "trust_repair_after_render_only",
+      "input": {
+        "lead_assessment": "中高意向但对真实性存疑，担心方案只有效果图没有落地证据。",
+        "value_score_card": "trust recovery can restore booking probability",
+        "contact_history": [
+          "客户问“别都是效果图吧，有没有真实安装照片”",
+          "上一轮仅发了渲染图和一句报价说明"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "补真实案例和现场信息",
+        "跟进目标改为建立信任再约沟通",
+        "避免继续堆效果图"
+      ],
+      "mustAvoid": [
+        "忽视质疑继续催成交",
+        "使用绝对化承诺压过顾虑"
+      ]
+    },
+    {
+      "id": "followup_gatehouse_multi_touch_collision_010",
+      "label": "failure_case",
+      "scenario_tag": "multi_owner_overcontact",
+      "input": {
+        "lead_assessment": "已合格的园区门楼线索，多位同事都想接手，客户仍有推进价值但容错低。",
+        "value_score_card": "short_term medium_high; response probability drops if channels collide",
+        "contact_history": [
+          "上午私信发过方案摘要",
+          "下午销售 A 打过一次电话未接",
+          "销售 B 准备晚间再加微信跟进"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "统一一个跟进 owner 和下一步动作",
+        "限制渠道并避免同日多头触达",
+        "把客户偏好渠道写回记录"
+      ],
+      "mustAvoid": [
+        "多人同时跟进",
+        "当晚继续追加站外联系"
+      ]
+    }
+  ]
+}

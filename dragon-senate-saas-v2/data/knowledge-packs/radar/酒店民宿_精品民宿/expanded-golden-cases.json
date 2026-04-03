@@ -1,0 +1,199 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_boutique_homestay_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测精品民宿在 OTA 与本地生活平台上的标签、场景承诺与退改规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "ota_plus_local_life",
+        "competitor_watchlist": [
+          "山野精品民宿A",
+          "庭院设计民宿B"
+        ],
+        "raw_signals": [
+          "携程商家后台公告要求涉及“宠物友好”“私汤”“可做饭”“包栋”“免费延迟退房”等标签的页面信息必须可验证，违规可能被降权处理",
+          "美团民宿更新“山景房”“落地窗”“独立庭院”等场景卖点的展示规范，强调不得夸大景观和空间独享权益",
+          "两家竞品同步把标题里的“私汤不限次”“拍照无死角”改成“部分房型含私汤权益”“景观以房型说明为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案调整",
+        "需要指出对标签展示、场景承诺和退改边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略官方商家公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_boutique_homestay_weekend_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现精品民宿在周末微度假窗口中的机会信号",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "destination_market_plus_search",
+        "competitor_watchlist": [
+          "山谷民宿C",
+          "宠物友好民宿D"
+        ],
+        "raw_signals": [
+          "本地近郊景区和市集公众号连续发布清明前后赏花、夜游和周末手作活动日程",
+          "地图问答、OTA 评论和私信中连续出现“能带宠物吗”“周五晚到能自助入住吗”“能做饭烧烤吗”“浴缸是否有一次性套”“适合带娃吗”“能否延迟退房”等问题",
+          "同片区三家竞品同步上新“连住两晚”“宠物同行礼包”“周末双早+下午茶”套餐"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城活动排期与用户咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求窗口",
+        "把跨城网红热度当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_boutique_homestay_review_cluster_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测精品民宿在节前窗口中的履约风险变化",
+        "time_window": "last_72_hours",
+        "platform_or_market_context": "ota_plus_map_reviews",
+        "competitor_watchlist": [
+          "湖畔精品民宿E"
+        ],
+        "raw_signals": [
+          "过去 72 小时地图评价和 OTA 评论连续提到“房间景观与详情页不一致”“浴缸清洁一般”“夜间隔音差”“停车指引难找”",
+          "多条公开评价提到商家宣称宠物友好，但大型犬到店被临时加收费用或限制活动区域",
+          "没有新的平台规则变化，也没有发现同片区竞品同步出现类似承诺调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "多平台差评聚类应被识别为高价值风险信号",
+        "需要指出这是经营履约风险而非平台规则变化",
+        "关注级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "因为没有官方公告就忽略重复客诉",
+        "把零散差评和结构性聚类混为一谈"
+      ]
+    },
+    {
+      "id": "radar_boutique_homestay_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测精品民宿在平台流量分配与标签扶持上的变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "ota_platform",
+        "competitor_watchlist": [
+          "设计民宿F"
+        ],
+        "raw_signals": [
+          "商家群截图称“下周开始没有私汤或宠物标签的精品民宿会被平台降权，且周末流量会优先给包栋房源”，但截图没有公告来源",
+          "未发现携程、美团民宿或飞猪商家后台的正式通知，服务商口径也互相矛盾",
+          "核心竞品的标题、房型标签和退改政策暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源传闻应被降级处理",
+        "缺少官方通知和竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断平台算法已经确认变更",
+        "把群聊截图表述成已落地政策"
+      ]
+    },
+    {
+      "id": "radar_boutique_homestay_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别精品民宿的内容热度与真实经营机会差异",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "近郊精品民宿G"
+        ],
+        "raw_signals": [
+          "外地海边洞穴风民宿短视频爆火，内容大量强调拍照、日落、泳池和情侣打卡",
+          "本地搜索、评论和问答则集中在“宠物能不能去”“有没有厨房”“周五晚到是否方便”“适不适合带娃”“能否连住两晚”“停车是否容易”",
+          "本地竞品开始强化“周末连住优惠”“宠物同行”“可做饭庭院”和“延迟退房”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地微度假需求应高于跨城审美爆款热度",
+        "需要区分内容热度与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向网红打卡路线",
+        "忽略本地搜索与竞品动作形成的互证"
+      ]
+    },
+    {
+      "id": "radar_boutique_homestay_false_sellout_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描精品民宿是否出现演出带来的爆满与涨价行情",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“演唱会一来周边精品民宿全满房，价格翻倍”，只给出一段模糊大厅和烟花视频，没有日期和门店定位",
+          "OTA 房态日历和地图评论量近几天基本平稳，没有出现明显售罄、涨价或入住讨论激增",
+          "没有发现演出主办方加场、景区联动活动或交通异常等外部事件与之互证"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有房态、评论和外部事件互证时不能判定为市场已变化"
+      ],
+      "mustAvoid": [
+        "把自媒体爆料描述成已确认的需求激增",
+        "用单条模糊视频替代可验证的市场证据"
+      ]
+    }
+  ]
+}

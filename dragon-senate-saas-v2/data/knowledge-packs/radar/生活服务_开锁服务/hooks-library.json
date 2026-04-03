@@ -1,0 +1,7 @@
+{"industry":"生活服务_开锁服务","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"urgent_unlock_time_hook","title":"急单时效钩子","description":"当用户同时提到现在、今晚、回家前等时间窗口和开锁需求时，应优先标记为高价值信号。","examples":["现在被反锁门外，想问多久能到。","今晚回家进不去，想先确认能不能上门。"],"priority":"high"},
+  {"id":"lock_type_scope_hook","title":"锁型门型钩子","description":"出现防盗门、室内门、智能锁、车锁和门禁时，说明线索更接近真实成交。","examples":["防盗门反锁了。","智能锁想换新。"],"priority":"high"},
+  {"id":"change_lock_hook","title":"换锁换芯钩子","description":"换锁、换芯和钥匙复制需求如果带着明确范围和时段，也应视为更高价值信号。","examples":["租房想换个锁芯。","新房想把入户锁整套换掉。"],"priority":"high"},
+  {"id":"identity_trust_hook","title":"身份核验与备案焦虑钩子","description":"用户主动追问要不要身份证、师傅有没有备案和是否正规时，说明信任是关键影响因子。","examples":["上门要不要核验身份。","你们是正规备案的吗。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"租房与夜间窗口钩子","description":"租房换锁、夜间反锁和节假日返家节点一旦带着明确日期出现，应显著提权。","examples":["今晚租房门打不开。","周末交房前想换锁。"],"priority":"high"},
+  {"id":"office_vehicle_hook","title":"门禁与车锁钩子","description":"办公室门禁、店铺卷帘门和车锁场景常伴随更高履约复杂度，应单独关注。","examples":["办公室门禁打不开。","车钥匙锁车里了。"],"priority":"medium"}]}

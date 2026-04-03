@@ -1,0 +1,488 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_fast_food_first_order_lunch_combo_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "First time ordering from you. I need something filling for lunch but I only have about half an hour. What should I get?",
+        "brand_tone": "efficient, warm, and human",
+        "negative_patterns": [
+          "generic bestseller dumping",
+          "exact speed guarantee"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user wants a quick decision",
+          "weekday lunch scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the lunch-time pressure",
+        "anchor the reply in order mode and meal size",
+        "offer one practical combo direction before asking for the next detail"
+      ],
+      "mustAvoid": [
+        "pretending every item is equally suitable",
+        "promising an exact ready time without store context"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_ready_in_ten_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I order now can you guarantee it will be ready in 10 minutes at your station store?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "exact ready-time guarantee",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "rush-period timing question",
+          "public comment thread",
+          "user is in a hurry"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid waiting",
+        "state that prep time depends on store load and order size",
+        "guide toward a safer next step such as sharing timing and order mode"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_office_bulk_invoice_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need 18 meals for a team training tomorrow at noon and an invoice. Can your downtown store handle that?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "fixed promise without store check",
+          "ignoring invoice needs"
+        ],
+        "context_window": [
+          "bulk office order",
+          "high-intent user",
+          "delivery timing matters"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize this as a real operational order",
+        "ask for store, timing, and meal-count or packaging detail",
+        "guide toward a clear bulk-order follow-up naturally"
+      ],
+      "mustAvoid": [
+        "assuming every store handles bulk orders the same way",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_breakfast_pickup_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I pick up breakfast from your metro store around 7:20 tomorrow morning, or is that too early?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "guessing breakfast hours",
+          "ignoring store differences"
+        ],
+        "context_window": [
+          "commute breakfast question",
+          "store already known",
+          "user is close to deciding"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the commute timing question",
+        "mention that breakfast timing can vary by store",
+        "guide toward confirming the store and pickup window"
+      ],
+      "mustAvoid": [
+        "blanket breakfast-hour certainty",
+        "generic menu chatter that ignores the timing need"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_family_not_spicy_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We are taking food home for two adults and two kids. What should we order if we want something easy and not too spicy?",
+        "brand_tone": "helpful and steady",
+        "negative_patterns": [
+          "largest-combo push",
+          "ignoring the kids context"
+        ],
+        "context_window": [
+          "family meal request",
+          "takeaway scenario",
+          "user wants a low-risk choice"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the mixed family group",
+        "anchor the reply in group size and flavor tolerance",
+        "guide toward a simple meal structure rather than a product dump"
+      ],
+      "mustAvoid": [
+        "one-size-fits-all recommendations",
+        "ignoring the not-spicy request"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_coupon_tonight_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I use this app coupon tonight at your mall store if I order pickup?",
+        "brand_tone": "clear and practical",
+        "negative_patterns": [
+          "blanket yes",
+          "discount bait"
+        ],
+        "context_window": [
+          "promotion check",
+          "store and channel partly known",
+          "user may be close to ordering"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the offer question",
+        "mention that coupon use can depend on store, channel, and timing",
+        "guide toward the next usable detail instead of improvising"
+      ],
+      "mustAvoid": [
+        "approving the coupon without conditions",
+        "vague promotional hype"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_limited_item_stock_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Do you still have the truffle chicken burger at your riverside store tonight or is it already sold out?",
+        "brand_tone": "friendly and grounded",
+        "negative_patterns": [
+          "stock guarantee without check",
+          "fake scarcity pressure"
+        ],
+        "context_window": [
+          "limited-item question",
+          "store known",
+          "user is close to making a trip"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the availability question",
+        "mention that stock can vary by store and timing",
+        "guide toward the next check without overselling urgency"
+      ],
+      "mustAvoid": [
+        "guaranteeing stock without confirmation",
+        "panic wording like last chance unless verified"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_freshness_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every fast-food place says the food is fresh and made to order. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete freshness, timing, or order-route concern",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "absolute freshness claims",
+        "sarcasm"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_peanut_allergy_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My child has a peanut allergy. Can you guarantee zero cross-contact if I order the crispy chicken meal?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "absolute allergen guarantee",
+          "casual reassurance"
+        ],
+        "context_window": [
+          "food safety topic",
+          "family purchase intent",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the allergy as serious",
+        "avoid making a zero-risk promise",
+        "move toward exact item and store confirmation with careful escalation"
+      ],
+      "mustAvoid": [
+        "100 percent safe language",
+        "guessing kitchen handling"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_delivery_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My order arrived cold and one item was missing. Is this how you handle delivery?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request store or order details through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming delivery in public",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_cheapest_group_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We need food for 12 people. What is the cheapest way to order from you? I do not care about anything fancy.",
+        "brand_tone": "respectful and practical",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "price-led group inquiry",
+          "public comment thread",
+          "user may still convert if guided well"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget focus",
+        "explain that the workable route still depends on item count or meal type",
+        "reframe toward one or two useful trade-offs"
+      ],
+      "mustAvoid": [
+        "instant fixed quote without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_vegetarian_no_pork_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "I do not eat pork and my friend wants something vegetarian. Is there an easy way for us to order together?",
+        "brand_tone": "careful and warm",
+        "negative_patterns": [
+          "guessing ingredients",
+          "oversimplified reassurance"
+        ],
+        "context_window": [
+          "ingredient restriction question",
+          "two-person order",
+          "user wants a practical solution"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge both restrictions clearly",
+        "move toward item-specific checking rather than broad guarantees",
+        "guide toward the exact store or products under consideration"
+      ],
+      "mustAvoid": [
+        "assuming every vegetarian option is free of shared handling concerns",
+        "treating no-pork and vegetarian needs as the same thing"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_delivery_texture_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I order fries and fried chicken for delivery, can you guarantee they will still be hot and crispy when they arrive?",
+        "brand_tone": "careful and realistic",
+        "negative_patterns": [
+          "hot-and-crispy guarantee",
+          "absolute travel-quality promise"
+        ],
+        "context_window": [
+          "delivery quality question",
+          "user is comparing order routes",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge why texture matters",
+        "avoid making a guarantee",
+        "guide toward a more realistic pickup versus delivery choice"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pretending delivery and pickup are identical"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_after_work_takeaway_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Heading home after work and do not want to cook. We need an easy dinner for two. What should we order if we just want something simple to take away?",
+        "brand_tone": "warm and grounded",
+        "negative_patterns": [
+          "generic menu dumping",
+          "salesy upsell"
+        ],
+        "context_window": [
+          "after-work dinner scenario",
+          "takeaway route",
+          "user wants low-friction guidance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the end-of-day convenience need",
+        "anchor the reply in two-person takeaway logic",
+        "offer a simple order direction before asking for one more detail"
+      ],
+      "mustAvoid": [
+        "overcomplicating the decision",
+        "pushing high-pressure upgrades"
+      ]
+    },
+    {
+      "id": "echoer_fast_food_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to place the order now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "order is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request store plus order details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    }
+  ]
+}

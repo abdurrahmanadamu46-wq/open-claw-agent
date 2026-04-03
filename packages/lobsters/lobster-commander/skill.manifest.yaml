@@ -1,0 +1,23 @@
+id: commander_mission_orchestration
+lobster_id: commander
+name: 元老院任务编排
+description: "负责拆解业务目标、编排龙虾协作顺序、插入审批与合规节点，并输出 MissionPlan。"
+trigger_keywords:
+  - 任务编排
+  - 协同
+  - 审批
+  - 路由
+  - mission
+allowed_tools:
+  - workflow_catalog
+  - approval_gate
+  - lobster_event_bus
+industry_tags: []
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 12000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

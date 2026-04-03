@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "lobster": "abacus",
+    "name": "算无遗策",
+    "level": "L3",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "aba_fail_001：给出'数据支持'的结论，但选择了对自己有利的数据，漏掉了不利证据",
+    "aba_fail_002：把单条内容72小时内的正常波动当趋势，建议策略调整，实际没有统计显著性"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "ABA-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "针对aba_fail_001：写一条强制自检规则，每次给出数据洞察前必须执行",
+      "deliverable": "一条if-then规则写入skills.json：'给出数据结论前，必须主动列出[X条]与该结论矛盾的反面证据，如果找不到，说明分析不够深'",
+      "pass_criteria": [
+        "规则必须是可执行的检查动作，而不是靠记忆的提醒",
+        "必须规定反面证据的最少条数（不能是'有没有都行'）",
+        "写入skills.json的known_failure_patterns.prevention字段"
+      ],
+      "fail_action": "重做，规则必须有强制性，不能是'尽量'或'建议'",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "ABA-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "针对一个真实账号的一周数据，做完整的漏斗断点诊断报告",
+      "deliverable": "一份诊断报告：曝光→CTR→完播→互动→私信各环节数据、断点位置、断点原因（定性+定量）、行动建议",
+      "pass_criteria": [
+        "断点原因必须结合内容本身做定性判断（不能只说'CTR低于均值'）",
+        "行动建议必须具体到可执行动作（不能是'优化封面'，要说'封面改为[X类型]因为...'）",
+        "必须列出至少1条与结论矛盾的反面证据"
+      ],
+      "fail_action": "重做，只有数字描述没有内容归因的报告直接FAIL",
+      "collab_required": "strategist（内容质量判断）"
+    },
+    {
+      "task_id": "ABA-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "为一个真实行业的账号建立行业基准参考系（区分粉丝量级）",
+      "deliverable": "一份基准参考表：行业/平台/粉丝量级（3个档次）/CTR均值/完播率均值/互动率均值，数据来源必须标注",
+      "pass_criteria": [
+        "粉丝量级必须分3档（如：1万以下/1-10万/10万以上）",
+        "数据来源必须是可查的（飞瓜/蝉妈妈/平台官方报告，不能是'行业经验'）",
+        "在表格末尾注明：'基准数据仅用于方向判断，账号自身历史数据优先'"
+      ],
+      "fail_action": "重做，数据来源不清晰的基准表直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "ABA-T003",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "设计一个完整的A/B实验方案，并在实验结束后出结论",
+      "deliverable": "实验设计表（7字段）+ 结论判定报告（按aba_ab_001的三条铁律执行）",
+      "pass_criteria": [
+        "实验设计时就写明判定标准（不能测完再解读）",
+        "样本量必须达到skills.json中aba_ab_001的标准（抖音≥5000播放/小红书≥500曝光）",
+        "差异<10%时必须写'无差异，不得出结论'"
+      ],
+      "fail_action": "样本量不足强行结论→直接FAIL",
+      "collab_required": "strategist（实验内容方向）"
+    },
+    {
+      "task_id": "ABA-T004",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "基于followup回传的成交数据，分析哪类内容是成交触发点内容",
+      "deliverable": "触发点内容分析报告：触发点内容的共同特征（至少3条）、建议策略（增加哪类内容比例）",
+      "pass_criteria": [
+        "分析基于真实的成交记录数据，不是假设",
+        "触发点内容特征必须具体（'高信任度内容'不够，要说明是哪种类型的高信任度）",
+        "结论中必须说明样本量（不能基于少于5个成交案例下结论）"
+      ],
+      "fail_action": "重做",
+      "collab_required": "followup（提供成交回传数据）"
+    },
+    {
+      "task_id": "ABA-T005",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "找出1个历史上给出了错误洞察的案例，复盘根因",
+      "deliverable": "复盘记录：错误洞察是什么/为什么错了/正确分析方法是什么/写入skills.json一条防范规则",
+      "pass_criteria": [
+        "必须是真实发生的案例，不能是假设",
+        "根因必须具体到分析方法层面（不是'我粗心了'）",
+        "修正规则写入skills.json的known_failure_patterns"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    },
+    {
+      "task_id": "ABA-T006",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "完成一次策略→数据→策略的完整闭环：给strategist提供数据洞察，支撑策略调整",
+      "deliverable": "数据洞察报告（达到Level3以上）+ strategist的策略调整行动确认",
+      "pass_criteria": [
+        "报告必须达到Level3（归因）以上，不能停留在Level1/2描述层",
+        "strategist基于报告给出的策略调整行动中，每条都引用了具体指标数字",
+        "预期效果是量化的（如'CTR预期提升X%'）"
+      ],
+      "fail_action": "重做，停留在描述层的报告直接FAIL",
+      "collab_required": "strategist"
+    },
+    {
+      "task_id": "ABA-T007",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "做一份完整的月度洞察报告（达到Level4标准）",
+      "deliverable": "月度报告：关键指标概览/断点分析/归因结论/行动建议（每条建议有数据依据和量化预期）",
+      "pass_criteria": [
+        "报告必须达到Level4（行动）：每条行动建议有具体数据依据",
+        "行动建议必须是可以立刻执行的，不是'继续观察'",
+        "报告中主动列出'这个月数据中还有哪些我无法解释的现象'"
+      ],
+      "fail_action": "重做，没有Level4行动建议的报告直接FAIL",
+      "collab_required": "strategist、followup"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "ABA-DRILL-001",
+      "description": "接到一批真实内容数据，30分钟内出漏斗断点诊断+行动建议，strategist无需追问即可执行",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "诊断报告达到Level3以上",
+        "行动建议具体可执行",
+        "主动列出了至少1条反面证据"
+      ],
+      "evaluation": "strategist反馈"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L3",
+    "to": "L4",
+    "hard_requirements": [
+      "ABA-T001到ABA-T007全部PASS",
+      "连续10份洞察报告达到Level3以上（strategist确认）",
+      "A/B实验结论准确率≥70%（与实际策略效果对比验证）",
+      "月度报告中'反面证据'条目覆盖率100%（无一遗漏）",
+      "ABA-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

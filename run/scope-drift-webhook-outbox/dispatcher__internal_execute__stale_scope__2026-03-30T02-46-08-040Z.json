@@ -1,0 +1,19 @@
+﻿{
+  "schemaVersion": "lobster.scope-drift-webhook-outbox.v0.1",
+  "queuedAt": "2026-03-30T02:46:08.040Z",
+  "topic": "scope_drift_alert",
+  "payload": {
+    "roleId": "dispatcher",
+    "scopeId": "internal_execute",
+    "severity": "medium",
+    "alertType": "stale_scope",
+    "recommendedAction": "promote_with_guardrails",
+    "message": "Scope dispatcher.internal_execute has no fresh result within 2 hour(s).",
+    "latestResultStatus": "handled",
+    "latestResultAt": "2026-03-30T02:19:42.436Z",
+    "queuedCount": 1,
+    "handledCount": 1,
+    "failedCount": 0,
+    "simulatedCount": 0
+  }
+}

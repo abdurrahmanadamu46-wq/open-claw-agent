@@ -1,0 +1,30 @@
+﻿{
+  "schemaVersion": "lobster.owned-mirror-manifest.v0.1",
+  "pairs": [
+    {
+      "id": "lead-pusher",
+      "primary": "src/agent/lead/lead-pusher.ts",
+      "mirror": "workspace/src/agent/lead/lead-pusher.ts"
+    },
+    {
+      "id": "agent-public-index",
+      "primary": "src/agent/index.ts",
+      "mirror": "workspace/src/agent/index.ts"
+    },
+    {
+      "id": "dashboard-api",
+      "primary": "src/agent/dashboard-api.ts",
+      "mirror": "workspace/src/agent/dashboard-api.ts"
+    },
+    {
+      "id": "agent-dashboard-server",
+      "primary": "src/server/agent-dashboard-server.ts",
+      "mirror": "workspace/src/server/agent-dashboard-server.ts"
+    },
+    {
+      "id": "autopilot-alerts-page",
+      "primary": "web/src/app/operations/autopilot/alerts/page.tsx",
+      "mirror": "workspace/web/src/app/operations/autopilot/alerts/page.tsx"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u5ea6\u5047\u9152\u5e97",
+  "lobster_id": "catcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "qualify_by_trip_and_room_facts",
+      "title": "Qualify with trip facts before calling it high intent",
+      "description": "A resort hotel lead should only be treated as high intent when it includes concrete stay facts such as property or destination, dates, nights, room count, adult and child count, room type or view preference, and a booking action like reserve, confirm package, check availability, or confirm transport. Pure curiosity about scenery, hot spring hours, or general pricing should not be auto-promoted.",
+      "examples": [
+        "We want 3 nights at your Yalong Bay resort, 2 adults and 1 child age 6, family sea-view room with breakfast and airport pickup. Is there still availability?",
+        "Is the hot spring open now and how much is a sea-view room?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "separate_amenity_curiosity_from_booking_intent",
+      "title": "Do not confuse amenity questions with booking intent",
+      "description": "Questions about the pool, hot spring, beach access, kids club, pet policy, parking, charging, or travel photography usually mean the guest is screening options, not necessarily preparing to book. Intent should rise only after the conversation moves toward dates, family structure, room count, package scope, budget, or contact details.",
+      "examples": [
+        "Is the kids club free and is the pool heated?",
+        "After asking about the pool, the guest adds next Saturday for 2 nights, 2 rooms, 2 adults and 2 children."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "family_structure_drives_fit",
+      "title": "Family structure and child policy strongly shape fit",
+      "description": "Resort hotel fit depends heavily on whether the lead specifies adult and child count, child ages, baby cot needs, extra bed needs, connecting rooms, child breakfast rules, and mobility considerations for elders. The clearer the family structure, the more reliable the fit assessment.",
+      "examples": [
+        "2 adults, 2 children ages 4 and 8, asking for connecting rooms is much stronger than a vague family trip.",
+        "Grandparents are joining and need low-step access and a room near the elevator."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "package_scope_beats_emotional_words",
+      "title": "Anniversary and birthday language needs package scope to count",
+      "description": "Romantic or emotional language such as birthday, anniversary, proposal, healing trip, or photogenic stay should not be mistaken for purchase intent. It becomes meaningful only when paired with dates, nights, room type, budget, decoration, dinner, photography, or package scope.",
+      "examples": [
+        "We want somewhere romantic for my wife's birthday.",
+        "Next Saturday for our anniversary, 2 nights in a sea-view suite around 3000 total, with room decor and dinner if available."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "holiday_pressure_is_real_but_not_a_promise",
+      "title": "Holiday timing and travel pressure are real but not a promise",
+      "description": "Weekend, summer break, National Day, New Year, same-day arrival, self-drive arrival, flight landing time, and return train plans often indicate real urgency and should raise intent priority. Catcher must still avoid acting as if inventory, upgrades, early check-in, or room assignment are already confirmed.",
+      "examples": [
+        "We are driving in tonight and will book now if the room type works.",
+        "National Day arrival is urgent, but it is still wrong to treat guaranteed upgrade as low risk."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "property_specificity_before_top_tier",
+      "title": "Require property specificity before top-tier escalation",
+      "description": "Sea view, mountain view, hot spring, private pool, kids facilities, pet rooms, and shuttle services vary significantly by property. If the lead only says Sanya, beach resort, or mountain resort without locking a property or sub-area, it should usually remain a nurture lead rather than a top-tier follow-up lead.",
+      "examples": [
+        "Yalong Bay branch for next Saturday is much stronger than asking whether you have a resort in Sanya.",
+        "Without a clear property, do not auto-classify the lead as followup-ready top tier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "group_event_and_retreat_need_scope",
+      "title": "Family reunion, wedding, and retreat leads need scoped demand",
+      "description": "Group retreat, wellness trip, family reunion, wedding, proposal, birthday banquet, and villa buyout leads can be high value, but only when room count, nights, venue duration, meal standard, kids activities, invoice needs, and contact details are scoped. A vague event idea is not enough for automatic escalation.",
+      "examples": [
+        "8 rooms for 2 nights plus a lawn dinner and kids activity package is a strong event lead.",
+        "We may do some kind of celebration there someday is not enough to move to the top of the queue."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_vs_resource_mismatch_lowers_fit",
+      "title": "Lower fit when budget and resort resources are badly mismatched",
+      "description": "If the guest wants holiday peak dates, premium sea-view rooms, villas, private pools, connecting rooms, pet rooms, or activity bundles but gives a clearly unrealistic budget, that indicates real desire but poor commercial fit. These leads should be preserved carefully, not over-promoted.",
+      "examples": [
+        "Peak holiday sea-view suite with dinner and photography on a budget far below normal rates.",
+        "Room type, nights, dates, and package budget broadly match the actual offer range."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaints_and_refunds_are_service_signals",
+      "title": "Complaints and refund issues are service signals, not sales wins",
+      "description": "Facility closure, view mismatch, hygiene complaints, noise complaints, invoice problems, and refund delays are urgent service or support signals. They may deserve fast handling but should not be mistaken for high-intent commercial leads.",
+      "examples": [
+        "The hot spring was partly closed when we arrived and the refund still has not landed.",
+        "The room view was not as advertised and I have photos and the order number."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "policy_bending_and_absolute_guarantees_raise_risk",
+      "title": "Absolute guarantees and policy-bending requests raise risk fast",
+      "description": "Requests for guaranteed top-floor sea view, guaranteed sunrise view, guaranteed absolute quiet, guaranteed free late checkout, over-occupancy, no ID registration, pets in non-pet rooms, fireworks, or unsafe barbecue behavior should sharply increase risk_score. High spend or urgency does not cancel governance risk.",
+      "examples": [
+        "We need guaranteed adjacent rooms, full sea view, and complete quiet or we will not book.",
+        "Can 4 adults and 2 children squeeze into one villa without registering everyone?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "merge_repeat_trip_contacts_before_upgrade",
+      "title": "Merge repeated contacts before upgrading lead priority",
+      "description": "The same resort trip often appears first in comments, then in direct messages, then in calls or enterprise chat. Repeated and consistent contact improves confidence, but only after the system confirms the same property, same dates, same family or organizer, and same stay plan.",
+      "examples": [
+        "A comment asks about the hot spring, then a direct message adds dates, child ages, and room count.",
+        "Two inquiries with different cities and different dates should not be merged into one high-priority lead."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "filter_broker_influencer_and_channel_noise",
+      "title": "Filter OTA brokers, collaboration fishing, and influencer barter noise",
+      "description": "Requests for annual rate sheets, rebate policies, barter stays, influencer collaborations, livestream deals, or channel cooperation without real guest dates and room demand are usually low-fit or risky noise. Preserve only if a real stay plan is present.",
+      "examples": [
+        "Send me your summer bottom rates, commission policy, and creator barter package.",
+        "We have a family of four, fixed dates, and want to know whether a collaboration or package applies."
+      ],
+      "priority": "high"
+    }
+  ]
+}

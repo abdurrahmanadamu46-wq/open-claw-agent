@@ -1,0 +1,68 @@
+﻿{
+  "industry": "教育培训_语言培训",
+  "lobster_id": "catcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_plus_time_hook",
+      "title": "问题加时间同时出现时的高意向钩子",
+      "description": "当线索同时出现具体困扰和试听时间时，应优先判为高意向候选，因为这类表达比纯种草或纯价格更接近真实到店动作。",
+      "examples": [
+        "周五晚想先试听雅思问题。",
+        "这周日想看看口语和零基础英语。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_trial_foundation_hook",
+      "title": "首次试听与基础顾虑钩子",
+      "description": "用户主动提到第一次来、零基础、怕跟不上和怕开不了口时，说明其试听意图更具体，也更适合进入高优先级承接。",
+      "examples": [
+        "第一次来，周末想先看适不适合。",
+        "担心零基础学不会，想先来了解一下。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "deadline_hook",
+      "title": "考试和申请截止钩子",
+      "description": "考试、报名、申请和面试前的明确日期，是语言培训线索中非常强的行动信号。只要再补足校区和时段，就可以进入高优先级承接。",
+      "examples": [
+        "周六考试，想周四晚上先试听。",
+        "出成绩前这两天想先看课程。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "campus_specific_booking_hook",
+      "title": "校区或商圈明确钩子",
+      "description": "当用户直接说出校区、商场、地铁站附近或写字楼附近时，说明其已经在做实际选择阶段，线索确定性明显提高。",
+      "examples": [
+        "想约你们国金那家。",
+        "万象城校区这周末有试听吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "returning_student_hook",
+      "title": "老学员回流钩子",
+      "description": "用户提到之前来过、朋友推荐或上次感觉还不错时，通常意味着信任成本更低。只要再补齐本次问题和时间，就可快速交给 followup-ready 队列。",
+      "examples": [
+        "上次来试听过，这次想看看下一步。",
+        "朋友推荐我来问问这周能不能试听。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_with_context_hook",
+      "title": "带上下文的价格咨询钩子",
+      "description": "价格问题只要带着困扰范围、时间窗口或场景，就不再是纯比较型流量，而是值得继续推进的线索。",
+      "examples": [
+        "考试前想试听一次，大概什么价位。",
+        "雅思和口语问题比较明显，周末想先看看，价格大概多少。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

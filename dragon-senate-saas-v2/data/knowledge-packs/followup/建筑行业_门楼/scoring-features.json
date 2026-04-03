@@ -1,0 +1,170 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "followup",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "stage_match_accuracy",
+      "metric_group": "stage_fit",
+      "feature": "跟进阶段匹配度",
+      "weight": 0.14,
+      "definition": "评估 FollowUpActionPlan 是否根据门楼项目的真实阶段设置 followup_stage，例如勘测前推进补资料、报价后推进异议处理、沉睡线索进入 reactivation，而不是统一按催成交处理。",
+      "high_score_signals": [
+        "followup_stage 与客户当前状态一致",
+        "未勘测线索先推进勘测或补资料",
+        "沉睡线索使用 reactivation 而非 hard close"
+      ],
+      "low_score_signals": [
+        "阶段描述模糊，无法区分是在预约、讲解、报价还是收款前",
+        "把资料不全的线索直接当成逼单对象",
+        "客户已沉默很久仍沿用高压推进节奏"
+      ],
+      "score_rule": "阶段判断越贴合门楼项目实际推进位置，得分越高。"
+    },
+    {
+      "id": "contact_objective_clarity",
+      "metric_group": "momentum_quality",
+      "feature": "单次跟进目标清晰度",
+      "weight": 0.1,
+      "definition": "评估 contact_plan 是否把本轮跟进压缩成一个明确目标，例如约勘测、补尺寸、确认预算异议、确定方案讲解时间、推动定金，而不是一次推进多个高摩擦动作。",
+      "high_score_signals": [
+        "每次触达只有一个主目标",
+        "目标可直接执行，如确认时间窗、回复问题、补资料",
+        "下一步动作对 booking 或 reactivation 有清晰贡献"
+      ],
+      "low_score_signals": [
+        "同一轮沟通同时催定金、催审批、催尺寸、催方案确认",
+        "动作停留在泛泛提醒，没有明确目标",
+        "下游执行看不懂这次联系要达成什么"
+      ],
+      "score_rule": "单次目标越清楚、越容易让客户完成一个小动作，得分越高。"
+    },
+    {
+      "id": "cadence_safety",
+      "metric_group": "cadence_safety",
+      "feature": "节奏安全性",
+      "weight": 0.14,
+      "definition": "评估 cadence_rule 是否兼顾门楼 B 端决策节奏和客户承压边界，避免同日多次追问、多渠道轰炸和夜间高压触达。",
+      "high_score_signals": [
+        "24 小时内触达频次受控",
+        "关键推进优先安排在工作时段",
+        "已高频触达后会自动降频"
+      ],
+      "low_score_signals": [
+        "无视客户已读未回继续高频追问",
+        "晚上或休息时段推动复杂决策",
+        "多人并行、多渠道叠加跟进"
+      ],
+      "score_rule": "既能保持推进，又能避免过度打扰和投诉风险的计划得分更高。"
+    },
+    {
+      "id": "approval_boundary_integrity",
+      "metric_group": "approval_safety",
+      "feature": "审批边界完整度",
+      "weight": 0.14,
+      "definition": "评估 contact_plan 和 approval_requirements 是否严格尊重外呼、折扣、工期、安全、消防、报批等敏感动作的审批门，不把审批中的动作偷偷前置。",
+      "high_score_signals": [
+        "approval_requirements 写明缺什么审批才能继续",
+        "等待审批时只做允许的替代动作",
+        "不会把未批准动作塞进 contact_plan"
+      ],
+      "low_score_signals": [
+        "审批未到位仍安排电话或敏感承诺",
+        "approval_requirements 为空但动作明显有风险",
+        "用模糊话术绕过审批限制"
+      ],
+      "score_rule": "对审批门越敏感、替代动作越安全，得分越高。"
+    },
+    {
+      "id": "dependency_awareness",
+      "metric_group": "project_readiness",
+      "feature": "前置条件识别度",
+      "weight": 0.12,
+      "definition": "评估跟进方案是否识别门楼项目的关键前置条件，例如尺寸、现场照片、基础状态、运输吊装条件、付款节点、方案版本和决策人意见，并据此安排动作。",
+      "high_score_signals": [
+        "明确指出缺哪些条件才可进入下一阶段",
+        "跟进动作围绕补齐关键前置信息展开",
+        "不会跳过勘测、付款或审批条件"
+      ],
+      "low_score_signals": [
+        "忽略尺寸或现场条件直接推进精确报价",
+        "未收定金就推进锁档期",
+        "对异地运输和安装约束没有任何识别"
+      ],
+      "score_rule": "越能看见项目落地所需前置条件，并把它们变成跟进动作，得分越高。"
+    },
+    {
+      "id": "channel_fit",
+      "metric_group": "channel_strategy",
+      "feature": "渠道选择匹配度",
+      "weight": 0.1,
+      "definition": "评估 contact_plan 是否根据客户类型、项目阶段和 approval_state 选择合适触达渠道，例如 DM、电话、邮件或正式材料，而不是用同一渠道处理所有情形。",
+      "high_score_signals": [
+        "客户类型和阶段驱动渠道选择",
+        "审批限制被反映在渠道上",
+        "渠道切换有明确理由"
+      ],
+      "low_score_signals": [
+        "政企和景区客户仍只用非留痕渠道推进",
+        "未批准外呼却安排电话",
+        "对高意向客户只有单一低效率触达方式"
+      ],
+      "score_rule": "渠道越贴合客户决策方式和审批边界，得分越高。"
+    },
+    {
+      "id": "reactivation_specificity",
+      "metric_group": "reactivation_quality",
+      "feature": "复联内容具体性",
+      "weight": 0.1,
+      "definition": "评估针对沉睡门楼线索的复联是否带着新案例、新材质、新预算路径或旧方案微调建议，而不是发空泛提醒。",
+      "high_score_signals": [
+        "复联带有新证据或新选项",
+        "内容与客户原场景、尺寸或预算相关",
+        "给客户低压力回复入口"
+      ],
+      "low_score_signals": [
+        "只发“还需要吗”或“在吗”",
+        "新内容与原项目无关",
+        "复联过于频繁或施压"
+      ],
+      "score_rule": "复联越像一次有价值的重新打开，而不是简单打扰，得分越高。"
+    },
+    {
+      "id": "promise_risk_control",
+      "metric_group": "risk_control",
+      "feature": "高风险承诺控制力",
+      "weight": 0.08,
+      "definition": "评估计划是否主动约束工期、价格、报批、抗风、消防、验收等高风险承诺，把不确定项转为待核查或待审批。",
+      "high_score_signals": [
+        "把敏感问题转成核查动作或审批要求",
+        "不使用绝对化表述",
+        "对高紧急项目仍保留风险提示"
+      ],
+      "low_score_signals": [
+        "为了推进而直接答应七天完工或包过审批",
+        "价格和交期写成无条件承诺",
+        "完全缺少风险提示"
+      ],
+      "score_rule": "越能稳住边界、少用不可核实承诺，得分越高。"
+    },
+    {
+      "id": "writeback_operability",
+      "metric_group": "execution_handoff",
+      "feature": "回写与可执行性",
+      "weight": 0.08,
+      "definition": "评估跟进计划是否能为后续执行留下清晰记录，包括当前阻塞点、客户偏好渠道、下一次触达时间、需要谁审批以及联系人信息。",
+      "high_score_signals": [
+        "每次动作后都能回写阻塞点和下一步",
+        "contact_plan 具备明确时间和动作",
+        "审批和触达偏好可供后续接手"
+      ],
+      "low_score_signals": [
+        "动作做完没有记录",
+        "下次谁跟、何时跟、跟什么都不清楚",
+        "审批状态和客户反馈没有沉淀"
+      ],
+      "score_rule": "越方便后续继续推进、复盘和人工接管，得分越高。"
+    }
+  ]
+}

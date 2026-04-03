@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"scene_plus_time_hook","title":"场景加时间同时出现时的高意向钩子","description":"当线索同时出现换季/急洗/奢护方向和预约时间时，应优先判为高意向候选。","examples":["周六想先洗两件大衣。","这周日想先走一批急洗。"],"priority":"high"},
+  {"id":"first_visit_process_hook","title":"首次送洗与流程顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕洗坏和担心缩水时，说明其预约意图更具体。","examples":["第一次送洗，周末想先看适不适合。","担心鞋包洗坏，想先来了解一下。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"换季与婚礼返校窗口钩子","description":"换季、婚礼、返校和出差节点如果带着明确时间进入私信，应显著提权。","examples":["换季想先洗一批大衣。","婚礼前想先把礼服洗好。"],"priority":"high"},
+  {"id":"scope_specific_hook","title":"件数材质细问钩子","description":"当用户明确提到件数、材质、污渍和取送时，往往意味着真实购买需求已经收窄。","examples":["两件羽绒、一件羊毛大衣。","真丝裙子和西装都想洗。"],"priority":"high"},
+  {"id":"old_client_restock_hook","title":"老客续洗与推荐回流钩子","description":"老客复购、朋友推荐和之前洗过又回来问同路线，通常有更高的成交确定性。","examples":["上次在你们家洗过，这周想再送。","朋友推荐你们店，说洗护比较稳。"],"priority":"medium"},
+  {"id":"price_plus_scope_hook","title":"价格叠加范围钩子","description":"只问价格不一定高意向，但如果同时出现件数、材质和预约时间，质量明显更高。","examples":["这周末想洗两件羽绒，大概什么价位。","奢护真丝礼服大概怎么收费。"],"priority":"medium"}
+]}

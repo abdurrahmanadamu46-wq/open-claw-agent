@@ -1,0 +1,238 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_gatehouse_village_route_001",
+      "label": "happy_path",
+      "scenario_tag": "village_gate_upgrade",
+      "input": {
+        "mission_goal": "在 30 天内获取 45 条高意向村口门楼和乡村牌坊咨询线索，并筛出 12 条可进入深度方案阶段的项目。",
+        "signal_brief": "县域乡村形象升级需求明显增加，低价效果图内容点击高但真实案例对成交影响更大，村委和施工方更在意落地经验与预算可控。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "稳重、工程可信、偏中式",
+          "asset_state": "已有 12 个乡村门楼完工案例和北方安装团队",
+          "target_regions": [
+            "河北",
+            "山东",
+            "河南"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "案例优先而非最低价优先",
+        "乡村场景分路由",
+        "线索资格筛选逻辑",
+        "明确优先级排序",
+        "显式风险权衡"
+      ],
+      "mustAvoid": [
+        "直接铺大量陌生场景投放",
+        "用泛工厂宣传替代同场景案例"
+      ]
+    },
+    {
+      "id": "strategist_gatehouse_scenic_gap_001",
+      "label": "edge_case",
+      "scenario_tag": "tourism_entrance_evidence_gap",
+      "input": {
+        "mission_goal": "在 21 天内切入景区入口门楼项目并验证是否值得继续投放南方文旅市场。",
+        "signal_brief": "文旅入口需求有热度，但现有案例大多是乡村和厂区，景区项目审批链更长、风格要求更高、证据匹配度偏弱。",
+        "tenant_context": {
+          "budget_limit": 8000,
+          "brand_tone": "新中式、偏高端",
+          "asset_state": "只有 2 个近似商业入口案例，没有完整景区完工案例",
+          "target_regions": [
+            "广东",
+            "广西"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据 fallback 路线",
+        "先做小预算验证",
+        "审批和资质风险说明",
+        "把景区入口与已有强证据场景分开排序"
+      ],
+      "mustAvoid": [
+        "在证据弱时直接大规模扩量",
+        "只靠高端效果图承接景区项目"
+      ]
+    },
+    {
+      "id": "strategist_gatehouse_school_factory_001",
+      "label": "happy_path",
+      "scenario_tag": "functional_public_projects",
+      "input": {
+        "mission_goal": "为学校门楼和厂区大门改造项目在 28 天内拿到 20 条可电话深聊的工程型线索。",
+        "signal_brief": "这类项目对安全耐久、工期配合和现场安装更敏感，纯审美内容咨询率一般，但材料和施工说明更容易引发有效沟通。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "专业、理性、工程化",
+          "asset_state": "已有 6 个厂区门楼案例、3 个学校门头案例",
+          "crm_state": "有 40 条过往工程类询盘"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "安全耐久优先路线",
+        "工程型案例证明",
+        "旧线索重激活或再筛选逻辑",
+        "工期与交付可行性说明"
+      ],
+      "mustAvoid": [
+        "把景区和厂区项目混成同一条路线",
+        "弱化安装和售后边界"
+      ]
+    },
+    {
+      "id": "strategist_gatehouse_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_leads_reactivation",
+      "input": {
+        "mission_goal": "重激活 180 条过去 10 个月内咨询过门楼定制但未成交的线索，并在 14 天内拿回 18 条有效复聊。",
+        "signal_brief": "旧线索大多留过现场照片或尺寸，近期又新增多组完工案例，重新发送相似案例和预算修订建议有机会带来复聊。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "务实、好沟通",
+          "crm_state": "180 条沉睡线索，按村口/景区/私宅/厂区分组",
+          "asset_state": "近期新增 8 个完工案例和 5 组翻新前后对比"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "重激活节奏路线",
+        "按场景或预算分层",
+        "新案例与旧需求的对应关系",
+        "低成本优先而非重新冷启动扩量"
+      ],
+      "mustAvoid": [
+        "统一群发一套文案",
+        "忽略旧线索中已有的尺寸和图纸信息"
+      ]
+    },
+    {
+      "id": "strategist_gatehouse_timeline_pressure_001",
+      "label": "edge_case",
+      "scenario_tag": "festival_deadline_pressure",
+      "input": {
+        "mission_goal": "为节前亮相项目在 10 天内拿到 8 条高匹配订单机会，但不能让后续履约失控。",
+        "signal_brief": "多个客户都希望在节庆、村庆或开园前完工，时间窗口极短，深定制需求多，真实排产和安装能力会成为主要限制。",
+        "tenant_context": {
+          "budget_limit": 6000,
+          "brand_tone": "务实、不夸口",
+          "asset_state": "标准款可快速交付，深定制排期已经较满",
+          "operations_state": "现有安装队未来 3 周仅剩 2 个档期"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工期倒排判断",
+        "标准款或轻改造 fallback 路线",
+        "资源约束优先级排序",
+        "明确哪些需求应主动放弃"
+      ],
+      "mustAvoid": [
+        "在排产已满时继续承诺深定制极速交付",
+        "把时间风险藏在模糊表述里"
+      ]
+    },
+    {
+      "id": "strategist_gatehouse_price_war_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "low_price_overexpansion",
+      "input": {
+        "mission_goal": "快速把门楼咨询量翻倍，靠最低价口号抢下更多市场。",
+        "signal_brief": "竞争对手不断用低价和夸张承诺吸引点击，但客户后期常因工期、安装和材质问题流失，投诉风险也在上升。",
+        "tenant_context": {
+          "budget_limit": 20000,
+          "brand_tone": "激进抢量",
+          "asset_state": "案例不少，但销售更想用最低价和全国可做来放大询盘"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把治理风险和履约风险说透",
+        "给出更稳的替代打法"
+      ],
+      "mustAvoid": [
+        "全网最低价导向",
+        "全国都能做式扩张",
+        "几天必完工或百分百验收通过的承诺",
+        "忽略资质和交付边界"
+      ]
+    }
+  ]
+}

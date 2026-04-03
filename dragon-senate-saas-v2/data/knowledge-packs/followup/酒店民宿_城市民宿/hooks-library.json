@@ -1,0 +1,140 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_near_subway_fact_completion",
+      "scene": "dm_followup",
+      "lead_state": "same_day_near_subway_or_business_district_inquiry",
+      "intent": "qualify_stay_facts_and_hold_window",
+      "hook": "这单先别急着把“地铁口那套”说满，我先帮你把真正决定能不能稳稳住上的关键信息锁住。",
+      "bridge": "城市民宿的即时转化，常常卡在 ETA、自助入住、停车和安静诉求，而不是一句“还有房”。先把入住事实对齐，后面的推进才稳。",
+      "next_step": "请客户确认入住日期、晚数、人数、预计到店时间、是否接受自助入住、是否开车，以及是否需要相对安静或靠近地铁，目标是尽快进入可预订、候补或待确认状态。",
+      "cadence_hint": "客户刚回复时优先在 15 到 30 分钟内接上；若当轮仍未补齐关键信息，当天只保留一次低压力提醒。",
+      "approval_guard": "未核房态前，不承诺具体房号、楼层、朝向、停车位或免费升级。"
+    },
+    {
+      "id": "hook_late_arrival_gate_and_elevator_access",
+      "scene": "arrival_management",
+      "lead_state": "late_arrival_needs_gate_route",
+      "intent": "confirm_eta_gate_and_fallback",
+      "hook": "你这单最关键的不是再发一遍房间图，而是先把客人今晚能不能顺利进楼、进电梯、进门这件事接住。",
+      "bridge": "城市民宿晚到最容易掉单的地方，是门禁、小区入口、保安登记和最后一段步行，而不是房间介绍本身。",
+      "next_step": "请客户确认新的 ETA、到店方式、是否需要车牌登记、园区入口、联系人和失联回退方式，目标是把到店路径确认成可执行动作。",
+      "cadence_hint": "晚到线索以当晚到店窗口为关键，一次把路径和时间讲清，不连续轰炸式追问。",
+      "approval_guard": "未确认门禁链路和值守方式前，不默认客户一定能自行顺利进楼或进门。"
+    },
+    {
+      "id": "hook_self_checkin_verified_gate",
+      "scene": "self_checkin_followup",
+      "lead_state": "asks_for_code_before_identity_completion",
+      "intent": "complete_verification_before_code_release",
+      "hook": "这单先别急着发密码，先把该补的实名和入住信息补齐，后面反而更快更安全。",
+      "bridge": "自助入住最怕的是先放行后补录。只要入住人、ETA 或审批边界不清，后续就容易变成风控问题。",
+      "next_step": "请客户补齐入住人信息、预订人与实际入住人关系、预计到店时间和可补证件的最晚节点，目标是推动核验完成后再进入发码流程。",
+      "cadence_hint": "材料一旦补齐就快速接上；未补齐时只做低压力催补，不多轮追问。",
+      "approval_guard": "未完成核验或未获得发码许可前，不发送门锁密码、门禁码，不承诺先入住后补手续。"
+    },
+    {
+      "id": "hook_parking_plate_registration",
+      "scene": "arrival_management",
+      "lead_state": "driving_guest_needs_parking",
+      "intent": "verify_vehicle_and_parking_rule",
+      "hook": "先别急着回“能停”，我先帮你把最容易翻车的车牌、车位和进场规则问清。",
+      "bridge": "城市民宿的停车问题通常卡在车牌录入、车高、临停计费、充电车位和夜间进场限制，不是简单一句“楼下有位”。",
+      "next_step": "请客户确认车牌、车型、是否新能源、预计到店时间、是否需要过夜停车或充电，目标是判断能否推进停车指引、候补或替代停车方案。",
+      "cadence_hint": "驾车线索以到店前一次完整澄清为主，避免拆成多轮碎问。",
+      "approval_guard": "未核停车规则和名额前，不承诺专属车位、免停车费或充电位一定可用。"
+    },
+    {
+      "id": "hook_early_arrival_no_front_desk_expectation",
+      "scene": "arrival_management",
+      "lead_state": "early_arrival_room_may_not_be_ready",
+      "intent": "set_expectation_and_alternative",
+      "hook": "先别把“到就能住”说满，我先帮你把最省心的早到方案排出来。",
+      "bridge": "城市民宿没有标准前台，早到客人真正介意的是白跑、无处放行李和没人接应。把预期讲明，体验反而更稳。",
+      "next_step": "请客户确认实际到店时间，以及是否接受待房确认、寄存替代、附近候用或更晚回报码点，目标是管理预期并留下明确回报码点。",
+      "cadence_hint": "到店前给一次清晰预期即可；若房态未更新，等保洁或门店反馈后再跟。",
+      "approval_guard": "未核 ready 房态前，不承诺几点一定能入住，也不默认一定有寄存能力。"
+    },
+    {
+      "id": "hook_extra_visitor_and_quiet_hours",
+      "scene": "visitor_boundary_followup",
+      "lead_state": "asks_for_friends_visit_or_small_gathering",
+      "intent": "surface_visitor_and_noise_boundary",
+      "hook": "这类单别急着回“可以来坐坐”，先把人数、时间段和小区边界问透。",
+      "bridge": "城市民宿最容易出问题的不是多一个访客本身，而是访客登记、夜间安静、保安拦截和额外清洁风险。",
+      "next_step": "请客户确认入住人数、是否有外来访客、预计停留时间、是否涉及餐食酒水或音响，目标是明确能否推进、待审批还是改成低风险方案。",
+      "cadence_hint": "访客单以一次结构化澄清为主，给对方内部确认空间，不当天多轮催。",
+      "approval_guard": "未确认楼宇规则和审批状态前，不承诺访客可入内、可留宿或可夜间聚会。"
+    },
+    {
+      "id": "hook_longstay_cleaning_and_laundry",
+      "scene": "longstay_followup",
+      "lead_state": "longstay_asks_cleaning_laundry_or_cooking",
+      "intent": "clarify_service_frequency_and_supply_boundary",
+      "hook": "这单别急着按酒店式服务去答，我先帮你把连住期间最在意的日常规则捋清。",
+      "bridge": "长住客真正关心的是洗衣、做饭、打扫频次和耗材补给。如果前面说得模糊，后面最容易变成差评。",
+      "next_step": "请客户确认连住晚数、入住人数、是否做饭、是否需要洗衣机、能接受的保洁频次和补给方式，目标是进入清晰规则确认或审批等待。",
+      "cadence_hint": "连住规则适合一次讲完整，再围绕唯一未定项继续推进。",
+      "approval_guard": "未核政策前，不承诺每日打扫、每日换布草、无限补给或完全开放厨房权限。"
+    },
+    {
+      "id": "hook_exam_or_medical_trip_stability",
+      "scene": "special_trip_followup",
+      "lead_state": "exam_or_medical_trip_needs_quiet_and_stable_checkin",
+      "intent": "prioritize_stable_arrival_and_rest",
+      "hook": "这单最值钱的不是再强调装修，而是先把客人这趟行程最怕出错的到住稳定性接住。",
+      "bridge": "陪考、陪诊和面试线索最在意的是安静、准时、少折腾。只要能把到店和休息链路说清，转化往往更稳。",
+      "next_step": "请客户确认行程时间点、预计到店时间、是否需要相对安静、是否带长辈或孩子、次日出发节点，目标是把联系动作收敛到“稳妥到住”。",
+      "cadence_hint": "围绕关键时间点给一次清晰回应，避免堆砌卖点增加客户负担。",
+      "approval_guard": "不承诺“绝对不吵”或“百分百零打扰”，只做条件化说明和可执行安排。"
+    },
+    {
+      "id": "hook_filming_or_live_stream_approval",
+      "scene": "compliance_followup",
+      "lead_state": "asks_for_photo_shoot_or_live_stream",
+      "intent": "collect_usage_and_wait_for_approval",
+      "hook": "这类单先别急着答应能拍能播，先把用途、人数和器材规模收成一张清单。",
+      "bridge": "城市民宿里的拍摄、直播和商业使用，通常牵涉楼宇管理、邻里投诉、额外清洁和资源占用，不是普通入住逻辑。",
+      "next_step": "请客户确认拍摄或直播用途、人数、时段、器材规模、是否有补光灯三脚架和是否需要开票，目标是形成可审批的简报。",
+      "cadence_hint": "先发一次结构化问题清单，给对方整理空间，再围绕最关键待定项跟进。",
+      "approval_guard": "审批未到位前，不承诺商业拍摄、直播、额外人员进出或设备长期占用。"
+    },
+    {
+      "id": "hook_service_recovery_then_rebook",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_open",
+      "intent": "repair_trust_then_next_stay",
+      "hook": "这次先不急着推你再下单，我先把上次让你不舒服的地方接住，再看这次怎么住得更稳。",
+      "bridge": "城市民宿的复住修复单，最怕一上来当普通成交线索处理。先把卫生、噪音、图文差异或门锁问题承接住，客户才更愿意继续谈。",
+      "next_step": "先确认上次问题点、这次最在意的居住偏好，以及是否仍有入住计划；若客户愿意，再推进低压力预订或偏好备注确认。",
+      "cadence_hint": "修复期减少频率，以一次明确承接和一次确认式跟进为主。",
+      "approval_guard": "未获批的补偿、升级、减免或额外权益不自行承诺。"
+    },
+    {
+      "id": "hook_reactivation_with_new_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_city_break_or_repeat_guest",
+      "intent": "restart_with_new_value",
+      "hook": "这次回来找你，不是重复催你订房，而是想给你一个比上次更贴这趟行程的新理由。",
+      "bridge": "城市民宿复联如果没有新理由，很容易被当成打扰。新的安静房源、更新的到店指引、工作日短住方案或已修复的问题点，才更像值得回复的入口。",
+      "next_step": "带着一个具体新变化复联，比如更清晰的门禁到店路径、停车规则优化、工作日价格窗或更匹配的房型，并给客户一个低门槛回复选项。",
+      "cadence_hint": "复联尽量轻，一次触达后至少拉开几天，再判断是否二次跟进。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure_and_leave_easy_reply",
+      "hook": "先不给客人继续加压，我把下一步收成一个最容易回的动作，让这单先降降温。",
+      "bridge": "城市民宿很多线索不是拒绝，而是在路上、在比对行程、在等同伴回复。高频追问只会把原本可转化的单子推远。",
+      "next_step": "把回复门槛降到只需确认一个最关键问题，例如日期、是否开车、是否还需要安静房源或能否接受自助入住，并同步进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回复时，至少拉开到下一个工作时段或次日再判断。",
+      "approval_guard": "避免多人、多渠道同时追同一位客户。"
+    }
+  ]
+}

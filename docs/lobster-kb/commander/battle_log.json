@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "lobster": "commander",
+    "description": "战斗日志：记录所有失败、降级、废弃的经验，以及被覆盖的旧版本",
+    "last_updated": "2026-04-01"
+  },
+  "entries": [
+    {
+      "log_id": "cmd_battle_001",
+      "type": "failure",
+      "date": "2026-03-15",
+      "skill_ref": "cmd_dispatch_001",
+      "description": "按优先级裁决规则，将内容生产排在线索跟进后，结果导致当日热点内容错过发布窗口（热点48小时内未发布，传播效果大幅下降）",
+      "root_cause": "时间敏感性判断缺失——热点内容具有时效性，不能只按线索优先级机械排序，需要引入'时效折损系数'",
+      "action_taken": "在优先级规则中增加'时效折损'维度：时效窗口<6小时的内容，优先级自动上升1级",
+      "status": "已修复",
+      "verified_fixed": true
+    },
+    {
+      "log_id": "cmd_battle_002",
+      "type": "failure",
+      "date": "2026-03-20",
+      "skill_ref": "cmd_dispatch_002",
+      "description": "阻塞判断时间设为20分钟，结果某次LLM响应慢但并未阻塞，commander提前介入打断了正常执行",
+      "root_cause": "阻塞判断阈值设置偏激进，需要结合任务复杂度动态调整",
+      "action_taken": "增加'任务复杂度系数'：简单任务15分钟判阻塞；复杂任务（如多步骤分析）35分钟；同时要求龙虾每10分钟主动上报一次进度",
+      "status": "已修复",
+      "verified_fixed": true
+    },
+    {
+      "log_id": "cmd_battle_003",
+      "type": "deprecated",
+      "date": "2026-02-28",
+      "skill_ref": "cmd_dispatch_old_001",
+      "description": "旧版优先级规则：'按照接收时间FIFO排队'——被废弃",
+      "root_cause": "FIFO无法应对紧急任务，多次导致重要任务被普通任务占线",
+      "action_taken": "完全替换为基于优先级的裁决机制（cmd_dispatch_001）",
+      "status": "已废弃",
+      "verified_fixed": null
+    }
+  ],
+  "open_issues": [
+    {
+      "issue_id": "cmd_open_001",
+      "description": "当前龙虾能力评估（cmd_talent_001）还没有跑过完整的季度周期，尚未完全验证有效性",
+      "next_action": "2026-06-30 完成第一次季度评估，验证方法是否有效",
+      "owner": "commander"
+    }
+  ]
+}

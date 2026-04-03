@@ -1,0 +1,10 @@
+# LobsterMemoryEngine — 弹性记忆模块
+# Qdrant + BGE-M3 本地向量化，Payload 硬隔离，时间/奖励衰减重排
+qdrant-client>=1.7.0
+sentence-transformers>=2.2.0
+numpy>=1.24.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+fastembed>=0.3.0
+httpx>=0.27.0

@@ -1,0 +1,369 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_bakery_birthday_cake_pickup_order_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "这周六 18:30 去静安寺店自提 8 寸草莓动物奶油生日蛋糕，里面夹奥利奥碎，写 Happy Birthday Linlin，要 10 根蜡烛和 10 套刀叉盘，大概 10 个人吃，能先帮我留档吗？",
+        "engagement_history": [
+          "watched full birthday cake showcase video",
+          "clicked branch location card",
+          "asked whether preorder is supported"
+        ],
+        "tenant_rules": {
+          "require_branch_for_custom_orders": true,
+          "forbid_unapproved_capacity_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual cake browsing"
+      ]
+    },
+    {
+      "id": "catcher_bakery_office_tea_break_delivery_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "明天下午 3:30 我们在 IFC 二期 18 楼做客户会，想送 30 份下午茶到前台，包含 24 份可颂拼盒、12 份芝士条和 2 个 6 寸鲜奶油水果蛋糕，需要独立手提袋和开专票，国金店这边能安排吗？",
+        "engagement_history": [
+          "added enterprise wechat after reading tea-break post",
+          "asked about delivery radius and invoice rules",
+          "shared a draft quantity sheet"
+        ],
+        "tenant_rules": {
+          "require_address_for_delivery": true,
+          "allow_human_quote_review": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "structured bulk-order context",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "downgrading the lead as a normal retail inquiry"
+      ]
+    },
+    {
+      "id": "catcher_bakery_menu_and_price_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "第一次买你们家生日蛋糕，哪款不甜一点？大概都什么价位，先发菜单和图片我看看。",
+        "engagement_history": [
+          "liked two product display videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to order-ready"
+      ],
+      "mustAvoid": [
+        "treating menu curiosity as a confirmed bakery order lead"
+      ]
+    },
+    {
+      "id": "catcher_bakery_photo_reference_custom_cake_004",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "我发你一张网图，想做个差不多的蓝色双层生日蛋糕，下周五晚上用，你们能先估个价吗？如果可以我再补人数和写字。",
+        "engagement_history": [
+          "sent reference image",
+          "saved custom cake clip"
+        ],
+        "tenant_rules": {
+          "custom_designs_require_spec_confirmation": true,
+          "forbid_exact_replica_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real custom-cake interest",
+        "specs still incomplete",
+        "worth follow-up without overpromising exact photo replication"
+      ],
+      "mustAvoid": [
+        "treating the lead as either spam or fully confirmed production-ready order"
+      ]
+    },
+    {
+      "id": "catcher_bakery_budget_mismatch_bulk_order_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "我们学校社团下周活动想要 50 份点心拼盒，再加一个 10 寸庆典蛋糕，最好每盒贴标签、分两批送、还能开票，预算控制在 18 块一份内，可以吗？",
+        "engagement_history": [
+          "asked about invoice policy",
+          "asked whether split delivery is supported"
+        ],
+        "tenant_rules": {
+          "preserve_medium_confidence_bulk_orders": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real demand but constrained fit",
+        "budget mismatch needs feasibility review",
+        "do not auto-promote to top tier"
+      ],
+      "mustAvoid": [
+        "marking the lead as high-fit without checking commercial feasibility"
+      ]
+    },
+    {
+      "id": "catcher_bakery_same_day_bread_box_pickup_006",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "baidu_map_message",
+        "lead_content": "我们公司今天 5 点前想去来福士店自提 20 份早餐拼盒，里面要可颂和吐司各半，联系人和电话我马上发你，能做的话帮我先留一批。",
+        "engagement_history": [
+          "clicked branch map card",
+          "asked whether same-day reservation is supported"
+        ],
+        "tenant_rules": {
+          "urgent_bulk_queries_need_fast_followup": true,
+          "require_branch_for_large_pickup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real timing pressure",
+        "worth fast follow-up"
+      ],
+      "mustAvoid": [
+        "guaranteeing inventory or pickup speed before fulfillment confirmation"
+      ]
+    },
+    {
+      "id": "catcher_bakery_allergy_zero_contact_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "明晚要订 2 个蛋糕给孩子生日会，其中一个要完全不碰坚果和乳制品，你们后厨能保证百分百零接触吗？",
+        "engagement_history": [
+          "asked for ingredient list",
+          "asked whether plant-based cream is supported"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_allergen_promises": true,
+          "allergy_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real order intent but elevated risk",
+        "human confirmation is required",
+        "do not mark as low-risk"
+      ],
+      "mustAvoid": [
+        "making zero-contact allergen guarantees"
+      ]
+    },
+    {
+      "id": "catcher_bakery_low_sugar_baby_safe_absolute_claim_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "我想订个宝宝周岁蛋糕，你们能保证完全无糖、无添加，而且宝宝吃绝对安全吗？孕妇大人一起吃也肯定没问题吧？",
+        "engagement_history": [
+          "asked twice about ingredients and sugar level"
+        ],
+        "tenant_rules": {
+          "forbid_medical_or_absolute_safety_claims": true,
+          "regulated_health_claims_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real interest but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making medical or absolute safety promises"
+      ]
+    },
+    {
+      "id": "catcher_bakery_quality_complaint_009",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "昨天送来的鲜奶油蛋糕已经塌边了，名字还写错，奶油闻起来也发酸，我有订单号和照片，孩子吃完后一直说不舒服，麻烦现在处理。",
+        "engagement_history": [
+          "sent order screenshot",
+          "sent cake photo"
+        ],
+        "tenant_rules": {
+          "food_safety_or_quality_complaints_go_to_service_escalation": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard order lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a reorder opportunity"
+      ]
+    },
+    {
+      "id": "catcher_bakery_supplier_or_franchise_spam_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "老板加我，专业做奶油原料、烤箱设备、裱花培训、探店短视频和加盟招商，顺便还能帮你们代运营。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high spam probability",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating unrelated services as a valid bakery order lead"
+      ]
+    },
+    {
+      "id": "catcher_bakery_cross_channel_repeat_011",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "刚刚我在评论区问过国金店能不能做明天下午茶，现在把 36 份点心拼盒数量、18 楼前台地址和联系电话发你，明天下午 4 点用，还需要开票。",
+        "engagement_history": [
+          "commented asking about office delivery",
+          "sent quantity sheet by DM",
+          "left callback number in enterprise wechat"
+        ],
+        "tenant_rules": {
+          "merge_duplicate_project_leads": true,
+          "forbid_duplicate_followup": true,
+          "require_address_for_delivery": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high confidence due to repeated consistent engagement",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "creating multiple separate high-priority leads for the same bakery request"
+      ]
+    },
+    {
+      "id": "catcher_bakery_returning_client_reorder_012",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "去年圣诞你们给我们公司送过 40 盒礼盒，这次周年活动还想订同一家门店，先按上次地址，数量大概 35 到 40 盒，再加一个 8 寸庆典蛋糕，我把老订单截图发你。",
+        "engagement_history": [
+          "historical bulk-order record exists in tenant memory",
+          "shares previous order screenshot",
+          "asks to reuse the same branch and delivery address"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    }
+  ]
+}

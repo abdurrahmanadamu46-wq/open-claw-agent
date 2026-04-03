@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "followup",
+  "patterns": [
+    {
+      "id": "followup_overcontact",
+      "label": "overcontact",
+      "description": "Follow-up plan ignores cadence limits and risks complaints."
+    },
+    {
+      "id": "followup_approval_blindness",
+      "label": "approval_blindness",
+      "description": "Plan schedules contact actions that require approval before approval is granted."
+    },
+    {
+      "id": "followup_low_signal_push",
+      "label": "low_signal_push",
+      "description": "Plan pushes too hard on weak or ambiguous leads instead of pacing the sequence."
+    }
+  ]
+}

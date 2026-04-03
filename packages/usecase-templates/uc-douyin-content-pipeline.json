@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-douyin-content-pipeline",
+  "name": "抖音内容管线",
+  "name_en": "Douyin Content Pipeline",
+  "category": "social_media",
+  "difficulty": "advanced",
+  "description": "围绕抖音短视频持续产出热点选题、脚本、视觉分镜和发布时间排程。",
+  "pain_point": "短视频内容需要持续迭代脚本和镜头节奏，人工排产很难稳定追热点。",
+  "lobsters": ["radar", "strategist", "inkwriter", "visualizer", "dispatcher"],
+  "skills_required": ["radar_hotspot_monitor", "strategist_content_calendar", "inkwriter_copy_generate", "visualizer_digital_human_video", "dispatcher_scheduled_publish"],
+  "channels": ["douyin"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "准备抖音账号和素材偏好",
+      "code_type": "config",
+      "code": "接入抖音账号，并补充账号定位、镜头风格和目标转化动作。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "配置内容模板",
+      "code_type": "prompt",
+      "code": "输入常用的脚本结构、话术风格和 CTA 偏好。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设定发布节奏",
+      "code_type": "config",
+      "code": "建议每天 1-2 条，优先覆盖午间和晚间高峰。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用抖音管线",
+      "code_type": "none",
+      "code": "龙虾会自动完成热点跟踪、脚本生成、视觉资产准备和定时发布安排。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "cron",
+    "schedule": "0 11 * * *",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "抖音更吃节奏感，建议把脚本和分镜模板先固定下来。",
+    "数字人口播和真人混用时要统一品牌口径。",
+    "早期多用 isolated 任务测试，再切换 shared 观察长期策略。"
+  ],
+  "estimated_cost_per_run": "$0.18-0.45",
+  "tags": ["抖音", "短视频", "内容生产", "热点"]
+}

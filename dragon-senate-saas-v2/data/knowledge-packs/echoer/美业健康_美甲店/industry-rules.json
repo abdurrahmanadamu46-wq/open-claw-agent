@@ -1,0 +1,134 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "booking_needs_style_and_time",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a nail appointment is available without style, time, or branch facts",
+        "User wants a quick answer in a public comment"
+      ],
+      "response_goal": "Keep the reply warm while turning a vague nail inquiry into usable booking facts.",
+      "do": [
+        "Acknowledge the wish to book quickly",
+        "Ask for the style direction, preferred time, and whether removal is needed",
+        "Keep the next step easy enough to answer in one message"
+      ],
+      "avoid": [
+        "Promising a slot without facts",
+        "Sounding pushy or robotic",
+        "Jumping straight to off-platform contact"
+      ],
+      "safe_transition": "If you tell me the rough style you want, whether you need removal, and when you hope to come, I can help narrow the next step quickly.",
+      "handoff_suggestion": "If the user provides style and time facts, hand off to Catcher."
+    },
+    {
+      "id": "first_time_needs_low_pressure_guidance",
+      "priority": "high",
+      "applies_when": [
+        "User says it is their first time doing nails",
+        "User sounds unsure what style to choose"
+      ],
+      "response_goal": "Reduce uncertainty first, then guide the user toward a simple and safe booking path.",
+      "do": [
+        "Acknowledge that not knowing where to start is normal",
+        "Offer a simple way to narrow the style direction",
+        "Guide toward a low-pressure next step"
+      ],
+      "avoid": [
+        "Pushing complex or expensive styles immediately",
+        "Making the user feel inexperienced or behind",
+        "Turning the reply into a hard sell"
+      ],
+      "safe_transition": "If you want, we can first narrow whether you want something daily, event-ready, or more eye-catching, and then look at timing.",
+      "handoff_suggestion": "If the user shares style preference and timing, route to Catcher."
+    },
+    {
+      "id": "event_driven_nail_booking",
+      "priority": "high",
+      "applies_when": [
+        "User mentions a wedding, date, trip, holiday, or photoshoot",
+        "User needs a nail appointment before an event"
+      ],
+      "response_goal": "Keep momentum high while collecting the exact time window and style context that decide whether the salon can help.",
+      "do": [
+        "Acknowledge the event timing",
+        "Ask when the event is and when the user hopes to come",
+        "Guide the next step toward a suitable slot and style fit"
+      ],
+      "avoid": [
+        "Guaranteeing all peak slots are available",
+        "Pushing a membership before the booking is even scoped",
+        "Ignoring removal or existing nails"
+      ],
+      "safe_transition": "If you share when the event is and whether you already have old nails on, it gets much easier to point you to the right next step.",
+      "handoff_suggestion": "If the user shares date and timing, hand off to Catcher."
+    },
+    {
+      "id": "price_questions_need_scope",
+      "priority": "medium",
+      "applies_when": [
+        "User asks only for price",
+        "User compares nail packages without style or removal context"
+      ],
+      "response_goal": "Avoid empty price comparison by lightly recovering scope.",
+      "do": [
+        "Answer lightly without sounding evasive",
+        "Ask whether this is a basic set, event set, or a redo with removal",
+        "Keep the follow-up question low-friction"
+      ],
+      "avoid": [
+        "Dumping long menus in comments",
+        "Hiding removal or add-on variables",
+        "Forcing immediate upsell"
+      ],
+      "safe_transition": "If you tell me whether you want a basic daily set, an event-ready set, and whether removal is needed, the answer will be much more accurate.",
+      "handoff_suggestion": "If the user gives style scope, route to Catcher."
+    },
+    {
+      "id": "returning_client_should_feel_seen",
+      "priority": "medium",
+      "applies_when": [
+        "User says they came before or wants to return",
+        "User references their last set or a past style"
+      ],
+      "response_goal": "Make the user feel recognized while surfacing what they want this time.",
+      "do": [
+        "Acknowledge the prior visit naturally",
+        "Ask what they want to change or refresh this time",
+        "Guide toward a smooth re-entry point"
+      ],
+      "avoid": [
+        "Treating a returning client like a cold lead",
+        "Ignoring past style preference",
+        "Jumping straight to storage value or upsell"
+      ],
+      "safe_transition": "If you tell me what you liked or want to change this time, we can help narrow the next step more naturally.",
+      "handoff_suggestion": "If the user shares prior-style context, route to FollowUp or Catcher."
+    },
+    {
+      "id": "public_comment_no_shame_about_hands",
+      "priority": "high",
+      "applies_when": [
+        "User talks about short nails, damaged nails, ugly hands, or embarrassment in public",
+        "The concern feels personal or appearance-sensitive"
+      ],
+      "response_goal": "Protect dignity in public while still keeping the path to help open.",
+      "do": [
+        "Reply with empathy and restraint",
+        "Avoid repeating the user's wording harshly",
+        "Offer a light path into a more specific next step"
+      ],
+      "avoid": [
+        "Amplifying embarrassment",
+        "Using beauty shame to sell",
+        "Turning a sensitive comment into a hard conversion script"
+      ],
+      "safe_transition": "If you want, you can share the style direction and timing you have in mind, and we can help narrow the next step without overcomplicating it.",
+      "handoff_suggestion": "If the user continues with details, route to Catcher."
+    }
+  ]
+}

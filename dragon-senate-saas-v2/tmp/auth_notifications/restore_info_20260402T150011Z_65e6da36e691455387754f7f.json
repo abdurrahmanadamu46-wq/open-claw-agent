@@ -1,0 +1,9 @@
+{
+  "kind": "runtime_notification",
+  "tenant_id": "tenant_main",
+  "category": "restore",
+  "level": "info",
+  "target": "tenant_main",
+  "text": "✅ 备份恢复通知\n- 文件：edge-backup_node-test_20260402_230004.tar.gz\n- 状态：completed\n- 条目：5\n- 耗时：0.0 秒\n- restore_id：rst_9930ea9698d8849b",
+  "requested_at": "2026-04-02T15:00:11.730894+00:00"
+}

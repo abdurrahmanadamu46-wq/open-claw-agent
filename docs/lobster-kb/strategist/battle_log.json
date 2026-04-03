@@ -1,0 +1,28 @@
+{
+  "meta": { "lobster": "strategist", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "str_battle_001",
+      "type": "failure",
+      "date": "2026-03-10",
+      "skill_ref": "str_strategy_002",
+      "description": "发给inkwriter的brief缺少hook_direction字段，导致墨小雅按自己理解写了3版均不符合预期，返工2次",
+      "root_cause": "苏思发出brief前没有做自检，认为'方向已经聊过了'就直接发了",
+      "action_taken": "强制要求：所有brief发出前对照5字段清单自检，即使口头聊过也要写进brief",
+      "status": "已修复",
+      "verified_fixed": true
+    },
+    {
+      "log_id": "str_battle_002",
+      "type": "failure",
+      "date": "2026-02-20",
+      "skill_ref": "str_strategy_001",
+      "description": "新账号冷启动阶段（500粉）就开始追热点，算法权重不够，热点内容完播率低于常规内容30%",
+      "root_cause": "忽视了账号权重与热点流量的关系，误以为热点本身能带来流量",
+      "action_taken": "在冷启动规则中明确：1000粉以下账号，热点内容比例不超过总发布量的20%",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

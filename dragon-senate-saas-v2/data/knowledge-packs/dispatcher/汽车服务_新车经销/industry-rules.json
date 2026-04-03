@@ -1,0 +1,50 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "visit_and_testdrive_capacity_gate",
+      "title": "高峰看车前必须先校验时段、顾问和试驾资源",
+      "description": "新车经销的调度核心不是单纯接单，而是把到店时段、顾问、试驾车、金融讲解和后续交付能力一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": ["周末晚间看车位已满时，先进入候补和分时段看车节点。", "车展季集中时，先确认试驾车和顾问排班。"],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_return_visit_must_split",
+      "title": "首次到店、复访和试驾后回访是独立调度变量",
+      "description": "首次到店、复访和试驾后回访会显著改变单客时长与资源匹配。Dispatcher 不能按普通咨询去承接这些场景，必须单独分流。",
+      "examples": ["首次到店用户需要先进入看车判断节点。", "复访用户应优先路由到熟悉其历史记录的顾问链路。"],
+      "priority": "high"
+    },
+    {
+      "id": "service_complexity_before_confirmation",
+      "title": "确认预约前先判断问题复杂度和是否适合该时段",
+      "description": "预算选车、配置对比、金融方案和置换评估不能共用同一套看车时长假设。Dispatcher 需要先按复杂度和资源做分流。",
+      "examples": ["午休档只适合轻量看车，不应塞入复杂金融与置换评估。", "车展季和多问题看车需提前扩展时长。"],
+      "priority": "high"
+    },
+    {
+      "id": "vehicle_prep_gate",
+      "title": "车辆准备和资料调取是独立调度节点",
+      "description": "新车经销不是一位客户看完就能立刻无缝接下一位。车辆调度、钥匙调取、配置单准备和试驾油量必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": ["连续看车时，先插入车辆准备和资料调取步骤。", "复杂试驾做完后不可直接无缝切换下一单。"],
+      "priority": "high"
+    },
+    {
+      "id": "peak_slot_hold_window",
+      "title": "热门时段和核心顾问档要设置保留窗口",
+      "description": "周末、车展季和核心顾问时段是稀缺资源。Dispatcher 对高需求档期要设置保留时限、提醒节点和释放机制，避免空挂预约。",
+      "examples": ["车展季晚间时段要求限时确认。", "核心顾问看车位超过一定时间未确认则释放。"],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_backwrite",
+      "title": "看车后必须回写跟进与复访任务",
+      "description": "新车经销执行链路不能在看车结束后断掉。完成后要回写本次看车内容、问题点、配置关注项和可能复访点，方便后续 followup 承接。",
+      "examples": ["看车后自动创建顾问回访任务。", "试驾记录中同步写入预算、配置关注点和下次建议。"],
+      "priority": "high"
+    }
+  ]
+}

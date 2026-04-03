@@ -1,0 +1,265 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_bbq_case_001",
+      "label": "happy_path",
+      "scenario": "street-side late-night barbecue with charcoal lamb skewers and visible outdoor traffic",
+      "input": {
+        "copy_pack": "Short-video script for a neighborhood barbecue store. Core message: charcoal lamb skewers are the hero item, outdoor seating stays active at night, and the store fits after-work friend groups with beer and mixed skewers.",
+        "brand_assets": [
+          "night storefront video",
+          "outdoor seating occupancy footage",
+          "working charcoal grill footage",
+          "lamb skewer turning and seasoning footage",
+          "signature mixed-skewer tray close-up",
+          "server bringing skewers and beer",
+          "face-safe group cheers and eating footage",
+          "store logo"
+        ],
+        "reference_styles": [
+          "documentary late-night smoke and heat",
+          "restrained appetite amplification"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2.5,
+          "late_night_service": true,
+          "outdoor_seating": true,
+          "grill_station_access": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "signature lamb skewers as the opening proof",
+        "night storefront plus occupied outdoor seating",
+        "a clear grill-to-table-to-bite chain",
+        "explicit notes about night-service timing and no-face customer handling"
+      ],
+      "mustAvoid": [
+        "long atmosphere-only openings",
+        "borrowed crowd footage",
+        "cinematic smoke overwhelming real business proof"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the street-side barbecue script into an executable storyboard centered on real charcoal heat, hero lamb skewers, and visible late-night service proof.",
+        "assumptions": [
+          "Storefront and seating-establishing shots can be captured before the peak rush and service rhythm can be captured afterward.",
+          "Guests should be filmed through hands, backs, cheers, and table motion rather than clear frontal close-ups."
+        ],
+        "evidence": [
+          "Assets already cover storefront, outdoor seating, grill, hero skewers, service, and face-safe customer interaction.",
+          "The copy is built around charcoal lamb skewers, late-night traffic, and after-work group dining."
+        ],
+        "confidence": 0.91,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Lead with lamb skewers over active charcoal, then support the cover with a small slice of the night storefront and outdoor seating.",
+        "shot_list": "1) Establish the night storefront and occupied outdoor seating. 2) Open on charcoal heat and lamb skewer turning. 3) Move to the hero tray landing with skewers and beer arriving together. 4) Show face-safe group eating and cheers. 5) Reinforce business state through occupied tables and leftover skewers. 6) Close with store fit and call-to-visit.",
+        "asset_dependencies": "night storefront, outdoor seating occupancy, charcoal grill access, lamb skewer turning footage, hero mixed tray, server handoff, face-safe group interaction, and a real late-night shooting window",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_bbq_case_002",
+      "label": "edge_case",
+      "scenario": "mall barbecue bar with good booth footage but no open-fire or back-of-house access",
+      "input": {
+        "copy_pack": "Short-video script for an indoor barbecue bar in a mall. Core message: after-work drinks, fast skewer service, and booths that feel good for longer stays. Constraint: open-fire visuals and back-of-house footage are not allowed, and customer faces cannot be shown clearly.",
+        "brand_assets": [
+          "storefront and floor-sign footage",
+          "booth and private-room environment footage",
+          "finished hero skewer close-ups",
+          "server bringing skewers and drinks",
+          "beer pour footage",
+          "side-angle cheers and shared-table footage",
+          "menu page and store logo"
+        ],
+        "reference_styles": [
+          "restrained urban barbecue bar",
+          "credible dine-in documentary"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "evening_service": true,
+          "open_flame_visible": false,
+          "kitchen_access": false,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "explicit acknowledgement that open fire and back-of-house are not filmable",
+        "proof shifted toward booth comfort, service rhythm, and drinks plus skewers",
+        "face-safe guest interaction treatment",
+        "clear dependency notes for mall access and timing"
+      ],
+      "mustAvoid": [
+        "fabricated live-fire storytelling",
+        "clear unauthorized customer faces",
+        "over-designed camera language that hides the real limitations"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the indoor barbecue-bar script into an executable storyboard centered on booth comfort, smooth service, and after-work social fit without pretending to have live-fire proof.",
+        "assumptions": [
+          "Storefront and empty booth shots can be captured before service and table rhythm can be added once guests arrive.",
+          "Finished skewer assets are stable enough to support the plan without needing recreated grill-process coverage."
+        ],
+        "evidence": [
+          "Assets already cover storefront, seating, finished food, drinks, service, and face-safe guest interaction.",
+          "The copy promise is comfort and social use, not raw grill craft."
+        ],
+        "confidence": 0.75,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Lead the cover with a booth-table spread and beer, using hero skewers as support rather than pretending to show live-fire action.",
+        "shot_list": "1) Establish the mall storefront and floor position. 2) Show booth and room options. 3) Move to skewers and drinks arriving in sequence. 4) Use beer pour and table spread to build evening mood. 5) Show face-safe social interaction. 6) Close on store-fit and visit cues.",
+        "asset_dependencies": "mall storefront access, booth and private-room footage, hero finished skewers, drink-service coverage, face-safe table interaction, and explicit no-fire and no-back-of-house constraints",
+        "execution_feasibility_score": "0.72"
+      }
+    },
+    {
+      "id": "visualizer_bbq_case_003",
+      "label": "happy_path",
+      "scenario": "seafood barbecue stall with oyster handling, grill-stage proof, and outdoor group dining",
+      "input": {
+        "copy_pack": "Short-video script for a seafood barbecue stall. Core message: oysters are opened and grilled to order, shellfish and shrimp feel fresh, and the outdoor late-night table is ideal for groups who want a louder social meal.",
+        "brand_assets": [
+          "night storefront and outdoor seating overview",
+          "oyster and shellfish display footage",
+          "oyster handling footage",
+          "grilled oyster and shrimp hot-off-grill footage",
+          "garlic-butter finishing footage",
+          "seafood platter landing shot",
+          "face-safe oyster eating reaction footage",
+          "server delivery or refill shot",
+          "store logo"
+        ],
+        "reference_styles": [
+          "bright documentary night-market seafood",
+          "credible freshness proof"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "late_night_service": true,
+          "seafood_prep_access": true,
+          "grill_station_access": true,
+          "outdoor_seating": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "seafood handling as early proof",
+        "a readable prep-to-grill-to-bite chain",
+        "real outdoor group dining and service rhythm",
+        "clear notes about seafood-prep and grill-area access"
+      ],
+      "mustAvoid": [
+        "freshness claims without process proof",
+        "mixing day prep footage and night dining footage without logic",
+        "over-polished images that weaken freshness credibility"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the seafood barbecue script into an executable storyboard centered on oyster handling, hot grill proof, and outdoor late-night group dining.",
+        "assumptions": [
+          "Seafood handling and display can be captured before the service rush, then group dining can be captured later at night.",
+          "The prep area and grill area can be filmed briefly with clear hygiene and position boundaries."
+        ],
+        "evidence": [
+          "Assets already include seafood display, handling, grill-stage heat, landed platters, and face-safe dining reactions.",
+          "The copy focuses on visible freshness, to-order grilling, and group-night fit."
+        ],
+        "confidence": 0.88,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Split the cover between oyster handling and a hot finished seafood plate, then support it with a small outdoor table scene.",
+        "shot_list": "1) Establish storefront and outdoor seating. 2) Show oyster or shellfish handling. 3) Move into garlic-butter grill heat and shrimp or oyster finish. 4) Land the seafood platter at the table. 5) Capture face-safe eating reactions and service rhythm. 6) Close with store-fit and visit cues.",
+        "asset_dependencies": "night storefront, outdoor seating, seafood display, oyster handling, hot-off-grill seafood, finishing footage, platter landing, face-safe dining reactions, and access to prep plus grill zones",
+        "execution_feasibility_score": "0.87"
+      }
+    },
+    {
+      "id": "visualizer_bbq_case_004",
+      "label": "failure_case",
+      "scenario": "pre-opening barbecue brand with renders and menu posters but no live service proof",
+      "input": {
+        "copy_pack": "Promo script for a new barbecue brand that wants a hot late-night exploration video with crowds, grill heat, and a lively friend-group vibe. Constraint: the store is not open yet, there are no real diners, no active grill footage, and no dine-in filming conditions.",
+        "brand_assets": [
+          "store renderings",
+          "menu posters",
+          "brand logo",
+          "trial-opening notice",
+          "hero-skewer render"
+        ],
+        "reference_styles": [
+          "high-saturation night-market energy",
+          "viral exploration-video mood"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "dine_in_available": false,
+          "grill_assets": false,
+          "customer_assets": false,
+          "open_flame_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "explicit acknowledgement that the store is not open and no real grill or dine-in proof exists",
+        "active downgrade to a pre-opening teaser or menu-direction route",
+        "low feasibility scoring plus a clear post-opening pickup list",
+        "no visual suggestion that full live service already exists"
+      ],
+      "mustAvoid": [
+        "treating renders as real operating-store proof",
+        "using external grill or diner footage",
+        "designing peak-hour crowd or outdoor-service arcs anyway"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Output a truthful pre-opening route for a barbecue brand that has no real service, no grill footage, and no diners yet.",
+        "assumptions": [
+          "Only brand style, menu direction, and opening information can be shown honestly at this stage.",
+          "Any live grill, table, or crowd footage must be captured after opening."
+        ],
+        "evidence": [
+          "Current assets are limited to renderings, posters, a logo, and opening notices.",
+          "There is no available proof for live barbecue operation, table use, outdoor seating, or real guest traffic."
+        ],
+        "confidence": 0.61,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the cover as a pre-opening notice with renderings and menu direction rather than a fake hot-store exploration image.",
+        "shot_list": "1) Introduce the brand through renders and logo. 2) Explain menu direction and hero-item intent. 3) Preview the store layout. 4) Clearly state that live service proof is not yet available. 5) List the storefront, grill, table, and night-service pickups needed after opening. 6) Close on opening-time information.",
+        "asset_dependencies": "renderings, menu posters, brand logo, opening notice, hero-skewer render, and a future pickup list for storefront, grill, diners, outdoor seating, and late-night service proof",
+        "execution_feasibility_score": "0.27"
+      }
+    }
+  ]
+}

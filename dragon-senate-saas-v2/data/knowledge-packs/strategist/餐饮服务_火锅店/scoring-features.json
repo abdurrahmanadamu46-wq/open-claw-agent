@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_hotpot_occasion_clarity",
+      "feature_name": "核心火锅场景清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确单一主场景，如工作日晚市下班局、周末家庭聚餐或生日团建；3 分：有 2 个候选场景但优先级仍可判断；1 分：晚市、夜宵、团建、家庭和到家套餐全都想做且没有排序。",
+      "positive_signals": [
+        "明确核心时段、人数结构和客群",
+        "主打场景与锅底和涮品证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有场景一起推",
+        "主场景与现有真实评价完全错位"
+      ],
+      "route_guidance": "场景越清晰，越适合集中预算和内容；场景越混乱，越应先缩小范围做验证。"
+    },
+    {
+      "id": "broth_and_signature_item_evidence_density",
+      "feature_name": "锅底与招牌涮品证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定锅底实拍、热门肉品或招牌涮品证据、真实评价和出品稳定记录；3 分：有锅底或食材素材，但缺少复购评价或稳定性证明；1 分：主要依赖装修氛围图或低价海报，没有锅底和菜品证据。",
+      "positive_signals": [
+        "锅底开锅实拍和特色说明",
+        "高频复购涮品评价反复出现",
+        "桌面组合和真实份量可验证"
+      ],
+      "negative_signals": [
+        "只有环境照，没有锅底和食材证据",
+        "热门菜品频繁断货或品质波动大"
+      ],
+      "route_guidance": "证据越强，越适合走真锅底真食材路线；证据越弱，越应先补评价、试吃和稳定性再谈放大。"
+    },
+    {
+      "id": "local_radius_and_weather_fit",
+      "feature_name": "本地半径与天气窗口匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确主要辐射半径、天气触发窗口、停车或步行便利性和周边客群结构；3 分：知道大致商圈但未细化到社区、写字楼或夜间客流；1 分：默认全城都可转化，没有半径和天气判断。",
+      "positive_signals": [
+        "清楚 1 到 5 公里核心客源",
+        "知道社区、写字楼或夜间商圈占比",
+        "对停车和临时成局门槛有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视天气、交通和临时到店成本"
+      ],
+      "route_guidance": "本地半径与天气窗口越清楚，越容易先把预算压到高转化人群；半径模糊时应先缩小目标区域。"
+    },
+    {
+      "id": "customer_asset_reactivation_readiness",
+      "feature_name": "老客资产重激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员、联系方式、锅底或菜品偏好标签和可分层触达方式；3 分：有联系方式但标签有限；1 分：几乎没有可用老客资产却仍忽略冷启动成本。",
+      "positive_signals": [
+        "有会员体系、企微或社群",
+        "可按辣度、到店时段或聚餐场景分层",
+        "有生日或节庆节点信息"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑老客回锅路线"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本重激活；资产弱时再考虑外部拉新。"
+    },
+    {
+      "id": "reputation_and_hygiene_health",
+      "feature_name": "口碑、卫生与食材信任健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定，差评主题可控，且近期真实好评持续出现；3 分：评分一般但问题集中且可修复；1 分：差评扩散明显，卫生、等位或食材问题仍在放大。",
+      "positive_signals": [
+        "评分稳定在高位",
+        "差评原因少且已在修复",
+        "近期持续有真实好评"
+      ],
+      "negative_signals": [
+        "最近评分快速下滑",
+        "差评集中在卫生、服务慢或食材新鲜度"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线压在真实评价和复购上；口碑不稳时必须先修承接与卫生。"
+    },
+    {
+      "id": "queue_turnover_and_service_stability",
+      "feature_name": "等位、翻台与服务稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰期桌位、锅具周转、上菜节奏和服务补位都有余量且运行稳定；3 分：可承接但需要预约分流、错峰或限定套餐；1 分：高峰期已频繁排队、断货、加汤和小料补位失控。",
+      "positive_signals": [
+        "清楚高峰等位和翻台节奏",
+        "人手、备货和锅具可覆盖当前路线",
+        "可用预约或错峰手段分流"
+      ],
+      "negative_signals": [
+        "关键岗位依赖单点员工",
+        "高峰断货、投诉和补位混乱频发"
+      ],
+      "route_guidance": "承接越稳，越适合扩量；承接越弱，越应转向预约、低峰和老客路线。"
+    },
+    {
+      "id": "dinein_vs_home_hotpot_economics_fit",
+      "feature_name": "到店与到家火锅单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：到店与到家的菜单、毛利、配送半径和承接边界清楚；3 分：知道两边差异但尚未拆开运营；1 分：用同一套餐、同一满减和同一话术硬覆盖两边。",
+      "positive_signals": [
+        "到店和到家有不同主打组合",
+        "清楚包装保温和配送范围",
+        "能核算各路线毛利"
+      ],
+      "negative_signals": [
+        "把堂食爆品当成到家主打",
+        "不看毛利只追求单量"
+      ],
+      "route_guidance": "单位经济越清楚，越能安全拆路线扩量；若毛利和体验边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "group_booking_qualification_completeness",
+      "feature_name": "聚餐预订线索资格完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集日期、人数、预算、桌型需求、辣度偏好和停车条件；3 分：知道人数和大致预算但信息不全；1 分：只问价格就直接投入大量人工跟进。",
+      "positive_signals": [
+        "日期和人数明确",
+        "预算区间清楚",
+        "知道是否需要包间、大桌、布置或酒水"
+      ],
+      "negative_signals": [
+        "档期不明就想锁单",
+        "把高意向聚餐当作普通团购承接"
+      ],
+      "route_guidance": "资格信息越完整，越适合投入人工承接；信息不足时先用标准方案做筛选。"
+    },
+    {
+      "id": "seasonal_supply_timing_fit",
+      "feature_name": "时令锅底与备货时机匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已确认锅底底料、肉菜供应、小料补给、排班和档期规则；3 分：有活动想法但部分供应仍待验证；1 分：只有营销主题，没有备货和翻台准备。",
+      "positive_signals": [
+        "限定锅底或新品可落地",
+        "高峰时段有人手和备货计划",
+        "预订和取消规则清楚"
+      ],
+      "negative_signals": [
+        "供应不稳却想公开大促",
+        "节庆档期超卖风险高"
+      ],
+      "route_guidance": "供给越稳，越能把降温旺季或节庆做成增长机会；供给弱时应缩成预约或限量路线。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "承诺合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实锅底、食材、评价和预约规则；3 分：有少量模糊夸张但可修正；1 分：存在全城第一、绝对新鲜、零添加、零等位或养生疗效暗示等高风险表达。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "明确等位和预订边界",
+        "食材与出品证据可核验"
+      ],
+      "negative_signals": [
+        "养生疗效暗示",
+        "绝对零添加或绝对无需等位",
+        "伪造名人、平台或食材背书"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术与承接边界。"
+    }
+  ]
+}

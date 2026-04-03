@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-08",
+  "name": "CTI Engine",
+  "owner_scope": "sybil detection, threat scoring, and honeypot control",
+  "maturity": "prototype",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "analyze": "REST",
+    "telemetry": "MQ or stream"
+  },
+  "source_anchors": [
+    "services/cti-engine-service"
+  ]
+}

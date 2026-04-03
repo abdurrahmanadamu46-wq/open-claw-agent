@@ -1,0 +1,118 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "visualizer",
+  "primaryArtifact": "StoryboardPack",
+  "cases": [
+    {
+      "id": "visualizer_case_proof_001",
+      "label": "happy_path",
+      "input": {
+        "copy_pack": "Case-proof script for dental clinic consultation booking",
+        "brand_assets": [
+          "logo",
+          "before_after_restricted",
+          "consultation_room_photos"
+        ],
+        "reference_styles": [
+          "trustworthy documentary"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 2
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "proof-first shot order",
+        "real-world asset dependency list",
+        "feasibility estimate"
+      ]
+    },
+    {
+      "id": "visualizer_low_asset_001",
+      "label": "edge_case",
+      "input": {
+        "copy_pack": "Premium renovation consultation script",
+        "brand_assets": [
+          "logo"
+        ],
+        "reference_styles": [
+          "premium but restrained"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "missing asset callouts",
+        "fallback visual route"
+      ]
+    },
+    {
+      "id": "visualizer_commentary_001",
+      "label": "happy_path",
+      "input": {
+        "copy_pack": "Education reactivation script using teacher credibility",
+        "brand_assets": [
+          "teacher portrait",
+          "classroom footage",
+          "testimonial text"
+        ],
+        "reference_styles": [
+          "teacher-led credibility"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "trust-building opening frame",
+        "testimonial or classroom proof element"
+      ]
+    },
+    {
+      "id": "visualizer_regression_001",
+      "label": "failure_case",
+      "input": {
+        "copy_pack": "Regulated service script with limited real proof assets",
+        "brand_assets": [],
+        "reference_styles": [
+          "luxury and dramatic"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustAvoid": [
+        "over-designed plan with no executable assets",
+        "visual hype overriding proof"
+      ]
+    }
+  ]
+}

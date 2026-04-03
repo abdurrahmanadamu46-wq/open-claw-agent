@@ -1,0 +1,206 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "visualizer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "lane_gate_courtyard_identity_first",
+      "priority": "P0",
+      "rule": "Open with the real lane, gate, sign, courtyard entry, or reception touchpoint before any mood-only room or decor shots.",
+      "why_it_matters": "An inn is often hidden in an old-town lane, mountain village, or riverside alley. Viewers first need to believe the property is real and findable before they trust the atmosphere promise.",
+      "execution_points": [
+        "Place a verifiable identity anchor within the first three shots, such as the lane turn, signboard, gate, courtyard door, or reception table.",
+        "Show how the exterior identity connects to the room or yard so the place does not feel like borrowed scenery.",
+        "If signage is subtle, use a route chain from local landmark to gate to room door to prove the property."
+      ],
+      "required_evidence": [
+        "Lane, facade, signboard, or gate footage",
+        "Courtyard entry, reception point, or room-door footage",
+        "A visible relationship between outside identity and inside stay scenes"
+      ],
+      "fallback_route": "If the full exterior cannot be shot, downgrade to a truthful arrival-and-room route using the gate, corridor, room door, and host guidance instead of overselling destination romance.",
+      "must_avoid": [
+        "Opening on tea sets, lanterns, bedding, or old-house decor with no property identity",
+        "Using another courtyard, cafe, or street corner as fake inn proof",
+        "Relying on subtitles alone to establish where the inn actually is"
+      ]
+    },
+    {
+      "id": "arrival_route_and_luggage_truth",
+      "priority": "P0",
+      "rule": "If the script sells easy arrival, hidden-lane charm, mountain quiet, or scenic seclusion, the storyboard must show how guests actually get from road or parking to the inn door and then to the room.",
+      "why_it_matters": "Inn conversion is heavily shaped by arrival anxiety. Users want to know whether the car stops at the door, whether there are stone lanes or stairs, and whether luggage, elders, or late-night arrival will be awkward.",
+      "execution_points": [
+        "Show at least one real route segment from parking area, drop-off point, lane anchor, or road turn to the gate or front door.",
+        "If stairs, ramps, bridge crossings, or stone paths are part of arrival, include them honestly instead of cutting around them.",
+        "When the inn is deep inside an old town or scenic area, show route guidance, host pickup evidence, or signboard continuity rather than claiming frictionless access."
+      ],
+      "required_evidence": [
+        "Parking, drop-off, or route anchor footage",
+        "Gate, stairs, bridge, slope, or stone-path footage",
+        "Room-door or final arrival confirmation footage"
+      ],
+      "fallback_route": "If the route cannot be fully proven, reduce the promise to 'clear guidance' or 'worth the final walk' and stop claiming direct car-to-door convenience.",
+      "must_avoid": [
+        "Implying door-to-door car access when the property actually requires a walk",
+        "Cutting out difficult but real steps while still promising easy arrival",
+        "Using maps, screenshots, or generic scenic roads as a substitute for the true arrival chain"
+      ]
+    },
+    {
+      "id": "room_type_truth_over_styled_fragments",
+      "priority": "P0",
+      "rule": "All room footage must stay loyal to one real sellable room type and a real guest perspective rather than building a fantasy room from mixed corners, upgrades, and decor inserts.",
+      "why_it_matters": "Inns often have big differences between floors, views, ceiling shapes, wood structure, and bathroom quality. Once viewers feel the room has been visually exaggerated, the whole stay promise collapses.",
+      "execution_points": [
+        "Keep bed, window, seating, luggage area, and bathroom proof within the same room type whenever the room is a main selling point.",
+        "If the script highlights a terrace, bathtub, river view, loft, or attic ceiling, show direct proof instead of implying every room has it.",
+        "When only one room is available to shoot, build the storyboard around that room honestly and avoid expanding into unverified room classes."
+      ],
+      "required_evidence": [
+        "Wide shot of the hero room type",
+        "Bathroom and amenity footage tied to that room",
+        "Functional relationship shots such as bed to window, bed to luggage, or bed to seating"
+      ],
+      "fallback_route": "If only partial room corners can be shot, downgrade to a room preview or old-house-detail cut rather than promising a full-stay room story.",
+      "must_avoid": [
+        "Mixing upgraded rooms, attic rooms, and standard rooms into one seamless fake stay",
+        "Using only tight aesthetic details to hide the real room scale",
+        "Borrowing another property's bathtub, terrace, or view footage"
+      ]
+    },
+    {
+      "id": "courtyard_terrace_and_shared_space_need_use_proof",
+      "priority": "P0",
+      "rule": "If the script sells courtyard tea, rooftop wind, riverside deck, fire pit, terrace breakfast, or any shared atmosphere space, the storyboard must prove that guests can actually use the space and understand whether it is private, shared, or time-limited.",
+      "why_it_matters": "Inn content often over-relies on atmospheric public areas. If viewers later discover the space is shared, partner-operated, or only decorative, trust drops fast.",
+      "execution_points": [
+        "Show the whole usable space first, then the stay action inside it, such as sitting, pouring tea, reading, breakfast, or returning from a walk.",
+        "Connect the space to the room or gate so it feels like part of the guest path, not an unrelated beauty insert.",
+        "If the space is shared, rooftop-only, reservation-based, or weather-dependent, reflect that in dependencies and do not use it as unconditional core proof."
+      ],
+      "required_evidence": [
+        "Wide shot that shows the full courtyard, terrace, or shared area",
+        "Action or setup that proves real use",
+        "A route or relationship shot linking the space back to the inn"
+      ],
+      "fallback_route": "If use rights or night access are unclear, keep the space as a secondary mood bonus and move the core promise back to arrival truth and room truth.",
+      "must_avoid": [
+        "Treating a shared courtyard or rooftop as if every room privately owns it",
+        "Using a nearby cafe, tea house, or riverside deck as fake inn amenity proof",
+        "Selling a night courtyard promise without permission or low-light shoot access"
+      ]
+    },
+    {
+      "id": "host_warmth_and_checkin_need_real_service_evidence",
+      "priority": "P0",
+      "rule": "Any promise around host warmth, local guidance, key handoff, pickup help, check-in ease, or late arrival support must be backed by real service evidence and permissioned people, not actor-style performance.",
+      "why_it_matters": "The human side of an inn is a major differentiator, but it becomes risky if the visuals imply full-service hotel operations or invented host behavior that the property cannot consistently deliver.",
+      "execution_points": [
+        "Use real host actions such as greeting, route guidance, key handoff, tea welcome, message evidence, or check-in instructions when those services truly exist.",
+        "Show how the human touch connects to the arrival sequence or room entry instead of floating as a standalone smile shot.",
+        "If the host cannot appear on camera, switch to process proof such as signs, welcome notes, phone guidance, or self-check-in steps."
+      ],
+      "required_evidence": [
+        "Permissioned host or staff footage, or a truthful substitute such as guidance notes",
+        "Check-in or key-handoff process footage",
+        "A route into the room that shows what the service actually enables"
+      ],
+      "fallback_route": "If host or service process proof is missing, remove the 'cared for by the owner' angle and position the inn around place rhythm, room truth, and arrival clarity instead.",
+      "must_avoid": [
+        "Using friends, actors, or unapproved guests to fake host service",
+        "Implying 24-hour hotel-style service when the inn is owner-led and limited",
+        "Selling pickup, welcome tea, or route help without proof that it is really available"
+      ]
+    },
+    {
+      "id": "breakfast_and_morning_closure_require_actual_access",
+      "priority": "P0",
+      "rule": "If the script sells a complete inn stay from evening into morning, breakfast, dawn courtyard, market walk, riverside stroll, or mountain-view wake-up must be supported by real next-morning access and shootable timing.",
+      "why_it_matters": "Inn content often wins because it feels like more than a room for one night. Without a real morning payoff, the stay arc feels cut off and the atmosphere promise feels incomplete.",
+      "execution_points": [
+        "Use real breakfast prep, breakfast table, tea setup, morning light, or first-walk footage rather than generic sunrise inserts.",
+        "If morning is a major promise, show how the room, window, courtyard, or front gate leads into that morning scene.",
+        "Check actual breakfast hours, weather window, and morning staff access before building the storyboard around them."
+      ],
+      "required_evidence": [
+        "Breakfast, tea, or morning-use footage",
+        "Morning light in the room, courtyard, or outdoor path",
+        "A clear transition from the inn interior back into the morning scene"
+      ],
+      "fallback_route": "If breakfast or morning access is not available, end the story on the night settle-in or room pause instead of forcing a fake overnight completion.",
+      "must_avoid": [
+        "Borrowing scenic sunrise footage with no relationship to the inn",
+        "Promising breakfast when only plated samples or old photos exist",
+        "Pretending a complete one-night arc exists when only daytime room assets are available"
+      ]
+    },
+    {
+      "id": "local_scene_claims_need_doorstep_relation",
+      "priority": "P0",
+      "rule": "Claims about old-town life, riverside nights, market mornings, temple bells, mountain trails, or local cafes must show the real relationship between the inn entrance and the surrounding scene, not just destination B-roll.",
+      "why_it_matters": "An inn sells the feeling of staying inside a place rather than sleeping beside it. That promise only feels credible when the lane outside, the nearby scene, and the room upstairs clearly belong to one stay experience.",
+      "execution_points": [
+        "Prioritize a start-or-return shot that links the inn gate to one real nearby anchor such as the river lane, market street, bridge, or village road.",
+        "Use outside scenes as proof of proximity and stay rhythm, not as decorative scenery detached from the inn.",
+        "If exact walking distance cannot be proven, keep the language at 'doorstep atmosphere' or 'easy to continue the night or morning' rather than hard time claims."
+      ],
+      "required_evidence": [
+        "Inn entrance or gate footage",
+        "One real nearby local anchor",
+        "A transition or loop shot that links the two"
+      ],
+      "fallback_route": "If the nearby scene cannot be tied back to the inn, remove the local-life positioning from the cover and let the video focus on room and yard truth.",
+      "must_avoid": [
+        "Using famous streets, bridges, rivers, or cafes that are not actually tied to the inn",
+        "Claiming 'right downstairs' while only showing unrelated town atmosphere",
+        "Relying on maps or captions instead of shootable place continuity"
+      ]
+    },
+    {
+      "id": "old_house_boundaries_must_be_shown_honestly",
+      "priority": "P1",
+      "rule": "When the inn is an old house, upper-floor conversion, hillside property, or riverside structure, visual planning must honestly account for stairs, low beams, wood-floor sound, narrow corridors, street exposure, or shared walls instead of smoothing them into a perfect boutique fantasy.",
+      "why_it_matters": "These boundaries are not always negatives, but they do shape who the stay fits. Honest visual handling prevents mismatch for elders, heavy luggage users, light sleepers, and viewers comparing the inn against standardized hotels.",
+      "execution_points": [
+        "Show architectural traits that matter to use, such as stair climbs, attic ceilings, slope entries, corridor width, or window orientation.",
+        "Frame old-house texture as character only when the guest-use boundary is still understandable.",
+        "If a room is street-facing, waterside, upper-floor only, or structurally compact, do not hide that while promising universal comfort."
+      ],
+      "required_evidence": [
+        "Stairs, corridor, beam, or slope footage when relevant",
+        "Window orientation or room-approach footage",
+        "Room-scale and movement footage that shows how the space is actually used"
+      ],
+      "fallback_route": "If the structural boundary cannot be visualized well, reduce the promise to style and place tone without claiming all-traveler friendliness or hotel-like ease.",
+      "must_avoid": [
+        "Pretending every room is equally quiet, spacious, or easy to reach",
+        "Hiding attic ceilings, stair-only access, or tight movement paths behind beauty closeups",
+        "Overcorrecting with fake luxury styling that fights the real building truth"
+      ]
+    },
+    {
+      "id": "dependencies_before_poetic_ambition",
+      "priority": "P0",
+      "rule": "List shoot dependencies first and let them cap the creative ambition: gate access, lane filming rights, night lighting, host permission, breakfast timing, shared-space authorization, guest privacy, weather, and room availability all need to be explicit before the storyboard expands into poetry.",
+      "why_it_matters": "Visualizer is responsible for execution credibility. Inns often operate with tight staffing, neighbor sensitivity, scenic-area rules, and mixed-use spaces, so hidden dependency gaps quickly turn a beautiful idea into a broken shoot.",
+      "execution_points": [
+        "Name which room type, which outdoor area, which time window, and which people are actually available to shoot.",
+        "When a key asset is missing, state the downgrade route in the storyboard pack and lower the feasibility score accordingly.",
+        "Keep the cover direction aligned with what is verifiably shootable, not with the most romantic version of the script."
+      ],
+      "required_evidence": [
+        "A confirmed list of shootable spaces and times",
+        "Permission and privacy boundaries for people and public areas",
+        "Fallback route for any missing gate, host, breakfast, or night asset"
+      ],
+      "fallback_route": "If core dependencies are weak, convert the plan into a room-preview, arrival-guide, or pre-opening teaser format instead of leaving the gaps for later teams to absorb.",
+      "must_avoid": [
+        "Designing a full evening-to-morning inn arc without confirming night and morning access",
+        "Treating all courtyards, rooftops, rooms, and nearby scenes as automatically shootable",
+        "Giving a high feasibility score when the proof chain clearly depends on unconfirmed assets"
+      ]
+    }
+  ]
+}

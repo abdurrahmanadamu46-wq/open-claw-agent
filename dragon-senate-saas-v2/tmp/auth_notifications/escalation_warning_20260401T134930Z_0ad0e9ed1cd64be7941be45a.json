@@ -1,0 +1,9 @@
+{
+  "kind": "runtime_notification",
+  "tenant_id": "tenant-a",
+  "category": "escalation",
+  "level": "warning",
+  "target": "tenant-a",
+  "text": "⚠️ 龙虾任务升级通知\n━━━━━━━━━━━━━━━━━━━━\n🦞 龙虾：radar\n📋 任务ID：task-1\n🧭 任务类型：signal_scan\n❌ 失败原因：validation failed\n🔄 已重试：2 次\n⏰ 时间：2026-04-01T13:49:30.438207+00:00\n━━━━━━━━━━━━━━━━━━━━\n处理链接：/escalations/esc_e9e4eeea30c1\n请人工选择：继续 / 跳过 / 修改后重试",
+  "requested_at": "2026-04-01T13:49:30.440315+00:00"
+}

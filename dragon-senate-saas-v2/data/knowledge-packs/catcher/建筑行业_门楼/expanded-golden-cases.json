@@ -1,0 +1,309 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_gatehouse_factory_survey_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "我们工业园新区要新建一个门楼，宽 16 米高 8 米，地址在宿迁，本周能不能先来勘测并给个预算区间？",
+        "engagement_history": [
+          "watched full gatehouse project case video",
+          "saved two factory gatehouse examples",
+          "asked for onsite survey time"
+        ],
+        "tenant_rules": {
+          "require_site_details_for_precise_quote": true,
+          "forbid_unapproved_commitments": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as vague browsing traffic"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_scenic_area_cases_002",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "景区入口准备升级门楼，预算领导还没最后定，你先把类似案例、流程和大概周期发我，我拿去汇报。",
+        "engagement_history": [
+          "added enterprise wechat after reading case article",
+          "asked for similar scenic gatehouse references"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "preserve_medium_confidence_enterprise_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium confidence",
+        "good fit",
+        "nurture instead of hard sell",
+        "do not over-escalate directly to top tier"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because budget is not finalized"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_photo_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "这是我们厂门口现在的照片，你先看看大概多少钱，尺寸还没量，领导晚上想先了解下。",
+        "engagement_history": [
+          "sent one site photo",
+          "liked three gatehouse renovation videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "require_site_details_for_precise_quote": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real but incomplete intent",
+        "medium fit",
+        "needs measurement or range quote",
+        "medium confidence"
+      ],
+      "mustAvoid": [
+        "blindly marking as exact-quote-ready high tier"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_spam_service_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "老板加我，专业做门楼短视频代运营和抖音投流，包你们线索翻倍。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high spam probability",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating unrelated marketing services as a valid project lead"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_reseller_price_sheet_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "把你们门楼全套报价单和返点政策发我，我这边有很多客户，先看看以后合作。",
+        "engagement_history": [
+          "added wechat from video account profile"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real project details"
+      ],
+      "mustAvoid": [
+        "classifying reseller fishing as a followup-ready direct buyer"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_cross_channel_repeat_006",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "baidu_form",
+        "lead_content": "厂区门楼改造，联系人王总，地址和现场视频已发企业微信，想明天下午确认勘测时间。",
+        "engagement_history": [
+          "submitted baidu form with phone number",
+          "sent same project photos on enterprise wechat",
+          "asked callback for survey confirmation"
+        ],
+        "tenant_rules": {
+          "merge_duplicate_project_leads": true,
+          "forbid_duplicate_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high confidence due to repeated consistent engagement",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "creating multiple separate high-priority leads for the same project"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_unrealistic_budget_007",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "phone_callback",
+        "lead_content": "我们要做一个 12 米高的钢结构门楼，还要发光字和石材包边，预算 5000，能不能今天就定下来？",
+        "engagement_history": [
+          "called back within 10 minutes after video ad"
+        ],
+        "tenant_rules": {
+          "downgrade_unrealistic_budget": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "intent may be high but fit is low",
+        "budget-scope mismatch",
+        "should not be top-tier direct push"
+      ],
+      "mustAvoid": [
+        "equating urgency with commercial fit"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_guarantee_claim_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "只要我今天付钱，你们能不能保证城管消防一次过审，而且七天内必须装完？",
+        "engagement_history": [
+          "asks for guarantee and extreme deadline"
+        ],
+        "tenant_rules": {
+          "forbid_unapproved_commitments": true,
+          "regulated_bidding_language": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "strong purchase signal but elevated risk",
+        "do not mark as safe top-tier lead",
+        "risk should outweigh commercial temptation"
+      ],
+      "mustAvoid": [
+        "blindly marking as high intent and low risk without governance caution"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_gov_procurement_009",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "email_inquiry",
+        "lead_content": "我们是园区国企项目组，需要门楼改造供应商资料。请发送资质、类似案例、开票信息和沟通窗口，本周内部评审。",
+        "engagement_history": [
+          "formal email with company signature",
+          "requested qualification pack and invoice info"
+        ],
+        "tenant_rules": {
+          "keep_formal_procurement_leads": true,
+          "forbid_unapproved_commitments": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high fit",
+        "medium to high intent",
+        "formal procurement signal",
+        "worth structured follow-up"
+      ],
+      "mustAvoid": [
+        "misclassifying formal procurement as low-interest casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_gatehouse_returning_client_010",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "去年你们给我们做过一期厂区门楼，这次第二个园区想沿用类似风格，现场地址和旧图纸我再发你，想继续找原团队。",
+        "engagement_history": [
+          "historical project exists in tenant memory",
+          "shares old drawings and new location",
+          "asks for same team follow-up"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    }
+  ]
+}

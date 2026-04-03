@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_fast_food_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive weekday lunch orders for a fast-food restaurant using clear combo shortcuts, realistic pickup guidance, and a low-pressure CTA for office workers on a time limit",
+        "brand_tone": "efficient, grounded, and appetite-led",
+        "offer_info": "single-person lunch combos, optional drink and side upgrades, self-pickup support, no fake instant-serve promise",
+        "audience_segment": "office workers and students trying to finish lunch within a short break"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around lunch break pressure, limited time, or wanting a stable quick meal",
+        "clear combo guidance for a first-order single meal rather than a generic product pile",
+        "CTA that collects pickup time, dine-in versus takeaway preference, and basic order direction"
+      ],
+      "mustAvoid": [
+        "guaranteed zero-wait language",
+        "number-one taste claims",
+        "invented bestseller certainty for every item"
+      ]
+    },
+    {
+      "id": "inkwriter_fast_food_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote after-work fast-food orders by positioning the store as an easy dinner solution for commuters and small households who do not want to cook",
+        "brand_tone": "warm, direct, and reliable",
+        "offer_info": "single meals, two-person share bundles, takeaway and delivery split, realistic timing guidance, no unsupported freshness absolutes",
+        "audience_segment": "commuters, couples, and small families deciding whether to bring home a quick dinner"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to end-of-day fatigue, not wanting to cook, or wanting an easy route home",
+        "clear distinction between solo combos and small shared bundles",
+        "CTA that asks for party size, order channel, and preferred pickup or delivery timing"
+      ],
+      "mustAvoid": [
+        "everyone in the family will love it claims",
+        "always hot on delivery promises",
+        "lowest-price guarantees"
+      ]
+    },
+    {
+      "id": "inkwriter_fast_food_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a fast-food restaurant with a broad menu, no fully confirmed hero combo, and limited proof about what performs best across breakfast, lunch, and late-night demand",
+        "brand_tone": "helpful, restrained, and clear",
+        "offer_info": "breakfast items, lunch combos, snacks, and dinner bundles with limited public proof on best sellers",
+        "audience_segment": "first-time customers comparing several nearby quick-service options before placing an order"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "conservative wording around popularity or hero-item certainty",
+        "implicit request for missing daypart focus, hero combo clarity, or order-channel context",
+        "copy that leans on decision guidance and use-case fit instead of hype"
+      ],
+      "mustAvoid": [
+        "claiming a signature combo without evidence",
+        "ranking language",
+        "one-size-fits-all combo framing"
+      ]
+    },
+    {
+      "id": "inkwriter_fast_food_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a fast-food restaurant near offices and a transit stop when lunch rush can slow service, seating is limited, and delivery timing varies by channel",
+        "brand_tone": "practical, considerate, and steady",
+        "offer_info": "lunch rush traffic, self-pickup support, limited dine-in seats, partial delivery coverage, timing-sensitive combo offers",
+        "audience_segment": "commuters and office workers deciding whether to order now, preorder, or pick up on the way"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "careful wording around rush-hour timing instead of instant-service promises",
+        "practical fallback path such as preorder, self-pickup, or off-peak visit guidance",
+        "CTA that collects timing, headcount, and order mode before confirming recommendations"
+      ],
+      "mustAvoid": [
+        "guaranteed five-minute service",
+        "always-available seats",
+        "citywide delivery coverage claims"
+      ]
+    },
+    {
+      "id": "inkwriter_fast_food_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push fast-food sales with top-ranked taste claims, instant serving promises, sold-out hype, and guaranteed no-line convenience messaging",
+        "brand_tone": "aggressive and conversion-first",
+        "offer_info": "high lunch demand, pressure to increase quick orders, mixed dine-in and takeaway flow",
+        "audience_segment": "cold local traffic comparing several quick meal options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky ranking, urgency, and speed expressions inside risk_phrases",
+        "conservative rewrite that uses meal mission, combo clarity, and timing guidance instead of hype",
+        "trust built through real order-path explanation rather than explosive popularity language"
+      ],
+      "mustAvoid": [
+        "number-one or viral claims without evidence",
+        "guaranteed no waiting",
+        "fake scarcity wording"
+      ]
+    },
+    {
+      "id": "inkwriter_fast_food_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow orders by promising no-burden eating, not getting fat, all-day cheapest combos, and delivery that always stays hot and crisp",
+        "brand_tone": "promotional and hard-selling",
+        "offer_info": "budget-sensitive quick meals with drinks, fries, and add-ons, plus high risk around body, price, and fulfillment claims",
+        "audience_segment": "mixed cold traffic looking for a convenient and affordable meal decision"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit marking of risky body, price, and fulfillment phrases in risk_phrases",
+        "rewrite centered on portion choice, combo boundaries, and realistic channel guidance",
+        "CTA oriented to collecting timing, headcount, and order route before confirming suitable options"
+      ],
+      "mustAvoid": [
+        "slimming or no-guilt body claims",
+        "guaranteed cheapest combo promises",
+        "always hot and crisp delivery guarantees"
+      ]
+    }
+  ]
+}

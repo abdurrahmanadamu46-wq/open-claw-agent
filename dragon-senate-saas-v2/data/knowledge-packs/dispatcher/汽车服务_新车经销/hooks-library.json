@@ -1,0 +1,50 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "first_visit_inquiry",
+      "title": "首次看车问询触发优先调度",
+      "description": "当来单中出现第一次来、想先看车、想先试驾和具体问题时，Dispatcher 应优先匹配到店链路，而不是塞进泛咨询队列。",
+      "examples": ["客户第一次来，想周末先看一台家用 SUV。", "客户想先看看插混车型是否适合通勤。"],
+      "priority": "high"
+    },
+    {
+      "id": "seasonal_window_inquiry",
+      "title": "车展与节前窗口询单触发时效优先调度",
+      "description": "当来单明确说明车展、节前提车和年后换车节点时，Dispatcher 要立即优先判断热门时段可用性和看车边界。",
+      "examples": ["客户这周要提车，想周四晚先看车。", "客户说明车展将至，希望今晚先来了解。"],
+      "priority": "high"
+    },
+    {
+      "id": "short_window_consult",
+      "title": "短时段询单触发快流程调度",
+      "description": "当用户明确只有 45 到 60 分钟窗口时，Dispatcher 应优先匹配轻量看车说明，不应给出复杂长看车承接。",
+      "examples": ["客户只有下班后 50 分钟。", "上班族想约一单晚间快速看车沟通。"],
+      "priority": "medium"
+    },
+    {
+      "id": "core_consultant_slot_hold",
+      "title": "核心顾问与热门时段询单触发保留确认链路",
+      "description": "当用户点名顾问或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。",
+      "examples": ["客户指定周六 18:30 的核心顾问看车位。", "客户想抢车展季最后一个晚间看车档。"],
+      "priority": "medium"
+    },
+    {
+      "id": "multi_need_visit",
+      "title": "多问题看车触发扩展时长链路",
+      "description": "当用户同时提到预算、配置、金融和置换等多个问题时，Dispatcher 要立即扩展时长和顾问匹配，不可按单一轻量看车处理。",
+      "examples": ["客户同时提到预算和金融。", "客户又想置换又想看插混。"],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_revisit_task",
+      "title": "看车后触发复访和回访任务",
+      "description": "当系统收到看车完成信号时，Dispatcher 应自动创建回访、复访和 followup 提醒，而不是让链路断在看车之后。",
+      "examples": ["看车后创建顾问回访任务。", "试驾后创建复访和报价提醒。"],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车改装","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+{"id":"car_mod_score_problem_specificity","title":"问题指向清晰度","description":"高分文案能在前两句就让用户看见明确问题或场景，例如轮毂、避震、排气、灯光和合规，而不是只说改装和个性。","examples":["高分：开头直接点出轮毂或姿态问题。 ","低分：一开始只有帅和炸。 "],"priority":"high"},
+{"id":"car_mod_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给施工流程、配件和质保说明，让用户感到门店不会乱推。","examples":["高分：先写判断和边界，再写到店。 ","低分：只靠夸张前后对比吸引。 "],"priority":"high"},
+{"id":"car_mod_score_compliance_safety","title":"合规安全性","description":"高分文案避免绝对合规承诺和绝对效果承诺；低分文案容易出现绝对化表述和违规导向。","examples":["高分：用施工说明和适用提示替代强承诺。 ","低分：保证合法、绝不报码、绝对提升。 "],"priority":"high"},
+{"id":"car_mod_score_scene_match","title":"场景匹配度","description":"高分文案会让车展升级、日常轻改和老客复购各归其位。","examples":["高分：节点文案重日期和场景，老客文案重升级理由。 ","低分：所有文案都只会喊来做一下。 "],"priority":"medium"},
+{"id":"car_mod_score_respectfulness","title":"尊重感与情绪稳定度","description":"高分文案会陪用户一起判断状态，而不是拿预算有限和不懂车刺激逼单。","examples":["高分：用先看方向和先到店这类语气。 ","低分：用再不改就落伍这类恐吓。 "],"priority":"high"},
+{"id":"car_mod_score_cta_quality","title":"CTA 收口质量","description":"高分 CTA 会自然收项目、日期和是否第一次来等到店事实。","examples":["高分：先发项目和想约时间。 ","低分：快来店里看看。 "],"priority":"high"}]}

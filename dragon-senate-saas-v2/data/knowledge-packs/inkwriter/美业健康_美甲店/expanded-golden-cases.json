@@ -1,0 +1,112 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "inkwriter",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "inkwriter_nail_salon_office_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a nail salon for weekday office-friendly short nails using real-work proof and a booking CTA",
+        "brand_tone": "clean, grounded, and tasteful",
+        "offer_info": "short nail styles, optional removal, no exaggerated same-as-reference promise",
+        "audience_segment": "local office workers who want understated but polished nails"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around office or daily wear",
+        "truthful style proof",
+        "CTA that collects style direction and booking time"
+      ],
+      "mustAvoid": [
+        "perfect copy promise",
+        "empty beauty clichés",
+        "hard-sell membership"
+      ]
+    },
+    {
+      "id": "inkwriter_nail_salon_bridal_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write copy for a wedding-season nail booking route",
+        "brand_tone": "soft, precise, and reassuring",
+        "offer_info": "bridal and event nails, booking-first, style-match emphasis",
+        "audience_segment": "users preparing for weddings, photoshoots, and major events"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "event-based opening",
+        "style-match and timing emphasis",
+        "CTA tied to event date and slot"
+      ],
+      "mustAvoid": [
+        "guaranteed all popular slots available",
+        "one-size-fits-all style claim",
+        "overly pushy upsell"
+      ]
+    },
+    {
+      "id": "inkwriter_nail_salon_rebook_003",
+      "label": "long_term_case",
+      "input": {
+        "strategy_route": "Write a soft rebooking message for regular nail clients approaching their next cycle",
+        "brand_tone": "familiar, tasteful, and not sales-heavy",
+        "offer_info": "rebook reminder based on growth cycle and style preference",
+        "audience_segment": "existing clients who usually return every two to three weeks"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "specific rebook reason",
+        "style or cycle relevance",
+        "CTA tied to timing"
+      ],
+      "mustAvoid": [
+        "generic comeback message",
+        "pressure-heavy sales tone",
+        "discount-only logic"
+      ]
+    },
+    {
+      "id": "inkwriter_nail_salon_price_004",
+      "label": "risk_case",
+      "input": {
+        "strategy_route": "Rewrite a nail-salon promo that currently hides add-on fees behind a low headline price",
+        "brand_tone": "clear and trustworthy",
+        "offer_info": "base manicure with optional removal and add-ons",
+        "audience_segment": "first-time local leads comparing prices"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear boundary around what the base price includes",
+        "scope-recovering CTA",
+        "truthful mention of add-ons where relevant"
+      ],
+      "mustAvoid": [
+        "bait-style pricing",
+        "all-inclusive implication without proof",
+        "hidden fee framing"
+      ]
+    }
+  ]
+}

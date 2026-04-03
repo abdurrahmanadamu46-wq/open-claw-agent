@@ -1,0 +1,567 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_store_name",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_store_name",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "downtown store",
+        "mall location",
+        "station store",
+        "specific fast-food store"
+      ],
+      "why_it_matters": "Store detail makes stock, timing, and coupon answers much more actionable.",
+      "echoer_action": "Use store-aware wording and ask only for the missing order facts."
+    },
+    {
+      "id": "explicit_order_time",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_order_time",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "today at noon",
+        "tonight at 7",
+        "tomorrow morning at 8",
+        "right after work"
+      ],
+      "why_it_matters": "A specific time shifts the conversation from browsing into real ordering behavior.",
+      "echoer_action": "Use the time signal to guide toward the most relevant store or order-mode check."
+    },
+    {
+      "id": "explicit_order_mode",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_order_mode",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "pickup",
+        "delivery",
+        "eat in",
+        "takeaway"
+      ],
+      "why_it_matters": "Fast-food timing, texture, and offer eligibility often depend on the order route.",
+      "echoer_action": "Reply with channel-aware guidance instead of generic menu talk."
+    },
+    {
+      "id": "explicit_item_or_combo",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_item_or_combo",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "burger combo",
+        "wrap meal",
+        "breakfast set",
+        "family bundle"
+      ],
+      "why_it_matters": "Naming the item or combo means the user is already narrowing the choice set.",
+      "echoer_action": "Build the reply around that item path instead of restarting the menu from zero."
+    },
+    {
+      "id": "meal_mission_clarity",
+      "applies_to": "incoming_message",
+      "feature_name": "meal_mission_clarity",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "quick lunch",
+        "commute dinner",
+        "breakfast on the way",
+        "late-night bite"
+      ],
+      "why_it_matters": "Fast-food decisions usually convert better when the real eating occasion is already clear.",
+      "echoer_action": "Anchor the reply in the user's moment and reduce decision load."
+    },
+    {
+      "id": "group_size_or_item_count",
+      "applies_to": "incoming_message",
+      "feature_name": "group_size_or_item_count",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "2 people",
+        "4 meals",
+        "12 burgers",
+        "for the whole office"
+      ],
+      "why_it_matters": "Quantity signals help Echoer move from casual interest into workable ordering guidance.",
+      "echoer_action": "Use the size signal to tailor combo, bulk-order, or pickup advice."
+    },
+    {
+      "id": "bulk_order_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "bulk_order_signal",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "team lunch",
+        "meeting order",
+        "class order",
+        "event catering"
+      ],
+      "why_it_matters": "Bulk orders usually carry stronger commercial value and higher coordination needs than single-person meals.",
+      "echoer_action": "Collect timing, store, count, and invoice facts early."
+    },
+    {
+      "id": "invoice_or_company_need",
+      "applies_to": "incoming_message",
+      "feature_name": "invoice_or_company_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "need invoice",
+        "company order",
+        "team reimbursement",
+        "office lunch"
+      ],
+      "why_it_matters": "Invoice needs often signal a more serious, organized purchase path.",
+      "echoer_action": "Treat it as a real operational lead rather than a casual menu question."
+    },
+    {
+      "id": "customization_detail_present",
+      "applies_to": "incoming_message",
+      "feature_name": "customization_detail_present",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "no onion",
+        "extra sauce",
+        "less spicy",
+        "swap the side"
+      ],
+      "why_it_matters": "Detailed preferences usually indicate the user is closer to a real order.",
+      "echoer_action": "Acknowledge the preference and move toward item-specific confirmation."
+    },
+    {
+      "id": "family_or_kids_context",
+      "applies_to": "incoming_message",
+      "feature_name": "family_or_kids_context",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "for my kids",
+        "family meal",
+        "not too spicy",
+        "something easy to share"
+      ],
+      "why_it_matters": "Mixed-group context helps Echoer give more usable guidance than generic item pitching.",
+      "echoer_action": "Tailor the reply around group mix, spice tolerance, and shareability."
+    },
+    {
+      "id": "coupon_context_complete",
+      "applies_to": "incoming_message",
+      "feature_name": "coupon_context_complete",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "app coupon at this store",
+        "member deal tonight",
+        "birthday coupon in app",
+        "group-buy offer for pickup"
+      ],
+      "why_it_matters": "Promotion questions become much more actionable when store, time, and channel are already partly specified.",
+      "echoer_action": "Clarify the missing offer detail rather than answering with a broad yes or no."
+    },
+    {
+      "id": "limited_item_today_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "limited_item_today_signal",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "still available today",
+        "sold out yet",
+        "restock today",
+        "can I still get it tonight"
+      ],
+      "why_it_matters": "Limited-item questions often mean the user is close to placing an order if the stock check is favorable.",
+      "echoer_action": "Focus on store and timing instead of generic product hype."
+    },
+    {
+      "id": "ready_to_order_now",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_order_now",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "order now",
+        "place it now",
+        "I want to confirm now",
+        "can I get this right away"
+      ],
+      "why_it_matters": "Direct order language is one of the clearest conversion signals for Echoer.",
+      "echoer_action": "Keep the reply warm and funnel toward the minimum order facts."
+    },
+    {
+      "id": "complaint_order_facts_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_order_facts_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "order number",
+        "order time",
+        "I have photos",
+        "wrong item proof"
+      ],
+      "why_it_matters": "Complaint recovery moves faster when the user is ready with usable order facts.",
+      "echoer_action": "Acknowledge the frustration and route quickly to service handling."
+    },
+    {
+      "id": "skeptic_but_engaged",
+      "applies_to": "incoming_message",
+      "feature_name": "skeptic_but_engaged",
+      "category": "trust_repair",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "is it really fresh",
+        "every fast-food place says that",
+        "looks overhyped",
+        "why should I believe this"
+      ],
+      "why_it_matters": "A skeptical user who keeps asking is still a live engagement opportunity.",
+      "echoer_action": "De-escalate and invite a more concrete quality concern."
+    },
+    {
+      "id": "exact_ready_time_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "exact_ready_time_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "ready in 10 minutes exactly",
+        "guarantee no wait",
+        "promise it will be done by then",
+        "definitely no queue"
+      ],
+      "why_it_matters": "Rush-time guarantees create avoidable service risk and disappointment.",
+      "echoer_action": "Shift from guarantee language to store, time, and order-size guidance."
+    },
+    {
+      "id": "allergy_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "allergy_guarantee_request",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guarantee no peanut",
+        "zero cross-contact",
+        "promise it is safe",
+        "100 percent no allergen"
+      ],
+      "why_it_matters": "Allergy guarantee wording is a high-risk safety topic that cannot be answered casually.",
+      "echoer_action": "Treat it as a careful-confirmation case and escalate."
+    },
+    {
+      "id": "freshness_or_heat_absolute_request",
+      "applies_to": "incoming_message",
+      "feature_name": "freshness_or_heat_absolute_request",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guaranteed fresh",
+        "definitely made right now",
+        "will stay crispy for sure",
+        "always arrives hot"
+      ],
+      "why_it_matters": "Absolute freshness or texture language invites unsafe overpromising around live operations.",
+      "echoer_action": "Move toward condition-based wording and channel-aware guidance."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "drop your number",
+        "call me now",
+        "leave contact in comments"
+      ],
+      "why_it_matters": "Moving contact details into public comments creates platform and privacy risk.",
+      "echoer_action": "Use platform DM as the safe bridge."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give the cheapest",
+        "price only",
+        "lowest combo now",
+        "no details just quote"
+      ],
+      "why_it_matters": "Price-only traffic is not useless, but it needs reframing before it becomes a workable fast-food order path.",
+      "echoer_action": "Move from price pressure to meal timing, quantity, and order mode."
+    },
+    {
+      "id": "body_or_health_outcome_request",
+      "applies_to": "incoming_message",
+      "feature_name": "body_or_health_outcome_request",
+      "category": "health_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "will not make me gain weight",
+        "guilt-free fast food",
+        "healthiest burger",
+        "which one is safe for dieting"
+      ],
+      "why_it_matters": "Body or health-outcome wording can push Echoer into medical or weight-related claims that should be avoided.",
+      "echoer_action": "Reframe toward portion, ingredients, and preference without promising health outcomes."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never convert into healthy order intent.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges urgency",
+        "acknowledges frustration",
+        "acknowledges caution"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior for fast-moving service conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_store_time_mode",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_store_time_mode",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for store",
+        "asks for timing",
+        "asks for pickup or delivery",
+        "asks for quantity"
+      ],
+      "why_it_matters": "A strong fast-food reply turns vague interest into usable order facts quickly.",
+      "echoer_action": "Keep the ask to the next few critical facts only."
+    },
+    {
+      "id": "reply_uses_combo_as_shortcut",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_uses_combo_as_shortcut",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "gives one practical combo direction",
+        "narrows to solo versus shareable",
+        "frames a simple order route",
+        "reduces decision load"
+      ],
+      "why_it_matters": "Echoer should help the user decide faster, not expand the menu into more work.",
+      "echoer_action": "Offer one or two useful directions before asking for more detail."
+    },
+    {
+      "id": "reply_distinguishes_order_channel",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_distinguishes_order_channel",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "separates pickup from delivery",
+        "mentions store-specific timing",
+        "notes that some items travel better",
+        "does not treat all channels the same"
+      ],
+      "why_it_matters": "Channel-aware replies are more credible in fast-food service contexts.",
+      "echoer_action": "Use route-specific guidance when the user's choice depends on timing or texture."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "share the store and time",
+        "send order details in DM",
+        "tell me how many meals",
+        "confirm pickup or delivery"
+      ],
+      "why_it_matters": "One clear next step is easier for users to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_high_risk_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_high_risk_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "allergy topic escalated",
+        "service issue escalated",
+        "ingredient restriction escalated",
+        "safety topic escalated"
+      ],
+      "why_it_matters": "Echoer should not improvise beyond safety, service, or liability boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps order details minimal in comments",
+        "uses platform-safe transition"
+      ],
+      "why_it_matters": "Order details and complaint evidence should not be collected too deeply in public threads.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_absolute_time_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_time_promise",
+      "category": "safety_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "ready in exactly 10 minutes",
+        "definitely no wait",
+        "guaranteed pickup time",
+        "always instant"
+      ],
+      "why_it_matters": "Absolute timing promises create avoidable fulfillment risk.",
+      "echoer_action": "Replace with condition-based and store-aware wording."
+    },
+    {
+      "id": "reply_absolute_freshness_or_texture_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_freshness_or_texture_promise",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "always fresh",
+        "guaranteed hot and crispy",
+        "never prepped ahead",
+        "same as dine-in every time"
+      ],
+      "why_it_matters": "Absolute freshness and travel-quality promises are risky in live service operations.",
+      "echoer_action": "Use practical, condition-based language instead."
+    },
+    {
+      "id": "reply_body_or_medical_claim",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_body_or_medical_claim",
+      "category": "health_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "will not make you gain weight",
+        "healthy fast food guarantee",
+        "safe for pregnancy",
+        "good for dieting"
+      ],
+      "why_it_matters": "Echoer should avoid medical, diet, and body-outcome promises.",
+      "echoer_action": "Reframe toward ingredients, portion, and preference without making outcome claims."
+    },
+    {
+      "id": "reply_blanket_coupon_approval",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_blanket_coupon_approval",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "coupon works everywhere",
+        "all stores accept it",
+        "use it any time",
+        "no need to check the terms"
+      ],
+      "why_it_matters": "Offer conditions often vary by store, channel, and time slot.",
+      "echoer_action": "Ask for the missing offer context before sounding certain."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your number",
+        "send WeChat in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "customer is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    }
+  ]
+}

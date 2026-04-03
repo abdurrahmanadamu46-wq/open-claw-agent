@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"qualify_by_scene_scope_time","title":"先看场景、房型范围和时间，再判断是不是高意向","description":"家政服务线索只有在明确提到日常保洁、深度清洁、开荒、收纳整理等场景，房型面积或重点区域，以及上门时间或节点时，才能被视为高意向。","examples":["高价值信号：周五晚想约周六做 89 平两居深度保洁，重点厨房和卫生间。","低确定性信号：最近想找个阿姨打扫一下。"],"priority":"high"},
+  {"id":"deadline_visit_is_high_intent","title":"节前、入住和退租出现明确日期时要显著提权","description":"节前大扫除、搬家入住和退租等节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实上门动作。","examples":["周末来客，想这两天先做深清。","下周退租，这周想先把保洁定下来。"],"priority":"high"},
+  {"id":"first_time_and_process_questions_are_not_low_intent","title":"第一次约阿姨和流程顾虑不应被误判成低意向","description":"第一次来、怕踩坑、怕不专业和想先问清楚流程，并不等于低意向。","examples":["第一次约阿姨，担心不会沟通，这周末有空想先看看。","想先看开荒路线，但比较怕临时加价。"],"priority":"high"},
+  {"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着范围和时间","description":"价格问题本身并不低意向，但如果没有房型范围、重点区域和时间窗口等事实，Catcher 不能把它直接提到最高层。","examples":["高意向：这周末想做两居深清，大概什么价位。","普通意向：保洁多少钱。"],"priority":"medium"},
+  {"id":"returning_customer_signal_upgrade","title":"老客续约和固定阿姨回流要抬高拟合度","description":"老客复购、固定阿姨续约和之前做过又回来问时段等信号，通常意味着信任门槛已经降低。","examples":["上次来做过，这次想继续约同一个阿姨。","之前做过周保洁，这周想再补一次。"],"priority":"medium"},
+  {"id":"public_anxiety_should_not_hide_intent","title":"公开场合的焦虑表达不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如怕做不干净、怕来不及和怕被加项。","examples":["第一次约保洁怕踩坑，也能先来看看吗。","这周有点急，也想先问清楚再约。"],"priority":"medium"}
+]}

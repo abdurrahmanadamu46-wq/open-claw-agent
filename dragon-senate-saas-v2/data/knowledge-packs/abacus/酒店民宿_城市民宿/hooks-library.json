@@ -1,0 +1,118 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concert_late_return_self_checkin_hook",
+      "hook_name": "演出晚归自助入住钩子",
+      "trigger_pattern": "客人明确自己是看演出、夜场或看展后晚归入住，愿意给出最晚到店时间、人数、实名信息和押金或预付方式。",
+      "value_hypothesis": "这类线索一旦从“散场后再看看”推进到“到店链路已锁定”，就已经从内容热度进入可执行入住阶段，短期价值通常明显高于普通模糊询价。",
+      "short_term_score_hint": "当入住日期、最晚到店窗口、自助入住步骤和押金都清楚时，短期分应进入高位候选。",
+      "long_term_score_hint": "若客人来自老客回流、观演圈层或同伴转介绍，长期分也可保留中高位。",
+      "roi_estimate_hint": "ROI 需要扣除夜间支持、门锁故障和周转成本，但只要预付和到店链路可靠，通常仍优于纯平台低价流量。",
+      "reward_signal": "奖励确认实名登记、最晚到店时间、自助入住指引送达和私域留存的动作。",
+      "caution": "晚归不是天然高分，关键在于有没有把晚归变成可履约的晚归。"
+    },
+    {
+      "id": "exam_medical_quiet_stay_hook",
+      "hook_name": "陪考陪诊安静住钩子",
+      "trigger_pattern": "客人围绕考点、医院、复诊、术后休息、老人同行、安静、电梯和早起出门路线发起咨询，并愿意提供日期和同行结构。",
+      "value_hypothesis": "这类订单真正有价值的不是焦虑感，而是对安静、进出和路线稳定性的高确定性需求，一旦执行细节清楚，通常比普通价格比对更接近成交。",
+      "short_term_score_hint": "日期、去向、房型和安静边界越清楚，短期分越值得上调。",
+      "long_term_score_hint": "若存在复诊、阶段性治疗或多轮考试可能，长期分应高于普通一次性短住。",
+      "roi_estimate_hint": "ROI 要把安静房机会成本、排房调整和退改风险算进去，再判断是否仍然健康。",
+      "reward_signal": "奖励确认路线、说明电梯或楼梯情况、锁定首晚和延住窗口的动作。",
+      "caution": "不要把“很急”直接翻译成“很值钱”。"
+    },
+    {
+      "id": "transition_longstay_cashflow_hook",
+      "hook_name": "过渡长住现金流钩子",
+      "trigger_pattern": "客人明确搬家、装修、实习入职或租房空档，需要连住一周以上，并愿意确认支付周期、保洁频率和做饭洗衣边界。",
+      "value_hypothesis": "城市民宿里真正稳定的价值常常来自过渡长住，因为它同时带来可预测房晚、续住可能和更低周转损耗。",
+      "short_term_score_hint": "一旦入住区间、房型和支付节奏锁定，短期分不应按普通散客询价处理。",
+      "long_term_score_hint": "长期分应显著高于单晚短住，尤其是在存在续住和转介绍可能时。",
+      "roi_estimate_hint": "即便单晚价格略低，只要获客成本被摊薄、周转损耗下降，ROI 往往仍更优。",
+      "reward_signal": "奖励锁定完整入住区间、周结或月结、保洁节奏和续住确认节点的动作。",
+      "caution": "不要把 ADR 下降误判成价值下降。"
+    },
+    {
+      "id": "family_two_bed_layout_hook",
+      "hook_name": "家庭多人住布局钩子",
+      "trigger_pattern": "客人询问两居、双卧、老人小孩同住、电梯、停车、简餐和多人作息安排，并愿意说明成人儿童结构。",
+      "value_hypothesis": "多人住订单的真实价值不在总人数，而在房型结构是否精准匹配，一旦匹配清楚，成交和满意度通常都会提升。",
+      "short_term_score_hint": "当人数结构、床型、电梯和停车方案都清楚时，短期分可进入中高位。",
+      "long_term_score_hint": "如果需求来自固定探亲和节假日回城场景，长期分可保留中高位。",
+      "roi_estimate_hint": "ROI 必须扣除额外布草、停车协助和更长清洁时长，不能只看总价更高。",
+      "reward_signal": "奖励确认床型方案、楼层偏好、停车方式和公共区边界的动作。",
+      "caution": "人数多不代表利润一定高，舒适度和边界同样重要。"
+    },
+    {
+      "id": "pet_cleaning_deposit_hook",
+      "hook_name": "携宠清洁费确认钩子",
+      "trigger_pattern": "客人明确带宠入住，并愿意说明宠物体型、数量、活动习惯，同时接受清洁费、押金和活动边界。",
+      "value_hypothesis": "携宠客的价值不在稀缺感，而在边界确认后往往具备较强复购和圈层转介绍潜力。",
+      "short_term_score_hint": "当宠物信息、房型适配、清洁费和押金都清楚时，短期分可上调到中高位。",
+      "long_term_score_hint": "稳定携宠老客和圈层转介绍客，长期分应保留中位以上。",
+      "roi_estimate_hint": "ROI 需要显式扣除深度清洁、除味和房型限制成本后再判断是否健康。",
+      "reward_signal": "奖励核对宠物信息、确认清洁费与押金、安排次日清洁和沉淀携宠标签的动作。",
+      "caution": "能带宠不等于任何携宠订单都值得重押。"
+    },
+    {
+      "id": "old_guest_private_domain_hook",
+      "hook_name": "老客私域回流钩子",
+      "trigger_pattern": "老客通过微信、会员群或回访消息重新预订，并能复用历史房型、门锁方式、楼层或停车偏好。",
+      "value_hypothesis": "老客私域回流通常同时拥有更低获客成本、更低沟通摩擦和更高复住概率，是城市民宿典型的高 ROI 机会。",
+      "short_term_score_hint": "只要日期和房型清楚，短期分通常应高于平台新客。",
+      "long_term_score_hint": "长期分应同步上调，因为它代表复住和转介绍资产在回流。",
+      "roi_estimate_hint": "把节省的平台佣金和重复解释成本都算进去后，ROI 通常明显优于普通平台订单。",
+      "reward_signal": "奖励调取历史偏好、减少重复沟通、推动直订绑定和沉淀复用标签的动作。",
+      "caution": "老客也要看历史投诉和爽约记录，不能无条件高估。"
+    },
+    {
+      "id": "platform_coupon_bundle_hook",
+      "hook_name": "平台低价套餐净收益钩子",
+      "trigger_pattern": "订单主要来自 OTA、抖音团购、直播券或限时套餐，并伴随免清洁费、免费延退、早餐赠送或高退款率。",
+      "value_hypothesis": "这类线索最容易制造“订单很多”的错觉，但 Abacus 需要先看净房晚收益和后续迁移能力，而不是被热度带跑。",
+      "short_term_score_hint": "短期分不应因订单量和曝光量自动上升，除非已经看到直订迁移或付费增购。",
+      "long_term_score_hint": "只有能转进私域、转成非高峰复住或更高毛利订单时，长期分才值得保留中位。",
+      "roi_estimate_hint": "ROI 应从扣除佣金、补贴、清洁、早餐、延退和售后成本后的净收益出发。",
+      "reward_signal": "奖励把低价平台客转成私域留存、付费升级和后续直订的动作。",
+      "caution": "看起来最热闹的活动，常常也是最薄利的活动。"
+    },
+    {
+      "id": "freebie_pressure_hook",
+      "hook_name": "免费诉求压价钩子",
+      "trigger_pattern": "客人反复索要免费升房、免清洁费、免押金、免费停车、免费延退或拍摄支持，但基础订单信息并不清楚。",
+      "value_hypothesis": "这类信号更像议价压力测试，不像天然高价值线索；真正值得加分的是能否把诉求重构成清晰、可收费或可控的方案。",
+      "short_term_score_hint": "短期分通常不应上调，除非基础订单已经成立且权益换来了更高确定性。",
+      "long_term_score_hint": "若客人本身是高复住私域客，可保留中位长期分用于关系维护判断。",
+      "roi_estimate_hint": "只有在把赠项成本全部扣除后仍有健康净收益，这类线索才值得继续推进。",
+      "reward_signal": "奖励把免费诉求改造成付费升级、规则包或边界清晰替代方案的动作。",
+      "caution": "高要求和高价值，往往不是同一件事。"
+    },
+    {
+      "id": "duplicate_channel_merge_hook",
+      "hook_name": "多渠道合并归因钩子",
+      "trigger_pattern": "同一客人在 OTA、微信、电话和小程序之间来回询单或下单，入住日期、房型和人数组合高度重合。",
+      "value_hypothesis": "多入口并不代表多笔机会，真正有价值的是哪一个触点把线索推进到押金、自助入住或规则确认。",
+      "short_term_score_hint": "短期分只能按一笔机会计算，不能因为入口多就重复抬高。",
+      "long_term_score_hint": "长期分要看哪一个触点沉淀了可复用关系和直订资产。",
+      "roi_estimate_hint": "ROI 必须统一核算 merged lead 的总成本和净收益，再做贡献分配。",
+      "reward_signal": "奖励推动押金、实名、自助入住和边界确认的关键触点，而不是给所有入口重复记功。",
+      "caution": "最后一次点击不一定等于真正的价值创造。"
+    },
+    {
+      "id": "service_recovery_stoploss_hook",
+      "hook_name": "履约止损修复钩子",
+      "trigger_pattern": "客人因锁故障、噪音、卫生、收费争议或无法自助入住而投诉，并明确要求换房、退款、补偿或经理介入。",
+      "value_hypothesis": "这不是继续加分的销售机会，而是决定未来口碑和复住是否还能被保住的修复窗口。",
+      "short_term_score_hint": "短期分应主动下调，把重点从成交推进切换到止损和修复。",
+      "long_term_score_hint": "长期分可保留极低到中位，用于评估修复成功后的关系恢复可能。",
+      "roi_estimate_hint": "ROI 必须把补偿、退款、维修和差评扩散风险都计入，而不是只看剩余房费。",
+      "reward_signal": "奖励经理介入、证据留存、清晰修复方案和回访闭环的动作。",
+      "caution": "服务修复场景里，继续硬推成交往往只会放大损失。"
+    }
+  ]
+}

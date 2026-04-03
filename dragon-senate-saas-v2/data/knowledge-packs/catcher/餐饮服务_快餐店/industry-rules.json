@@ -1,0 +1,118 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5feb\u9910\u5e97",
+  "lobster_id": "catcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "qualify_by_store_time_order_mode_and_quantity",
+      "title": "Check store, time, order mode, and quantity before calling it high intent",
+      "description": "For fast food, a lead becomes high intent only when it includes a specific store, a clear dine-in or pickup or delivery mode, a meal window such as breakfast or lunch or dinner, a quantity or combo count, and an action request such as order, reserve, prep, deliver, or pickup. Generic menu curiosity should not be promoted to top priority.",
+      "examples": [
+        "High-value signal: Need 32 lunch combos delivered to Tower 2 lobby before 11:50 tomorrow. Two combo types. Can you arrange it?",
+        "Low-certainty signal: What combos do you have? Send me the menu first."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "separate_menu_and_discount_interest_from_order_intent",
+      "title": "Do not confuse menu browsing or coupon questions with order intent",
+      "description": "Questions about combo contents, recommended items, coupons, student pricing, or second-item discounts show interest, but they do not prove execution intent. Intent should rise only when the conversation advances into store, time, quantity, order mode, address, invoice, or contact details.",
+      "examples": [
+        "Only asking whether a 19.9 set is worth it should stay as a nurture lead.",
+        "Asking about a coupon and then adding 18 lunch boxes for Friday noon is the real intent shift."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bulk_meals_need_execution_facts",
+      "title": "Office lunch and group meals need execution facts before upgrade",
+      "description": "Corporate lunch, meeting meals, school events, team snacks, and overtime meals often carry higher value, but they should be judged with quantity, delivery address, floor or access details, budget, split packing, invoice needs, dietary notes, and delivery time. A vague statement like our company may order some fast food is not followup-ready yet.",
+      "examples": [
+        "Send 32 lunch sets to Floor 16 before 11:50 and issue an invoice is much stronger than our company may order lunch.",
+        "A school event inquiry without time, quantity, or delivery details should remain nurture-level."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "dinein_pickup_and_delivery_are_different_paths",
+      "title": "Dine-in, pickup, and delivery are three different buying paths",
+      "description": "Fit depends heavily on order mode. Dine-in requires party size and arrival time. Pickup requires store and pickup time. Delivery requires address scope, building constraints, and a delivery window. If the lead has not committed to one path, it should not be treated as top-tier.",
+      "examples": [
+        "Pickup at IFC store at 12:10 for 4 sets is far more actionable than We want burgers at noon.",
+        "Please deliver to our office without an address or time is still incomplete."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "same_day_urgency_is_real_but_not_a_service_promise",
+      "title": "Same-day urgency is real intent, not a delivery guarantee",
+      "description": "Statements such as we are nearby now, we will pick up after work, or the meeting starts soon usually signal real intent. Catcher should treat them as fast-follow signals, but should not ignore lunch rush, rider capacity, weather, building access, or store load. Strong urgency does not automatically reduce risk.",
+      "examples": [
+        "We will arrive in 20 minutes to pick up 5 sets should increase intent.",
+        "It must arrive at 11:50 exactly and nobody can go downstairs should increase risk."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "meal_window_changes_signal_strength",
+      "title": "Breakfast, lunch, and dinner windows change how strong the signal is",
+      "description": "Fast food demand is tightly shaped by meal windows. A clear breakfast pickup, office lunch delivery, or after-work takeaway plan is usually more real than a generic future question. If the request lands near or beyond a cutoff window, intent may still be real, but feasibility should be reviewed before top-tier upgrade.",
+      "examples": [
+        "Pickup 14 breakfast sets at 8:20 for a morning meeting is strong.",
+        "Ordering breakfast items near the cutoff should trigger feasibility caution."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "kids_meals_allergies_and_absolute_safety_requests_raise_risk",
+      "title": "Kids meals, allergy requests, and absolute safety language raise risk",
+      "description": "Family orders, kids meals, low-spice requests, allergy notes, and pregnancy-related food questions can be real intent. Risk rises when the lead demands absolute outcomes such as zero contact, never spicy, or guaranteed safe for pregnancy. Commercial value must not override safety-related caution.",
+      "examples": [
+        "Please make the kids meal mild is a normal operational note.",
+        "Can you guarantee zero cross-contact with peanuts should raise risk sharply."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaints_are_service_signals_not_sales_wins",
+      "title": "Complaints, wrong orders, and food safety reports belong in service flow",
+      "description": "Missing items, wrong combos, undercooked chicken, leaking packaging, broken drinks, or feeling sick after eating are urgent service signals. They may be high priority, but they are not normal sales leads and should not be mistaken for reorder or conversion opportunities.",
+      "examples": [
+        "I have the order number and photos because one meal was missing should go to service escalation.",
+        "My child felt unwell after eating is a sensitive risk signal, not a sales win."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_and_customization_mismatch_reduce_fit",
+      "title": "Reduce fit when budget and customization demands do not match",
+      "description": "If a lead wants many meals, per-person labels, split deliveries, upstairs handoff, invoices, and special notes on a budget that only fits entry-level fast food, the demand is real but the commercial fit is weak. Preserve the lead if useful, but do not upgrade it as top-tier without feasibility review.",
+      "examples": [
+        "Forty-five meals, labeled by name, delivered in two waves, with invoice support on a very low budget is intent-real but fit-low.",
+        "When quantity, budget, and service complexity align, fit should rise."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "merge_repeat_contacts_and_returning_clients_before_upgrade",
+      "title": "Merge repeated contact and repeat buyers before raising priority",
+      "description": "The same fast-food order often starts in comments, moves to direct messages, and then becomes a full list in enterprise chat. Repeated consistent engagement increases confidence, but only after confirming it is the same store, same time window, and same buyer. Returning buyers with prior order memory should also get a confidence boost rather than duplicate lead creation.",
+      "examples": [
+        "A user first asks in comments about office delivery and then sends a full lunch split by chat. That should strengthen one lead, not create two.",
+        "A company reusing the same store and address from last month should gain confidence from memory."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "reject_irrelevant_supplier_franchise_and_broker_noise",
+      "title": "Filter operators, franchise pitches, equipment sales, and price-sheet fishing",
+      "description": "Marketing operators, franchise offers, fryer equipment sellers, content-collab pitches, rebate deals, and people asking for full price sheets to compare for unnamed clients should be treated as low fit or high risk. Keep them only if there is a real buyer and a real order context behind the request.",
+      "examples": [
+        "We do fast-food operations and franchise growth is usually noise, not an order lead.",
+        "Send me every combo price and rebate policy so I can show clients is not followup-ready demand."
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "lobster_id": "visualizer",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "storyboard",
+      "prompts": [
+        {
+          "id": "visualizer.storyboard.shot-list.v1",
+          "file": "storyboard/shot-list.prompt.md",
+          "skill_id": "visualizer_storyboard",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "fashion", "food", "mother-baby", "local-service"],
+          "variants": ["v1-product-reveal", "v1-tutorial", "v1-lifestyle", "v1-ugc-style"]
+        },
+        {
+          "id": "visualizer.storyboard.cover-direction.v1",
+          "file": "storyboard/cover-direction.prompt.md",
+          "skill_id": "visualizer_cover_design",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "fashion", "food", "education"],
+          "variants": ["v1-xiaohongshu-cover", "v1-douyin-thumbnail", "v1-wechat-banner"]
+        },
+        {
+          "id": "visualizer.storyboard.digital-human-script.v1",
+          "file": "storyboard/digital-human-script.prompt.md",
+          "skill_id": "visualizer_digital_human_script",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "3c", "health"],
+          "variants": ["v1-product-intro", "v1-promo", "v1-tutorial"]
+        },
+        {
+          "id": "visualizer.storyboard.subtitle-strategy.v1",
+          "file": "storyboard/subtitle-strategy.prompt.md",
+          "skill_id": "visualizer_subtitle_gen",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "food", "travel", "education", "local-service"],
+          "variants": ["v1-hook-subtitle", "v1-chapter-subtitle"]
+        }
+      ]
+    },
+    {
+      "category": "ai-image-prompt",
+      "prompts": [
+        {
+          "id": "visualizer.ai-image-prompt.product-scene.v1",
+          "file": "ai-image-prompt/product-scene.prompt.md",
+          "skill_id": "visualizer_ai_prompt",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "fashion", "food", "3c"],
+          "variants": ["v1-flat-lay", "v1-lifestyle", "v1-close-up", "v1-comparison"]
+        },
+        {
+          "id": "visualizer.ai-image-prompt.avatar-character.v1",
+          "file": "ai-image-prompt/avatar-character.prompt.md",
+          "skill_id": "visualizer_ai_prompt",
+          "effectiveness_rating": 4,
+          "industries": ["education", "health", "local-service", "beauty"],
+          "variants": ["v1-brand-mascot", "v1-kol-style"]
+        },
+        {
+          "id": "visualizer.ai-image-prompt.infographic.v1",
+          "file": "ai-image-prompt/infographic.prompt.md",
+          "skill_id": "visualizer_ai_prompt",
+          "effectiveness_rating": 4,
+          "industries": ["health", "education", "beauty", "mother-baby"],
+          "variants": ["v1-comparison-chart", "v1-benefit-list", "v1-step-guide"]
+        },
+        {
+          "id": "visualizer.ai-image-prompt.video-keyframe.v1",
+          "file": "ai-image-prompt/video-keyframe.prompt.md",
+          "skill_id": "visualizer_image_gen",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "fashion", "food", "travel"],
+          "variants": ["v1-opening-frame", "v1-climax-frame", "v1-cta-frame"]
+        }
+      ]
+    }
+  ]
+}

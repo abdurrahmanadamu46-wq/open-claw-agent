@@ -1,0 +1,25 @@
+﻿{
+  "version": "lobster.runtime-limited-live.policy.v0.2",
+  "name": "Default Limited Live Policy",
+  "allowRoles": [
+    "catcher",
+    "abacus",
+    "dispatcher"
+  ],
+  "allowRoleScopes": {
+    "dispatcher": [
+      "internal_execute"
+    ]
+  },
+  "allowStrategies": [
+    "invoke_lead_ops_runner",
+    "call_execute_campaign_task"
+  ],
+  "allowExecutionModes": [
+    "limited_live",
+    "guardrailed_live"
+  ],
+  "allowGuardrailedLive": true,
+  "maxLiveWeight": 0.15,
+  "outputDirectory": "F:\\openclaw-agent\\run\\limited-live-dispatch"
+}

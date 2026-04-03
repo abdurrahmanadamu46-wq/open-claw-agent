@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "appointment_capacity_gate",
+      "title": "高峰预约前必须先校验房间、技师和单客时长",
+      "description": "美容院的调度核心不是单纯接单，而是把护理房间、技师班次、单客时长、翻房时间和前台承接一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": [
+        "晚间 18:30 到 20:30 已满时，先进入候补和分时段预约节点。",
+        "节前急救项目集中时，先确认可做时长和技师排班，再决定是否继续上量。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "technician_match_before_confirmation",
+      "title": "确认预约前先做技师与项目匹配",
+      "description": "不同技师适合不同项目和顾客偏好。Dispatcher 在生成执行计划时，必须先看项目类型、皮肤问题、顾客时间窗口和是否指定老师，再决定路由。",
+      "examples": [
+        "敏感修护优先安排更稳妥和沟通细致的老师。",
+        "午休快护理优先匹配手法熟练且节奏快的班次。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "consultation_step_must_exist",
+      "title": "首次到店和问题型预约必须保留咨询判断节点",
+      "description": "首次到店、敏感期、痘肌或节前急救等场景，Dispatcher 不能把计划直接写成进房即做。必须预留咨询判断、项目确认和边界沟通节点。",
+      "examples": [
+        "首次来店的黑头闭口用户先做问题确认再进项目。",
+        "敏感期顾客先走咨询判断，再决定是否做温和护理。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hygiene_turnover_gate",
+      "title": "房间清洁和用品准备是独立调度节点",
+      "description": "美容院不是房间空出来就能立刻接下一位。清洁、床单更换、用品补齐和工具准备必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": [
+        "连续预约时，先插入翻房和用品重置步骤。",
+        "一位敏感修护结束后，不可直接复用未整理房间。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "deposit_and_hold_window_for_peak_slots",
+      "title": "热门时段和节前档期需要保留窗口与定金策略",
+      "description": "美容院节前、周末和晚高峰的优质时段稀缺。Dispatcher 对高需求档期要设置保留时限、提醒节点和必要的定金或确认动作，防止空挂预约。",
+      "examples": [
+        "婚礼档前晚间时段要求限时确认。",
+        "热门老师周末预约超过一定时间未确认则释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_followup_task_backwrite",
+      "title": "到店完成后必须回写后续跟进任务",
+      "description": "美容院执行链路不能在核销后结束。完成护理后，要把顾客状态、老师备注、复访建议和 followup 任务回写到系统里，方便后续承接。",
+      "examples": [
+        "体验卡完成后自动生成 3 到 7 天回访任务。",
+        "记录本次对敏感、黑头或妆前状态的建议，回传 followup。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

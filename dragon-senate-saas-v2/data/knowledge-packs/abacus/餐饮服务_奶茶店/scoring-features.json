@@ -1,0 +1,248 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "order_fact_completeness",
+      "feature_name": "下单事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确门店、日期、时间、杯数、冷热占比和交付方式；3 分：已有其中 4 项且愿意继续补充；1 分：只有模糊询问，如今天排队吗、联名杯还有吗。",
+      "positive_signals": [
+        "门店明确",
+        "日期和时间明确",
+        "杯数明确",
+        "冷热或交付方式明确"
+      ],
+      "negative_signals": [
+        "只问价格或排队",
+        "没有门店信息",
+        "没有时间和杯数",
+        "只在评论区围观"
+      ],
+      "value_guidance": "奶茶店的短期价值首先来自可执行的下单事实，而不是公域热闹。"
+    },
+    {
+      "id": "payment_and_schedule_commitment_strength",
+      "feature_name": "付款与档期承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已付款、愿意付定金或已锁定自提送达时段；3 分：愿意电话深聊、确认预算或先走标准团单模板；1 分：只说先留一下但没有实际承诺。",
+      "positive_signals": [
+        "愿意支付",
+        "确认送达或自提时段",
+        "接受标准口味模板",
+        "确认联系人与交付方式"
+      ],
+      "negative_signals": [
+        "反复比价但不进入下一步",
+        "拒绝任何付款动作",
+        "不愿确认时间或杯数",
+        "要求先锁大量产能"
+      ],
+      "value_guidance": "对 Abacus 来说，付款和档期确认比聊天热度更能代表真实交易意愿。"
+    },
+    {
+      "id": "flavor_matrix_and_execution_certainty",
+      "feature_name": "口味矩阵与执行确定性",
+      "metric": "short_term_score",
+      "weight": 0.07,
+      "scoring_rule": "5 分：糖冰、冷热、小料和代奶要求清晰且门店可稳定执行；3 分：有少量特殊备注但可通过标准模板覆盖；1 分：大量复杂定制、备注冲突或执行边界不清。",
+      "positive_signals": [
+        "口味模板标准化",
+        "冷热占比明确",
+        "少量可控的特殊备注",
+        "门店能稳定执行"
+      ],
+      "negative_signals": [
+        "糖冰备注混乱",
+        "大量代奶和过敏要求",
+        "备注互相冲突",
+        "返工风险高"
+      ],
+      "value_guidance": "同样的杯数，执行越稳，短期价值和置信度越高。"
+    },
+    {
+      "id": "net_contribution_after_variable_cost",
+      "feature_name": "扣除变动成本后的净贡献质量",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除茶底、鲜果、小料、抽佣、包装、配送、售后后仍有健康净贡献；3 分：净贡献偏紧但仍为正；1 分：GMV 看起来高但净贡献很薄甚至为负。",
+      "positive_signals": [
+        "茶底和小料成本可控",
+        "平台抽佣可接受",
+        "加购空间存在",
+        "退款和超时风险低"
+      ],
+      "negative_signals": [
+        "强折扣或高补贴",
+        "包装和配送成本高",
+        "鲜果损耗大",
+        "售后赔付风险高"
+      ],
+      "value_guidance": "Abacus 不能被单量和台面销售额迷惑，真正的 ROI 来自净贡献。"
+    },
+    {
+      "id": "capacity_and_delivery_window_fit",
+      "feature_name": "产能匹配与履约窗口适配度",
+      "metric": "roi_estimate",
+      "weight": 0.09,
+      "scoring_rule": "5 分：需求与门店出杯、打包、配送或自提能力匹配，不会挤占高峰优质订单；3 分：存在一定挤压但可调度；1 分：明显占用高峰产能或压垮履约窗口。",
+      "positive_signals": [
+        "错峰下单",
+        "自提优先",
+        "配送距离适中",
+        "高峰产能仍有余量"
+      ],
+      "negative_signals": [
+        "午晚高峰爆量",
+        "骑手和封杯压力大",
+        "门禁复杂导致超时",
+        "要求极短时间交付"
+      ],
+      "value_guidance": "同样金额的订单，放在不同产能状态下，真实价值差异很大。"
+    },
+    {
+      "id": "repeat_purchase_and_ltv",
+      "feature_name": "复购频次与长期客户价值",
+      "metric": "long_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：客户具备固定复购、月结、固定时段补给或高频自提特征；3 分：主体稳定但频次一般；1 分：明显一次性、低复购或低沉淀空间。",
+      "positive_signals": [
+        "企业下午茶",
+        "固定自提习惯",
+        "会员或储值客户",
+        "活动组织者或高频团购联系人"
+      ],
+      "negative_signals": [
+        "纯一次性尝鲜",
+        "只看最低价",
+        "没有后续复购空间",
+        "历史复购极低"
+      ],
+      "value_guidance": "长期分的核心是未来还能不能持续回来，而不是这一次看起来有多热。"
+    },
+    {
+      "id": "member_profile_reuse_leverage",
+      "feature_name": "会员画像与历史偏好复用杠杆",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：来自老客回访、储值、积分或历史高频下单客户，且能调取明确偏好；3 分：有历史消费但标签不完整；1 分：几乎没有可复用历史资产。",
+      "positive_signals": [
+        "历史订单记录完整",
+        "有甜度冰度偏好",
+        "常用门店明确",
+        "愿意再次复购或充值"
+      ],
+      "negative_signals": [
+        "历史严重投诉",
+        "偏好数据缺失",
+        "过去多次退款",
+        "仅有一次低黏性购买"
+      ],
+      "value_guidance": "历史资产越可复用，长期价值越容易被低估，需要单独加权。"
+    },
+    {
+      "id": "office_and_campus_expandability",
+      "feature_name": "办公室与校园场景的扩展潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个联系人下可扩展到多个团队、多个活动或多楼层配送；3 分：当前单次明确但后续空间一般；1 分：无法扩展或主体不稳定。",
+      "positive_signals": [
+        "多团队活动",
+        "多楼层配送",
+        "固定会议补给",
+        "社团活动复用"
+      ],
+      "negative_signals": [
+        "偶发单次消费",
+        "联系人无决策权",
+        "只能做一次",
+        "难以复制到其他场景"
+      ],
+      "value_guidance": "能否从一单延展成一串后续订单，是奶茶店长期价值的重要来源。"
+    },
+    {
+      "id": "attribution_merge_quality",
+      "feature_name": "归因合并与关键推进触点质量",
+      "metric": "reward_signal",
+      "weight": 0.08,
+      "scoring_rule": "5 分：能识别重复线索并找到真正推进付款、模板确认或复购的关键触点；3 分：知道主要渠道但归因不够细；1 分：谁最后出现就把 credit 全给谁。",
+      "positive_signals": [
+        "合并小程序和企业微信重复线索",
+        "区分曝光触点和推进触点",
+        "知道哪一步推动了付款或下单",
+        "统一核算渠道成本"
+      ],
+      "negative_signals": [
+        "重复计算同一团单价值",
+        "只按最后点击分功",
+        "忽略私域或电话推进",
+        "渠道各自重复算 ROI"
+      ],
+      "value_guidance": "奖励信号必须服务于正确归因，否则团队会被带向错误动作。"
+    },
+    {
+      "id": "engagement_to_order_ratio",
+      "feature_name": "互动向下单转化比",
+      "metric": "short_term_score",
+      "weight": 0.05,
+      "scoring_rule": "5 分：评论、私信或内容互动很快转成下单、留资或会员绑定；3 分：有一定转化；1 分：只有围观和点赞，没有任何业务推进。",
+      "positive_signals": [
+        "评论后转私信",
+        "私信后提交团单信息",
+        "联名热度伴随真实下单增长",
+        "用户愿意补充门店和时间"
+      ],
+      "negative_signals": [
+        "只涨点赞不涨订单",
+        "只问最低价",
+        "评论热但无人留资",
+        "围观多于转化"
+      ],
+      "value_guidance": "这是校正项，防止 Abacus 把公域热度误判成短期价值。"
+    },
+    {
+      "id": "seasonal_supply_stability",
+      "feature_name": "季节新品供应稳定度",
+      "metric": "roi_estimate",
+      "weight": 0.06,
+      "scoring_rule": "5 分：鲜果、茶底、联名包材和替代方案都稳定，能够承接预期需求；3 分：供应偏紧但可限量承接；1 分：原料、包材或杯套明显不稳，缺货和报损风险高。",
+      "positive_signals": [
+        "鲜果补给稳定",
+        "有限量和预约机制",
+        "替代方案明确",
+        "高峰补货可控"
+      ],
+      "negative_signals": [
+        "临时缺货",
+        "报损率高",
+        "联名包材不足",
+        "承诺超出供应边界"
+      ],
+      "value_guidance": "新品热度只有建立在供应稳定和替代策略上，才有真实回报。"
+    },
+    {
+      "id": "governance_allergen_refund_risk",
+      "feature_name": "治理、过敏与退款风险",
+      "metric": "reward_signal",
+      "weight": 0.05,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动避开高退款、高客诉和过敏执行风险；3 分：存在小幅模糊但可纠正；1 分：忽略复杂备注、食安疑虑或客诉风险继续推进。",
+      "positive_signals": [
+        "先人工复核再推进",
+        "复杂备注回写清楚",
+        "对过敏和代奶要求保守处理",
+        "高客诉风险单主动降级"
+      ],
+      "negative_signals": [
+        "忽略严重客诉继续营销",
+        "未确认就锁大量产能",
+        "对过敏风险做绝对承诺",
+        "只追单量不做止损"
+      ],
+      "value_guidance": "奶茶店的奖励信号不能只鼓励成交，也要防止坏单和品牌风险被放大。"
+    }
+  ]
+}

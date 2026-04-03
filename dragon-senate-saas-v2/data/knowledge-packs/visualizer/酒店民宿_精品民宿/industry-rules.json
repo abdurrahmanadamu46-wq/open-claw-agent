@@ -1,0 +1,206 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u7cbe\u54c1\u6c11\u5bbf",
+  "lobster_id": "visualizer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "identity_before_styling",
+      "priority": "P0",
+      "rule": "Openers and covers must establish the real boutique homestay identity with a gate, sign, facade, reception point, or courtyard entry before using beds, tubs, candles, or decor to create mood.",
+      "why_it_matters": "Boutique homestays sell trust first. Viewers need to know the property is real, specific, and tied to an actual place rather than a generic styled room.",
+      "execution_points": [
+        "Show a real entrance, sign, courtyard gate, reception desk, or property marker within the first three shots.",
+        "If the script sells an old town, riverside, village, or art district location, tie that claim to the property entrance instead of loose environment b-roll.",
+        "Make the path from the property entrance to the room legible when the space is a small standalone house or courtyard property."
+      ],
+      "required_evidence": [
+        "Real gate, facade, or property sign",
+        "Reception point or brand marker",
+        "Arrival path from entry to interior"
+      ],
+      "fallback_route": "If exterior coverage is limited, use the gate, reception, key handoff, and corridor path to ground identity, but scale back any oversized destination claim.",
+      "must_avoid": [
+        "Opening on room aesthetics with no property identity",
+        "Borrowing another courtyard, cafe, or facade as the property exterior",
+        "Using OTA retouched images, renders, or stock photos as executable proof"
+      ]
+    },
+    {
+      "id": "room_truth_before_magazine_angles",
+      "priority": "P0",
+      "rule": "All room footage must match a real bookable room type and real stay perspective. Do not mix higher-tier rooms, sample rooms, staged corners, or multiple room types into one false hero room.",
+      "why_it_matters": "Boutique homestay buyers are highly sensitive to expectation gaps. If room size, window view, bath setup, or layout is misleading, trust and conversion drop immediately.",
+      "execution_points": [
+        "Keep the same room type continuous across bed area, window or terrace, bathroom, table surface, and luggage zone.",
+        "If the promise includes a tub, projector, terrace, view window, or work surface, show direct proof.",
+        "If only one room type is available to shoot, build a stable story around that one room instead of overclaiming property-wide consistency."
+      ],
+      "required_evidence": [
+        "Hero room wide shot",
+        "Bathroom and window or terrace relationship",
+        "Table, outlet, luggage, or storage detail"
+      ],
+      "fallback_route": "If only one room is shootable, downgrade to an honest single-room stay explanation instead of implying broad room choice or upgrade paths.",
+      "must_avoid": [
+        "Using a suite as the standard room",
+        "Cutting multiple room types into one fake room",
+        "Treating sample-room or render assets as live stay proof"
+      ]
+    },
+    {
+      "id": "host_warmth_requires_real_service",
+      "priority": "P0",
+      "rule": "If the script sells the host, house manager, handmade breakfast, welcome ritual, or local recommendations, the storyboard must include real authorized people or real service traces rather than generic smiling talent.",
+      "why_it_matters": "A boutique homestay often differentiates through people, not just decor. Without real service evidence, warmth reads like empty ad language.",
+      "execution_points": [
+        "Confirm whether the host or manager can appear. If not, use hands, back views, keys, welcome cards, or breakfast prep as proof.",
+        "If local recommendations are a selling point, show maps, route notes, handoff moments, or in-room recommendation cards.",
+        "Mark third-party breakfast or cafe partners clearly rather than framing them as daily host service."
+      ],
+      "required_evidence": [
+        "Real host, manager, or check-in action",
+        "Welcome or recommendation trace",
+        "Breakfast prep, delivery, or service trace"
+      ],
+      "fallback_route": "If people and service moments are unavailable, pivot to space truth and stay rhythm instead of claiming a host-led, friend-like stay.",
+      "must_avoid": [
+        "Using actors or outside staff as the property host",
+        "Showing staff or guests clearly without permission",
+        "Packaging outsourced service as a full in-house host experience"
+      ]
+    },
+    {
+      "id": "neighborhood_claims_need_walkable_proof",
+      "priority": "P0",
+      "rule": "Claims about old streets, riversides, villages, alleys, art districts, markets, or walkable landmarks need a real route anchor tied to the property entrance, not just attractive local scenery.",
+      "why_it_matters": "Boutique homestays sell place-based imagination, but that imagination has to be grounded. Without a route link, viewers may doubt the property is actually where the script says it is.",
+      "execution_points": [
+        "Prefer start and end point coverage from the property gate to a street corner, riverside path, market, bridge, lane marker, or village sign.",
+        "Use neighborhood scenery only as support, not as a substitute for the property itself.",
+        "If full route coverage is impossible, at least show a plausible relationship between the property entrance and one local anchor."
+      ],
+      "required_evidence": [
+        "Property entrance or gate",
+        "Local route anchor",
+        "Walk-in, drop-off, or return path"
+      ],
+      "fallback_route": "If precise route proof is missing, reduce the claim to easy-to-find arrival or strong neighborhood atmosphere rather than exact walking promises.",
+      "must_avoid": [
+        "Using unrelated local scenery as the surrounding area",
+        "Replacing route proof with map screenshots",
+        "Borrowing another lane, bridge, or village marker"
+      ]
+    },
+    {
+      "id": "public_spaces_only_if_owned_and_open",
+      "priority": "P0",
+      "rule": "Courtyards, tea rooms, book corners, rooftops, terraces, shared kitchens, cafe zones, fireplaces, and soaking spaces should be featured only when they are real on-site spaces that are currently open and shootable.",
+      "why_it_matters": "Shared spaces are often a key boutique homestay hook, but they are also easy to exaggerate. Once a public-space claim breaks, the whole property loses credibility.",
+      "execution_points": [
+        "Show the scale, entry, guidance, and use boundary of the public space instead of isolated detail shots.",
+        "If access is reservation-only, time-limited, or room-type-limited, spell that out in dependencies.",
+        "Make ownership clear when a cafe or terrace is shared with another business or community space."
+      ],
+      "required_evidence": [
+        "Whole-space view of the public area",
+        "Entry or relation to the room path",
+        "Open-state or usage-boundary proof"
+      ],
+      "fallback_route": "If public-space proof is incomplete, return to room truth and arrival flow rather than forcing a tea-room or courtyard hook.",
+      "must_avoid": [
+        "Borrowing nearby cafes, rooftops, or community courtyards",
+        "Showing only detail shots that hide scale and ownership",
+        "Cutting maintenance-only or seasonal spaces as always-open features"
+      ]
+    },
+    {
+      "id": "atmosphere_must_match_real_light_and_weather",
+      "priority": "P1",
+      "rule": "Night mood, rain, fog, sunset, snow, and seasonal tone must match real shoot conditions. If the ideal weather or time window is missing, rewrite the visual route instead of forcing mood through grading or stock inserts.",
+      "why_it_matters": "Boutique homestay desire often comes from light and atmosphere. Once viewers sense fake weather, fake night, or mixed seasonality, room and service claims lose trust too.",
+      "execution_points": [
+        "Night shots should show lighting, path safety, open-state reality, and return-to-room logic, not just dark ambience closeups.",
+        "Rainy or cloudy shoots should lean into indoor pause, tea, reading, bath, or quiet-room comfort instead of pretending to be sunny outdoor leisure.",
+        "Keep plants, wardrobe, breakfast styling, and outdoor activity logic within one believable season."
+      ],
+      "required_evidence": [
+        "Real exterior under current weather or time window",
+        "Usable indoor or night-condition space",
+        "Mood scenes that match actual conditions"
+      ],
+      "fallback_route": "If night or ideal weather is unavailable, downgrade to a day-stay, cloudy-day, or indoor-pause version instead of promising sunset, fog, or night-courtyard magic.",
+      "must_avoid": [
+        "Using stock sunset, blue-sky, snow, or fog footage",
+        "Heavy grading that falsifies weather conditions",
+        "Selling night ambience with no night proof"
+      ]
+    },
+    {
+      "id": "breakfast_and_local_experience_need_service_window",
+      "priority": "P1",
+      "rule": "Handmade breakfast, welcome tea, late-night dessert, tea ceremony, local snacks, coffee service, and morning market routes belong in the main storyboard only when they are available in a real service window and real place.",
+      "why_it_matters": "Boutique homestays often turn food and local rhythm into emotional proof. Without actual service timing and interaction, those scenes look like marketing props.",
+      "execution_points": [
+        "Breakfast or tea coverage should show service timing, handoff or pickup logic, environment, and food state rather than only plated beauty shots.",
+        "If handmade or local sourcing is part of the promise, show prep, serving, explanation, or source cues.",
+        "Use third-party food spots as nearby context, not as fake in-house service."
+      ],
+      "required_evidence": [
+        "Real breakfast, tea, or snack service footage",
+        "Service-window or environment marker",
+        "Prep, handoff, or pickup action"
+      ],
+      "fallback_route": "If only static food shots exist, downgrade to breakfast preview or nearby food convenience instead of selling a complete host-made food experience.",
+      "must_avoid": [
+        "Relying on plated closeups without service context",
+        "Treating partner restaurants as in-house breakfast proof",
+        "Promising breakfast or tea rituals without a real service window"
+      ]
+    },
+    {
+      "id": "design_details_cannot_hide_cleanliness",
+      "priority": "P0",
+      "rule": "Design value cannot replace liveability. If the copy promises comfort, calm, quality, or detail, the shots must prove bedding, table usability, storage, bathroom condition, lighting, and cleanliness rather than only decor and textures.",
+      "why_it_matters": "Boutique homestays can look premium in stills while underdelivering in actual stay experience. Cleanliness and practical comfort are what make aesthetic credibility convert.",
+      "execution_points": [
+        "Show bedding, usable table or vanity space, outlets, lighting, bathroom state, and basic storage.",
+        "When a tub, projector, fireplace, tatami, or heavy woodwork is a selling point, also prove maintenance and cleanliness.",
+        "Avoid unfinished, cluttered, or staff-only areas unless clearly marked as not for guest use."
+      ],
+      "required_evidence": [
+        "Bedding, table, and storage proof",
+        "Bathroom and amenities condition",
+        "Hallway, courtyard, or public-space upkeep"
+      ],
+      "fallback_route": "If some spaces are not ready, narrow the narrative to the areas that are actually shoot-ready and guest-ready.",
+      "must_avoid": [
+        "Using shallow focus and filters to hide maintenance issues",
+        "Selling decor without stay detail proof",
+        "Cutting unfinished zones as guest-ready spaces"
+      ]
+    },
+    {
+      "id": "dependencies_before_ambition",
+      "priority": "P0",
+      "rule": "The visual plan must list shootable rooms, available time windows, host availability, breakfast window, night permission, drone permission, guest privacy limits, and public-space open state before it raises creative ambition.",
+      "why_it_matters": "Boutique homestays are small and operationally fragile. A plan that ignores access, timing, and privacy will break in production even if it sounds good on paper.",
+      "execution_points": [
+        "Confirm which rooms can be shot, when breakfast and public areas are available, whether the host can appear, and whether night footage is allowed.",
+        "Provide explicit downgrade routes whenever key assets are missing, and lower the feasibility score accordingly.",
+        "Let the cover direction follow real assets, not the most ideal script fantasy."
+      ],
+      "required_evidence": [
+        "Shootable room and space list",
+        "Time, permission, and privacy notes",
+        "Fallback route for missing assets"
+      ],
+      "fallback_route": "If critical dependencies fail, downgrade to room explanation, arrival guide, opening preview, or single-space teaser rather than leaving the risk to downstream execution.",
+      "must_avoid": [
+        "Assuming every room and courtyard can be shot anytime",
+        "Designing a full day-to-night-to-breakfast chain in a tiny shoot window",
+        "Giving high feasibility scores when core evidence is missing"
+      ]
+    }
+  ]
+}

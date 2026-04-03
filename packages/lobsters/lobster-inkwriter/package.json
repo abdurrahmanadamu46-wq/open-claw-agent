@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-inkwriter",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "InkWriter lobster subproject template"
+}

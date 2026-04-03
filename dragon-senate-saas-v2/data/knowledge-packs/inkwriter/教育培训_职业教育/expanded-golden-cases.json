@@ -1,0 +1,112 @@
+﻿{
+  "industry": "教育培训_职业教育",
+  "lobster_id": "inkwriter",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "inkwriter_vocational_problem_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a vocational school around certificate and job-switch consultation using trust-first messaging and a booking CTA",
+        "brand_tone": "gentle, grounded, and low-pressure",
+        "offer_info": "consult-first route, no guarantee claims, clear suitability framing",
+        "audience_segment": "local users dealing with certificate anxiety, job switching, and skills gaps"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "problem-based opening",
+        "trust and process proof before price",
+        "CTA that collects concern and booking window"
+      ],
+      "mustAvoid": [
+        "guarantee claims",
+        "fear-based copy",
+        "promised outcomes"
+      ]
+    },
+    {
+      "id": "inkwriter_vocational_exam_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write copy for an exam-window trial booking route",
+        "brand_tone": "reassuring, specific, and low-pressure",
+        "offer_info": "deadline-window trial route, no exaggerated promise",
+        "audience_segment": "users preparing for exams, registrations, and interviews"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "deadline-based opening",
+        "time-sensitive but not pushy CTA",
+        "boundary that this is a trial and fit-check route"
+      ],
+      "mustAvoid": [
+        "long-term outcome promises",
+        "fake scarcity",
+        "hard push for high-ticket programs"
+      ]
+    },
+    {
+      "id": "inkwriter_vocational_revisit_003",
+      "label": "long_term_case",
+      "input": {
+        "strategy_route": "Write a soft re-engagement message for existing vocational students approaching a revisit or reenrollment point",
+        "brand_tone": "familiar, warm, and not sales-heavy",
+        "offer_info": "maintenance reminder based on timing and learning stage",
+        "audience_segment": "past students who completed an earlier trial and may now be ready for a next step"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "a concrete reason to return",
+        "respectful tone without guilt",
+        "CTA tied to timing or learning state"
+      ],
+      "mustAvoid": [
+        "mass-sales tone",
+        "vague comeback messaging",
+        "fearful pressure"
+      ]
+    },
+    {
+      "id": "inkwriter_vocational_risk_004",
+      "label": "risk_case",
+      "input": {
+        "strategy_route": "Rewrite a vocational promo that currently overuses guarantee claims and absolute wording",
+        "brand_tone": "calm and professional",
+        "offer_info": "trial route with booking support",
+        "audience_segment": "first-time local leads"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "compliant alternative wording",
+        "less absolute outcome language",
+        "focus on process and suitability"
+      ],
+      "mustAvoid": [
+        "guarantee language",
+        "promised transformation",
+        "income or employment guarantees"
+      ]
+    }
+  ]
+}

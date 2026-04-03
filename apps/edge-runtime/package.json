@@ -1,0 +1,8 @@
+﻿{
+  "name": "@liaoyuan/edge-runtime-bridge",
+  "private": true,
+  "scripts": {
+    "smoke": "python -c \"import importlib.util, pathlib; p=pathlib.Path('../../edge-runtime/bbp_kernel.py'); s=importlib.util.spec_from_file_location('bbp_kernel', p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); print('EDGE_RUNTIME_SMOKE_OK', len(m.HumanMouseMimic().generate_trajectory(0,0,60,60,500)))\"",
+    "run:agent": "python ../../dragon-senate-saas-v2/edge_agent.py --central_url http://127.0.0.1:18000 --edge_id edge-local --user_id admin --simulate_dm --dm_probability 0.1 --poll_interval 10"
+  }
+}

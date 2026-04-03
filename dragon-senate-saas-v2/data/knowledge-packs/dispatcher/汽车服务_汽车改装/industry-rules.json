@@ -1,0 +1,7 @@
+﻿{"industry":"汽车服务_汽车改装","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"visit_and_bay_capacity_gate","title":"高峰到店前必须先校验时段、工位和技师资源","description":"汽车改装的调度核心不是单纯接单，而是把到店时段、工位、技师、配件和后续交付能力一起纳入 task_graph。","examples":["周末晚间工位已满时，先进入候补和分时段节点。","车展季集中时，先确认工位和技师排班。"],"priority":"high"},
+{"id":"first_visit_and_return_visit_must_split","title":"首次到店、复购和施工后回访是独立调度变量","description":"首次到店、复购和施工后回访会显著改变单客时长与资源匹配。","examples":["首次到店用户需要先进入检测判断节点。","复购用户应优先路由到熟悉其历史记录的顾问链路。"],"priority":"high"},
+{"id":"service_complexity_before_confirmation","title":"确认预约前先判断项目复杂度和是否适合该时段","description":"轮毂、避震、排气、程序和内饰不能共用同一套施工时长假设。","examples":["午休档只适合轻量咨询，不应塞入复杂项目评估。","节前和多问题到店需提前扩展时长。"],"priority":"high"},
+{"id":"vehicle_prep_gate","title":"车辆准备和配件调取是独立调度节点","description":"汽车改装不是一位客户做完就能立刻无缝接下一位。","examples":["连续到店时，先插入车辆准备和配件调取步骤。","复杂项目做完后不可直接无缝切换下一单。"],"priority":"high"},
+{"id":"peak_slot_hold_window","title":"热门时段和核心技师档要设置保留窗口","description":"周末、节前和核心技师时段是稀缺资源。","examples":["节前晚间时段要求限时确认。","核心技师工位超过一定时间未确认则释放。"],"priority":"medium"},
+{"id":"post_visit_backwrite","title":"施工后必须回写跟进与复访任务","description":"汽车改装执行链路不能在交车后断掉。","examples":["交车后自动创建顾问回访任务。","施工记录中同步写入项目关注点和下次建议。"],"priority":"high"}]}

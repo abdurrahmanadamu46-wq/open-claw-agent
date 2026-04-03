@@ -1,0 +1,140 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "weekend_view_room_deposit_hook",
+      "hook_name": "周末景观房定金落地钩子",
+      "trigger_pattern": "客人明确周末或节假日入住精品民宿，指定山景、露台、私汤或院景房，并愿意确认人数、到店时间、定金或取消规则。",
+      "value_hypothesis": "稀缺房型一旦带着定金和边界确认进入流程，短期确定性通常显著高于泛询价，也更有机会沉淀为高质量私域客。",
+      "short_term_score_hint": "当房型、日期、人数和定金动作已锁定时，可上调到高短期分候选。",
+      "long_term_score_hint": "若来源于老客、转介绍或私域收藏转化，长期分也应维持中高位。",
+      "roi_estimate_hint": "把稀缺房型占用机会成本和赠送早餐、下午茶兑现成本算进去后，只要定金有效，ROI 通常仍优于无承诺留房。",
+      "reward_signal": "奖励确认定金、取消窗口、人数结构和到店时段的动作。",
+      "caution": "没有定金的“先帮我占着”，不能和真正锁房等同。"
+    },
+    {
+      "id": "real_room_video_confirmation_hook",
+      "hook_name": "真房视频确认钩子",
+      "trigger_pattern": "客人从小红书、短视频或朋友分享种草而来，愿意核对真实房态视频、窗景差异、采光和噪音边界。",
+      "value_hypothesis": "愿意从滤镜转向真实住感核验的客人，通常比单纯追热度的围观流量更接近真实预订价值。",
+      "short_term_score_hint": "只有在真实房态说明后仍继续确认日期与房型，短期分才值得上调。",
+      "long_term_score_hint": "接受真房真景沟通的客人，更可能留下稳定口碑和低退款、低差评行为，长期分可保留中位。",
+      "roi_estimate_hint": "ROI 要把人工解释和补拍视频成本、潜在退单和差评修复风险一起算进去。",
+      "reward_signal": "奖励发送真实房态视频、明确景观差异和确认预期边界的动作。",
+      "caution": "浏览量、收藏量和截图转发量都不等于商业价值。"
+    },
+    {
+      "id": "host_capacity_boundary_hook",
+      "hook_name": "主理人承接边界钩子",
+      "trigger_pattern": "客人需求包含接站、宠物接待、深夜入住、摄影协助、篝火或私汤准备等高服务负荷，同时房态和人手存在压力。",
+      "value_hypothesis": "精品民宿的商业价值必须建立在小团队能稳定履约上，高客单只有在可执行时才真正值钱。",
+      "short_term_score_hint": "只有在排班、清洁和交接方案明确时，短期分才值得抬高；否则应保持谨慎。",
+      "long_term_score_hint": "若客人与民宿定位匹配且存在复购潜力，长期分可保留中高位，但不能覆盖当下承接上限。",
+      "roi_estimate_hint": "请显式扣除加班、加热私汤、接送、布草和深夜服务等成本后再看 ROI。",
+      "reward_signal": "奖励缩小承诺边界、确认到店窗口和安排可执行服务交接的动作。",
+      "caution": "不要把一次高价需求变成一整周的履约透支。"
+    },
+    {
+      "id": "anniversary_paid_package_hook",
+      "hook_name": "纪念日付费套餐钩子",
+      "trigger_pattern": "客人明确纪念日、生日、求婚、蜜月等场景，并愿意确认布置时段、套餐内容、偏好和付款节点。",
+      "value_hypothesis": "真正有价值的不是情绪表达本身，而是付费庆祝方案已经进入可执行排期与服务协同。",
+      "short_term_score_hint": "当房晚、庆祝时段和套餐付款明确后，短期分应进入高位候选。",
+      "long_term_score_hint": "若来源于老客、私域情侣客群或强分享意愿主体，长期分也应保持中高位。",
+      "roi_estimate_hint": "ROI 需同时覆盖布置、晚餐、酒水、摄影和人工协调成本，而不是只看房价上浮。",
+      "reward_signal": "奖励锁定套餐余款、收集庆祝偏好和提前完成服务排期的动作。",
+      "caution": "浪漫表达不是天然高价值，付款与时段锁定才是。"
+    },
+    {
+      "id": "courtyard_buyout_guestlist_hook",
+      "hook_name": "包院名单与边界钩子",
+      "trigger_pattern": "主办方询问包院、包栋、家庭聚会或小团建，并愿意提供人数、名单回收时间、活动时段和定金安排。",
+      "value_hypothesis": "包院需求表面客单高，但真正高价值来自名单、边界和余款路径已经逐步清晰。",
+      "short_term_score_hint": "只有在人数结构、活动时段和定金动作明确时，短期分才应明显上调。",
+      "long_term_score_hint": "若主办方有企业团建、朋友圈活动或复办潜力，长期分应高于普通散客。",
+      "roi_estimate_hint": "ROI 必须扣除其他房型停售机会成本、额外保洁、场地复位和扰民风险准备。",
+      "reward_signal": "奖励回收入住名单、确认噪音边界和锁定余款节点的动作。",
+      "caution": "别把一句“我们可能会包院”直接当成已落地大单。"
+    },
+    {
+      "id": "pet_friendly_cleaning_fee_hook",
+      "hook_name": "携宠清洁费确认钩子",
+      "trigger_pattern": "客人明确带宠入住，并愿意说明宠物体型、数量、行为习惯，同时接受清洁费、押金或限制区域。",
+      "value_hypothesis": "带宠客群的价值不在于需求稀缺，而在于规则确认后具有较强复购和转介绍潜力。",
+      "short_term_score_hint": "房型适配、清洁费接受且不冲击次日翻房时，短期分可以上调到中高位。",
+      "long_term_score_hint": "稳定携宠客或宠友推荐客的长期分应保留中位，因为匹配成功后的复购粘性较强。",
+      "roi_estimate_hint": "请把深度清洁、除味、布草折损和限制房型机会成本全部扣除后再判断 ROI。",
+      "reward_signal": "奖励确认清洁费、押金、活动区域和次日清扫排班的动作。",
+      "caution": "携宠友好不代表边界可以含糊。"
+    },
+    {
+      "id": "weekday_workation_extension_hook",
+      "hook_name": "工作日旅居续住钩子",
+      "trigger_pattern": "客人提出工作日连住、远程办公、写作疗愈或在住续住，并愿意确认网络、作息、清扫频率和周度结算。",
+      "value_hypothesis": "精品民宿里真正稳定的价值，常常来自淡季和工作日的可预测房晚，而不是周末单晚高价。",
+      "short_term_score_hint": "入住区间和基础服务已明确时，短期分不应按普通散客单晚处理。",
+      "long_term_score_hint": "连住、旅居和续住线索通常对应更高长期分，因为它们更容易形成复住与附加消费。",
+      "roi_estimate_hint": "ROI 往往受益于获客成本摊薄、清扫频率下降和低换房损耗，即使单晚折扣略低。",
+      "reward_signal": "奖励锁定续住日期、清扫节奏和网络、作息需求的动作。",
+      "caution": "不要因为单晚价格不是最高，就低估稳定房晚的价值。"
+    },
+    {
+      "id": "old_guest_private_reactivation_hook",
+      "hook_name": "老客私域回流钩子",
+      "trigger_pattern": "老客通过微信、会员群、朋友圈或主理人回访重新预订，并能复用历史房型、早餐、宠物或庆祝偏好。",
+      "value_hypothesis": "私域回流客通常比平台新客成交摩擦更低、佣金更少，是精品民宿里典型的高 ROI 机会。",
+      "short_term_score_hint": "只要入住日期或偏好已明确，短期分通常应高于同条件的新客询价。",
+      "long_term_score_hint": "长期分应同步抬高，因为这类线索同时代表复住、转介绍和直订资产回流。",
+      "roi_estimate_hint": "把节省的平台佣金、更低解释成本和更高复购概率都显式算入 ROI。",
+      "reward_signal": "奖励调历史偏好、推进直订绑定和补齐发票或入住信息的动作。",
+      "caution": "如果历史上投诉、爽约或只在最低价时出现，仍需折损分值。"
+    },
+    {
+      "id": "weather_reschedule_credit_hook",
+      "hook_name": "天气改期保全钩子",
+      "trigger_pattern": "因台风、暴雨、大雾、路况受阻或观景失败风险导致客人无法如期到店，但客人接受改期、代金券或权益保留方案。",
+      "value_hypothesis": "天气受阻不是纯损失场景，只要关系和权益仍被保留，就有较高概率把损失转成未来收入。",
+      "short_term_score_hint": "短期分应低于正常出行情境，但不应因为当期无法入住就直接清零。",
+      "long_term_score_hint": "若客人继续保留直订关系并接受改期方案，长期分应维持中位以上。",
+      "roi_estimate_hint": "比较退款暴露、券核销损耗和重新获客成本后，再选择最优保全方案。",
+      "reward_signal": "奖励确认改期窗口、代金券规则和原套餐权益保留方案的动作。",
+      "caution": "把改期型订单当成彻底流失，通常会低估真实价值。"
+    },
+    {
+      "id": "ota_low_price_package_guard_hook",
+      "hook_name": "低价套餐净收益钩子",
+      "trigger_pattern": "订单来自 OTA 特价、直播券、团购套餐或大额满减，并叠加免费下午茶、延迟退房、拍照服装或接站权益。",
+      "value_hypothesis": "这类场景最容易出现“单量热闹但利润稀薄”，Abacus 需要先看净房晚收益，而不是被 GMV 和曝光带偏。",
+      "short_term_score_hint": "缺少直订迁移、付费加购或定金动作时，短期分不应因单量上升而自动抬高。",
+      "long_term_score_hint": "如果后续能转成私域会员、复住客或付费升级客，长期分可保留中位；否则应偏低。",
+      "roi_estimate_hint": "ROI 应从扣除佣金、补贴、赠项和退款风险后的净收益出发，而不是从订单量出发。",
+      "reward_signal": "奖励把平台低价客转成微信私域、下次直订或付费升级的动作。",
+      "caution": "入住率高和商业价值高，不是同一件事。"
+    },
+    {
+      "id": "freebies_only_price_shopper_hook",
+      "hook_name": "只要赠项的比价客钩子",
+      "trigger_pattern": "客人反复要免费升房、免费下午茶、免费跟拍、免费延迟退房，却迟迟不确认日期、人数或定金。",
+      "value_hypothesis": "这种信号更像价格压力测试，而不是高价值线索。真正有价值的是能否把需求重构为可收费、可执行的方案。",
+      "short_term_score_hint": "短期分通常不应上调，除非基础预订已经健康成立且赠项明显能换来确定性转化。",
+      "long_term_score_hint": "除非客人本身是高 LTV 老客或稳定转介绍来源，否则长期分通常也不宜高估。",
+      "roi_estimate_hint": "显式扣除升房、赠饮、跟拍和延迟退房成本后，再判断是否还有正 ROI。",
+      "reward_signal": "奖励把赠项诉求改造成付费升级、套餐加购或清晰边界方案的动作。",
+      "caution": "高要求不等于高价值，很多时候只是更会压价。"
+    },
+    {
+      "id": "review_recovery_manager_hook",
+      "hook_name": "差评修复经理介入钩子",
+      "trigger_pattern": "客人因噪音、异味、设施故障、真实房型不符或服务失联提出不满，并要求经理说明修复或改期方案。",
+      "value_hypothesis": "当下并不是销售加分场景，但如果修复得当，仍可能保住未来复住、转介绍和私域关系。",
+      "short_term_score_hint": "短期分应主动下调，重点转向止损和履约修复。",
+      "long_term_score_hint": "长期分可保留极低到中位，用于衡量修复成功后的关系恢复潜力。",
+      "roi_estimate_hint": "ROI 必须把补偿、换房、退款和差评扩散风险都算进去，而不是只看是否还能保住房费。",
+      "reward_signal": "奖励经理介入、证据留存、修复方案确认和回访闭环的动作。",
+      "caution": "绝不能把服务修复场景当成继续加售的机会。"
+    }
+  ]
+}

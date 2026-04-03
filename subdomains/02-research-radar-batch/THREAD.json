@@ -1,0 +1,21 @@
+﻿{
+  "thread_id": "sd-02",
+  "name": "Research Radar Batch",
+  "owner_scope": "multi-source research ingestion and ranking",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "run": "MQ async",
+    "query": "REST",
+    "digest": "Webhook"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/research_radar_fetchers.py",
+    "dragon-senate-saas-v2/research_radar_ranker.py",
+    "dragon-senate-saas-v2/scripts/research_radar_daily_runner.py"
+  ]
+}

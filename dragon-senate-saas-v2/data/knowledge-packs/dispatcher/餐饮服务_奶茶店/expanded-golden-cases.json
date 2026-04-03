@@ -1,0 +1,306 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_milk_tea_office_group_order_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔工作日下午送达的 45 杯企业下午茶订单转成可执行的付款、排产、批量制作和配送计划",
+        "routing_context": "客户要求周三 15:00 送达写字楼前台，明细包含 10 杯热饮、8 杯少冰、5 杯无糖和 3 杯燕麦奶替换，门店当前下午茶档仍有可用批量产能",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "drink_station_monitor": "healthy",
+          "rider_dispatch": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款到账后的排产锁定节点",
+        "冷热分组和特殊配方标签回写",
+        "配送交接和延迟时改自提或分批送达的 fallback"
+      ],
+      "mustAvoid": [
+        "未付款就提前开始全量备料和制作",
+        "把热饮、冰饮和特殊替换全部混成同一批次无标签出杯"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_lunch_delivery_peak_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在工作日午高峰持续涌入的外卖订单下生成稳定的奶茶履约计划",
+        "routing_context": "12:05 后平台单量快速增长，当前待出杯 28 杯，封口工位和骑手取单区开始拥堵，门店以冰饮为主且写字楼门禁要求楼下交接",
+        "integration_state": {
+          "delivery_platform": "healthy",
+          "rider_dispatch": "healthy",
+          "drink_station_monitor": "healthy",
+          "self_pickup_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "高峰限流或承诺时效上调",
+        "封口工位、骑手运力和门禁交接作为显式依赖",
+        "必要时切到自提优先或分批配送的 fallback"
+      ],
+      "mustAvoid": [
+        "按平峰标准继续承诺所有订单 20 分钟送达",
+        "只看平台接单不检查制作和取单区积压"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_replay_after_platform_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放因小程序回写故障中断的奶茶订单流程，并避免重复出杯或重复扣款",
+        "routing_context": "部分订单在支付成功后未回传制作状态，门店临时通过前台手工登记了其中一部分，现系统恢复，需要确认哪些订单继续执行、哪些维持人工处理结果",
+        "integration_state": {
+          "mini_program": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "drink_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号、支付状态和最新配方版本去重后 replay",
+        "对已人工登记并已出杯订单保持现状而不是重复制作",
+        "门店补录和顾客通知路径"
+      ],
+      "mustAvoid": [
+        "系统恢复后整批重新建单",
+        "不校验支付和人工处理状态就重复联系或重复退款"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_mall_pickup_queue_overflow_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把商场店周末买一送一活动产生的自提拥堵转成可控的叫号、分批出杯和回流计划",
+        "routing_context": "16:30 后小程序自提单快速增长，柜台前已排起长队，当前外卖正常但自提顾客持续到店催单，商场店取餐台空间有限",
+        "integration_state": {
+          "mini_program": "healthy",
+          "pickup_screen": "healthy",
+          "cashier_system": "healthy",
+          "drink_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "自提队列和预计完成时间区间",
+        "自提与外卖分流的执行线路",
+        "超时未取时的提醒与回流 fallback"
+      ],
+      "mustAvoid": [
+        "在取餐台拥堵状态下继续承诺所有自提单马上可取",
+        "没有叫号和超时机制就让顾客在柜台持续聚集"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_allergen_and_oat_milk_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带过敏和代奶替换要求的订单，并确保制作执行安全",
+        "routing_context": "顾客下单 4 杯饮品，其中 2 杯要求换燕麦奶、1 杯写明乳糖不耐、1 杯备注坚果过敏且不要任何奶盖，另有 1 杯给儿童饮用要求少冰",
+        "integration_state": {
+          "cashier_system": "healthy",
+          "front_desk": "healthy",
+          "drink_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前台人工确认过敏、代奶和少冰需求",
+        "标签与制作备注回写和复核节点",
+        "如无法稳定满足则给出替代饮品或退款 fallback"
+      ],
+      "mustAvoid": [
+        "把备注原样丢给制作台后不再确认",
+        "对过敏和交叉接触风险做绝对化安全承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_signature_pearl_stock_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚高峰前处理一笔点名爆款珍珠奶茶和鲜果茶的预约单，但核心原料库存尚未锁定",
+        "routing_context": "客户预约 20 杯 18:30 自提，要求至少 12 杯黑糖珍珠和 6 杯鲜果茶，当前库存系统显示珍珠批次接近售罄，鲜果补切是否赶得上仍不确定",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "procurement_channel": "degraded",
+          "drink_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "珍珠批次和鲜果切配确认作为前置节点",
+        "库存不足时的替代饮品、删改单或改时段 fallback",
+        "禁止在原料未锁定前做绝对口味承诺"
+      ],
+      "mustAvoid": [
+        "先确认整单口味再临时通知爆款缺货",
+        "无视原料不确定性继续锁定晚高峰取餐承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_campaign_waiting_review_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进清明前联名新品和优惠券上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店计划上线一款季节果茶和买一送一券，素材已备好，但价格边界、代金规则和赠品口径仍在等待负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "marketing_scheduler": "healthy",
+          "cashier_system": "healthy",
+          "mini_program": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许做内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶活动窗口先上线再补审批",
+        "把未确认价格和赠品规则提前同步到门店前台和渠道"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_quality_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似品质安全投诉，既要安抚顾客也要控制门店风险扩散",
+        "routing_context": "顾客反馈昨晚收到的鲜奶茶明显发酸且杯体有漏液，已在社交平台发帖，门店需要判断是否暂停相关鲜奶批次和封口工位继续放量",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "drink_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关鲜奶批次或封口工位排查与止损决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查原料和封口链路就继续正常推广同类饮品"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_large_group_order_without_payment_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认但迟迟未付款的大额团单，避免门店产能和鲜果备料被长期占用",
+        "routing_context": "学校活动主办方希望次日 17:00 取 80 杯饮品，要求门店先锁定下午两小时产能并提前切配大量鲜果，但称款项要活动结束后再统一报销",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "inventory_system": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款或定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放产能节点",
+        "高损耗鲜果备料必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收款就正式锁定两小时下午茶产能",
+        "为了成交先切配和采购大量不可回收鲜果"
+      ]
+    },
+    {
+      "id": "dispatcher_milk_tea_equipment_fault_and_heatwave_stoploss_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在高温天气和设备异常叠加时为外卖奶茶建立止损执行计划",
+        "routing_context": "17:40 后气温仍在 35 摄氏度以上，门店封口机间歇性卡杯、制冰机产冰不足，平台骑手接单速度也开始下降，但仍持续收到远距离冰饮订单",
+        "integration_state": {
+          "sealer_station": "unstable",
+          "ice_machine": "degraded",
+          "delivery_platform": "unstable",
+          "rider_dispatch": "degraded"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "受影响工位隔离和可售菜单收缩",
+        "对远距离冰饮的暂停、改自提或延迟通知 stop-loss",
+        "无法可靠履约时的主动降级策略"
+      ],
+      "mustAvoid": [
+        "在设备异常和高温品质风险下继续承诺正常外卖时效",
+        "没有替代路线还继续接受所有远距离冰饮订单"
+      ]
+    }
+  ]
+}

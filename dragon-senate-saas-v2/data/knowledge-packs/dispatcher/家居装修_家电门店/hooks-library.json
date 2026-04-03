@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_家电门店","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"first_visit_inquiry","title":"首次到店问询触发优先调度","description":"当来单中出现第一次来、想先到店、想先看看样机和具体问题时，Dispatcher 应优先匹配到店链路。","examples":["客户第一次来，想周末先看空调方案。","客户想先看看洗烘套装是否适合自己。"],"priority":"high"},
+{"id":"seasonal_window_inquiry","title":"交房与焕新窗口询单触发时效优先调度","description":"当来单明确说明交房、婚房和节前焕新节点时，Dispatcher 要立即优先判断热门时段可用性和选品边界。","examples":["客户这周交房，想周四晚先到店。","客户说明节前要入住，希望今晚先来了解。"],"priority":"high"},
+{"id":"short_window_consult","title":"短时段询单触发快流程调度","description":"当用户明确只有 45 到 60 分钟窗口时，Dispatcher 应优先匹配轻量沟通说明。","examples":["客户只有下班后 50 分钟。","上班族想约一单晚间快速到店沟通。"],"priority":"medium"},
+{"id":"core_consultant_slot_hold","title":"核心导购与热门时段询单触发保留确认链路","description":"当用户点名导购或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制。","examples":["客户指定周六 18:30 的核心导购到店位。","客户想抢节前最后一个晚间选品档。"],"priority":"medium"},
+{"id":"multi_need_visit","title":"多问题到店触发扩展时长链路","description":"当用户同时提到空调、冰洗、厨电和补贴等多个问题时，Dispatcher 要立即扩展时长和导购匹配。","examples":["客户同时提到冰箱和洗烘。","客户又想空调又想厨电。"],"priority":"high"},
+{"id":"post_visit_revisit_task","title":"选品后触发复访和回访任务","description":"当系统收到选品完成信号时，Dispatcher 应自动创建回访、补单和 followup 提醒。","examples":["到店后创建导购回访任务。","下单后创建补单和送装提醒。"],"priority":"high"}]}

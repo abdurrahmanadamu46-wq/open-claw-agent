@@ -1,0 +1,68 @@
+﻿{
+  "industry": "汽车服务_二手车门店",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "used_car_score_problem_specificity",
+      "title": "问题指向清晰度",
+      "description": "高分文案能在前两句就让用户看见明确问题或场景，例如预算、车型、家用、SUV、新能源和返乡，而不是只说捡漏和便宜。",
+      "examples": [
+        "高分：开头直接点出预算或家用场景。 ",
+        "低分：一开始只有精品和超值。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "used_car_score_trust_tone",
+      "title": "信任与边界感",
+      "description": "高分文案会主动给检测流程、车况和过户说明，让用户感到门店不会乱推。低分文案往往只强调价格和结果。",
+      "examples": [
+        "高分：先写判断和边界，再写到店。 ",
+        "低分：只靠价格和豪车感吸引。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "used_car_score_compliance_safety",
+      "title": "合规安全性",
+      "description": "高分文案避免绝对化车况承诺和金融承诺；低分文案容易出现绝对化表述和违规导向。",
+      "examples": [
+        "高分：用检测说明和适用提示替代强承诺。 ",
+        "低分：保证无事故、包批贷、闭眼买。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "used_car_score_scene_match",
+      "title": "场景匹配度",
+      "description": "高分文案会让返乡换车、日常通勤和老客置换各归其位；低分文案把所有用户都用一套语气去写。",
+      "examples": [
+        "高分：节点文案重日期和场景，老客文案重置换理由。 ",
+        "低分：所有文案都只会喊来看看车。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "used_car_score_respectfulness",
+      "title": "尊重感与情绪稳定度",
+      "description": "高分文案会陪用户一起判断状态，而不是拿预算有限和不会看车刺激逼单。二手车门店文案的情绪越稳，越有助于真实到店。",
+      "examples": [
+        "高分：用先看方向和先到店这类语气。 ",
+        "低分：用再不买就没了这类恐吓。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "used_car_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收预算、日期和是否第一次来等到店事实，方便后续承接；低分 CTA 只有欢迎到店或私信了解。",
+      "examples": [
+        "高分：先发预算和想约时间。 ",
+        "低分：快来店里看看。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

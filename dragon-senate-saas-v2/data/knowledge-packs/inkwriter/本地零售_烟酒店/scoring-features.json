@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"inkwriter","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"liquor_score_scene_specificity","title":"场景指向清晰度","description":"高分文案能在前两句就让用户看见明确场景，例如送礼、婚宴、自饮补货和企业团购，而不是只说烟酒和优惠。","examples":["高分：开头直接点出送礼预算或婚宴桌数。 ","低分：一开始只有低价和爆款。 "],"priority":"high"},
+  {"id":"liquor_score_trust_tone","title":"信任与边界感","description":"高分文案会主动给授权、真假边界和过程说明，让用户感到门店不会乱夸口。","examples":["高分：先写门店证据和场景，再写价格。 ","低分：只靠低价海报吸引。 "],"priority":"high"},
+  {"id":"liquor_score_budget_clarity","title":"预算带清晰度","description":"高分文案会把价位带拆开，让用户快速判断自己属于哪一档。","examples":["高分：300 到 500 送客户。 ","低分：各种档位混在一起。 "],"priority":"medium"},
+  {"id":"liquor_score_cta_quality","title":"CTA 收事实能力","description":"高分 CTA 会收集场景、预算、时间和门店，不只是催下单。","examples":["高分：先把这次送礼对象和预算发我。 ","低分：直接私聊下单。 "],"priority":"high"},
+  {"id":"liquor_score_window_fit","title":"节点适配度","description":"文案是否自然承接节前、婚礼和晚间急用等时间窗口。","examples":["高分：节前送礼写截止感但不制造恐慌。 ","低分：全年都像节前冲刺。 "],"priority":"medium"},
+  {"id":"liquor_score_repurchase_voice","title":"复购语气自然度","description":"老客补货类文案越像真实提醒，越容易形成高分。","examples":["高分：承接上次购买和这次补货。 ","低分：把熟客也当冷流量重新轰炸。 "],"priority":"medium"}
+]}

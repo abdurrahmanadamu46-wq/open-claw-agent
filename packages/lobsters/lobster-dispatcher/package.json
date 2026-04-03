@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-dispatcher",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Dispatcher lobster subproject template"
+}

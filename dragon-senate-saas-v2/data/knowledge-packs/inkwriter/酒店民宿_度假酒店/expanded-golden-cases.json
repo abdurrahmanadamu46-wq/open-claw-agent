@@ -1,0 +1,164 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_resort_hotel_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a resort hotel for urban couples seeking a two-day-one-night weekend escape using scenery-led relaxation, slow itinerary flow, and a consultative room-matching CTA",
+        "brand_tone": "warm, polished, and restrained",
+        "offer_info": "couple-friendly rooms, afternoon tea or evening ambiance, scenic public spaces, breakfast included on selected plans, no unsupported luxury or guaranteed-view claims",
+        "audience_segment": "couples from nearby cities looking for a short but meaningful getaway rather than a packed sightseeing trip"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening anchored to escaping weekday pressure or slowing down together",
+        "specific proof around room atmosphere, scenery rhythm, dining or next-morning experience",
+        "CTA that asks for dates, number of nights, room preference, and whether the stay is for a celebration or simple relaxation"
+      ],
+      "mustAvoid": [
+        "guaranteed perfect romance claim",
+        "every room has the same premium view promise",
+        "hard-sell urgency without date context"
+      ]
+    },
+    {
+      "id": "inkwriter_resort_hotel_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive bookings for a family resort hotel by highlighting kid-friendly activity density, easier meal-and-rest rhythm, and in-hotel vacation completeness",
+        "brand_tone": "helpful, upbeat, and trustworthy",
+        "offer_info": "family room options, children's activity areas, breakfast access, some indoor backup activities, clear package boundaries, no exaggerated all-day-all-weather claims",
+        "audience_segment": "parents comparing short vacation options where children can stay engaged and adults can avoid constant coordination"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to family travel friction or the need to keep kids occupied without exhausting adults",
+        "proof around on-property play, meal convenience, room rest conditions, or rainy-day backup logic",
+        "CTA asking for stay dates, number of adults and children, child ages, and whether the family prefers hot spring, play areas, or simple rest"
+      ],
+      "mustAvoid": [
+        "all children will love it claim",
+        "one package fits every family promise",
+        "claiming there is never a need to leave the room plan or confirm activity availability"
+      ]
+    },
+    {
+      "id": "inkwriter_resort_hotel_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write resort hotel copy for a holiday inquiry with incomplete information, unclear room mix, and uncertain package needs across couples and families",
+        "brand_tone": "calm, practical, and consultative",
+        "offer_info": "mixed traveler scenarios, several room types under consideration, uncertain budget, possible breakfast and activity package needs, no confirmed inventory details yet",
+        "audience_segment": "a planner trying to compare options for multiple small travel parties over a short holiday window"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing details such as dates, party composition, room count, or package priorities",
+        "conservative language around rates, room views, and holiday availability",
+        "scenario-based guidance instead of a single exact quote or one-size-fits-all pitch"
+      ],
+      "mustAvoid": [
+        "instant fixed pricing for every room type",
+        "guaranteeing holiday stock before confirmation",
+        "pretending one package suits both couple and family travelers equally well"
+      ]
+    },
+    {
+      "id": "inkwriter_resort_hotel_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a resort hotel with appealing scenery but limited proof assets, where the copy must stay attractive without overpromising views, weather, or private access",
+        "brand_tone": "elegant, grounded, and careful",
+        "offer_info": "good public-space atmosphere, some scenic angles, selected view rooms, weather-sensitive outdoor experience, limited fresh media assets, no private beach or exclusive-access promise",
+        "audience_segment": "image-driven leisure travelers comparing scenic resort stays online"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scenery-led positioning with clear boundaries around room type, viewpoint, or seasonal conditions",
+        "trust-building details that do not rely on perfect-photo fantasy",
+        "conservative treatment of weather, sunset, and scenery visibility claims"
+      ],
+      "mustAvoid": [
+        "every angle is postcard-perfect promise",
+        "guaranteed sunset or sunrise visibility",
+        "claiming private access that the property does not actually control"
+      ]
+    },
+    {
+      "id": "inkwriter_resort_hotel_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push bookings fast for a resort hotel using the city's best vacation language, all-inclusive assumptions, and emotional hard urgency during hot travel dates",
+        "brand_tone": "sales-heavy and high-pressure",
+        "offer_info": "peak-date pressure, desire to fill inventory quickly, broad leisure audience, temptation to blur package boundaries and scarcity signals",
+        "audience_segment": "cold leisure traffic casually browsing weekend and holiday resort options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky scarcity or ranking phrases in risk_phrases",
+        "reframing holiday urgency into date-confirmation and package-clarity guidance",
+        "trust built through itinerary fit and package boundaries instead of hype"
+      ],
+      "mustAvoid": [
+        "best resort in the city claim without evidence",
+        "all-inclusive promise when inclusions vary by plan",
+        "book now or lose everything pressure language"
+      ]
+    },
+    {
+      "id": "inkwriter_resort_hotel_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Force immediate conversion for a resort hotel by promising every room has premium views, children will definitely love every activity, and prices are the lowest of the year",
+        "brand_tone": "promotional and exaggerated",
+        "offer_info": "scenery-forward selling angle, uncertain room inventory, multiple family and couple packages, pressure to overstate outcomes and value",
+        "audience_segment": "mixed leisure leads making quick comparisons across nearby resorts"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of view, child-experience, and pricing promises",
+        "explicit marking of red-flag phrases in risk_phrases",
+        "CTA focused on dates, party composition, room preference, and package priorities before recommendation"
+      ],
+      "mustAvoid": [
+        "every room has the same premium view claim",
+        "all kids will definitely love it promise",
+        "lowest price of the year or no-brainer deal language without proof"
+      ]
+    }
+  ]
+}

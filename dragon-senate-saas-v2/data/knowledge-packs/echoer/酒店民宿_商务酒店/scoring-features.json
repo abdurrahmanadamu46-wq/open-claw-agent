@@ -1,0 +1,614 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_stay_dates",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_stay_dates",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "check in on Tuesday",
+        "stay from May 3 to May 5",
+        "one night tomorrow",
+        "arriving next Wednesday"
+      ],
+      "why_it_matters": "Specific stay timing moves a hotel conversation from browsing into real booking behavior.",
+      "echoer_action": "Use the date signal to guide toward room count, room type, and property details."
+    },
+    {
+      "id": "stay_length_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "stay_length_declared",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "2 nights",
+        "staying for a week",
+        "10-night project stay",
+        "monthly trips"
+      ],
+      "why_it_matters": "Length of stay helps Echoer distinguish between a simple room search and a higher-value hotel need.",
+      "echoer_action": "Anchor the reply in stay duration and gather any long-stay or business requirements."
+    },
+    {
+      "id": "branch_or_district_specified",
+      "applies_to": "incoming_message",
+      "feature_name": "branch_or_district_specified",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "airport hotel",
+        "tech park branch",
+        "near the convention center",
+        "downtown property"
+      ],
+      "why_it_matters": "Property detail makes room, transport, parking, and policy answers much more actionable.",
+      "echoer_action": "Reply with property-aware language instead of generic hotel claims."
+    },
+    {
+      "id": "arrival_time_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "arrival_time_declared",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "landing at 7 am",
+        "arrive after midnight",
+        "check in around 10 tonight",
+        "late flight"
+      ],
+      "why_it_matters": "Arrival timing usually signals operational intent around check-in, room holding, or transport.",
+      "echoer_action": "Use the timing to guide toward property and booking status clarification."
+    },
+    {
+      "id": "room_count_or_guest_count",
+      "applies_to": "incoming_message",
+      "feature_name": "room_count_or_guest_count",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "8 rooms",
+        "two guests",
+        "for our team of 6",
+        "three colleagues"
+      ],
+      "why_it_matters": "Room or guest count makes hotel demand much more concrete and bookable.",
+      "echoer_action": "Collect only the next needed detail such as room type mix or stay dates."
+    },
+    {
+      "id": "room_type_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "room_type_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "king room",
+        "twin beds",
+        "executive floor",
+        "quiet corner room"
+      ],
+      "why_it_matters": "Room preference signals that the user is already imagining the stay, not just asking casually.",
+      "echoer_action": "Reflect the preference and narrow only the next booking fact."
+    },
+    {
+      "id": "invoice_or_company_need",
+      "applies_to": "incoming_message",
+      "feature_name": "invoice_or_company_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "need company invoice",
+        "for reimbursement",
+        "company title",
+        "business trip billing"
+      ],
+      "why_it_matters": "Billing requirements often mark a serious business-hotel booking rather than casual shopping.",
+      "echoer_action": "Treat it as a real business lead and ask for booking channel plus invoice details."
+    },
+    {
+      "id": "meeting_room_setup_need",
+      "applies_to": "incoming_message",
+      "feature_name": "meeting_room_setup_need",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "meeting room for 12",
+        "need a projector",
+        "boardroom",
+        "tea break setup"
+      ],
+      "why_it_matters": "Meeting-space requests are high-value operational leads, not generic room inquiries.",
+      "echoer_action": "Gather date, time block, headcount, and setup needs."
+    },
+    {
+      "id": "breakfast_or_rate_plan_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "breakfast_or_rate_plan_reference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "breakfast included",
+        "executive benefits",
+        "room only rate",
+        "with lounge access"
+      ],
+      "why_it_matters": "Benefit questions usually show the user is comparing actual booking options rather than browsing broadly.",
+      "echoer_action": "Tie the reply back to rate plan, room category, or booking channel."
+    },
+    {
+      "id": "parking_or_vehicle_details",
+      "applies_to": "incoming_message",
+      "feature_name": "parking_or_vehicle_details",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "SUV",
+        "van",
+        "EV charger",
+        "overnight parking"
+      ],
+      "why_it_matters": "Vehicle detail makes parking questions operationally specific and easier to route.",
+      "echoer_action": "Ask for the property and the exact parking or charging concern."
+    },
+    {
+      "id": "airport_or_station_transfer_need",
+      "applies_to": "incoming_message",
+      "feature_name": "airport_or_station_transfer_need",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "airport pickup",
+        "station shuttle",
+        "drop off at the terminal",
+        "late-night transfer"
+      ],
+      "why_it_matters": "Transfer questions often indicate an imminent stay decision and require schedule-aware handling.",
+      "echoer_action": "Guide toward property, date, and pickup or drop-off timing."
+    },
+    {
+      "id": "quiet_room_or_workspace_need",
+      "applies_to": "incoming_message",
+      "feature_name": "quiet_room_or_workspace_need",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "quiet room",
+        "need a proper desk",
+        "stable Wi-Fi for calls",
+        "need to work from the room"
+      ],
+      "why_it_matters": "Business-trip fit signals help Echoer make replies feel tailored and useful.",
+      "echoer_action": "Acknowledge the work or rest goal and gather the most important preference."
+    },
+    {
+      "id": "same_day_or_deadline",
+      "applies_to": "incoming_message",
+      "feature_name": "same_day_or_deadline",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "tonight",
+        "tomorrow morning",
+        "before the client meeting",
+        "need it now"
+      ],
+      "why_it_matters": "Deadline language often means the user is close to booking or needs fast routing.",
+      "echoer_action": "Calm urgency first, then collect the few facts needed for the next step."
+    },
+    {
+      "id": "ready_to_book",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_book",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "I want to lock it now",
+        "book it now",
+        "can I confirm this now",
+        "ready to reserve"
+      ],
+      "why_it_matters": "Direct booking language is one of the clearest conversion signals in hotel conversations.",
+      "echoer_action": "Keep the reply warm and funnel toward the minimum reservation facts."
+    },
+    {
+      "id": "complaint_booking_info_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_booking_info_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "room 1508",
+        "booking number",
+        "checked in tonight",
+        "I already called the front desk"
+      ],
+      "why_it_matters": "Complaint resolution moves faster when the guest already has usable case details.",
+      "echoer_action": "Lead with empathy and route to structured service handling."
+    },
+    {
+      "id": "long_stay_or_corporate_rate_request",
+      "applies_to": "incoming_message",
+      "feature_name": "long_stay_or_corporate_rate_request",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "corporate rate",
+        "repeat stays",
+        "monthly consultant trips",
+        "project team lodging"
+      ],
+      "why_it_matters": "Repeat or longer hotel demand often represents higher-value business than a single stay.",
+      "echoer_action": "Gather dates, volume, and billing expectations."
+    },
+    {
+      "id": "booking_channel_mentioned",
+      "applies_to": "incoming_message",
+      "feature_name": "booking_channel_mentioned",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "booked on an app",
+        "through your website",
+        "OTA booking",
+        "travel agency reservation"
+      ],
+      "why_it_matters": "Channel detail shapes refund, invoice, and rate-inclusion answers.",
+      "echoer_action": "Use the channel to avoid generic policy language."
+    },
+    {
+      "id": "budget_band_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "budget_band_declared",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "under 600",
+        "mid-range business stay",
+        "company budget cap",
+        "not too expensive"
+      ],
+      "why_it_matters": "Budget framing helps Echoer keep hotel guidance realistic instead of overly broad.",
+      "echoer_action": "Reframe toward room type, location, and benefit trade-offs."
+    },
+    {
+      "id": "early_checkin_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "early_checkin_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee early check-in",
+        "definitely can check in at 7 am",
+        "promise my room will be ready early",
+        "locked in early arrival"
+      ],
+      "why_it_matters": "Absolute early-check-in requests create avoidable hotel service risk around live room turnover.",
+      "echoer_action": "Shift from guarantee language to property, date, and arrival-time clarification."
+    },
+    {
+      "id": "late_checkout_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "late_checkout_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee late checkout",
+        "definitely until 6 pm",
+        "promise I can leave late",
+        "fixed late checkout"
+      ],
+      "why_it_matters": "Late-checkout guarantees can backfire quickly when occupancy is high or room turnover is tight.",
+      "echoer_action": "Use condition-based wording tied to date, property, and booked rate."
+    },
+    {
+      "id": "quiet_room_or_view_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "quiet_room_or_view_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee a quiet room",
+        "promise high floor",
+        "definitely away from the elevator",
+        "must have the exact view"
+      ],
+      "why_it_matters": "Specific placement guarantees create disappointment risk when room inventory changes.",
+      "echoer_action": "Reframe as request-based preference handling instead of a fixed promise."
+    },
+    {
+      "id": "full_refund_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "full_refund_guarantee_request",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "full refund no matter what",
+        "guarantee I can cancel",
+        "promise the app booking can be refunded",
+        "refund it anyway"
+      ],
+      "why_it_matters": "Refund guarantees create policy and trust risk when booking channel and rate rules are still unknown.",
+      "echoer_action": "Move toward channel and rate-plan confirmation rather than reassuring broadly."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave your phone",
+        "call me now",
+        "drop the number in comments"
+      ],
+      "why_it_matters": "Public contact exchange creates privacy and platform risk when DM can handle hotel booking details safely.",
+      "echoer_action": "Use platform DM as the safer bridge."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give me the cheapest room",
+        "price only",
+        "quote now no details",
+        "lowest rate immediately"
+      ],
+      "why_it_matters": "Price-only traffic is not useless, but it needs reframing before it becomes a workable hotel lead.",
+      "echoer_action": "Guide the user toward dates, property, or room basics before trying to answer."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never create healthy hotel conversion.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges urgency",
+        "acknowledges fatigue",
+        "acknowledges frustration"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior in hospitality conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_booking_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_booking_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for stay dates",
+        "asks for property",
+        "asks for room count",
+        "asks for booking channel"
+      ],
+      "why_it_matters": "A strong hotel reply turns broad interest into usable reservation or service data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_sets_condition_based_expectation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_sets_condition_based_expectation",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "depends on occupancy",
+        "varies by property and rate",
+        "needs booking-channel confirmation",
+        "avoid promising availability"
+      ],
+      "why_it_matters": "Condition-based wording keeps hotel replies useful without overpromising live operations.",
+      "echoer_action": "Use realistic qualifiers while still guiding the user forward."
+    },
+    {
+      "id": "reply_anchors_on_channel_or_rate_plan",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_anchors_on_channel_or_rate_plan",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions rate plan",
+        "mentions booking channel",
+        "mentions room category",
+        "mentions invoice context"
+      ],
+      "why_it_matters": "Hotel answers feel more credible when they reflect the actual policy context behind the question.",
+      "echoer_action": "Use channel-aware wording instead of generic policy claims."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send stay dates in DM",
+        "share the booking channel",
+        "confirm the property plus timing",
+        "send the booking details"
+      ],
+      "why_it_matters": "One clear next step is easier for guests to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_service_issue_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_service_issue_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "complaint escalated",
+        "front desk review path",
+        "guest service follow-up",
+        "human handling suggested"
+      ],
+      "why_it_matters": "Echoer should not improvise past active stay issues or operational recovery boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps booking details minimal in comments"
+      ],
+      "why_it_matters": "Hotel conversations often involve private stay and billing information that should not be collected publicly.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_acknowledges_business_use_case",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_acknowledges_business_use_case",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "mentions work trip",
+        "mentions client meeting",
+        "mentions reimbursement need",
+        "mentions project stay"
+      ],
+      "why_it_matters": "Business travelers respond better when the reply reflects the reason behind the stay, not just the room.",
+      "echoer_action": "Use the business purpose to guide a more relevant next question."
+    },
+    {
+      "id": "reply_absolute_room_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_room_promise",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed early check-in",
+        "guaranteed late checkout",
+        "definitely quiet room",
+        "absolute room availability"
+      ],
+      "why_it_matters": "Absolute hotel promises create avoidable operational and trust risk.",
+      "echoer_action": "Replace with condition-based and property-aware wording."
+    },
+    {
+      "id": "reply_unchecked_policy_statement",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_unchecked_policy_statement",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "all bookings can be refunded",
+        "every room includes breakfast",
+        "all properties have shuttle service",
+        "invoice is always available"
+      ],
+      "why_it_matters": "Broad policy claims are risky when hotel rules differ by property, rate, and booking channel.",
+      "echoer_action": "Ground the answer in channel, property, or rate context."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guest is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_hard_sell_pressure",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_hard_sell_pressure",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "book now or lose it",
+        "only today lowest price",
+        "pressure to reserve fast",
+        "fear-based urgency"
+      ],
+      "why_it_matters": "High-pressure sales language clashes with Echoer's steady, human mission.",
+      "echoer_action": "Keep urgency calm and grounded in real next steps."
+    }
+  ]
+}

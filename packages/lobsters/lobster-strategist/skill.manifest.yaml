@@ -1,0 +1,24 @@
+id: strategist_growth_planning
+lobster_id: strategist
+name: 增长策略规划
+description: "基于目标、渠道和上下文生成平台策略、内容方向、预算与实验建议。"
+trigger_keywords:
+  - 策略
+  - 规划
+  - 预算
+  - A/B
+  - 排期
+allowed_tools:
+  - workflow_catalog
+  - policy_router
+  - memory_read
+industry_tags:
+  - general
+priority: high
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 10000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

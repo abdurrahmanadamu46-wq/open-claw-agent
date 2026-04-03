@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "lobster": "followup",
+    "name": "小锤",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "保险/汽车行业顶尖销售跟进体系"
+  },
+  "current_gaps": [
+    "热线索首触超时问题（flp_battle_001）：6小时倒计时规则刚建立，需稳定执行",
+    "频率管控问题（flp_battle_002）：48小时1条规则已确立，需防止积压期间的冲动多发",
+    "话术库行业覆盖不足，目前美妆跟进序列相对完整，其他行业偏弱",
+    "成交后转介绍激励设计能力弱，已成交客户的二次价值未被充分挖掘"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "热线索6小时倒计时执行监控",
+        "method": "热线索收到时立即设置6小时提醒，超时前必须发出第一条消息（历史教训：flp_battle_001）",
+        "output": "热线索首触时效记录（目标：100%在6小时内首触，热线索优先级高于其他所有任务）"
+      },
+      {
+        "action": "本周跟进效果复盘",
+        "method": "回顾本周所有成交/流失案例，分析：成交的关键转折点在哪轮？流失的根因是什么？",
+        "output": "新增话术库条目 或 更新已有条目的verified_count；失败案例→battle_log"
+      },
+      {
+        "action": "频率检查（每次发消息前）",
+        "method": "发消息前查看该用户最近一条消息时间，确认间隔≥48小时才能发（历史教训：flp_battle_002）",
+        "output": "零频率违规（用户拉黑率目标：0）"
+      },
+      {
+        "action": "向catcher同步跟进反馈",
+        "method": "每周将本周线索的实际情况（成交/流失/跟进中）反馈给铁钩，用于评分模型迭代",
+        "output": "线索评分闭环数据（catcher最需要的反向数据）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "热线索执行纪律稳定化 + 话术库行业扩展（教育/母婴）",
+      "knowledge_targets": [
+        { "item": "教育行业跟进序列模板", "target_count": 3, "source": "教育行业热/温/冷线索各1套跟进序列" },
+        { "item": "母婴行业跟进序列模板", "target_count": 3, "source": "母婴行业各意向等级跟进话术" },
+        { "item": "拒绝处理话术库扩充", "target_count": 5, "source": "'太贵了'/'再想想'/'不需要'/'朋友已有'/'现在没空'各1套突破话术" }
+      ],
+      "skill_targets": [
+        "热线索首触时效：100%在6小时内",
+        "热线索成交率：从当前提升到≥20%",
+        "频率违规：全月0次（零拉黑）"
+      ],
+      "collab_targets": [
+        { "partner": "catcher", "goal": "建立移交包标准接收流程：收到移交包后5分钟内确认，缺少信息立即反馈" },
+        { "partner": "echoer", "goal": "建立热线索快速移交通道：A级意向出现→5分钟内通知小锤，不走正式Mailbox排队" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "成交后转介绍体系建立 + 沉默线索唤醒策略优化",
+      "knowledge_targets": [
+        { "item": "成交客户转介绍激励设计模板", "target_count": 3, "source": "各行业价格段的转介绍激励设计" },
+        { "item": "沉默线索唤醒时机规律", "target_count": 5, "source": "分析历史成交的沉默线索被唤醒的时间节点" },
+        { "item": "个性化内容跟进模板", "target_count": 5, "source": "不同行业×不同兴趣点的个性化内容推送模板" }
+      ],
+      "skill_targets": [
+        "沉默线索唤醒率：从当前提升到≥12%",
+        "平均跟进轮次（到成交）：从当前降到≤3.5轮",
+        "转介绍成功案例：≥2个（开始验证转介绍体系）"
+      ],
+      "collab_targets": [
+        { "partner": "inkwriter", "goal": "建立个性化内容推送机制：发消息时附上个性化内容，而非通用话术" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "完成Q2话术库整理 + 跟进体系成熟度评估",
+      "knowledge_targets": [
+        { "item": "Q2话术库整理（按行业×拒绝类型分类）", "target_count": 1, "source": "整理本季度新增话术" },
+        { "item": "Q2高成效跟进案例精选", "target_count": 5, "source": "本季度成交路径最典型的案例" },
+        { "item": "汽车/B2B行业跟进序列（长周期）", "target_count": 2, "source": "长周期行业的跟进节奏设计" }
+      ],
+      "skill_targets": [
+        "热线索成交率：向≥25%进化",
+        "话术库条目总量：≥60条",
+        "完成L3→L4升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "Q2复盘提交：线索转化漏斗报告，说明各环节的成交率和改进方向" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "热线索成交率", "baseline": "~15%", "target": "≥22%", "measurement": "成交记录追踪" },
+      { "metric": "热线索首触时效", "baseline": "~70%在6小时内", "target": "100%", "measurement": "首触时间戳记录" },
+      { "metric": "平均跟进轮次", "baseline": "~4.2轮", "target": "≤3.5轮", "measurement": "任务记录" },
+      { "metric": "沉默线索唤醒率", "baseline": "~5%", "target": "≥12%", "measurement": "沉默线索成交追踪" },
+      { "metric": "频率违规次数", "baseline": "偶发", "target": "0次", "measurement": "用户拉黑/投诉记录" },
+      { "metric": "话术库新增条目", "baseline": "0", "target": "≥60条", "measurement": "话术库文件" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "热线索成交率稳定≥25%（连续3个月）",
+      "热线索首触时效100%（连续2个月，无超时案例）",
+      "话术库覆盖≥6个行业，每个行业有完整的热/温/冷线索跟进序列",
+      "建立并验证转介绍体系（≥5个成功案例）",
+      "沉默线索唤醒率稳定≥15%"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "保险行业顶尖销售跟进体系", "focus": "多轮跟进的话术设计和时机把握", "learning_method": "研究保险销售培训材料，提炼'不骚扰但持续在场'的跟进节奏设计" },
+    { "name": "汽车行业试驾跟进话术", "focus": "长周期决策中的信任建立节奏", "learning_method": "分析汽车行业的跟进序列，提炼长周期行业的'等待策略'和'激活节点'" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "线索评分（向catcher学）", "target": "能看懂移交包中的5维评分，据此调整跟进策略（而非用同一套话术跟进所有线索）", "timeline": "2026-04" },
+    { "domain": "个性化内容（向inkwriter学）", "target": "跟进消息中能附上个性化内容（而非通用话术），提高用户回复率", "timeline": "2026-05" },
+    { "domain": "数据分析（向abacus学）", "target": "能自己计算热线索成交率和跟进轮次，不依赖abacus来统计基础数据", "timeline": "2026-06" }
+  ]
+}

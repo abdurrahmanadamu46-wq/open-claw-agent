@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_environment_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实环境可见度",
+      "weight": 0.15,
+      "definition": "分镜是否把门店、前台、护理房间和真实准备流程放在前排位置，而不是依赖空镜和重滤镜脸部特写。",
+      "high_score_signals": [
+        "前 3 镜内出现房间或前台证据",
+        "看得出这是本店真实空间",
+        "环境与流程能接上"
+      ],
+      "low_score_signals": [
+        "开场长时间只有装修空镜",
+        "看不出是门店还是广告棚拍",
+        "空间证据太弱"
+      ],
+      "score_rule": "真实空间证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "process_transparency",
+      "metric_group": "trust_building",
+      "feature": "流程透明度",
+      "weight": 0.16,
+      "definition": "分镜是否把咨询、准备、步骤和结束说明串成一个可信流程，而不是只展示护理后的状态镜头。",
+      "high_score_signals": [
+        "有咨询或判断步骤",
+        "有真实操作过程",
+        "有结束后的边界说明"
+      ],
+      "low_score_signals": [
+        "只有结果没有过程",
+        "步骤跳跃严重",
+        "流程看起来像效果秀"
+      ],
+      "score_rule": "流程越可见、越完整，得分越高。"
+    },
+    {
+      "id": "hygiene_proof_strength",
+      "metric_group": "trust_building",
+      "feature": "卫生证明强度",
+      "weight": 0.15,
+      "definition": "是否有一次性用品、工具准备、房间整理和台面清洁等关键卫生证据，而不是仅靠字幕声明。",
+      "high_score_signals": [
+        "一次性用品镜头清楚",
+        "工具准备真实可见",
+        "卫生细节在前半段出现"
+      ],
+      "low_score_signals": [
+        "只靠文案说卫生好",
+        "卫生镜头太短或缺失",
+        "用品状态不明确"
+      ],
+      "score_rule": "卫生细节越清楚，信任得分越高。"
+    },
+    {
+      "id": "problem_solution_match",
+      "metric_group": "message_match",
+      "feature": "问题与方案匹配度",
+      "weight": 0.16,
+      "definition": "黑头、敏感、暗沉和节前急救等脚本，是否都能在画面中看到对应问题与对应方案，而不是所有视频都长得一样。",
+      "high_score_signals": [
+        "问题镜头和步骤镜头一一对应",
+        "不同路线画面明显区分",
+        "场景信息清楚"
+      ],
+      "low_score_signals": [
+        "所有项目都拍成同一套流程",
+        "看不到问题只看到手法",
+        "场景模糊"
+      ],
+      "score_rule": "问题和方案越配得上，得分越高。"
+    },
+    {
+      "id": "privacy_respectfulness",
+      "metric_group": "brand_safety",
+      "feature": "隐私与尊重感",
+      "weight": 0.18,
+      "definition": "面对素颜、痘痘和敏感状态时，分镜是否守住隐私、克制和陪伴感，而不是用羞辱式特写制造焦虑。",
+      "high_score_signals": [
+        "局部和侧脸镜头处理克制",
+        "不放大羞耻感",
+        "字幕和镜头语气一致"
+      ],
+      "low_score_signals": [
+        "吓人特写逼单",
+        "未经处理暴露脸部细节",
+        "焦虑感强于尊重感"
+      ],
+      "score_rule": "越能守住隐私和尊重，品牌安全得分越高。"
+    },
+    {
+      "id": "booking_path_visibility",
+      "metric_group": "conversion_readiness",
+      "feature": "预约路径可见度",
+      "weight": 0.12,
+      "definition": "视频是否留出了前台、预约、咨询承接或门店位置感，而不是只拍护理过程不拍下一步。",
+      "high_score_signals": [
+        "后半段出现预约承接画面",
+        "门店位置或前台清楚",
+        "CTA 与画面一致"
+      ],
+      "low_score_signals": [
+        "只有过程没有下一步",
+        "收口与画面脱节",
+        "看不出如何预约"
+      ],
+      "score_rule": "观众越容易看懂如何进入下一步，得分越高。"
+    }
+  ]
+}

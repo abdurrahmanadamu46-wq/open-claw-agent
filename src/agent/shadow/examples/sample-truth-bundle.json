@@ -1,0 +1,138 @@
+﻿{
+  "schemaVersion": "lobster.shadow-truth.v0.1",
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "records": [
+    {
+      "id": "truth_sim_003_approval",
+      "missionId": "sim_003",
+      "sourceType": "approval",
+      "signal": "publish_external",
+      "roleId": "dispatcher",
+      "status": "approved",
+      "value": true,
+      "note": "First publish sample was approved after policy review.",
+      "sourceRef": "approval://sim_003/publish_external"
+    },
+    {
+      "id": "truth_sim_003_runtime",
+      "missionId": "sim_003",
+      "sourceType": "runtime",
+      "signal": "aoto_cut_render",
+      "roleId": "dispatcher",
+      "status": "success",
+      "value": 1,
+      "note": "Aoto Cut render completed without fallback.",
+      "sourceRef": "runtime://sim_003/render"
+    },
+    {
+      "id": "truth_sim_004_conversation",
+      "missionId": "sim_004",
+      "sourceType": "conversation",
+      "signal": "dm_opened",
+      "roleId": "echoer",
+      "status": "observed",
+      "value": true,
+      "note": "User moved from public comment to DM within 2 minutes.",
+      "sourceRef": "conversation://sim_004/dm"
+    },
+    {
+      "id": "truth_sim_004_crm",
+      "missionId": "sim_004",
+      "sourceType": "crm",
+      "signal": "qualified_lead_created",
+      "roleId": "catcher",
+      "status": "success",
+      "value": true,
+      "note": "Lead entered CRM as high-priority qualified lead.",
+      "sourceRef": "crm://sim_004/lead"
+    },
+    {
+      "id": "truth_sim_006_approval",
+      "missionId": "sim_006",
+      "sourceType": "approval",
+      "signal": "outbound_call",
+      "roleId": "followup",
+      "status": "pending",
+      "value": false,
+      "note": "Phone follow-up still waiting for approval.",
+      "sourceRef": "approval://sim_006/outbound_call"
+    },
+    {
+      "id": "truth_sim_006_conversation",
+      "missionId": "sim_006",
+      "sourceType": "conversation",
+      "signal": "lead_replied",
+      "roleId": "followup",
+      "status": "observed",
+      "value": true,
+      "note": "Lead replied to DM and asked for schedule.",
+      "sourceRef": "conversation://sim_006/reply"
+    },
+    {
+      "id": "truth_sim_007_runtime",
+      "missionId": "sim_007",
+      "sourceType": "runtime",
+      "signal": "voice_provider_unstable",
+      "roleId": "dispatcher",
+      "status": "degraded",
+      "value": true,
+      "note": "Voice provider timed out twice; fallback path engaged.",
+      "sourceRef": "runtime://sim_007/voice_provider"
+    },
+    {
+      "id": "truth_sim_007_approval",
+      "missionId": "sim_007",
+      "sourceType": "approval",
+      "signal": "high_risk_customer_touchpoint",
+      "roleId": "followup",
+      "status": "rejected",
+      "value": false,
+      "note": "Risk team rejected outbound touchpoint under unstable provider state.",
+      "sourceRef": "approval://sim_007/high_risk_touchpoint"
+    },
+    {
+      "id": "truth_sim_008_runtime",
+      "missionId": "sim_008",
+      "sourceType": "runtime",
+      "signal": "replay_completed",
+      "roleId": "dispatcher",
+      "status": "success",
+      "value": true,
+      "note": "Replay path restored job after provider recovery.",
+      "sourceRef": "runtime://sim_008/replay"
+    },
+    {
+      "id": "truth_sim_009_crm",
+      "missionId": "sim_009",
+      "sourceType": "crm",
+      "signal": "roi_realized",
+      "roleId": "abacus",
+      "status": "measured",
+      "value": "4300",
+      "note": "Observed ROI aligned closely with estimate.",
+      "sourceRef": "crm://sim_009/roi"
+    },
+    {
+      "id": "truth_sim_010_approval",
+      "missionId": "sim_010",
+      "sourceType": "approval",
+      "signal": "publish_external",
+      "roleId": "dispatcher",
+      "status": "rejected",
+      "value": false,
+      "note": "Approval rejected due to elevated risk wording in content draft.",
+      "sourceRef": "approval://sim_010/publish"
+    },
+    {
+      "id": "truth_sim_010_runtime",
+      "missionId": "sim_010",
+      "sourceType": "runtime",
+      "signal": "manual_fallback_required",
+      "roleId": "dispatcher",
+      "status": "observed",
+      "value": true,
+      "note": "Manual fallback path used after approval reject.",
+      "sourceRef": "runtime://sim_010/fallback"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_concern_time_branch",
+      "title": "先看问题、时间和门店事实，再判断是不是高意向",
+      "description": "美容院线索只有在明确提到皮肤问题、预约时间或时间窗口、门店或商圈、是否首次到店等事实时，才能被视为高意向。只有“多少钱”“最近想做做脸”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周五晚想去国金店做一次黑头清洁，第一次来，周六要拍照。",
+        "低确定性信号：你们家怎么样，最近想做个护理。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "sensitive_skin_needs_safety_context",
+      "title": "敏感和怕踩雷线索要先看安全上下文",
+      "description": "用户提到敏感、泛红、刺痛、担心过敏和第一次做项目时，不应只按咨询热度打分，而要把安全顾虑、时间窗口和愿不愿意先做咨询判断一起纳入判断。",
+      "examples": [
+        "高价值信号：第一次来，最近一上妆就刺，想周末先咨询适不适合做温和护理。",
+        "低确定性信号：敏感肌是不是都不能做。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_driven_booking_is_high_intent",
+      "title": "婚礼、拍照和节前线索出现明确日期时要显著提权",
+      "description": "美容院的节前急救型线索一旦带着婚礼、拍照、约会、聚会等明确日期进入私信，通常比普通泛咨询更接近真实预约动作，应进入高意向候选。",
+      "examples": [
+        "周六婚礼，想约周四晚做一次状态整理。",
+        "下周二拍证件照，这周日有空做个补水吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "price_only_is_not_auto_hot",
+      "title": "只问价格不等于高意向，除非同时带着问题和时间",
+      "description": "价格问题本身并不低意向，但如果没有问题范围、时间窗口和门店选择，Catcher 不能把这类线索直接提到最高层，必须等更多事实出现。",
+      "examples": [
+        "高意向：黑头很多，周末想来一次，价格大概多少。",
+        "普通意向：多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_client_signal_should_be_upgraded",
+      "title": "老客回流和朋友推荐要抬高拟合度",
+      "description": "老客回流、朋友推荐和上次来过等信号，通常意味着信任门槛已经降低。这类线索在问题和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来过，这次换季又开始不舒服了，想这周再来。",
+        "朋友推荐来的，想先约周末做清洁。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_embarrassment_should_not_hide_intent",
+      "title": "公开场合的羞耻表达不应掩盖真实意向",
+      "description": "有些用户会在评论区用很轻的语气掩饰强烈困扰，例如黑头太明显、最近皮肤很糟。如果同时出现时间、场景或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "最近脸状态太差了，周末还能约吗。",
+        "准备见人，有没有适合第一次做的项目。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

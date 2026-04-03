@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_daypart_clarity",
+      "feature_name": "核心消费时段清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确唯一主时段与主客群，例如工作日通勤早餐、办公下午提神或周末社区早午餐；3 分：有 2 个候选时段但优先级仍可判断；1 分：早中晚、堂食、自提和外卖全都想做且没有排序。",
+      "positive_signals": [
+        "明确主时段、主人群和主力价格带",
+        "主场景与现有订单证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有时段一起推",
+        "主场景与真实订单结构明显错位"
+      ],
+      "route_guidance": "时段越清晰，越适合集中预算和内容；时段越混乱，越应该先缩范围做验证。"
+    },
+    {
+      "id": "hero_drink_evidence_density",
+      "feature_name": "主力饮品证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定主力饮品实拍、风味说明、复购记录和出杯稳定性；3 分：有杯型素材但缺少复购或履约证据；1 分：主要依赖装修、包装图或低价券，没有主力饮品证明。",
+      "positive_signals": [
+        "主力杯型真实出品图",
+        "围绕风味和稳定性的高频评价",
+        "清楚知道哪一条饮品方向承担复购"
+      ],
+      "negative_signals": [
+        "只有海报没有真实杯型证据",
+        "主推饮品经常缺货或口味波动大"
+      ],
+      "route_guidance": "产品证据越强，越适合走真实产品路线；证据越弱，越要先补试饮、回评和点单引导。"
+    },
+    {
+      "id": "local_radius_fit",
+      "feature_name": "本地半径与动线匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确 1 到 3 公里核心辐射半径、主要通勤或停留动线和周边客群结构；3 分：知道大致商圈但未细化到楼栋、学校或社区；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚写字楼、学校、社区或商场客流结构",
+        "知道步行、自提和配送的便利边界",
+        "对地铁口、电梯、园区门禁等影响因素有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视导航成本和到店便利性"
+      ],
+      "route_guidance": "半径越清晰，越容易先把预算压到高转化人群；半径模糊时应先收缩目标区域。"
+    },
+    {
+      "id": "member_asset_reactivation_readiness",
+      "feature_name": "会员和月卡资产重激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员联系方式、月卡状态、消费标签和可分层触达方式；3 分：有会员名单但标签有限；1 分：几乎没有可用熟客资产却仍忽略召回路线。",
+      "positive_signals": [
+        "有小程序、企微、月卡或社群资产",
+        "可按黑咖奶咖、冷热偏好、时段或距离分层",
+        "有续卡、积分或回店提醒机制"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑熟客回流"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本召回；资产越弱，越要先补标签再谈扩大冷启动。"
+    },
+    {
+      "id": "reputation_health",
+      "feature_name": "评分与履约口碑健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定、差评主题可控，且近 30 天持续有真实好评；3 分：评分一般但问题集中且可修复；1 分：差评明显扩散，却仍计划继续强推放量。",
+      "positive_signals": [
+        "评分稳定在较高区间",
+        "差评原因少且已在修复",
+        "近期好评持续出现"
+      ],
+      "negative_signals": [
+        "评分快速下滑",
+        "差评集中在等待、漏液、口味失衡、错做低因或轻食问题"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线建立在真实评价和复购上；口碑不稳时必须先修履约和评分。"
+    },
+    {
+      "id": "bar_capacity_stability",
+      "feature_name": "吧台与备料稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰期意式机、蒸汽位、冷萃批次、人手和叫号区都有余量且节奏稳定；3 分：可承接但需要限定时段、限定系列或预约；1 分：高峰已频繁排队、缺料和超时。",
+      "positive_signals": [
+        "清楚高峰可承接杯数上限",
+        "意式、蒸汽、轻食和骑手交接冲突可控",
+        "低因豆、燕麦奶和冷萃库存能覆盖当前路线"
+      ],
+      "negative_signals": [
+        "依赖个别员工手法",
+        "高峰经常爆杯、缺料、骑手积压或取餐区拥堵"
+      ],
+      "route_guidance": "承接越稳，越适合放量；承接越弱，越应转向预约、自提和低峰时段路线。"
+    },
+    {
+      "id": "pickup_delivery_economics_fit",
+      "feature_name": "自提与外卖单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：自提与外卖的主力杯型、毛利、配送边界和差评风险都清楚；3 分：知道两边差异但尚未拆开运营；1 分：同一套优惠和菜单强行覆盖两边。",
+      "positive_signals": [
+        "自提和外卖有不同主打组合",
+        "知道配送半径和包装稳定边界",
+        "能核算各路线毛利"
+      ],
+      "negative_signals": [
+        "把外卖爆款当自提主推",
+        "只看单量不看毛利和差评"
+      ],
+      "route_guidance": "单位经济越清晰，越能安全扩量；若毛利和履约边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "workspace_and_light_meal_route_validity",
+      "feature_name": "办公自习与轻食路线有效性",
+      "metric": "route_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分：空间承接、座位规则、插座与轻食组合边界都清楚，且与目标客群一致；3 分：有部分证据但高峰承接和规则仍不稳定；1 分：只凭装修和想象就把办公自习或早午餐升为主路线。",
+      "positive_signals": [
+        "插座、Wi-Fi、空位和限时规则可验证",
+        "轻食加热、备货和损耗边界清晰",
+        "堂食停留与翻台节奏可预估"
+      ],
+      "negative_signals": [
+        "只看空间氛围不看承接能力",
+        "轻食与座位路线没有任何履约与成本验证"
+      ],
+      "route_guidance": "空间和轻食证据越扎实，越能安全承接停留型路线；证据不足时应降级为补位路线。"
+    },
+    {
+      "id": "breakfast_afternoon_scene_translation",
+      "feature_name": "早餐与下午场景翻译能力",
+      "metric": "route_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分：清楚早餐和下午路线分别对应哪些饮品方向、价格带和取杯动作；3 分：知道两个场景都重要，但没有明确切换逻辑；1 分：无视场景差异，用同一套饮品和话术覆盖全天。",
+      "positive_signals": [
+        "早餐路线强调速度、外带和简单选择",
+        "下午路线强调续航、稳定和组合场景",
+        "冷热饮与黑咖奶咖切换逻辑清晰"
+      ],
+      "negative_signals": [
+        "全天主推同一套杯型与权益",
+        "把早餐和下午需求混成同一转化动作"
+      ],
+      "route_guidance": "场景翻译越准确，越能提高路线命中率；若翻译模糊，应先压缩到单一窗口验证。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "表述合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实产品、评价、原料信息和履约规则；3 分：有少量模糊夸张但可修正；1 分：存在身体功能、绝对最低价、绝对排名、未经核验豆源和冠军背书等高风险说法。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "风味、冷热选择和履约边界说得清楚",
+        "豆源和原料信息可核验"
+      ],
+      "negative_signals": [
+        "燃脂、醒酒、提神不心慌等身体功能暗示",
+        "全网最低价、全城第一、绝对单一产地等表述",
+        "伪造联名、平台背书或排队盛况"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术和承接边界。"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿{
+  "resultVersion": "lobster.runtime-target-result.v0.1",
+  "processedAt": "2026-03-30T02:23:41.479Z",
+  "bridgeTarget": "lead-ops-runner",
+  "dispatchId": "dispatch:sim_009:score:abacus",
+  "status": "handled",
+  "note": "Injected lead ops handler processed dispatch:sim_009:score:abacus (unscoped)",
+  "payload": {
+    "leadPayload": {
+      "tenant_id": "shadow-tenant-sim_009",
+      "campaign_id": "sim_009",
+      "contact_info": "placeholder-contact",
+      "intention_score": 80,
+      "source_platform": "shadow"
+    },
+    "scopeId": "unscoped",
+    "result": {
+      "ok": true,
+      "lead_id": "shadow-tenant-sim_009-lead-1774837421476-m42sr",
+      "message": "lead accepted"
+    }
+  }
+}

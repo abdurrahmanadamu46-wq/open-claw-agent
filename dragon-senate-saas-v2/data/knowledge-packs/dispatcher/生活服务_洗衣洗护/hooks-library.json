@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次送洗问询触发优先调度","description":"当来单中出现第一次来、想先送洗、想先看看方案或具体材质问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先送洗大衣。","客户想先看奢护路线是否适合自己。"],"priority":"high"},
+  {"id":"window_inquiry","title":"换季与返校窗口询单触发时效优先调度","description":"当来单明确说明换季、返校和婚礼节点时，Dispatcher 要立即优先判断热门时段可用性和工位边界。","examples":["客户这周要穿，想周四晚先送洗。","客户说明下周返校，希望今晚先确认。"],"priority":"high"},
+  {"id":"high_scope_trigger","title":"多件整单触发高工时优先调度","description":"当用户明确件数、材质和加项时，Dispatcher 应优先分配高工时路线。","examples":["客户两件羽绒加一件羊毛大衣。","客户窗帘加床品整单送洗。"],"priority":"high"},
+  {"id":"urgent_schedule_trigger","title":"急洗时段触发排班优先调度","description":"当用户需要次日交付或婚礼前洗好时，Dispatcher 要优先判断候补与改时段路径。","examples":["后天要穿，想先洗好。","婚礼前这两天想约一次急洗。"],"priority":"medium"},
+  {"id":"repeat_trigger","title":"续洗补洗触发复购链路","description":"续洗补洗一旦出现时段和件数需求，应直接进入标准化复购链路。","examples":["这个月想再补洗两件。","上次那一批还想再送一次。"],"priority":"medium"},
+  {"id":"luxury_trigger","title":"奢护修复触发专项链路","description":"奢护和修复应优先走专项链路，而不是普通日常送洗流程。","examples":["礼服想精洗熨烫。","鞋包想做奢护补色。"],"priority":"medium"}
+]}

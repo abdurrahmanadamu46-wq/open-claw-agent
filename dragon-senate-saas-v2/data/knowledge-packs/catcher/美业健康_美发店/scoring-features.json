@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "catcher",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "intent_explicitness",
+      "title": "预约动作显性度",
+      "description": "评估线索是否明确表达想约、想来、这个周末能不能安排、有没有时段等动作。高分表示用户已经从泛兴趣进入行动准备。",
+      "examples": [
+        "高分：周五晚能不能帮我安排一单低维护剪发。",
+        "低分：最近想做做头发。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "service_specificity",
+      "title": "项目清晰度",
+      "description": "高分线索会明确提到剪发、染发、烫发、补染和护理等具体方向，而不是只有想换发型和想变好看这类笼统表达。",
+      "examples": [
+        "高分：想做显白棕。",
+        "低分：想做个好看的。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "time_window_strength",
+      "title": "时间窗口强度",
+      "description": "高分线索通常会给出周末、周四晚、午休、婚礼前两天等可执行时间窗口。没有时间线索的咨询不应高估。",
+      "examples": [
+        "高分：这周日或者周四下班后都可以。",
+        "低分：有空再来。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "current_hair_scope_visibility",
+      "title": "当前头发状态可见度",
+      "description": "是否提到旧色、漂过、发长、受损和头皮问题，会直接影响承接难度。能明确这些变量的线索拟合度更高。",
+      "examples": [
+        "高分：之前漂过，现在想补色。",
+        "低分：只说想染，不提任何基础情况。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "location_specificity",
+      "title": "门店位置明确度",
+      "description": "明确门店、商圈和商场，代表用户已经在做实际选择，通常比泛泛咨询更接近真实预约。",
+      "examples": [
+        "高分：想约国金店。",
+        "低分：你们在哪里。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "relationship_warmth",
+      "title": "关系温度",
+      "description": "老客回流、朋友推荐和之前来过等关系信号，应提升拟合度和后续跟进优先级，因为其成交和复访概率通常更高。",
+      "examples": [
+        "高分：上次来过，这次还想约。",
+        "高分：朋友推荐我来问问。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

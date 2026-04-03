@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_daypart_clarity",
+      "feature_name": "核心消费时段清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确唯一主时段与主客群，例如工作日下午茶白领、放学后学生或下班带走；3 分：有 2 个候选时段但优先级仍可判断；1 分：早中晚和外卖自提全都想做且没有排序。",
+      "positive_signals": [
+        "明确主时段、主人群和主力价格带",
+        "主场景与现有出单证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有时段一起推",
+        "主场景与真实订单结构明显错位"
+      ],
+      "route_guidance": "时段越清晰，越适合集中预算和内容；时段越混乱，越应该先缩范围做验证。"
+    },
+    {
+      "id": "hero_series_evidence_density",
+      "feature_name": "主力系列证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定主力系列实拍、口感评价、复购记录和出杯稳定性；3 分：有杯型素材但缺少复购或稳定履约证据；1 分：主要依赖包装图或低价券，没有主力系列证明。",
+      "positive_signals": [
+        "主力杯型真实出品图",
+        "围绕口感和稳定性的高频评价",
+        "清楚知道哪一条系列是复购担当"
+      ],
+      "negative_signals": [
+        "只有海报没有真实杯型证据",
+        "主推系列经常缺货或品质波动大"
+      ],
+      "route_guidance": "产品证据越强，越适合走真实产品路线；证据越弱，越要先补试饮、回评和出品稳定性。"
+    },
+    {
+      "id": "local_radius_fit",
+      "feature_name": "本地半径与动线匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确 1 到 3 公里核心辐射半径、主要动线和周边客群结构；3 分：知道大致商圈但未细化到楼栋、学校或社区；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚写字楼、学校、社区或商场客流结构",
+        "知道步行、自提和配送的便利边界",
+        "对地铁口、电梯、园区门禁等影响因素有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视导航成本和到店便利性"
+      ],
+      "route_guidance": "半径越清晰，越容易先把预算压到高转化人群；半径模糊时应先收缩目标区域。"
+    },
+    {
+      "id": "member_asset_reactivation_readiness",
+      "feature_name": "会员资产重激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员联系方式、消费标签、活跃度和可分层触达方式；3 分：有会员名单但标签有限；1 分：几乎没有可用老客资产却仍忽略老客路线。",
+      "positive_signals": [
+        "有小程序、企微或社群资产",
+        "可按口味、时段或距离分层",
+        "有积分、券包或上新提醒机制"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑老客回流"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本召回；资产越弱，越要先补标签再谈扩大冷启动。"
+    },
+    {
+      "id": "reputation_health",
+      "feature_name": "评分与履约口碑健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定、差评主题可控，且近 30 天持续有真实好评；3 分：评分一般但问题集中且可修复；1 分：差评明显扩散，却仍计划继续强推放量。",
+      "positive_signals": [
+        "评分稳定在较高区间",
+        "差评原因少且已在修复",
+        "近期好评持续出现"
+      ],
+      "negative_signals": [
+        "评分快速下滑",
+        "差评集中在等待、漏单、甜度失控或撒杯"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线建立在真实评价和复购上；口碑不稳时必须先修履约和评分。"
+    },
+    {
+      "id": "production_capacity_stability",
+      "feature_name": "出杯与备料稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰期出杯、人手、封杯和补料都有余量且节奏稳定；3 分：可承接但需要限定时段、限定系列或预约；1 分：高峰已频繁排队、缺料和超时。",
+      "positive_signals": [
+        "清楚高峰可承接杯数上限",
+        "人手、设备和备料能覆盖当前路线",
+        "热饮与冷饮并线冲突可控"
+      ],
+      "negative_signals": [
+        "依赖个别员工手法",
+        "高峰经常爆杯、补料不及时或骑手积压"
+      ],
+      "route_guidance": "承接越稳，越适合放量；承接越弱，越应转向预约、自提和低峰时段路线。"
+    },
+    {
+      "id": "pickup_delivery_economics_fit",
+      "feature_name": "自提与外卖单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：自提与外卖的杯型、毛利、配送边界和差评风险都清楚；3 分：知道两边差异但尚未拆开运营；1 分：同一套优惠和菜单强行覆盖两边。",
+      "positive_signals": [
+        "自提和外卖有不同主打组合",
+        "知道配送半径和包装稳定边界",
+        "能核算各路线毛利"
+      ],
+      "negative_signals": [
+        "把外卖爆款当自提主推",
+        "只看单量不看毛利和差评"
+      ],
+      "route_guidance": "单位经济越清晰，越能安全扩量；若毛利和履约边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "weather_temperature_adaptability",
+      "feature_name": "天气与冷热切换适配度",
+      "metric": "route_quality",
+      "weight": 0.08,
+      "scoring_rule": "5 分：清楚天气变化时热饮、冰饮和主力时段如何切换；3 分：知道天气会影响销量但无明确替换方案；1 分：无视气温和下雨对产品选择的影响，仍硬推单一路线。",
+      "positive_signals": [
+        "热饮和冷饮各有稳定主力杯型",
+        "天气变化时有历史销量或复购依据",
+        "能根据季节及时切换沟通重点"
+      ],
+      "negative_signals": [
+        "只会推单一冰饮或单一季节限定",
+        "天气变化导致大量报损或杯型失配"
+      ],
+      "route_guidance": "天气适配越好，越能提高路线韧性；适配差时应减少同时在推的杯型数量。"
+    },
+    {
+      "id": "group_order_qualification",
+      "feature_name": "团单资格信息完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集送达时间、杯数、预算、地址和冷热饮占比；3 分：知道杯数和大致时间但信息不全；1 分：只问价格就直接投入大量人工跟进。",
+      "positive_signals": [
+        "时间、杯数和地址清晰",
+        "预算区间明确",
+        "知道是否需要发票、送楼或预约"
+      ],
+      "negative_signals": [
+        "未查产能就承诺可接",
+        "把高难度团单当普通散单处理"
+      ],
+      "route_guidance": "团单资格越完整，越适合投入人工承接；信息不足时先用标准化方案筛选。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "表述合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实产品、评价、原料信息和履约规则；3 分：有少量模糊夸张但可修正；1 分：存在瘦身养生、零负担、绝对无添加或全城第一等高风险说法。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "甜度冰量和履约边界说得清楚",
+        "原料信息和主力系列可核验"
+      ],
+      "negative_signals": [
+        "医疗功效或瘦身暗示",
+        "绝对无添加、绝对不胖、绝对真鲜等表述",
+        "伪造联名、产地或平台背书"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术和承接边界。"
+    }
+  ]
+}

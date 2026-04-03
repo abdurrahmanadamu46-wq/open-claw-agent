@@ -1,0 +1,553 @@
+﻿{
+  "version": "2.0.0",
+  "generatedAt": "2026-03-19T00:00:00+08:00",
+  "project": "Liaoyuan OS / Lobster Senate",
+  "universalSafety": {
+    "skillName": "skill-vetter",
+    "installCmd": "npx clawhub@latest install skill-vetter",
+    "author": "@spclaudehome",
+    "downloadsStars": "120k ★",
+    "description": "全局安全审查器。安装任何新 skill 前必须先 vet，执行红旗检测与权限审计。",
+    "toolName": "skill_vetter",
+    "inputSchema": {
+      "type": "object",
+      "required": ["skill_name"],
+      "properties": {
+        "skill_name": { "type": "string", "description": "待审查 skill 名称" }
+      }
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": ["allowed", "riskLevel", "report"],
+      "properties": {
+        "allowed": { "type": "boolean" },
+        "riskLevel": { "type": "string", "enum": ["low", "medium", "high"] },
+        "report": { "type": "string" }
+      }
+    }
+  },
+  "agents": [
+    {
+      "id": "radar",
+      "name": "触须虾 / Radar",
+      "tier": "intelligence",
+      "skills": [
+        {
+          "skillName": "agent-browser",
+          "toolName": "agent_browser_execute",
+          "installCmd": "npx clawhub@latest install agent-browser",
+          "description": "无头浏览器执行引擎，支持点/填/滚/截图/反 bot。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["url", "commands"],
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "commands": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["action"],
+                  "properties": {
+                    "action": { "type": "string", "enum": ["goto", "click", "type", "scroll", "wait", "screenshot"] },
+                    "selector": { "type": "string" },
+                    "value": { "type": "string" },
+                    "x": { "type": "number" },
+                    "y": { "type": "number" }
+                  }
+                }
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["html", "domSnapshot", "screenshots"],
+            "properties": {
+              "html": { "type": "string" },
+              "domSnapshot": { "type": "string" },
+              "screenshots": { "type": "array", "items": { "type": "string", "format": "uri" } }
+            }
+          },
+          "produces": ["radar.raw_page"],
+          "consumes": []
+        },
+        {
+          "skillName": "summarize",
+          "toolName": "summarize_page",
+          "installCmd": "npx clawhub@latest install summarize",
+          "description": "页面和评论清洗成 Markdown，供策略分析消费。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["content_or_url"],
+            "properties": {
+              "content_or_url": { "type": "string" },
+              "format": { "type": "string", "enum": ["markdown", "bullets"], "default": "markdown" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["normalizedText", "tokensEstimate"],
+            "properties": {
+              "normalizedText": { "type": "string" },
+              "tokensEstimate": { "type": "integer" }
+            }
+          },
+          "produces": ["radar.market_intel"],
+          "consumes": ["radar.raw_page"]
+        }
+      ]
+    },
+    {
+      "id": "strategist",
+      "name": "脑虫虾 / Strategist",
+      "tier": "intelligence",
+      "skills": [
+        {
+          "skillName": "self-improving-agent",
+          "toolName": "self_improving_agent_record",
+          "installCmd": "npx clawhub@latest install self-improving-agent",
+          "description": "记录错误和纠正，沉淀为策略记忆。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["event_type", "content"],
+            "properties": {
+              "event_type": { "type": "string", "enum": ["error", "user_correction", "success"] },
+              "content": { "type": "string" },
+              "context": { "type": "object" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["memoryId", "stored"],
+            "properties": {
+              "memoryId": { "type": "string" },
+              "stored": { "type": "boolean" }
+            }
+          },
+          "produces": ["strategist.memory_event"],
+          "consumes": ["radar.market_intel"]
+        },
+        {
+          "skillName": "ontology",
+          "toolName": "ontology_query",
+          "installCmd": "npx clawhub@latest install ontology",
+          "description": "知识图谱查询/聚类/upsert。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["query", "mode"],
+            "properties": {
+              "query": { "type": "string" },
+              "mode": { "type": "string", "enum": ["cluster", "search", "upsert"] },
+              "payload": { "type": "object" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["graphResult"],
+            "properties": {
+              "graphResult": { "type": "object" }
+            }
+          },
+          "produces": ["strategist.knowledge_graph"],
+          "consumes": ["radar.market_intel"]
+        },
+        {
+          "skillName": "proactive-agent",
+          "toolName": "proactive_agent_scan",
+          "installCmd": "npx clawhub@latest install proactive-agent",
+          "description": "主动扫描趋势、异常并输出 campaign 参数。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["scope"],
+            "properties": {
+              "scope": { "type": "string" },
+              "analysis_type": { "type": "string", "enum": ["trend", "anomaly", "report"], "default": "trend" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["campaignParams"],
+            "properties": {
+              "campaignParams": { "type": "object" }
+            }
+          },
+          "produces": ["strategist.campaign_params"],
+          "consumes": ["radar.market_intel", "strategist.knowledge_graph"]
+        }
+      ]
+    },
+    {
+      "id": "ink-writer",
+      "name": "吐墨虾 / InkWriter",
+      "tier": "content_factory",
+      "skills": [
+        {
+          "skillName": "humanizer",
+          "toolName": "humanizer_text",
+          "installCmd": "npx clawhub@latest install humanizer",
+          "description": "文案去 AI 味，注入口语和角色语气。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": { "type": "string" },
+              "style": { "type": "string", "enum": ["casual", "mom_community", "young"], "default": "casual" },
+              "intensity": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["humanizedText", "diffHints"],
+            "properties": {
+              "humanizedText": { "type": "string" },
+              "diffHints": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "produces": ["ink_writer.humanized_script"],
+          "consumes": ["strategist.campaign_params"]
+        },
+        {
+          "skillName": "summarize",
+          "toolName": "summarize_for_dedup",
+          "installCmd": "npx clawhub@latest install summarize",
+          "description": "结构化清洗和查重前归一化。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["content"],
+            "properties": {
+              "content": { "type": "string" },
+              "template_id": { "type": "string" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["canonicalContent", "hash"],
+            "properties": {
+              "canonicalContent": { "type": "string" },
+              "hash": { "type": "string" }
+            }
+          },
+          "produces": ["ink_writer.template_json"],
+          "consumes": ["ink_writer.humanized_script"]
+        }
+      ]
+    },
+    {
+      "id": "visualizer",
+      "name": "幻影虾 / Visualizer",
+      "tier": "content_factory",
+      "skills": [
+        {
+          "skillName": "nano-banana-pro",
+          "toolName": "nano_banana_pro_image",
+          "installCmd": "npx clawhub@latest install nano-banana-pro",
+          "description": "多模态图像 prompt 生成/编辑，一致性种子支持。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["prompt"],
+            "properties": {
+              "prompt": { "type": "string" },
+              "mode": { "type": "string", "enum": ["generate", "edit"], "default": "generate" },
+              "reference_image_url": { "type": "string", "format": "uri" },
+              "seed": { "type": "integer" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["promptPack"],
+            "properties": {
+              "promptPack": { "type": "object" }
+            }
+          },
+          "produces": ["visualizer.prompt_pack"],
+          "consumes": ["ink_writer.template_json"]
+        }
+      ]
+    },
+    {
+      "id": "dispatcher",
+      "name": "点兵虾 / Dispatcher",
+      "tier": "orchestration",
+      "skills": [
+        {
+          "skillName": "proactive-agent",
+          "toolName": "proactive_agent_node_health",
+          "installCmd": "npx clawhub@latest install proactive-agent",
+          "description": "节点健康巡检与策略权重注入。",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "node_ids": { "type": "array", "items": { "type": "string" } },
+              "policy_tensor": { "type": "object" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["healthyNodes", "removedNodes"],
+            "properties": {
+              "healthyNodes": { "type": "array", "items": { "type": "string" } },
+              "removedNodes": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "produces": ["dispatcher.node_plan"],
+          "consumes": ["visualizer.prompt_pack"]
+        },
+        {
+          "skillName": "auto-updater",
+          "toolName": "auto_updater_run",
+          "installCmd": "npx clawhub@latest install auto-updater",
+          "description": "自动更新边缘节点技能包。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["target"],
+            "properties": {
+              "target": { "type": "string", "enum": ["all", "node_ids"] },
+              "node_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["updatedNodes", "version"],
+            "properties": {
+              "updatedNodes": { "type": "array", "items": { "type": "string" } },
+              "version": { "type": "string" }
+            }
+          },
+          "produces": ["dispatcher.updated_nodes"],
+          "consumes": ["dispatcher.node_plan"]
+        }
+      ]
+    },
+    {
+      "id": "echoer",
+      "name": "回声虾 / Echoer",
+      "tier": "conversion",
+      "skills": [
+        {
+          "skillName": "humanizer",
+          "toolName": "humanizer_reply",
+          "installCmd": "npx clawhub@latest install humanizer",
+          "description": "评论区拟人化回复。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["reply_draft"],
+            "properties": {
+              "reply_draft": { "type": "string" },
+              "platform": { "type": "string", "enum": ["douyin", "xiaohongshu", "generic"], "default": "generic" },
+              "entropy_level": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["reply", "riskScore"],
+            "properties": {
+              "reply": { "type": "string" },
+              "riskScore": { "type": "number" }
+            }
+          },
+          "produces": ["echoer.reply_output"],
+          "consumes": ["dispatcher.node_plan"]
+        }
+      ]
+    },
+    {
+      "id": "catcher",
+      "name": "铁网虾 / Catcher",
+      "tier": "conversion",
+      "skills": [
+        {
+          "skillName": "summarize",
+          "toolName": "summarize_intent",
+          "installCmd": "npx clawhub@latest install summarize",
+          "description": "评论批量意图提取与 NER 初筛。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["comments_batch"],
+            "properties": {
+              "comments_batch": { "type": "array", "items": { "type": "string" } },
+              "extract_entities": { "type": "boolean", "default": true }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["intentCandidates"],
+            "properties": {
+              "intentCandidates": { "type": "array", "items": { "type": "object" } }
+            }
+          },
+          "produces": ["catcher.intent_candidates"],
+          "consumes": ["echoer.reply_output"]
+        },
+        {
+          "skillName": "ontology",
+          "toolName": "ontology_extract_lead",
+          "installCmd": "npx clawhub@latest install ontology",
+          "description": "结构化提取微信号/手机号/求购意图。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": { "type": "string" },
+              "upsert": { "type": "boolean", "default": false }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["leadSignals"],
+            "properties": {
+              "leadSignals": { "type": "array", "items": { "type": "object" } }
+            }
+          },
+          "produces": ["catcher.lead_signals"],
+          "consumes": ["catcher.intent_candidates"]
+        }
+      ]
+    },
+    {
+      "id": "abacus",
+      "name": "金算虾 / Abacus",
+      "tier": "conversion",
+      "skills": [
+        {
+          "skillName": "api-gateway",
+          "toolName": "api_gateway_webhook",
+          "installCmd": "npx clawhub@latest install api-gateway",
+          "description": "Webhook 路由到飞书/钉钉/CRM。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["channel", "payload"],
+            "properties": {
+              "channel": { "type": "string", "enum": ["feishu", "dingtalk", "custom_webhook"] },
+              "payload": { "type": "object" },
+              "webhook_url": { "type": "string", "format": "uri" }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["delivered", "target"],
+            "properties": {
+              "delivered": { "type": "boolean" },
+              "target": { "type": "string" }
+            }
+          },
+          "produces": ["abacus.delivery_status"],
+          "consumes": ["catcher.lead_signals"]
+        },
+        {
+          "skillName": "gog",
+          "toolName": "gog_push_lead",
+          "installCmd": "npx clawhub@latest install gog",
+          "description": "推送线索到 Gmail / Calendar / Sheet。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["lead_json", "destination"],
+            "properties": {
+              "lead_json": { "type": "object" },
+              "destination": { "type": "string", "enum": ["gmail", "calendar", "sheet"] }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["synced", "recordId"],
+            "properties": {
+              "synced": { "type": "boolean" },
+              "recordId": { "type": "string" }
+            }
+          },
+          "produces": ["abacus.crm_sync"],
+          "consumes": ["abacus.delivery_status"]
+        }
+      ]
+    },
+    {
+      "id": "follow-up",
+      "name": "回访虾 / FollowUp",
+      "tier": "conversion",
+      "skills": [
+        {
+          "skillName": "openai-whisper",
+          "toolName": "openai_whisper_transcribe",
+          "installCmd": "npx clawhub@latest install openai-whisper",
+          "description": "语音转文本 + VAD 打断检测。",
+          "inputSchema": {
+            "type": "object",
+            "required": ["audio_input"],
+            "properties": {
+              "audio_input": { "type": "string" },
+              "language": { "type": "string", "enum": ["zh", "en"], "default": "zh" },
+              "vad_enabled": { "type": "boolean", "default": true }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": ["transcript", "segments"],
+            "properties": {
+              "transcript": { "type": "string" },
+              "segments": { "type": "array", "items": { "type": "object" } }
+            }
+          },
+          "produces": ["follow_up.call_transcript"],
+          "consumes": ["abacus.crm_sync"]
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "agentEdges": [
+      { "from": "radar", "to": "strategist", "artifact": "radar.market_intel" },
+      { "from": "strategist", "to": "ink-writer", "artifact": "strategist.campaign_params" },
+      { "from": "ink-writer", "to": "visualizer", "artifact": "ink_writer.template_json" },
+      { "from": "visualizer", "to": "dispatcher", "artifact": "visualizer.prompt_pack" },
+      { "from": "dispatcher", "to": "echoer", "artifact": "dispatcher.node_plan" },
+      { "from": "echoer", "to": "catcher", "artifact": "echoer.reply_output" },
+      { "from": "catcher", "to": "abacus", "artifact": "catcher.lead_signals" },
+      { "from": "abacus", "to": "follow-up", "artifact": "abacus.crm_sync" }
+    ],
+    "skillEdges": [
+      { "from": "radar.agent_browser_execute", "to": "radar.summarize_page", "artifact": "radar.raw_page" },
+      { "from": "radar.summarize_page", "to": "strategist.ontology_query", "artifact": "radar.market_intel" },
+      { "from": "strategist.ontology_query", "to": "strategist.proactive_agent_scan", "artifact": "strategist.knowledge_graph" },
+      { "from": "strategist.proactive_agent_scan", "to": "ink-writer.humanizer_text", "artifact": "strategist.campaign_params" },
+      { "from": "ink-writer.summarize_for_dedup", "to": "visualizer.nano_banana_pro_image", "artifact": "ink_writer.template_json" },
+      { "from": "dispatcher.proactive_agent_node_health", "to": "dispatcher.auto_updater_run", "artifact": "dispatcher.node_plan" },
+      { "from": "catcher.summarize_intent", "to": "catcher.ontology_extract_lead", "artifact": "catcher.intent_candidates" },
+      { "from": "abacus.api_gateway_webhook", "to": "abacus.gog_push_lead", "artifact": "abacus.delivery_status" }
+    ]
+  },
+  "workflow": {
+    "tiers": {
+      "intelligence": ["radar", "strategist"],
+      "content_factory": ["ink-writer", "visualizer"],
+      "orchestration": ["dispatcher"],
+      "conversion": ["echoer", "catcher", "abacus", "follow-up"]
+    },
+    "executionOrder": [
+      "radar",
+      "strategist",
+      "ink-writer",
+      "visualizer",
+      "dispatcher",
+      "echoer",
+      "catcher",
+      "abacus",
+      "follow-up"
+    ]
+  },
+  "extensibility": {
+    "unboundedSkillCatalog": {
+      "enabled": true,
+      "discoverySkill": "find-skills",
+      "syncMode": "incremental",
+      "maxSkills": 10000,
+      "pageSize": 200,
+      "maxPages": 50,
+      "ranking": "downloads_stars_desc",
+      "mergePolicy": "append_non_conflict",
+      "safetyGate": "skill-vetter"
+    },
+    "evolutionPack": [
+      "self-improving-agent",
+      "find-skills",
+      "proactive-agent"
+    ]
+  }
+}

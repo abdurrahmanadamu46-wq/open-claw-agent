@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "tenant_id": "tenant_demo",
+      "widget_id": "wid_16f6f1a34174",
+      "enabled": true,
+      "allowed_origins": [],
+      "welcome_message": "你好，我是回声虾，有什么想先了解的？",
+      "theme_primary": "#14b8a6",
+      "launcher_label": "咨询",
+      "auto_open": false,
+      "capture_mode": "catcher_on_lead",
+      "updated_at": "2026-04-02T05:03:20Z"
+    }
+  ]
+}

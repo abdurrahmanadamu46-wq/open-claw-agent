@@ -1,0 +1,125 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_beauty_salon_problem_time_001",
+      "label": "happy_path",
+      "scenario_tag": "blackhead_weekend_booking_completion",
+      "input": {
+        "lead_assessment": "A 级预约线索，用户最近鼻翼黑头明显，想周末去国金店做一次清洁。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on concern and slot completion",
+        "contact_history": [
+          "刚从小红书评论区转私信",
+          "已说明是第一次到店",
+          "暂未确认具体周六还是周日"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "本轮目标放在补齐具体时段和门店",
+        "不先推高客单项目",
+        "把问题和预约事实收口清楚"
+      ],
+      "mustAvoid": [
+        "没定时段就承诺一定有位",
+        "直接转入卖卡节奏"
+      ]
+    },
+    {
+      "id": "followup_beauty_salon_sensitive_first_visit_002",
+      "label": "happy_path",
+      "scenario_tag": "sensitive_first_visit_trust_building",
+      "input": {
+        "lead_assessment": "A- 级谨慎型线索，用户说自己一换季就泛红，第一次做，怕不适合。",
+        "value_score_card": "short_term medium-high; conversion depends on trust, process clarity, and safe next step",
+        "contact_history": [
+          "用户已表示本周末有空",
+          "看过卫生和流程相关内容"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先做信任建立和适合性判断",
+        "不做绝对安全承诺",
+        "推进到咨询或体验预约"
+      ],
+      "mustAvoid": [
+        "直接催成交",
+        "忽略用户的安全顾虑"
+      ]
+    },
+    {
+      "id": "followup_beauty_salon_pre_event_003",
+      "label": "happy_path",
+      "scenario_tag": "pre_event_slot_lock",
+      "input": {
+        "lead_assessment": "A 级节前线索，用户周六拍照，想约周四晚做一次状态整理。",
+        "value_score_card": "short_term high; conversion depends on slot confirmation and suitability framing",
+        "contact_history": [
+          "已明确国金店更方便",
+          "暂未确认周四晚具体时间段"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "快速锁时间窗口",
+        "围绕节前场景做收口",
+        "不夸张承诺结果"
+      ],
+      "mustAvoid": [
+        "拖太久导致窗口错过",
+        "把短期需求转成长疗程推销"
+      ]
+    },
+    {
+      "id": "followup_beauty_salon_post_visit_004",
+      "label": "long_term_case",
+      "scenario_tag": "post_visit_feedback_before_rebook",
+      "input": {
+        "lead_assessment": "体验卡已核销完成，用户昨晚做完项目，今天等待回访。",
+        "value_score_card": "long_term medium-high; next value depends on feedback quality and comfort after visit",
+        "contact_history": [
+          "首次体验已完成",
+          "尚未回收本次感受和状态变化"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先问体验和当前状态",
+        "根据反馈决定是否推进复访",
+        "避免直接卖卡"
+      ],
+      "mustAvoid": [
+        "跳过体验反馈直接成交",
+        "忽略可能的不适信号"
+      ]
+    }
+  ]
+}

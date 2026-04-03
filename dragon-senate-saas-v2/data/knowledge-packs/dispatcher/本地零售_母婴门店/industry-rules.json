@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_母婴门店","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"visit_and_stock_capacity_gate","title":"高峰到店前必须先校验时段、补货和配送资源","description":"母婴门店的调度核心不是单纯接单，而是把到店时段、导购、库存、打包和后续配送能力一起纳入 task_graph。","examples":["周末晚间到店位已满时，先进入候补和分时段节点。","换季集中时，先确认补货和配送排班。"],"priority":"high"},
+{"id":"first_visit_and_return_visit_must_split","title":"首次到店、复购和配送后回访是独立调度变量","description":"首次到店、复购和配送后回访会显著改变单客时长与资源匹配。","examples":["首次到店用户需要先进入选品判断节点。","复购用户应优先路由到熟悉其历史记录的导购链路。"],"priority":"high"},
+{"id":"service_complexity_before_confirmation","title":"确认预约前先判断需求复杂度和是否适合该时段","description":"奶粉、纸尿裤、辅食和礼盒不能共用同一套到店时长假设。","examples":["午休档只适合轻量咨询，不应塞入复杂待产包评估。","节礼和多问题到店需提前扩展时长。"],"priority":"high"},
+{"id":"stock_prep_gate","title":"货品准备和打包是独立调度节点","description":"母婴门店不是一位客户买完就能立刻无缝接下一位。","examples":["连续到店时，先插入货品准备和打包步骤。","复杂囤货做完后不可直接无缝切换下一单。"],"priority":"high"},
+{"id":"peak_slot_hold_window","title":"热门时段和核心导购档要设置保留窗口","description":"周末、节前和核心导购时段是稀缺资源。","examples":["节前晚间时段要求限时确认。","核心导购到店位超过一定时间未确认则释放。"],"priority":"medium"},
+{"id":"post_visit_backwrite","title":"到店后必须回写跟进与复访任务","description":"母婴门店执行链路不能在到店后断掉。","examples":["到店后自动创建导购回访任务。","订单记录中同步写入月龄关注点和下次建议。"],"priority":"high"}]}

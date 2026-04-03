@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+{"id":"first_visit_inquiry","title":"首次到店问询触发优先调度","description":"当来单中出现第一次来、想先到店、想先看看货和具体问题时，Dispatcher 应优先匹配到店链路。","examples":["客户第一次来，想周末先看猫粮和猫砂。","客户想先看看驱虫洗护路线是否适合自己。"],"priority":"high"},
+{"id":"seasonal_window_inquiry","title":"换季与送礼窗口询单触发时效优先调度","description":"当来单明确说明换季、节礼和囤货节点时，Dispatcher 要立即优先判断热门时段可用性和配送边界。","examples":["客户这周要送礼，想周四晚先到店。","客户说明换季了，希望今晚先来了解。"],"priority":"high"},
+{"id":"short_window_consult","title":"短时段询单触发快流程调度","description":"当用户明确只有 45 到 60 分钟窗口时，Dispatcher 应优先匹配轻量沟通说明。","examples":["客户只有下班后 50 分钟。","上班族想约一单晚间快速到店沟通。"],"priority":"medium"},
+{"id":"core_consultant_slot_hold","title":"核心导购与热门时段询单触发保留确认链路","description":"当用户点名导购或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制。","examples":["客户指定周六 18:30 的核心导购到店位。","客户想抢节前最后一个晚间到店档。"],"priority":"medium"},
+{"id":"multi_need_visit","title":"多问题到店触发扩展时长链路","description":"当用户同时提到主粮、猫砂、辅食和洗护等多个问题时，Dispatcher 要立即扩展时长和导购匹配。","examples":["客户同时提到猫粮和猫砂。","客户又想驱虫又想买零食。"],"priority":"high"},
+{"id":"post_visit_revisit_task","title":"到店后触发复购和回访任务","description":"当系统收到购物完成信号时，Dispatcher 应自动创建回访、补货和 followup 提醒。","examples":["到店后创建导购回访任务。","配送后创建补货和评价提醒。"],"priority":"high"}]}

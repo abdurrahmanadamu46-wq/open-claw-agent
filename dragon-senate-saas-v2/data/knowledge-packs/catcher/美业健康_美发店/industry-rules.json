@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "catcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "qualify_by_service_time_scope",
+      "title": "先看项目、时间和当前头发事实，再判断是不是高意向",
+      "description": "美发店线索只有在明确提到想做的项目方向、预约时间或时间窗口、门店或商圈、当前长度或底色等事实时，才能被视为高意向。只有“做头发多少钱”“最近想换一下”这类泛问，不能直接升到最高优先级。",
+      "examples": [
+        "高价值信号：周四晚想在国金店做显白棕，头发有旧色，能接受护理但不想漂太狠。",
+        "低确定性信号：最近想做个头发，先看看。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_driven_hair_booking",
+      "title": "婚礼、拍照和节日前出现明确日期时要显著提权",
+      "description": "婚礼焕新、节日前染整和拍照前造型，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实预约动作，应进入高意向候选。",
+      "examples": [
+        "周六婚礼，想约周四晚做染整。",
+        "下周拍照，这周想先修剪和染个显气色的颜色。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_time_uncertainty_is_not_low_intent",
+      "title": "第一次做染烫或不会选项目不应被误判成低意向",
+      "description": "第一次染发、第一次烫发和不会选项目，并不等于低意向。只要用户同时愿意给出时间和大致方向，这类线索依然值得快速承接。",
+      "examples": [
+        "第一次染，周末有空，想做自然一点。",
+        "没烫过头发，但这周下班后想来看看。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_only_needs_scope_before_upgrade",
+      "title": "只问价格不等于高意向，除非同时带着项目和时间",
+      "description": "价格问题本身并不低意向，但如果没有项目范围、时间窗口和当前头发信息，Catcher 不能把它直接提到最高层，必须等更多信息出现。",
+      "examples": [
+        "高意向：这周末想染一个显白棕，大概多少钱。",
+        "普通意向：染头发多少钱。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "returning_client_signal_upgrade",
+      "title": "老客回流和朋友推荐要抬高拟合度",
+      "description": "老客回流、朋友推荐和上次来过等信号，通常意味着信任门槛已经降低。这类线索在项目和时间事实补齐后，应比纯冷启动线索更快进入 followup-ready 层级。",
+      "examples": [
+        "上次来剪过，这次想补染一下。",
+        "朋友推荐来的，这周末能安排吗。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "public_shyness_should_not_hide_intent",
+      "title": "公开场合的发量和发质羞怯不应掩盖真实意向",
+      "description": "有些用户会在评论区用很轻的语气掩饰强烈需求，比如头发太糟了还能救吗、发量少适不适合烫。如果同时出现时间或求助动作，Catcher 不能因为措辞含糊就低估意向。",
+      "examples": [
+        "头发很乱，这周末还能约吗。",
+        "发量少的话这周下班后能来看看适合什么吗。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

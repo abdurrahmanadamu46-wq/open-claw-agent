@@ -1,0 +1,95 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "strategist",
+  "primaryArtifact": "StrategyRoute",
+  "cases": [
+    {
+      "id": "strategist_channel_route_001",
+      "label": "happy_path",
+      "input": {
+        "mission_goal": "Generate 30 qualified consultation leads for a local dental clinic within 14 days",
+        "signal_brief": "Medical claims are under tighter review; evidence-based consultation hooks are rising",
+        "tenant_context": {
+          "budget_limit": 5000,
+          "brand_tone": "trustworthy and clinical"
+        }
+      },
+      "expectedSignals": [
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "consultation-first route",
+        "clear priority order",
+        "explicit risk tradeoff"
+      ]
+    },
+    {
+      "id": "strategist_evidence_gap_001",
+      "label": "edge_case",
+      "input": {
+        "mission_goal": "Launch a new home renovation campaign in 3 days",
+        "signal_brief": "Competitor activity unclear and data confidence is low",
+        "tenant_context": {
+          "budget_limit": 2000,
+          "brand_tone": "premium but practical"
+        }
+      },
+      "expectedSignals": [
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "low-evidence fallback route",
+        "recon or validation step before full spend"
+      ]
+    },
+    {
+      "id": "strategist_reactivation_001",
+      "label": "happy_path",
+      "input": {
+        "mission_goal": "Reactivate dormant but previously qualified education leads",
+        "signal_brief": "No policy risk spike; warm lead response speed matters most",
+        "tenant_context": {
+          "budget_limit": 1500,
+          "crm_state": "contains 180 dormant leads"
+        }
+      },
+      "expectedSignals": [
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "reactivation cadence route",
+        "segmentation or prioritization logic"
+      ]
+    },
+    {
+      "id": "strategist_regression_001",
+      "label": "failure_case",
+      "input": {
+        "mission_goal": "Grow leads fast for a regulated service category",
+        "signal_brief": "High policy uncertainty and weak external evidence",
+        "tenant_context": {
+          "budget_limit": 10000
+        }
+      },
+      "expectedSignals": [
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustAvoid": [
+        "high-cost expansion with low evidence",
+        "ignoring governance constraints"
+      ]
+    }
+  ]
+}

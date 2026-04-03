@@ -1,0 +1,366 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "catcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "catcher_hotpot_private_room_birthday_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "周六晚上想订国金店包间，10 大 2 小，给老婆过生日，人均 220 左右，想要一边番茄一边微辣牛油，能先留 19:00 吗？需要儿童椅和停车方便一点。",
+        "engagement_history": [
+          "watched full private-room birthday hotpot video",
+          "saved two family gathering case posts",
+          "asked whether a deposit is needed to hold the room"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_seat_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "low risk",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual broth or menu browsing"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_company_team_dining_pending_002",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "我们下周三可能有 16 人团建，先看下徐家汇店有没有包间或者连桌，人均 180 到 220，最好能开专票，领导还没 final。",
+        "engagement_history": [
+          "added enterprise wechat after reading group dining article",
+          "asked about invoice and deposit rules"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true,
+          "preserve_medium_confidence_group_dining_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium to high intent",
+        "good fit",
+        "worth structured follow-up",
+        "do not over-escalate before details lock"
+      ],
+      "mustAvoid": [
+        "rejecting the lead only because internal approval is still pending"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_broth_menu_only_probe_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "第一次来你们家，清油锅和番茄锅哪个更适合？毛肚是不是必点，先发个菜单我看看。",
+        "engagement_history": [
+          "liked three broth recommendation videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "interest exists but intent is incomplete",
+        "medium or low confidence",
+        "do not auto-upgrade to booking-ready"
+      ],
+      "mustAvoid": [
+        "treating broth curiosity as a confirmed reservation lead"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_waitlist_tonight_004",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "今晚 7 点半到静安寺店 5 个人，还有位吗？没有包间也行，能先帮我们排一下吗？一个老人不能吃太辣。",
+        "engagement_history": [
+          "clicked branch location card",
+          "asked about parking entrance"
+        ],
+        "tenant_rules": {
+          "forbid_unapproved_seat_guarantee": true,
+          "urgent_seating_queries_need_fast_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "real arrival plan",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "guaranteeing immediate seating or zero wait without confirmation"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_coupon_redemption_plan_005",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "周日中午去万象城店 4 个人，这张抖音双人锅底券和 100 元代金券能一起用吗？我们到了就想直接开吃。",
+        "engagement_history": [
+          "clicked branch profile",
+          "saved live-stream coupon post"
+        ],
+        "tenant_rules": {
+          "coupon_rules_require_confirmation": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real redemption plan",
+        "branch and time are locked",
+        "worth follow-up without overpromising rule exceptions"
+      ],
+      "mustAvoid": [
+        "treating all coupon questions as either pure low intent or already confirmed booking"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_allergy_absolute_006",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "周五家庭聚餐 8 人，孩子对花生和芝麻严重过敏，还不能碰牛油，你们能不能保证蘸料台和后厨百分百零接触？",
+        "engagement_history": [
+          "asked twice for ingredient and kitchen handling confirmation"
+        ],
+        "tenant_rules": {
+          "forbid_absolute_food_safety_promises": true,
+          "allergy_requests_require_human_confirmation": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "real intent but elevated risk",
+        "requires careful confirmation",
+        "do not mark as safe low-risk lead"
+      ],
+      "mustAvoid": [
+        "making absolute safety promises"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_food_safety_complaint_007",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "昨天在你们南京西路店吃火锅，鲜毛肚有异味，回家后一直不舒服，我这边有小票和照片，麻烦尽快处理。",
+        "engagement_history": [
+          "sent receipt photo",
+          "sent dish photo"
+        ],
+        "tenant_rules": {
+          "food_safety_complaints_go_to_service_escalation": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "service escalation instead of sales push",
+        "high risk",
+        "not a standard booking lead"
+      ],
+      "mustAvoid": [
+        "treating the complaint as a followup-ready commercial lead"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_burn_incident_008",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "昨晚在你们店桌边加汤的时候把孩子手烫到了，我这边有现场视频和医院票据，你们现在怎么处理？",
+        "engagement_history": [
+          "sent incident video",
+          "asked for manager callback"
+        ],
+        "tenant_rules": {
+          "injury_incidents_require_manager_escalation": true,
+          "strict_risk_gate": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "urgent service or risk escalation",
+        "high risk",
+        "not a normal sales opportunity"
+      ],
+      "mustAvoid": [
+        "routing the injury complaint as a low-risk dining lead"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_spam_ops_009",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "老板加我，专业做火锅店探店矩阵、直播团购代运营和加盟招商，一周让你们爆单翻倍。",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high spam probability",
+        "high risk or rejection"
+      ],
+      "mustAvoid": [
+        "treating unrelated marketing services as a valid dining lead"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_reseller_price_sheet_010",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "wechat",
+        "lead_content": "把你们所有锅底、包间最低消费、团购返点和大桌套餐价发我，我这边有客户先拿去比一圈，合适再说。",
+        "engagement_history": [
+          "added wechat from profile page"
+        ],
+        "tenant_rules": {
+          "strict_spam_filter": true,
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low to medium intent",
+        "unclear end-customer ownership",
+        "do not auto-upgrade without real dining facts"
+      ],
+      "mustAvoid": [
+        "classifying reseller fishing as a followup-ready direct buyer"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_cross_channel_repeat_011",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "baidu_map_message",
+        "lead_content": "8 月 12 日晚 14 人同学聚会，还是想订国金店大桌或包间，我刚在评论区问过停车位，这次把联系电话也发你，最好今天回我，我们想要鸳鸯锅和两份长寿面。",
+        "engagement_history": [
+          "commented asking about parking",
+          "sent branch and headcount by DM",
+          "left callback number in map message"
+        ],
+        "tenant_rules": {
+          "merge_duplicate_project_leads": true,
+          "forbid_duplicate_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high confidence due to repeated consistent engagement",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "creating multiple separate high-priority leads for the same dining request"
+      ]
+    },
+    {
+      "id": "catcher_hotpot_returning_client_012",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "enterprise_wechat",
+        "lead_content": "去年公司团建在你们国金店订过 4 桌，这次中秋家宴还想继续订同一家店，还是 12 个人左右，我把上次联系人和这次人数发你。",
+        "engagement_history": [
+          "historical banquet record exists in tenant memory",
+          "shares previous contact and new guest count",
+          "asks to continue with the same branch"
+        ],
+        "tenant_rules": {
+          "use_tenant_memory_for_repeat_clients": true,
+          "merge_duplicate_project_leads": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "high fit",
+        "repeat-client confidence boost",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the returning client as a cold ambiguous lead"
+      ]
+    }
+  ]
+}

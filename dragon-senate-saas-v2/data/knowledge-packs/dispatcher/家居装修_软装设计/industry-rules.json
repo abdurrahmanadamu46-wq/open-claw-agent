@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_软装设计","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+{"id":"visit_and_designer_capacity_gate","title":"高峰到店前必须先校验时段、设计师和摆场资源","description":"软装设计的调度核心不是单纯接单，而是把到店时段、设计师、样品、摆场和后续交付能力一起纳入 task_graph。","examples":["周末晚间到店位已满时，先进入候补和分时段节点。","交房季集中时，先确认设计师和摆场排班。"],"priority":"high"},
+{"id":"first_visit_and_return_visit_must_split","title":"首次到店、复购和方案后回访是独立调度变量","description":"首次到店、复购和方案后回访会显著改变单客时长与资源匹配。","examples":["首次到店用户需要先进入搭配判断节点。","复购用户应优先路由到熟悉其历史记录的设计师链路。"],"priority":"high"},
+{"id":"service_complexity_before_confirmation","title":"确认预约前先判断需求复杂度和是否适合该时段","description":"窗帘、灯具、整屋软装和局部补单不能共用同一套到店时长假设。","examples":["午休档只适合轻量咨询，不应塞入复杂整屋搭配评估。","交房季和多问题到店需提前扩展时长。"],"priority":"high"},
+{"id":"sample_prep_gate","title":"样品资料和清单准备是独立调度节点","description":"软装设计不是一位客户看完就能立刻无缝接下一位。","examples":["连续到店时，先插入样品资料和清单准备步骤。","复杂搭配做完后不可直接无缝切换下一单。"],"priority":"high"},
+{"id":"peak_slot_hold_window","title":"热门时段和核心设计师档要设置保留窗口","description":"周末、交房季和核心设计师时段是稀缺资源。","examples":["节前晚间时段要求限时确认。","核心设计师到店位超过一定时间未确认则释放。"],"priority":"medium"},
+{"id":"post_visit_backwrite","title":"到店后必须回写跟进与复访任务","description":"软装设计执行链路不能在到店后断掉。","examples":["到店后自动创建设计师回访任务。","清单记录中同步写入单品关注点和下次建议。"],"priority":"high"}]}

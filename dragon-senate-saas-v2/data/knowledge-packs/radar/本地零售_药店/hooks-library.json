@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"urgent_symptom_time_hook","title":"症状加时间窗口钩子","description":"当用户同时提到具体不适场景和今晚、周末、放学后等时间窗口时，应优先标记为高价值信号。","examples":["孩子今晚发烧，想问附近能不能先配退烧药。","周末肠胃不舒服，想先备点常用药。"],"priority":"high"},
+  {"id":"family_stockup_hook","title":"家庭常备药清单钩子","description":"出现家庭药箱、返乡、开学和假期备药时，说明线索更接近整单或多品类购买。","examples":["返乡前想备点常用药和口罩。","开学前想给家里补一套儿童常备药。"],"priority":"high"},
+  {"id":"chronic_refill_hook","title":"慢病续购钩子","description":"慢病药、血压血糖耗材和定期补药如果带着明确周期和规格，也应视为稳定价值信号。","examples":["这个月该补降压药了。","血糖试纸快用完了，想再拿两盒。"],"priority":"medium"},
+  {"id":"pharmacist_trust_hook","title":"药师在岗与用药说明焦虑钩子","description":"用户主动追问药师在不在、怎么吃、能不能一起用时，说明信任和专业说明是关键影响因子。","examples":["晚上还有药师在吗。","这个药和上次那个能一起吃吗。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"季节性健康窗口钩子","description":"流感期、花粉季、换季和开学节点一旦带着明确日期出现，应显著提权。","examples":["这周流感严重，想给家里先备一套。","花粉季鼻炎又犯了，今晚想先买点药。"],"priority":"high"},
+  {"id":"night_delivery_hook","title":"夜间送药钩子","description":"夜间急用和到家时效需求常常伴随更强履约预期，应单独关注。","examples":["今晚能不能送点退烧药过来。","老人半夜咳得厉害，想先送点止咳药。"],"priority":"medium"}
+]}

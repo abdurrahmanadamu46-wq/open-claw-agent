@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "service_route_clarity",
+      "feature_name": "核心项目路线清晰度",
+      "metric": "route_quality",
+      "weight": 0.16,
+      "scoring_rule": "5 分：已明确唯一主项目路线，如通勤剪发、显白染发或头皮护理；3 分：有 2 条候选路线但优先级可判断；1 分：所有项目一起推。",
+      "positive_signals": [
+        "主项目与咨询证据一致",
+        "人群和场景清楚",
+        "主线与备选线分层明确"
+      ],
+      "negative_signals": [
+        "什么项目都做什么都推",
+        "项目很多但主线不清",
+        "主线和证据错位"
+      ],
+      "route_guidance": "项目越清晰，越适合集中内容和档期。"
+    },
+    {
+      "id": "case_truth_density",
+      "feature_name": "真实案例证明密度",
+      "metric": "route_quality",
+      "weight": 0.15,
+      "scoring_rule": "5 分：路线清楚包含真实案例、发质适配和边界说明；3 分：只有部分证据；1 分：主要依赖网图和滤镜幻想。",
+      "positive_signals": [
+        "真实案例充分",
+        "发质适配说明清楚",
+        "边界感明确"
+      ],
+      "negative_signals": [
+        "全靠网图",
+        "没有适配逻辑",
+        "忽略做不到的边界"
+      ],
+      "route_guidance": "对美发店来说，真实案例比泛好看更能带来预约。"
+    },
+    {
+      "id": "first_visit_vs_maintenance_split",
+      "feature_name": "首单与维护承接分离度",
+      "metric": "conversion_safety",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首单、复访和储值承接完全拆开；3 分：大体拆开但仍有混用；1 分：所有流量都直接推储值或高客单染烫。",
+      "positive_signals": [
+        "首单目标是预约和信任",
+        "复访路径独立设计",
+        "储值放在后链路"
+      ],
+      "negative_signals": [
+        "首轮就强推储值",
+        "首单和复访共用一套话术",
+        "承接节奏过重"
+      ],
+      "route_guidance": "分离得越清楚，越能降低反感和翻车后流失。"
+    },
+    {
+      "id": "capacity_alignment",
+      "feature_name": "承接能力匹配度",
+      "metric": "execution_feasibility",
+      "weight": 0.14,
+      "scoring_rule": "5 分：工位、技师、时长和漂染附加时间互相匹配；3 分：略有挤压但可调整；1 分：复杂项目和低价引流同时放量。",
+      "positive_signals": [
+        "档期控制清楚",
+        "复杂度分层合理",
+        "技师可承接"
+      ],
+      "negative_signals": [
+        "只看咨询量不看工时",
+        "高峰满载还继续冲量",
+        "复杂项目时长被低估"
+      ],
+      "route_guidance": "执行能力越稳，路线越值得放量。"
+    },
+    {
+      "id": "event_vs_daily_specificity",
+      "feature_name": "节日档与日常维护区分度",
+      "metric": "route_quality",
+      "weight": 0.13,
+      "scoring_rule": "5 分：清楚区分婚礼节日档和日常维护复访；3 分：有区分但仍混用；1 分：所有场景用同一套路线。",
+      "positive_signals": [
+        "节日和日常路线分开",
+        "预约逻辑不同",
+        "项目与档期匹配"
+      ],
+      "negative_signals": [
+        "场景混乱",
+        "婚礼档和日常维护混推",
+        "看不出什么时候做什么"
+      ],
+      "route_guidance": "场景越分明，预约和排班越容易稳定。"
+    },
+    {
+      "id": "maintenance_path_strength",
+      "feature_name": "维护复访路径强度",
+      "metric": "long_term_value",
+      "weight": 0.14,
+      "scoring_rule": "5 分：补染、修剪和护理提醒都有清晰路径；3 分：只有零散提醒；1 分：完全靠新客流量续命。",
+      "positive_signals": [
+        "维护周期明确",
+        "老客偏好沉淀",
+        "回访理由自然"
+      ],
+      "negative_signals": [
+        "老客没有回访逻辑",
+        "只会打折",
+        "没有项目历史承接"
+      ],
+      "route_guidance": "维护路径越强，长期 ROI 越健康。"
+    }
+  ]
+}

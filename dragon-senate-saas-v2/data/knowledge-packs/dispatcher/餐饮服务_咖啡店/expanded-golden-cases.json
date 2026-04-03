@@ -1,0 +1,306 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_coffee_office_group_order_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔工作日下午送达的 36 杯办公室咖啡订单转成可执行的付款、排产、分批制作和配送计划",
+        "routing_context": "客户要求周三 15:30 送达写字楼前台，明细包含 12 杯冰美式、10 杯热拿铁、6 杯低因燕麦奶拿铁、4 杯香草风味拿铁和 4 份常温烘焙点心，门店当前下午档仍有可用批量产能",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "bar_monitor": "healthy",
+          "rider_dispatch": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款到账后的排产锁定节点",
+        "冷热分组、低因和燕麦奶标签回写",
+        "配送交接和延迟时改自提或分批送达的 fallback"
+      ],
+      "mustAvoid": [
+        "未付款就提前开始全量备料和制作",
+        "把低因与常规咖啡混成同一批无标签出杯"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_morning_rush_delivery_peak_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在工作日早高峰持续涌入的外送与自提订单中生成稳定的咖啡履约计划",
+        "routing_context": "08:20 后平台单量快速增长，当前待出杯 27 杯，意式机与蒸汽位持续拥堵，骑手在门店门口排队，门店主要订单为热拿铁和冰美式，写字楼门禁要求统一楼下交接",
+        "integration_state": {
+          "delivery_platform": "healthy",
+          "rider_dispatch": "healthy",
+          "bar_monitor": "healthy",
+          "self_pickup_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "高峰限流或承诺时效上调",
+        "意式机、蒸汽位、骑手运力和门禁交接作为显式依赖",
+        "必要时切到自提优先或分批配送的 fallback"
+      ],
+      "mustAvoid": [
+        "按平峰标准继续承诺全部订单 15 到 20 分钟送达",
+        "只看平台接单不检查吧台和取单区积压"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_replay_after_pos_writeback_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放因小程序和 POS 回写故障中断的咖啡订单流程，并避免重复出杯或重复扣款",
+        "routing_context": "部分订单在支付成功后未同步制作状态，门店临时通过前台手工登记了其中一部分，现系统恢复，需要确认哪些订单继续执行、哪些维持人工处理结果",
+        "integration_state": {
+          "mini_program": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "bar_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号、支付状态和最新配方版本去重后 replay",
+        "对已人工登记且已出杯订单保持现状而不是重复制作",
+        "门店补录和顾客通知路径"
+      ],
+      "mustAvoid": [
+        "系统恢复后整批重新建单",
+        "不校验支付和人工处理状态就重复联系或重复退款"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_campaign_pickup_overflow_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把会员买赠活动导致的自提拥堵转成可控的叫号、分批出杯和回流计划",
+        "routing_context": "16:30 后小程序买一送一活动带来自提单激增，吧台前排队变长，外送单量仍正常，但商场店取餐区空间有限，顾客持续到店催单",
+        "integration_state": {
+          "mini_program": "healthy",
+          "pickup_screen": "healthy",
+          "cashier_system": "healthy",
+          "bar_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "自提队列和预计完成时间区间",
+        "自提与外送分流的执行线路",
+        "超时未取时的提醒与回流 fallback"
+      ],
+      "mustAvoid": [
+        "在取餐区拥堵状态下继续承诺所有自提单马上可取",
+        "没有叫号和超时机制就让顾客持续聚集在吧台前"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_decaf_and_oat_milk_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带低因、代奶和过敏原要求的订单，并确保制作执行安全",
+        "routing_context": "顾客下单 5 杯饮品，其中 2 杯要求低因燕麦奶拿铁，1 杯备注乳糖不耐受，1 杯备注坚果过敏不要任何榛果风味糖浆，另有 1 杯给儿童饮用要求温热不要太烫",
+        "integration_state": {
+          "cashier_system": "healthy",
+          "front_desk": "healthy",
+          "bar_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前台人工确认低因、代奶、过敏和儿童温度需求",
+        "标签与制作备注回写和复核节点",
+        "如无法稳定满足则给出替代饮品或退款 fallback"
+      ],
+      "mustAvoid": [
+        "把备注原样丢给吧台后不再确认",
+        "对过敏和交叉接触风险做绝对化安全承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_cold_brew_and_bean_stock_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚高峰前处理一笔主打冷萃和低因咖啡的预订单，但核心原料库存尚未锁定",
+        "routing_context": "客户预约 24 杯 18:30 自提，要求至少 10 杯冷萃、6 杯低因拿铁和 4 杯燕麦奶冰拿铁，当前库存系统显示冷萃批次接近售罄，低因豆是否补齐仍不确定",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "procurement_channel": "degraded",
+          "bar_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "冷萃批次、低因豆和燕麦奶确认作为前置节点",
+        "库存不足时的替代饮品、删改单或改时段 fallback",
+        "禁止在原料未锁定前做绝对口味承诺"
+      ],
+      "mustAvoid": [
+        "先确认整单口味再临时通知热门品项缺货",
+        "无视原料不确定性继续锁定晚高峰取餐承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_campaign_waiting_review_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进清明节前联名新品和优惠券上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店计划上线一款限定风味拿铁和第二杯半价活动，素材和菜单草案已准备好，但价格边界、赠饮规则和券核销口径仍在等待负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "marketing_scheduler": "healthy",
+          "cashier_system": "healthy",
+          "mini_program": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许做内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶活动窗口先上线再补审批",
+        "把未确认价格和赠饮规则提前同步到门店前台和渠道"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_quality_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似品质安全投诉，既要安抚顾客也要控制门店风险扩散",
+        "routing_context": "顾客反馈昨晚收到的热拿铁明显发酸且杯盖漏液，怀疑鲜奶和杯盖都存在问题，已经在社交平台发帖，门店需要判断是否暂停相关鲜奶批次和杯盖工位继续放量",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "bar_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关鲜奶批次或杯盖工位排查与止损决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查原料和杯盖链路就继续正常推广同类饮品"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_large_preorder_without_payment_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认但迟迟未付款的大额预订单，避免门店产能和点心备料被长期占用",
+        "routing_context": "学校活动主办方希望次日 08:30 取 70 杯咖啡和 30 份烘焙点心，要求门店先锁定早高峰产能并提前加热部分点心，但称款项要活动结束后再统一报销",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "inventory_system": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款或定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放产能节点",
+        "高损耗点心和热饮备料必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收款就正式锁定整个早高峰产能",
+        "为了成交先预热和预制大量不可回收饮品与点心"
+      ]
+    },
+    {
+      "id": "dispatcher_coffee_grinder_fault_and_heatwave_stoploss_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在高温天气和设备异常叠加时为外送咖啡建立止损执行计划",
+        "routing_context": "17:40 后气温仍在 35 摄氏度以上，门店磨豆机间歇性卡豆，制冰能力不足，平台骑手接单速度下降，但仍持续收到远距离冰拿铁和冰摩卡订单",
+        "integration_state": {
+          "grinder_station": "unstable",
+          "ice_machine": "degraded",
+          "delivery_platform": "unstable",
+          "rider_dispatch": "degraded"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "受影响工位隔离和可售菜单收缩",
+        "对远距离冰饮的暂停、改自提或延迟通知 stop-loss",
+        "无法可靠履约时的主动降级策略"
+      ],
+      "mustAvoid": [
+        "在设备异常和高温品质风险下继续承诺正常外送时效",
+        "没有替代路线还继续接受全部远距离冰饮订单"
+      ]
+    }
+  ]
+}

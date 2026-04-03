@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_combo_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实套餐可见度与份量可判读性",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实在售套餐、单品成品、托盘关系和第一口反馈放在前排位置，而不是依赖海报、空镜或单独美化特写。",
+      "high_score_signals": [
+        "前 3 镜内出现真实招牌套餐或主打单品成品",
+        "画面能判断份量、配餐和交付形态",
+        "观众能快速确认这是本店真实在售餐品"
+      ],
+      "low_score_signals": [
+        "开场长时间只有门头、装修或灯箱",
+        "餐品像海报样片或摆拍图而非日常出餐",
+        "看不出套餐内容、份量和是否真实在售"
+      ],
+      "score_rule": "真实餐品证据越靠前、越完整、越可判读，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应快餐店最核心的到店理由，例如午市套餐、现炸热感、工作餐效率、双人外带或顺路便利，而不是泛泛拍得好看。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体卖点",
+        "观众一眼能看懂这家快餐店适合什么消费场景",
+        "封面中的主餐或场景与正文首镜一致"
+      ],
+      "low_score_signals": [
+        "封面只有装修氛围没有具体餐品理由",
+        "标题讲套餐或效率，画面却看不到对应证据",
+        "卖点过空，比如只写烟火气或高级感"
+      ],
+      "score_rule": "越能用真实画面回答为什么现在要点这家，得分越高。"
+    },
+    {
+      "id": "order_to_pickup_integrity",
+      "metric_group": "visual_proof_density",
+      "feature": "点单到取餐链路完整度",
+      "weight": 0.12,
+      "definition": "分镜是否把点单、出单、叫号、取餐、落座或离店中的关键节点串联起来，让快餐体验看起来真实可验证。",
+      "high_score_signals": [
+        "至少出现三个真实链路节点并且前后对应清楚",
+        "堂食和外带路径表达清晰不混乱",
+        "观众能看懂餐是如何从柜台到手上的"
+      ],
+      "low_score_signals": [
+        "只有成品餐图没有服务链路",
+        "堂食、外带和骑手镜头混剪看不懂交付方式",
+        "点单和取餐完全靠旁白补充"
+      ],
+      "score_rule": "真实节点越完整、越连贯、越少依赖口头解释，得分越高。"
+    },
+    {
+      "id": "hot_food_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "热食与现做真实性",
+      "weight": 0.12,
+      "definition": "镜头是否展示现炸、现煎、现烤、现组装或热食落盘的真实动作，让热感和即时性可被感知。",
+      "high_score_signals": [
+        "出现油锅、煎板、装配台或热食落托盘动作",
+        "热食证据和最终成品、取餐画面前后对应",
+        "热感来自真实操作而不是滤镜特效"
+      ],
+      "low_score_signals": [
+        "只拍静态成品却强调刚出锅",
+        "热感主要依赖后期特效或夸张慢动作",
+        "热食镜头和最终餐品无法对上"
+      ],
+      "score_rule": "越能让观众明确感到这份餐刚做好，得分越高。"
+    },
+    {
+      "id": "rush_period_business_proof",
+      "metric_group": "visual_proof_density",
+      "feature": "饭点生意证明密度",
+      "weight": 0.12,
+      "definition": "分镜是否用真实高峰时段的排队、叫号、取餐、翻台和桌面占用状态证明门店节奏，而不是空口描述人气。",
+      "high_score_signals": [
+        "叫号屏、取餐口、排队或桌面占用状态清晰可见",
+        "能区分午市、晚市或放学后等具体时段",
+        "客流证据与门头、柜台和餐品有明确关联"
+      ],
+      "low_score_signals": [
+        "用空店碎剪伪装高峰",
+        "人气判断完全依赖字幕或旁白",
+        "顾客镜头和门店空间关系对不上"
+      ],
+      "score_rule": "真实饭点信息越清楚、越可验证，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "营业节奏限制下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配快餐店常见限制，包括午晚高峰、柜台可拍范围、炸台和后厨权限、顾客出镜边界、翻台速度和有限拍摄时长。",
+      "high_score_signals": [
+        "关键镜头与真实高峰窗口和工位权限匹配",
+        "小团队也能在现有营业节奏内完成拍摄",
+        "堂食、外带和高峰镜头的难度评估合理"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计完整高峰链路加深后厨加多场景切换",
+        "默认顾客一定配合、炸台一定可拍、套餐一定能复刻",
+        "镜头动线明显干扰营业和翻台"
+      ],
+      "score_rule": "越能在真实营业状态下直接执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确性",
+      "weight": 0.12,
+      "definition": "分镜是否准确列出快餐店内容所依赖的具体套餐、柜台区域、菜单灯箱、叫号屏、包装形态、顾客授权条件和补拍时段。",
+      "high_score_signals": [
+        "封面和关键镜头都对应到具体套餐、具体区域和具体时段",
+        "补拍需求写到机位、包装数量和授权边界层面",
+        "缺失素材有明确替代路线"
+      ],
+      "low_score_signals": [
+        "只写需要门店素材之类的空话",
+        "默认所有套餐和所有工位都能随时拍",
+        "不写顾客出镜、叫号屏和包装依赖"
+      ],
+      "score_rule": "依赖越具体、假设越少、越便于执行，得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.10,
+      "definition": "当门店缺少高峰客流、后厨权限、真实套餐或交付链路时，方案是否诚实降级为单品版、快取版、说明版或预告版，而不是硬做热卖探店片。",
+      "high_score_signals": [
+        "明确标注当前缺口和阶段限制",
+        "执行分数跟着素材边界一起调整",
+        "替代路线仍保留快餐店特征和说服力"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高执行分和高人气叙事",
+        "用外部客流、外部餐品或效果图补证据",
+        "后续执行大概率因权限和时段失败"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_business_hotel_tonight_booking_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_booking_completion",
+      "input": {
+        "lead_assessment": "A 级今晚出差入住线索，客户刚私信问今晚 21:00 后是否还有大床房，并明确需要电子发票。",
+        "value_score_card": "short_term high; booking likelihood high; quick follow-up in the current evening window can convert if stay facts are completed fast",
+        "contact_history": [
+          "18 分钟前客户从评论区转入私信",
+          "刚补充今晚入住 1 晚、1 间大床房、21:00 后到店，需要早餐和电子发票"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把本轮目标放在补齐入住事实并推进可预订或候补确认",
+        "私信里快速确认日期、房型、到店时间和发票相关需求",
+        "不越权改成电话沟通，也不在未核房态前承诺一定有房"
+      ],
+      "mustAvoid": [
+        "直接保证今晚一定有房或一定能免费升级",
+        "跳过到店时间和发票需求就催客户立刻下单"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_late_arrival_guarantee_002",
+      "label": "happy_path",
+      "scenario_tag": "guaranteed_late_arrival_followup",
+      "input": {
+        "lead_assessment": "A- 级高意向晚到线索，客户航班延误后预计 23:40 才能到店，希望酒店继续保留房间。",
+        "value_score_card": "short_term high; conversion depends on guarantee-hold clarity and no-show boundary awareness",
+        "contact_history": [
+          "客户昨晚已预订 1 间高级大床房并完成担保",
+          "30 分钟前留言说航班延误，可能接近午夜才到"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在确认预计到店时间、担保状态和最晚保留节点",
+        "联系动作要帮助客户完成晚到保留条件确认，而不是重复发房型介绍",
+        "若还有不确定项，要用条件化表达而不是绝对承诺"
+      ],
+      "mustAvoid": [
+        "一句“放心来”代替保留条件确认",
+        "在未说明规则边界时把房间写成无限期保留"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_early_checkin_wait_003",
+      "label": "edge_case",
+      "scenario_tag": "early_arrival_room_not_ready",
+      "input": {
+        "lead_assessment": "B+ 级早到客线索，客户红眼航班后 08:30 到店，希望立刻休息，仍有较高转化和满意度价值。",
+        "value_score_card": "short_term medium_high; satisfaction depends on expectation management rather than hard promise",
+        "contact_history": [
+          "昨晚已预订标准大床房",
+          "今早刚问能不能现在入住",
+          "门店尚未反馈 ready 房态"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在提前入住预期管理而不是已可入住",
+        "提供寄存行李、休息区候用或同价替代房型等低风险方案",
+        "明确需要等待房态确认后再给进一步动作"
+      ],
+      "mustAvoid": [
+        "直接承诺几点一定能入住",
+        "在没有新信息时连续高频追问客户是否到店"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_late_checkout_pressure_004",
+      "label": "edge_case",
+      "scenario_tag": "late_checkout_under_turnover_pressure",
+      "input": {
+        "lead_assessment": "B 级在住商务客，下午有高铁，想从 12:00 延到 16:00 退房，态度平和且有复住可能。",
+        "value_score_card": "service value medium_high; risk lies in turnover conflict with same-day arrivals",
+        "contact_history": [
+          "客户今早通过微信咨询能否延迟退房",
+          "门店今天有会务团队集中到店"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先确认客户希望延到的具体时间和可接受替代方案",
+        "把目标设为推进可执行的延退判断或行李寄存方案",
+        "若需门店确认，要写清等待确认而不是直接给结果"
+      ],
+      "mustAvoid": [
+        "不看周转压力就默认免费延到 16:00",
+        "把延退说成既定安排却没有任何条件说明"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_corporate_rate_approval_wait_005",
+      "label": "edge_case",
+      "scenario_tag": "corporate_credit_and_invoice_waiting_approval",
+      "input": {
+        "lead_assessment": "A 级企业行政线索，今晚要订 6 间房，要求按去年协议价月结并统一开专票。",
+        "value_score_card": "high revenue potential but approval and credit risk high",
+        "contact_history": [
+          "企业行政 1 小时前发来公司名称和入住日期",
+          "CRM 显示新年度协议未续签",
+          "财务月结审批尚未通过"
+        ],
+        "approval_state": "waiting_corporate_rate_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "体现审批感知暂停，只做允许的信息补齐和低压力沟通",
+        "继续收集公司、房晚数、结算和开票所需信息",
+        "approval_requirements 里明确缺的审批或资料"
+      ],
+      "mustAvoid": [
+        "直接承诺沿用旧协议价或先住后挂账",
+        "在审批未过时承诺次日一定开出专票"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_meeting_bundle_blocker_006",
+      "label": "happy_path",
+      "scenario_tag": "meeting_room_and_room_nights_blocker",
+      "input": {
+        "lead_assessment": "A- 级会务住宿线索，客户要 12 间房加半天会议室和停车，预算已给但迟迟没确认。",
+        "value_score_card": "short_term medium_high; likely conversion if blocker is surfaced clearly",
+        "contact_history": [
+          "昨天已发房型和会议室初版方案",
+          "客户已读 20 小时未回复",
+          "销售补充客户还在内部确认名单和早餐标准"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重点放在找出会议室、名单、早餐或开票中的单一卡点",
+        "提供微调或澄清入口，而不是重发同一份方案",
+        "节奏保持温和，给客户内部协调空间"
+      ],
+      "mustAvoid": [
+        "跳过卡点直接强追定金或锁房",
+        "在同一天里多轮轰炸式催回复"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_peak_expo_deposit_gate_007",
+      "label": "edge_case",
+      "scenario_tag": "expo_peak_hold_without_guarantee",
+      "input": {
+        "lead_assessment": "A 级展会窗口线索，客户想先口头锁下周展会期间 8 间房，担保和名单明天再给。",
+        "value_score_card": "short_term high; promise risk high because peak inventory is volatile",
+        "contact_history": [
+          "刚确认活动日期和房量",
+          "客户表示今天先口头留房，明天补担保和名单"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把本轮目标设为担保或正式确认条件推进，而不是已锁定库存",
+        "说明未担保前只能做条件化保留、待确认或候补路线",
+        "保留峰值窗口下的库存和时效风险提醒"
+      ],
+      "mustAvoid": [
+        "把口头确认直接写成已正式锁房",
+        "承诺旺季库存一定保留到次日且无任何条件"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_reactivation_new_reason_008",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_workday_package",
+      "input": {
+        "lead_assessment": "沉睡但合格的企业复住线索，上个月问过园区附近连住方案，后来停在内部报销流程。",
+        "value_score_card": "short_term medium; long_term high; reactivation should hinge on new workday package and invoice clarity",
+        "contact_history": [
+          "28 天前客户咨询 5 晚连住和停车",
+          "之后无回复",
+          "本周酒店新增工作日长住包和更清晰的电子发票流程"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "复联必须带上新的工作日长住方案或开票流程优化",
+        "语气低压力，不默认客户仍按原日期入住",
+        "给客户一个最小回复入口，比如继续评估或暂缓"
+      ],
+      "mustAvoid": [
+        "只发“还需要吗”或“最近还住吗”",
+        "连续两天追着复联"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_service_recovery_rebook_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_rebook",
+      "input": {
+        "lead_assessment": "曾因隔音投诉不满但仍愿意再给一次机会的老客，今天主动问下周还有没有安静房型。",
+        "value_score_card": "trust recovery can reopen booking; must lead with repair confidence",
+        "contact_history": [
+          "5 天前完成投诉闭环并记录安静房偏好",
+          "今天客户私信询问下周二晚入住可能性"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力预订或安静房偏好备注确认",
+        "若提到补偿或权益，只能引用已批准内容"
+      ],
+      "mustAvoid": [
+        "忽略投诉历史直接按普通下单线索硬推成交",
+        "为了让客户回来承诺绝对零噪音或额外未批权益"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_overcontact_cooldown_010",
+      "label": "edge_case",
+      "scenario_tag": "same_day_overcontact_cooldown",
+      "input": {
+        "lead_assessment": "中高意向今夜入住线索，客户白天问过房价和发票，晚上前仍未回复。",
+        "value_score_card": "short_term medium; annoyance risk rising after two touches",
+        "contact_history": [
+          "11:10 已私信一次确认入住日期和房型",
+          "15:40 又追问过是否需要发票",
+          "截至 20:30 已 5 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频而不是继续第三次强追",
+        "把回复门槛降到只需确认一个最关键的信息",
+        "把下一次触达放到更合适的下一工作时段或次日"
+      ],
+      "mustAvoid": [
+        "当晚继续做第三次追问",
+        "改用其它渠道或多人同时追同一位客户"
+      ]
+    },
+    {
+      "id": "followup_business_hotel_real_name_boundary_011",
+      "label": "failure_case",
+      "scenario_tag": "real_name_checkin_boundary",
+      "input": {
+        "lead_assessment": "高意向夜间入住线索，客户说到店人和预订人不同，其中一位同住人证件稍后补交，想先拿房卡。",
+        "value_score_card": "booking likely but compliance risk high",
+        "contact_history": [
+          "22 分钟前客户留言今晚 22:30 左右到店",
+          "补充说明其中一位同住人证件不在身边，希望先办理"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "明确实名认证和前台核验的安全边界",
+        "若私信允许，可先收集到店时间、预订人与入住人基本信息用于前台准备",
+        "不能把“先上楼后补证”写进联系动作"
+      ],
+      "mustAvoid": [
+        "承诺先拿房卡、先入住、明天再补证",
+        "弱化或忽略实名入住边界"
+      ]
+    }
+  ]
+}

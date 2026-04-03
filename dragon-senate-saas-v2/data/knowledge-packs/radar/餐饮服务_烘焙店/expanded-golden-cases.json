@@ -1,0 +1,265 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_bakery_shop_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测烘焙店在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "连锁烘焙品牌A",
+          "商场烘焙品牌B"
+        ],
+        "raw_signals": [
+          "抖音本地生活公告要求团购标题里涉及 纯动物奶油、0添加、当天现烤、无防腐剂 和 全网最低价 等表述时必须提供可核验依据，违规会被降权处理",
+          "美团商家后台通知加强散装面包标签、过敏原提醒和生日蛋糕冷藏配送说明抽检",
+          "两家竞品把商品文案从 纯动物奶油生日蛋糕全城最低价当天送达 改成 招牌奶油蛋糕，详细配料与配送说明见商品页"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对配料宣称、价格承诺和配送说明边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略散装标签抽检和规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_breakfast_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城烘焙店受通勤早餐驱动的需求窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "社区烘焙店C",
+          "写字楼烘焙店D"
+        ],
+        "raw_signals": [
+          "同写字楼商圈连续一周的搜索词、评论和私信里集中出现 早餐面包、吐司加咖啡、7 点半前能不能拿到 和 地铁口顺路取餐吗 等咨询",
+          "同商圈三家竞品同步上线 吐司加美式 和 贝果加拿铁 早餐组合，并把门店营业时间提前到 7 点 30 分",
+          "地图评论连续提到工作日早高峰排队和可颂 9 点半前售罄，但周末商场店没有同步放大"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同商圈通勤早餐需求应被识别为机会信号",
+        "竞品营业时段和套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的高关注窗口提醒"
+      ],
+      "mustAvoid": [
+        "把单一门店排队夸大为全城趋势",
+        "用跨城网红面包热度替代本地早餐需求判断"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_preorder_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "判断生日蛋糕与企业茶歇预订是否形成高价值窗口",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "定制蛋糕店E",
+          "连锁烘焙品牌F"
+        ],
+        "raw_signals": [
+          "同城写字楼和社区问答区、私信里连续出现 6 寸还是 8 寸、明天能不能取、能不能写字 和 20 人茶歇拼盘需要提前几小时 等咨询",
+          "两家竞品在一周内把 生日蛋糕至少提前 1 天预订 和 企业茶歇需提前 24 小时确认 突出到商品页首屏，并增加固定提货和送达时段说明",
+          "多个探店账号实拍到门店张贴 当天现货有限、预订优先 和 冷链配送范围 规则，评论区开始讨论午后自提和公司送达时间"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要把预订窗口识别为真实机会而不是单纯审美热度",
+        "门店规则、用户咨询和竞品动作需要被分别归类和综合判断",
+        "输出应提醒这是中高关注且强时效的窗口"
+      ],
+      "mustAvoid": [
+        "把每一个蛋糕咨询都当成立即成交信号",
+        "忽略提前量、截单时间和配送范围这些产能证据"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_store_network_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测同城烘焙品牌门店网络扩张与业态切换变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_competitor_watch",
+        "competitor_watchlist": [
+          "连锁烘焙品牌G",
+          "社区烘焙品牌H"
+        ],
+        "raw_signals": [
+          "同商圈两家竞品门店在地图页上改为暂停营业，评论区连续出现撤店和减少出炉批次讨论",
+          "商场公告显示其中一家原铺位将由主打外带早餐的烘焙品牌接手，同时新品牌开始公开招聘早班烘焙师和打包配送员",
+          "未发现平台规则变化，但同城另外两家品牌同步把新店开在社区街口和学校周边，并强调前店后厂、早餐面包和生日蛋糕自提动线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要明确这是竞品经营网络变化而不是平台规则变化",
+        "暂停营业、商场公告和招聘信息应被识别为互证链条",
+        "输出应形成面向 Commander 的中高关注竞争格局提醒"
+      ],
+      "mustAvoid": [
+        "把闭店个案直接泛化成全行业衰退",
+        "忽略社区前店后厂和早餐自提模式带来的替代性机会"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测烘焙店晚间清仓和平台补贴变化带来的成本风险",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "外卖烘焙店I"
+        ],
+        "raw_signals": [
+          "同城商家群截图称平台下周将取消烘焙店晚间满减补贴并新增包装合规费，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区运营口径也不一致",
+          "核心竞品的晚 8 点后折扣、配送费说明和切块蛋糕满减结构暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断晚间清仓利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别社区型烘焙店的内容与价格带机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区烘焙店J"
+        ],
+        "raw_signals": [
+          "外地旅游城市的高颜值法甜店短视频爆火，大量内容强调打卡、限定甜点礼盒和高客单切块蛋糕",
+          "本地平台最近新增搜索和评论集中在 9.9 元早餐吐司、学生放学小面包、周末生日蛋糕自提 和 能不能当天写字",
+          "本地竞品开始上新家庭吐司、分享装小面包和放学后加购组合，没有跟进高客单法甜打卡路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型需求应高于跨城打卡爆款热度",
+        "需要区分审美爆款与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单法甜路线",
+        "忽略同城搜索与竞品组合的本地互证"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城烘焙店食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某连锁烘焙店使用过期奶油并把前一天面包重新贴标，只给出模糊后场偷拍视频",
+          "该说法被两个营销号转发，但都没有提供门店名称、监管链接或处罚文书",
+          "未发现市场监管局通报、平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已经发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_bakery_shop_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度烘焙竞品的真实门店热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "网红烘焙店K",
+          "可颂专门店L"
+        ],
+        "raw_signals": [
+          "竞品发布 可颂每天 10 点前售罄、门口排队一小时 的短视频，但没有给出日期、门店定位或取单系统截图",
+          "地图平台近 7 天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也没有新增限购、分批出炉或售罄说明"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    }
+  ]
+}

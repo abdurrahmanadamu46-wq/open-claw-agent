@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"dispatcher","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"service_chain_coverage","title":"服务链路覆盖率","description":"评估 ExecutionPlan 是否覆盖预约确认、场景判断、药师匹配、库存检查、配送或自取安排、完成回写和 followup 任务等关键节点。","examples":["高分：计划同时包含说明判断、库存确认和后续回写。","低分：只有预约成功，没有库存和回访判断。"],"priority":"high"},
+  {"id":"capacity_alignment","title":"容量匹配度","description":"评估计划是否考虑到店时段、库存、药师和值守与配送资源的真实上限。","examples":["高分：夜间满载时给出候补或改时段。","低分：满档仍继续确认复杂急单。"],"priority":"high"},
+  {"id":"route_fit","title":"路线拟合度","description":"夜间急用、家庭备药、慢病续购和儿童护理链路是否被正确分流。","examples":["高分：慢病补药走复购链路。","低分：夜间急用和家庭备药都进普通散单链路。"],"priority":"high"},
+  {"id":"time_window_control","title":"时间窗口控制力","description":"是否把夜间、换季、返乡和开学窗口纳入时效判断。","examples":["高分：截止前主动锁时段。","低分：完全忽略节点时间。"],"priority":"medium"},
+  {"id":"writeback_completeness","title":"回写完整度","description":"任务完成后是否把药师说明、配送、签收和 followup 条件写回系统。","examples":["高分：配送签收后自动触发回访。","低分：成交后无任何回写。"],"priority":"medium"},
+  {"id":"refill_followup_readiness","title":"复购跟进准备度","description":"是否为慢病补药和家庭补货预留 followup 任务。","examples":["高分：补药成交后预留下一次提醒。","低分：一次性完成后不再跟进。"],"priority":"medium"}
+]}

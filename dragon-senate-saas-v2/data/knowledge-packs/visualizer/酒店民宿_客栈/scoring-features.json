@@ -1,0 +1,188 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_inn_identity_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "Real inn identity visibility",
+      "weight": 0.12,
+      "definition": "Whether the storyboard establishes the specific inn early through the lane, gate, signboard, courtyard door, reception touchpoint, or room door instead of starting with context-free decor or room mood shots.",
+      "high_score_signals": [
+        "A real identity anchor appears within the first three shots",
+        "Exterior identity clearly connects to the room or courtyard footage",
+        "Viewers can quickly tell the property is specific, real, and findable"
+      ],
+      "low_score_signals": [
+        "The opening is only lanterns, tea, bedding, or old-house decor",
+        "Property identity appears only in text overlays",
+        "The outside and inside scenes have no verifiable relationship"
+      ],
+      "score_rule": "Earlier, clearer, and more property-specific identity proof earns a higher score."
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "Cover alignment with the inn's core promise",
+      "weight": 0.1,
+      "definition": "Whether the cover direction clearly answers the inn's main conversion reason, such as old-town slow stay, courtyard pause, calm arrival, morning closure, or reset travel rhythm, instead of drifting into generic boutique beauty.",
+      "high_score_signals": [
+        "The title and hero frame point to one specific stay reason",
+        "The cover scene naturally leads into the first shots",
+        "The viewer can infer why this inn is worth staying in, not just looking at"
+      ],
+      "low_score_signals": [
+        "The cover only shows mood objects or room styling with no clear offer",
+        "The title promises arrival ease, breakfast, or local life that the cover does not support",
+        "The cover aesthetic feels more luxurious or more private than the real inn"
+      ],
+      "score_rule": "The cover scores higher when it uses real shootable proof to express the inn's true stay value."
+    },
+    {
+      "id": "arrival_route_and_access_honesty",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Arrival route and access honesty",
+      "weight": 0.12,
+      "definition": "Whether the storyboard honestly visualizes how guests reach the inn and room, including lane turns, parking transfer, stairs, stone paths, bridges, slopes, or check-in guidance, instead of masking friction while promising convenience.",
+      "high_score_signals": [
+        "The arrival chain from route anchor to inn entry is understandable",
+        "Stairs, path texture, or transfer logic are handled honestly",
+        "Convenience claims stay aligned with what the camera can really prove"
+      ],
+      "low_score_signals": [
+        "The plan implies car-to-door access with no proof",
+        "Important arrival friction is edited away while still being promised as easy",
+        "Route proof depends on maps or captions instead of real footage"
+      ],
+      "score_rule": "More verifiable and less exaggerated arrival logic earns a higher score."
+    },
+    {
+      "id": "room_type_truthfulness",
+      "metric_group": "visual_proof_density",
+      "feature": "Hero room type truthfulness",
+      "weight": 0.14,
+      "definition": "Whether the storyboard stays loyal to one real room type and proves bed, window, seating, luggage, and bathroom relationships instead of constructing a fantasy room from mixed assets or premium upgrades.",
+      "high_score_signals": [
+        "One room type is consistently represented through the sequence",
+        "Bed, bathroom, window, and utility shots feel structurally coherent",
+        "Special features like terrace, tub, or view are shown only when real"
+      ],
+      "low_score_signals": [
+        "Multiple room types are cut together as if they were one stay",
+        "Only tight aesthetic shots appear and scale remains unclear",
+        "The script promises a standard room while the visuals quietly show an upgrade"
+      ],
+      "score_rule": "Room proof scores higher when it is structurally consistent and close to a real guest perspective."
+    },
+    {
+      "id": "courtyard_or_shared_space_verifiability",
+      "metric_group": "visual_proof_density",
+      "feature": "Courtyard and shared-space verifiability",
+      "weight": 0.1,
+      "definition": "Whether public or semi-public spaces such as courtyards, rooftops, terraces, tea tables, or riverside decks are shown as real usable spaces with clear ownership and use boundaries.",
+      "high_score_signals": [
+        "The full space is visible before detail inserts",
+        "The storyboard shows real use, not just static beauty",
+        "The relationship between the space and the inn is clear"
+      ],
+      "low_score_signals": [
+        "The space is presented only through closeups and could belong anywhere",
+        "A shared area is framed as a private guest entitlement",
+        "Night access or permission is assumed without confirmation"
+      ],
+      "score_rule": "Shared-space proof scores higher when viewers can understand what the space is, how it is used, and whether it truly belongs to the inn offer."
+    },
+    {
+      "id": "host_service_process_evidence",
+      "metric_group": "visual_proof_density",
+      "feature": "Host warmth and service-process evidence",
+      "weight": 0.08,
+      "definition": "When the script highlights host warmth, local guidance, welcome tea, key handoff, pickup support, or check-in ease, the storyboard should contain real, permissioned service proof instead of actor-style impressions.",
+      "high_score_signals": [
+        "Real host or process evidence appears in the arrival flow",
+        "Human warmth is tied to a specific action such as greeting, guiding, or handing over access",
+        "The plan respects privacy while still proving service capability"
+      ],
+      "low_score_signals": [
+        "Friendly faces appear with no actual service context",
+        "Service claims exist only in narration or captions",
+        "The storyboard depends on unapproved people or invented host moments"
+      ],
+      "score_rule": "More specific and more permission-safe service proof earns a higher score."
+    },
+    {
+      "id": "morning_closure_continuity",
+      "metric_group": "storyboard_feasibility",
+      "feature": "Morning closure continuity",
+      "weight": 0.08,
+      "definition": "Whether the storyboard can credibly complete an inn stay arc into the next morning through breakfast, tea, first-walk rhythm, or morning light rather than ending with an unearned promise of overnight completeness.",
+      "high_score_signals": [
+        "Morning scenes connect clearly back to the room, courtyard, or gate",
+        "Breakfast or morning use is tied to actual access windows",
+        "The overnight flow feels complete and executable"
+      ],
+      "low_score_signals": [
+        "The script promises breakfast or dawn payoff with no morning assets",
+        "Morning scenes are generic nature inserts with no inn connection",
+        "The stay arc feels cut off because only daytime or only nighttime assets exist"
+      ],
+      "score_rule": "The more executable and inn-linked the morning closure is, the higher the score."
+    },
+    {
+      "id": "local_scene_binding_verifiability",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Local-scene binding verifiability",
+      "weight": 0.08,
+      "definition": "When the inn sells old-town life, riverside nights, market mornings, or village walks, the storyboard should prove that the surrounding scene and the inn entrance belong to one continuous stay experience.",
+      "high_score_signals": [
+        "A nearby local anchor is visibly linked to the inn gate or return path",
+        "Outside footage supports a precise stay rhythm instead of generic destination hype",
+        "Location claims are conservative when exact distance is not provable"
+      ],
+      "low_score_signals": [
+        "Beautiful town or mountain footage appears with no relationship to the inn",
+        "Claims like 'right downstairs' or 'steps away' lack route evidence",
+        "Destination B-roll does all the emotional work while the inn stays unproven"
+      ],
+      "score_rule": "Local-life positioning scores higher when it is physically tied back to the inn itself."
+    },
+    {
+      "id": "shot_feasibility_under_inn_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "Shot feasibility under inn operating constraints",
+      "weight": 0.09,
+      "definition": "Whether the shot plan matches real inn constraints such as limited staff, mixed-use spaces, guest privacy, low-light access, neighborhood sensitivity, breakfast hours, room availability, and short shoot windows.",
+      "high_score_signals": [
+        "Key shots line up with confirmed time windows and permissions",
+        "A small crew can realistically finish the plan without disrupting operations",
+        "The plan does not rely on unapproved guests, impossible lighting, or long schedule expansion"
+      ],
+      "low_score_signals": [
+        "The storyboard assumes every room, space, and person is available on demand",
+        "A short shoot window still tries to cover full evening-to-morning production with no tradeoffs",
+        "The plan would obviously interrupt real inn operations"
+      ],
+      "score_rule": "More realistic shot ambition and stronger dependency fit earn a higher score."
+    },
+    {
+      "id": "asset_dependency_accuracy_and_fallback_honesty",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "Dependency accuracy and fallback honesty",
+      "weight": 0.09,
+      "definition": "Whether the storyboard precisely lists what is needed for gate proof, host proof, night access, courtyard use, breakfast timing, room type access, and local-scene linkage, then clearly downgrades when those assets are missing.",
+      "high_score_signals": [
+        "Each key story beat maps to a concrete asset or permission",
+        "Missing assets trigger a visible downgrade route and lower feasibility score",
+        "The plan never hides the difference between shootable proof and wished-for atmosphere"
+      ],
+      "low_score_signals": [
+        "Dependencies are vague, such as 'need inn footage' with no detail",
+        "Major gaps still produce a confident full-stay storyboard",
+        "Fallback paths are unclear and execution risk is pushed downstream"
+      ],
+      "score_rule": "Specific dependency mapping and conservative downgrade logic earn a higher score."
+    }
+  ]
+}

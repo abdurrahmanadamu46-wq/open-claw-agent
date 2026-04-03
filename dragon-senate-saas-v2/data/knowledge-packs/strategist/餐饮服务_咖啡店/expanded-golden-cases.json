@@ -1,0 +1,239 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_coffee_commute_pickup_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "morning_commute_pickup_growth",
+      "input": {
+        "mission_goal": "在 21 天内为地铁口社区咖啡店新增 420 单工作日早高峰自提订单，并把 7 点 30 到 9 点 30 的设备利用率从 48% 提升到 74%。",
+        "signal_brief": "周边 3 栋写字楼复工稳定，竞品开始强化 9.9 元早餐咖啡加贝果路线，但门店已有稳定的冰美式和热拿铁主力杯型、线上评分 4.8、平均单杯出品 95 秒，更适合走通勤快取路线。",
+        "tenant_context": {
+          "budget_limit": 8800,
+          "brand_tone": "清爽、利落、可信",
+          "asset_state": "有 2600 名会员、近 45 天月卡到期用户 410 人、小程序自提占比 38%",
+          "location_type": "地铁口和写字楼交界街边店",
+          "operations_state": "7 点到 9 点 30 高峰承接尚可，10 点后吧台明显空闲，轻食出餐能力中等"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日早高峰主路线",
+        "本地 1 到 2 公里通勤半径优先",
+        "黑咖和奶咖的简化选择路径",
+        "至少一个会员续卡或早餐组合备选路线",
+        "明确快取效率与高峰承接风险权衡"
+      ],
+      "mustAvoid": [
+        "把早餐、下午和周末同时主推",
+        "承诺零等待或全时段最低价"
+      ]
+    },
+    {
+      "id": "strategist_coffee_office_afternoon_group_order_001",
+      "label": "happy_path",
+      "scenario_tag": "office_afternoon_group_order_growth",
+      "input": {
+        "mission_goal": "在 30 天内为办公室会议茶歇和项目讨论场景获取 50 条高意向咖啡团单咨询，并落地 24 单 15 杯以上的实际订单。",
+        "signal_brief": "门店周边 2 公里内有多个产业园和联合办公空间，散单稳定，但 14 点 30 到 17 点仍有明显产能空窗，门店过去 2 个月做过 7 次 20 杯以上团单，冰美式和经典拿铁评价稳定。",
+        "tenant_context": {
+          "budget_limit": 9200,
+          "brand_tone": "靠谱、准时、适合集体下单",
+          "asset_state": "有标准团单菜单、企业微信客服和 6 条大单好评截图",
+          "location_type": "产业园和写字楼混合商圈",
+          "operations_state": "即时大单会挤压 18 点下班带走路线，需要提前预约和冷热分流"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "办公室下午团单主路线",
+        "送达时间、杯数、冷热比例和地址收集",
+        "标准团单方案与预约承接路线",
+        "至少一个个人续杯或固定企业客户 fallback",
+        "明确产能和晚高峰冲突的权衡"
+      ],
+      "mustAvoid": [
+        "把普通拉新优惠直接套到团单报价",
+        "未查产能就承诺所有时段都能接大单"
+      ]
+    },
+    {
+      "id": "strategist_coffee_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "member_reactivation_with_month_card",
+      "input": {
+        "mission_goal": "在 18 天内激活 1700 名近 90 天未下单会员，并带回 320 单熟客复购订单。",
+        "signal_brief": "门店即将上线一波夏季冷萃和大杯冰美式补位，预算不高，但历史订单中黑咖和奶咖偏好标签完整，月卡到期用户和沉睡会员的回流成本显著低于公域冷启动。",
+        "tenant_context": {
+          "budget_limit": 3600,
+          "brand_tone": "熟客感、克制、不打扰",
+          "crm_state": "可按黑咖奶咖偏好、冷热偏好、常下单时段和距离门店半径分层",
+          "asset_state": "有过去 6 个月下单记录、月卡状态、积分体系和两轮上新反馈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "会员分层重激活节奏",
+        "月卡到期和熟悉杯型作为召回线索",
+        "低成本召回优先级高于陌生人投流",
+        "至少一个本地冷启动备选路线",
+        "明确熟客回流与新客增量的权衡"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略黑咖奶咖偏好和历史时段差异"
+      ]
+    },
+    {
+      "id": "strategist_coffee_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的商场咖啡店验证第一个值得持续投放的增长场景，并决定预算优先压在通勤快取、下午办公停留还是周末打卡带走。",
+        "signal_brief": "门店开业仅 6 天，空间设计和包装出片不错，但线上只有 31 条评价，主力饮品还没有稳定销量数据，团队同时想做探店、月卡、轻食套餐和外卖满减，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12500,
+          "brand_tone": "年轻、明亮、适合拍照",
+          "asset_state": "有开业素材和新菜单海报，但缺少真实复购、稳定杯型和空间承接证据",
+          "location_type": "新商场 5 楼休闲餐饮区",
+          "operations_state": "店员仍在磨合，周末高峰等待时长和空位情况波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实评价和主力饮品证据",
+        "办公自习路线只有在座位和插座规则清楚时才可升优先级",
+        "把堂食、快取和外卖拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和包装直接大规模扩量",
+        "开业初期同时冲月卡低价、空间打卡和外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_coffee_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_fulfillment_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复工作日早高峰和下午档订单转化，并在 21 天内把有效自提订单量拉回到上月平均水平。",
+        "signal_brief": "近 3 周平台评分从 4.7 掉到 4.3，差评集中在早高峰等待太久、杯盖漏液、奶咖口味波动和错做低因，老板仍想继续加码短视频探店和平台券包。",
+        "tenant_context": {
+          "budget_limit": 7600,
+          "brand_tone": "诚恳、愿意改、讲清边界",
+          "asset_state": "仍有 2 个评分高的稳定杯型和一批熟客好评截图",
+          "operations_state": "早高峰意式与蒸汽位拥堵、低因标签回写不稳定、骑手取单区经常挤压"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和履约再扩量",
+        "限定杯型或限定时段路线",
+        "真实回评和稳定杯型回收信任",
+        "明确停止或降级高风险投放",
+        "把吧台修复与增长时序说清楚"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或隐瞒低因和履约风险"
+      ]
+    },
+    {
+      "id": "strategist_coffee_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_all_day_overexpansion",
+      "input": {
+        "mission_goal": "用 9.9 元全天咖啡、全网最低价口号和最快外送承诺在 10 天内把订单量翻倍。",
+        "signal_brief": "周边竞品持续用低价早餐券抢量，但门店当前毛利已经偏薄，周末和早高峰常排队，外卖漏液和降温类差评开始上升，继续压价和扩半径很可能带来更多超时、错单和口碑损耗。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 3 个主力杯型，但缺少承接深折扣和全时段最快履约的人手",
+          "operations_state": "意式机、打包区和骑手交接已接近上限，堂食座位也在高峰时段紧张"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定全天最低价和最快外送中心路线",
+        "把单店承接、毛利、座位预期和口碑风险说透",
+        "给出更稳的替代增长路径",
+        "指出绝对价格与履约承诺的治理风险"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量月卡或无限半径配送承诺",
+        "忽略吧台、打包、座位和骑手交接上限"
+      ]
+    }
+  ]
+}

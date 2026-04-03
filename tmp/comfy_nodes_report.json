@@ -1,0 +1,134 @@
+﻿{
+  "ok": true,
+  "mode": "lock",
+  "timestamp": 1774274651,
+  "comfy_root": "F:\\ComfyUI-aki\\ComfyUI-latest",
+  "python_bin": "F:\\ComfyUI-aki\\ComfyUI-latest\\.venv\\Scripts\\python.exe",
+  "install": {
+    "wanvideo_lipsync": {
+      "repo": "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+      "env_flag": "COMFYUI_ENABLE_WANVIDEO",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "df8f3e49daaad117cf3090cc916c83f3d001494c",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "vibevoice_tts": {
+      "repo": "https://github.com/Enemyx-net/VibeVoice-ComfyUI.git",
+      "env_flag": "COMFYUI_ENABLE_VIBEVOICE",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "b0a8efc23c9d902d7ebd8fe3f79515a23d343bc2",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "portrait_master": {
+      "repo": "https://github.com/florestefano1975/comfyui-portrait-master.git",
+      "env_flag": "COMFYUI_ENABLE_PORTRAIT_MASTER",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "dbf65b808ced29d3ec33305dec820bcf3d99652f",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "controlnet_aux": {
+      "repo": "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
+      "env_flag": "COMFYUI_ENABLE_CONTROLNET_AUX",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "95a13e2e5d8f8ae57583fbebb0be1f670889858b",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "layerstyle_compositor": {
+      "repo": "https://github.com/chflame163/ComfyUI_LayerStyle.git",
+      "env_flag": "COMFYUI_ENABLE_LAYERSTYLE",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "d94bef1ee5ed3656f5ff1bb2830a4ffd94f40935",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "easy_use_pack": {
+      "repo": "https://github.com/yolain/ComfyUI-Easy-Use.git",
+      "env_flag": "COMFYUI_ENABLE_EASY_USE",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "337a03bb19273ee084e56b16a59ad35cb07a1a04",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "llm_party_orchestrator": {
+      "repo": "https://github.com/heshengtao/comfyui_LLM_party.git",
+      "env_flag": "COMFYUI_ENABLE_LLM_PARTY",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "4d279969d7b08a24857f7455b362b745d6dcf2d0",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "copilot_workflow_builder": {
+      "repo": "https://github.com/AIDC-AI/ComfyUI-Copilot.git",
+      "env_flag": "COMFYUI_ENABLE_COPILOT",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "41b15d2d879ca92b0395df553d17b22b8cd6d9d3",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "custom_scripts_ui": {
+      "repo": "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+      "env_flag": "COMFYUI_ENABLE_CUSTOM_SCRIPTS",
+      "kind": "custom_node",
+      "installed": true,
+      "commit": "609f3afaa74b2f88ef9ce8d939626065e3247469",
+      "deps_ok": null,
+      "messages": [
+        "pip_install_skipped"
+      ],
+      "skipped": false
+    },
+    "ai_dock_runtime": {
+      "repo": "https://github.com/ai-dock/comfyui.git",
+      "env_flag": "COMFYUI_ENABLE_AI_DOCK",
+      "kind": "runtime_stack",
+      "installed": false,
+      "commit": "",
+      "deps_ok": null,
+      "messages": [
+        "runtime_stack_not_installed_in_custom_nodes"
+      ],
+      "skipped": true
+    }
+  },
+  "runtime": {
+    "reachable": false,
+    "base_url": "http://127.0.0.1:8188",
+    "nodes": {}
+  }
+}

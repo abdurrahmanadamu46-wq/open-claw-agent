@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_case_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实案例可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实案例和真实发质状态放在前排位置，而不是依赖外部模特图或重修图。",
+      "high_score_signals": [
+        "前 3 镜内出现真实案例",
+        "看得出是本店案例",
+        "发型与状态关系清楚"
+      ],
+      "low_score_signals": [
+        "开场是海报和网图",
+        "看不出是否本店案例",
+        "发质信息缺失"
+      ],
+      "score_rule": "真实案例证据越靠前、越清楚，得分越高。"
+    },
+    {
+      "id": "consult_and_process_visibility",
+      "metric_group": "trust_building",
+      "feature": "咨询与过程可见度",
+      "weight": 0.17,
+      "definition": "分镜是否把咨询、操作和吹整过程串成可信流程，而不是只给成片。",
+      "high_score_signals": [
+        "有咨询和工位镜头",
+        "有关键步骤镜头",
+        "过程清楚可感知"
+      ],
+      "low_score_signals": [
+        "只有成片和甩发转场",
+        "专业感全靠字幕",
+        "流程跳跃"
+      ],
+      "score_rule": "过程越真实、越可见，得分越高。"
+    },
+    {
+      "id": "route_distinction",
+      "metric_group": "message_match",
+      "feature": "项目路线区分度",
+      "weight": 0.16,
+      "definition": "低维护剪发、显白染发、婚礼焕新和头皮护理是否都拥有不同的视觉语言，而不是所有视频都长得一样。",
+      "high_score_signals": [
+        "不同路线画面明显不同",
+        "项目与场景一一对应",
+        "镜头和文案同题"
+      ],
+      "low_score_signals": [
+        "所有项目都只靠甩发和慢镜",
+        "场景和项目混乱",
+        "看不出适合谁"
+      ],
+      "score_rule": "项目和场景越匹配，得分越高。"
+    },
+    {
+      "id": "truth_gap_control",
+      "metric_group": "brand_safety",
+      "feature": "图实落差控制力",
+      "weight": 0.18,
+      "definition": "视频是否主动通过真实案例、发质和边界说明控制用户预期，而不是制造一比一复刻幻想。",
+      "high_score_signals": [
+        "真实案例替代网图幻想",
+        "发质和底色边界清楚",
+        "不过度夸大复制能力"
+      ],
+      "low_score_signals": [
+        "大量网图感视觉",
+        "看不出做不到的边界",
+        "风格过度理想化"
+      ],
+      "score_rule": "越能控制图实落差，品牌安全得分越高。"
+    },
+    {
+      "id": "booking_path_visibility",
+      "metric_group": "conversion_readiness",
+      "feature": "预约路径可见度",
+      "weight": 0.15,
+      "definition": "内容是否留出预约、工位、时段或项目边界说明的承接，而不是只拍成片。",
+      "high_score_signals": [
+        "后半段出现预约承接画面",
+        "CTA 与画面一致",
+        "时段或服务范围可感知"
+      ],
+      "low_score_signals": [
+        "没有任何下一步",
+        "只剩案例展示",
+        "CTA 与画面脱节"
+      ],
+      "score_rule": "观众越容易知道如何预约，得分越高。"
+    },
+    {
+      "id": "respectful_hair_representation",
+      "metric_group": "brand_safety",
+      "feature": "发质尊重感",
+      "weight": 0.18,
+      "definition": "分镜是否尊重不同发量、发质和头皮状态，不用羞辱式拍法制造焦虑。",
+      "high_score_signals": [
+        "镜头克制",
+        "适配导向而非羞辱导向",
+        "受损或毛躁镜头处理得当"
+      ],
+      "low_score_signals": [
+        "放大缺点逼单",
+        "羞辱式对比",
+        "吓人翻车画面主导内容"
+      ],
+      "score_rule": "越能守住尊重感，品牌安全得分越高。"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+﻿{
+  "resultVersion": "lobster.runtime-target-result.v0.1",
+  "processedAt": "2026-03-30T02:19:42.436Z",
+  "bridgeTarget": "execute-campaign",
+  "dispatchId": "dispatch:sim_008:diagnose:dispatcher",
+  "scopeId": "internal_execute",
+  "status": "handled",
+  "note": "Injected execute-campaign handler processed dispatch:sim_008:diagnose:dispatcher (internal_execute)",
+  "payload": {
+    "campaignPayload": {
+      "campaign_id": "sim_008",
+      "tenant_id": "shadow-tenant-sim_008",
+      "industry_template_id": "recovery_replay-template",
+      "target_urls": [
+        "https://example.com/placeholder"
+      ],
+      "bind_accounts": [
+        "placeholder-account"
+      ]
+    },
+    "scopeId": "internal_execute",
+    "result": {
+      "ok": true,
+      "nodeId": "e7e2571e-eba7-483d-b669-2fdab0efa12d",
+      "campaignId": "sim_008",
+      "tenantId": "shadow-tenant-sim_008"
+    }
+  }
+}

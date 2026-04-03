@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"problem_specificity","title":"需求方向清晰度","description":"高分信号会明确提到日常保洁、深度清洁、开荒、收纳整理和厨卫专项等具体方向。","examples":["高分：想做开荒保洁。","低分：想找个家政看看。"],"priority":"high"},
+  {"id":"timing_clarity","title":"时间窗口清晰度","description":"节前、周末来客、入住前和退租前等时间窗口越清楚，价值越高。","examples":["高分：这周六前要做完。","低分：有空再约。"],"priority":"high"},
+  {"id":"scope_clarity","title":"面积与范围明确度","description":"房型、面积、是否带玻璃和厨卫深清等范围越清楚，后续路线越容易收窄。","examples":["高分：89 平两居深度保洁。","低分：来家里打扫一下。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"阿姨与赔付敏感度","description":"当用户高度关注阿姨稳定性、专业度和损坏赔付时，需要提升信号权重与风险识别。","examples":["高分：主动问会不会固定阿姨。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"cycle_signal_strength","title":"周期复购强度","description":"周保洁、月保洁和办公室周期清洁需求越明确，优先级越高。","examples":["高分：每周固定一次。","低分：先做这一回看看。"],"priority":"medium"},
+  {"id":"addon_bundle_strength","title":"加项组合强度","description":"厨房重油污、玻璃、收纳和沙发清洁等加项越明确，越需要提权并识别高客单潜力。","examples":["高分：开荒加玻璃和柜体。","低分：随便打扫一下。"],"priority":"medium"}
+]}

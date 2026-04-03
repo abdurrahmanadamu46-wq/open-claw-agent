@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "low_maintenance_cut_visual",
+      "hook_angle": "洗后也顺手",
+      "hook_line": "真正会让人想约的发型，不只是店里好看，是你回去自己也顺手。",
+      "target_scene": "通勤剪发、低维护发型、层次修剪",
+      "cover_direction": "封面主体给真实剪发后侧面和层次，副元素补工位和梳剪细节，不用网感海报做主画面。",
+      "first_3_shots": [
+        "真实剪发成品近景",
+        "工位或工具准备镜头",
+        "吹整或拨发自然动作镜头"
+      ],
+      "required_proof_assets": [
+        "真实剪发案例",
+        "工位镜头",
+        "自然动作镜头"
+      ],
+      "fallback_if_missing": "若缺少真人案例，改用本店真实案例集翻拍配工位细节。"
+    },
+    {
+      "id": "brightening_color_visual",
+      "hook_angle": "显白但真实",
+      "hook_line": "显白这件事，真正重要的不是滤镜，是你现实光线下也顺眼。",
+      "target_scene": "显白染发、换季焕新、节日前发色",
+      "cover_direction": "封面突出真实光线和发色层次，不用过度磨皮和棚拍光。",
+      "first_3_shots": [
+        "真实发色近景",
+        "咨询或底色说明镜头",
+        "操作步骤镜头"
+      ],
+      "required_proof_assets": [
+        "真实染发案例",
+        "底色说明",
+        "过程镜头"
+      ],
+      "fallback_if_missing": "若缺少案例，改成真实案例合集，不拍夸张爆改承接。"
+    },
+    {
+      "id": "hair_truth_visual",
+      "hook_angle": "图实一致",
+      "hook_line": "好看的参考图很多，真正关键的是你现在的发质和底色能不能成立。",
+      "target_scene": "网图承接、烫染项目、复杂改造",
+      "cover_direction": "封面突出真实案例和发质，不用外部高清网图做主视觉。",
+      "first_3_shots": [
+        "真实案例近景",
+        "发质或底色说明镜头",
+        "关键工艺步骤镜头"
+      ],
+      "required_proof_assets": [
+        "真实案例",
+        "发质或底色说明",
+        "工艺步骤"
+      ],
+      "fallback_if_missing": "案例不足时改成真实案例合集，不拍爆款复刻承接。"
+    },
+    {
+      "id": "consult_process_visual",
+      "hook_angle": "先判断再动手",
+      "hook_line": "真正让人放心的发廊，不是上来就开始做，而是先判断你现在到底适不适合。",
+      "target_scene": "首次到店、怕踩雷、项目咨询",
+      "cover_direction": "封面主体给咨询或工位准备，副元素补真实案例，不用空镜主导。",
+      "first_3_shots": [
+        "咨询或判断镜头",
+        "工位与工具准备镜头",
+        "操作开始镜头"
+      ],
+      "required_proof_assets": [
+        "咨询过程",
+        "工位环境",
+        "操作准备"
+      ],
+      "fallback_if_missing": "没有咨询镜头时，改成工位准备加案例说明路线。"
+    },
+    {
+      "id": "event_refresh_visual",
+      "hook_angle": "节日前焕新",
+      "hook_line": "重要场合前做头发，不只是变好看，是把整个人的状态拉到刚刚好。",
+      "target_scene": "婚礼、节日、拍照前焕新",
+      "cover_direction": "封面给真实焕新案例和日期压力感，不拍成夸张翻身广告。",
+      "first_3_shots": [
+        "场景提示镜头",
+        "真实案例镜头",
+        "工位或预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "节日前案例",
+        "场景提示",
+        "预约承接"
+      ],
+      "fallback_if_missing": "若缺少场景素材，用字幕补足时间窗口。"
+    },
+    {
+      "id": "maintenance_cycle_visual",
+      "hook_angle": "到了该补的时候",
+      "hook_line": "真正会复访的头发，往往不是看腻了，而是到了该自然回来修一下的时候。",
+      "target_scene": "补染修根、修刘海、护理回访",
+      "cover_direction": "封面强调自然维护和新旧对比感，不拍成强促销海报。",
+      "first_3_shots": [
+        "旧状态提示镜头",
+        "本次维护方向镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "旧状态提示",
+        "本次建议",
+        "预约承接"
+      ],
+      "fallback_if_missing": "缺少真实旧状态素材时，用周期字幕和新案例替代。"
+    }
+  ]
+}

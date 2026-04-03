@@ -1,0 +1,244 @@
+﻿{
+  "industry": "建筑行业_门楼",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_gate_case_001",
+      "label": "happy_path",
+      "scenario": "工业园区主入口门楼完工案例",
+      "input": {
+        "copy_pack": "工业园区主入口门楼案例短视频脚本，核心卖点是门楼形象升级、钢结构稳定性和夜景亮化落地效果。",
+        "brand_assets": [
+          "完工日景全景",
+          "完工夜景亮灯视频",
+          "门楼近景细节图",
+          "钢结构施工过程图",
+          "园区车辆进出镜头",
+          "项目名称Logo"
+        ],
+        "reference_styles": [
+          "纪实工程交付",
+          "稳重工业质感"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "drone_available": true,
+          "night_shoot": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "真实完工门楼开场",
+        "白天与夜景成对呈现",
+        "材料或工艺细节特写",
+        "明确列出夜景拍摄与航拍依赖"
+      ],
+      "mustAvoid": [
+        "只做空镜航拍不落地到门楼本体",
+        "夜景过度特效化",
+        "忽略车流和尺度参照"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把工业园区门楼脚本转成一条以真实交付和工程细节为核心的可执行案例分镜。",
+        "assumptions": [
+          "现场允许白天和夜间各拍一轮主要机位。",
+          "现有施工过程图可作为工艺补证据素材。"
+        ],
+        "evidence": [
+          "品牌素材同时包含日景、夜景、施工和车辆通行镜头。",
+          "脚本卖点围绕形象升级、结构稳定和亮化落地。"
+        ],
+        "confidence": 0.92,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "真实门楼正立面配车辆进出做尺度锚点，标题聚焦“工业园入口形象升级”，副元素给夜景亮灯小窗。",
+        "shot_list": "1) 园区入口全景建立体量 2) 车辆进出与门楼关系镜头 3) 钢结构与收边节点特写 4) 施工过程补证明 5) 同机位夜景亮灯回看 6) 入口形象总结与咨询CTA",
+        "asset_dependencies": "完工日景全景、车辆进出镜头、门楼节点特写、施工过程图、夜景亮灯视频、无人机低空许可",
+        "execution_feasibility_score": "0.91"
+      }
+    },
+    {
+      "id": "visualizer_gate_case_002",
+      "label": "edge_case",
+      "scenario": "学校门楼方案沟通，素材极少",
+      "input": {
+        "copy_pack": "学校新校门方案说明脚本，重点想讲门楼风格、文化气质和落地工艺，但当前项目还未施工。",
+        "brand_assets": [
+          "门楼效果图",
+          "校名字体Logo",
+          "材料样板照片",
+          "平面图截图"
+        ],
+        "reference_styles": [
+          "克制的方案解读",
+          "校园文化气质"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "drone_available": false,
+          "night_shoot": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确说明项目处于方案阶段",
+        "以图纸、样板和设计逻辑替代虚假案例感",
+        "点出缺失的现场与施工素材"
+      ],
+      "mustAvoid": [
+        "把效果图包装成已完工门楼",
+        "设计夜景大片分镜",
+        "给出不符合素材条件的高执行分"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把学校门楼方案脚本转成一条诚实、克制、便于后续补拍升级的方案说明型分镜。",
+        "assumptions": [
+          "当前无法进入真实施工现场。",
+          "现阶段只能使用效果图、样板和图纸信息做可视化表达。"
+        ],
+        "evidence": [
+          "品牌素材只有效果图、字体Logo、样板和图纸截图。",
+          "脚本要表达的是方案逻辑而不是交付案例。"
+        ],
+        "confidence": 0.72,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用效果图局部配校名字体和材料样板小窗，标题明确写“学校门楼方案说明”，不伪装成交付实拍。",
+        "shot_list": "1) 方案图局部建立主题 2) 校名字体与文化元素说明 3) 材料样板和工艺节点解释 4) 平面图与通行关系说明 5) 明确当前为待施工方案 6) 补拍建议与后续升级路线",
+        "asset_dependencies": "效果图、校名字体Logo、材料样板照片、平面图截图、设计说明文字；缺少现场实景、施工过程、完工夜景",
+        "execution_feasibility_score": "0.56"
+      }
+    },
+    {
+      "id": "visualizer_gate_case_003",
+      "label": "happy_path",
+      "scenario": "老厂区门楼翻新改造前后对比",
+      "input": {
+        "copy_pack": "老厂区入口改造案例脚本，主打旧门楼老化问题、翻新后形象提升和车辆通行秩序改善。",
+        "brand_assets": [
+          "改造前旧门楼照片",
+          "施工过程视频",
+          "改造后白天实景",
+          "改造后车辆进出镜头",
+          "门楼节点细节图"
+        ],
+        "reference_styles": [
+          "问题到解决的纪实改造",
+          "克制的前后对比"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "drone_available": false,
+          "night_shoot": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "真实改造前后对比",
+        "旧门楼问题细节",
+        "施工过程作为中间证明",
+        "改造后车辆通行动线"
+      ],
+      "mustAvoid": [
+        "只讲变好不讲原来问题",
+        "前后对比用不同项目替代",
+        "忽略改造过程导致说服力断层"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把老厂区门楼改造脚本转成一条问题明确、证据完整、适合小团队执行的前后对比分镜。",
+        "assumptions": [
+          "改造前照片与改造后实景来自同一入口位置。",
+          "施工过程视频可截取关键安装和收边节点。"
+        ],
+        "evidence": [
+          "素材同时具备改造前、施工中、改造后的连续证据。",
+          "脚本卖点是形象升级和通行秩序改善。"
+        ],
+        "confidence": 0.86,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "同机位前后对比做主体，旧门楼保留老化状态，新门楼搭配车辆通行镜头，标题聚焦“老厂区入口焕新”。",
+        "shot_list": "1) 旧门楼全景与老化问题特写 2) 改造施工中的拆换与安装镜头 3) 新门楼白天整体体量 4) 节点工艺与收边细节 5) 车辆进出表现通行动线 6) 前后回看收束",
+        "asset_dependencies": "改造前旧门楼照片、施工过程视频、改造后整体实景、车辆进出镜头、门楼节点特写；无需航拍和夜拍",
+        "execution_feasibility_score": "0.85"
+      }
+    },
+    {
+      "id": "visualizer_gate_case_004",
+      "label": "failure_case",
+      "scenario": "市政文化门楼仅有效果图却要求史诗大片感",
+      "input": {
+        "copy_pack": "市政文化门楼宣传脚本，希望做出电影感、史诗感和夜景大片，但项目目前尚未施工落地。",
+        "brand_assets": [
+          "3D效果图",
+          "CAD平面截图",
+          "项目名称文字"
+        ],
+        "reference_styles": [
+          "史诗电影感",
+          "豪华金色夜景"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "drone_available": false,
+          "night_shoot": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确资产缺口和阶段限制",
+        "主动降级为方案解读或设计说明",
+        "低可执行性评分"
+      ],
+      "mustAvoid": [
+        "无人机穿门大片分镜",
+        "把效果图包装成真实夜景交付",
+        "视觉炫技压过证据和可拍性"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在素材极少且未落地的前提下，输出一条不冒充交付结果的门楼方案说明型视觉路线。",
+        "assumptions": [
+          "当前没有任何施工现场和实景交付素材。",
+          "现阶段只能展示设计意图和空间关系。"
+        ],
+        "evidence": [
+          "素材仅有3D效果图、CAD截图和项目名称。",
+          "拍摄条件不支持航拍、夜拍和现场纪录。"
+        ],
+        "confidence": 0.61,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做方案视觉说明，效果图占主画面，标题明确写“门楼方案概念解读”，避免任何已落地暗示。",
+        "shot_list": "1) 效果图整体关系说明 2) CAD平面与通行动线解释 3) 文化元素和造型语言拆解 4) 材料与施工待确认项提示 5) 明确当前缺少实景与施工证据 6) 补拍和落地后升级建议",
+        "asset_dependencies": "3D效果图、CAD平面截图、项目名称文字；缺少现场实景、施工过程、夜景交付、尺度参照、任何真实案例证明",
+        "execution_feasibility_score": "0.33"
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "hair_score_scene_specificity",
+      "title": "场景与项目清晰度",
+      "description": "高分文案能在前两句就让用户看见明确场景或项目问题，例如低维护剪发、显白染发、节日前焕新和补染修根，而不是泛泛说变好看。",
+      "examples": [
+        "高分：直接点出上班好打理或节日前焕新。 ",
+        "低分：一开始只有高级感和爆改。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hair_score_truthfulness",
+      "title": "案例真实感",
+      "description": "高分文案会主动强调真实案例、发质适配和边界，不会暗示任何网图都能一比一复刻。低分文案容易制造图实不符期待。",
+      "examples": [
+        "高分：先看发质和底色适不适合。 ",
+        "低分：做出来跟图上一模一样。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hair_score_price_boundary",
+      "title": "价格边界清晰度",
+      "description": "高分文案会把洗吹、护理、漂发、长发加价和总监加价讲清楚；低分文案只报基础价不讲范围。",
+      "examples": [
+        "高分：说明基础范围和加项边界。 ",
+        "低分：299 全包但没有任何范围说明。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hair_score_first_visit_safety",
+      "title": "首单低压力感",
+      "description": "高分文案会让第一次做头发的人觉得容易开始，不会被复杂大改和储值吓退。低分文案过早强调高客单。",
+      "examples": [
+        "高分：先从最稳的方向开始。 ",
+        "低分：第一次来也直接推漂染大改。 "
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "hair_score_respectfulness",
+      "title": "尊重感",
+      "description": "高分文案不会羞辱发量、发质和头皮状态，而是站在适配和选择的一侧。低分文案通过焦虑和容貌羞耻逼单。",
+      "examples": [
+        "高分：现在也有适合你的变化路线。 ",
+        "低分：头发这样只能重做。 "
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hair_score_cta_quality",
+      "title": "CTA 收口质量",
+      "description": "高分 CTA 会自然收项目方向、发长、底色和预约时间；低分 CTA 只有来做同款或私信了解这种空泛收口。",
+      "examples": [
+        "高分：先说现在长度和想约时间。 ",
+        "低分：快来做同款。 "
+      ],
+      "priority": "high"
+    }
+  ]
+}

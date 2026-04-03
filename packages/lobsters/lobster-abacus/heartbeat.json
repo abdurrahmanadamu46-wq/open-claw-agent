@@ -1,0 +1,41 @@
+{
+  "agent_id": "abacus",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_conversion_or_cost_data",
+      "action": "score_and_attribute"
+    },
+    {
+      "check": "pending_value_reports",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "metric_anomalies",
+      "action": "flag_and_escalate"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "review_recent_value_changes",
+      "description": "巡检价值变化和异常波动"
+    },
+    {
+      "interval_minutes": 120,
+      "action": "refresh_attribution_views",
+      "description": "刷新归因和渠道贡献视图"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "generate_value_scorecard",
+      "description": "输出阶段 ROI 与反馈闭环报告"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_new_metrics AND no_pending_reports",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 120,
+    "idle_behavior": "passive_metric_watch"
+  }
+}

@@ -1,0 +1,233 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_business_hotel_weekday_corporate_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_business_occupancy_growth",
+      "input": {
+        "mission_goal": "在 21 天内为靠近产业园的商务酒店新增 320 间夜工作日有效直订和企业协议预订，并把周一到周四平均入住率从 71% 提升到 83%。",
+        "signal_brief": "附近两个产业园和一片写字楼在 4 月集中复工，竞品主要靠 OTA 限时低价抢单，但酒店距离园区车程 10 分钟内，已有 4.7 分平台评分、免费停车、早餐、洗衣房和 24 小时前台，更适合走商旅便利路线。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "稳妥、清爽、报销友好",
+          "asset_state": "有 96 间房、近 90 天复住客 380 人、12 家曾询价的企业联系人、真实房型照片与住后评价较完整",
+          "location_type": "产业园与写字楼混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日商旅主路线",
+        "周边 3 到 5 公里企业与园区优先排序",
+        "发票、早餐、停车、洗衣和晚到入住等证据",
+        "至少一条企业协议房或老客复住 fallback",
+        "明确优先级顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "工作日和周末同一套低价套餐一起推",
+        "在房态和翻房节奏未确认前继续冲高峰晚到流量"
+      ]
+    },
+    {
+      "id": "strategist_business_hotel_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "newly_renovated_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为刚翻新的商务酒店验证首个值得持续投放的增长场景，并决定预算优先压在园区差旅、高铁中转还是会务住宿。",
+        "signal_brief": "酒店翻新后重新开业仅 8 天，房间照片新、硬件不错，但真实住后评价还少，前台与保洁还在磨合。团队想同时冲 OTA 促销、短视频团购和企业协议房，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "新净、效率感、年轻商务",
+          "asset_state": "只有 26 条新店评价，尚无稳定复住数据，但酒店靠近高铁站 2.5 公里且有一个小会议室",
+          "location_type": "交通枢纽和产业园中间地带",
+          "operations_state": "夜班前台和早餐高峰流程仍在磨合"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实房型与住后评价证据",
+        "把 OTA 冷启动与直订沉淀分开排序"
+      ],
+      "mustAvoid": [
+        "基于翻新照片直接大规模扩量",
+        "一开业就同时深折扣冲 OTA、团购和企业协议"
+      ]
+    },
+    {
+      "id": "strategist_business_hotel_meeting_contract_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "meeting_and_corporate_room_block_growth",
+      "input": {
+        "mission_goal": "在 30 天内为带会议室的商务酒店获取 40 条高意向企业协议房或会务住宿咨询，并锁定 18 场 10 到 40 间夜的团住订单。",
+        "signal_brief": "酒店周一到周四散客入住稳定，但会议室和团房利用率偏低。附近新开一批企业培训和招商会，酒店有 2 个会议室、120 间房、可开发票和团体早餐，但目前线索常常只问价后流失。",
+        "tenant_context": {
+          "budget_limit": 11000,
+          "brand_tone": "可靠、流程清晰、商务感",
+          "asset_state": "有会议室实拍、标准团住套餐、停车位和茶歇能力说明",
+          "location_type": "会展中心外圈与商务楼宇交界",
+          "operations_state": "可预留部分房量但旺季档期有限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "会务住宿资格筛选字段",
+        "日期、房量、房型、发票结算和会议室需求收集",
+        "标准套餐与定制方案双路线",
+        "明确团房保留边界和 fallback"
+      ],
+      "mustAvoid": [
+        "用散客秒杀价承接企业团住",
+        "未查房态就承诺会议加住宿全包可接"
+      ]
+    },
+    {
+      "id": "strategist_business_hotel_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_guest_and_corporate_reactivation",
+      "input": {
+        "mission_goal": "重激活 2200 名近 180 天未复住客人与 28 家沉默企业联系人，并在 20 天内带回 260 间夜直订或协议复购。",
+        "signal_brief": "酒店历史上以园区差旅和驻场连住为主，CRM 里保留了入住日期、企业名称、是否开票、常住房型和连住天数，但最近把预算大多投向陌生流量，老客回流明显下降。",
+        "tenant_context": {
+          "budget_limit": 3500,
+          "brand_tone": "熟客友好、不打扰、办事利落",
+          "crm_state": "可按企业、出差频次、连住客、晚到客和是否含早分层",
+          "asset_state": "近 6 个月有较完整直订记录、续住记录和住后评价"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客与企业联系人分层重激活节奏",
+        "围绕复住便利而不是单纯低价",
+        "低成本优先级高于陌生冷启动",
+        "至少一条企业协议续签或 OTA 回流的备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套文案",
+        "忽略历史入住目的和常住房型"
+      ]
+    },
+    {
+      "id": "strategist_business_hotel_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_service_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下，恢复工作日商旅入住，并在 21 天内把有效预订量拉回到上月平均水平。",
+        "signal_brief": "最近 3 周平台评分从 4.6 降到 4.1，差评集中在卫生、空调异味、早餐拥挤和晚高峰排队入住。老板仍想用 99 元闪促把空房迅速补满。",
+        "tenant_context": {
+          "budget_limit": 7000,
+          "brand_tone": "诚恳、克制、先修再放大",
+          "asset_state": "仍有 40 间口碑相对稳定的房型和一批复住客好评",
+          "operations_state": "保洁排班偏紧、周一晚到高峰最容易堵"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和承接力再扩量",
+        "限制房型或限制时段的低风险路线",
+        "真实住后评价回收与问题修复节奏",
+        "明确停止或降级高风险低价投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或掩盖卫生与设施问题"
+      ]
+    },
+    {
+      "id": "strategist_business_hotel_price_war_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "exhibition_week_low_price_overexpansion",
+      "input": {
+        "mission_goal": "靠全网最低价和永久免费早到晚退，在展会周把房量做满并顺带提升品牌声量。",
+        "signal_brief": "酒店靠近会展中心，展会周需求本来就会上升，但团队想用全渠道最低价、无限量团房和免费升级抢量。当前高峰日房态只有 68 间可售，停车位也紧张，前台和早餐承接接近上限。",
+        "tenant_context": {
+          "budget_limit": 16000,
+          "brand_tone": "激进抢量",
+          "asset_state": "会展周本来就有企业询价和一部分复住需求，但缺少清晰价格治理策略",
+          "operations_state": "高峰日取消与 No-show 波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把房态、价格和取消风险说透",
+        "给出更稳的预订优先和高确定性替代打法"
+      ],
+      "mustAvoid": [
+        "全网最低价导向",
+        "无限量团房或无条件免费升级承诺",
+        "忽略停车、早餐和前台的高峰承接上限"
+      ]
+    }
+  ]
+}

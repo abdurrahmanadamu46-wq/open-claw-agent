@@ -1,0 +1,361 @@
+{
+  "meta": {
+    "lobster": "inkwriter",
+    "name": "墨小雅",
+    "role": "吐墨虾·文案执行核心",
+    "level": "L3",
+    "version": "3.0",
+    "last_updated": "2026-04-01",
+    "constitution_ref": "../LOBSTER_KB_CONSTITUTION.md",
+    "schema_ref": "../SKILL_SCHEMA_V3.json",
+    "career_background": "前广告公司文案总监，操刀过快消/美妆/餐饮多品类的短视频脚本，有5年以上的平台文案实战经验。深刻理解'好看的文案'和'能转化的文案'的区别。在多个账号从冷启到10w粉的过程中担任主文案，积累了大量真实效果验证的写作方法。"
+  },
+  "skills": [
+    {
+      "entry_id": "ink_hook_001",
+      "title": "抖音前3秒钩子选择",
+      "content": "钩子优先级（按平均CTR提升效果排序，来自多账号实测）：1.反差冲击（视觉/文字的强反转）：平均CTR+35%；2.悬念钩子（信息缺口，'你不知道的是...'）：平均CTR+25%；3.痛点命中（直接说出用户的问题）：平均CTR+20%；4.权威背书（数字/权威机构）：平均CTR+15%；5.情感共鸣（'你有没有这种感觉'）：平均CTR+10%。注意：钩子类型要和内容类型匹配，不能强行套——B2B内容不适合过度情绪化钩子。",
+      "source": "自拆案例",
+      "source_ref": "6个账号的钩子AB测试汇总-2026-Q1",
+      "status": "已验证",
+      "verified_count": 6,
+      "last_verified": "2026-03-25",
+      "created_at": "2026-02-01",
+      "tags": ["钩子", "CTR", "抖音", "AB测试"],
+      "superseded_by": "ink_hook_v3_001",
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_hook_002",
+      "title": "小红书标题写法规律",
+      "content": "小红书标题有效规律（实测验证）：1.数字+情绪词+身份词 最有效（'28岁宝妈发现的宝藏面膜'）；2.标题必须在20字以内完整表达核心利益点，超过会被截断；3.'合集/攻略/清单'类词汇可以提升收藏率约20%（用户判断这条值得保存）；4.疑问句标题（'你知道吗？'）在教育类账号效果好，在产品推广类效果差——用户觉得在被教育会反感。",
+      "source": "自拆案例",
+      "source_ref": "小红书标题实验记录-2026-03",
+      "status": "已验证",
+      "verified_count": 4,
+      "last_verified": "2026-03-20",
+      "created_at": "2026-02-10",
+      "tags": ["小红书", "标题", "收藏率"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_structure_001",
+      "title": "PAS结构使用条件",
+      "content": "PAS（Pain-Agitate-Solve）结构有明确的适用边界：适用：用户有明确痛点且痛点可以被内容解决（美妆/护肤/教育/职场）；不适用：娱乐内容（用户没有痛点）/高端品牌（放大痛点会损害品牌调性）/本地探店（用户是被吸引，不是被解决问题）。错误使用PAS的后果：用户觉得在被情绪操控，出现负面评论。",
+      "source": "团队内部验证",
+      "source_ref": "内容结构适用范围测试-2026-02",
+      "status": "已验证",
+      "verified_count": 5,
+      "last_verified": "2026-03-10",
+      "created_at": "2026-01-20",
+      "tags": ["PAS结构", "内容结构", "适用边界"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_cta_001",
+      "title": "CTA类型与场景匹配",
+      "content": "已验证的CTA有效性数据：硬CTA（'现在点击购买'/'立刻私信'）：在高意向场景下有效（用户已经看完且感兴趣），但在低意向场景下会增加用户压力，导致划走；软CTA（'感兴趣的在评论区说XX'/'收藏备用'）：全场景通用，评论率/收藏率更高，意向线索质量较低；隐性CTA（结尾金句+情感共鸣，不说行动）：适合品牌曝光内容，转化路径最长。选择原则：先判断这条内容的目标，再选CTA类型，不要为了有CTA而有CTA。",
+      "source": "团队内部验证",
+      "source_ref": "CTA类型效果对比实验-2026-03",
+      "status": "已验证",
+      "verified_count": 8,
+      "last_verified": "2026-03-28",
+      "created_at": "2026-02-15",
+      "tags": ["CTA", "转化", "场景匹配"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_comply_001",
+      "title": "医疗/美妆合规红线",
+      "content": "已被平台判定违规并下架的词汇/表达（来自真实违规记录）：1.最高级词：'最好的/第一/顶级/极品'→ 替换为'我最爱的/超好用的'；2.疗效承诺：'根治/治愈/永久/消除疤痕'→ 替换为'改善/缓解/淡化'；3.绝对化承诺：'100%有效/绝对安全'→ 删除，不做效果承诺；4.医疗擦边：'医美级/医院同款'→ 需要有资质证明才能使用。违规后果：轻则内容降权，重则账号封禁。这条红线不能试探。",
+      "source": "团队内部验证",
+      "source_ref": "内容违规记录库-2026-Q1",
+      "status": "已验证",
+      "verified_count": 10,
+      "last_verified": "2026-03-31",
+      "created_at": "2026-01-01",
+      "tags": ["合规", "违规词", "红线"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_platform_001",
+      "title": "平台语言调性差异",
+      "content": "同一个产品的文案，不同平台必须重写，不能复制粘贴：抖音→口语化/短句/情绪浓度高/速度感（每句<15字，情绪词密度高）；小红书→精致感/闺蜜分享语气/温柔亲切/允许使用表情符号；B站→逻辑性/专业感/可以有长句和数据/对话感强；视频号→熟人感/朴实真诚/像发朋友圈/不需要很酷。在错误平台用错误语气，互动率会直接腰斩——这不是小问题。",
+      "source": "团队内部验证",
+      "source_ref": "跨平台文案效果对比-2026-02",
+      "status": "已验证",
+      "verified_count": 6,
+      "last_verified": "2026-03-15",
+      "created_at": "2026-01-15",
+      "tags": ["平台差异", "语言调性", "跨平台"],
+      "superseded_by": null,
+      "failure_log": []
+    },
+    {
+      "entry_id": "ink_output_001",
+      "title": "3版本输出标准",
+      "content": "收到策略brief后，必须同时输出3个差异化版本（A/B/C），不是3个相似版本。差异化必须体现在：钩子类型不同（不能三个都用同一类钩子）；情绪基调不同（至少有1个理性版、1个情感版）；CTA设计不同。同时提供：每个版本的'核心赌注'（我认为这个版本会有效的理由）。这不是为了增加工作量，是为了给strategist真正的选择，而不是让她在3个同质版本里假装在选。",
+      "source": "团队内部验证",
+      "source_ref": "文案输出规范-2026-03",
+      "status": "已验证",
+      "verified_count": 15,
+      "last_verified": "2026-03-31",
+      "created_at": "2026-02-20",
+      "tags": ["输出规范", "版本差异", "与strategist协作"],
+      "superseded_by": "ink_hook_v3_001",
+      "failure_log": []
+    }
+  ],
+  "skills_v3": [
+    {
+      "entry_id": "ink_hook_v3_001",
+      "title": "钩子类型选择公式",
+      "skill_type": "formula",
+      "source_form": {
+        "type": "data_result",
+        "description": "6个账号钩子AB测试汇总（2026-Q1），以及DEVIL-Q2-SESSION-002 INK-T001训练：发现必须先按类型差异化，而不是直接出3版相似钩子",
+        "source_ref": "6个账号的钩子AB测试汇总-2026-Q1 + DEVIL-SESSION-002-INK-T001"
+      },
+      "fixed_assets": [
+        {
+          "id": "fa_001",
+          "name": "钩子类型优先级排序",
+          "value": "1.反差冲击（+35%CTR）> 2.悬念钩子（+25%）> 3.痛点命中（+20%）> 4.权威背书（+15%）> 5.情感共鸣（+10%）",
+          "why_fixed": "此排序来自多账号实测数据，底层逻辑是用户大脑的注意力分配机制——反差触发认知不协调，优先于其他信号。平台/行业会影响幅度，但排序逻辑在信息流环境下长期稳定"
+        },
+        {
+          "id": "fa_002",
+          "name": "3版本必须差异化规则",
+          "value": "3个版本的钩子类型不得重复；必须包含至少1个理性版（数据/结果导向）+1个情感版（情绪/共鸣导向）；CTA设计必须各不相同",
+          "why_fixed": "strategist需要真正的选择而不是同质版本。三个同质版本的本质是执行者在替对方做决策（默认只有一种正确答案），这剥夺了策略层的判断空间"
+        },
+        {
+          "id": "fa_003",
+          "name": "每版本必须附核心赌注",
+          "value": "每个版本交付时，必须用1句话说明'我认为这个版本有效的理由'（核心赌注），不能只交付文字",
+          "why_fixed": "没有赌注声明的版本选择是盲选。策略层判断需要知道执行层的判断依据，才能在有分歧时做有效校准"
+        }
+      ],
+      "smart_slots": [
+        {
+          "id": "slot_001",
+          "name": "内容类型",
+          "slot_type": "options",
+          "options": ["娱乐/搞笑", "职场/教育", "美妆/护肤", "本地探店", "电商带货", "品牌曝光", "B2B专业内容"],
+          "who_fills": "strategist在brief中提供，inkwriter确认",
+          "fill_criteria": "以strategist给出的内容定位为准，如有歧义由inkwriter在复述确认时明确",
+          "example": "职场/教育 → 优先用悬念钩子+权威背书；娱乐 → 优先用反差冲击+情感共鸣"
+        },
+        {
+          "id": "slot_002",
+          "name": "主投平台",
+          "slot_type": "options",
+          "options": ["抖音", "小红书", "B站", "视频号", "微博"],
+          "who_fills": "dispatcher提供排期计划，inkwriter根据平台调整语言调性",
+          "fill_criteria": "平台决定语言密度和情绪强度：抖音→短句高情绪；小红书→精致亲切；B站→逻辑长句；视频号→朴实熟人感",
+          "example": "主投B站 → 版本A用数据/逻辑钩子，版本B用知识缺口钩子，版本C用故事化情感钩子"
+        },
+        {
+          "id": "slot_003",
+          "name": "商业目标",
+          "slot_type": "options",
+          "options": ["冷启动涨粉", "到店引流", "电商转化", "品牌曝光", "私信收线索"],
+          "who_fills": "strategist在brief中明确，inkwriter复述确认",
+          "fill_criteria": "商业目标决定CTA类型：到店/转化→硬CTA；涨粉/曝光→软CTA或隐性CTA",
+          "example": "商业目标=到店引流 → 3版本CTA必须有1个显性到店指引，不能全部用软CTA"
+        },
+        {
+          "id": "slot_004",
+          "name": "目标用户画像",
+          "slot_type": "lobster_input",
+          "who_fills": "radar提供用户语言习惯数据，strategist提供用户定位",
+          "fill_criteria": "用radar提供的评论区真实词汇替换文案中的描述词；用strategist的用户画像决定身份认同点",
+          "example": "radar数据显示用户自称'社畜' → 版本A钩子改用'社畜必看'而不是'上班族必看'"
+        }
+      ],
+      "execution_sop": [
+        "Step 1: 收到strategist的brief → 立即复述理解（内容目标+用户+平台+商业目标），等待确认，不直接写",
+        "Step 2: 确认后，根据内容类型排除不适用的钩子类型（示例：娱乐内容不用权威背书钩子）",
+        "Step 3: 从剩余钩子类型中选3个差异最大的 → 分配给版本A/B/C",
+        "Step 4: 填入平台调性 → 调整每版本的语言密度和情绪强度",
+        "Step 5: 填入商业目标对应的CTA类型 → 确保3版本CTA各不相同",
+        "Step 6: 每版本写完后，用1句话写核心赌注（fa_003）",
+        "Step 7: 执行 replication_checklist 自检，通过后交付给strategist"
+      ],
+      "replication_checklist": [
+        {
+          "item": "3版本钩子类型是否各不相同",
+          "pass_condition": "3个版本的钩子类型枚举值无重复",
+          "if_fail": "重新选钩子类型，确保差异化"
+        },
+        {
+          "item": "是否包含至少1个理性版+1个情感版",
+          "pass_condition": "版本中有1个以数据/逻辑/结果为主的版本，有1个以情绪/共鸣/故事为主的版本",
+          "if_fail": "替换其中一个同质版本"
+        },
+        {
+          "item": "3版本CTA设计是否各不相同",
+          "pass_condition": "3个版本CTA类型不同（硬/软/隐性至少覆盖2种）",
+          "if_fail": "修改其中一个CTA类型"
+        },
+        {
+          "item": "每版本是否有核心赌注声明",
+          "pass_condition": "每版本后面有1句'核心赌注：我认为这版有效因为...'",
+          "if_fail": "补充核心赌注后再交付"
+        },
+        {
+          "item": "有无合规违禁词",
+          "pass_condition": "对照 ink_comply_001 合规红线清单，无命中",
+          "if_fail": "替换违规词后重新自检"
+        }
+      ],
+      "known_anti_patterns": [
+        {
+          "pattern": "3个相似版本假装差异化",
+          "description": "3个版本本质上都是'痛点命中'型，只是换了不同的表达方式",
+          "prevention": "交付前列出3个版本各自的钩子类型枚举值，如果有重复，强制替换"
+        },
+        {
+          "pattern": "跳过复述直接写",
+          "description": "收到brief后立刻开始写文案，结果商业目标理解偏差（写了涨粉文案但目标是到店）",
+          "prevention": "SOP Step 1是硬门控，未收到strategist确认前不写正文"
+        }
+      ],
+      "status": "已验证",
+      "verified_count": 6,
+      "last_verified": "2026-04-01",
+      "created_at": "2026-04-01",
+      "tags": ["钩子", "差异化", "3版本", "CTR", "固定资产"],
+      "superseded_by": null,
+      "training_ref": "DEVIL-Q2-SESSION-002-INK-T001"
+    },
+    {
+      "entry_id": "ink_visual_brief_v3_001",
+      "title": "视觉brief交付公式",
+      "skill_type": "template",
+      "source_form": {
+        "type": "workflow",
+        "description": "DEVIL-Q2-SESSION-002 INK-T002训练：发现inkwriter给visualizer的指令只有形容词（'高级感/清新'），没有具体的画面元素、动作、色调指令，导致visualizer产出不可控",
+        "source_ref": "DEVIL-SESSION-002-INK-T002"
+      },
+      "fixed_assets": [
+        {
+          "id": "fa_001",
+          "name": "视觉brief必填7字段",
+          "value": "①视觉核心（1句话：用户第一眼感受到什么情绪/画面）②主体元素（具体到可拍/可画）③行为动态（封面静态动作+动态演进方向）④文字呈现（字数/字体风格/位置）⑤色调（整体色温+关键节点变化）⑥禁忌元素（绝对不能出现的东西+理由）⑦参考样本（1-2个具体参考，不是风格标签）",
+          "why_fixed": "visualizer生产的是可执行的画面，需要的是'指令'而不是'形容词'。7个字段覆盖了从视觉决策到执行细节的完整路径，任何一个缺失都会导致产出偏差或需要返工"
+        },
+        {
+          "id": "fa_002",
+          "name": "视觉核心必须是隐含灵魂，不是文案复述",
+          "value": "视觉核心字段必须是'用户第一眼的情绪/画面'，不是文案标题的换句话说。如果写出来的内容只是复述了文案标题，判定不合格，必须重新提炼",
+          "why_fixed": "封面/首帧的职责是在1秒内触发用户停止滑动，靠的是情绪共鸣或视觉冲击，不是信息传达。信息传达是正文的工作。视觉核心如果是信息而不是情绪，会导致封面在信息流竞争中缺乏停留动力"
+        }
+      ],
+      "smart_slots": [
+        {
+          "id": "slot_001",
+          "name": "主体元素",
+          "slot_type": "text",
+          "who_fills": "inkwriter根据文案内容判断，可参考strategist的用户画像",
+          "fill_criteria": "主体必须具体到：人物（年龄/性别/状态/动作）或产品（品类/使用场景/特写角度）或场景（室内/室外/时间段）。禁止写'真实感的人'这种无法执行的描述",
+          "example": "✅ '25-28岁女性，书桌前，半侧回头，微笑，自然妆' / ❌ '真实感强的女生'"
+        },
+        {
+          "id": "slot_002",
+          "name": "色调",
+          "slot_type": "text",
+          "who_fills": "inkwriter根据内容情绪基调和品牌调性决定",
+          "fill_criteria": "色调说明需要包含：①整体色温（冷/暖/中性）②关键色块（主色+强调色）③动态内容的色调演进方向（从X色调到Y色调）",
+          "example": "前半冷色调（蓝灰系，表达焦虑/困境）→ 后半暖色调（橙金系，表达成长/突破）"
+        },
+        {
+          "id": "slot_003",
+          "name": "参考样本",
+          "slot_type": "lobster_input",
+          "who_fills": "radar提供同赛道CTR高的真实案例，inkwriter筛选1-2个作为参考",
+          "fill_criteria": "参考样本必须是真实存在的、平台可查的内容，不能是假设性描述。选择标准：同赛道+同用户群+CTR明显高于均值",
+          "example": "@李自然说 B站某期封面（2026-01），横屏，大字+人物，右侧人物左侧文字区"
+        },
+        {
+          "id": "slot_004",
+          "name": "禁忌元素",
+          "slot_type": "text",
+          "who_fills": "inkwriter根据品牌调性+内容定位+合规要求判断",
+          "fill_criteria": "禁忌元素必须说明'为什么禁止'，不能只列出元素。两类必须覆盖：①风格禁忌（与品牌调性冲突的风格）②元素禁忌（合规/平台限制/用户认知禁忌）",
+          "example": "禁：精英感职场女强人风格（目标用户是普通女生，精英感会拉开距离）；禁：广告感强的产品特写（账号定位是真实记录，广告感降低信任度）"
+        }
+      ],
+      "execution_sop": [
+        "Step 1: 完成文案写作后，不直接发给visualizer，先用1句话写出'视觉核心'",
+        "Step 2: 用fa_002自检：视觉核心是情绪/画面 还是 信息复述？如果是后者，重新提炼",
+        "Step 3: 按7字段模板（fa_001）逐项填写",
+        "Step 4: 主体元素和禁忌元素必须具体到可执行指令（不是形容词）",
+        "Step 5: 参考样本从radar最新数据或自有案例库中选取，必须真实可查",
+        "Step 6: 完整brief通过 replication_checklist 自检后发给visualizer"
+      ],
+      "replication_checklist": [
+        {
+          "item": "视觉核心是否是情绪/画面而非信息复述",
+          "pass_condition": "读完视觉核心，能想象出一个画面或感受到一种情绪，而不是理解到一个信息点",
+          "if_fail": "重新提炼视觉核心"
+        },
+        {
+          "item": "7个字段是否全部填写",
+          "pass_condition": "①视觉核心②主体元素③行为动态④文字呈现⑤色调⑥禁忌元素⑦参考样本，无缺项",
+          "if_fail": "补全缺失字段"
+        },
+        {
+          "item": "主体元素是否具体到可执行",
+          "pass_condition": "visualizer不需要额外询问就能开始执行（有年龄/性别/动作/场景）",
+          "if_fail": "细化主体元素描述"
+        },
+        {
+          "item": "禁忌元素是否有'为什么禁'的说明",
+          "pass_condition": "每条禁忌元素后面有括号说明原因",
+          "if_fail": "补充禁忌原因"
+        }
+      ],
+      "known_anti_patterns": [
+        {
+          "pattern": "只给形容词不给画面指令",
+          "description": "给visualizer的brief是'高级感，清新，有质感'，visualizer不知道这意味着什么具体画面",
+          "prevention": "写完brief后问自己：'visualizer能不开口就执行吗？'如果不能，说明还有描述不够具体的字段"
+        },
+        {
+          "pattern": "视觉核心是标题的换句话说",
+          "description": "文案标题是'3个月从0月收入稳定'，视觉核心写'展示3个月成长过程'——这不是情绪/画面，是信息",
+          "prevention": "写视觉核心之前先问：'用户看到这个画面时，脑子里会冒出什么感受词？'"
+        }
+      ],
+      "status": "已验证",
+      "verified_count": 3,
+      "last_verified": "2026-04-01",
+      "created_at": "2026-04-01",
+      "tags": ["视觉brief", "龙虾协作", "inkwriter→visualizer", "固定资产"],
+      "superseded_by": null,
+      "training_ref": "DEVIL-Q2-SESSION-002-INK-T002"
+    }
+  ],
+  "known_failure_patterns": [
+    {
+      "pattern": "文案自嗨",
+      "description": "写出了自己觉得很好的文案，但目标用户完全不买单（语言风格不匹配/钩子方向错误）",
+      "prevention": "写完文案后，想象一个具体的目标用户（不是所有人，就是一个典型的人），问：这个人会在前3秒停下来吗？如果不确定，找echoer确认评论区用户的实际语言习惯"
+    },
+    {
+      "pattern": "Brief理解偏差",
+      "description": "策略brief明明写了商业目标是'到店'，结果写出了'适合收藏的种草文案'",
+      "prevention": "收到brief后，先复述一遍理解（'我理解这条内容的目标是X，目标用户是Y，我准备用Z钩子'），得到strategist确认后再写"
+    },
+    {
+      "pattern": "合规侥幸",
+      "description": "觉得这个词'应该没问题'，结果内容被下架",
+      "prevention": "只要有一丝不确定，就查合规词库。不要用'应该'，合规是零容忍"
+    }
+  ]
+}

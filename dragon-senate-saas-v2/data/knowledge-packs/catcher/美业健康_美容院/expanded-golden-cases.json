@@ -1,0 +1,127 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "catcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "catcher_beauty_salon_pre_event_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "xiaohongshu_private_message",
+        "lead_content": "周六要拍照，最近鼻翼黑头有点明显，想约周四晚去国金店做一次清洁，第一次来。",
+        "engagement_history": [
+          "saved two pre-event rescue posts",
+          "asked whether the slot can be reserved",
+          "viewed room and process content"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "clear event deadline",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_beauty_salon_sensitive_first_visit_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_comment_to_dm",
+        "lead_content": "第一次做护理，最近一换季就泛红，想周末先来看看适不适合做。",
+        "engagement_history": [
+          "watched full sensitive-skin video",
+          "liked the hygiene and process post"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "safety concern noted as routing signal",
+        "needs consult-style follow-up"
+      ],
+      "mustAvoid": [
+        "downgrading the lead only because the user is cautious"
+      ]
+    },
+    {
+      "id": "catcher_beauty_salon_price_only_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "public_comment",
+        "lead_content": "多少钱？",
+        "engagement_history": [
+          "watched one generic promo"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "not automatically hot",
+        "needs more context before escalation"
+      ],
+      "mustAvoid": [
+        "marking the lead as followup-ready immediately"
+      ]
+    },
+    {
+      "id": "catcher_beauty_salon_returning_guest_004",
+      "label": "long_term_case",
+      "input": {
+        "lead_source": "wechat_private_message",
+        "lead_content": "上次来做过清洁，这两天状态又不太稳，想这周再约一次。",
+        "engagement_history": [
+          "existing customer note found",
+          "past visit completed successfully"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "warm relationship signal",
+        "high fit for follow-up",
+        "returning-client value"
+      ],
+      "mustAvoid": [
+        "treating the lead as a cold new inquiry"
+      ]
+    }
+  ]
+}

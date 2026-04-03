@@ -1,0 +1,167 @@
+﻿{
+    "lobster_id":  "followup",
+    "version":  "1.0.0",
+    "total_prompts":  10,
+    "categories":  [
+                       {
+                           "category":  "reactivation",
+                           "prompts":  [
+                                           {
+                                               "id":  "followup.reactivation.gentle-reminder.v1",
+                                               "file":  "reactivation/gentle-reminder.prompt.md",
+                                               "skill_id":  "followup_dormant_wake",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-soft",
+                                                                "v1-checkin"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.reactivation.value-add-share.v1",
+                                               "file":  "reactivation/value-add-share.prompt.md",
+                                               "skill_id":  "followup_dormant_wake",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "beauty",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-resource",
+                                                                "v1-case"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.reactivation.urgency-last-chance.v1",
+                                               "file":  "reactivation/urgency-last-chance.prompt.md",
+                                               "skill_id":  "followup_multi_touch",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "education",
+                                                                  "hotel"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-deadline",
+                                                                "v1-slot"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.reactivation.seasonal-checkin.v1",
+                                               "file":  "reactivation/seasonal-checkin.prompt.md",
+                                               "skill_id":  "followup_dormant_wake",
+                                               "effectiveness_rating":  3,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "local-service",
+                                                                  "fitness"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-season",
+                                                                "v1-festival"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.reactivation.lost-deal-reopen.v1",
+                                               "file":  "reactivation/lost-deal-reopen.prompt.md",
+                                               "skill_id":  "followup_dormant_wake",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "beauty",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-reopen",
+                                                                "v1-new-angle"
+                                                            ]
+                                           }
+                                       ]
+                       },
+                       {
+                           "category":  "closing",
+                           "prompts":  [
+                                           {
+                                               "id":  "followup.closing.trial-offer.v1",
+                                               "file":  "closing/trial-offer.prompt.md",
+                                               "skill_id":  "followup_sop_generate",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "beauty",
+                                                                  "education",
+                                                                  "local-service"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-trial",
+                                                                "v1-demo"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.closing.objection-handling.v1",
+                                               "file":  "closing/objection-handling.prompt.md",
+                                               "skill_id":  "followup_multi_touch",
+                                               "effectiveness_rating":  5,
+                                               "industries":  [
+                                                                  "education",
+                                                                  "beauty",
+                                                                  "b2b"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-price",
+                                                                "v1-trust"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.closing.appointment-confirm.v1",
+                                               "file":  "closing/appointment-confirm.prompt.md",
+                                               "skill_id":  "followup_sop_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "local-service",
+                                                                  "education",
+                                                                  "beauty"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-confirm",
+                                                                "v1-remind"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.closing.payment-nudge.v1",
+                                               "file":  "closing/payment-nudge.prompt.md",
+                                               "skill_id":  "followup_multi_touch",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "retail",
+                                                                  "education",
+                                                                  "beauty"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-pay",
+                                                                "v1-order"
+                                                            ]
+                                           },
+                                           {
+                                               "id":  "followup.closing.after-demo-close.v1",
+                                               "file":  "closing/after-demo-close.prompt.md",
+                                               "skill_id":  "followup_sop_generate",
+                                               "effectiveness_rating":  4,
+                                               "industries":  [
+                                                                  "b2b",
+                                                                  "education",
+                                                                  "beauty"
+                                                              ],
+                                               "variants":  [
+                                                                "v1-summary",
+                                                                "v1-next-step"
+                                                            ]
+                                           }
+                                       ]
+                       }
+                   ]
+}

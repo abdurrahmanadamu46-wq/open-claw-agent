@@ -1,0 +1,152 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u7cbe\u54c1\u6c11\u5bbf",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "gate_to_courtyard_switch",
+      "hook_angle": "arrival_switch",
+      "hook_line": "A real boutique homestay does not hook you with decor first. It hooks you the moment the gate opens and your pace changes.",
+      "target_scene": "Standalone courtyard properties, old-town houses, or small design homestays with a clear arrival gate and visible shift from outside to inside.",
+      "cover_direction": "Lead the cover with the gate, sign, and first courtyard view, with a room glimpse or luggage motion as support. Make the promise about entering a different pace.",
+      "first_3_shots": [
+        "Local anchor to property gate",
+        "Gate push or courtyard entry with property identity",
+        "Key handoff or luggage into the hero room"
+      ],
+      "required_proof_assets": [
+        "Gate or facade",
+        "Courtyard or reception point",
+        "Room entry or key handoff"
+      ],
+      "fallback_if_missing": "If the arrival chain is incomplete, pivot to a room-truth route and drop the switch-of-state promise."
+    },
+    {
+      "id": "lively_street_quiet_room",
+      "hook_angle": "quiet_after_activity",
+      "hook_line": "The value is not only that the neighborhood is lively. The value is that you can come back from it and feel quiet immediately.",
+      "target_scene": "Old-town, lane, riverside, or arts-district boutique homestays where the room really reads as calm after the local environment.",
+      "cover_direction": "Use one local anchor and one quiet room frame on the cover. The title should answer how the property balances energy outside and calm inside.",
+      "first_3_shots": [
+        "Neighborhood anchor tied to the property entrance",
+        "Return path from outside into the property",
+        "Quiet room proof with bed, window, or tea corner"
+      ],
+      "required_proof_assets": [
+        "Property entrance",
+        "Neighborhood route anchor",
+        "Quiet room details"
+      ],
+      "fallback_if_missing": "If route proof is weak, keep only the room-comfort angle and stop promising lively-then-quiet contrast."
+    },
+    {
+      "id": "host_welcome_and_breakfast",
+      "hook_angle": "host_warmth",
+      "hook_line": "The stay feels different when you can see that someone actually prepared to receive you.",
+      "target_scene": "Host-led boutique homestays with real welcome gestures, local recommendation moments, or handmade breakfast coverage.",
+      "cover_direction": "Put the host gesture, welcome card, or breakfast handoff on the cover with a small room inset. Sell a real receiving moment, not generic service.",
+      "first_3_shots": [
+        "Host or welcome note establishes the relationship",
+        "Breakfast or tea prep shows real service",
+        "Room or dining table closes the proof loop"
+      ],
+      "required_proof_assets": [
+        "Host or manager permission",
+        "Welcome or recommendation trace",
+        "Breakfast or tea service footage"
+      ],
+      "fallback_if_missing": "If host-led proof is missing, move back to room and space credibility instead of claiming warm host energy."
+    },
+    {
+      "id": "designed_room_but_liveable",
+      "hook_angle": "design_plus_comfort",
+      "hook_line": "The best boutique room is not one that only photographs well. It is one that still feels usable when you stay in it.",
+      "target_scene": "Design-forward rooms with strong materials and styling that also have clean bathrooms, usable surfaces, and clear room logic.",
+      "cover_direction": "Use a wide room frame as the main visual with a bathroom or tabletop detail inset. Promise a room that looks good and holds up as a stay.",
+      "first_3_shots": [
+        "Room wide shot establishes layout",
+        "Table, outlet, lamp, or luggage detail proves usability",
+        "Bathroom or bedding confirms comfort and upkeep"
+      ],
+      "required_proof_assets": [
+        "Wide room coverage",
+        "Usability detail",
+        "Bathroom or bedding proof"
+      ],
+      "fallback_if_missing": "If liveability proof is thin, downgrade to a space preview instead of a design-stay claim."
+    },
+    {
+      "id": "window_and_tea_corner_pause",
+      "hook_angle": "stay_inside_longer",
+      "hook_line": "The real question is not whether the view is nice. The question is whether the room makes you want to sit down and stay longer.",
+      "target_scene": "Rooms with a window view, terrace, tea corner, reading corner, or calm pause zone that genuinely belongs to the hero room.",
+      "cover_direction": "Show the bed and window or tea corner in one believable relationship. Make the title about staying, not just looking.",
+      "first_3_shots": [
+        "Hero room wide shot with bed and pause zone relation",
+        "Tea, book, bag-drop, or pause gesture detail",
+        "Bathroom, night lamp, or morning light completes the stay rhythm"
+      ],
+      "required_proof_assets": [
+        "Window, terrace, or tea-corner proof",
+        "Same-room relationship coverage",
+        "Pause detail or room-state transition"
+      ],
+      "fallback_if_missing": "If the pause zone and room relation are not clear, reduce the promise to a simple room-view preview."
+    },
+    {
+      "id": "courtyard_night_return_path",
+      "hook_angle": "night_mood",
+      "hook_line": "Night atmosphere only works when the path back to the room feels as real as the lights.",
+      "target_scene": "Boutique homestays with real night access to courtyards, rooftops, terraces, or lit public areas and a clear return-to-room path.",
+      "cover_direction": "Put the night courtyard or terrace on the cover, but anchor it with a room door, corridor, or return-path cue.",
+      "first_3_shots": [
+        "Night courtyard or terrace establishes open-state reality",
+        "Path lighting and room-return logic make the mood executable",
+        "Night room state closes the proof chain"
+      ],
+      "required_proof_assets": [
+        "Night courtyard or terrace",
+        "Path lighting",
+        "Night room state"
+      ],
+      "fallback_if_missing": "If there is no real night window, shift to a daytime or early-evening route and drop the night-mood hook."
+    },
+    {
+      "id": "doorstep_local_life",
+      "hook_angle": "local_connection",
+      "hook_line": "A boutique homestay becomes memorable when the life outside the door feels connected to the stay inside.",
+      "target_scene": "Properties that truly connect to a lane, village road, riverside path, market, or neighborhood rhythm right outside the door.",
+      "cover_direction": "Use the door and one local anchor together. The promise should be about living in the place, not just visiting around it.",
+      "first_3_shots": [
+        "Property entrance tied to a local anchor",
+        "Short movement into or out of the neighborhood",
+        "Return to the room or courtyard so the place claim lands on the stay"
+      ],
+      "required_proof_assets": [
+        "Entrance proof",
+        "Local anchor",
+        "Return path into the property"
+      ],
+      "fallback_if_missing": "If the connection between place and property is weak, stop at local atmosphere and do not frame it as a doorstep-life stay."
+    },
+    {
+      "id": "one_night_reset_flow",
+      "hook_angle": "short_stay_reset",
+      "hook_line": "Some boutique homestays do not sell distance. They sell a one-night reset that actually feels complete.",
+      "target_scene": "Urban escape or near-destination stays with enough assets to cover arrival, room pause, and breakfast or departure.",
+      "cover_direction": "Build the cover from arrival, the hero room, and a morning cue. Make the promise about a complete one-night rhythm.",
+      "first_3_shots": [
+        "Arrival identity and entry transition",
+        "Room pause or comfort zone",
+        "Breakfast, morning light, or departure closure"
+      ],
+      "required_proof_assets": [
+        "Arrival and entry proof",
+        "Hero room stay detail",
+        "Morning or departure evidence"
+      ],
+      "fallback_if_missing": "If the closure assets are missing, reduce the story to a room preview and arrival guide instead of a full reset narrative."
+    }
+  ]
+}

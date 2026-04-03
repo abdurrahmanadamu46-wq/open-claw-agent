@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"visit_and_capacity_gate","title":"高峰预约前必须先校验时段、阿姨和区域资源","description":"家政服务的调度核心不是单纯接单，而是把预约时段、阿姨、房型、加项和门店排班能力一起纳入 task_graph。","examples":["节前高峰时段已满时，先进入候补和分时段节点。","开荒集中时，先确认阿姨排班和加项耗时。"],"priority":"high"},
+  {"id":"first_visit_and_return_visit_must_split","title":"首次上门、续约和补做是独立调度变量","description":"首次上门、续约和补做会显著改变单客时长与资源匹配。","examples":["首次上门用户需要先进入范围与时段判断节点。","续约用户应优先路由到熟悉其历史记录的链路。"],"priority":"high"},
+  {"id":"deepclean_and_cycle_need_different_routes","title":"深清和周期保洁必须走不同执行链路","description":"深清判断更依赖房型、重点区域和时长，周期保洁更依赖频率、固定阿姨和稳定时段。","examples":["深清线索优先安排范围判断。","续约线索优先锁频率和阿姨偏好。"],"priority":"high"},
+  {"id":"peak_schedule_scope_check","title":"高峰急约必须先确认门店、时段和范围","description":"节前和周末急约不能直接默认安排，需要先判断候补、改时段或缩小范围。","examples":["这周六前优先判断是否还能安排。","时段较紧时改走重点区域优先。"],"priority":"medium"},
+  {"id":"writeback_and_follow_gate","title":"服务状态与完工条件必须写回执行链路","description":"深清和续约类任务如果不把时段、完工和反馈条件写进链路，后续极易出错。","examples":["上门服务必须带上完工回写节点。","补做服务要带满意度回访。"],"priority":"high"},
+  {"id":"post_service_followup_reserve","title":"高峰上门和老客续约都要预留 followup 任务","description":"家政成交后仍有补做、续约、满意度和下次预约提醒需要跟进。","examples":["节前深清后预留节后补做节点。","周保洁续约后预留下次提醒。"],"priority":"medium"}
+]}

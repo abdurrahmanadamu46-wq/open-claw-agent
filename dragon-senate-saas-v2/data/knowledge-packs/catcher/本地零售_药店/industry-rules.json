@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"qualify_by_scene_role_scope","title":"先看场景、家庭角色和时间，再判断是不是高意向","description":"药店线索只有在明确提到夜间急用、家庭备药、慢病续购、儿童护理等场景，给谁用，以及到店时间或节点时，才能被视为高意向。","examples":["高价值信号：今晚想去门店先备退烧药，给孩子用，第一次来。","低确定性信号：最近想买点药，先了解下。"],"priority":"high"},
+  {"id":"deadline_visit_is_high_intent","title":"夜间、返乡和开学出现明确日期时要显著提权","description":"夜间急用、返乡备药、开学前准备等节点，一旦带着明确时间进入私信，通常比普通泛咨询更接近真实到店动作。","examples":["今晚要用，想约现在先过去看看。","周末返乡，这两天想先把家庭药箱备齐。"],"priority":"high"},
+  {"id":"first_time_and_explainer_questions_are_not_low_intent","title":"第一次到店和说明顾虑不应被误判成低意向","description":"第一次来、怕踩坑、担心不会选和想先问清楚，并不等于低意向。","examples":["第一次来，担心不会备药，这周末有空想先看看。","想先看儿童护理路线，但比较怕买错。"],"priority":"high"},
+  {"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着场景和时间","description":"价格问题本身并不低意向，但如果没有场景范围、角色和时间窗口等事实，Catcher 不能把它直接提到最高层。","examples":["高意向：今晚想来看退烧药，给孩子用。","普通意向：这个药多少钱。"],"priority":"medium"},
+  {"id":"returning_customer_signal_upgrade","title":"老客补药和家庭回补要抬高拟合度","description":"老客复购、家庭补货和之前买过同规格又回来补单等信号，通常意味着信任门槛已经降低。","examples":["上次来店里买过，这次想继续补一盒。","家里常备药快用完了，想按上次那种再补。"],"priority":"medium"},
+  {"id":"public_anxiety_should_not_hide_intent","title":"公开场合的焦虑表达不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如怕买错、怕来不及和怕孩子老人不适合。","examples":["第一次备药怕买错，也能先来看看吗。","今晚有点急，也想先问清楚再拿。"],"priority":"medium"}
+]}

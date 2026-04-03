@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-competitive-intelligence",
+  "name": "竞品情报周报",
+  "name_en": "Competitive Intelligence Weekly Brief",
+  "category": "competitive_intel",
+  "difficulty": "intermediate",
+  "description": "每周自动汇总竞品动作、账号内容节奏和潜在线索变化，形成管理层情报包。",
+  "pain_point": "竞品监控通常散落在多个运营同学手里，很难稳定产出结构化可追踪周报。",
+  "lobsters": ["radar", "catcher", "abacus"],
+  "skills_required": ["radar_competitor_track", "radar_hotspot_monitor", "catcher_lead_score", "abacus_strategy_report"],
+  "channels": ["wechat", "email"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "录入竞品账号池",
+      "code_type": "config",
+      "code": "整理核心竞品账号、品牌词和重点监控平台，填入竞品追踪配置。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "定义情报输出模板",
+      "code_type": "prompt",
+      "code": "指定周报关注角度：内容打法、渠道动作、线索变化或预算投向。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置监控节奏",
+      "code_type": "config",
+      "code": "建议周一到周五持续抓取，周五 18:00 自动汇总。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启动周报工作流",
+      "code_type": "none",
+      "code": "触须虾抓竞品、铁网虾识别高意向线索、金算虾做价值判断并整理成周报。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "cron",
+    "schedule": "0 18 * * 5",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "如果竞品数量很多，先从 5-10 个核心账号开始。",
+    "建议把不同平台拆成独立栏目，便于回看趋势。",
+    "可结合 L2 wisdom 看长期有效的竞品策略模式。"
+  ],
+  "estimated_cost_per_run": "$0.12-0.25",
+  "tags": ["竞品", "周报", "决策支持", "情报"]
+}

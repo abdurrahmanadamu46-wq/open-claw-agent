@@ -1,0 +1,12 @@
+﻿{
+  "session_id": "95ded3418a589c08",
+  "peer_id": "peer-123",
+  "lobster_id": "echoer",
+  "tenant_id": "t1",
+  "channel": "web",
+  "mode": "per-peer",
+  "messages": [],
+  "created_at": "2026-03-31T13:06:48.157438+00:00",
+  "last_active_at": "2026-03-31T13:06:48.157438+00:00",
+  "message_count": 0
+}

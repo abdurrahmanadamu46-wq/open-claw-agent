@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "first_visit_haircut_inquiry",
+      "title": "首次到店基础剪发询单触发轻量优先调度",
+      "description": "当来单中出现第一次来、基础剪发、低维护发型和工作日空档时，Dispatcher 应优先匹配轻流程工位，而不是塞进复杂染烫队列。",
+      "examples": [
+        "客户第一次来，想约明天下班后剪个锁骨发。",
+        "工作日午休想做一次简单修剪。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "color_with_bleach_inquiry",
+      "title": "漂染询单触发扩展时长链路",
+      "description": "当来单明确说要漂发、补色、显白染或大改发色时，Dispatcher 要立即扩展时长和技师匹配，不可按普通染发处理。",
+      "examples": [
+        "客户想做显白发色并接受漂发。",
+        "客户有旧色，周末想补色重做。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bridal_or_group_booking",
+      "title": "婚礼档和多人同做触发优先调度",
+      "description": "婚礼焕新、伴娘多人同做和节日前组团预约会显著增加档期压力。Dispatcher 应优先创建时段锁定、技师分配和备选方案。",
+      "examples": [
+        "新娘和伴娘想同天下午做头发。",
+        "两位朋友节日前想一起染发。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "lunch_break_fast_slot",
+      "title": "午休短时段询单触发快流程调度",
+      "description": "当用户明确只有午休 45 到 60 分钟窗口时，Dispatcher 应优先匹配短流程修剪或护理，不应给出复杂染烫承接。",
+      "examples": [
+        "客户只有 12:20 到 13:10。",
+        "白领想约一单快修刘海。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "peak_slot_hold_confirmation",
+      "title": "热门总监和热门时段询单触发保留确认链路",
+      "description": "当用户点名老师或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。",
+      "examples": [
+        "客户指定周六 18:30 的总监档。",
+        "客户想抢节前最后一个晚间档。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_rebook_task",
+      "title": "完成后触发补色、修剪和护理任务",
+      "description": "当系统收到项目完成信号时，Dispatcher 应自动创建补色、护理和复访提醒，而不是让链路断在付款之后。",
+      "examples": [
+        "显白染发完成后创建护理回访任务。",
+        "修刘海完成后创建周期提醒。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

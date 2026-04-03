@@ -1,0 +1,16 @@
+﻿{
+  "version": "lobster.runtime-target-queue-consumer.policy.v0.1",
+  "name": "Default Target Queue Consumer Policy",
+  "targetQueues": {
+    "lead-ops-runner": "F:\\openclaw-agent\\run\\lead-ops-queue",
+    "execute-campaign": "F:\\openclaw-agent\\run\\execute-campaign-queue"
+  },
+  "processedDirectories": {
+    "lead-ops-runner": "F:\\openclaw-agent\\run\\lead-ops-queue-processed",
+    "execute-campaign": "F:\\openclaw-agent\\run\\execute-campaign-queue-processed"
+  },
+  "resultDirectories": {
+    "lead-ops-runner": "F:\\openclaw-agent\\run\\lead-ops-results",
+    "execute-campaign": "F:\\openclaw-agent\\run\\execute-campaign-results"
+  }
+}

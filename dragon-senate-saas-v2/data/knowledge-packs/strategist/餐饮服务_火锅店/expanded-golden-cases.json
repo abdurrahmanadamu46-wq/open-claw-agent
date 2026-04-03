@@ -1,0 +1,271 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_hotpot_shop_winter_evening_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "winter_evening_dinein_growth",
+      "input": {
+        "mission_goal": "在 21 天内为社区商圈火锅店新增 320 单晚市到店核销，并把工作日晚市翻台率从 1.0 提升到 1.5。",
+        "signal_brief": "降温后周边社区与写字楼的晚市需求明显回升，竞品在打低价双人餐，但门店已有 2 款稳定锅底、现切牛肉评价高、线上评分 4.7，更适合走近场聚餐和下班局路线。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "热闹、真材实料、好约局",
+          "asset_state": "有 3800 名会员、近 60 天复购客 520 人、双人和四人组合评价稳定",
+          "location_type": "社区与写字楼混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日晚市或冬夜聚餐主路线",
+        "本地 1 到 3 公里优先级",
+        "锅底与招牌涮品证据",
+        "至少一个老客回流或私域备选路线",
+        "明确优先顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "晚市、夜宵、团建同时主推",
+        "深折扣引流超过等位与翻台承接"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的商场火锅店验证首个值得持续投入的增长场景，并决定预算优先压在家庭聚餐、下班局还是火锅到家。",
+        "signal_brief": "门店开业仅 5 天，装修出片、锅底视觉强，但真实评价不足 30 条，团队同时想做短视频爆量、低价团购和平台外卖，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 13000,
+          "brand_tone": "新潮、热闹、适合拍照",
+          "asset_state": "只有开业物料和首周少量评价，没有稳定锅底或爆品数据",
+          "location_type": "新商场餐饮楼层",
+          "operations_state": "服务员和切配仍在磨合"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实锅底、食材和评价证据",
+        "把到店与到家拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和氛围直接大规模扩量",
+        "一开业就同时冲低价团购和平台外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_group_booking_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "birthday_and_team_dinner_booking_growth",
+      "input": {
+        "mission_goal": "在 30 天内为 6 到 14 人生日局、团建局和家庭聚餐获取 42 条高意向咨询，并锁定 22 场预订。",
+        "signal_brief": "门店散台晚市上座稳定，但 2 个包间和 4 张大桌利用率偏低，附近企业聚餐和生日局需求增加，包间照片、套餐结构和停车信息齐全。",
+        "tenant_context": {
+          "budget_limit": 8500,
+          "brand_tone": "热闹、有面子、安排省心",
+          "asset_state": "有 10 组大桌和包间实拍、3 套聚餐套餐、可代订蛋糕和基础布置",
+          "location_type": "社区与产业园交界",
+          "operations_state": "周中和周末仍有部分可订档期"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "聚餐预订资格筛选",
+        "日期人数预算和辣度或桌型信息收集",
+        "标准套餐与定制组合双路线",
+        "明确主路线和 fallback"
+      ],
+      "mustAvoid": [
+        "用低价团购替代高意向聚餐路线",
+        "未查档期就承诺包间或大桌可订"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_member_reactivation",
+      "input": {
+        "mission_goal": "重激活 1800 名 90 天未到店会员，并在 18 天内带回 260 单老客复购。",
+        "signal_brief": "门店有完整会员手机号、锅底偏好和历史点菜记录，最近上新菌汤锅和春季鲜蔬拼盘，预算不高，但老客回锅成本明显低于陌生拉新。",
+        "tenant_context": {
+          "budget_limit": 3200,
+          "brand_tone": "熟客感、有烟火气、不打扰",
+          "crm_state": "可按辣锅爱好者、家庭聚餐、夜宵常客和生日月会员分层",
+          "asset_state": "有过去 6 个月订单标签和生日信息"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客分层重激活节奏",
+        "时令锅底或限定涮品作为回锅理由",
+        "低成本优先级高于陌生投流",
+        "至少一个冷启动备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套权益",
+        "忽略锅底口味偏好和历史到店时段"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_service_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下，恢复周末晚市到店客流，并在 21 天内把有效预订量拉回到上月平均水平。",
+        "signal_brief": "最近 3 周平台评分从 4.6 降到 4.2，差评集中在等位久、小料台脏乱、上菜慢和热门肉品断货，但老板仍想直接加大短视频和团购投放。",
+        "tenant_context": {
+          "budget_limit": 7500,
+          "brand_tone": "诚恳、愿意改问题、不过度承诺",
+          "asset_state": "仍有 2 款评分高的锅底和一批老客好评截图",
+          "operations_state": "周末人手紧张、补货预测不稳"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分、卫生和承接力再扩量",
+        "限定时段、限定锅底或预约分流路线",
+        "评论修复和真实口碑回收",
+        "明确停止或降级高风险投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或隐瞒卫生和等位风险"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_overexpansion",
+      "input": {
+        "mission_goal": "用 59.9 双人锅和全城最低价口号在 10 天内把到店流量翻倍。",
+        "signal_brief": "周边竞品持续用低价团购抢量，但门店当前等位已经偏长、周末翻台接近上限、小料台和服务人手紧张，继续压价可能带来差评和履约失控。",
+        "tenant_context": {
+          "budget_limit": 16000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 2 款招牌锅底，但缺少承接深折扣的人手和备货弹性",
+          "operations_state": "周末高峰桌位、锅具周转和服务都接近上限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把单店承接、等位和口碑风险说透",
+        "给出更稳的替代增长路径"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量团购或零等位式承诺",
+        "忽略翻台、锅具和服务上限"
+      ]
+    },
+    {
+      "id": "strategist_hotpot_shop_home_hotpot_split_001",
+      "label": "happy_path",
+      "scenario_tag": "dinein_and_home_hotpot_split",
+      "input": {
+        "mission_goal": "在 24 天内把火锅到家套餐做成第二增长线，新增 180 单家庭到家订单，同时不影响晚市堂食毛利。",
+        "signal_brief": "门店晚市堂食稳定，雨天和周末中午常有顾客询问火锅外送，现有包装和配送评分不错，但团队想直接把堂食套餐原样搬到外卖平台。",
+        "tenant_context": {
+          "budget_limit": 6000,
+          "brand_tone": "省心、热乎、家庭友好",
+          "asset_state": "有 2 款适合到家的锅底、近 45 天到家复购客 90 人、包装好评稳定",
+          "location_type": "社区密集区域",
+          "operations_state": "配送半径 3 公里内较稳"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "堂食与到家路线拆分",
+        "包装、复热和配送半径约束",
+        "家庭决策场景而非到店场景复用",
+        "明确主副路线排序"
+      ],
+      "mustAvoid": [
+        "把堂食优惠和话术直接照搬到家",
+        "忽略配送损耗和复热体验"
+      ]
+    }
+  ]
+}

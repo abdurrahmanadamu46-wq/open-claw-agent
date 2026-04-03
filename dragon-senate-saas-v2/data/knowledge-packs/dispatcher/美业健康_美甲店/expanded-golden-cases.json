@@ -1,0 +1,128 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "dispatcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "dispatcher_nail_salon_first_visit_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条首次到店通勤短甲询单转成可执行预约计划",
+        "routing_context": "客户第一次做甲，想约工作日下班后做短甲法式，不带旧甲",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "seat_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "基础款轻流程匹配",
+        "甲位与技师安排",
+        "完成后回写复做任务"
+      ],
+      "mustAvoid": [
+        "把首单导向复杂款队列",
+        "忽略首次到店的解释成本"
+      ]
+    },
+    {
+      "id": "dispatcher_nail_salon_removal_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条带旧甲重做的周末预约线索转成可执行计划",
+        "routing_context": "客户周末想重做，当前手上有旧甲，需要卸甲后做节日前应景款",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "seat_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "卸甲节点",
+        "扩展时长和技师匹配",
+        "节日前时段确认"
+      ],
+      "mustAvoid": [
+        "按普通基础款时长去排",
+        "忽略旧甲处理时间"
+      ]
+    },
+    {
+      "id": "dispatcher_nail_salon_bridal_group_003",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "把一条新娘与伴娘同行预约需求转成排班计划",
+        "routing_context": "一位新娘和一位伴娘想同天下午做婚礼甲，希望风格协调但完成时间不能太晚",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "seat_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "多人同做时段拆分或并行安排",
+        "热门档期保留窗口",
+        "备选方案"
+      ],
+      "mustAvoid": [
+        "只按单人流程安排",
+        "忽略婚礼档期稀缺"
+      ]
+    },
+    {
+      "id": "dispatcher_nail_salon_peak_004",
+      "label": "risk_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理节日前晚高峰连续复杂款预约导致的台位和返修压力",
+        "routing_context": "18:00 到 21:00 同一位技师被排了 3 单，其中两单为高复杂度贴饰款",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "seat_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "复杂度分流或顺延动作",
+        "工具重置与准备节点",
+        "避免压缩成品质量"
+      ],
+      "mustAvoid": [
+        "假设复杂款可以无缝衔接三单",
+        "靠压缩过程硬接"
+      ]
+    }
+  ]
+}

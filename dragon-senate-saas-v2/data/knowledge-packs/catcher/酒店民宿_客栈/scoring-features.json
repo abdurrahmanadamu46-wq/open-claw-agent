@@ -1,0 +1,128 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u5ba2\u6808",
+  "lobster_id": "catcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "booking_action_explicitness",
+      "title": "Booking action explicitness",
+      "description": "Evaluate whether the lead clearly expresses reserve, hold, confirm pickup, confirm parking, confirm late check-in, confirm room type, confirm invoice, or confirm buyout scope. High scores mean the lead has moved beyond casual atmosphere browsing into execution planning.",
+      "examples": [
+        "High score example: Please hold two twin rooms for Friday to Sunday and confirm pickup from the south gate.",
+        "Low score example: Does your courtyard look good at night."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stay_fact_completeness",
+      "title": "Stay fact completeness",
+      "description": "Evaluate whether the lead includes inn or scenic area, dates, nights, room count, guest structure, room type, arrival time, transport mode, and contact identity. The more complete the facts, the more reliable intent_score and lead_tier become.",
+      "examples": [
+        "High score example: inn, dates, nights, guests, room type, and arrival plan are all present.",
+        "Low score example: We may stay near the ancient town sometime."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "property_or_scenic_specificity",
+      "title": "Property or scenic-area specificity",
+      "description": "Evaluate whether the inquiry is tied to a specific inn, ancient-town gate, scenic district, riverside block, parking lot, rail station, or shuttle drop-off point. Location specificity matters because stairs, pickup, parking, breakfast, and noise depend on the actual property.",
+      "examples": [
+        "High score example: one room at your Fenghuang north-gate riverside inn.",
+        "Low score example: Do you have any guesthouse in the old town."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "arrival_and_transport_clarity",
+      "title": "Arrival and transport clarity",
+      "description": "Evaluate whether urgency is backed by real travel facts such as train time, self-drive arrival time, number of cars, scenic shuttle timing, pickup point, or late check-in window. Real arrival clarity should raise actionable confidence.",
+      "examples": [
+        "High score example: We arrive at 9:20 p.m. by rail and reach the south gate around 10:00 p.m.",
+        "Low score example: We will come late, help arrange everything."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "guest_structure_and_access_fit",
+      "title": "Guest structure and access fit",
+      "description": "Evaluate whether the lead clearly states adult and child counts, child ages, elderly needs, room adjacency, low-floor needs, stair tolerance, quiet-rest needs, and number of rooms. The clearer the structure and access needs, the stronger the fit signal.",
+      "examples": [
+        "High score example: two adults, one child age eight, one elderly parent, and one low-floor room needed.",
+        "Low score example: Family trip, maybe more people later, not sure about rooms."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pet_and_house_rule_compliance",
+      "title": "Pet and house-rule compliance",
+      "description": "Evaluate whether the lead clearly states pet size, number, pet-friendly room need, deposit awareness, quiet-hour willingness, and readiness to follow registration and house rules. Clear compliance strengthens fit, while rule-avoidance increases risk.",
+      "examples": [
+        "High score example: one corgi, two nights, pet-friendly room, and okay with cleaning rules.",
+        "Low score example: We do not want to mention the dog or register everyone."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "scenario_fit",
+      "title": "Scenario fit",
+      "description": "Evaluate whether the lead's use case such as ancient-town sightseeing, family slow travel, tea retreat, workation, writing stay, hospital companion stay, or reunion aligns with what an inn can realistically support.",
+      "examples": [
+        "High score example: two-night old-town family stay with parking and breakfast needs.",
+        "Low score example: vague content-shoot interest with no real compliant stay plan."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "group_scope_and_buyout_clarity",
+      "title": "Group scope and buyout clarity",
+      "description": "Evaluate whether reunion, retreat, tea event, or buyout demand includes room count, nights, dining scope, tea room use, quiet-hour compliance, invoice needs, and organizer identity. Clear scope should raise fit_score and follow-up readiness.",
+      "examples": [
+        "High score example: six rooms for two nights plus reunion dinner and invoice details.",
+        "Low score example: We may buy out the whole place sometime if it is cheap."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "stay_length_and_operational_support_match",
+      "title": "Stay length and operational support match",
+      "description": "Evaluate whether short-stay or long-stay duration matches the inn's support for Wi-Fi, desk space, laundry, breakfast, cleaning rhythm, invoice needs, and quiet-hour expectations. Clear duration plus realistic support needs should raise fit_score.",
+      "examples": [
+        "High score example: a 12-night writing stay needing stable Wi-Fi, laundry, and weekly invoice.",
+        "Low score example: wants a long stay but cannot specify duration, budget, or support needs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_and_resource_feasibility",
+      "title": "Budget and resource feasibility",
+      "description": "Evaluate whether budget broadly matches holiday timing, best-view rooms, private courtyard access, pet-friendly supply, pickup, parking, breakfast, and low-noise expectations. Unrealistic combinations should lower fit_score.",
+      "examples": [
+        "High score example: budget broadly matches the dates, room type, and scenic resources requested.",
+        "Low score example: wants the best river-view room on a peak holiday with pickup and parking at a very low budget."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "decision_ownership_and_repeat_engagement",
+      "title": "Decision ownership and repeat engagement",
+      "description": "Evaluate whether the person asking is the actual guest, family organizer, payer, or reunion organizer, and whether the same stay demand becomes more complete across comments, DMs, calls, or enterprise chat. Consistent multi-touch information should increase confidence, while conflicting details should reduce it.",
+      "examples": [
+        "High score example: I am the organizer, the dates are fixed, and I am sending the old order and invoice details.",
+        "Low score example: I am just casually asking for someone else and every channel shows different dates."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risk_and_noise_intensity",
+      "title": "Risk and noise intensity",
+      "description": "No registration, hidden guest count, outside visitors, late-night parties, fireworks, pets in restricted rooms, guaranteed best-view demands, absolute quiet guarantees, pickup complaints, refund disputes, and creator or agency fishing should all increase risk_score and can override commercial temptation.",
+      "examples": [
+        "High risk example: six adults in one courtyard suite, no full registration, and friends joining for late-night singing.",
+        "Low risk example: normal stay confirmation around inn, dates, guests, arrival time, parking, and check-in flow."
+      ],
+      "priority": "high"
+    }
+  ]
+}

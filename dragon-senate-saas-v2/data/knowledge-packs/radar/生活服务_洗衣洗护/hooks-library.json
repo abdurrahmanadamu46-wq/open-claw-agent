@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"urgent_laundry_window_hook","title":"急洗与时间窗口钩子","description":"当用户同时提到明天要穿、后天出差、周末婚礼等时间窗口和具体洗护方向时，应优先标记为高价值信号。","examples":["后天要穿的大衣，想今天送洗。","周末婚礼前想先把礼服洗护好。"],"priority":"high"},
+  {"id":"material_scope_hook","title":"材质与件数范围钩子","description":"出现羽绒、羊毛、真丝、鞋包和件数时，说明线索更接近真实成交。","examples":["两件羽绒服和一件羊毛大衣。","真丝裙子和西装都想洗护。"],"priority":"high"},
+  {"id":"pickup_delivery_hook","title":"取送与到店钩子","description":"上门取送和次日达需求如果带着明确时间与地址偏好，也应视为稳定价值信号。","examples":["今晚能不能先上门取。","明天中午前能不能送回。"],"priority":"medium"},
+  {"id":"damage_risk_hook","title":"洗坏与赔付焦虑钩子","description":"用户主动追问会不会缩水、串色、发黄和赔不赔时，说明信任是关键影响因子。","examples":["羊毛大衣会不会缩水。","鞋子洗坏了怎么赔。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"换季与返校窗口钩子","description":"换季、返校和宴会节点一旦带着明确日期出现，应显著提权。","examples":["换季想把羽绒和大衣一起送洗。","下周开学前想先把床品洗好。"],"priority":"high"},
+  {"id":"luxury_care_hook","title":"奢护修复钩子","description":"鞋包奢护、补色和礼服西装护理常伴随更高客单和更复杂履约，应单独关注。","examples":["包包发黄想做奢护。","婚礼西装想先做精洗和熨烫。"],"priority":"medium"}
+]}

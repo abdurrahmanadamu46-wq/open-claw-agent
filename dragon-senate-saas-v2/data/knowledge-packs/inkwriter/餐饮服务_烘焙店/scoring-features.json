@@ -1,0 +1,129 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "inkwriter",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "bakery_score_hook_strength",
+      "title": "Hook strength",
+      "description": "High-scoring bakery copy makes the ordering moment visible within the first two lines: rushed breakfast, office sharing, afternoon tea, birthday planning, gift preparation, or weekend stock-up. Low-scoring copy opens with generic fragrance praise or product adjectives with no scene.",
+      "examples": [
+        "High signal: the first line includes a concrete occasion, timing pressure, or use case.",
+        "High signal: the user can immediately tell why bakery is relevant right now.",
+        "Low signal: the copy starts with vague delicious or handmade language and no trigger moment."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_menu_guidance",
+      "title": "Menu guidance quality",
+      "description": "High-scoring copy helps users choose between breakfast breads, pastry desserts, whole cakes, sliced cakes, gift boxes, and sharing combinations. Low-scoring copy sounds tempting but never makes the order decision easier.",
+      "examples": [
+        "High signal: the copy identifies one or two safe first-order routes.",
+        "High signal: single-person, family, celebration, and group-sharing needs are separated clearly.",
+        "Low signal: the product list grows longer but the path to ordering stays unclear."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_scene_fit",
+      "title": "Scene, audience, and channel fit",
+      "description": "High-scoring bakery copy maps store advantages to real contexts such as commuting, school-drop breakfast, office pastry sharing, birthday pickup, home delivery boundaries, or holiday gifting. Low-scoring copy uses one flat message for every customer and every order route.",
+      "examples": [
+        "High signal: breakfast copy discusses portability, timing, and quick choice.",
+        "High signal: cake copy discusses headcount, style fit, and pickup planning.",
+        "Low signal: the same broad pitch is used for bread, cake, and gift-box scenarios."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_texture_translation",
+      "title": "Texture-to-decision translation",
+      "description": "High-scoring copy converts softness, crispness, butter aroma, cream lightness, fruit freshness, and filling density into practical reasons to buy, carry, share, or preorder. Low-scoring copy stops at sensory praise and never explains why the product fits the user's decision.",
+      "examples": [
+        "High signal: soft bread is translated into easier breakfast use or kid acceptance.",
+        "High signal: lighter cream is translated into celebration suitability across age groups.",
+        "Low signal: layered, rich, and fragrant appear without any order meaning."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_trust_evidence",
+      "title": "Trust and freshness evidence density",
+      "description": "High-scoring bakery copy uses real proof such as batch timing, product sizing, writing and candle options, packaging logic, pickup flow, cut-size guidance, and local convenience. Low-scoring copy leans on hype, empty popularity claims, or unverifiable freshness absolutes.",
+      "examples": [
+        "High signal: process details support the sales angle.",
+        "High signal: freshness is explained through rhythm, not slogans.",
+        "Low signal: the copy relies on everyone buys this or always just baked language."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_offer_clarity",
+      "title": "Offer and customization clarity",
+      "description": "High-scoring copy explains size, weight, slice count, writing service, candles, decoration scope, flavor upgrades, gift packaging, and pricing boundaries. Low-scoring copy implies that all cakes, boxes, or add-ons fit one exact quote.",
+      "examples": [
+        "High signal: the user can tell what changes the final price.",
+        "High signal: basic styles and more complex customization routes are clearly separated.",
+        "Low signal: the copy uses one-price language without conditions."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_local_fulfillment",
+      "title": "Local fulfillment completeness",
+      "description": "High-scoring copy reduces logistical friction by clarifying store relevance, pickup windows, delivery boundaries, cold-chain sensitivity, peak-hour expectations, and preorder timing. Low-scoring copy ignores the actual last-mile step between desire and receiving the bakery item.",
+      "examples": [
+        "High signal: the copy tells the user when and how to pick up more smoothly.",
+        "High signal: refrigerated cake handling is described conservatively.",
+        "Low signal: no pickup, delivery, or timing information appears at all."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_emotional_resonance",
+      "title": "Emotional resonance",
+      "description": "High-scoring copy captures the real emotional need behind the purchase: avoiding a chaotic morning, showing up with a decent birthday cake, bringing something appropriate to the office, or taking home a better weekend breakfast rhythm. Low-scoring copy only describes products and never the human reason for buying them.",
+      "examples": [
+        "High signal: the user can see their own routine or celebration pressure in the copy.",
+        "High signal: the order feels tied to relief, care, or occasion-fit rather than just appetite.",
+        "Low signal: the brand talks only from the display-case perspective."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "bakery_score_risk_control",
+      "title": "Risk control",
+      "description": "High-scoring copy avoids health-function claims, body claims, diabetic-safe implications, absolute freshness promises, unsupported ranking language, guaranteed custom speed, and guaranteed intact delivery promises. Low-scoring copy overreaches on wellness, safety, popularity, price, or fulfillment certainty.",
+      "examples": [
+        "High signal: risky expressions are replaced with portion, sweetness, and scene-based language.",
+        "High signal: time and delivery expectations are framed conservatively.",
+        "Low signal: the copy promises not fattening desserts, citywide best taste, or one-hour custom cakes."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_cta_clarity",
+      "title": "CTA clarity",
+      "description": "High-scoring CTA asks for useful next-step information such as date, headcount, pickup time, flavor direction, budget, writing needs, candles, gift intent, and delivery versus pickup route. Low-scoring CTA only says message us or come order without shaping the next move.",
+      "examples": [
+        "High signal: the CTA tells the user exactly what to send back.",
+        "High signal: breakfast, cake, and group-sharing CTAs ask for different inputs.",
+        "Low signal: the CTA stays generic and does not collect decision variables."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bakery_score_tone_consistency",
+      "title": "Tone consistency",
+      "description": "High-scoring copy keeps the same grounded tone across hook, body, and CTA. Low-scoring copy starts with warm lifestyle language and then suddenly shifts into fake scarcity, hard-selling urgency, or unsupported promises, which breaks trust.",
+      "examples": [
+        "High signal: the tone stays calm, useful, and occasion-aware throughout.",
+        "High signal: persuasion comes from fit and proof rather than pressure spikes.",
+        "Low signal: the ending jumps into panic language that the opening did not prepare."
+      ],
+      "priority": "medium"
+    }
+  ]
+}

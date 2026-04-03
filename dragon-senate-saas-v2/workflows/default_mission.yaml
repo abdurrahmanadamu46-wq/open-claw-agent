@@ -1,0 +1,112 @@
+metadata:
+  workflow_id: "default_mission"
+  version: "1.0.0"
+  description: "默认使命流：情报 -> 策略 -> 文案/视觉 -> 分发 -> 互动/线索 -> 复盘 -> 跟进"
+  author: "commander"
+  updated_at: "2026-04-01"
+
+nodes:
+  - id: commander
+    lobster: commander
+    description: "总脑编排"
+    type: orchestrator
+    expects: "MissionPlan:"
+    max_retries: 3
+    timeout_seconds: 120
+  - id: radar
+    lobster: radar
+    description: "情报雷达"
+    type: worker
+    expects: "SignalBrief:"
+    max_retries: 2
+    timeout_seconds: 60
+  - id: strategist
+    lobster: strategist
+    description: "策略规划"
+    type: worker
+    expects: "StrategyRoute:"
+    max_retries: 2
+    timeout_seconds: 90
+  - id: inkwriter
+    lobster: inkwriter
+    description: "文案生产"
+    type: worker
+    expects: "CopyPack:"
+    max_retries: 3
+    timeout_seconds: 120
+  - id: visualizer
+    lobster: visualizer
+    description: "视觉生产"
+    type: worker
+    expects: "StoryboardPack:"
+    max_retries: 2
+    timeout_seconds: 90
+  - id: dispatcher
+    lobster: dispatcher
+    description: "分发执行"
+    type: worker
+    expects: "ExecutionPlan:"
+    max_retries: 1
+    timeout_seconds: 60
+  - id: echoer
+    lobster: echoer
+    description: "互动处理"
+    type: worker
+    expects: "EngagementReplyPack:"
+    max_retries: 2
+    timeout_seconds: 60
+  - id: catcher
+    lobster: catcher
+    description: "线索承接"
+    type: worker
+    expects: "LeadAssessment:"
+    max_retries: 1
+    timeout_seconds: 60
+  - id: abacus
+    lobster: abacus
+    description: "复盘归因"
+    type: worker
+    expects: "ValueScoreCard:"
+    max_retries: 2
+    timeout_seconds: 90
+  - id: followup
+    lobster: followup
+    description: "跟进行动"
+    type: worker
+    expects: "FollowUpActionPlan:"
+    max_retries: 2
+    timeout_seconds: 60
+
+edges:
+  - from: commander
+    to: radar
+  - from: radar
+    to: strategist
+  - from: strategist
+    to:
+      - inkwriter
+      - visualizer
+    parallel: true
+  - from: inkwriter
+    to: dispatcher
+  - from: visualizer
+    to: dispatcher
+    wait_for: inkwriter
+  - from: dispatcher
+    to:
+      - echoer
+      - catcher
+    parallel: true
+  - from: echoer
+    to: abacus
+  - from: catcher
+    to: abacus
+    wait_for: echoer
+  - from: abacus
+    to: followup
+
+config:
+  max_parallel_lobsters: 2
+  escalate_on_node_failure: true
+  fresh_context_on_new_mission: true
+  audit_enabled: true

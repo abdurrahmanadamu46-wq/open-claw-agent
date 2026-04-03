@@ -1,0 +1,123 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "abacus",
+  "primaryArtifact": "ValueScoreCard",
+  "cases": [
+    {
+      "id": "abacus_high_value_001",
+      "label": "happy_path",
+      "input": {
+        "lead_assessment_or_campaign_result": "Lead tier A with high fit and clear booking intent",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.36
+        },
+        "cost_data": {
+          "cost_per_lead": 120
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "case-study video",
+            "private message"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "high short-term score",
+        "clear reward suggestion"
+      ]
+    },
+    {
+      "id": "abacus_long_term_001",
+      "label": "edge_case",
+      "input": {
+        "lead_assessment_or_campaign_result": "Lead is not instantly hot but fits a high-LTV segment",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.18,
+          "lifetime_value": 18000
+        },
+        "cost_data": {
+          "cost_per_lead": 90
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "educational content",
+            "saved post"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "long-term score higher than short-term score",
+        "do not discard prematurely"
+      ]
+    },
+    {
+      "id": "abacus_attribution_conflict_001",
+      "label": "happy_path",
+      "input": {
+        "lead_assessment_or_campaign_result": "Moderate intent lead with multiple touchpoints",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.22
+        },
+        "cost_data": {
+          "cost_per_lead": 150
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "comment reply",
+            "private message",
+            "reactivation message"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "attribution hint",
+        "resource recommendation"
+      ]
+    },
+    {
+      "id": "abacus_regression_001",
+      "label": "failure_case",
+      "input": {
+        "lead_assessment_or_campaign_result": "Low-fit but flashy interaction metrics",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.04
+        },
+        "cost_data": {
+          "cost_per_lead": 240
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "viral comment thread"
+          ]
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustAvoid": [
+        "overweighting vanity engagement over actual business value"
+      ]
+    }
+  ]
+}

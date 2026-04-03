@@ -1,0 +1,235 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_boutique_stay_weekend_anniversary_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekend_anniversary_conversion_growth",
+      "input": {
+        "mission_goal": "在 28 天内为山景精品民宿新增 180 间夜周末有效直订，并把双人纪念日两晚方案占比从 22% 提升到 38%。",
+        "signal_brief": "民宿位于 2 小时城市圈内，共 14 间房，带庭院、浴缸房和特色早餐，近 60 天平台评分 4.8。竞品主要靠 OTA 限时低价和直播抢量，但该民宿更适合走纪念日与周末短逃离路线。",
+        "tenant_context": {
+          "budget_limit": 8000,
+          "brand_tone": "安静、精致、真实、不浮夸",
+          "asset_state": "有 6 间景观房、较完整的真实房型素材、120 位近 180 天复住或咨询过的熟客，以及较稳定的情侣住后评价。",
+          "location_type": "城市近郊山野村落型精品民宿",
+          "operations_state": "周五晚集中到店较多，停车位有限，但早餐和房务承接相对稳定。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "2 小时城市圈周末短逃离与纪念日主路线",
+        "房型、日期、预算和加购需求的资格筛选逻辑",
+        "早餐、庭院、窗景和晚到动线等真实证据",
+        "至少一条老客复住或工作日慢住 fallback",
+        "明确优先级顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "把纪念日、带宠和朋友小聚混成同一套深折扣套餐",
+        "在停车和周五晚入住承接未确认前继续放大晚到流量"
+      ]
+    },
+    {
+      "id": "strategist_boutique_stay_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "newly_opened_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内验证新开设计型精品民宿首个值得持续投放的增长场景，并决定预算优先压在周末短逃离、拍照打卡还是工作日疗愈慢住。",
+        "signal_brief": "民宿开业仅 9 天，设计感和照片表现很强，但真实住后评价较少，早餐、保洁和入住接待仍在磨合。团队想同时做 OTA 秒杀、达人探店、短视频团购和私域预售，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "干净、设计感、轻松但不夸张",
+          "asset_state": "共 11 间房，庭院和公共客厅出片较好，但只有少量真实住客评价和不完整房型素材。",
+          "location_type": "老街与近郊混合客源的精品民宿",
+          "operations_state": "主理人手动接待，雨天兜底体验偏弱，工作日晚到和早餐高峰最不稳定。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据下的小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实房型、到店动线和住后评价证据",
+        "把 OTA 冷启动和直订沉淀分开排序"
+      ],
+      "mustAvoid": [
+        "基于样板图和开业热度直接大规模扩量",
+        "开业初期同时深折扣冲 OTA、团购和定制场景"
+      ]
+    },
+    {
+      "id": "strategist_boutique_stay_weekday_healing_workation_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_healing_workation_fill",
+      "input": {
+        "mission_goal": "在 30 天内为近郊安静型精品民宿新增 120 间夜工作日有效预订，并把周一到周四平均入住率从 26% 提升到 48%。",
+        "signal_brief": "民宿周末接近满房，但工作日空房明显。门店有稳定 Wi-Fi、茶室、公共客厅和 2 间宠物友好房，附近有步道与咖啡馆。团队想用 99 元团购一把补齐工作日空房，更适合先走工作日换景慢住路线。",
+        "tenant_context": {
+          "budget_limit": 5000,
+          "brand_tone": "安静、有秩序、不打扰",
+          "asset_state": "近 90 天有关于安静、早餐和公共空间的稳定好评，也有少量 2 晚以上住客记录。",
+          "location_type": "90 分钟城市圈老宅改造精品民宿",
+          "operations_state": "工作日早餐和房务可承接，但不适合大批同日低价集中入住。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日与周末拆分路线",
+        "远程办公、疗愈慢住或带宠错峰的资格筛选字段",
+        "Wi-Fi、安静边界、公共空间和到店便利证据",
+        "至少一条老客回流或短住验证 fallback",
+        "明确优先级顺序与资源风险"
+      ],
+      "mustAvoid": [
+        "工作日全日期开放低价团购冲量",
+        "忽略工作日承接边界和主理人响应能力"
+      ]
+    },
+    {
+      "id": "strategist_boutique_stay_private_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "repeat_guest_and_private_reactivation",
+      "input": {
+        "mission_goal": "在 21 天内重激活 900 位历史住客和 160 位微信私域联系人，并带回 110 间夜直订或季节复住订单。",
+        "signal_brief": "历史住客主要来自周末短逃离、纪念日和带宠同住场景。CRM 保留了出发城市、入住日期、房型偏好、是否带宠、是否做过纪念日和早餐加购记录，但最近预算更多投向陌生短视频流量，私域回流明显下降。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "熟客友好、经过筛选、不群发轰炸",
+          "crm_state": "可按情侣、带宠、工作日慢住、季节偏好和房型偏好分层。",
+          "asset_state": "有近一年的住后评价、二刷记录和部分主理人私域互动沉淀。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客与私域的分层重激活节奏",
+        "围绕换季、指定房型、纪念日返场或带宠复住，而不是纯降价",
+        "低成本回流优先级高于陌生冷启动",
+        "至少一条 OTA 口碑修复或工作日补房 fallback"
+      ],
+      "mustAvoid": [
+        "统一群发一套文案和同一套权益",
+        "忽略历史入住动机、房型偏好和是否带宠"
+      ]
+    },
+    {
+      "id": "strategist_boutique_stay_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "review_drop_photo_mismatch_and_service_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复有效咨询与预订，并在 21 天内把可成交线索拉回上个月平均水平。",
+        "signal_brief": "最近 3 周评分从 4.7 降到 4.1，差评集中在图文不符、噪音、水压、早餐出餐慢和主理人响应延迟。老板仍想用 199 元闪促和直播团购迅速填满空房。",
+        "tenant_context": {
+          "budget_limit": 6000,
+          "brand_tone": "诚恳、克制、先修再放大",
+          "asset_state": "仍有 5 个口碑相对稳定的房型和一批真实好评可以使用。",
+          "operations_state": "周五晚入住高峰和节假日早餐时段最容易出问题。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和承接力再扩量",
+        "限制到低风险房型或低投诉时段的替代路线",
+        "真实住后评价回收和问题修复节奏",
+        "明确停止或降级高风险低价流量"
+      ],
+      "mustAvoid": [
+        "差评扩散期继续大规模拉新",
+        "刷评或掩盖图文不符、噪音和设施问题"
+      ]
+    },
+    {
+      "id": "strategist_boutique_stay_holiday_price_war_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "holiday_low_price_overpromise_buyout",
+      "input": {
+        "mission_goal": "依靠全网最低价、保证出片、宠物不限量和免费延迟退房，在假期把精品民宿做满房并顺带提升品牌声量。",
+        "signal_brief": "民宿位于热门景区村落，共 12 间房，假期需求本来就会上升，但团队想用 OTA、直播和私域一口价抢量，并承诺包院、无限制宠物和保证日落窗景。当前高峰日实际可售房量只有 9 间，停车位 6 个，早餐座位 18 个，且天气不确定性较高。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "已有一部分老客复住和高确定性预订咨询，但缺少清晰价格治理和房态保留策略。",
+          "operations_state": "取消、No-show、天气和晚间接待波动都较大。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把房态、价格、取消、天气和人工承接风险说透",
+        "给出预付、最短连住、限量房型或高确定性预订的更稳替代打法"
+      ],
+      "mustAvoid": [
+        "全渠道最低价导向",
+        "保证景观、宠物无限制、无条件包院或免费延迟退房承诺",
+        "忽略早餐、停车、天气和晚间接待的承接上限"
+      ]
+    }
+  ]
+}

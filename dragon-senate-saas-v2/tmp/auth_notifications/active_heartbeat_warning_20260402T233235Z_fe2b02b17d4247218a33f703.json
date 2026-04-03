@@ -1,0 +1,9 @@
+{
+  "kind": "runtime_notification",
+  "tenant_id": "tenant_main",
+  "category": "active_heartbeat",
+  "level": "warning",
+  "target": "tenant_main",
+  "text": "📳 主动巡检告警\n- [warning] 备份目录不存在",
+  "requested_at": "2026-04-02T23:32:35.513077+00:00"
+}

@@ -1,0 +1,365 @@
+# Unified control-plane stack:
+# - web + backend are the only control surface
+# - dragon-senate-saas-v2 runs as an internal AI subservice
+# - shared infra (redis/postgres/qdrant/ollama) is single-instance
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "${REDIS_HOST_PORT:-16379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-dragon_db}
+    ports:
+      - "${POSTGRES_HOST_PORT:-15432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-dragon_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "${QDRANT_HTTP_HOST_PORT:-16333}:6333"
+      - "${QDRANT_GRPC_HOST_PORT:-16334}:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  lobster-memory:
+    build:
+      context: ./services/lobster-memory
+    environment:
+      QDRANT_HOST: qdrant
+      QDRANT_PORT: "6333"
+      MEMORY_STORAGE_DIR: /app/data/memory
+    depends_on:
+      - qdrant
+    ports:
+      - "${LOBSTER_MEMORY_HOST_PORT:-18020}:8000"
+    volumes:
+      - lobster_memory_data:/app/data/memory
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "${OLLAMA_HOST_PORT:-11444}:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  ollama-init:
+    image: ollama/ollama:latest
+    depends_on:
+      - ollama
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        for i in 1 2 3 4 5; do
+          ollama list >/dev/null 2>&1 && break;
+          echo "waiting ollama...";
+          sleep 2;
+        done;
+        MODEL=${LOCAL_LLM_MODEL:-qwen3:59b};
+        if ollama pull "$MODEL"; then
+          echo "ollama model ready: $MODEL";
+        else
+          echo "model $MODEL not found, fallback to qwen3:8b and create alias";
+          ollama pull qwen3:8b;
+          ollama cp qwen3:8b "$MODEL";
+          echo "ollama alias ready: $MODEL -> qwen3:8b";
+        fi
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-qwen3:59b}
+    restart: "no"
+
+  claw-router:
+    image: node:20-alpine
+    profiles: ["routing"]
+    command:
+      - /bin/sh
+      - -lc
+      - >
+        apk add --no-cache socat >/dev/null 2>&1;
+        npx -y @blockrun/clawrouter --port 8402 &
+        sleep 1;
+        exec socat TCP-LISTEN:8403,fork,reuseaddr,bind=0.0.0.0 TCP:127.0.0.1:8402
+    environment:
+      NODE_ENV: production
+      PORT: 8402
+    ports:
+      - "8402:8403"
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8403 || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  ai-subservice:
+    build:
+      context: ./dragon-senate-saas-v2
+      args:
+        AI_INSTALL_HEAVY: ${DRAGON_AI_INSTALL_HEAVY:-0}
+    env_file:
+      - ./dragon-senate-saas-v2/.env
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      DEPLOY_REGION: ${DEPLOY_REGION:-cn-shanghai}
+      STORAGE_REGION: ${STORAGE_REGION:-cn-shanghai}
+      DATA_RESIDENCY: ${DATA_RESIDENCY:-cn-mainland}
+      DATABASE_URL: ${DRAGON_AI_DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/dragon_db}
+      REDIS_URL: ${DRAGON_AI_REDIS_URL:-redis://redis:6379/0}
+      QDRANT_URL: ${DRAGON_AI_QDRANT_URL:-http://qdrant:6333}
+      LOCAL_LLM_BASE_URL: ${DRAGON_AI_LOCAL_LLM_BASE_URL:-http://ollama:11434/v1}
+      RAG_ANYTHING_ENABLED: ${DRAGON_AI_RAG_ANYTHING_ENABLED:-false}
+      JWT_SECRET: ${DRAGON_AI_JWT_SECRET:-change_me_please_at_least_16_chars}
+      HITL_ENABLED: ${DRAGON_AI_HITL_ENABLED:-true}
+      EDGE_SHARED_SECRET: ${EDGE_SHARED_SECRET:-edge-demo-secret}
+      HITL_SHARED_SECRET: ${HITL_SHARED_SECRET:-edge-demo-secret}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+    ports:
+      - "18000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ai-subservice-heavy:
+    build:
+      context: ./dragon-senate-saas-v2
+      args:
+        AI_INSTALL_HEAVY: "1"
+    profiles: ["ai-heavy"]
+    env_file:
+      - ./dragon-senate-saas-v2/.env
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      DEPLOY_REGION: ${DEPLOY_REGION:-cn-shanghai}
+      STORAGE_REGION: ${STORAGE_REGION:-cn-shanghai}
+      DATA_RESIDENCY: ${DATA_RESIDENCY:-cn-mainland}
+      DATABASE_URL: ${DRAGON_AI_DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/dragon_db}
+      REDIS_URL: ${DRAGON_AI_REDIS_URL:-redis://redis:6379/0}
+      QDRANT_URL: ${DRAGON_AI_QDRANT_URL:-http://qdrant:6333}
+      LOCAL_LLM_BASE_URL: ${DRAGON_AI_LOCAL_LLM_BASE_URL:-http://ollama:11434/v1}
+      RAG_ANYTHING_ENABLED: "true"
+      JWT_SECRET: ${DRAGON_AI_JWT_SECRET:-change_me_please_at_least_16_chars}
+      HITL_ENABLED: ${DRAGON_AI_HITL_ENABLED:-true}
+      EDGE_SHARED_SECRET: ${EDGE_SHARED_SECRET:-edge-demo-secret}
+      HITL_SHARED_SECRET: ${HITL_SHARED_SECRET:-edge-demo-secret}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+    ports:
+      - "18001:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  skill-registry:
+    build:
+      context: ./services/skill-registry-service
+    environment:
+      DRAGON_SENATE_URL: ${SKILL_REGISTRY_DRAGON_SENATE_URL:-http://ai-subservice:8000}
+    depends_on:
+      ai-subservice:
+        condition: service_healthy
+    ports:
+      - "8050:8050"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8050/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      DEPLOY_REGION: ${DEPLOY_REGION:-cn-shanghai}
+      STORAGE_REGION: ${STORAGE_REGION:-cn-shanghai}
+      DATA_RESIDENCY: ${DATA_RESIDENCY:-cn-mainland}
+      PORT: 38789
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET:-change_me_please_at_least_16_chars}
+      APP_BOOTSTRAP_USERNAME: ${APP_BOOTSTRAP_USERNAME:-admin}
+      APP_BOOTSTRAP_PASSWORD: ${APP_BOOTSTRAP_PASSWORD:-change_me}
+      APP_BOOTSTRAP_TENANT_ID: ${APP_BOOTSTRAP_TENANT_ID:-tenant_demo}
+      APP_BOOTSTRAP_NAME: ${APP_BOOTSTRAP_NAME:-管理员}
+      NEW_API_BASE_URL: ${NEW_API_BASE_URL:-http://127.0.0.1:39999}
+      NEW_API_TOKEN: ${NEW_API_TOKEN:-dev_local_token}
+      DRAGON_AI_BASE_URL: ${DRAGON_AI_BASE_URL:-http://ai-subservice:8000}
+      DRAGON_AI_TIMEOUT_MS: ${DRAGON_AI_TIMEOUT_MS:-90000}
+      DRAGON_AI_SERVICE_USERNAME: ${DRAGON_AI_SERVICE_USERNAME:-admin}
+      DRAGON_AI_SERVICE_PASSWORD: ${DRAGON_AI_SERVICE_PASSWORD:-change_me}
+      COMPLIANCE_REQUIRE_HITL: ${COMPLIANCE_REQUIRE_HITL:-true}
+    depends_on:
+      redis:
+        condition: service_healthy
+      ai-subservice:
+        condition: service_healthy
+      skill-registry:
+        condition: service_healthy
+    ports:
+      - "${BACKEND_HOST_PORT:-48789}:38789"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      args:
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://127.0.0.1:48789}
+        NEXT_PUBLIC_RUNTIME_ENV: ${NEXT_PUBLIC_RUNTIME_ENV:-production}
+        NEXT_PUBLIC_USE_MOCK: ${NEXT_PUBLIC_USE_MOCK:-false}
+        NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: ${NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK:-false}
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://127.0.0.1:48789}
+      NEXT_PUBLIC_RUNTIME_ENV: ${NEXT_PUBLIC_RUNTIME_ENV:-production}
+      NEXT_PUBLIC_USE_MOCK: ${NEXT_PUBLIC_USE_MOCK:-false}
+      NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: ${NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK:-false}
+    depends_on:
+      - backend
+    ports:
+      - "${WEB_HOST_PORT:-3301}:3001"
+    restart: unless-stopped
+
+  telegram-bot:
+    build:
+      context: ./dragon-senate-saas-v2
+      args:
+        AI_INSTALL_HEAVY: ${DRAGON_AI_INSTALL_HEAVY:-0}
+    profiles: ["telegram"]
+    env_file:
+      - ./dragon-senate-saas-v2/.env
+    environment:
+      REDIS_URL: ${DRAGON_AI_REDIS_URL:-redis://redis:6379/0}
+      TELEGRAM_BACKEND_BASE_URL: ${TELEGRAM_BACKEND_BASE_URL:-http://ai-subservice:8000}
+    command:
+      - python
+      - telegram_bot.py
+    depends_on:
+      ai-subservice:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  anythingllm:
+    image: mintplexlabs/anythingllm:latest
+    profiles: ["anythingllm"]
+    ports:
+      - "3002:3001"
+    environment:
+      STORAGE_DIR: /app/server/storage
+    volumes:
+      - anythingllm_data:/app/server/storage
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    profiles: ["monitoring"]
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.enable-lifecycle"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+      ai-subservice:
+        condition: service_healthy
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    profiles: ["monitoring"]
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./dragon-senate-saas-v2/monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    ports:
+      - "3003:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    profiles: ["tunnel"]
+    env_file:
+      - ./dragon-senate-saas-v2/.env
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        if [ -n "$CF_TUNNEL_TOKEN" ]; then
+          echo "starting named tunnel with token";
+          cloudflared tunnel --no-autoupdate run --token "$CF_TUNNEL_TOKEN";
+        else
+          echo "CF_TUNNEL_TOKEN empty, starting quick tunnel";
+          cloudflared tunnel --no-autoupdate --url http://web:3001;
+        fi
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  postgres_data:
+  qdrant_data:
+  lobster_memory_data:
+  ollama_data:
+  prometheus_data:
+  grafana_data:
+  anythingllm_data:

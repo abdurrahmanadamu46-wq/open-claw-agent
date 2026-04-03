@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "inkwriter",
+  "patterns": [
+    {
+      "id": "inkwriter_risk_overclaim",
+      "label": "risk_overclaim",
+      "description": "Copy drifts into promises or claims that exceed governance boundaries."
+    },
+    {
+      "id": "inkwriter_tone_drift",
+      "label": "tone_drift",
+      "description": "Message feels off-brand or inconsistent with tenant tone."
+    },
+    {
+      "id": "inkwriter_generic_copy",
+      "label": "generic_copy",
+      "description": "Copy sounds like generic AI marketing text and lacks role-specific clarity."
+    }
+  ]
+}

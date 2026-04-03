@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"liquor_hook_gift_problem","title":"送礼问题开头模板","description":"适合白酒礼盒、红酒礼盒和商务拜访路线。","examples":["很多人卡的不是送不送，而是这次到底怎么送得稳、送得体面又不过度。 ","送礼最怕的不是预算不够，而是选错了场景和对象。 ","真正难的不是挑一瓶酒，而是先把这次的关系和价位说清楚。 "],"priority":"high"},
+  {"id":"liquor_hook_banquet_scene","title":"婚宴场景开头模板","description":"适合婚宴、年会和整箱路线。","examples":["婚宴用酒这件事，怕的不是没有酒，而是桌数、预算和配送没一起算清楚。 ","办宴请的人最怕临近日期还没把酒水路线理顺。 ","整箱方案想省心，第一步不是砍价，是先把桌数和场景说清楚。 "],"priority":"high"},
+  {"id":"liquor_hook_trust_first","title":"真假放心开头模板","description":"适合高单价白酒、首次到店和授权焦虑路线。","examples":["很多人来烟酒店第一句问的不是便宜多少，而是这次带出去到底能不能放心。 ","买酒最怕的不是贵一点，而是心里没底。 ","想送得稳，先把真假、批次和场景看明白，比先问折扣更重要。 "],"priority":"high"},
+  {"id":"liquor_hook_self_drink","title":"自饮补货开头模板","description":"适合口粮酒、啤酒和家庭聚餐补货路线。","examples":["很多人来补货，不是想喝得更贵，而是想这次拿得稳、拿得顺手。 ","真正省事的补货，不是每次重选，而是知道你这次该补哪一箱。 ","家里聚餐要用酒，先把人数和口味讲清楚，会比盲目比价更省心。 "],"priority":"medium"},
+  {"id":"liquor_hook_deadline","title":"节点时效开头模板","description":"适合节前拜访、开业和晚间急用路线。","examples":["临时要用酒的人，最怕的不是选择少，而是来不来得及。 ","节前送礼最怕拖到最后一天才开始看。 ","晚间急用时，先把门店和时间说清，比先追问最低价更快。 "],"priority":"medium"},
+  {"id":"liquor_hook_invoice_groupbuy","title":"团购发票开头模板","description":"适合企业活动和批量采购路线。","examples":["团购能不能顺，不只看酒，还看发票、数量和配送能不能一次说清。 ","公司采购最怕来回确认太多次，所以第一轮就要把条件说清。 ","批量采购要省心，先把数量和用途锁住。 "],"priority":"medium"}
+]}

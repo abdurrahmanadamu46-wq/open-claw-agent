@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_daypart_and_radius_clarity",
+      "feature_name": "核心时段与主半径清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确唯一主时段、主客群和主半径，例如工作日午市 1 到 3 公里办公客群或社区晚餐 1 到 2 公里顺路带走；3 分：有 2 个候选场景但优先级仍可判断；1 分：早餐、午市、晚高峰、夜宵和外卖全都想做且没有排序。",
+      "positive_signals": [
+        "明确主时段、主人群和主履约方式",
+        "主场景与现有订单结构一致",
+        "主路线与备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有时段一起推",
+        "主场景与真实订单和门店位置明显错位"
+      ],
+      "route_guidance": "时段与半径越清晰，越适合集中预算和产能；越混乱，越应该先缩范围做验证。"
+    },
+    {
+      "id": "hero_combo_evidence_density",
+      "feature_name": "主力套餐证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定主力套餐实拍、份量说明、复购评价和履约稳定记录；3 分：有套餐素材但缺少复购或高峰履约证据；1 分：主要依赖海报、低价券或装修图，没有主力套餐证明。",
+      "positive_signals": [
+        "主力套餐真实出品图",
+        "围绕口味、份量和稳定性的高频评价",
+        "清楚知道哪一组套餐承担拉新或复购"
+      ],
+      "negative_signals": [
+        "只有海报没有真实套餐证据",
+        "主推套餐经常断货、出错或口味波动大"
+      ],
+      "route_guidance": "产品证据越强，越适合走真实套餐路线；证据越弱，越要先补试吃、回评和履约稳定性。"
+    },
+    {
+      "id": "local_catchment_and_commute_fit",
+      "feature_name": "本地半径与通勤动线匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确 1 到 3 公里核心辐射半径、主要通勤或社区动线和周边人群结构；3 分：知道大致商圈但未细化到楼栋、园区或社区入口；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚写字楼、园区、学校或社区客流结构",
+        "知道步行、自提和配送的便利边界",
+        "对地铁口、电梯、停车或骑手取餐点位有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视导航成本、门禁和取餐便利性"
+      ],
+      "route_guidance": "半径越清晰，越容易先把预算压到高转化人群；半径模糊时应先收缩目标区域。"
+    },
+    {
+      "id": "customer_asset_reactivation_readiness",
+      "feature_name": "会员与老客重激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员联系方式、消费标签、活跃度和可分层触达方式；3 分：有会员名单但标签有限；1 分：几乎没有可用老客资产却仍忽略熟客路线。",
+      "positive_signals": [
+        "有小程序、企微或外卖老客资产",
+        "可按时段、套餐偏好或距离分层",
+        "有券包、积分或上新提醒机制"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑老客回流"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本召回；资产越弱，越要先补标签再谈扩大冷启动。"
+    },
+    {
+      "id": "reputation_and_review_health",
+      "feature_name": "评分与履约口碑健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定、差评主题可控，且近 30 天持续有真实好评；3 分：评分一般但问题集中且可修复；1 分：差评明显扩散，却仍计划继续强推放量。",
+      "positive_signals": [
+        "评分稳定在较高区间",
+        "差评原因少且已在修复",
+        "近期围绕速度、完整度和口味的好评持续出现"
+      ],
+      "negative_signals": [
+        "评分快速下滑",
+        "差评集中在等待过久、漏餐、餐品不热或包装破损"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线建立在真实评价和复购上；口碑不稳时必须先修履约和评分。"
+    },
+    {
+      "id": "fulfillment_capacity_stability",
+      "feature_name": "出餐、打包与高峰承接稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰期出餐、打包、补料和骑手取餐都有余量且节奏稳定；3 分：可承接但需要限定时段、限定套餐或预约；1 分：高峰已频繁排队、缺料、超时和漏餐。",
+      "positive_signals": [
+        "清楚高峰可承接单量上限",
+        "人手、设备和备料能覆盖当前路线",
+        "堂食、自提和外卖并发冲突可控"
+      ],
+      "negative_signals": [
+        "依赖少数熟练员工",
+        "高峰经常爆单、补料不及时或骑手积压"
+      ],
+      "route_guidance": "承接越稳，越适合放量；承接越弱，越应转向预约、自提和低峰时段路线。"
+    },
+    {
+      "id": "dinein_pickup_delivery_economics_fit",
+      "feature_name": "堂食、自提与外卖单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：堂食、自提与外卖的套餐、毛利、配送边界和差评风险都清楚；3 分：知道三者差异但尚未拆开运营；1 分：同一套优惠和菜单强行覆盖所有渠道。",
+      "positive_signals": [
+        "各渠道有不同主打组合",
+        "知道配送半径和打包稳定边界",
+        "能核算各路线毛利与退款风险"
+      ],
+      "negative_signals": [
+        "把外卖爆款当堂食主推",
+        "只看单量不看毛利和差评"
+      ],
+      "route_guidance": "单位经济越清晰，越能安全扩量；若毛利和履约边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "group_meal_lead_qualification",
+      "feature_name": "团餐资格信息完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集送达时间、份数、预算、地址、楼层和是否需要发票或分装；3 分：知道份数和大致时间但信息不全；1 分：只问价格就直接投入大量人工跟进。",
+      "positive_signals": [
+        "时间、份数和地址清晰",
+        "预算区间明确",
+        "知道是否需要发票、送楼或预约"
+      ],
+      "negative_signals": [
+        "未查产能就承诺可接",
+        "把高难度团餐当普通散单处理"
+      ],
+      "route_guidance": "团餐资格越完整，越适合投入人工承接；信息不足时先用标准化方案筛选。"
+    },
+    {
+      "id": "lto_supply_execution_fit",
+      "feature_name": "新品与活动备料执行匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已确认原料、包装、赠品、排班和 SOP，且高峰执行边界清楚；3 分：有活动想法但部分物料与训练仍待验证；1 分：只有营销主题，没有备料和执行准备。",
+      "positive_signals": [
+        "新品或活动 SKU 可稳定落地",
+        "高峰时段有人手和物料计划",
+        "预售、取消和赠品规则清楚"
+      ],
+      "negative_signals": [
+        "供应不稳却想公开大促",
+        "联名物料、赠品或包装超卖风险高"
+      ],
+      "route_guidance": "执行越稳，越能把新品或活动做成增长机会；执行弱时应缩成会员优先、预售或限定时段路线。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "表述合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实套餐、评价、履约规则和配送边界；3 分：有少量模糊夸张但可修正；1 分：存在全城最快、零等待、吃不胖、绝对现做或绝对无添加等高风险说法。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "速度、配送和领取规则说得清楚",
+        "套餐与履约证据可核验"
+      ],
+      "negative_signals": [
+        "功能或减肥暗示",
+        "绝对速度、绝对健康、绝对现做等表述",
+        "伪造联名、平台背书或配送能力"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术和履约边界。"
+    }
+  ]
+}

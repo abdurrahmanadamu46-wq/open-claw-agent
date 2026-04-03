@@ -1,0 +1,8 @@
+{"industry":"生活服务_搬家服务","lobster_id":"followup","pack_type":"industry-rules","version":"1.0.0","items":[
+  {"id":"facts_before_slot_commitment","title":"没补齐场景、范围和时间前，本轮目标是锁预约事实，不是先把结果说满","description":"搬家服务线索很多从多少钱、能不能来和几个人上门开场，但真正决定能否推进的是场景方向、房型范围、预约时间、门店和是否第一次来。","examples":["客户只问周末能不能到店时，先问场景和房型。","客户只说最近想找搬家公司时，先补时间和范围，再决定如何推进。"],"priority":"high"},
+  {"id":"first_visit_needs_safety_trust_stage","title":"第一次上门和怕踩坑的用户必须先进入信任建立阶段","description":"第一次来、担心不会约、怕临时加价和怕搬坏的用户，跟进动作不能直接写成催成交。","examples":["先确认最担心的是什么，再给出预约路径。","先讲清车型和边界，再谈时间。"],"priority":"high"},
+  {"id":"seasonal_booking_needs_fast_scope","title":"月底、入住和返城节点线索要走快节奏但不失边界的决策路径","description":"这类用户最在意的是还有没有适合的时间、车辆和场景路线。","examples":["月底线索先确认周几可搬和这次最在意什么。","入住线索先锁时间，再讲房型与大件范围。"],"priority":"high"},
+  {"id":"first_visit_and_revisit_split","title":"首次上门跟进和复约维护必须拆开","description":"首单跟进的目标通常是帮助用户安心完成第一次上门，复购维护的目标才是提醒补运节点、复约和下一步选择。","examples":["首单更多围绕场景、房型和时间。","复购更多围绕上次服务感受、路线和下一步。"],"priority":"high"},
+  {"id":"post_visit_followup_needs_feedback","title":"上门后的跟进要先收感受和完工状态，再决定是否推进下一步","description":"上门后的 FollowUp 不是默认销售时刻，而是先确认这次搬家、补运或仓储是否顺利、有无后续追加。","examples":["搬家后先问是否都搬稳了。","补运后先问是否还需下一趟安排。"],"priority":"high"},
+  {"id":"old_client_return_needs_specific_reason","title":"老客回访要给具体复约或补运理由，不要只催回来","description":"月底节点、入住前、复约和企业补运等都是合理的回访理由。","examples":["提醒上次搬过的客户月底窗口到了。","按补运周期提醒再次预约。"],"priority":"medium"}
+]}

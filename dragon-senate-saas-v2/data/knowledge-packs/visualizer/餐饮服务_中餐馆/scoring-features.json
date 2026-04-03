@@ -1,0 +1,152 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_dish_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "真实出品可见度",
+      "weight": 0.16,
+      "definition": "分镜是否把本店真实菜品、上桌动作和顾客动筷放在前排位置，而不是依赖装修空镜、菜单截图或美食广告式静物。",
+      "high_score_signals": [
+        "前 3 镜内出现真实招牌菜或热菜上桌",
+        "菜品和桌面关系可验证",
+        "观众能快速判断这是本店真实出品"
+      ],
+      "low_score_signals": [
+        "开场长时间只有环境和装饰",
+        "菜品像外部图库或棚拍样片",
+        "看不出菜是否真的在售或真的上桌"
+      ],
+      "score_rule": "真实出品证据越靠前、越连贯，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应中餐馆最核心的来店理由，例如招牌菜、锅气、包厢宴请、性价比或食材新鲜，而不是泛泛地拍得好看。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体卖点",
+        "一眼能知道视频在解决什么用餐选择问题",
+        "封面中的菜品或场景与正文首镜一致"
+      ],
+      "low_score_signals": [
+        "封面只有氛围感没有具体理由",
+        "标题写招牌菜，画面却是空店装修",
+        "卖点过空，比如只写高级感或烟火气"
+      ],
+      "score_rule": "越能用真实画面回答“为什么要来吃”，得分越高。"
+    },
+    {
+      "id": "live_heat_authenticity",
+      "metric_group": "visual_proof_density",
+      "feature": "锅气与现做真实感",
+      "weight": 0.12,
+      "definition": "镜头是否展示现炒、现蒸、现煲、现切等热感和动作证据，让中餐馆的现场感可被感知。",
+      "high_score_signals": [
+        "出现翻锅、蒸汽、汤面翻滚或装盘连续动作",
+        "热感镜头与成品菜和上桌镜头对应",
+        "现做证据来自真实操作而不是特效"
+      ],
+      "low_score_signals": [
+        "只拍静态摆盘却强调锅气",
+        "火焰和烟雾完全靠后期效果",
+        "厨房动作与上桌菜对不上"
+      ],
+      "score_rule": "能让观众明显感到“这道菜刚做好”的镜头越多，得分越高。"
+    },
+    {
+      "id": "business_proof_density",
+      "metric_group": "visual_proof_density",
+      "feature": "饭点生意证明密度",
+      "weight": 0.12,
+      "definition": "分镜是否用真实餐期客流、翻台、等位和上菜节奏证明门店状态，而不是空口描述人气。",
+      "high_score_signals": [
+        "出现等位、带位、上菜、桌面占用等真实节奏",
+        "能区分午市、晚市或包厢餐期场景",
+        "客流证明与门头或店内空间镜头有关联"
+      ],
+      "low_score_signals": [
+        "用空桌和碎剪伪装高峰期",
+        "人气判断完全依赖旁白或字幕",
+        "顾客镜头和门店空间无法对应"
+      ],
+      "score_rule": "真实餐期信息越清楚、越可验证，得分越高。"
+    },
+    {
+      "id": "kitchen_hygiene_credibility",
+      "metric_group": "visual_proof_density",
+      "feature": "后厨与备菜可信度",
+      "weight": 0.12,
+      "definition": "当脚本涉及新鲜、卫生、手工或标准化出品时，镜头是否给出整洁工位、备料分区和操作秩序等可见依据。",
+      "high_score_signals": [
+        "备菜台、冷藏区、洗切或手工制作镜头清晰",
+        "食材处理和成品菜之间存在对应关系",
+        "整洁与秩序来自真实空间而非临时摆拍"
+      ],
+      "low_score_signals": [
+        "后厨镜头只有好看没有信息量",
+        "卫生主张完全靠字幕或话术",
+        "凌乱空间被硬剪成可信背书"
+      ],
+      "score_rule": "越能让观众放心食材和出品过程，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_service_constraints",
+      "metric_group": "storyboard_feasibility",
+      "feature": "餐期限制下的可拍性",
+      "weight": 0.14,
+      "definition": "镜头设计是否匹配中餐馆常见限制，包括午晚餐高峰、后厨权限、顾客出镜、桌位预订、油烟噪音和拍摄时长。",
+      "high_score_signals": [
+        "关键镜头与真实餐期窗口匹配",
+        "后厨、包厢、门头和顾客镜头权限已前置说明",
+        "小团队也能在现有时长内完成拍摄"
+      ],
+      "low_score_signals": [
+        "一小时拍摄却设计完整高峰人流加深度后厨加多包厢调度",
+        "关键镜头默认顾客一定配合或菜品一定能复刻",
+        "拍摄动线与营业节奏明显冲突"
+      ],
+      "score_rule": "越能在真实营业状态下直接执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确性",
+      "weight": 0.12,
+      "definition": "分镜是否准确列出中餐馆内容所依赖的现有素材、补拍菜品、可拍区域和顾客或员工授权条件。",
+      "high_score_signals": [
+        "封面和关键镜头对应具体菜品或具体区域",
+        "补拍需求写到餐期、桌型和机位层面",
+        "缺失素材有明确替代路线"
+      ],
+      "low_score_signals": [
+        "只写需要门店素材这类空话",
+        "默认所有招牌菜都能随时复刻",
+        "不写顾客出镜和后厨权限边界"
+      ],
+      "score_rule": "依赖越具体、假设越少、越方便执行，得分越高。"
+    },
+    {
+      "id": "fallback_honesty",
+      "metric_group": "storyboard_feasibility",
+      "feature": "素材不足时的降级诚实度",
+      "weight": 0.10,
+      "definition": "当门店缺少客流、后厨或菜品素材时，方案是否诚实降级为菜品版、空间版、开业预告版或说明版，而不是硬做旺店探店片。",
+      "high_score_signals": [
+        "明确标注当前缺口和阶段限制",
+        "分镜和执行分数跟随素材边界调整",
+        "替代路线仍保留中餐馆特征和说服力"
+      ],
+      "low_score_signals": [
+        "缺素材却仍给高执行分和高人气叙事",
+        "用库存食客或外部菜品素材冒充本店",
+        "后续执行大概率因权限或餐期失败"
+      ],
+      "score_rule": "越诚实面对素材边界、越能保持可交付，得分越高。"
+    }
+  ]
+}

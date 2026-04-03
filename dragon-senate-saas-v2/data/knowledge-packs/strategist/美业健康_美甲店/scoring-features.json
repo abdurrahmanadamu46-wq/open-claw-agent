@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "style_route_clarity",
+      "feature_name": "核心风格路线清晰度",
+      "metric": "route_quality",
+      "weight": 0.16,
+      "scoring_rule": "5 分：已明确唯一主风格路线，如通勤短甲、新娘甲或节日主题；3 分：有 2 条候选路线但优先级可判断；1 分：所有风格一起推。",
+      "positive_signals": [
+        "主风格与咨询证据一致",
+        "人群和场景清楚",
+        "主线与备选线分层明确"
+      ],
+      "negative_signals": [
+        "什么款都做什么都推",
+        "风格很多但主线不清",
+        "主线和证据错位"
+      ],
+      "route_guidance": "风格越清晰，越适合集中内容和档期。"
+    },
+    {
+      "id": "style_truth_density",
+      "feature_name": "真实作品证明密度",
+      "metric": "route_quality",
+      "weight": 0.15,
+      "scoring_rule": "5 分：路线清楚包含真实作品、手型适配和边界说明；3 分：只有部分证据；1 分：主要依赖网图和爆款幻想。",
+      "positive_signals": [
+        "真实作品充分",
+        "手型适配说明清楚",
+        "边界感明确"
+      ],
+      "negative_signals": [
+        "全靠网图",
+        "没有适配逻辑",
+        "忽略做不到的边界"
+      ],
+      "route_guidance": "对美甲店来说，真实作品比泛好看更能带来预约。"
+    },
+    {
+      "id": "first_visit_vs_rebook_split",
+      "feature_name": "首单与复做承接分离度",
+      "metric": "conversion_safety",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首单、复做和储值承接完全拆开；3 分：大体拆开但仍有混用；1 分：所有流量都直接推储值或高复杂度款。",
+      "positive_signals": [
+        "首单目标是预约和信任",
+        "复做路径独立设计",
+        "储值放在后链路"
+      ],
+      "negative_signals": [
+        "首轮就强推储值",
+        "首单和复做共用一套话术",
+        "承接节奏过重"
+      ],
+      "route_guidance": "分离得越清楚，越能降低反感和返修扯皮。"
+    },
+    {
+      "id": "capacity_alignment",
+      "feature_name": "承接能力匹配度",
+      "metric": "execution_feasibility",
+      "weight": 0.14,
+      "scoring_rule": "5 分：甲位、技师、时长和卸甲附加时间互相匹配；3 分：略有挤压但可调整；1 分：复杂款和低价引流同时放量。",
+      "positive_signals": [
+        "档期控制清楚",
+        "复杂度分层合理",
+        "技师可承接"
+      ],
+      "negative_signals": [
+        "只看咨询量不看工时",
+        "高峰满载还继续冲量",
+        "复杂款时长被低估"
+      ],
+      "route_guidance": "执行能力越稳，路线越值得放量。"
+    },
+    {
+      "id": "event_vs_daily_specificity",
+      "feature_name": "节日档与日常复做区分度",
+      "metric": "route_quality",
+      "weight": 0.13,
+      "scoring_rule": "5 分：清楚区分婚礼节日档和日常通勤复做；3 分：有区分但仍混用；1 分：所有场景用同一套路线。",
+      "positive_signals": [
+        "节日和日常路线分开",
+        "预约逻辑不同",
+        "风格与档期匹配"
+      ],
+      "negative_signals": [
+        "场景混乱",
+        "婚礼档和通勤款混推",
+        "看不出什么时候做什么"
+      ],
+      "route_guidance": "场景越分明，预约和排班越容易稳定。"
+    },
+    {
+      "id": "rebook_path_strength",
+      "feature_name": "复做路径强度",
+      "metric": "long_term_value",
+      "weight": 0.14,
+      "scoring_rule": "5 分：复做提醒、节前换款和老客偏好承接都有清晰路径；3 分：只有零散提醒；1 分：完全靠新客流量续命。",
+      "positive_signals": [
+        "复做周期明确",
+        "老客偏好沉淀",
+        "回访理由自然"
+      ],
+      "negative_signals": [
+        "老客没有回访逻辑",
+        "只会打折",
+        "没有风格历史承接"
+      ],
+      "route_guidance": "复做路径越强，长期 ROI 越健康。"
+    }
+  ]
+}

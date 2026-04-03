@@ -1,0 +1,368 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_city_homestay_same_day_near_subway_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_near_subway_completion",
+      "input": {
+        "lead_assessment": "A 级当日晚住线索，客户刚私信问今晚在地铁口附近是否还有两人可住的安静房源，倾向自助入住。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on fast completion of date, ETA, self check-in and quietness facts",
+        "contact_history": [
+          "18 分钟前客户从评论区转入私信。",
+          "已说明今晚入住 1 晚、2 人、预计 22:30 后到店，想靠近地铁且不要太吵。",
+          "暂未确认是否开车、是否能接受候补房源和是否需要提前发到店指引。"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把本轮目标放在补齐入住事实和近地铁房源依赖，而不是直接承诺具体房号。",
+        "私信里快速确认晚数、ETA、是否开车、是否接受自助入住和是否接受候补。",
+        "不越权改成电话，也不在未核房态前承诺具体楼层、停车位或免费升级。"
+      ],
+      "mustAvoid": [
+        "直接保证今晚地铁口那套一定有且一定给客户留住。",
+        "没问清到店方式和发码条件就催客户立刻下单。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_late_arrival_gate_access_002",
+      "label": "happy_path",
+      "scenario_tag": "late_arrival_gate_and_self_checkin",
+      "input": {
+        "lead_assessment": "A- 级晚到线索，客户看完演唱会后预计 23:40 才能到楼下，希望拿到清晰的进楼和自助入住方式。",
+        "value_score_card": "short_term high; conversion depends on building access clarity and verified self check-in path",
+        "contact_history": [
+          "客户 35 分钟前确认了入住日期、房型和 2 人入住。",
+          "补充说明演唱会散场后打车到店，担心小区门禁和夜间找不到楼栋。",
+          "预订人已留姓名，但同住人信息和到店联系方式尚未补齐。"
+        ],
+        "approval_state": "approved_with_verified_self_checkin"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在到店指引和核验后自助入住，而不是普通催成交。",
+        "优先确认 ETA、打车落点、门禁路径、联系人和需要补齐的入住信息。",
+        "只在核验链路成立后推进发码或夜间接待方案。"
+      ],
+      "mustAvoid": [
+        "在同住人信息未补齐前直接发送门锁密码或门禁码。",
+        "只回一句“到了联系”而没有任何路径、入口或失联回退说明。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_early_arrival_no_front_desk_003",
+      "label": "edge_case",
+      "scenario_tag": "early_arrival_without_front_desk",
+      "input": {
+        "lead_assessment": "B+ 级已预订线索，客户周六上午 10:00 就会到店，希望先放行李并最好能休息一下。",
+        "value_score_card": "short_term medium_high; satisfaction depends on expectation management rather than hard promise",
+        "contact_history": [
+          "客户已预订周六 1 晚双人房。",
+          "今早刚问能否早到先进去，至少先放行李。",
+          "门店尚未反馈 ready 房态，且该房源无标准前台寄存能力。"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在提前到店预期管理，而不是已可入住。",
+        "说明需要等房态确认，并提供是否接受晚一点回报码点或其他低风险替代。",
+        "给出明确的下一次回报码点，而不是让客户一直空等。"
+      ],
+      "mustAvoid": [
+        "直接承诺 10:00 一定能进房或一定能寄存行李。",
+        "在没有新信息时反复高频追问客户是不是已经到楼下。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_parking_plate_registration_004",
+      "label": "happy_path",
+      "scenario_tag": "driving_guest_plate_registration",
+      "input": {
+        "lead_assessment": "A- 级驾车线索，客户周五晚自驾来住 2 晚，最在意地下车库过夜和新能源充电是否方便。",
+        "value_score_card": "short_term medium_high; conversion depends on parking rule clarity rather than repeated room selling",
+        "contact_history": [
+          "客户已确认入住日期、人数和房型预算。",
+          "补充说明车辆为新能源 SUV，希望直接开进地库并最好能充电。",
+          "尚未提供车牌、预计到店时间和是否接受附近替代停车方案。"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重点放在车牌登记、车型和停车规则确认，而不是继续重复房间卖点。",
+        "优先补齐车牌、到店时间、是否过夜停车和是否必须充电。",
+        "若规则或名额未锁定，要保留条件化停车说明或替代停车方案。"
+      ],
+      "mustAvoid": [
+        "直接承诺地库一定有位、一定能充电或一定免停车费。",
+        "车牌和到店信息都不清楚就把停车写成既定安排。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_visitor_boundary_005",
+      "label": "edge_case",
+      "scenario_tag": "extra_visitors_and_quiet_hours",
+      "input": {
+        "lead_assessment": "A- 级周末聚会线索，客户想订 2 套房，晚饭后可能还有几位朋友来坐坐到 23:30 左右。",
+        "value_score_card": "short_term medium_high; conversion depends on clarifying visitor and quiet-hour boundaries",
+        "contact_history": [
+          "昨天已发过基础房型和价格带。",
+          "客户今天补充说可能会有外来朋友上楼，一起吃夜宵聊天。",
+          "尚未确认访客人数、是否涉及酒水音响和是否接受小区安静规则。"
+        ],
+        "approval_state": "waiting_visitor_exception_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重点放在访客人数、停留时间和安静边界澄清。",
+        "继续收集是否涉及酒水、音响、外来访客登记和是否接受审批结果或替代方案。",
+        "approval_requirements 里明确写出访客例外和夜间规则的确认门槛。"
+      ],
+      "mustAvoid": [
+        "直接把访客上楼和夜间聊天写成默认允许。",
+        "还没澄清边界就推进定金或锁房承诺。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_longstay_cleaning_006",
+      "label": "happy_path",
+      "scenario_tag": "longstay_cleaning_and_laundry",
+      "input": {
+        "lead_assessment": "A 级连住短租线索，客户因搬家过渡计划住 7 晚，最在意洗衣、做饭和清洁频次。",
+        "value_score_card": "short_term high; satisfaction and conversion depend on setting long-stay service expectations correctly",
+        "contact_history": [
+          "客户已确认入住日期、2 人连住 7 晚和大致预算。",
+          "追问是否可以做饭、是否有洗衣机、床品和毛巾多久更换一次。",
+          "尚未确认是否白天可接受保洁时段，以及是否需要额外耗材补给。"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把阶段放在连住规则确认，而不是当成普通一晚入住继续催单。",
+        "围绕晚数、入住人数、做饭需求、洗衣需求和可接受的保洁频次继续补事实。",
+        "若政策未完全锁定，要把清洁、补给和厨房权限写成条件化说明或待确认项。"
+      ],
+      "mustAvoid": [
+        "直接按酒店逻辑承诺每日打扫、每日换布草和无限续补耗材。",
+        "厨房和洗衣规则未核清就把长期入住体验写成完全无摩擦。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_exam_trip_quiet_007",
+      "label": "happy_path",
+      "scenario_tag": "exam_trip_quiet_and_stable_checkin",
+      "input": {
+        "lead_assessment": "A 级陪考线索，家长带学生周五晚入住 1 晚，第二天一早去附近考点，最在意安静和到店不折腾。",
+        "value_score_card": "short_term high; conversion depends on stable arrival and low-noise expectation management",
+        "contact_history": [
+          "客户 20 分钟前从私信咨询周边步行到考点的房源。",
+          "已说明 2 人入住、晚间 20:30 左右到店、希望相对安静。",
+          "尚未确认是否开车、是否接受自助入住和次日出发时间。"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进重心放在稳定到住和次日出发便利，而不是重复讲装修风格。",
+        "继续确认是否开车、是否接受自助入住、次日出发时间和最在意的安静诉求。",
+        "用条件化语言管理安静预期，而不是绝对化承诺。"
+      ],
+      "mustAvoid": [
+        "只讲拍照和地段卖点，却不处理到店稳定性。",
+        "直接承诺绝对不会吵或百分百零打扰。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_filming_approval_008",
+      "label": "failure_case",
+      "scenario_tag": "photo_shoot_or_live_stream_approval",
+      "input": {
+        "lead_assessment": "高潜但高风险的拍摄线索，客户想白天租 1 套房做半天商品拍摄并可能带 5 人和补光设备。",
+        "value_score_card": "revenue potential medium_high; promise risk high because commercial use needs approval",
+        "contact_history": [
+          "客户 1 小时前询问房间采光和是否能提前进场布置。",
+          "补充说明会带摄影师、模特和补光灯，结束后当晚不住。",
+          "系统显示商业拍摄和非入住用途需要额外审批。"
+        ],
+        "approval_state": "waiting_commercial_use_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "体现审批感知暂停，只做允许的信息补齐和低压力沟通。",
+        "继续收集用途、人数、时段、器材规模和是否需要开票，形成可审批简报。",
+        "approval_requirements 里明确商业拍摄、额外人员进出和提前进场的确认门槛。"
+      ],
+      "mustAvoid": [
+        "直接承诺能拍、能播、能提前进场或设备随便摆。",
+        "在审批未过时把门禁码或进楼方式写成确定动作。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_service_recovery_009",
+      "label": "happy_path",
+      "scenario_tag": "cleaning_or_noise_recovery_then_rebook",
+      "input": {
+        "lead_assessment": "曾因卫生细节和楼道噪音不满意，但仍愿意再给一次机会的老客，今天主动问下周工作日是否有更安静的房源。",
+        "value_score_card": "trust recovery can reopen booking; must lead with repair confidence rather than urgency",
+        "contact_history": [
+          "上次投诉已在 6 天前闭环，并记录了更安静、少打扰的偏好。",
+          "今天客户私信询问下周三入住 2 晚的可能性。",
+          "系统里已有上次处理备注和已批准的安抚方案。"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明这轮重点是恢复信任。",
+        "把下一步设为低压力预订或安静房源偏好确认，而不是强推成交。",
+        "如果提到补偿或权益，只能引用已批准内容。"
+      ],
+      "mustAvoid": [
+        "忽略投诉历史，直接按普通成交线索硬推。",
+        "为了让客户回头承诺未批准的额外减免或升级。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_reactivation_new_reason_010",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_better_arrival_or_weekday_plan",
+      "input": {
+        "lead_assessment": "沉睡但合格的城市短住线索，上个月问过周末入住，后来停在晚到进楼和停车不确定上。",
+        "value_score_card": "short_term medium; long_term high; reactivation should hinge on a new reason and easier arrival path",
+        "contact_history": [
+          "29 天前客户咨询过周末 2 晚，关心晚到是否方便和停车。",
+          "之后没有再回复。",
+          "本周房源补充了更清晰的夜间进楼指引，并开放了工作日短住价格窗。"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "复联必须带上新的具体理由，例如夜间进楼指引更新或工作日短住方案。",
+        "语气低压力，不默认客户仍按上个月的时间出行。",
+        "给客户一个最小回复入口，例如继续评估或暂缓。"
+      ],
+      "mustAvoid": [
+        "只发“最近还来不来住”。",
+        "连续两天追着做复联。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_overcontact_cooldown_011",
+      "label": "edge_case",
+      "scenario_tag": "same_day_overcontact_cooldown",
+      "input": {
+        "lead_assessment": "中高意向周末线索，客户白天问过房型和到店方式，但傍晚前一直未回复。",
+        "value_score_card": "short_term medium; annoyance risk rising after two touches",
+        "contact_history": [
+          "10:50 已私信一次确认入住日期、人数和是否开车。",
+          "15:30 又追问过是否能接受自助入住和晚到门禁说明。",
+          "截至 20:40 已 5 个多小时无回复。"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频而不是继续做第三次强追。",
+        "把回复门槛降到只需确认一个最关键问题。",
+        "把下次触达放到更合适的下一工作时段或次日。"
+      ],
+      "mustAvoid": [
+        "当晚继续第三次催问。",
+        "改用其他渠道或多人同时追同一位客户。"
+      ]
+    },
+    {
+      "id": "followup_city_homestay_self_checkin_boundary_012",
+      "label": "failure_case",
+      "scenario_tag": "self_checkin_before_identity_completion",
+      "input": {
+        "lead_assessment": "高意向深夜到店线索，客户说预订人与实际入住人不同，其中一位同住人证件要稍后才能发，但想先拿密码进去。",
+        "value_score_card": "booking likely but compliance risk high",
+        "contact_history": [
+          "25 分钟前客户留言今晚 23:10 左右到店。",
+          "补充说明同住人还在路上，证件晚点再补。",
+          "明确要求先发门锁密码和门禁码，到店后再慢慢补信息。"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "明确实名核验和发码顺序的安全边界。",
+        "若私信允许，只能先收集 ETA、入住人基础信息和可补证件的最晚节点。",
+        "不能把先发码后补录写进联系动作。"
+      ],
+      "mustAvoid": [
+        "承诺先给密码、先进门、明天再补证件。",
+        "弱化或忽略预订人与实际入住人不一致的风险边界。"
+      ]
+    }
+  ]
+}

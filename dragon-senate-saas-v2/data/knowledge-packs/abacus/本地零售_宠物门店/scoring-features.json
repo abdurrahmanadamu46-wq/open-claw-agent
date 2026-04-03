@@ -1,0 +1,8 @@
+﻿{"industry":"本地零售_宠物门店","lobster_id":"abacus","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"short_term_conversion_probability","feature_name":"短期到店转化概率","metric":"conversion_probability","weight":0.24,"scoring_rule":"品类、时间、门店和到店动作越齐全，分值越高。","positive_signals":["明确主粮/猫砂/洗护等方向","给出本周末、今晚或具体日期","愿意到店、送货或留货"],"negative_signals":["只有泛咨询没有时间","只问价格不补充场景"],"value_guidance":"这是宠物门店短期分最核心的指标。"},
+  {"id":"trust_building_readiness","feature_name":"信任建立就绪度","metric":"trust_readiness","weight":0.18,"scoring_rule":"用户越愿意补充宠物状态、预算和顾虑，分值越高。","positive_signals":["愿意讲年龄阶段和敏感点","愿意继续确认品牌和适配范围"],"negative_signals":["持续回避任何事实","只要求先承诺结果"],"value_guidance":"首次到店线索的价值高度依赖信任推进。"},
+  {"id":"repurchase_potential","feature_name":"复购潜力","metric":"repurchase_potential","weight":0.18,"scoring_rule":"主粮、猫砂、驱虫和洗护等周期性需求越明确，分值越高。","positive_signals":["补粮补砂周期明确","用户提到长期吃同品牌或想稳定复购"],"negative_signals":["一次性低关联购买","纯围观无后续计划"],"value_guidance":"宠物门店要重视长期复购而不是只看首单。"},
+  {"id":"pet_status_clarity","feature_name":"宠物状态清晰度","metric":"fit_clarity","weight":0.14,"scoring_rule":"猫狗类型、年龄阶段、体型、敏感点和养宠经验越清楚，拟合度越高。","positive_signals":["三个月幼猫","大型犬、肠胃敏感"],"negative_signals":["完全不说宠物情况","只说想买点东西"],"value_guidance":"状态越清楚，越容易做真实适配。"},
+  {"id":"deadline_pressure","feature_name":"节点紧迫度","metric":"urgency","weight":0.12,"scoring_rule":"断粮、出行、节礼和换季节点越明确，分值越高。","positive_signals":["下周出门前要补货","周六送礼前要来挑"],"negative_signals":["没有时间窗口","长期模糊观望"],"value_guidance":"节点会提高短期效率，但仍需和边界一起看。"},
+  {"id":"risk_penalty","feature_name":"风险扣分","metric":"risk_penalty","weight":0.14,"scoring_rule":"绝对功效、医疗替代和未经验证承诺越强，扣分越多。","positive_signals":["关注配料、适口性和真实场景"],"negative_signals":["要求保证发腮","要求保证不软便或治病效果"],"value_guidance":"任何看似高价值的线索，只要风险失控，就不能给高总分。"}
+]}

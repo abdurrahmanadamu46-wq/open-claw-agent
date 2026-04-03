@@ -1,0 +1,140 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_tonight_business_trip_booking_facts",
+      "scene": "dm_followup",
+      "lead_state": "tonight_business_trip",
+      "intent": "lock_stay_facts_and_arrival",
+      "hook": "今晚这单先别让你来回比价空转，我先把能决定你能不能顺利住下的关键信息锁住。",
+      "bridge": "商务酒店同晚房态、保洁进度和到店高峰变化很快，把日期、房型、到店时间和是否要开发票补齐，后面才能稳稳往下推。",
+      "next_step": "请客户确认入住日期、晚数、房型偏好、到店时间、入住人数，以及是否需要早餐、停车或发票，目标是尽快进入可预订或候补确认。",
+      "cadence_hint": "客户刚回复时优先在 15-30 分钟内接上；若未定，在当日晚高峰前做一次轻提醒。",
+      "approval_guard": "未核到可售房态前，不写成一定有房、一定能早住或一定能免费升级。"
+    },
+    {
+      "id": "hook_late_arrival_guarantee_confirmation",
+      "scene": "late_arrival_followup",
+      "lead_state": "arriving_after_2200",
+      "intent": "confirm_guarantee_and_hold_window",
+      "hook": "你这单最关键的不是再发一遍房型，而是把晚到还能不能稳稳保留这件事先确认住。",
+      "bridge": "商务酒店深夜到店最怕房间被按普通时点释放，先把担保方式、预计到店时间和最晚保留节点讲清楚，比空口说“放心来”更有用。",
+      "next_step": "请客户确认预计到店时间、是否已预付或担保、到店人姓名与联系电话，目标是推进保留房条件确认或改成更安全的到店方案。",
+      "cadence_hint": "晚到线索以当天闭店前为关键窗口，优先一次说清楚保留条件，不连续轰炸。",
+      "approval_guard": "未确认担保或门店保留规则前，不承诺房间一定保到深夜。"
+    },
+    {
+      "id": "hook_early_checkin_expectation_management",
+      "scene": "arrival_management",
+      "lead_state": "early_arrival_room_not_ready",
+      "intent": "set_wait_expectation_or_alternative",
+      "hook": "先不急着把“马上入住”说满，我先帮你把最省事的到店方案找出来。",
+      "bridge": "早到住客真正介意的是白跑和一直等，不是听到一句模糊的“尽量安排”，先把房态准备情况和替代方案讲明更稳。",
+      "next_step": "请客户确认实际到店时间和是否接受寄存行李、休息区候用或同价替代房型，目标是管理预期并留下后续可接管的到店方案。",
+      "cadence_hint": "到店前给一次明确预期即可；若房态尚未确认，等到新的 ETA 或保洁节点再跟。",
+      "approval_guard": "未核到 ready 房态前，不承诺几点一定能入住。"
+    },
+    {
+      "id": "hook_late_checkout_buffer_check",
+      "scene": "stay_extension_followup",
+      "lead_state": "late_checkout_request",
+      "intent": "verify_turnover_impact_and_fallback",
+      "hook": "这次不是简单回你一句“可以延”，而是先把不耽误你行程的稳妥方案排出来。",
+      "bridge": "延迟退房会直接占到下一波入住和保洁周转，先确认你的离店时间诉求和可接受替代，比先答应再反悔更好。",
+      "next_step": "请客户确认希望延到几点、是否可接受行李寄存或付费延退，目标是推进可执行的延退判断或替代安排。",
+      "cadence_hint": "住中请求以当班窗口快速确认一次为主，若未批复，等值班或前台反馈后再跟。",
+      "approval_guard": "未确认房态周转和门店政策前，不承诺免费延到具体时间。"
+    },
+    {
+      "id": "hook_corporate_rate_and_invoice_verification",
+      "scene": "corporate_followup",
+      "lead_state": "agreement_or_invoice_sensitive",
+      "intent": "verify_company_and_settlement_requirements",
+      "hook": "这类商旅单先别急着报最低价，先把协议、结算和开票条件核准，后面才不容易来回改。",
+      "bridge": "商务酒店很多企业单不是卡在住不住，而是卡在协议价、月结权限、专票抬头和成本中心，先把这些关键信息对齐更省时间。",
+      "next_step": "请客户确认公司名称、入住日期、房晚数、是否走协议价、月结或专票，目标是推进资料核验或审批提单。",
+      "cadence_hint": "企业单以工作时段跟进为主，发出一次清单式问题后给对方内部确认时间。",
+      "approval_guard": "审批未到位前，不承诺沿用旧协议价、先挂账入住或离店即开专票。"
+    },
+    {
+      "id": "hook_meeting_bundle_qualification",
+      "scene": "group_booking_followup",
+      "lead_state": "meeting_plus_rooms",
+      "intent": "surface_room_nights_and_meeting_blocker",
+      "hook": "这类单最怕房间和会场分别聊，最后谁都接不住，我先帮你把关键需求收成一张表。",
+      "bridge": "商务酒店的会务住宿通常卡在房间数、会议时段、早餐停车、名单和统一结算上，先找出真正卡点，比重复发一版报价更有效。",
+      "next_step": "请客户确认日期、房间数、会议室时长、早餐停车需求、是否统一开票以及名单补齐进度，目标是推进整单资格确认。",
+      "cadence_hint": "发完清单后给客户半天到一天的内部协调时间，再围绕最卡的一项继续推进。",
+      "approval_guard": "未确认会场档期、房量或结算条件前，不写成整单已锁定。"
+    },
+    {
+      "id": "hook_longstay_project_plan",
+      "scene": "longstay_followup",
+      "lead_state": "project_longstay_interest",
+      "intent": "qualify_duration_and_daily_needs",
+      "hook": "连住客真正关心的往往不是首晚便宜，而是住上几周以后还省不省事。",
+      "bridge": "项目驻场和长期差旅更看重洗衣、保洁频次、停车、续住沟通和发票节奏，先把这些生活化需求问清，后面的方案才像真方案。",
+      "next_step": "请客户确认预计连住天数、房型、是否自驾、洗衣和保洁偏好以及开票节奏，目标是推进长住方案或协议价评估。",
+      "cadence_hint": "长住线索不必高频追，当天补齐需求后可在下一个工作时段跟一次结论。",
+      "approval_guard": "未确认长住价、房态周期和服务边界前，不承诺固定房号或全周期同价。"
+    },
+    {
+      "id": "hook_expo_peak_prebook",
+      "scene": "peak_window_followup",
+      "lead_state": "expo_high_intent",
+      "intent": "advance_confirmation_or_guarantee",
+      "hook": "旺季这单最值钱的是把可落地的房先锁条件，不是把话说满。",
+      "bridge": "展会、培训和招聘旺季时，房态和价带波动快，先确认日期、房量、担保和取消条件，能比一味低价更快推进成交。",
+      "next_step": "请客户确认活动日期、房间数量、到店时段、是否需要早餐发票以及担保方式，目标是推进预订资格或保留条件确认。",
+      "cadence_hint": "峰值窗口在客户刚有预算时就要接上，但每次只推进一个明确确认动作。",
+      "approval_guard": "未确认库存和担保前，不承诺旺季一定有房或一定保留到深夜。"
+    },
+    {
+      "id": "hook_service_recovery_then_rebook",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_open",
+      "intent": "repair_trust_then_next_stay",
+      "hook": "这次我先不急着推你再订房，先把上次让你不舒服的地方接住。",
+      "bridge": "酒店客诉后的复住跟进，核心不是成交速度，而是让客户看到问题被记录、处理并且这次不会重演。",
+      "next_step": "先确认上次问题点、客户最在意的补救结果，以及这次是否还有入住计划；若客户愿意，再推进低压力预订或服务备注。",
+      "cadence_hint": "修复期减少频次，以一次明确说明和一次确认式跟进为主。",
+      "approval_guard": "未获批的补偿、升房或额外权益不自行承诺。"
+    },
+    {
+      "id": "hook_reactivation_with_new_business_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_corporate_guest",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，而是想给你一个比上次更贴合出差场景的新理由。",
+      "bridge": "商务酒店沉睡线索更容易对新的园区客户拜访、展会日期、工作日长住方案、早餐洗衣升级或已解决的问题产生回应。",
+      "next_step": "带一个具体新变化复联，比如新开的工作日连住方案、离客户更近的门店、已补齐的发票流程或解决后的投诉点，并给客户低压力回复入口。",
+      "cadence_hint": "复联尽量轻，一次触达后至少拉开几天，再判断是否二次跟进。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure_and_leave_easy_reply",
+      "hook": "先不再给你加压，我把下一步留成一个最容易回复的小动作。",
+      "bridge": "商务酒店线索很多时候不是拒绝，而是在出差路上、等审批或没定行程；高频追问反而会让本来可转化的单子直接失温。",
+      "next_step": "把回复门槛降到只确认一个信息，例如入住日期、房间数或是否还需要发票，并同步进入降频节奏。",
+      "cadence_hint": "短时间已触达两次仍无回复时，至少拉开到下一工作时段或次日再判断。",
+      "approval_guard": "避免多人、多渠道同时追同一位客户。"
+    },
+    {
+      "id": "hook_waiting_for_callback_approval",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_contact",
+      "hook": "你关心的点我先记全，等允许的动作一到位，我们就能更快往下走。",
+      "bridge": "回拨电话、特殊价格、例外补偿这类动作在商务酒店里经常有审批门，先把问题清单和时间窗收好，后面推进会更稳。",
+      "next_step": "请客户留下方便联系的时间、最关心的问题点、公司或订单基础信息，目标是作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力信息收集，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼、承诺特殊价格或口头给例外。"
+    }
+  ]
+}

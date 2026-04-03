@@ -1,0 +1,95 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "followup",
+  "primaryArtifact": "FollowUpActionPlan",
+  "cases": [
+    {
+      "id": "followup_booking_001",
+      "label": "happy_path",
+      "input": {
+        "lead_assessment": "Lead tier A, high intent, low risk",
+        "value_score_card": "short_term_score high; prioritize immediate contact",
+        "contact_history": [
+          "private message reply received 30 minutes ago"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "fast private-message followup",
+        "clear booking objective"
+      ]
+    },
+    {
+      "id": "followup_reactivation_001",
+      "label": "happy_path",
+      "input": {
+        "lead_assessment": "Dormant but previously qualified lead",
+        "value_score_card": "short_term medium; long_term high",
+        "contact_history": [
+          "no response for 21 days"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "reactivation step",
+        "gentle cadence"
+      ]
+    },
+    {
+      "id": "followup_wait_approval_001",
+      "label": "edge_case",
+      "input": {
+        "lead_assessment": "High intent lead needs phone follow-up",
+        "value_score_card": "high priority",
+        "contact_history": [
+          "user asked for callback"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "approval-aware pause",
+        "safe interim contact if allowed"
+      ]
+    },
+    {
+      "id": "followup_regression_001",
+      "label": "failure_case",
+      "input": {
+        "lead_assessment": "Medium intent, moderate risk",
+        "value_score_card": "short_term medium",
+        "contact_history": [
+          "already contacted twice within 24 hours"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustAvoid": [
+        "over-contacting",
+        "ignoring cadence limits"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+﻿{
+  "providers": [
+    {
+      "name": "local_llm",
+      "base_url": "http://ollama:11434/v1",
+      "model_id": "qwen3:59b",
+      "protocol": "openai",
+      "context_window": 128000,
+      "max_tokens": 8192
+    },
+    {
+      "name": "deepseek",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "model_id": "qwen-flash",
+      "protocol": "openai",
+      "context_window": 128000,
+      "max_tokens": 8192
+    }
+  ]
+}

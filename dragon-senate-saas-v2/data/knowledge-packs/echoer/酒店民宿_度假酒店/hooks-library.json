@@ -1,0 +1,158 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_family_room_fit",
+      "scene": "comment_or_dm",
+      "intent": "family_room_fit",
+      "emotion": "planning_mode",
+      "hook": "That is a very sensible thing to sort out before a family trip.",
+      "bridge": "With resort stays, the useful split is usually the adults, the kids' ages, and whether you need one room, extra bedding, or connecting rooms.",
+      "next_step": "Ask for the number of adults and children, child ages, and the preferred room setup.",
+      "handoff_suggestion": "Family-fit clarification lead."
+    },
+    {
+      "id": "hook_anniversary_or_honeymoon",
+      "scene": "comment_or_dm",
+      "intent": "celebration_stay",
+      "emotion": "hopeful",
+      "hook": "That sounds like a trip worth planning with a little extra care.",
+      "bridge": "Celebration stays usually go more smoothly when we narrow the property, date, and the one or two details that matter most to you first.",
+      "next_step": "Ask for the resort, stay date, and whether the priority is decor, view, dining, or room atmosphere.",
+      "handoff_suggestion": "Celebration-note or concierge path."
+    },
+    {
+      "id": "hook_ocean_view_or_villa_preference",
+      "scene": "comment_or_dm",
+      "intent": "premium_room_preference",
+      "emotion": "aspirational",
+      "hook": "Makes sense to want the room to match the trip vibe.",
+      "bridge": "For ocean-view rooms and villas, the key is usually the stay date, the room type you are looking at, and whether the view or the layout matters most.",
+      "next_step": "Ask for the property, dates, and the main preference such as view, villa layout, or pool setup.",
+      "handoff_suggestion": "Premium-room preference lead."
+    },
+    {
+      "id": "hook_package_inclusions",
+      "scene": "comment_or_dm",
+      "intent": "package_clarification",
+      "emotion": "clarifying",
+      "hook": "Good call to confirm that before you lock anything in.",
+      "bridge": "With resort packages, breakfast, dinner, hot spring access, and activity credits can change with the plan and the dates.",
+      "next_step": "Ask for the package name or channel, stay dates, and the exact benefit they want to confirm.",
+      "handoff_suggestion": "Booking-clarification path."
+    },
+    {
+      "id": "hook_weather_sensitive_trip",
+      "scene": "comment_or_dm",
+      "intent": "weather_concern",
+      "emotion": "worried",
+      "hook": "I can see why you want a clearer read on that before the trip.",
+      "bridge": "Outdoor pools, beach time, and sea activities can depend on weather and same-day safety conditions more than people expect.",
+      "next_step": "Ask for the property, stay dates, and the exact outdoor experience they care about most.",
+      "handoff_suggestion": "Operations or concierge confirmation path."
+    },
+    {
+      "id": "hook_kids_club_or_activity",
+      "scene": "comment_or_dm",
+      "intent": "activity_reservation",
+      "emotion": "organized",
+      "hook": "That is worth pinning down early, especially with kids involved.",
+      "bridge": "The useful details are usually the date, number of people, kids' ages if relevant, and the time slot or activity you have in mind.",
+      "next_step": "Ask for the stay date, headcount, child ages, and the activity or session they want.",
+      "handoff_suggestion": "Concierge or recreation lead."
+    },
+    {
+      "id": "hook_spa_booking",
+      "scene": "comment_or_dm",
+      "intent": "spa_or_wellness",
+      "emotion": "relaxed_but_specific",
+      "hook": "Happy to help make that part of the stay smoother.",
+      "bridge": "Spa and wellness slots usually depend on the date, time window, and whether this is part of a package or a separate booking.",
+      "next_step": "Ask for the resort, stay date, preferred treatment or time, and whether a package is already booked.",
+      "handoff_suggestion": "Spa reservation path."
+    },
+    {
+      "id": "hook_airport_or_ferry_transfer",
+      "scene": "comment_or_dm",
+      "intent": "transport_question",
+      "emotion": "time_sensitive",
+      "hook": "That is definitely easier to enjoy once the arrival side feels settled.",
+      "bridge": "Transfer support can vary by resort, route, and operating hours, so the property and timing matter first.",
+      "next_step": "Ask for the resort, travel date, arrival time, and whether they need pickup or drop-off.",
+      "handoff_suggestion": "Property-specific transport confirmation."
+    },
+    {
+      "id": "hook_pet_stay",
+      "scene": "comment_or_dm",
+      "intent": "pet_policy_question",
+      "emotion": "practical",
+      "hook": "Good idea to check that before the trip gets locked in.",
+      "bridge": "Pet handling often changes with the resort, the room category, and the size or type of pet.",
+      "next_step": "Ask which property they mean, what pet they are bringing, and the stay dates.",
+      "handoff_suggestion": "Pet-policy confirmation lead."
+    },
+    {
+      "id": "hook_late_arrival_or_early_checkin",
+      "scene": "comment_or_dm",
+      "intent": "timing_flexibility",
+      "emotion": "travel_tired",
+      "hook": "That kind of timing can make the first day feel a lot longer.",
+      "bridge": "Early arrival or late departure requests usually come down to the property, the date, and what room status looks like live.",
+      "next_step": "Ask for the resort, stay date, arrival or departure time, and whether the reservation already exists.",
+      "handoff_suggestion": "Front-desk or reservation confirmation path."
+    },
+    {
+      "id": "hook_cancellation_after_plan_change",
+      "scene": "comment_or_dm",
+      "intent": "refund_or_change",
+      "emotion": "stressed",
+      "hook": "Trip changes can be frustrating, especially when it is a getaway you were looking forward to.",
+      "bridge": "The next useful split is usually where the booking was made and whether the rate or package is flexible or non-refundable.",
+      "next_step": "Ask whether the booking already exists, which channel it came through, and what the rate or package terms say.",
+      "handoff_suggestion": "Policy-confirmation path."
+    },
+    {
+      "id": "hook_group_retreat_or_small_wedding",
+      "scene": "comment_or_dm",
+      "intent": "group_event_booking",
+      "emotion": "coordinating",
+      "hook": "That already sounds like a real planning conversation, not just casual browsing.",
+      "bridge": "For resort groups, the key facts are usually dates, room or villa count, headcount, and whether dining or celebration setup matters.",
+      "next_step": "Ask for dates, headcount, room or villa needs, and any event or dining coordination requirements.",
+      "handoff_suggestion": "High-value group lead."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would take the shine off the trip.",
+      "bridge": "The fastest review usually starts with the resort, stay date, and the room or booking details tied to the issue.",
+      "next_step": "Move the user to DM for stay details and the issue summary.",
+      "handoff_suggestion": "Escalate to guest service, concierge, or resort operations."
+    },
+    {
+      "id": "hook_skeptic_about_photos",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That hesitation is fair.",
+      "bridge": "Resort guests usually want clarity on one concrete point first, like the real room view, family fit, crowd level, or what a package actually includes.",
+      "next_step": "Invite the user to name the exact concern they want clarified first.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to help move it forward quickly.",
+      "bridge": "The safest first step is still platform DM so room, package, and traveler details do not get scattered in public comments.",
+      "next_step": "Ask for the resort, stay dates, and guest count in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

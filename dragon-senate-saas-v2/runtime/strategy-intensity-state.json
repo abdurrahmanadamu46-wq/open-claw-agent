@@ -1,0 +1,58 @@
+{
+  "tenants": {
+    "tenant-a": {
+      "current_level": 1,
+      "updated_at": "2026-04-02T18:08:04.459741+00:00",
+      "updated_by": "",
+      "reason": "",
+      "usage_date": "2026-04-02",
+      "usage_today": {
+        "posts": 0,
+        "replies": 0,
+        "dms": 0,
+        "llm_calls": 13
+      },
+      "history": []
+    },
+    "tenant-1": {
+      "current_level": 1,
+      "updated_at": "2026-04-01T13:55:34.920110+00:00",
+      "updated_by": "",
+      "reason": "",
+      "usage_date": "2026-04-01",
+      "usage_today": {
+        "posts": 0,
+        "replies": 0,
+        "dms": 0,
+        "llm_calls": 8
+      }
+    },
+    "tenant_main": {
+      "current_level": 1,
+      "updated_at": "2026-04-02T16:41:07.645598+00:00",
+      "updated_by": "",
+      "reason": "",
+      "usage_date": "2026-04-02",
+      "usage_today": {
+        "posts": 2,
+        "replies": 0,
+        "dms": 0,
+        "llm_calls": 2
+      },
+      "history": []
+    },
+    "tenant_demo": {
+      "current_level": 1,
+      "updated_at": "",
+      "updated_by": "",
+      "reason": "",
+      "usage_date": "2026-04-02",
+      "usage_today": {
+        "posts": 0,
+        "replies": 0,
+        "dms": 0,
+        "llm_calls": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "visualizer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "real_hotel_identity_visibility",
+      "metric_group": "visual_proof_density",
+      "feature": "酒店真实身份可见度",
+      "weight": 0.14,
+      "definition": "分镜是否在前排位置交代了本店真实物业身份，包括门头、楼体、前台、品牌墙或楼层导视，而不是让观众只看到一个无法确认来源的漂亮房间。",
+      "high_score_signals": [
+        "前 3 镜内出现酒店门头、前台或楼层导视等真实身份锚点",
+        "门店身份与后续客房、公区镜头能互相对应",
+        "观众能快速判断这不是民宿、样板房或外部图库"
+      ],
+      "low_score_signals": [
+        "开场长时间只有客房氛围镜头",
+        "酒店身份完全靠字幕补充",
+        "外立面、公区和客房之间没有可验证关系"
+      ],
+      "score_rule": "越早、越清楚、越可验证地交代本店身份，得分越高。"
+    },
+    {
+      "id": "cover_core_offer_alignment",
+      "metric_group": "cover_ctr_proxy",
+      "feature": "封面与核心商务卖点对齐度",
+      "weight": 0.12,
+      "definition": "封面方向是否准确回应商务酒店最核心的成交理由，如入住效率、通勤方便、房内办公、早餐节奏、连住配套或会务接待，而不是泛泛地拍得好看。",
+      "high_score_signals": [
+        "标题和画面围绕同一个具体卖点",
+        "封面场景与首镜内容能自然接上",
+        "观众一眼就知道视频想解决哪类商旅决策问题"
+      ],
+      "low_score_signals": [
+        "封面只有大堂氛围或床品特写没有具体理由",
+        "标题写通勤效率，画面却是无关的景观窗或艺术摆件",
+        "封面走豪华路线但正文实际是轻中端标准房"
+      ],
+      "score_rule": "越能用真实画面回答“为什么出差要住这里”，得分越高。"
+    },
+    {
+      "id": "room_type_truthfulness",
+      "metric_group": "visual_proof_density",
+      "feature": "主力房型真实性",
+      "weight": 0.16,
+      "definition": "分镜是否围绕真实在售的主力房型展开，并交代床位、桌面、行李位、卫浴等关键区位，避免用高配套房或单个角落误导整体入住体验。",
+      "high_score_signals": [
+        "同一房型镜头连续且结构完整",
+        "床、桌、卫浴和通道关系清楚",
+        "如果强调出差办公，书桌、插座和照明可被明确看见"
+      ],
+      "low_score_signals": [
+        "不同房型混剪成一个完整房间",
+        "只拍最美一角却不交代整体布局",
+        "文案讲标准房，画面却是明显升级房或套房"
+      ],
+      "score_rule": "主力房型越真实、越完整、越接近日常入住视角，得分越高。"
+    },
+    {
+      "id": "business_traveler_flow_continuity",
+      "metric_group": "storyboard_feasibility",
+      "feature": "商旅住行链路完整度",
+      "weight": 0.12,
+      "definition": "分镜是否把到店、办理、进房、办公或休息、早餐或离店串成一条可信的商旅流程，而不是把几个互不相关的空间硬拼在一起。",
+      "high_score_signals": [
+        "至少三个环节形成清晰链路",
+        "昼夜、早餐和退房逻辑一致",
+        "观众能感受到真实入住节奏而不是纯陈列"
+      ],
+      "low_score_signals": [
+        "镜头只有客房和公区空镜没有使用逻辑",
+        "时间线混乱，夜景和早餐无承接",
+        "需要大量额外演员或库存素材才能补完整链路"
+      ],
+      "score_rule": "越能在真实营业状态下组成连贯商旅流程，得分越高。"
+    },
+    {
+      "id": "service_process_evidence",
+      "metric_group": "visual_proof_density",
+      "feature": "办理与服务流程证据密度",
+      "weight": 0.10,
+      "definition": "当脚本强调入住效率、前台服务、开票或值守能力时，镜头是否给出办理动作、导视、设备和服务节点，而不是抽象承诺。",
+      "high_score_signals": [
+        "出现前台办理、自助机、房卡交接或开票设备等真实流程",
+        "服务节点与客房入住镜头存在前后关系",
+        "隐私处理得当但仍保留流程可验证性"
+      ],
+      "low_score_signals": [
+        "只拍前台空景或服务人员微笑",
+        "办理流程完全靠字幕和口播承担",
+        "需要借别店设备或未授权画面补足"
+      ],
+      "score_rule": "办理和服务证据越具体、越贴近真实住客流程，得分越高。"
+    },
+    {
+      "id": "location_commute_verifiability",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "通勤与周边可验证度",
+      "weight": 0.10,
+      "definition": "涉及地铁、商圈、园区、会展中心、机场高铁等位置卖点时，分镜是否给出了起终点关系和到店路径，而不是用泛城市镜头空喊方便。",
+      "high_score_signals": [
+        "路线锚点和酒店门头同属一条真实到店链路",
+        "步行、落客或进门过程可被看懂",
+        "位置承诺和实际可拍点一一对应"
+      ],
+      "low_score_signals": [
+        "只拍城市地标没有酒店关系",
+        "使用地图截图代替实拍路线",
+        "承诺会展中心旁却没有任何周边锚点"
+      ],
+      "score_rule": "位置卖点越具体、越可复核、越少依赖想象，得分越高。"
+    },
+    {
+      "id": "facility_claim_verifiability",
+      "metric_group": "visual_proof_density",
+      "feature": "早餐与配套卖点可验证度",
+      "weight": 0.08,
+      "definition": "早餐、洗衣房、健身房、会议室、停车等配套是否被真实展示，并与营业时段、空间规模和使用边界匹配，而不是被夸张成不属于本店的高配资源。",
+      "high_score_signals": [
+        "早餐区、洗衣房、会议室等真实可拍且可用",
+        "镜头能看出空间大小、导视和使用状态",
+        "配套卖点与目标商旅场景一致，如连住、早会、会务接待"
+      ],
+      "low_score_signals": [
+        "只拍样品或局部特写看不出本店属性",
+        "借外部商业体或第三方空间冒充酒店配套",
+        "把普通配套剪成度假酒店级别"
+      ],
+      "score_rule": "配套越真实、越克制、越与商旅需求直接相关，得分越高。"
+    },
+    {
+      "id": "shot_feasibility_under_hotel_operations",
+      "metric_group": "storyboard_feasibility",
+      "feature": "营业约束下的可拍性",
+      "weight": 0.10,
+      "definition": "镜头设计是否匹配酒店常见约束，包括住客隐私、前台高峰、早餐时段、夜拍授权、可拍房型、公区开放和拍摄时长，而不是把理想方案强压给实际场地。",
+      "high_score_signals": [
+        "关键镜头与可拍时段和授权边界一致",
+        "小团队也能在真实营业状态下完成拍摄",
+        "复杂镜头数量与酒店运营节奏相匹配"
+      ],
+      "low_score_signals": [
+        "默认能拍所有住客正脸和所有公区",
+        "一小时拍摄却设计夜景、早餐、会议、连住等多条链路",
+        "方案明显会打断前台或早餐正常运营"
+      ],
+      "score_rule": "越能在酒店正常营业中低干扰执行，得分越高。"
+    },
+    {
+      "id": "asset_dependency_accuracy_and_fallback_honesty",
+      "metric_group": "asset_dependency_accuracy",
+      "feature": "素材依赖准确度与降级诚实度",
+      "weight": 0.08,
+      "definition": "方案是否准确列出客房、公区、前台、早餐、夜景、路线外拍和客人授权等依赖，并在素材不足时主动降级为房型说明、到店指引或开业预告等诚实版本。",
+      "high_score_signals": [
+        "每个关键镜头都能对应到具体房型、时段或授权",
+        "缺失素材有明确替代路线和分数下调逻辑",
+        "不把效果图、库存素材或想象场景包装成可执行方案"
+      ],
+      "low_score_signals": [
+        "依赖只写“需要酒店素材”这种空话",
+        "素材缺口很大仍给高执行分和高野心方案",
+        "降级路线不清晰，后续执行需临时补救"
+      ],
+      "score_rule": "依赖越具体、假设越少、降级越诚实，得分越高。"
+    }
+  ]
+}

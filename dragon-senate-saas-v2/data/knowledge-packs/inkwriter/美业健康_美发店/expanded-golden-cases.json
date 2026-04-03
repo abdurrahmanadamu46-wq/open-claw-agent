@@ -1,0 +1,112 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "inkwriter",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "inkwriter_hair_salon_haircut_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a hair salon for low-maintenance weekday haircuts using real-case proof and a booking CTA",
+        "brand_tone": "clean, grounded, and helpful",
+        "offer_info": "real haircut cases, no overpromise about face-shape perfection",
+        "audience_segment": "local office workers who want easy-to-manage hair"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around low-maintenance daily hair",
+        "truthful case proof",
+        "CTA that collects current length and booking time"
+      ],
+      "mustAvoid": [
+        "perfect makeover promise",
+        "empty beauty clichés",
+        "hard-sell membership"
+      ]
+    },
+    {
+      "id": "inkwriter_hair_salon_color_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Write copy for a brightening hair-color booking route",
+        "brand_tone": "reassuring, tasteful, and specific",
+        "offer_info": "real color cases, consult-first around base color and bleaching",
+        "audience_segment": "users who want to refresh their look before an event or season shift"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "problem or scene based opening",
+        "base-color or suitability awareness",
+        "CTA tied to timing and current hair state"
+      ],
+      "mustAvoid": [
+        "one-shade-fits-all promise",
+        "hiding bleach boundaries",
+        "hard upsell"
+      ]
+    },
+    {
+      "id": "inkwriter_hair_salon_maintenance_003",
+      "label": "long_term_case",
+      "input": {
+        "strategy_route": "Write a soft re-engagement message for returning haircut and color maintenance clients",
+        "brand_tone": "familiar, calm, and not sales-heavy",
+        "offer_info": "maintenance reminder based on regrowth, trim cycle, or color fade",
+        "audience_segment": "existing clients who usually come back every few weeks or months"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "specific maintenance reason",
+        "cycle relevance",
+        "CTA tied to timing"
+      ],
+      "mustAvoid": [
+        "generic comeback message",
+        "discount-only logic",
+        "pressure-heavy sales tone"
+      ]
+    },
+    {
+      "id": "inkwriter_hair_salon_price_004",
+      "label": "risk_case",
+      "input": {
+        "strategy_route": "Rewrite a salon promo that currently hides long-hair and bleaching add-ons behind a low headline price",
+        "brand_tone": "clear and trustworthy",
+        "offer_info": "base haircut or color package with optional add-ons",
+        "audience_segment": "first-time local leads comparing prices"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear boundary around what the base price includes",
+        "scope-recovering CTA",
+        "truthful mention of add-ons where relevant"
+      ],
+      "mustAvoid": [
+        "bait-style pricing",
+        "all-inclusive implication without proof",
+        "hidden fee framing"
+      ]
+    }
+  ]
+}

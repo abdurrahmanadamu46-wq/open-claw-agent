@@ -1,0 +1,10 @@
+﻿{
+  "gateway": {
+    "auth": {
+      "mode": "none"
+    },
+    "controlUi": {
+      "dangerouslyAllowHostHeaderOriginFallback": true
+    }
+  }
+}

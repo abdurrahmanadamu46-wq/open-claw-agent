@@ -1,0 +1,140 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_breakfast_grab_go_lock",
+      "scene": "breakfast_followup",
+      "lead_state": "commute_breakfast_intent",
+      "intent": "lock_preorder_for_morning_pickup",
+      "hook": "这份早餐先别让你在早高峰里白等，我先帮你把门店和取餐时间锁清楚。",
+      "bridge": "快餐店早餐窗口短，排队、出餐和热门组合售完都来得快。先把门店、时间和早餐组合说清，后面的预点单或顺路自提就能更稳地推进。",
+      "next_step": "请客户确认门店、预计到店时间、早餐组合、饮品和取餐方式，目标是尽快进入预点单、自提或更稳的早餐窗口方案。",
+      "cadence_hint": "客户刚回复时优先在 15 到 30 分钟内接上；未回则等到下一次明显的早餐消费窗口再轻提醒。",
+      "approval_guard": "未核早餐窗口和门店承接前，不写成全天可用、到店不用等或一定现做。"
+    },
+    {
+      "id": "hook_lunch_work_meal_facts",
+      "scene": "lunch_followup",
+      "lead_state": "weekday_work_meal_intent",
+      "intent": "complete_lunch_order_facts",
+      "hook": "这单午饭先别急着催下单，我先帮你把最关键的取餐事实和节奏对齐。",
+      "bridge": "快餐店午高峰最容易卡在排队、打包台和骑手并发上。门店、时间、套餐数和自提或外卖方式一旦清楚，后面的预点单或换更稳方案就能立刻推进。",
+      "next_step": "请客户确认门店、取餐方式、目标时间、套餐数量、饮品和是否需要备注，目标是尽快进入午市下单、自提或错峰方案确认。",
+      "cadence_hint": "午市线索要快接，但一轮里只推进一个明确动作；未回时优先等下一次午饭窗口再提。",
+      "approval_guard": "未确认门店和高峰承接条件前，不写成已接单、一定能赶上午休或一定能准时送到。"
+    },
+    {
+      "id": "hook_same_day_delivery_facts",
+      "scene": "delivery_followup",
+      "lead_state": "same_day_delivery_intent",
+      "intent": "verify_delivery_radius_and_eta",
+      "hook": "这单最重要的不是先催付款，而是先把配送半径、时间和地址核稳。",
+      "bridge": "快餐外卖最怕高峰期地址不清、楼层难进、骑手拥堵和套餐出餐不稳。先把门店、地址楼层、时段和套餐数讲清，才能给出更靠谱的下单或自提路径。",
+      "next_step": "请客户确认门店、配送地址与楼层、目标送达时间、套餐数量和是否接受自提备选，目标是先完成半径和 ETA 核验。",
+      "cadence_hint": "同窗急单要快响应，但不要连续追问；先拿到地址和时间，再决定是否继续推进。",
+      "approval_guard": "未核配送能力前，不写成 30 分钟一定送到、全城都能送或高峰绝不延迟。"
+    },
+    {
+      "id": "hook_family_dinner_takeaway",
+      "scene": "dinner_followup",
+      "lead_state": "after_work_family_meal_intent",
+      "intent": "lock_takeaway_or_preorder",
+      "hook": "这顿晚饭先别让你下班后还排队纠结，我先帮你把顺路带走的方案对齐。",
+      "bridge": "快餐店晚高峰最容易卡在家庭餐组合、加点小食和打包等待上。先把门店、人数、时间和带走方式定下来，比先催你付款更能减少落空。",
+      "next_step": "请客户确认门店、预计到店时间、人数或套餐份数、是否加饮品小食和取餐方式，目标是推进到预点单、自提或更稳的家庭餐方案。",
+      "cadence_hint": "晚餐线索尽量在下班前一轮确认关键事实；未回时避免在同一高峰窗口内反复追问。",
+      "approval_guard": "未核高峰承接和库存前，不写成到店即取、套餐一定全有或加点全部可做。"
+    },
+    {
+      "id": "hook_group_meal_qualification",
+      "scene": "group_order_followup",
+      "lead_state": "meeting_or_team_meal_intent",
+      "intent": "qualify_group_meal_and_slot",
+      "hook": "这单团餐先不急着催你拍板，我先把时间、份数和交付条件对齐，后面会顺很多。",
+      "bridge": "快餐店团餐最怕只聊价格，不聊份数、地址楼层、分装、发票和配送窗口，后面很容易来回返工。先补资格信息，比直接催预付更稳。",
+      "next_step": "请客户确认门店、送达或自提时间、份数、地址楼层、是否分装、是否开票和预算区间，再推进预付款和排期。",
+      "cadence_hint": "团餐线索优先在当前工作时段完成一轮信息补齐；未回则隔半天或下一个工作窗口再跟一次。",
+      "approval_guard": "未到预付款或未核产能前，不承诺正式锁单、准时送达或所有口味都可做。"
+    },
+    {
+      "id": "hook_peak_eta_relief",
+      "scene": "peak_window_followup",
+      "lead_state": "urgent_within_hour",
+      "intent": "shift_to_safer_pickup_or_window",
+      "hook": "这单最重要的是别扑空或久等，我们先把更稳的取餐方案找出来。",
+      "bridge": "午晚高峰能不能马上出餐受排队、打包和骑手运力影响很大。比起空口保证，先给更稳的自提、预点单、换门店或错峰方案更有用。",
+      "next_step": "请客户确认门店、预计到店或送达时间、套餐数量和取餐方式，优先推进预点单、自提、错峰或换附近门店中的一个明确方案。",
+      "cadence_hint": "高峰线索要快响应，但一轮只推进一个最小动作，不连续轰炸。",
+      "approval_guard": "不写“保证马上做好”“一定准点送到”或“到店不用等”。"
+    },
+    {
+      "id": "hook_coupon_verification_first",
+      "scene": "promotion_followup",
+      "lead_state": "coupon_or_deal_interest",
+      "intent": "verify_branch_time_and_stack_rules",
+      "hook": "优惠先别急着拍板，我先把能不能用、在哪家用和能不能叠加核清楚。",
+      "bridge": "快餐店的会员券、平台券、早餐券和满减常受门店、日期、时段、限时套餐和叠加规则影响。跟进里先核条件，比直接说能用更稳。",
+      "next_step": "请客户发门店、时间、目标套餐和优惠截图，目标是先确认适用条件，再推进下单或预约自提。",
+      "cadence_hint": "优惠类线索回复要快，但条件没核清前不要连续催单。",
+      "approval_guard": "未经核实，不一概承诺所有门店、限时套餐和加购都可用。"
+    },
+    {
+      "id": "hook_limited_item_stock_verify",
+      "scene": "limited_offer_followup",
+      "lead_state": "lto_or_toy_interest",
+      "intent": "verify_stock_before_conversion",
+      "hook": "这单真正卡的不是想不想买，而是限时套餐和赠品现在还在不在，我先帮你核清楚。",
+      "bridge": "快餐店联名玩具、节日赠品、限时小食和儿童餐常在高峰期消耗很快。先把门店和库存核清，比先答应再缺货更能保住信任。",
+      "next_step": "请客户确认门店、预计下单时间、目标套餐和最在意的赠品或加购，优先推进库存核验、替代方案或换门店建议。",
+      "cadence_hint": "限时类线索要快接，但一轮里先拿到一个明确结论，不叠加多个催问。",
+      "approval_guard": "未核库存前，不承诺联名玩具、节日赠品或限时小食一定有。"
+    },
+    {
+      "id": "hook_callback_or_safety_approval_wait",
+      "scene": "approval_wait",
+      "lead_state": "high_intent_but_restricted",
+      "intent": "safe_interim_information_collection",
+      "hook": "你的顾虑我先记下，我们先把信息收齐，等允许的动作一到位就能更快推进。",
+      "bridge": "在快餐线索里，电话回拨、成分过敏、儿童饮食安全和补偿承诺如果审批没到位，先把门店、时间、套餐和限制条件收好，后面会更顺。",
+      "next_step": "请客户留下方便联系的时间、具体限制条件、目标套餐和门店基础信息，作为审批通过后的优先处理输入。",
+      "cadence_hint": "等待审批期间只做低压力触达，不连续追问。",
+      "approval_guard": "严禁绕过审批直接外呼，或口头给出绝对无交叉接触、绝对安全或例外补偿承诺。"
+    },
+    {
+      "id": "hook_service_recovery_rebuild",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_engaged",
+      "intent": "repair_trust_then_reorder",
+      "hook": "上次让你体验不好，这次先不急着推消费，先把能修复的地方说清楚。",
+      "bridge": "快餐店售后后的复联重点不是立刻再卖一单，而是让客户看到漏餐、变凉、包装破损或迟到的问题已经被记录、处理和避免重演。",
+      "next_step": "先确认上次问题点、期望补救和这次是否仍考虑下单，若对方愿意，再推进低压力的重下单或备注确认。",
+      "cadence_hint": "售后恢复期减少频次，以一次明确说明和一次后续确认为主。",
+      "approval_guard": "未经批准，不擅自承诺退款、免单、补送或额外补偿。"
+    },
+    {
+      "id": "hook_reactivation_with_new_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_qualified",
+      "intent": "restart_with_new_value",
+      "hook": "这次来找你，不是重复提醒，是有个更贴近你那顿快餐需求的新理由。",
+      "bridge": "快餐沉睡线索更容易对新的早餐组合、家庭晚餐套餐、会员日规则、稳定自提窗口或恢复供应的热门餐品产生回应，而不是对“还要吗”产生回应。",
+      "next_step": "带一个具体新变化复联，比如新套餐、家庭餐、会员日规则、恢复库存或更稳的取餐窗口，并给客户低压力回复入口。",
+      "cadence_hint": "沉睡复联单次触达要轻，未回时至少拉开几天再判断是否二次复联。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_cadence_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure",
+      "hook": "先不给你增加打扰，我把下一步留得更容易回复一点。",
+      "bridge": "快餐线索里，沉默不一定是拒绝，很多时候只是正在开会、赶路、拼单或暂时不方便下单，高频追问反而更容易把人推远。",
+      "next_step": "发一个低成本回复入口，例如只回门店、时间或套餐数量中的一个，随后进入降频节奏。",
+      "cadence_hint": "短时间内已触达两次仍无回应时，拉开到下一次明显的消费窗口或次日再判断。",
+      "approval_guard": "避免多人、多渠道重复跟同一位客户。"
+    }
+  ]
+}

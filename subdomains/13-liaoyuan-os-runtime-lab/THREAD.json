@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-13",
+  "name": "Liaoyuan OS Runtime Lab",
+  "owner_scope": "cloud-edge runtime experiment and simulator",
+  "maturity": "mvp",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "dispatch": "WebSocket",
+    "events": "Redis event bus"
+  },
+  "source_anchors": [
+    "liayouan_os/README.md"
+  ]
+}

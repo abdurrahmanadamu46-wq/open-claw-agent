@@ -1,0 +1,7 @@
+{"industry":"医疗健康_眼科门诊","lobster_id":"dispatcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"visit_and_capacity_gate","title":"高峰预约前必须先校验时段、医生和检查资源","description":"眼科门诊调度的核心不是单纯接单，而是把预约时段、医生、检查设备、验光资源和复诊能力一起纳入 task_graph。","examples":["夜间高峰时段已满时，先进入候补和分时段节点。","寒暑假高峰时，先确认医生排班和验光设备。"],"priority":"high"},
+  {"id":"first_visit_and_return_visit_must_split","title":"首次初诊、复诊和复查是独立调度变量","description":"首次初诊、复诊和复查会显著改变单客时长与资源匹配。","examples":["首次初诊用户需要先进入眼位与项目判断节点。","复诊用户应优先路由到熟悉其历史记录的链路。"],"priority":"high"},
+  {"id":"acute_and_longcycle_routes","title":"急诊与长周期项目必须走不同执行链路","description":"急诊更依赖时效和检查，近视防控更依赖评估、方案和复查排班。","examples":["急诊线索优先安排眼位与时效判断。","近视防控线索优先锁评估和复查节奏。"],"priority":"high"},
+  {"id":"peak_schedule_check","title":"高峰急诊必须先确认门诊、时段和眼位","description":"夜间和假期急诊不能直接默认安排，需要先判断候补、改时段或先做检查预约。","examples":["今晚优先判断是否还能安排。","时段较紧时先走检查和候补。"],"priority":"medium"},
+  {"id":"writeback_gate","title":"服务状态与复诊条件必须写回执行链路","description":"急诊和长期检查类任务如果不把时效、完工和复诊条件写进链路，后续极易出错。","examples":["急诊服务必须带上完工回写节点。","近视防控服务要带复诊与回访。"],"priority":"high"},
+  {"id":"post_service_followup_reserve","title":"高峰初诊和老客复诊都要预留 followup 任务","description":"眼科门诊成交后仍有复诊、复查、满意度和下次预约提醒需要跟进。","examples":["急诊后预留后续复查节点。","近视防控复诊后预留下次提醒。"],"priority":"medium"}]}

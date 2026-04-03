@@ -1,0 +1,118 @@
+﻿{
+  "schema_version": "subdomain.registry.v1",
+  "generated_for": "OpenClaw physical isolation layer",
+  "repo_mode": "mono_repo_multi_thread",
+  "principles": [
+    "contract_driven",
+    "black_box_evolution",
+    "no_shared_database",
+    "no_shared_memory",
+    "api_webhook_mq_only"
+  ],
+  "subdomains": [
+    {
+      "id": "01-async-mission-orchestrator",
+      "thread_id": "sd-01",
+      "name": "Async Mission Orchestrator",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "02-research-radar-batch",
+      "thread_id": "sd-02",
+      "name": "Research Radar Batch",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "03-industry-compiler",
+      "thread_id": "sd-03",
+      "name": "Industry Compiler",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "04-memory-compiler",
+      "thread_id": "sd-04",
+      "name": "Memory Compiler",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "05-video-factory",
+      "thread_id": "sd-05",
+      "name": "Video Factory",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "06-telegram-command-gateway",
+      "thread_id": "sd-06",
+      "name": "Telegram Command Gateway",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "07-policy-router",
+      "thread_id": "sd-07",
+      "name": "Policy Router",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "prototype",
+      "status": "active"
+    },
+    {
+      "id": "08-cti-engine",
+      "thread_id": "sd-08",
+      "name": "CTI Engine",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "prototype",
+      "status": "active"
+    },
+    {
+      "id": "09-trust-verification",
+      "thread_id": "sd-09",
+      "name": "Trust Verification",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "prototype",
+      "status": "active"
+    },
+    {
+      "id": "10-xai-scorer",
+      "thread_id": "sd-10",
+      "name": "XAI Scorer",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "prototype",
+      "status": "active"
+    },
+    {
+      "id": "11-desktop-delivery-chain",
+      "thread_id": "sd-11",
+      "name": "Desktop Delivery Chain",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "executing",
+      "status": "active"
+    },
+    {
+      "id": "12-superharbor-command-cabin",
+      "thread_id": "sd-12",
+      "name": "SuperHarbor Command Cabin",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "mvp",
+      "status": "active"
+    },
+    {
+      "id": "13-liaoyuan-os-runtime-lab",
+      "thread_id": "sd-13",
+      "name": "Liaoyuan OS Runtime Lab",
+      "ownership_mode": "same_repo_independent_thread",
+      "maturity": "mvp",
+      "status": "active"
+    }
+  ]
+}

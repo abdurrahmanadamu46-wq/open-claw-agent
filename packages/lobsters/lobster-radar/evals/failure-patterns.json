@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "radar",
+  "patterns": [
+    {
+      "id": "radar_missing_core_fields",
+      "label": "missing_core_fields",
+      "description": "SignalBrief misses mandatory fields or does not surface a clear attention recommendation."
+    },
+    {
+      "id": "radar_rumor_elevated",
+      "label": "rumor_elevated",
+      "description": "Low-trust noise is reported as confirmed signal."
+    },
+    {
+      "id": "radar_strategy_drift",
+      "label": "strategy_drift",
+      "description": "Radar jumps from signal scan into full strategy prescription instead of handing off clean evidence."
+    }
+  ]
+}

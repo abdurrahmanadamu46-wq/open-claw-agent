@@ -1,0 +1,228 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "visualizer",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "proof_first_signature_skewer",
+      "priority": "P0",
+      "rule": "Open on a real signature skewer leaving the grill, being seasoned, or getting the first bite. Do not lead with empty decor or neon ambience.",
+      "why_it_matters": "A barbecue shop earns trust from visible heat, grill work, and real dine-in proof. If viewers only see mood shots first, the store feels generic and unverified.",
+      "execution_points": [
+        "Make sure the first 3 shots include grill action, a plated or handed-over skewer, and a bite or table interaction.",
+        "Keep the cover direction aligned with the first hero item. If the hook is lamb skewers, show lamb skewers first.",
+        "Even for late-night or social scripts, start from food proof before space or nightlife mood."
+      ],
+      "required_evidence": [
+        "signature skewer grill footage",
+        "seasoning or plating footage",
+        "table handoff or first-bite footage"
+      ],
+      "fallback_route": "If peak-hour dine-in footage is missing, downgrade to a signature-skewer explainer, a single-table tasting route, or a prep-to-plate route.",
+      "must_avoid": [
+        "long empty-store opening sequences",
+        "external food stock used as store proof",
+        "cold static plates framed as fresh off the grill"
+      ]
+    },
+    {
+      "id": "live_fire_and_sizzle_visible",
+      "priority": "P0",
+      "rule": "If the script claims charcoal fire, live grilling, or strong heat, the plan must show flame, red charcoal, turning, brushing, seasoning, smoke, or sizzle rather than only finished stills.",
+      "why_it_matters": "The difference between barbecue and ordinary dining is live heat and visible craft. The viewer needs to feel that the grill is active now, not implied later.",
+      "execution_points": [
+        "Prioritize grill-state shots, skewer turning, brushing oil or sauce, dry seasoning, and lift-off from the grill.",
+        "Connect heat shots to the next proof layer: table handoff, dipping, beer pairing, or the first bite.",
+        "If open flame cannot be shown directly, use charcoal glow, grill marks, steam, and fresh handoff shots as the downgraded proof route."
+      ],
+      "required_evidence": [
+        "working grill footage",
+        "turning or seasoning detail shots",
+        "fresh-off-grill delivery shot"
+      ],
+      "fallback_route": "If grill access is limited, move to a hot-finished-product route and clearly avoid overclaiming live-fire visuals.",
+      "must_avoid": [
+        "post-production flames pretending to be real fire",
+        "claims of live grilling with no process shots",
+        "recutting one skewer into multiple fake hero products"
+      ]
+    },
+    {
+      "id": "night_service_business_truth",
+      "priority": "P0",
+      "rule": "If the plan wants to prove popularity, it must show real night-service signals such as storefront flow, occupied tables, outdoor seating, refills, add-on orders, or empty skewers on tables.",
+      "why_it_matters": "Barbecue demand is judged heavily by late-night energy and repeat traffic. Viewers trust operational signals more than narration about how busy the shop is.",
+      "execution_points": [
+        "Specify whether the shoot is at dusk, dinner peak, or late-night service, then match the shot list to that window.",
+        "Capture storefront movement, outdoor seating occupancy, servers bringing skewers and drinks, and table turnover evidence.",
+        "If the store is not busy that day, pivot to signature items, group-fit scenes, or comfort and space rather than forcing a crowd story."
+      ],
+      "required_evidence": [
+        "night storefront footage",
+        "real seated or waiting-customer footage",
+        "service rhythm shots such as skewers, drinks, or refill moments"
+      ],
+      "fallback_route": "If peak traffic is unavailable, switch to a food-first or single-table route and explicitly mark the time-window limitation.",
+      "must_avoid": [
+        "borrowing crowd footage from another venue",
+        "editing empty tables into fake peak-hour density",
+        "describing weekday flat traffic as festival-level business"
+      ]
+    },
+    {
+      "id": "raw_to_grill_to_bite_chain",
+      "priority": "P0",
+      "rule": "For fresh-cut meat, oysters, seafood, or made-to-order skewers, the storyboard should connect prep, grill, handoff, and bite in at least a three-step chain.",
+      "why_it_matters": "Claims around freshness or live prep only feel credible when the viewer can follow the item through multiple real stages.",
+      "execution_points": [
+        "Show item identity early through prep, labeling, or display before the grill stage.",
+        "Keep the same hero item consistent from prep to grill to table so the chain is easy to verify.",
+        "If back-of-house access is restricted, use front prep, pass station, or table-side handoff as the replacement route."
+      ],
+      "required_evidence": [
+        "prep, display, or item-identification shot",
+        "grill-stage shot",
+        "bite, dip, or table feedback shot"
+      ],
+      "fallback_route": "If the prep stage cannot be captured, preserve a clear grill-to-bite chain and note the missing upstream proof in dependencies.",
+      "must_avoid": [
+        "mixing unrelated ingredient footage into one fake chain",
+        "using one food class to back another claim",
+        "over-grading color until doneness and freshness look unreliable"
+      ]
+    },
+    {
+      "id": "storefront_and_seating_anchor",
+      "priority": "P1",
+      "rule": "The opening section should establish storefront, seating type, and venue position so viewers understand whether this is a street-side late-night shop, a mall grill bar, or a seafood stall.",
+      "why_it_matters": "Barbecue decisions depend on who the place is for and how people sit there, not only on close-up food footage.",
+      "execution_points": [
+        "For street-side stores, show sign, outdoor seating, and entry path. For mall stores, show floor signage, storefront, and seating relation.",
+        "If the shop has booths, private rooms, open-air seating, or a visible grill station, connect them in one readable route.",
+        "Use store-space shots to support the use case: after-work drinks, late-night social, family dinner, or seafood night-market hangout."
+      ],
+      "required_evidence": [
+        "storefront or sign footage",
+        "entry or movement shot",
+        "seating overview footage"
+      ],
+      "fallback_route": "If the exterior cannot be filmed well, use sign, cashier, logo wall, and seating relation instead of pretending to have a stronger location footprint than reality.",
+      "must_avoid": [
+        "all food close-ups with no store anchor",
+        "borrowing another store's interior as venue proof",
+        "cropping so tightly that store scale and type become misleading"
+      ]
+    },
+    {
+      "id": "menu_portion_and_combo_consistency",
+      "priority": "P0",
+      "rule": "Skewer counts, combo trays, seafood plates, drinks, and value sets must match real menu availability and standard portioning rather than test plates or display-only arrangements.",
+      "why_it_matters": "Barbecue buyers are sensitive to mismatch between what the video promises and what reaches the table. Portion credibility affects trust directly.",
+      "execution_points": [
+        "Confirm what is normally on sale, what is seasonal, and what only appears in limited bundles or special windows.",
+        "If value or group-sharing is a core claim, use whole-table composition and clear quantity references rather than isolated beauty shots.",
+        "Separate single skewers, platters, seafood add-ons, drink combos, and fixed sets so the plan does not blur different offer types."
+      ],
+      "required_evidence": [
+        "current menu or order proof",
+        "standard plating reference",
+        "whole-table or quantity-reference shot"
+      ],
+      "fallback_route": "If a seafood or special item is only seasonal, label it clearly as a limited offer instead of a daily hero product.",
+      "must_avoid": [
+        "using test or holiday platters as everyday proof",
+        "recutting one tray as multiple offer types",
+        "claiming value or quantity with no visible reference"
+      ]
+    },
+    {
+      "id": "tabletop_cleanliness_and_ventilation_visible",
+      "priority": "P1",
+      "rule": "If comfort, low-smoke seating, or long-stay friendliness is part of the story, the plan needs visible proof of clean tables, grate changes, plate clearing, tissues, spacing, or ventilation.",
+      "why_it_matters": "Barbecue can easily look greasy or uncomfortable. A credible plan balances smoke and appetite with cleanliness and staying power.",
+      "execution_points": [
+        "Capture a clean table baseline before the first heavy food wave.",
+        "Use service details such as grate change, table reset, empty-skewer clearing, or tissue replenishment to prove care.",
+        "For indoor stores, include exhaust or spacing evidence. For outdoor stores, include comfort and airflow rather than only smoke."
+      ],
+      "required_evidence": [
+        "clean table or seating baseline shot",
+        "service-cleanup or grate-change shot",
+        "ventilation or comfort proof shot"
+      ],
+      "fallback_route": "If comfort proof is weak, do not lead on low-smoke or family-friendly claims. Shift back to food proof or late-night social proof.",
+      "must_avoid": [
+        "treating excessive smoke as a pure visual asset",
+        "using grease and ash as appetite close-ups",
+        "ignoring nearby guest comfort when designing indoor shots"
+      ]
+    },
+    {
+      "id": "service_chain_integrity",
+      "priority": "P1",
+      "rule": "If the script sells smooth late-night service, the plan should connect at least three of these stages: order, first skewers, drinks, refill, grate care, add-on order, or post-meal table evidence.",
+      "why_it_matters": "A barbecue shop is experienced as a full table rhythm, not a single plated beauty moment. A connected chain makes the plan feel deliverable and real.",
+      "execution_points": [
+        "Start from menu scan, drink arrival, or first skewers and then show how the session develops.",
+        "For social or group scenes, let multiple people share the table instead of repeating one hand with one skewer.",
+        "If the service chain is incomplete, declare the missing stages in dependencies rather than faking a full night arc."
+      ],
+      "required_evidence": [
+        "first-order or first-arrival shot",
+        "skewer or drink service shot",
+        "shared-table or refill feedback shot"
+      ],
+      "fallback_route": "If the full chain is not available, keep a shorter single-table experience route and surface the missing service nodes clearly.",
+      "must_avoid": [
+        "cross-table edits pretending to be one continuous session",
+        "using another venue's diner interactions as proof",
+        "cutting so fast that the service logic becomes unreadable"
+      ]
+    },
+    {
+      "id": "explicit_fire_service_dependencies",
+      "priority": "P0",
+      "rule": "The plan must explicitly list shooting windows, grill access, outdoor seating permission, customer visibility rules, fire-safety boundaries, weather limits, and specific hero items needed for pickup shots.",
+      "why_it_matters": "Barbecue filming depends on real operating windows, smoke, flame, table availability, and permissions. Missing one of those can break execution fast.",
+      "execution_points": [
+        "Mark which shots happen before rush, during peak, during active grilling, or near close.",
+        "List the exact skewers, platters, seafood items, drinks, tables, and grill positions that must be available.",
+        "Add alternatives for no-face rules, no-fire closeups, rain, mall restrictions, or blocked outdoor seating."
+      ],
+      "required_evidence": [
+        "shooting window note",
+        "permission and safety boundary note",
+        "hero-item and camera-position checklist"
+      ],
+      "fallback_route": "If key dependencies fail, reduce ambition immediately to a food-first, single-table, space-intro, or pre-opening route.",
+      "must_avoid": [
+        "assuming fire or outdoor seating is always available to film",
+        "assuming all customers can be shown clearly",
+        "designing a peak-service long chain with no dependency notes"
+      ]
+    },
+    {
+      "id": "downgrade_when_assets_missing",
+      "priority": "P0",
+      "rule": "When assets are missing, downgrade honestly instead of inventing crowds, smoke, diners, or grill proof from external footage.",
+      "why_it_matters": "The visualizer role is responsible for executable barbecue plans, not for manufacturing nightlife or appetite signals that the store cannot support.",
+      "execution_points": [
+        "No crowd means a food-and-space route. One real table means a single-table experience route. Full peak footage unlocks a business-proof route.",
+        "Lower execution scores when proof layers are missing instead of preserving the script's original ambition.",
+        "Keep barbecue-specific anchors such as skewers, grill marks, beer, outdoor seating, or late-night timing even in downgraded routes."
+      ],
+      "required_evidence": [
+        "current asset-boundary note",
+        "alternative-shot route",
+        "score rationale"
+      ],
+      "fallback_route": "Move the story to hero skewers, beer pairing, space explanation, tasting route, or pre-opening teaser rather than a fake hot-shop exploration video.",
+      "must_avoid": [
+        "stock diners presented as repeat-business proof",
+        "rendered or staged trays presented as mature-store proof",
+        "execution scores higher than real shoot conditions justify"
+      ]
+    }
+  ]
+}

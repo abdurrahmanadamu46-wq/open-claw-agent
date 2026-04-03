@@ -1,0 +1,47 @@
+{
+  "agent_id": "radar",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "pending_signal_tasks",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "new_events",
+      "event_types": [
+        "competitor_event",
+        "metrics_event",
+        "risk_event"
+      ],
+      "action": "process_by_priority"
+    },
+    {
+      "check": "alert_threshold",
+      "condition": "threshold_breached",
+      "action": "escalate_to_commander"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "scan_competitor_feeds",
+      "description": "扫描重点竞品和核心渠道动态"
+    },
+    {
+      "interval_minutes": 60,
+      "action": "check_trending_topics",
+      "description": "检查热搜、热榜、关键词和舆情变化"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "generate_signal_brief",
+      "description": "汇总本轮信号并输出结构化摘要"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_tasks AND no_events AND no_alerts",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 60,
+    "idle_behavior": "passive_monitoring"
+  }
+}

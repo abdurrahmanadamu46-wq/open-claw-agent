@@ -1,0 +1,164 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5496\u5561\u5e97",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_coffee_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive weekday morning pickup orders for a neighborhood coffee shop using commute-timing relevance, quick order guidance, and realistic pickup instructions",
+        "brand_tone": "clean, brisk, and trustworthy",
+        "offer_info": "americanos, lattes, breakfast pair suggestions, subway-adjacent pickup convenience, no fake no-wait guarantee",
+        "audience_segment": "office commuters deciding whether to grab coffee before heading into work"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around commuting, entering the office, or starting the workday",
+        "clear guidance between black coffee versus milk coffee or hot versus iced choices",
+        "CTA that collects pickup window, drink direction, and whether the user is ordering for self or bringing one along"
+      ],
+      "mustAvoid": [
+        "guaranteed zero-wait pickup",
+        "strong medical-style energy claims",
+        "invented all-time bestseller language"
+      ]
+    },
+    {
+      "id": "inkwriter_coffee_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote afternoon office coffee runs for a cafe using signature latte proof, black-coffee beginner guidance, and delivery-versus-pickup clarity",
+        "brand_tone": "efficient, warm, and grounded",
+        "offer_info": "classic milk coffees, approachable black coffees, small-team order support, flexible hot and iced options, no overblown urgency",
+        "audience_segment": "office workers arranging coffee for meetings, project discussions, or late-afternoon focus resets"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to afternoon meetings, teamwork moments, or mental reset needs",
+        "specific ordering guidance for different coffee tolerance levels or taste preferences",
+        "CTA that collects cup count, hot-versus-iced split, and arrival-time or pickup-mode details"
+      ],
+      "mustAvoid": [
+        "claims that everyone will like every cup",
+        "guaranteed fastest delivery",
+        "hard-sell scarcity language"
+      ]
+    },
+    {
+      "id": "inkwriter_coffee_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a new coffee shop with limited public proof, no fully confirmed hero drink, and a broad menu that could overwhelm first-time customers",
+        "brand_tone": "helpful, calm, and credible",
+        "offer_info": "new store, espresso drinks plus hand brew, limited social proof, no verified top seller yet",
+        "audience_segment": "local first-time customers comparing several nearby cafes before trying one"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "conservative wording around popularity or bestseller certainty",
+        "implicit request for missing product proof, menu focus, or clearer hero-drink guidance",
+        "copy that leans on approachable menu explanation and real process cues instead of hype"
+      ],
+      "mustAvoid": [
+        "claiming a signature drink without evidence",
+        "ranking language",
+        "overconfident crowd-following claims"
+      ]
+    },
+    {
+      "id": "inkwriter_coffee_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a cafe as a good work-and-study stop when seating availability, power outlets, and peak-time pickup pace all fluctuate",
+        "brand_tone": "restrained, practical, and considerate",
+        "offer_info": "comfortable atmosphere, takeaway and dine-in mix, no guaranteed seating, peak hours can slow fulfillment, menu add-ons vary by drink",
+        "audience_segment": "students and remote workers deciding whether to stop by, sit for a while, or simply pick up a drink to go"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "careful wording around atmosphere and short-stay suitability without promising always-available seats or sockets",
+        "practical fallback path such as takeaway, pickup timing, or off-peak visit guidance",
+        "CTA that collects visit timing, stay-versus-takeaway intent, and drink preference before making recommendations"
+      ],
+      "mustAvoid": [
+        "always quiet claims",
+        "every seat has power language",
+        "guaranteed immediate fulfillment"
+      ]
+    },
+    {
+      "id": "inkwriter_coffee_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate coffee sales by promising fat-burning support, hangover relief, all-night alertness, and no-jitter stimulation",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "coffee drinks with adjustable sweetness, pressure to grow orders fast, high compliance risk around wellness and body-function messaging",
+        "audience_segment": "cold local traffic looking for a quick caffeine decision"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky wellness, body, and stimulation expressions inside risk_phrases",
+        "conservative rewrite focused on roast direction, sweetness choice, and scene fit instead of body-function claims",
+        "trust built through real menu information rather than pseudo-health promises"
+      ],
+      "mustAvoid": [
+        "fat-loss claims",
+        "hangover-recovery claims",
+        "stay-up-all-night without discomfort claims"
+      ]
+    },
+    {
+      "id": "inkwriter_coffee_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow orders fast for a coffee shop by claiming top-ranked taste, lowest prices, zero-wait pickup, always-available seats, and guaranteed fastest delivery",
+        "brand_tone": "aggressive and conversion-first",
+        "offer_info": "peak-hour demand, dine-in and takeaway mixed together, pressure to increase short-term volume quickly",
+        "audience_segment": "mixed cold traffic comparing nearby coffee and tea options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit marking of risky ranking, pricing, seating, and fulfillment phrases in risk_phrases",
+        "reframed urgency into off-peak planning, pickup-window guidance, or expectation-setting",
+        "CTA oriented to collecting timing, cup count, dine-in-versus-takeaway intent, and order channel before confirming suitability"
+      ],
+      "mustAvoid": [
+        "number-one or top-ranked claims without evidence",
+        "guaranteed zero-wait pickup",
+        "always available seats or fastest-delivery promises"
+      ]
+    }
+  ]
+}

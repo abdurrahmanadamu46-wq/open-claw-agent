@@ -1,0 +1,17 @@
+{
+  "meta": { "lobster": "abacus", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "aba_battle_001",
+      "type": "failure",
+      "date": "2026-03-05",
+      "skill_ref": "aba_ab_001",
+      "description": "在抖音单组仅1200播放时就得出'A版本CTR高于B版本30%'的结论，推荐全面切换A版本，结果扩大样本后差异缩小至8%，实际无显著差异",
+      "root_cause": "样本量不足时强行解读数据，小样本随机波动被当成趋势",
+      "action_taken": "在报告模板中加入强制字段'sample_size_check'：样本量未达标时，结论栏必须标注'样本量不足，仅供参考，不建议据此做决策'",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

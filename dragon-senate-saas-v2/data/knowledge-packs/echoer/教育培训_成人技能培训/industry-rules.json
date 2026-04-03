@@ -1,0 +1,134 @@
+﻿{
+  "industry": "教育培训_成人技能培训",
+  "lobster_id": "echoer",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "booking_needs_concern_and_time",
+      "priority": "high",
+      "applies_when": [
+        "User asks whether a trial or consult is available without concern, time, or foundation facts",
+        "User wants a fast answer in a public comment"
+      ],
+      "response_goal": "Keep the reply warm while turning a vague adult-skills inquiry into usable booking facts.",
+      "do": [
+        "Acknowledge the wish to book quickly",
+        "Ask for the main concern, preferred time, and whether this is a first visit",
+        "Keep the next step easy enough to answer in one message"
+      ],
+      "avoid": [
+        "Promising a slot without facts",
+        "Sounding pushy or robotic",
+        "Jumping straight to off-platform contact"
+      ],
+      "safe_transition": "如果你告诉我现在最想解决的是哪一类问题、想来的时间和是不是第一次来，我可以先帮你把下一步收窄。",
+      "handoff_suggestion": "If the user provides concern and time facts, hand off to Catcher."
+    },
+    {
+      "id": "first_time_needs_low_pressure_guidance",
+      "priority": "high",
+      "applies_when": [
+        "User says it is their first time or sounds unsure whether the route suits them",
+        "User is unsure what route or teacher suits them"
+      ],
+      "response_goal": "Reduce uncertainty first, then guide the user toward a simple and safe trial path.",
+      "do": [
+        "Acknowledge that uncertainty is normal",
+        "Offer a simple way to narrow the concern or route",
+        "Guide toward a low-pressure next step"
+      ],
+      "avoid": [
+        "Pushing a long package immediately",
+        "Making the user feel behind",
+        "Turning the reply into a hard sell"
+      ],
+      "safe_transition": "第一次来先看适不适合很正常，我们可以先把你现在最卡的点和可来的时间理清楚。",
+      "handoff_suggestion": "If the user shares direction and timing, route to Catcher."
+    },
+    {
+      "id": "deadline_driven_booking",
+      "priority": "high",
+      "applies_when": [
+        "User mentions a job-change, promotion, or application node soon",
+        "User needs a trial before a deadline"
+      ],
+      "response_goal": "Keep momentum high while collecting the exact time window and concern scope that decide whether the institution can help.",
+      "do": [
+        "Acknowledge the deadline timing",
+        "Ask when the node is and when the user hopes to come",
+        "Guide the next step toward a suitable slot and route fit"
+      ],
+      "avoid": [
+        "Guaranteeing all peak slots are available",
+        "Ignoring first-visit or foundation concerns",
+        "Pushing a package before the trial is scoped"
+      ],
+      "safe_transition": "如果你把转岗、晋升或面试的时间点和最想解决的部分告诉我，会更容易判断先约哪一类试听。",
+      "handoff_suggestion": "If the user shares date and timing, hand off to Catcher."
+    },
+    {
+      "id": "price_questions_need_scope",
+      "priority": "medium",
+      "applies_when": [
+        "User asks only for price",
+        "User compares packages without concern context"
+      ],
+      "response_goal": "Avoid empty price comparison by lightly recovering scope.",
+      "do": [
+        "Answer lightly without sounding evasive",
+        "Ask what concern or route the user is asking about",
+        "Keep the follow-up question low-friction"
+      ],
+      "avoid": [
+        "Dumping long menus in comments",
+        "Hiding the role of concern scope",
+        "Forcing immediate upsell"
+      ],
+      "safe_transition": "如果你告诉我是更偏转岗、AI 工具、办公提效还是副业技能，价格回答会更准确一些。",
+      "handoff_suggestion": "If the user gives concern scope, route to Catcher."
+    },
+    {
+      "id": "returning_student_should_feel_seen",
+      "priority": "medium",
+      "applies_when": [
+        "User says they came before or wants to return",
+        "User references their last class, trial, or project result"
+      ],
+      "response_goal": "Make the user feel recognized while surfacing what they want this time.",
+      "do": [
+        "Acknowledge the prior visit naturally",
+        "Ask what they want to continue or solve this time",
+        "Guide toward a smooth re-entry point"
+      ],
+      "avoid": [
+        "Treating a returning student like a cold lead",
+        "Ignoring prior context",
+        "Jumping straight to a hard close"
+      ],
+      "safe_transition": "如果你告诉我这次更想接上哪一段，我们就能更自然地帮你收窄下一步。",
+      "handoff_suggestion": "If the user shares prior context, route to FollowUp or Catcher."
+    },
+    {
+      "id": "public_self_doubt_no_shame",
+      "priority": "high",
+      "applies_when": [
+        "User talks about being too late, not smart enough, or embarrassed in public",
+        "The concern feels personal or career-sensitive"
+      ],
+      "response_goal": "Protect dignity in public while still keeping the path to help open.",
+      "do": [
+        "Reply with empathy and restraint",
+        "Avoid repeating the user's wording harshly",
+        "Offer a light path into a more specific next step"
+      ],
+      "avoid": [
+        "Amplifying embarrassment",
+        "Using shame to sell",
+        "Turning a sensitive comment into a hard conversion script"
+      ],
+      "safe_transition": "这种担心很常见，不用急着给自己下结论。你如果愿意说下现在卡在哪和大概什么时间方便，我们可以先帮你看路径。",
+      "handoff_suggestion": "If the user continues with details, route to Catcher."
+    }
+  ]
+}

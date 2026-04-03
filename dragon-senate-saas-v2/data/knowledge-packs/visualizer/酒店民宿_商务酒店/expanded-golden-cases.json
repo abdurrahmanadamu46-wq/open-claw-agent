@@ -1,0 +1,259 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_business_hotel_case_001",
+      "label": "happy_path",
+      "scenario": "地铁口商务酒店，强调夜间到店、前台办理、房内办公和次日早餐效率",
+      "input": {
+        "copy_pack": "商务酒店短视频脚本，核心卖点是离地铁近、晚到也能顺利入住、房间带完整办公位、第二天早餐不耽误早会，目标用户是工作日短住的一到两晚商旅客。",
+        "brand_assets": [
+          "夜间门头与落客区视频",
+          "前台办理与房卡交接镜头",
+          "电梯厅与楼层导视镜头",
+          "商务大床房广角实拍",
+          "书桌、插座、台灯和行李位特写",
+          "卫浴与备品实拍",
+          "早餐区取餐线与咖啡机镜头",
+          "清晨离店与门口出行动线",
+          "酒店 Logo 墙与前台品牌识别"
+        ],
+        "reference_styles": [
+          "克制纪实的商旅效率感",
+          "真实到店与真实入住优先"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "night_arrival": true,
+          "breakfast_access": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "夜间门头或入口先建立真实酒店身份",
+        "前台办理到进房的连续链路",
+        "书桌、插座和卫浴证明房型适合出差短住",
+        "早餐和清晨出门补足早会前节奏",
+        "明确写出住客避脸拍摄和早餐时段依赖"
+      ],
+      "mustAvoid": [
+        "用城市夜景替代酒店到店镜头",
+        "把升级房或样板房剪成主力房型",
+        "未授权拍清住客正脸和证件信息"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把商旅效率型脚本转成一条从夜间到店、顺利入住、房内办公到次日早餐离店都清晰可拍的商务酒店分镜。",
+        "assumptions": [
+          "可以在夜间低峰时段拍门头、前台和值机流程，但不能拍清其他住客正脸。",
+          "商务大床房是当前主推房型，早餐在工作日清晨真实开放。"
+        ],
+        "evidence": [
+          "品牌素材同时具备夜间门头、前台办理、主力房型、桌面办公位、卫浴和早餐镜头。",
+          "脚本卖点围绕通勤效率、入住顺滑和次日出门节奏，适合做完整商旅链路。"
+        ],
+        "confidence": 0.91,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用夜间门头和前台办理动作做主体，右下角补一格房内书桌与床位关系，标题聚焦“晚到也能很快住下”。",
+        "shot_list": "1) 夜间门头与落客区建立真实酒店身份和到店场景 2) 前台办理、房卡交接或自助机操作证明入住流程 3) 电梯厅到开门进房完成从到店到客房的连贯过渡 4) 商务大床房广角加书桌、插座、行李位和卫浴细节证明适合出差短住 5) 次日早餐取餐和咖啡机镜头补足早晨效率 6) 清晨离店与出行动线收束“早会不耽误”的核心承诺",
+        "asset_dependencies": "夜间门头、落客区、前台办理、房卡或门锁联动、商务大床房、书桌与插座、卫浴、早餐区、清晨离店动线；需确认夜拍授权、早餐开放时间和住客避脸拍摄边界。",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_business_hotel_case_002",
+      "label": "happy_path",
+      "scenario": "园区商务酒店，强调会议接待、客房办公和连住配套的一站式商旅流程",
+      "input": {
+        "copy_pack": "商务酒店视频脚本，核心卖点是企业园区内开会方便、会后直接入住、房间能办公、连住时洗衣补给不折腾，目标用户是两到三晚的差旅和小型会务客。",
+        "brand_assets": [
+          "酒店外立面与园区门牌镜头",
+          "大堂与前台接待镜头",
+          "会议室布置与投影调试画面",
+          "标准双床房与书桌实拍",
+          "洗衣房与售卖机导视",
+          "楼层电梯厅与公区走廊镜头",
+          "早餐区或咖啡角镜头",
+          "酒店 Logo 墙与会场指引牌"
+        ],
+        "reference_styles": [
+          "克制可信的企业接待感",
+          "流程型商务住宿纪实"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 3,
+          "meeting_room_access": true,
+          "laundry_access": true,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "园区或商务区锚点和酒店身份要出现在前段",
+        "会议室、大堂、电梯到客房形成真实链路",
+        "房内办公位与洗衣房等连住配套都要可验证",
+        "明确写出会议室和配套开放时间及授权边界"
+      ],
+      "mustAvoid": [
+        "把写字楼共享会议室冒充酒店自有会务空间",
+        "只拍会议室不落回客房入住场景",
+        "把普通洗衣角剪成高端度假配套"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在园区商务酒店可拍会议室、客房和连住配套的前提下，输出一条从会务到入住再到连住便利的完整商旅分镜。",
+        "assumptions": [
+          "会议室在非使用高峰可拍，且允许展示布置和导视但不拍实际参会者正脸。",
+          "标准双床房和洗衣房都处于正常开放状态，可在同一拍摄时段完成。"
+        ],
+        "evidence": [
+          "素材同时具备园区锚点、会议室、客房、洗衣房和大堂动线，适合形成“一站式商旅”叙事。",
+          "脚本卖点不是奢华感，而是会后入住和连住省心，符合 visualizer 的可执行证据导向。"
+        ],
+        "confidence": 0.84,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面以会议室和客房书桌双场景做主体，中间用大堂或电梯动线过渡，标题聚焦“开完会直接住下”。",
+        "shot_list": "1) 园区门牌或商务区锚点接酒店外立面，建立本店位置价值 2) 大堂与前台接待镜头说明会务客到店流程 3) 会议室布置和导视证明会务空间真实可用 4) 电梯厅过渡到标准双床房，落到书桌和床位关系证明入住与办公兼顾 5) 洗衣房、售卖机或补给区补足两到三晚连住便利 6) 早餐区或咖啡角与出门节奏收束一站式商旅承诺",
+        "asset_dependencies": "园区锚点、酒店外立面、大堂前台、会议室、楼层导视、标准双床房、书桌、洗衣房、早餐区或咖啡角；需确认会议室授权、配套开放状态和避开参会者正脸的拍摄边界。",
+        "execution_feasibility_score": "0.84"
+      }
+    },
+    {
+      "id": "visualizer_business_hotel_case_003",
+      "label": "edge_case",
+      "scenario": "连锁商务酒店素材受限，只有主力房型、前台和少量公区，没有早餐和真实住客素材",
+      "input": {
+        "copy_pack": "商务酒店视频脚本，原本想讲入住快、房型稳定、早餐方便、住客很多，但现阶段只有标准大床房、前台、走廊、电梯厅和品牌墙素材，没有早餐区、没有外立面夜景，也不能拍住客。",
+        "brand_assets": [
+          "标准大床房广角实拍",
+          "书桌、床品和卫浴镜头",
+          "前台空景与导视镜头",
+          "电梯厅和走廊镜头",
+          "品牌墙与楼层号牌",
+          "少量白天门口入口画面"
+        ],
+        "reference_styles": [
+          "连锁商旅真实感",
+          "克制的房型说明风格"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "breakfast_access": false,
+          "customer_assets": false,
+          "night_exterior_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "主动降级为房型真实和到店指引路线",
+        "前台、导视和房型关系要清楚，但不写高峰办理和早餐节奏",
+        "明确标注住客和夜拍素材缺失，执行分数要跟着下降"
+      ],
+      "mustAvoid": [
+        "继续硬讲早餐和夜间入住体验",
+        "通过空走廊和前台空景伪装满房或人气",
+        "用其他门店素材补公区和住客镜头"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在缺少早餐、住客和夜拍素材的条件下，把脚本降级成一条以房型真实、前台清晰和到店不迷路为核心的可执行商务酒店分镜。",
+        "assumptions": [
+          "当前唯一稳定可拍的是标准大床房和前台公共区域，无法补拍早餐和真实住客使用场景。",
+          "白天可拍到入口和品牌墙，但不足以支持“夜间到店”和“热门早餐”叙事。"
+        ],
+        "evidence": [
+          "现有素材足够支撑房型完整说明、前台与楼层导视、基础到店信息。",
+          "原脚本中的早餐便利和住客氛围缺少证据，必须降级处理。"
+        ],
+        "confidence": 0.74,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面直接用标准大床房广角和前台导视做主体，标题聚焦“房间真实、到店不绕路”，不再承诺早餐和夜间体验。",
+        "shot_list": "1) 白天入口和品牌墙建立门店身份 2) 前台与电梯厅导视说明到店和上楼动线 3) 标准大床房广角交代床位、通道和书桌关系 4) 卫浴、床品和桌面细节补足干净与稳定住感 5) 以品牌墙或走廊导视收束基础入住信息，不扩写早餐和住客氛围",
+        "asset_dependencies": "白天入口、品牌墙、前台、楼层导视、标准大床房、书桌、卫浴；明确缺少早餐区、夜景外立面、住客互动和办理高峰素材，需要同步下调叙事野心。",
+        "execution_feasibility_score": "0.68"
+      }
+    },
+    {
+      "id": "visualizer_business_hotel_case_004",
+      "label": "failure_case",
+      "scenario": "商务酒店尚未开业，只有效果图、平面图和品牌物料，却想做真实入住探店路线",
+      "input": {
+        "copy_pack": "商务酒店宣传脚本，希望做出地铁口、入住快、房间干净、早餐丰富、商旅很多的探店感视频，但门店尚未正式开业，没有真实客房、没有前台营业画面、没有早餐区、没有住客和公区实拍。",
+        "brand_assets": [
+          "酒店效果图",
+          "房型平面图",
+          "品牌 Logo",
+          "开业预告海报",
+          "位置示意图"
+        ],
+        "reference_styles": [
+          "新店开业预告",
+          "轻商务品牌介绍"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "hotel_open": false,
+          "real_room_assets": false,
+          "public_area_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确说明门店未开业与缺少真实入住证据",
+        "主动降级为开业预告或房型方向说明",
+        "列出开业后需要补拍的门头、前台、客房、早餐和公区素材"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实营业酒店",
+        "继续设计住客、早餐和办理链路",
+        "虚构通勤、配套和人气证明镜头"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在门店尚未开业且没有任何真实入住与运营素材的前提下，输出一条不冒充探店内容的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌方向、预计开业信息和房型规划，不能证明真实入住体验。",
+          "任何探店、早餐、前台和值机效率相关表达都必须等待开业后补拍。"
+        ],
+        "evidence": [
+          "现有素材只有效果图、平面图、Logo、预告海报和位置示意图，不具备实拍证据。",
+          "脚本原始卖点高度依赖真实运营状态，当前阶段无法支撑。"
+        ],
+        "confidence": 0.62,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，以效果图和品牌 Logo 为主体，标题明确写“即将开业”或“房型与位置先看”，避免任何已开业暗示。",
+        "shot_list": "1) 品牌 Logo 和开业预告海报建立新店认知 2) 效果图和房型平面图说明未来空间方向 3) 位置示意图只用于介绍大致区位，不承诺真实步行体验 4) 明确当前缺少门头、前台、客房、早餐、公区和住客实拍 5) 列出开业后需要补拍的关键证据镜头，等待真实运营后再升级为探店路线",
+        "asset_dependencies": "效果图、房型平面图、Logo、开业预告海报、位置示意图；明确缺少真实门头、前台、主力房型、卫浴、早餐、公区、路线外拍和住客使用素材。",
+        "execution_feasibility_score": "0.27"
+      }
+    }
+  ]
+}

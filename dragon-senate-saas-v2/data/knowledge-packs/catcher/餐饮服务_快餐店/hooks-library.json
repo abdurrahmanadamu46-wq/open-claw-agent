@@ -1,0 +1,138 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5feb\u9910\u5e97",
+  "lobster_id": "catcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "store_time_quantity_action_hook",
+      "title": "Store plus time plus quantity plus action is a strong intent hook",
+      "description": "When a lead names a specific store, a pickup or delivery time, a quantity or combo count, and an action phrase such as prepare or deliver or reserve, it should be treated as a high-intent candidate. This is much closer to execution than broad menu interest.",
+      "examples": [
+        "Need 26 lunch sets delivered to Tower 3 lobby by 11:50.",
+        "We will pick up 5 combos at IFC store at 18:40. Can you get them ready?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "explicit_combo_customization_hook",
+      "title": "Specific combo split and customization details are a real order hook",
+      "description": "When the buyer lists combo names, counts, low-spice notes, hot or cold drink swaps, kids meals, or similar details, they are usually planning a real order rather than browsing. The clearer the list, the higher the intent should be.",
+      "examples": [
+        "20 chicken burger combos, 12 beef rice combos, 6 no-spice, 4 hot drinks.",
+        "2 double beef combos, 2 spicy chicken combos, 1 kids meal."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "office_or_school_bulk_order_hook",
+      "title": "Office lunch and campus event context is a strong group-order hook",
+      "description": "Meeting meals, department lunches, school events, club orders, and overtime dinners become valuable when they come with quantity, address, floor, budget, invoice needs, or delivery timing. This hook should raise both fit and follow-up priority.",
+      "examples": [
+        "We need 32 lunch combos for a meeting and an invoice before 11:50.",
+        "The school club wants 45 meals in two waves. Can you support that?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "same_day_pickup_or_delivery_hook",
+      "title": "Nearby now and need it today is an action hook",
+      "description": "Phrases like we are nearby now, we can pick up after work, or the meeting starts soon usually mean the browsing phase is over. This hook should lift intent but not create a service promise on wait time or exact delivery.",
+      "examples": [
+        "We will arrive in 20 minutes for pickup.",
+        "If you can do it today before 5, I will send the list right now."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "breakfast_or_commute_window_hook",
+      "title": "Breakfast meeting and commute pickup are fast-food meal-window hooks",
+      "description": "Fast food demand is highly window-driven. A breakfast meeting pickup or a lunch-break office order is often more real than a broad later maybe question. Clear time windows should raise confidence.",
+      "examples": [
+        "Pick up 14 breakfast sets at 8:20 for our morning meeting.",
+        "Lunch break is short. Can 4 sets be ready for pickup at 12:10?"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coupon_redemption_plan_hook",
+      "title": "Coupon redemption with a store and meal time is a real intent hook",
+      "description": "Asking about a coupon alone is weak. Asking whether a coupon works at a named store for a named meal window is much closer to a real visit or order plan and should stay in the pipeline.",
+      "examples": [
+        "Can I use the 19.9 lunch coupon at Xujiahui store on Saturday noon?",
+        "If I order before 11:40, can I use this combo voucher today?"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "cross_channel_repeat_or_returning_hook",
+      "title": "Repeated contact and repeat-client memory are confidence hooks",
+      "description": "A lead that moves from comments to direct messages to enterprise chat, or one that references a previous order, usually has stronger ownership and intent. Catcher should treat this as one stronger lead, not multiple separate ones.",
+      "examples": [
+        "I asked in comments already. Here is the 26-meal list and my phone number.",
+        "We ordered 40 meals last month. This week we want the same store and address."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "vague_menu_only_hook",
+      "title": "Menu-only curiosity is a downgrade hook",
+      "description": "If the conversation stays on which burger is better, what is popular, or please send the menu, without any store, time, quantity, or action request, it should lower the probability of a high-priority lead.",
+      "examples": [
+        "Which is safer for a first try, the burger or fried chicken?",
+        "Send me the menu first and I will decide later."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "price_sheet_or_broker_hook",
+      "title": "Full price-sheet requests without order facts are broker hooks",
+      "description": "Asking for every combo price, student meal pricing, group-meal floor price, or rebate policy without store, time, quantity, or buyer facts is more like brokerage or fishing behavior than direct customer demand.",
+      "examples": [
+        "Send me all combo prices and rebate rules so I can compare for clients.",
+        "I need your full price sheet first. If it works, maybe I have buyers."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "exact_arrival_or_zero_wait_hook",
+      "title": "Exact-arrival and zero-wait language is a risk hook",
+      "description": "Demands such as must arrive exactly at 11:50, no waiting at all, or must be handed to our room directly are risk hooks even when commercial intent is strong. They should push risk upward rather than auto-upgrading the lead as safe.",
+      "examples": [
+        "It must arrive at 11:50 exactly.",
+        "We cannot wait at pickup and nobody can go downstairs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "allergy_and_absolute_safety_hook",
+      "title": "Allergy and absolute safety language is a risk hook",
+      "description": "When the lead uses zero-contact, absolutely safe, or never spicy language around kids meals, allergies, or pregnancy, the risk score should rise. Real intent may exist, but it should not be treated as a normal low-risk order lead.",
+      "examples": [
+        "Can you guarantee zero cross-contact with peanuts and sesame?",
+        "The kids meal must be absolutely safe and never spicy."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaint_or_food_safety_hook",
+      "title": "Order number plus complaint details is a service-escalation hook",
+      "description": "If the lead includes an order number, photo, receipt, undercooked item, missing meal, leakage, or feeling sick, it should enter the service or risk flow immediately. This is not a standard sales hook.",
+      "examples": [
+        "I have the order number and photos because the chicken was undercooked.",
+        "One meal was missing and I have the receipt and unboxing video."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "irrelevant_supplier_or_franchise_hook",
+      "title": "Operations pitches, franchise offers, and equipment sales are noise hooks",
+      "description": "Operator pitches, franchise offers, fryer sales, content swaps, and similar messages are unrelated to real meal purchases. They should be classified as low fit or spam unless a real buyer and a real order context appear.",
+      "examples": [
+        "We grow fast-food brands and franchise pipelines.",
+        "We sell fryer equipment and can also help your store go viral."
+      ],
+      "priority": "high"
+    }
+  ]
+}

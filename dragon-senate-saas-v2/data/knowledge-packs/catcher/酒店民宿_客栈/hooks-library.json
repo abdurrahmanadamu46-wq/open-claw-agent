@@ -1,0 +1,128 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u5ba2\u6808",
+  "lobster_id": "catcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "scenic_area_dates_room_type_hook",
+      "title": "Inn or scenic area plus dates plus room type",
+      "description": "When a lead includes a specific inn, ancient-town gate, scenic area, or riverside block together with dates, nights, guest count, room type, and a hold or booking action, it should be treated as a strong intent hook.",
+      "examples": [
+        "Next Friday at your Pingyao south-gate inn for two nights, one twin room for two adults, please help hold it first.",
+        "Two nights near your Dali ancient-town courtyard with one family room and self-drive parking."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "station_pickup_late_arrival_hook",
+      "title": "High-speed rail pickup and late-arrival action signals",
+      "description": "Phrases like train arrives at 9:30 p.m., need scenic pickup, just got off the rail, can check in tonight, or need gate pickup usually mean the browsing stage is ending and action is starting.",
+      "examples": [
+        "We get off the train at 9:20 p.m. and can book tonight if pickup to the inn works.",
+        "We arrive after 10 p.m. and need the late check-in flow plus south-gate pickup."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "self_drive_parking_hook",
+      "title": "Self-drive, parking, and luggage-transfer clarity",
+      "description": "When the guest mentions self-drive arrival, number of cars, parking lot location, scenic shuttle transfer, or luggage help together with stay facts, the lead becomes much more actionable.",
+      "examples": [
+        "Two cars arriving Saturday afternoon, two rooms for one night, need parking and luggage cart notes.",
+        "Family self-drive to the old town with one elderly parent and parking near the inn."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "family_elderly_access_hook",
+      "title": "Adults, children, elderly, and low-floor access details",
+      "description": "When the guest clearly states adult and child counts, child ages, elderly mobility, low-floor needs, room adjacency, or quiet-rest needs, the lead becomes easier to assess and often much more actionable.",
+      "examples": [
+        "Two adults, one child age eight, and one elderly parent needing one low-floor room.",
+        "Three generations for two nights with one twin room and one quiet king room."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pet_friendly_courtyard_hook",
+      "title": "Pet-friendly courtyard and rule-aware pet demand",
+      "description": "Pet size, number, pet-friendly room preference, courtyard access, and cleaning-fee awareness can turn a vague pet question into a real inn-booking hook.",
+      "examples": [
+        "Two adults and one corgi for two nights in a pet-friendly courtyard room.",
+        "One guest plus one small dog, self-drive arrival, and parking needed."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "buyout_retreat_reunion_hook",
+      "title": "Buyout, family reunion, tea event, and retreat demand",
+      "description": "Entire-courtyard buyouts, family reunions, study retreats, tea events, or wedding-eve stays become high-value hooks when they include fixed dates, room count, dining scope, tea room use, invoice needs, or quiet-hour compliance.",
+      "examples": [
+        "Six rooms for two nights plus reunion dinner and tea room use.",
+        "A reading retreat for eight guests with fixed dates and invoice details."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "long_stay_workation_hook",
+      "title": "Workation, writing, and slow-travel long-stay demand",
+      "description": "Seven-night-plus stays for remote work, writing, relocation pause, or slow travel become strong hooks when the guest also mentions Wi-Fi, desk space, laundry, cleaning rhythm, invoice, or quiet-hour needs.",
+      "examples": [
+        "A 12-night writing stay with stable Wi-Fi and weekly invoice needs.",
+        "A 10-night remote-work stay asking about laundry, breakfast, and quiet mornings."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "repeat_guest_return_hook",
+      "title": "Returning guest and historical order reuse",
+      "description": "Mentions of having stayed before, reusing an old order, sending prior invoice details, or asking for the same inn or room area again should be treated as confidence-boosting hooks.",
+      "examples": [
+        "We stayed last National Day and want the same courtyard area for two nights again.",
+        "I am sending the old contact and invoice details so we can use the same process."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "atmosphere_only_probe_hook",
+      "title": "Courtyard, river-view, tea room, and photo-only curiosity",
+      "description": "If the user only asks about atmosphere, photos, rooftop sunsets, tea room mood, or nearby coffee without dates, guest count, area, or booking action, the lead should be downgraded into nurture rather than pushed to the top.",
+      "examples": [
+        "Does the riverside room look good at night and can we visit for coffee first.",
+        "Can we just come take photos of the courtyard without discussing stay dates."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "agency_or_creator_rate_sheet_hook",
+      "title": "Rate-sheet fishing, creator barter, and channel cooperation",
+      "description": "When the lead immediately asks for bottom rates, all scenic properties, creator barter terms, agency cooperation, or filming support without real stay facts, it looks more like channel noise than a direct guest lead.",
+      "examples": [
+        "Send all your old-town properties, bottom rates, and creator barter policy first.",
+        "I have traffic resources and want your room photo pack and cooperation terms."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risky_rule_bending_hook",
+      "title": "No registration, extra guests, parties, fireworks, and absolute guarantees",
+      "description": "Statements about skipping registration, hiding guest count, bringing outside visitors, late-night singing or barbecue, fireworks, pets in restricted rooms, or demanding guaranteed best-view or absolute quiet should immediately raise risk and block automatic promotion.",
+      "examples": [
+        "Six adults in one courtyard suite, no full registration, and friends coming over until late.",
+        "We will only book if you guarantee the best river-view room and complete quiet all night."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaint_or_refund_service_hook",
+      "title": "Pickup trouble, room mismatch, invoice gap, and refund complaint",
+      "description": "If a message includes an order number, stay date, screenshots, or photos together with a complaint about pickup, room mismatch, odor, invoice, deposit, or refund, it should be treated as a service-escalation hook instead of a sales hook.",
+      "examples": [
+        "The pickup never came and I have the chat screenshot and order number.",
+        "The room was different from the post and the invoice still has not arrived."
+      ],
+      "priority": "high"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+﻿version: 1
+rules:
+  - id: queue_process_fail_spike
+    severity: P1
+    metric: queue.process.fail
+    threshold: ">= 10"
+    window: 5m
+    route: [webhook, feishu, dingtalk]
+  - id: dlq_growth
+    severity: P2
+    metric: dlq.growth
+    threshold: ">= 20"
+    window: 15m
+    route: [webhook, feishu]
+  - id: replay_success_drop
+    severity: P2
+    metric: dlq.replay.success_rate
+    threshold: "< 0.8"
+    window: 30m
+    route: [webhook, feishu]
+  - id: low_risk_notice
+    severity: P3
+    metric: queue.latency.p95
+    threshold: ">= 120s"
+    window: 30m
+    route: [webhook]
+suppress_windows:
+  P1: 5m
+  P2: 15m
+  P3: 30m

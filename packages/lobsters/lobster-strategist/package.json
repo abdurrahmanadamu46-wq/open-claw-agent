@@ -1,0 +1,7 @@
+﻿{
+  "name": "@lobsterpool/lobster-strategist",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Strategist lobster subproject template"
+}

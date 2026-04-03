@@ -1,0 +1,56 @@
+id: account-health-check
+name: 账号健康检查工作流
+description: 检查账号状态，输出健康报告与修复建议。
+
+agents:
+  - id: strategist
+    lobster: strategist
+  - id: followup
+    lobster: followup
+
+steps:
+  - id: check
+    agent: strategist
+    type: single
+    input: |
+      请检查以下账号的健康状态：
+      {{context.accounts}}
+
+      重点维度：
+      - 粉丝增长
+      - 互动率
+      - 风险信号
+      - 平台限制
+
+      完成后必须包含：
+      STATUS: done
+      HEALTH_REPORT:
+    expects: "STATUS: done"
+    max_retries: 2
+
+  - id: fix_plan
+    agent: strategist
+    type: single
+    input: |
+      根据以下健康报告制定修复计划：
+      {{steps.check.output}}
+
+      完成后必须包含：
+      STATUS: done
+      FIX_PLAN:
+    expects: "STATUS: done"
+    max_retries: 2
+
+  - id: summary
+    agent: followup
+    type: single
+    input: |
+      请生成最终账号健康检查摘要：
+      - 原始检查：{{steps.check.output}}
+      - 修复计划：{{steps.fix_plan.output}}
+
+      完成后必须包含：
+      STATUS: done
+      SUMMARY:
+    expects: "STATUS: done"
+    max_retries: 1

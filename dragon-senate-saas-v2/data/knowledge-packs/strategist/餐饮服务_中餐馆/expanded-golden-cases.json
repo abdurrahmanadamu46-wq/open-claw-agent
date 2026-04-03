@@ -1,0 +1,233 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_chinese_restaurant_lunch_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_lunch_dinein_growth",
+      "input": {
+        "mission_goal": "在 21 天内为商圈中餐馆新增 260 单工作日午市到店核销，并把午市翻台率从 0.9 提升到 1.4。",
+        "signal_brief": "周边写字楼复工后午市客流回升，附近竞品用低价套餐抢量，但门店已有 3 道稳定招牌菜、出餐 12 分钟内、线上评分 4.6，更适合走快而稳的午市路线。",
+        "tenant_context": {
+          "budget_limit": 8000,
+          "brand_tone": "实在、热锅现炒、白领友好",
+          "asset_state": "有 3200 名会员、近 90 天午市复购客 460 人、招牌盖饭和小炒评价稳定",
+          "location_type": "写字楼和社区混合商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "工作日午市主路线",
+        "本地 1 到 3 公里优先级",
+        "招牌菜证据和出餐稳定性",
+        "至少一个老客或私域备选路线",
+        "明确优先顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "午市晚市夜宵同时主推",
+        "深折扣引流超过后厨承接"
+      ]
+    },
+    {
+      "id": "strategist_chinese_restaurant_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_store_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开的新中式中餐馆验证首个值得持续投入的增长场景，并决定预算优先压在午市、家庭聚餐还是外卖。",
+        "signal_brief": "门店装修出片、位置在新商场 5 楼，但开业仅 6 天、真实评价很少，团队同时想做短视频爆量、团购和外卖，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "新中式、年轻、适合聚会",
+          "asset_state": "只有开业素材和 20 条首周评价，没有稳定爆品数据",
+          "location_type": "新商场餐饮楼层",
+          "operations_state": "服务员和后厨还在磨合"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补评价和真实菜品证据",
+        "把堂食与外卖拆开排序"
+      ],
+      "mustAvoid": [
+        "基于装修和氛围直接大规模扩量",
+        "一开业就同时冲团购低价和外卖满减"
+      ]
+    },
+    {
+      "id": "strategist_chinese_restaurant_private_room_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "family_and_business_private_room_growth",
+      "input": {
+        "mission_goal": "在 30 天内为包间和 6 到 12 桌聚餐场景获取 35 条高意向咨询，并锁定 18 场生日宴、家庭宴或商务宴请。",
+        "signal_brief": "门店周末散台上座稳定，但 4 个包间利用率偏低，近期附近社区和企业团建需求增加，包间照片、停车和服务流程证据齐全。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "体面、好点菜、服务稳",
+          "asset_state": "有 12 组包间实拍、3 套标准宴请菜单、可代订蛋糕和基础布置",
+          "location_type": "社区与产业园交界",
+          "operations_state": "周末晚市仍有部分包间档期"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "包间宴请资格筛选",
+        "日期人数预算和停车信息收集",
+        "标准套餐与定制菜单双路线",
+        "明确主路线和 fallback"
+      ],
+      "mustAvoid": [
+        "用低价团购替代高客单宴请路线",
+        "未查档期就承诺包间可订"
+      ]
+    },
+    {
+      "id": "strategist_chinese_restaurant_member_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "dormant_member_reactivation",
+      "input": {
+        "mission_goal": "重激活 1500 名 90 天未到店会员，并在 18 天内带回 220 单老客复购。",
+        "signal_brief": "门店有完整会员手机号和点菜记录，最近新上两道时令菜和一组 4 人家庭套餐，预算不高，但老客回店成本明显低于冷启动投流。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "熟客感、有人情味、不过度打扰",
+          "crm_state": "可按午市白领、周末家庭、包间宴请老客分层",
+          "asset_state": "有过去 6 个月的订单标签和生日信息"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客分层重激活节奏",
+        "时令菜或新套餐作为复购理由",
+        "低成本优先级高于陌生投流",
+        "至少一个冷启动备选路线"
+      ],
+      "mustAvoid": [
+        "统一群发一套话术",
+        "忽略历史点菜和到店时段"
+      ]
+    },
+    {
+      "id": "strategist_chinese_restaurant_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_service_instability",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下，恢复周末晚市到店客流，并在 21 天内把有效预订量拉回到上月平均水平。",
+        "signal_brief": "最近 3 周平台评分从 4.5 降到 4.1，差评集中在等位久、服务慢、招牌菜断货，但老板仍想直接加大短视频和团购投放。",
+        "tenant_context": {
+          "budget_limit": 7000,
+          "brand_tone": "诚恳、接地气、敢改问题",
+          "asset_state": "仍有 2 道评分高的稳定菜和一批老客好评截图",
+          "operations_state": "周末人手不足、备货预测不稳"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和承接力再扩量",
+        "限定菜品或限定时段路线",
+        "评论修复和真实口碑回收",
+        "明确停止或降级高风险投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或隐瞒出餐风险"
+      ]
+    },
+    {
+      "id": "strategist_chinese_restaurant_low_price_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "deep_discount_overexpansion",
+      "input": {
+        "mission_goal": "用 19.9 双人餐和全城最低价口号在 10 天内把到店流量翻倍。",
+        "signal_brief": "周边竞品持续用低价团购抢量，但门店当前毛利已薄、周末常排队、后厨接近满负荷，继续压价可能带来差评和履约失控。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "有一定自然客流和 4 道招牌菜，但缺少承接深折扣的人手",
+          "operations_state": "周末高峰翻台和服务都接近上限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把单店承接和口碑风险说透",
+        "给出更稳的替代增长路径"
+      ],
+      "mustAvoid": [
+        "全城最低价导向",
+        "无限量团购或排队免责式承诺",
+        "忽略后厨和服务上限"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+﻿{
+  "industry": "美业健康_皮肤管理",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_skin_care_concern_time_001",
+      "label": "happy_path",
+      "scenario_tag": "concern_based_consult_completion",
+      "input": {
+        "lead_assessment": "A 级预约线索，用户想咨询黑头闭口，计划周五晚来店。",
+        "value_score_card": "short_term high; booking likelihood high; conversion depends on concern, slot, and consult-scope completion",
+        "contact_history": [
+          "刚从小红书评论区转私信",
+          "已说明是第一次做护理",
+          "暂未确认是只咨询还是想了解某类清洁路线"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "本轮目标放在补齐咨询范围和具体时段",
+        "不先推长期管理",
+        "把预约事实收口清楚"
+      ],
+      "mustAvoid": [
+        "没定范围就承诺一定有位",
+        "直接转入成交节奏"
+      ]
+    },
+    {
+      "id": "followup_skin_care_first_time_002",
+      "label": "happy_path",
+      "scenario_tag": "first_visit_safety_guidance",
+      "input": {
+        "lead_assessment": "A- 级第一次咨询线索，用户说自己担心敏感和刺痛，但这周末有空想先来看看。",
+        "value_score_card": "short_term medium-high; conversion depends on safety trust and slot clarity",
+        "contact_history": [
+          "用户已表示这周末有空",
+          "看过环境和流程内容"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先做安全感建立而不是直接成交",
+        "推进到可执行咨询",
+        "不让用户觉得被压迫"
+      ],
+      "mustAvoid": [
+        "直接推长期护理项目",
+        "忽略首次安全顾虑"
+      ]
+    },
+    {
+      "id": "followup_skin_care_event_003",
+      "label": "happy_path",
+      "scenario_tag": "event_slot_lock",
+      "input": {
+        "lead_assessment": "A 级节前线索，用户周六拍照，想周四晚做一次状态管理咨询。",
+        "value_score_card": "short_term high; conversion depends on slot confirmation and full scope clarity",
+        "contact_history": [
+          "已明确拍照日期",
+          "暂未确认周四晚具体时间段"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "快速锁时间窗口",
+        "把问题范围带进承接",
+        "不夸张承诺结果"
+      ],
+      "mustAvoid": [
+        "拖太久导致窗口错过",
+        "忽略首次护理的边界"
+      ]
+    },
+    {
+      "id": "followup_skin_care_post_visit_004",
+      "label": "long_term_case",
+      "scenario_tag": "post_visit_reaction_feedback_before_revisit",
+      "input": {
+        "lead_assessment": "护理已完成，用户昨天做了服务，今天等待回访。",
+        "value_score_card": "long_term medium-high; next value depends on reaction feedback before revisit",
+        "contact_history": [
+          "首单已完成",
+          "尚未回收反应感受和满意度"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先问反应和满意度",
+        "根据反馈决定是否推进复访",
+        "避免直接推下一单"
+      ],
+      "mustAvoid": [
+        "跳过反应反馈直接成交",
+        "忽略不适信号"
+      ]
+    }
+  ]
+}

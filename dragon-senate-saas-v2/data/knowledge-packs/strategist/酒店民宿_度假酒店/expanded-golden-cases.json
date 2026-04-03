@@ -1,0 +1,235 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_resort_hotel_weekend_family_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekend_family_shoulder_season_growth",
+      "input": {
+        "mission_goal": "在 28 天内为城市周边度假酒店新增 260 间夜周末亲子有效预订，并把双休日两晚套餐占比从 18% 提升到 34%。",
+        "signal_brief": "酒店距离核心城区自驾 90 分钟内，已有儿童乐园、室内泳池、小动物喂养和家庭房，近 60 天平台评分 4.7 分。当前周末散单不少，但套餐连带低，团队想用直播低价券快速冲量。更适合先把城市圈亲子短住路线跑透。",
+        "tenant_context": {
+          "budget_limit": 10000,
+          "brand_tone": "轻松、省心、周末友好",
+          "asset_state": "有 82 间房、家庭房占比 35%、真实亲子评价和活动照片较完整、停车位充足",
+          "location_type": "城市近郊山野度假区",
+          "operations_state": "早餐高峰可承接，但雨天室内项目名额有限"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "周边 2 小时城市圈优先排序",
+        "孩子年龄、用餐和活动偏好的资格筛选",
+        "室内外玩法的天气兜底路线",
+        "至少一条老客二刷或 OTA 冷启动 fallback",
+        "明确优先级顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "亲子、情侣和泛度假共用同一套深折扣套餐",
+        "在雨天承接名额未确认前继续放大高峰流量"
+      ]
+    },
+    {
+      "id": "strategist_resort_hotel_new_hot_spring_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "new_hot_spring_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内为新开业的温泉度假酒店验证首个值得持续投放的增长场景，并决定预算优先压在亲子周末、情侣私汤还是直播团购。",
+        "signal_brief": "酒店试营业仅 10 天，私汤房和公区出片，但真实住后评价还少，温泉预约流程、早餐动线和夜间接驳仍在磨合。团队想同时做达人探店、OTA 秒杀、直播团购和纪念日套餐，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "新净、松弛感、轻奢",
+          "asset_state": "有 58 间房、16 间私汤房、1 个公汤区和基础餐饮，当前只有 31 条新店评价",
+          "location_type": "城市 2 小时温泉目的地",
+          "operations_state": "周五晚到店高峰和公汤排队最不稳定"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据小预算验证路线",
+        "最多 2 个场景并行测试",
+        "先补真实体验与住后评价证据",
+        "把 OTA 冷启动与直订套餐沉淀分开排序"
+      ],
+      "mustAvoid": [
+        "基于样片和新开业热度直接大规模扩量",
+        "试营业期同时深折扣冲 OTA、直播和高客单套餐"
+      ]
+    },
+    {
+      "id": "strategist_resort_hotel_summer_prebook_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "summer_family_prebook_inventory_governance",
+      "input": {
+        "mission_goal": "在 35 天内为临湖度假酒店锁定暑期周末和小长假 420 间夜高确定性预订，并把两晚家庭套餐预售占比提升到 46%。",
+        "signal_brief": "学校进入暑期前夕，附近水上项目和自然营地热度上升。酒店有湖景房、亲子活动室、晚餐和接驳车，但去年高峰期临时流量过多，导致早餐拥堵和活动预约失控。今年团队仍想靠最后一周低价冲房。",
+        "tenant_context": {
+          "budget_limit": 12000,
+          "brand_tone": "自然、充实、秩序感",
+          "asset_state": "有 110 间房、2 晚套餐毛利较好、亲子活动日历与接驳班次较完整",
+          "location_type": "城市群周边湖畔度假带",
+          "operations_state": "暑期高峰需要控制早餐、活动和停车承接"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "节假日与暑期库存治理路线",
+        "最短连住、预付和取消边界",
+        "餐饮、接驳和活动预约承接说明",
+        "至少一条预付限量房型或高确定性套餐 fallback",
+        "明确优先级顺序与风险权衡"
+      ],
+      "mustAvoid": [
+        "最后一周广撒网低价冲量",
+        "无限量活动名额或无条件晚退承诺"
+      ]
+    },
+    {
+      "id": "strategist_resort_hotel_local_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "local_member_and_repeat_guest_reactivation",
+      "input": {
+        "mission_goal": "重激活近 12 个月到访过的 1800 名周末老客与 420 名会员，并在 30 天内带回 240 间夜错峰复购。",
+        "signal_brief": "酒店位于 2 小时城市圈，历史上靠周末亲子和纪念日客复购，CRM 里记录了出发城市、孩子年龄段、是否加购晚餐与温泉、常住房型和节假日偏好。近期预算更多投向陌生短视频流量，淡季回流明显下滑。",
+        "tenant_context": {
+          "budget_limit": 4000,
+          "brand_tone": "熟客友好、季节换景、不过度打扰",
+          "crm_state": "可按亲子、情侣、温泉、周年纪念和驾车半径分层",
+          "asset_state": "有近一年较完整的二刷评价和会员权益说明"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客与会员的分层重激活节奏",
+        "低成本回流优先级高于陌生冷启动",
+        "围绕季节换景、套餐升级或二刷省心而不是单纯降价",
+        "至少一条评价修复或平日疗愈路线的备选方案"
+      ],
+      "mustAvoid": [
+        "统一群发一套文案和同一套权益",
+        "忽略家庭阶段、出游动机和过往加购记录"
+      ]
+    },
+    {
+      "id": "strategist_resort_hotel_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "rating_drop_service_overload_before_holiday",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下，恢复周末有效预订，并在 21 天内把可成交咨询量拉回到上月平均水平。",
+        "signal_brief": "最近 3 周评分从 4.8 降到 4.2，差评集中在温泉排队、房间卫生、儿童乐园维护和晚餐出餐慢。老板仍想在五一前用直播秒杀把房量迅速做满。",
+        "tenant_context": {
+          "budget_limit": 8000,
+          "brand_tone": "诚恳、克制、先修后放大",
+          "asset_state": "仍有 26 间口碑相对稳定的高坪效房型和一批二刷好评",
+          "operations_state": "周六晚和次日早餐高峰最易堵，雨天室内配套吃紧"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分与承接力再扩量",
+        "限制房型或限制时段的低风险路线",
+        "真实住后评价回收与问题修复节奏",
+        "明确停止或降级高风险低价投放"
+      ],
+      "mustAvoid": [
+        "差评期继续大规模拉新",
+        "刷评或掩盖设施维护与卫生问题"
+      ]
+    },
+    {
+      "id": "strategist_resort_hotel_holiday_price_war_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "national_holiday_low_price_overpromise",
+      "input": {
+        "mission_goal": "靠全网最低价和全包权益，在法定长假把房量做满并顺带提升品牌声量。",
+        "signal_brief": "酒店位于海边热门度假区，长假需求本来就会抬升，但团队想用全渠道最低价、保证海景房、免费升级、无限次儿童乐园和无条件晚退抢量。当前高峰日可售房量只有 52 间，停车、早餐和接驳都接近上限，天气也存在不确定性。",
+        "tenant_context": {
+          "budget_limit": 18000,
+          "brand_tone": "激进抢量",
+          "asset_state": "长假前已出现一批老客复购和亲子询价，但缺少清晰的价盘与房态治理",
+          "operations_state": "长假期间取消、No-show 和天气波动较大"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把房态、价格、取消、天气和承接风险说透",
+        "给出预付、最短连住或限量高确定性套餐的替代打法"
+      ],
+      "mustAvoid": [
+        "全网最低价导向",
+        "保证海景、无限量权益或无条件晚退承诺",
+        "忽略停车、早餐、接驳和天气波动的承接上限"
+      ]
+    }
+  ]
+}

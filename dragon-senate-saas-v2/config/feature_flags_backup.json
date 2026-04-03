@@ -1,0 +1,731 @@
+{
+  "saved_at": "2026-04-03T13:14:05.924425+00:00",
+  "flags": [
+    {
+      "name": "lobster.pool.all_enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "全局龙虾熔断开关",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.commander.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.radar.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.strategist.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.inkwriter.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.visualizer.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.dispatcher.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.echoer.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.catcher.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.abacus.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.followup.enabled",
+      "enabled": true,
+      "environment": "dev",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.pool.all_enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "全局龙虾熔断开关",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.commander.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.radar.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.strategist.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.inkwriter.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.visualizer.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.dispatcher.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.echoer.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.catcher.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.abacus.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.followup.enabled",
+      "enabled": true,
+      "environment": "staging",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.pool.all_enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "全局龙虾熔断开关",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.commander.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.radar.enabled",
+      "enabled": false,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "lifecycle_manager",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T21:15:33.052088+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.strategist.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.inkwriter.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.visualizer.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.dispatcher.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.echoer.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.catcher.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.abacus.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    },
+    {
+      "name": "lobster.followup.enabled",
+      "enabled": true,
+      "environment": "prod",
+      "strategies": [
+        {
+          "type": "all",
+          "parameters": {}
+        }
+      ],
+      "variants": [],
+      "description": "",
+      "tags": [
+        "builtin",
+        "lobster"
+      ],
+      "tenant_id": null,
+      "created_by": "system",
+      "created_at": "2026-04-01T20:33:50.255787+00:00",
+      "updated_at": "2026-04-01T20:33:50.255787+00:00",
+      "is_builtin": true
+    }
+  ]
+}

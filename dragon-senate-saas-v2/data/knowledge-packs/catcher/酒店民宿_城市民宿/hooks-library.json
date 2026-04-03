@@ -1,0 +1,118 @@
+﻿{
+  "industry": "\u9152\u5e97\u6c11\u5bbf_\u57ce\u5e02\u6c11\u5bbf",
+  "lobster_id": "catcher",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "landmark_dates_room_type_hook",
+      "title": "Landmark plus dates plus room type",
+      "description": "When a lead includes a specific area, subway stop, hospital, exam site, venue, or property together with dates, nights, guest count, room type, and a hold or booking action, it should be treated as a strong intent hook.",
+      "examples": [
+        "Next Friday at your Jing'an Temple loft for two nights, please hold one projector queen room.",
+        "One night near Zhongshan Hospital with elevator access and an e-invoice."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "same_day_self_checkin_hook",
+      "title": "Tonight stay and self check-in action signals",
+      "description": "Phrases like tonight, on the way, just got off the train, landing soon, can book now, need lock code, or need contactless check-in usually mean the browsing stage is ending and action is starting.",
+      "examples": [
+        "We will reach Hongqiao in one hour and can book right now if the room works.",
+        "We arrive after 11 p.m. and need the lock code flow."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "exam_or_hospital_hook",
+      "title": "Exam, interview, and hospital companion demand",
+      "description": "Exam stays, interview stays, surgery companion stays, and hospital companion stays become strong hooks when they include a fixed landmark, dates, nights, guest count, elevator access, laundry, or quiet needs.",
+      "examples": [
+        "Two nights near the exam site for a parent and student with a quiet room request.",
+        "Three nights near the hospital for two family members with elevator access and laundry."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "concert_or_event_group_hook",
+      "title": "Concert, expo, and event-driven multi-room demand",
+      "description": "Concert nights, conventions, competitions, and expo trips become high-value hooks when they include fixed dates, the event location, room count, post-event arrival timing, or return timing.",
+      "examples": [
+        "Two rooms after the stadium concert and arrival around 11:30 p.m.",
+        "Three coworkers staying near the expo center for two nights with invoice needs."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "family_or_multi_guest_hook",
+      "title": "Adults, children, elderly, and pet details in one place",
+      "description": "When the guest clearly states adult and child counts, child ages, elderly mobility limits, pet size, elevator needs, low-floor preference, or bed setup, the lead becomes much easier to assess and often much more actionable.",
+      "examples": [
+        "Two adults, one child age seven, and one elderly parent needing elevator access.",
+        "Two friends plus one small corgi for two nights in a pet-friendly room."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "long_stay_relocation_hook",
+      "title": "Internship, relocation, and monthly stay demand",
+      "description": "Seven-night-plus stays for internship, relocation, renovation transition, or office placement become strong hooks when the guest also mentions laundry, cooking, deposit, Wi-Fi, invoice, parking, or cleaning rhythm.",
+      "examples": [
+        "An 18-night internship stay with weekly cleaning and invoice needs.",
+        "A 10-night relocation transition stay asking about cooking and parking."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "repeat_guest_hook",
+      "title": "Returning guest and historical order reuse",
+      "description": "Mentions of having stayed before, reusing an old order, sending prior invoice details, or asking for the same property or layout again should be treated as confidence-boosting hooks.",
+      "examples": [
+        "We stayed at your Xujiahui duplex last month and want the same area again for two nights.",
+        "I am sending the old order and invoice details so we can use the same process."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "style_only_probe_hook",
+      "title": "Projector, bathtub, kitchen, and photo-only curiosity",
+      "description": "If the user only asks about decor, projector quality, bathtub photos, kitchen style, or room aesthetics without dates, guest count, area, or booking actions, the lead should be downgraded into nurture rather than pushed to the top.",
+      "examples": [
+        "Does the bathtub look good in photos and is the projector bright enough.",
+        "Can we come look at the vibe first without discussing dates."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "agency_or_rate_sheet_hook",
+      "title": "Managed hosting, bundled inventory, and rate-sheet fishing",
+      "description": "When the lead immediately asks for bottom rates, bundled inventory, monthly deals, commission policy, or cooperation terms without real stay facts, it looks more like channel noise than a direct guest lead.",
+      "examples": [
+        "Send your Shanghai property list, bottom rates, and commission policy first.",
+        "I have customers and creators, let me see your cooperation package."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risky_rule_bending_hook",
+      "title": "No registration, extra guests, parties, and commercial filming",
+      "description": "Statements about skipping registration, fitting too many people into one unit, bringing outside guests for a late party, bringing pets into restricted rooms, or filming commercial content should immediately raise risk and block automatic promotion.",
+      "examples": [
+        "Six adults in one loft, no full registration, and friends coming over until 2 a.m.",
+        "We want to bring lights and crew in for a commercial shoot and lower the deposit."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "complaint_or_refund_hook",
+      "title": "Lock trouble, deposit delay, invoice gap, and hygiene complaint",
+      "description": "If a message includes an order number, stay date, screenshots, or photos together with a complaint about access, deposit, invoice, odor, or hygiene, it should be treated as a service escalation hook instead of a sales hook.",
+      "examples": [
+        "The lock code failed and I have the order screenshot.",
+        "The deposit still has not been returned and the invoice never arrived."
+      ],
+      "priority": "high"
+    }
+  ]
+}

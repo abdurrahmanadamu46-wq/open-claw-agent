@@ -1,0 +1,68 @@
+﻿{
+  "industry": "汽车服务_二手车门店",
+  "lobster_id": "catcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "budget_plus_time_hook",
+      "title": "预算加时间同时出现时的高意向钩子",
+      "description": "当线索同时出现预算或车型方向和看车时间时，应优先判为高意向候选，因为这类表达比纯种草或纯价格更接近真实到店动作。",
+      "examples": [
+        "周五晚想先看十万内 SUV。",
+        "这周日想看看新能源通勤车。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_condition_hook",
+      "title": "首次看车与车况顾虑钩子",
+      "description": "用户主动提到第一次来、怕踩坑、不会看车和担心事故车时，说明其到店意图更具体，也更适合进入高优先级承接。",
+      "examples": [
+        "第一次来，周末想先看适不适合。",
+        "担心问题车，想先来了解一下。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "deadline_hook",
+      "title": "返乡和换车节点钩子",
+      "description": "返乡、入职、换车和上牌前的明确日期，是二手车门店线索中非常强的行动信号。只要再补足门店和时段，就可以进入高优先级承接。",
+      "examples": [
+        "周六返乡，想周四晚上先看车。",
+        "下周入职，这两天想先看课程。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "store_specific_booking_hook",
+      "title": "门店位置明确钩子",
+      "description": "当用户直接说出门店、商圈、地铁站附近或写字楼附近时，说明其已经在做实际选择阶段，线索确定性明显提高。",
+      "examples": [
+        "想约你们国金那家。",
+        "万象城门店这周末有试驾吗。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "returning_buyer_hook",
+      "title": "老客复访钩子",
+      "description": "用户提到之前来过、朋友推荐或上次感觉还不错时，通常意味着信任成本更低。只要再补齐本次问题和时间，就可快速交给 followup-ready 队列。",
+      "examples": [
+        "上次来店里看过，这次想看看下一步。",
+        "朋友推荐我来问问这周能不能试驾。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "price_with_context_hook",
+      "title": "带上下文的价格咨询钩子",
+      "description": "价格问题只要带着预算范围、时间窗口或场景，就不再是纯比较型流量，而是值得继续推进的线索。",
+      "examples": [
+        "返乡前想看一台，大概什么价位。",
+        "预算十万左右，周末想先来看看，价格大概多少。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

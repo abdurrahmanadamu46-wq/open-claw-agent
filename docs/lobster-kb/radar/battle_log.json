@@ -1,0 +1,17 @@
+{
+  "meta": { "lobster": "radar", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "rdr_battle_001",
+      "type": "failure",
+      "date": "2026-03-01",
+      "skill_ref": "rdr_signal_001",
+      "description": "将某话题的第一波推流数据判断为强热点，推给strategist追投，结果该话题2小时后流量消退，追投内容互动率低于均值40%",
+      "root_cause": "观察时间不足1小时就发出了情报，数据样本量不够",
+      "action_taken": "热点判断的最短观察时间：突发类≥2小时，节日类≥12小时，才能发出强信号",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

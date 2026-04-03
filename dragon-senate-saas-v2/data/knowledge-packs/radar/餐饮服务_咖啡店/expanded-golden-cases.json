@@ -1,0 +1,265 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_coffee_shop_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测咖啡店在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "精品咖啡品牌A",
+          "连锁咖啡品牌B"
+        ],
+        "raw_signals": [
+          "抖音本地生活公告要求团购标题里涉及 0蔗糖、无糖、单一产地、自烘、冠军同款 和 全网最低价 等表述时必须提供可核验依据，违规会被降权处理",
+          "美团商家后台通知加强咖啡店门店资质、轻食标签和后场实拍抽检",
+          "两家竞品把商品文案从 0蔗糖冠军豆第二杯半价 改成 招牌双杯套餐，饮品信息以商品页说明为准"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对原产地豆源表述和价格承诺边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略资质抽检和规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_breakfast_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城咖啡店受通勤早餐驱动的需求窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "写字楼咖啡店C",
+          "连锁咖啡品牌D"
+        ],
+        "raw_signals": [
+          "同写字楼商圈连续一周的搜索词、评论和私信里集中出现 早餐套餐、到店自提、8 点前能不能拿到 和 地铁口顺路取餐吗 等咨询",
+          "同商圈三家竞品同步上线 9.9 元美式加贝果早餐套餐，并把门店营业时间提前到 7 点 30 分",
+          "地图评论连续提到工作日早高峰排队和外带取餐速度，但周末商场店没有同步放大"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同商圈通勤早餐需求应被识别为机会信号",
+        "竞品营业时段和套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的高关注窗口提醒"
+      ],
+      "mustAvoid": [
+        "把单一门店排队夸大为全城趋势",
+        "用跨城旗舰店热度替代本地早餐需求判断"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_workspace_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "判断咖啡店第三空间需求是否形成高价值机会窗口",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区咖啡店E",
+          "校园咖啡店F"
+        ],
+        "raw_signals": [
+          "同城两所高校进入考试周，问答区和私信里连续出现 有插座吗、晚上能坐到几点、Wi-Fi 稳不稳 和 能不能小组讨论 等咨询",
+          "两家校园竞品在一周内新增长桌、插座标识和夜间续杯活动，评论区开始讨论自习氛围和晚间空位情况",
+          "多个探店账号实拍到门店张贴 不限时、禁大声外放 和 会议桌预约 规则"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要把第三空间需求识别为真实场景机会而不是单纯装修审美热度",
+        "门店规则、用户咨询和竞品动作需要被分别归类和综合判断",
+        "输出应提醒这是中高关注且场景明确的窗口"
+      ],
+      "mustAvoid": [
+        "只因为探店视频好看就判定适合办公自习",
+        "忽略插座、Wi-Fi 和限时规则这些硬证据"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_store_network_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测同城咖啡品牌门店网络扩张与业态切换变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_competitor_watch",
+        "competitor_watchlist": [
+          "连锁咖啡品牌G",
+          "区域咖啡品牌H"
+        ],
+        "raw_signals": [
+          "同商圈两家竞品门店在地图页上改为暂停营业，评论区连续出现撤店和缩短营业时间讨论",
+          "商场公告显示其中一家原铺位将由另一咖啡品牌接手，同时新品牌开始公开招聘咖啡师和店长",
+          "未发现平台规则变化，但同城另外两家品牌同步把新店开在写字楼首层，并强调早餐外带和快取动线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要明确这是竞品经营网络变化而不是平台规则变化",
+        "暂停营业、商场公告和招聘信息应被识别为互证链条",
+        "输出应形成面向 Commander 的中高关注竞争格局提醒"
+      ],
+      "mustAvoid": [
+        "把闭店个案直接泛化成全行业衰退",
+        "忽略同商圈新品牌进驻带来的替代性机会"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_membership_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测咖啡店月卡和外卖补贴变化带来的成本风险",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "外卖咖啡店I"
+        ],
+        "raw_signals": [
+          "同城商家群截图称平台下周将取消咖啡月卡补贴并上调抽佣 2%，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区运营口径也不一致",
+          "核心竞品的配送费、早餐周卡、满减结构和外卖杯型说明暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断月卡利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别社区型咖啡店的内容与价格带机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区咖啡店J"
+        ],
+        "raw_signals": [
+          "外地旅游城市的高颜值景观咖啡馆短视频爆火，大量内容强调打卡、限定甜品和高客单手冲",
+          "本地平台最近新增搜索和评论集中在 9.9 元早餐咖啡、到店自提、工作日外带 和 下午有插座吗",
+          "本地竞品开始上新早餐套餐和双杯下午茶券，没有跟进高客单景观打卡路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型需求应高于跨城打卡爆款热度",
+        "需要区分审美爆款与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单打卡路线",
+        "忽略同城搜索与竞品套餐的本地互证"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城咖啡店食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某连锁咖啡店门店使用隔夜奶和过期轻食，只给出模糊后场偷拍视频",
+          "该说法被两个营销号转发，但都没有提供门店名称、监管链接或处罚文书",
+          "未发现市场监管局通报、平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已经发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_coffee_shop_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度咖啡竞品的真实门店热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "网红咖啡店K",
+          "联名咖啡店L"
+        ],
+        "raw_signals": [
+          "竞品发布 早餐档排队一小时 的短视频，但没有给出日期、门店定位或取单系统截图",
+          "地图平台近 7 天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也没有新增限购、售罄或预约说明"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    }
+  ]
+}

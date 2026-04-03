@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "first_visit_sensitive_inquiry",
+      "title": "首次到店且担心敏感问题的预约应优先建咨询链路",
+      "description": "当来单中出现第一次来、敏感、泛红、担心过敏、怕踩雷等关键词时，Dispatcher 应立即创建咨询判断、老师匹配和房间安排链路，而不是直接塞进普通预约队列。",
+      "examples": [
+        "客户留言第一次来，最近一上妆就刺痛。",
+        "私信问敏感期还能不能做项目，想约本周末。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "pre_event_urgent_slot",
+      "title": "节前急救和重要场合前预约触发优先调度",
+      "description": "当来单中出现婚礼、约会、拍照、聚会、明后天要见人等高时效关键词时，Dispatcher 要优先判断热门时段可用性和项目时长匹配。",
+      "examples": [
+        "客户说明周六婚礼，想约周四晚状态整理。",
+        "客户说明天下午拍照，希望今晚做一次急救护理。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "lunch_break_fast_booking",
+      "title": "午休快护理触发效率优先调度",
+      "description": "当来单明确只有午休 45 到 60 分钟窗口时，Dispatcher 应优先匹配可快进快出的轻项目时段，而不是分配到长流程队列。",
+      "examples": [
+        "写字楼白领想约明天 12:20 到 13:10。",
+        "客户只接受工作日午休窗口。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "peak_slot_hold_confirmation",
+      "title": "热门老师或热门时段询单触发保留确认链路",
+      "description": "当用户点名老师、周末黄金时段或节前夜间档期时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。",
+      "examples": [
+        "客户指定周六 19:00 的热门老师。",
+        "客户想约节前最后一个晚间空档。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "room_turnover_risk",
+      "title": "连台高峰触发翻房与用品重置链路",
+      "description": "如果多个预约紧贴着同一房间和同一老师，Dispatcher 要自动增加翻房和用品准备节点，而不是假设无缝衔接。",
+      "examples": [
+        "19:00 和 20:00 连续两单都落在同一护理房。",
+        "连续三位顾客都被排给同一位老师。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_rebook_task",
+      "title": "护理完成后触发回访和复订任务",
+      "description": "当系统收到项目完成或核销成功信号时，Dispatcher 应自动创建备注回写、回访提醒和 followup 任务，而不是让线索在完成后断掉。",
+      "examples": [
+        "体验卡核销完成后创建 3 天回访任务。",
+        "老客项目完成后同步下一次建议时间。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

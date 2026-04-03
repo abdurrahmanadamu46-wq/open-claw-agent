@@ -1,0 +1,5 @@
+﻿{
+  "entries": {
+    "dispatcher::internal_execute::stale_scope": "{\"severity\":\"medium\",\"message\":\"Scope dispatcher.internal_execute has no fresh result within 2 hour(s).\",\"latestResultStatus\":\"handled\",\"latestResultAt\":\"2026-03-30T02:19:42.436Z\",\"queuedCount\":1,\"handledCount\":1,\"failedCount\":0,\"simulatedCount\":0}"
+  }
+}

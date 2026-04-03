@@ -1,0 +1,129 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5496\u5561\u5e97",
+  "lobster_id": "inkwriter",
+  "pack_type": "hooks",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "coffee_hook_morning_commute",
+      "title": "Morning commute acceleration hook",
+      "description": "Use this when the user is deciding whether to grab coffee before work. The opening should capture the narrow time window and decision pressure of commuting, then show how the drink and pickup flow fit that routine.",
+      "examples": [
+        "The right weekday coffee is often the one you already know how to order before you reach the office building.",
+        "Morning customers do not need more menu complexity. They need a clean, quick, low-friction cup.",
+        "A commute-friendly coffee shop wins because the order feels easy, not because the copy sounds louder."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_afternoon_focus_reset",
+      "title": "Afternoon reset hook",
+      "description": "Use this for post-lunch fatigue, pre-meeting focus, or afternoon work slumps. The copy should position the cup as a reset in rhythm, then guide the user toward a suitable coffee style.",
+      "examples": [
+        "The best afternoon coffee is not always the strongest one. It is the one that pulls your pace back together.",
+        "Before the next meeting, many people want clarity, not chaos, from a cup.",
+        "When the screen starts to blur, a cleaner coffee choice often works better than a sweeter distraction."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_first_order_safe_pick",
+      "title": "Safe first-order signature hook",
+      "description": "Use this when the goal is reducing menu hesitation for new customers. The focus is not on shouting signature, but on explaining why a specific cup is the easiest confident first pick.",
+      "examples": [
+        "A real signature drink is the one that lowers the cost of choosing for a first-time customer.",
+        "The best first cup is not the loudest limited item. It is the one that feels hard to get wrong.",
+        "If the menu usually slows you down, start with the cup that makes the decision easier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_meeting_ready",
+      "title": "Meeting-ready coffee hook",
+      "description": "Use this for business chats, client visits, interviews, or other situations where the user wants a reliable and non-awkward coffee choice. The hook should emphasize steadiness, not theatrics.",
+      "examples": [
+        "Some coffees are for yourself. Some are better for walking into a conversation with.",
+        "The right meeting coffee usually feels composed, not showy.",
+        "When you are bringing coffee for someone else, stability often matters more than novelty."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_hook_pickup_on_the_way",
+      "title": "Pickup-on-the-way hook",
+      "description": "Use this for subway-adjacent, office-adjacent, or homebound pickup scenarios. The hook should reduce action friction and help the user imagine the order fitting cleanly into an existing route.",
+      "examples": [
+        "Some shops are worth sitting in. Others win because they fit perfectly into the route you already take.",
+        "A pickup-friendly coffee stop earns repeat orders by feeling smooth, not by sounding urgent.",
+        "If the cup can slot cleanly into the ride home, the decision gets much easier."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_weekend_slowdown",
+      "title": "Weekend slowdown hook",
+      "description": "Use this for neighborhood stores, weekend walks, mall traffic, or slower social moments. The cup should feel like a pause in the day rather than a work tool.",
+      "examples": [
+        "Weekend coffee is often less about speed and more about giving the day a better pace.",
+        "The right weekend cup feels easy to carry through a walk, a chat, or a short stop.",
+        "Not every good coffee moment needs urgency. Some need softness and room."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_hook_weather_switch",
+      "title": "Weather-based switch hook",
+      "description": "Use this for hot-to-cold and cold-to-hot transitions, seasonal shifts, or ice-versus-hot decision moments. The hook should start from body feel and weather fit before naming the drink.",
+      "examples": [
+        "When the weather turns warm, coffee choice becomes as much about finish and feel as it is about caffeine.",
+        "Some days call for a cleaner iced cup. Some call for something warmer and steadier in hand.",
+        "The season changes what customers want from the first sip."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_hook_beginner_black_coffee",
+      "title": "Black-coffee beginner hook",
+      "description": "Use this when the customer wants a clearer coffee experience but is cautious about bitterness or acidity. The hook should remove pressure and explain that not every black coffee has to feel harsh.",
+      "examples": [
+        "Many customers are not against black coffee. They are against being hit too hard too early.",
+        "A beginner-friendly black coffee still tastes like coffee. It just does not punish the first sip.",
+        "When the goal is cleaner focus without extra sweetness, clarity matters more than intensity."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_group_order_efficiency",
+      "title": "Office group-order stability hook",
+      "description": "Use this for team coffee runs, meeting support, or office multi-cup orders. The opening should acknowledge the risk of group ordering, then show how the shop reduces mismatch and timing stress.",
+      "examples": [
+        "Office coffee runs fail less often when the menu helps you separate safe black, safe milk, and safe seasonal choices fast.",
+        "The hardest part of a group order is usually not price. It is avoiding ten different regrets.",
+        "A strong coffee-shop group-order hook lowers uncertainty before it sells excitement."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_hook_seasonal_launch_reason",
+      "title": "Seasonal launch reason hook",
+      "description": "Use this for new specials, limited returns, and seasonal campaigns. The hook should explain why the drink is worth trying now without leaning on panic language.",
+      "examples": [
+        "A seasonal cup earns attention when it fits the weather and mood, not just because it arrived this week.",
+        "The most compelling comeback drink is the one people remember wanting again.",
+        "The first sip should sound more convincing than the countdown clock."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_hook_soft_order_cta",
+      "title": "Soft order-guidance CTA hook",
+      "description": "Use this as the closing move. The CTA should ask for concrete order context so the next step feels helpful and consultative rather than pushy.",
+      "examples": [
+        "Ask what time the customer wants pickup and whether they want black coffee or milk coffee first.",
+        "For a team order, ask for cup count and hot-versus-iced split before recommending specific drinks.",
+        "For a first-time visitor, ask whether they are more sensitive to bitterness or sweetness."
+      ],
+      "priority": "high"
+    }
+  ]
+}

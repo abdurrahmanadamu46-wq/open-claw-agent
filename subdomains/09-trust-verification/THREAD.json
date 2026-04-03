@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-09",
+  "name": "Trust Verification",
+  "owner_scope": "pre and post execution trust audit",
+  "maturity": "prototype",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "precheck": "REST",
+    "postcheck": "REST"
+  },
+  "source_anchors": [
+    "services/trust-verification-service"
+  ]
+}

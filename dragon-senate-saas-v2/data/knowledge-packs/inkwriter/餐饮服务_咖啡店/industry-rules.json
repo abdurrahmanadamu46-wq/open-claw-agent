@@ -1,0 +1,129 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5496\u5561\u5e97",
+  "lobster_id": "inkwriter",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "coffee_rule_scene_before_beans",
+      "title": "Lead with the moment before the bean story",
+      "description": "Coffee-shop copy should open on why the customer needs a cup right now: morning commute, pre-meeting reset, mid-afternoon fatigue, a quick stop before work, or a weekend walk. Bean origin and roast details should support that moment, not replace it.",
+      "examples": [
+        "Open on the five minutes before clock-in, not on roast terminology.",
+        "Frame the cup as a fit for commuting, office entry, or afternoon reset before discussing flavor.",
+        "Treat the menu as a response to a real moment, not a list of coffee jargon."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_translate_flavor_to_choice_value",
+      "title": "Translate roast and flavor notes into order value",
+      "description": "Do not stop at acidity, chocolate notes, or nutty finish. Translate those traits into customer-facing value such as beginner-friendly black coffee, a milk pairing that stays balanced, a cleaner iced option for warm weather, or a warmer cup for slower indoor moments.",
+      "examples": [
+        "Describe medium-dark roast as a steadier, fuller option for customers who want a stronger coffee feel.",
+        "Describe brighter acidity as more suitable for customers who already like cleaner black coffee.",
+        "Explain milk-based drinks as easier first picks when the user wants coffee flavor without too much edge."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_menu_guidance",
+      "title": "Turn the menu into a decision path",
+      "description": "Good coffee copy helps the customer decide, not just browse. Explain who should start with Americano, latte, flat white, cappuccino, hand brew, or seasonal specials. Clarify hot versus iced, black coffee versus milk coffee, and when add-shot or alt-milk choices make sense.",
+      "examples": [
+        "Guide first-time visitors toward one or two lower-friction signature drinks.",
+        "Explain the difference between a direct black coffee choice and a softer milk-based choice.",
+        "Offer a safe mixed order logic for two or three people with different preferences."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_energy_expression_boundary",
+      "title": "Write energy as an experience, not a medical promise",
+      "description": "Coffee copy can describe rhythm shifts, cleaner starts, or a more awake-feeling morning. It should not promise cure-like results, all-night stamina, no-palpitations outcomes, hangover relief, or body-function benefits.",
+      "examples": [
+        "Say it fits the stretch between the subway exit and the office door.",
+        "Say it helps the afternoon feel less dull, not that it guarantees alertness for hours.",
+        "Focus on taste, pace, and use case instead of wellness claims."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_trust_before_popularity",
+      "title": "Establish trust before popularity claims",
+      "description": "Use real proof such as bean direction, milk base, add-shot options, house recommendations, pickup flow, and peak-time guidance before talking about popularity. Coffee-shop conversion improves when the user sees how the shop works, not just how loudly it sells.",
+      "examples": [
+        "Explain why a signature latte is stable and easy to start with before calling it a repeat-order favorite.",
+        "Show how black coffee and milk coffee routes differ instead of saying the whole menu is a must-try.",
+        "Use pickup convenience and store proximity as trust signals."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_seasonal_reason",
+      "title": "Write seasonal drinks as taste reasons, not forced scarcity",
+      "description": "Seasonal and limited drinks should feel worth trying because of weather, mood, and flavor fit. Avoid fake urgency, countdown pressure, and inflated scarcity. A stronger angle is why this cup makes sense now.",
+      "examples": [
+        "Frame a citrus iced coffee around warmer weather, not around last-chance panic.",
+        "Frame a returning winter drink as a familiar flavor people ask for again, not as instant sellout bait.",
+        "Use first-try friendliness as a launch reason when evidence is limited."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "coffee_rule_price_boundary",
+      "title": "Clarify size, add-ons, milk swaps, and member boundaries",
+      "description": "Coffee customers are sensitive to price clarity. Copy should explain base size, add-shot fees, alt-milk surcharges, flavored syrup boundaries, breakfast combos, coupons, and pickup-versus-delivery differences. Do not imply that every upgrade is free or that every order path is always the cheapest.",
+      "examples": [
+        "Show a base cup plus optional add-on logic instead of a vague one-price claim.",
+        "Clarify when member pricing or breakfast bundles apply.",
+        "Separate store pickup economics from delivery economics."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_local_convenience",
+      "title": "Write the local convenience layer clearly",
+      "description": "Coffee decisions depend heavily on whether the order is easy to fulfill. Good copy reduces friction by clarifying where the store is, how pickup works, which peaks are slower, and whether the offer suits commute, office, campus, or neighborhood traffic.",
+      "examples": [
+        "Mention floor, entrance, subway adjacency, or office-building relevance when useful.",
+        "Give realistic guidance for morning and lunch peaks.",
+        "Prompt earlier confirmation when group or timed pickup matters."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_space_expectation_boundary",
+      "title": "Describe atmosphere without guaranteeing seats or sockets",
+      "description": "Coffee shops often sell atmosphere, but copy should avoid promising always-available seats, guaranteed quietness, or universal outlet access. It is safer to describe the shop as suitable for short stays, quick chats, or slower weekends while noting that timing affects the experience.",
+      "examples": [
+        "Say the space works for a short laptop stop, not that seats are always open.",
+        "Say weekday mornings are usually easier for sit-down visits, not that the store is always quiet.",
+        "Use mood and fit language instead of operational guarantees."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_compliance_redlines",
+      "title": "Avoid health claims, absolute rankings, and unsupported fulfillment promises",
+      "description": "Do not write coffee as fat-burning, slimming, stomach-friendly, hangover-fixing, or no-jitter guaranteed. Avoid number-one claims, best-in-town claims, lowest-price guarantees, zero-wait pickup, always-available seating, and fastest-delivery promises without evidence.",
+      "examples": [
+        "Replace body or wellness claims with sweetness, flavor, and scene fit.",
+        "Replace ranking talk with grounded repeat-order or house-recommendation language.",
+        "Replace zero-wait claims with peak-time guidance and pickup-window planning."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "coffee_rule_soft_cta",
+      "title": "Use CTA to gather order context, not force checkout",
+      "description": "The best coffee-shop CTA usually invites one more specific step instead of hard-selling payment. Ask for cup count, black-versus-milk preference, hot versus iced, add-shot or milk-swap needs, pickup time, and pickup-versus-delivery route, then narrow the order recommendation.",
+      "examples": [
+        "Ask the user what time they want the cup ready and whether they want black coffee or milk coffee.",
+        "For team orders, ask for cup count and hot-versus-iced split before recommending drinks.",
+        "For first-time visitors, ask whether they are more sensitive to bitterness or sweetness."
+      ],
+      "priority": "high"
+    }
+  ]
+}

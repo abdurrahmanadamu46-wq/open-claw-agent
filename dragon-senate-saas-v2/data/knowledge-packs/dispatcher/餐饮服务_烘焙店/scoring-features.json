@@ -1,0 +1,108 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70d8\u7119\u5e97",
+  "lobster_id": "dispatcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "bakery_execution_chain_coverage",
+      "title": "Bakery execution chain coverage",
+      "description": "Score whether the ExecutionPlan covers the bakery chain from intake, payment or deposit confirmation, spec freeze, ingredient and batch lock, baking or decoration, cooling or chilling, packing, pickup or delivery, to exception writeback. High scores cover both custom cake and fresh-bake workflows without overcomplicating simple ready-made orders.",
+      "examples": [
+        "High score: a tea break order covers payment, ambient versus chilled split, packing, delivery handoff, and result writeback.",
+        "Low score: the plan only says make and notify pickup, with no spec freeze, batch check, or delivery path."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "routing_target_fit",
+      "title": "Routing target fit",
+      "description": "Score whether routing_targets send work to the correct roles and workstations, such as front desk for inscription and pickup confirmation, baking line for fresh output, decoration bench for custom cakes, packing bench for cake boxes and ice packs, store manager for quality incidents, and rider handoff for delivery. High scores mean the primary and backup routes match the scene.",
+      "examples": [
+        "High score: inscription and candle confirmation go to front desk first, then sync to decoration and packing.",
+        "Low score: a quality complaint is routed directly to an automatic refund step with no human escalation."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "customization_and_allergen_gate_integrity",
+      "title": "Customization and allergen gate integrity",
+      "description": "Score whether the plan adds explicit human gates, pause conditions, and note writeback for nut avoidance, dairy or egg issues, alcohol-free requests, low sugar, kid-safe notes, inscription text, and topper choices. High scores pause safely when approval or feasibility is uncertain instead of pushing risky notes directly into production.",
+      "examples": [
+        "High score: no nuts, no rum syrup, and custom English text all require manual confirmation before release.",
+        "Low score: allergen notes are copied to production with no review or trace."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "freshness_cold_chain_and_equipment_dependency_clarity",
+      "title": "Freshness, cold-chain, and equipment dependency clarity",
+      "description": "Score whether task_graph makes proofing, oven batches, cooling, same-day shelf life, cream batches, fruit prep, cold storage space, cake boxes, ice packs, and equipment state explicit. High scores avoid stable customer promises while these dependencies are unresolved or degraded.",
+      "examples": [
+        "High score: evening cake pickup checks cream stock, fruit stock, cold-room capacity, and cake box availability first.",
+        "Low score: the plan still promises long-distance cream cake delivery while the chiller is unstable and packaging is short."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "retry_and_replay_safety",
+      "title": "Retry and replay safety",
+      "description": "Score whether retry_policy allows safe replay after platform backfill, payment writeback repair, version changes, and order-state restoration without duplicate baking, duplicate decoration, duplicate charging, duplicate refunds, or duplicate customer contact. High scores deduplicate by master order, payment state, and latest version before replay.",
+      "examples": [
+        "High score: replay uses master order id, paid state, and latest inscription version after recovery.",
+        "Low score: a POS timeout leads to full order recreation and two identical cakes being produced."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "fallback_executability",
+      "title": "Fallback executability",
+      "description": "Score whether fallback_plan is concrete and executable, such as converting risky delivery to pickup, shrinking the menu after equipment failure, switching flavors after stock gaps, remaking after inscription mistakes, or releasing capacity after unpaid deadlines. High scores state who takes over, when the switch happens, and how the customer is notified.",
+      "examples": [
+        "High score: a weather-driven delivery downgrade includes notice wording, compensation, and the new pickup time.",
+        "Low score: the plan only says handle manually without thresholds or owners."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "timing_and_batching_reasonableness",
+      "title": "Timing and batching reasonableness",
+      "description": "Score whether the plan fits bakery timing realities such as proofing and bake rhythm, cake-layer cooling windows, cream whipping timing, ambient versus chilled packing order, and rider pickup rhythm. High scores avoid both over-early production that harms quality and impossible compression into one peak instant.",
+      "examples": [
+        "High score: a 15:30 tea break order is batched by ambient and chilled items close to handoff time.",
+        "Low score: cream cakes for an evening delivery are finished far too early and sit in cold storage for hours."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "resource_efficiency",
+      "title": "Resource efficiency",
+      "description": "Score whether front desk, oven time, decoration bandwidth, packing labor, and manager attention are assigned according to order value, complexity, shelf-life risk, and payment status. High scores protect scarce cold-chain and decoration capacity for confirmed demand instead of letting unpaid or low-priority orders block it.",
+      "examples": [
+        "High score: an unpaid 50-box gift order keeps only a short hold and does not consume prime packing time.",
+        "Low score: all ordinary pickup notes are escalated to manager review and front-of-house stalls during peak."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "risk_mitigation_strength",
+      "title": "Risk mitigation strength",
+      "description": "Score whether the plan identifies delivery damage, cream melt, spoilage, inscription errors, equipment failure, holiday pickup overflow, and platform instability early, then provides explicit stop-loss or downgrade logic. High scores actively reduce menu scope, move time windows, convert to pickup, or pause release when needed.",
+      "examples": [
+        "High score: extreme heat plus rider shortage pauses long-range cream cake delivery and offers pickup instead.",
+        "Low score: large cream cakes are still promised normally even when packaging stock is low and weather is unsafe."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "observability_and_writeback",
+      "title": "Observability and writeback",
+      "description": "Score whether the plan leaves traceable records for bake batch, cake version, inscription text, candle count, payment state, expected pickup or delivery time, cold-storage handling, rider state, and abnormal reasons. High scores preserve enough state for replay safety and shift handoff without relying on verbal memory.",
+      "examples": [
+        "High score: a delivery-to-pickup conversion writes back the new pickup code, notice time, confirmer, and compensation.",
+        "Low score: the customer changes inscription text but no new version record is preserved."
+      ],
+      "priority": "high"
+    }
+  ]
+}

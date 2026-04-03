@@ -1,0 +1,8 @@
+{"industry":"医疗健康_中医诊所","lobster_id":"radar","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"sleep_digestive_time_hook","title":"失眠与脾胃时段钩子","description":"当用户同时提到失眠、脾胃不适和最近、晚上、换季等时间窗口时，应优先标记为高价值信号。","examples":["最近晚上总睡不好，想问能不能先调一调。","这阵子脾胃不舒服，吃点东西就胀。"],"priority":"high"},
+  {"id":"pain_scope_hook","title":"疼痛部位与功能受限钩子","description":"出现颈肩、腰背、膝腿和活动受限等具体部位时，说明线索更接近真实成交。","examples":["肩颈僵硬抬手受限。","腰背痛到坐久就受不了。"],"priority":"high"},
+  {"id":"treatment_combo_hook","title":"针灸艾灸组合钩子","description":"针灸、艾灸、推拿和中药调理组合需求如果带着明确方向，也应视为更高价值信号。","examples":["想先做针灸配艾灸。","想问调理是不是要配合喝药。"],"priority":"high"},
+  {"id":"doctor_trust_hook","title":"医生资历与问诊焦虑钩子","description":"用户主动追问医生资历、问诊细不细和方案怎么定时，说明信任和专业说明是关键影响因子。","examples":["医生擅长看失眠吗。","初诊会不会问得很细。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"节气与寒暑假窗口钩子","description":"换季、三伏贴、寒暑假和年底亚健康节点一旦带着明确日期出现，应显著提权。","examples":["最近换季失眠更明显。","寒假想给孩子调调体质。"],"priority":"high"},
+  {"id":"repeat_visit_hook","title":"复诊续方钩子","description":"复诊、续方拿药和二次方案调整场景常伴随更稳定复购，应单独关注。","examples":["上次看过这次想续一下方子。","这周想再来复查看看反应。"],"priority":"medium"}
+]}

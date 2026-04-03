@@ -1,0 +1,19 @@
+﻿{
+  "thread_id": "sd-03",
+  "name": "Industry Compiler",
+  "owner_scope": "industry profile and knowledge compilation",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "compile": "MQ async",
+    "search": "REST"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/industry_kb_pool.py",
+    "dragon-senate-saas-v2/README.md"
+  ]
+}

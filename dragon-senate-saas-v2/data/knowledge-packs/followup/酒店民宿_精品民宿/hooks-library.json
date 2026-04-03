@@ -1,0 +1,140 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "followup",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_signature_room_weekend_facts",
+      "scene": "dm_followup",
+      "lead_state": "signature_room_weekend_inquiry",
+      "intent": "qualify_stay_facts_and_hold_window",
+      "hook": "这单先别急着把最好那间房说满，我先帮你把真正会影响能不能订上的关键信息锁住。",
+      "bridge": "精品民宿真正稀缺的往往不是“有房没房”，而是少量招牌房型、最晚确认时间和客户能不能接受候补或替代。先把日期、人数、到店时间和偏好对齐，后面推进才稳。",
+      "next_step": "请客户确认入住日期、晚数、人数、预计到店时间、目标房型、是否需要早餐或简单布置，以及是否接受候补房型，目标是尽快进入可预订或待确认状态。",
+      "cadence_hint": "客户刚回复时优先在 15-30 分钟内接上；若当轮仍未补齐关键信息，当天只保留一次低压力提醒。",
+      "approval_guard": "未核房态前，不承诺指定房号、指定景观、免费升级或跨夜保留。"
+    },
+    {
+      "id": "hook_late_arrival_last_mile_guidance",
+      "scene": "arrival_management",
+      "lead_state": "late_arrival_hard_to_find_property",
+      "intent": "confirm_eta_and_last_mile_route",
+      "hook": "你这单最关键的不是再发一遍房型图，而是先把客人今晚能不能顺利找到门、顺利进门这件事接住。",
+      "bridge": "古镇、小巷、山里和夜间到店是精品民宿最容易掉单的环节。把 ETA、停车点、最后一公里路线和联系人说清，比空口说“放心来”更有用。",
+      "next_step": "请客户确认预计到店时间、到店方式、停车点、是否需要接应、现场联系人和失联回退方式，目标是把到店路线确认成可执行动作。",
+      "cadence_hint": "晚到线索以当晚到店窗口为关键，一次把路线和时间讲清，不连续轰炸式追问。",
+      "approval_guard": "未确认值守、路线和发码条件前，不默认客人一定能自行找到或顺利进门。"
+    },
+    {
+      "id": "hook_early_arrival_expectation_management",
+      "scene": "arrival_management",
+      "lead_state": "early_arrival_room_not_ready",
+      "intent": "set_wait_expectation_or_alternative",
+      "hook": "先别急着把“到了就能住”说满，我先帮你把最省心的早到方案排出来。",
+      "bridge": "精品民宿翻房和布置窗口短，早到客人真正介意的是白跑和一直等。先把房态确认、寄存行李和候用方案讲明白，体验反而更稳。",
+      "next_step": "请客户确认实际到店时间和是否接受寄存行李、公共区候用、先去周边逛逛或替代房型，目标是管理预期并留下下一次明确回报码点。",
+      "cadence_hint": "到店前给一次清晰预期即可；若房态未更新，等保洁或门店反馈后再跟。",
+      "approval_guard": "未核到 ready 房态前，不承诺几点一定能入住。"
+    },
+    {
+      "id": "hook_self_checkin_verified_gate",
+      "scene": "self_checkin_followup",
+      "lead_state": "requests_lock_code_before_arrival",
+      "intent": "complete_verification_before_code_release",
+      "hook": "这单先别急着发密码，先把该补的实名和到店信息补齐，后面反而更快更安全。",
+      "bridge": "自助入住最怕的不是流程多一步，而是先放行后补录。只要入住人、到店时间或审批边界不清，后续就容易变成风险单。",
+      "next_step": "请客户补齐入住人信息、预计到店时间、预订人与实际入住人关系及联系方式，目标是推动核验完成后再进入发码或夜间接待流程。",
+      "cadence_hint": "核验材料一旦补齐就快速接上；未补齐时只做低压力信息催补，不多轮追问。",
+      "approval_guard": "未完成核验或未获得发码许可前，不发送门锁密码，不承诺先入住后补手续。"
+    },
+    {
+      "id": "hook_anniversary_setup_brief",
+      "scene": "celebration_followup",
+      "lead_state": "anniversary_or_proposal_request",
+      "intent": "collect_setup_brief_for_approval",
+      "hook": "这类单最值钱的不是先答应所有惊喜，而是先把真正要准备的细节收成一张清单。",
+      "bridge": "纪念日、生日和求婚类需求通常卡在房间空窗、物料、布置时段和额外预算。先把重点收准，审批和执行才不会来回返工。",
+      "next_step": "请客户确认入住日期、人数、预算范围、想要的氛围重点、是否要蛋糕香槟或拍照点位，以及最晚确认时间，目标是形成可审批的需求简报。",
+      "cadence_hint": "发送一次结构化问题清单后，给客户内部商量空间，再围绕最关键待定项继续推进。",
+      "approval_guard": "审批未到位前，不承诺免费布置、特定赠品、升级房型或免费延退。"
+    },
+    {
+      "id": "hook_pet_policy_qualification",
+      "scene": "pet_booking_followup",
+      "lead_state": "pet_friendly_interest",
+      "intent": "verify_pet_rules_and_fit_room",
+      "hook": "先别只回一句“可以带宠”，我先帮你把后面最容易踩线的规则问清。",
+      "bridge": "带宠单最容易在体型、数量、清洁费、能否上床、能否进浴缸和公共区域活动上出问题。先问清，才能避免临到店翻车。",
+      "next_step": "请客户确认宠物数量、体型、是否有笼、入住日期、目标房型、是否接受清洁费和活动区域限制，目标是进入可接待、需换房或需补差的清晰判断。",
+      "cadence_hint": "带宠规则一次说完整，避免同一客户被多次拆碎追问。",
+      "approval_guard": "未核清宠物政策前，不承诺免清洁费、任意房型可住或宠物可自由进出所有区域。"
+    },
+    {
+      "id": "hook_buyout_or_gathering_boundary",
+      "scene": "group_stay_followup",
+      "lead_state": "buyout_or_gathering_interest",
+      "intent": "surface_visitor_and_quiet_hour_boundary",
+      "hook": "这类单别急着回“可以包”“可以聚”，先把人数、时段和外来访客边界问透。",
+      "bridge": "精品民宿的包院和小聚单，真正容易出问题的是邻里噪音、外来访客、烧烤明火和最晚结束时间，而不是单纯房间够不够。",
+      "next_step": "请客户确认入住人数、是否有外来访客、活动时段、是否涉及烧烤或音乐、最晚结束时间和是否接受审批，目标是明确能否推进包院或改成更低风险方案。",
+      "cadence_hint": "包院单以一次结构化澄清为主，给对方内部确认空间，不当天多轮催逼。",
+      "approval_guard": "未确认静音规则、访客边界和审批状态前，不承诺外来访客可入内或庭院聚会可执行。"
+    },
+    {
+      "id": "hook_limited_experience_slot_confirmation",
+      "scene": "experience_followup",
+      "lead_state": "breakfast_private_soup_or_photo_slot_sensitive",
+      "intent": "confirm_slot_and_fallback",
+      "hook": "你这单最关键的不是再补一遍权益介绍，而是先把客人最在意的时段锁到可执行。",
+      "bridge": "早餐、下午茶、私汤、围炉和旅拍常常不是无限量权益。先确认目标时段和可接受替代，后面才不容易落空。",
+      "next_step": "请客户确认日期、人数、目标时段、是否必须同一天完成，以及是否接受候补或替代时间，目标是推进名额确认或低风险替代方案。",
+      "cadence_hint": "限量体验优先围绕一个最关键时段推进，不把多个依赖一次性全压给客户。",
+      "approval_guard": "未核容量和执行资源前，不承诺指定时段一定有名额。"
+    },
+    {
+      "id": "hook_weather_and_view_expectation_reset",
+      "scene": "weather_window_followup",
+      "lead_state": "scenery_or_outdoor_experience_sensitive",
+      "intent": "manage_expectation_or_reschedule_path",
+      "hook": "先别把风景和体验说成稳的，我先帮你把这次出行到底卡在天气、景观还是改期成本上问清。",
+      "bridge": "精品民宿很多卖点依赖花期、日落、露台、山景和天气窗口。客户真正需要的通常不是一句安慰，而是一个可执行的改期、候补或室内替代路径。",
+      "next_step": "请客户确认最在意的是景观本身、户外体验还是日期不想浪费，并补充可接受的改期窗口或室内替代偏好，目标是进入预期管理或审批等待。",
+      "cadence_hint": "天气单优先在关键窗口给一次清晰回应；审批未出前不反复追问。",
+      "approval_guard": "未获批前，不承诺无损改期、退差或额外赠送体验。"
+    },
+    {
+      "id": "hook_service_recovery_then_rebook",
+      "scene": "service_recovery",
+      "lead_state": "upset_but_still_open",
+      "intent": "repair_trust_then_next_stay",
+      "hook": "这次先不急着推你再下单，我先把上次让你不舒服的地方接住，再看这次怎么住得更稳。",
+      "bridge": "精品民宿的复住修复单，最怕一上来就当普通成交单处理。先把图文差异、噪音、热水或响应问题承接住，客户才更愿意继续谈。",
+      "next_step": "先确认上次问题点、客户这次最在意的住感偏好，以及是否仍有入住计划；若客户愿意，再推进低压力预订或偏好备注确认。",
+      "cadence_hint": "修复期减少频率，以一次明确承接和一次确认式跟进为主。",
+      "approval_guard": "未获批的补偿、升级或赠送权益不自行承诺。"
+    },
+    {
+      "id": "hook_reactivation_with_new_trip_reason",
+      "scene": "reactivation",
+      "lead_state": "dormant_weekend_escape_or_repeat_guest",
+      "intent": "restart_with_new_value",
+      "hook": "这次回来找你，不是重复催你订房，而是想给你一个比上次更贴合这趟出行的新理由。",
+      "bridge": "精品民宿的复联如果没有新理由，很容易被当成打扰。新的花期、工作日慢住、宠物友好更新、早餐升级或更清晰的到店方式，才更像值得回复的入口。",
+      "next_step": "带着一个具体新变化复联，例如新季节景观、错峰工作日方案、宠物友好房调整、到店停车优化或已修复的问题点，并给客户一个低门槛回复选项。",
+      "cadence_hint": "复联尽量轻，一次触达后至少拉开几天，再判断是否二次跟进。",
+      "approval_guard": "仅在 approved_for_reactivation 或等效状态下执行复联。"
+    },
+    {
+      "id": "hook_cooldown_after_two_touches",
+      "scene": "cadence_recovery",
+      "lead_state": "contacted_too_frequently",
+      "intent": "reduce_pressure_and_leave_easy_reply",
+      "hook": "先不再给客人加压，我把下一步留成一个最容易回的动作，给这单降降温。",
+      "bridge": "精品民宿线索很多时候不是拒绝，而是在路上、在比对日期、等同伴回复或没想好房型。高频追问只会把原本可转化的单子推远。",
+      "next_step": "把回复门槛降到只需确认一个最关键信息，例如日期、是否带宠或是否还要早餐，并同步进入降频节奏和回写阻塞点。",
+      "cadence_hint": "短时间内已触达两次仍无回复时，至少拉开到下一工作时段或次日再判断。",
+      "approval_guard": "避免多人、多渠道同时追同一位客户。"
+    }
+  ]
+}

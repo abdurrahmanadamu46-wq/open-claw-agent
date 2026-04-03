@@ -1,0 +1,168 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "chinese_restaurant_core_occasion_first",
+      "rule_name": "先锁核心用餐场景，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店同时想做午市白领、晚市家庭聚餐、夜宵、小型宴请和外卖",
+        "预算有限，但真正稳定出单的菜品和时段只集中在少数场景"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的用餐场景作为主路线，例如工作日午市快而稳、周末家庭聚餐或包间宴请，再围绕该场景统一招牌菜、客群、时段和到店路径。",
+      "recommended_alternative_route": "若现有证据分散，先用小预算并行测试 2 个场景，保留核销率、复购率和差评风险更优的一条，避免多线同时扩量。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有时段和所有人群",
+        "不能在证据尚弱时同时拉多个场景预算"
+      ],
+      "risk_tradeoff": "接受短期覆盖面更窄，换取更清晰的转化链路和更低的试错成本。"
+    },
+    {
+      "id": "chinese_restaurant_evidence_over_coupon",
+      "rule_name": "真菜真店证据优先于大额低价券",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店已有 1 到 3 道稳定招牌菜、真实评价和环境证据",
+        "团队倾向用大额团购或满减来快速放大点击"
+      ],
+      "recommended_primary_route": "优先走招牌菜实拍、真实份量、现炒过程、门店环境和复购评价组成的信任路线，再搭配低门槛但可控的体验权益，而不是先打深折扣。",
+      "recommended_alternative_route": "如果招牌菜证据还不够强，先做小范围试吃或老客试新收集真实反馈，补齐菜品与场景证据后再考虑加大投放。",
+      "hard_constraints": [
+        "不能用素材图、夸张摆盘或非本店出品冒充真实证据",
+        "不能在未核算毛利和承接力时直接上深折扣"
+      ],
+      "risk_tradeoff": "前端流量可能不如大额优惠刺激，但更能保住客单、复购和口碑。"
+    },
+    {
+      "id": "chinese_restaurant_capacity_before_scale",
+      "rule_name": "座位、后厨与服务承接力先于扩量",
+      "priority": "P0",
+      "trigger_signals": [
+        "周末或晚市已经频繁排队、断货、翻台混乱",
+        "招牌菜出餐依赖少数师傅或后厨尚不稳定"
+      ],
+      "recommended_primary_route": "在扩大流量前，先确认高峰时段座位数、翻台节奏、后厨出餐上限、服务人手和外卖并发承接，再决定走预约、错峰、限量套餐还是正常拉新路线。",
+      "recommended_alternative_route": "如果承接力偏弱，优先做老客回流、低峰引流或包间预约路线，不把高峰时段继续推向大规模团购或广泛投流。",
+      "hard_constraints": [
+        "不能在出餐和服务不稳时继续强推高峰流量",
+        "不能承诺无需排队、极速上菜或无限量供应"
+      ],
+      "risk_tradeoff": "表面订单量增长会慢一些，但能避免差评放大和履约失控。"
+    },
+    {
+      "id": "chinese_restaurant_dinein_delivery_split",
+      "rule_name": "堂食与外卖必须分路线运营",
+      "priority": "P1",
+      "trigger_signals": [
+        "门店既做堂食又做外卖，两边菜单结构和毛利差异明显",
+        "团队想用同一套优惠、同一套内容同时覆盖到店和配送"
+      ],
+      "recommended_primary_route": "把堂食路线聚焦到店理由、场景氛围、预约和导航，把外卖路线聚焦高复购组合、配送半径、包装稳定性和复点效率，两条路线分开设计和排序。",
+      "recommended_alternative_route": "资源有限时，先保留毛利更稳、承接更可控的一条主路线，另一条只做轻量承接或局部测试。",
+      "hard_constraints": [
+        "不能用外卖爆品逻辑直接套堂食主路线",
+        "不能忽略配送时效、包装损耗和到店体验的差异"
+      ],
+      "risk_tradeoff": "运营复杂度会上升，但能显著减少优惠错配和单位经济失真。"
+    },
+    {
+      "id": "chinese_restaurant_reactivate_before_cold_spend",
+      "rule_name": "证据一般时，先激活老客与私域，再扩冷流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "门店已有会员、企微群、外卖老客或过往订单数据",
+        "预算有限，且陌生拉新成本明显高于老客回流"
+      ],
+      "recommended_primary_route": "先按到店时段、菜品偏好、家庭聚餐、午市白领或包间老客分层，围绕时令菜、回锅招牌菜、家庭套餐或生日节点设计回流路线。",
+      "recommended_alternative_route": "如果老客资产较弱，先做本地低预算种草和真实评价修复，再逐步增加陌生流量获取。",
+      "hard_constraints": [
+        "不能忽略已有会员资产而直接做广撒网式冷启动",
+        "不能对所有老客群发完全相同的话术和权益"
+      ],
+      "risk_tradeoff": "新客增速不一定最快，但获客成本更低，且更容易形成复购。"
+    },
+    {
+      "id": "chinese_restaurant_review_repair_gate",
+      "rule_name": "评分与差评修复不过关，不先扩量",
+      "priority": "P0",
+      "trigger_signals": [
+        "平台评分持续下滑，近期差评集中在服务慢、出品不稳、环境卫生或等位过久",
+        "团队仍想继续加码短视频、团购或大促投放"
+      ],
+      "recommended_primary_route": "先识别最影响转化的 1 到 2 个差评主题，修正出品与服务问题，再用真实回评、稳定菜品和限定时段承接去恢复评分与转化。",
+      "recommended_alternative_route": "如果短期内无法彻底修复，先收缩高风险拉新，把重点转到老客解释、预约分流、限定菜品和低峰时段承接。",
+      "hard_constraints": [
+        "不能在差评持续扩散时继续大规模引流",
+        "不能使用刷评、删评承诺或掩盖真实服务风险"
+      ],
+      "risk_tradeoff": "短期客流可能承压，但能避免把口碑问题放大成更高的获客损耗。"
+    },
+    {
+      "id": "chinese_restaurant_local_radius_priority",
+      "rule_name": "优先吃透本地半径，不先做跨城曝光",
+      "priority": "P1",
+      "trigger_signals": [
+        "门店主要依赖社区、商圈、产业园或周边家庭客流",
+        "团队希望直接做全城曝光，但导航成本、停车和到店便利性并不占优"
+      ],
+      "recommended_primary_route": "优先围绕 1 到 5 公里内的社区、写字楼、学校或园区做本地半径路线，把导航便利、停车、出餐稳定和场景理由说清楚。",
+      "recommended_alternative_route": "若门店具备明显目的地属性，例如强包间需求、知名招牌菜或稀缺口味，再谨慎扩展到更大城市范围，并采用预约优先路线。",
+      "hard_constraints": [
+        "不能默认全城曝光一定能带来更高质量到店",
+        "不能忽略交通、停车、等位成本和到店门槛"
+      ],
+      "risk_tradeoff": "少了一些虚高曝光，但更容易换来真实到店与稳定复购。"
+    },
+    {
+      "id": "chinese_restaurant_banquet_qualification_first",
+      "rule_name": "包间宴请和聚餐单先做资格筛选，再投入人工承接",
+      "priority": "P1",
+      "trigger_signals": [
+        "线索明确提到包间、桌数、生日宴、家庭宴或商务宴请",
+        "门店包间数量有限，档期、停车和服务准备直接影响成交"
+      ],
+      "recommended_primary_route": "先收集日期、人数、桌数、预算、是否需要包间、酒水需求和停车条件，再判断走标准宴请套餐还是个性化菜单路线。",
+      "recommended_alternative_route": "若对方信息不完整，先给出人数和预算分层的标准套餐带，待确认档期后再进入深度沟通。",
+      "hard_constraints": [
+        "不能在未查档期和承接力前承诺包间可订",
+        "不能用低价团购套餐替代高客单宴请的主路线"
+      ],
+      "risk_tradeoff": "会过滤掉一部分随意询价线索，但能显著提升人工跟进效率和成单率。"
+    },
+    {
+      "id": "chinese_restaurant_seasonal_supply_validation",
+      "rule_name": "节假日与时令活动先做排产和备货验证",
+      "priority": "P1",
+      "trigger_signals": [
+        "准备围绕节庆聚餐、年夜饭、母亲节、时令菜或限定套餐做活动",
+        "活动涉及提前预订、限量供应、礼盒或高峰期集中到店"
+      ],
+      "recommended_primary_route": "先确认备货、供应稳定性、服务排班、预订规则和取消边界，再决定做预售、预约锁位还是限定场次活动。",
+      "recommended_alternative_route": "若供应与排班不够稳，缩小为限量菜、限定时段或老客优先预订，不做全量公开扩张。",
+      "hard_constraints": [
+        "不能把活动当作纯流量工具而忽略备货与出餐极限",
+        "不能承诺限量菜、礼盒或节日档期无限可售"
+      ],
+      "risk_tradeoff": "峰值销量可能没那么激进，但能减少断货、超卖和节庆口碑事故。"
+    },
+    {
+      "id": "chinese_restaurant_absolute_claims_veto",
+      "rule_name": "食品安全、口味疗效和爆满承诺类绝对表达一票否决",
+      "priority": "P0",
+      "trigger_signals": [
+        "内容策划或投放中出现全城第一、绝对新鲜、零等待、包你满意等话术",
+        "团队试图用夸张承诺快速抢量"
+      ],
+      "recommended_primary_route": "用可验证的食材来源、现炒过程、真实评价、稳定招牌菜和预约规则替代绝对化承诺，把信任建立在证据而不是口号上。",
+      "recommended_alternative_route": "若品牌坚持高风险表述，应降低该路线优先级，必要时直接停止上线，改做证据更扎实的场景路线。",
+      "hard_constraints": [
+        "禁止使用医疗功效暗示、绝对食品安全、绝对无预制或绝对无需排队等表述",
+        "禁止伪造非遗、名厨、明星打卡或平台背书"
+      ],
+      "risk_tradeoff": "少了部分刺激点击的噱头，但能明显降低平台、合规和口碑风险。"
+    }
+  ]
+}

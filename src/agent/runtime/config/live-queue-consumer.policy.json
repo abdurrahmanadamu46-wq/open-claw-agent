@@ -1,0 +1,12 @@
+﻿{
+  "version": "lobster.runtime-live-queue-consumer.policy.v0.1",
+  "name": "Default Live Queue Consumer Policy",
+  "sourceDirectory": "F:\\openclaw-agent\\run\\limited-live-dispatch",
+  "processedDirectory": "F:\\openclaw-agent\\run\\limited-live-dispatch-processed",
+  "targetQueues": {
+    "execute-campaign": "F:\\openclaw-agent\\run\\execute-campaign-queue",
+    "lead-ops-runner": "F:\\openclaw-agent\\run\\lead-ops-queue",
+    "brain-shadow-runner": "F:\\openclaw-agent\\run\\brain-shadow-queue",
+    "orchestrator-control": "F:\\openclaw-agent\\run\\orchestrator-control-queue"
+  }
+}

@@ -1,0 +1,234 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_urban_homestay_weekend_citywalk_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "weekend_citywalk_direct_booking_growth",
+      "input": {
+        "mission_goal": "在 28 天内为近地铁老城商圈的城市民宿新增 190 间夜周末有效直订，并把两晚连住占比从 27% 提升到 42%。",
+        "signal_brief": "民宿共 9 套房，距离地铁步行约 6 分钟，楼下是老城餐饮街和夜间散步路线，近 60 天平台评分 4.8。竞品主要靠 OTA 限时低价和秒杀冲量，但该民宿更适合走 citywalk 与周末两晚慢住路线。",
+        "tenant_context": {
+          "budget_limit": 8000,
+          "brand_tone": "真实、轻松、有城市生活感，但不过度滤镜化",
+          "asset_state": "有 5 套双人房和 2 套双卧房，近 120 天积累了较完整的真实房型素材、步行路线视频和 260 位住后加微信或二刷咨询过的熟客。",
+          "location_type": "地铁口老城商圈城市民宿",
+          "operations_state": "周五晚到店集中，自助入住流程较成熟，但楼下夜间热闹时段需要明确安静边界。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "周末 citywalk 与两晚连住主路线",
+        "地铁到店、步行圈、楼栋门禁和夜间回程的真实证据",
+        "日期、人数、房型和最晚到店时间的资格筛选逻辑",
+        "至少一条老客回流或家庭双卧 fallback",
+        "明确优先级顺序与位置型卖点的风险权衡"
+      ],
+      "mustAvoid": [
+        "把所有渠道都压成统一低价",
+        "忽略周五晚自助入住高峰和楼下夜间噪音边界"
+      ]
+    },
+    {
+      "id": "strategist_urban_homestay_new_store_validation_001",
+      "label": "edge_case",
+      "scenario_tag": "newly_opened_low_evidence_validation",
+      "input": {
+        "mission_goal": "在 14 天内验证新开城市民宿首个值得持续投放的增长场景，并决定预算优先压在周末 citywalk、演出晚归还是家庭短住。",
+        "signal_brief": "民宿刚开 11 天，共 7 套 loft 和双卧房，设计和照片表现不错，但真实住后评价还少，自助入住与保洁衔接仍在磨合。团队想同时做 OTA 秒杀、达人探店、朋友圈预售和演出档期冲量，证据明显不足。",
+        "tenant_context": {
+          "budget_limit": 10000,
+          "brand_tone": "干净、年轻、设计感强，但不夸张",
+          "asset_state": "已有较完整的新店空间素材，但只有 18 条真实评价，家庭房和 loft 的入住反馈都还不稳定。",
+          "location_type": "换乘地铁站与演出场馆之间的城市民宿",
+          "operations_state": "夜间自助入住、密码发放和翻房节奏最容易出问题，周末承接明显比工作日更吃紧。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "低证据下的小预算验证路线",
+        "最多 2 个场景并行测试的排序逻辑",
+        "优先补齐真实房型、到店流程和住后评价证据",
+        "把 OTA 冷启动和直订沉淀拆开管理"
+      ],
+      "mustAvoid": [
+        "基于设计照片直接做大规模扩量",
+        "开业初期同时深折扣冲 OTA、达人和活动档期"
+      ]
+    },
+    {
+      "id": "strategist_urban_homestay_concert_group_growth_001",
+      "label": "happy_path",
+      "scenario_tag": "concert_and_event_group_stay_growth",
+      "input": {
+        "mission_goal": "在 21 天内为靠近体育馆的城市民宿新增 130 间夜演出与赛事周边有效预订，并把 4 人及以上订单占比从 18% 提升到 32%。",
+        "signal_brief": "民宿距离体育馆地铁 1 站，共 12 套双卧和三床房，近 90 天平台评分 4.7，晚归住客评价较好。团队想抓住演出季，但内部有人主张免押、无限制晚归和多人随便住，以低价快速抢量。",
+        "tenant_context": {
+          "budget_limit": 9000,
+          "brand_tone": "清楚、可靠、晚归不慌，但不过度许诺",
+          "asset_state": "有较完整的场馆回程路线、自助入住说明、多床房实拍和多人同住评价。",
+          "location_type": "场馆地铁辐射圈的城市民宿",
+          "operations_state": "晚高峰承接稳定，但楼栋安静时段和法定入住人数边界必须讲清，停车位数量有限。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "活动日期、人数、床位结构和最晚到店时间的资格筛选字段",
+        "场馆回程、自助入住、楼栋安静边界和停车说明证据",
+        "预付优先或高确定性订单优先的治理路线",
+        "至少一条家庭双卧或周末 citywalk fallback"
+      ],
+      "mustAvoid": [
+        "把演出订单包装成可开派对或可超人数入住",
+        "忽略夜归投诉、楼栋规则和停车承接上限"
+      ]
+    },
+    {
+      "id": "strategist_urban_homestay_private_reactivation_001",
+      "label": "happy_path",
+      "scenario_tag": "repeat_guest_and_private_reactivation",
+      "input": {
+        "mission_goal": "重激活 1400 位历史住客和 210 位微信私域联系人，并在 20 天内带回 160 间夜直订或私域复住。",
+        "signal_brief": "历史住客主要来自周末 citywalk、家庭短住和演出返场，CRM 保留了入住日期、人数、房型偏好、是否带宠和是否加购过延迟退房等信息。但最近预算更多投向陌生短视频流量，老客回流明显下降。",
+        "tenant_context": {
+          "budget_limit": 3000,
+          "brand_tone": "熟客友好、不打扰、有分层感",
+          "crm_state": "可按情侣双人、家庭双卧、带宠短住、演出返场和工作日临时短住分层。",
+          "asset_state": "有近一年的住后评价、二刷记录和部分老客微信互动沉淀。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "老客与私域的分层重激活节奏",
+        "围绕熟悉房型、熟悉商圈和复住便利，而不是单纯降价",
+        "低成本回流优先级高于陌生冷启动",
+        "至少一条 OTA 口碑修复或工作日补房 fallback"
+      ],
+      "mustAvoid": [
+        "统一群发同一套文案和同一套权益",
+        "忽略历史入住动机、房型偏好和人数变化"
+      ]
+    },
+    {
+      "id": "strategist_urban_homestay_review_repair_001",
+      "label": "edge_case",
+      "scenario_tag": "review_drop_noise_and_checkin_repair",
+      "input": {
+        "mission_goal": "在不继续放大差评的前提下恢复有效预订，并在 21 天内把可成交线索拉回上个月平均水平。",
+        "signal_brief": "最近 3 周评分从 4.7 降到 4.2，差评集中在保洁不到位、房间有异味、楼下夜间噪音、密码发放慢和老楼无电梯。老板仍想用 199 元闪促和全房型开放来迅速补房。",
+        "tenant_context": {
+          "budget_limit": 6000,
+          "brand_tone": "诚恳、克制、先修再放大",
+          "asset_state": "仍有 4 套口碑相对稳定的房型和一批真实好评可用，家庭双卧评价明显好于 loft 房型。",
+          "operations_state": "周五晚入住高峰和节假日翻房最容易出问题，夜间人工响应偏弱。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "先修评分和承接力再扩量",
+        "限制到低风险房型、低投诉时段或熟客路线的替代方案",
+        "真实住后评价回收和问题修复节奏",
+        "明确停止或降级高风险低价投放"
+      ],
+      "mustAvoid": [
+        "差评扩散期继续大规模拉新",
+        "刷评或掩盖无电梯、噪音和入住流程问题"
+      ]
+    },
+    {
+      "id": "strategist_urban_homestay_holiday_price_war_regression_001",
+      "label": "failure_case",
+      "scenario_tag": "holiday_low_price_overpromise_and_party_risk",
+      "input": {
+        "mission_goal": "依靠全网最低价、可住超人数、宠物不限、可做饭聚会和无条件提前入住晚退，在节假日把城市民宿做满房并顺带提升声量。",
+        "signal_brief": "民宿位于夜生活街区附近，共 10 套双卧和 loft 房，节假日本来就有需求上升，但团队想用 OTA、私域和直播统一低价抢量，并放松多人入住、宠物和聚会规则。当前停车位紧张，保洁翻房和夜间投诉风险都在上升。",
+        "tenant_context": {
+          "budget_limit": 15000,
+          "brand_tone": "激进抢量",
+          "asset_state": "已有部分老客复住和高确定性节假日咨询，但缺少清晰的价格治理与房态保留策略。",
+          "operations_state": "节假日取消、晚归、邻里投诉和翻房波动都较大。"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes",
+        "priority_order",
+        "risk_tradeoff"
+      ],
+      "mustInclude": [
+        "明确否定最低价中心路线",
+        "把房态、人数、宠物、聚会和楼栋治理风险说透",
+        "给出预付、限量房型、最短连住或高确定性订单优先的替代打法"
+      ],
+      "mustAvoid": [
+        "全渠道最低价导向",
+        "超人数、可开派对、宠物无限制和无条件入住弹性承诺",
+        "忽略停车、保洁、夜间投诉和社区规则上限"
+      ]
+    }
+  ]
+}

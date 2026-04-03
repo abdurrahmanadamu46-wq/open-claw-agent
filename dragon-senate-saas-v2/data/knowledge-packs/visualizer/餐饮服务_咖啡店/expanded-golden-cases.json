@@ -1,0 +1,262 @@
+﻿{
+  "industry": "餐饮服务_咖啡店",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_coffee_case_001",
+      "label": "happy_path",
+      "scenario": "写字楼精品咖啡店早高峰通勤拿铁与高效自提证明",
+      "input": {
+        "copy_pack": "写字楼底商精品咖啡店短视频脚本，核心卖点是早八前后主打热拿铁和热美式出杯稳定、上班路上顺手拿走、排队不夸张但节奏很快，适合附近白领在 7 点 30 到 9 点 30 之间快速自提或给同事带一杯。",
+        "brand_assets": [
+          "楼宇入口与门头关系镜头",
+          "意式萃取视频",
+          "蒸奶与落杯镜头",
+          "主打热拿铁成杯特写",
+          "杯套与杯贴画面",
+          "取杯台待取与连续拿杯素材",
+          "白领避脸拿杯离店或进电梯画面",
+          "小程序下单页截图",
+          "门店 Logo"
+        ],
+        "reference_styles": [
+          "克制纪实的精品咖啡质感",
+          "早高峰顺路自提节奏"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 2,
+          "morning_service": true,
+          "espresso_bar_access": true,
+          "customer_closeup_allowed": false,
+          "office_entry_limited": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "萃取或蒸奶镜头作为前段真实证据",
+        "从下单或贴单到取杯离店的至少三段链路",
+        "楼宇入口或门头镜头证明通勤顺路位置",
+        "明确写出 7 点 30 到 9 点 30 的拍摄窗口和顾客避脸依赖"
+      ],
+      "mustAvoid": [
+        "空店装修镜头占掉前半段",
+        "拿外部办公素材冒充本店白领客流",
+        "用过度电影化运镜盖过高效出杯信息"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把写字楼咖啡店脚本转成一条以真实萃取、早高峰取杯节奏和顺路通勤可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在 7 点 30 前补门头和空机位镜头，再在 7 点 30 到 9 点 30 之间补萃取、取杯和离店节奏。",
+          "白领顾客不适合正脸近拍，因此需要以后背、手部和进出写字楼动作作为主画面。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、萃取、蒸奶、成杯、取杯台和拿杯离店画面。",
+          "脚本卖点围绕早高峰稳定出杯和顺路自提，而不是夸大爆单。"
+        ],
+        "confidence": 0.9,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面主体给主打热拿铁成杯和杯套，右下角补一个楼宇入口或门头关系镜头，标题聚焦早八顺路拿走这杯。",
+        "shot_list": "1) 楼宇入口与门头建立通勤路线 2) 意式萃取与蒸奶落杯建立真实出杯记忆点 3) 杯贴、杯套和放上取杯台证明高效交付 4) 连续拿杯与待取杯节奏证明早高峰真实翻杯 5) 白领避脸拿杯离店或进电梯补足通勤使用场景 6) 门店位置与下单提醒收束到自提 CTA",
+        "asset_dependencies": "楼宇入口、门头、意式萃取、蒸奶落杯、主打热拿铁成杯、杯贴杯套、取杯台待取、白领避脸拿杯离店、小程序下单页；需确认 7 点 30 到 9 点 30 可拍窗口。",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_coffee_case_002",
+      "label": "happy_path",
+      "scenario": "社区烘焙咖啡馆早餐组合从咖啡到可颂的真实搭配",
+      "input": {
+        "copy_pack": "社区街角烘焙咖啡馆视频脚本，重点想讲早上 8 点到 11 点的早餐组合：热拿铁配可颂、冰美式配贝果，门店适合附近居民顺手打包，也适合短暂停留吃完再走。脚本希望观众看完就知道这不是只会摆拍的 brunch 店，而是真的能快速吃完、喝完、带走。",
+        "brand_assets": [
+          "街角门头镜头",
+          "烘焙柜与当日可颂贝果画面",
+          "意式萃取或批次咖啡出杯素材",
+          "热拿铁与冰美式成杯特写",
+          "托盘上桌与纸袋打包画面",
+          "咖啡与可颂同框桌面素材",
+          "顾客避脸堂食或拿袋离店画面",
+          "早餐价签或菜单板"
+        ],
+        "reference_styles": [
+          "干净自然的社区早餐咖啡馆",
+          "真实能吃能带走的轻食节奏"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2.5,
+          "morning_service": true,
+          "food_display_access": true,
+          "customer_closeup_allowed": false,
+          "table_turnover": "moderate"
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "真实在售早餐食物和咖啡同框关系",
+        "堂食或打包离店至少保留一个真实使用场景",
+        "街角门头证明社区顺路属性",
+        "明确写出早餐窗口和食物当天在售依赖"
+      ],
+      "mustAvoid": [
+        "只拍甜点样片不落到咖啡成杯",
+        "把拍照摆盘包装成稳定早餐履约能力",
+        "拿旧菜单或过季食物冒充当天在售"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把社区烘焙咖啡馆脚本转成一条以早餐组合完整度、咖啡食物同框关系和顺路打包可信度为核心的可执行分镜。",
+        "assumptions": [
+          "可在开店后第一波早餐时段完成烘焙柜、成杯、托盘上桌和打包离店镜头。",
+          "顾客更适合拍手部、背影和桌面动作，不以正脸堂食特写为主。"
+        ],
+        "evidence": [
+          "品牌素材同时具备门头、在售烘焙、咖啡出杯、托盘桌面和纸袋离店画面。",
+          "脚本的核心购买理由是早餐组合真实且顺手，不是周末摆拍氛围。"
+        ],
+        "confidence": 0.88,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面让热拿铁和可颂同框占主画面，右侧补街角门头和纸袋元素，标题围绕早上顺手拿走这一份早餐。",
+        "shot_list": "1) 社区街角门头建立顺路早餐位置 2) 烘焙柜和当日可颂贝果证明真实在售 3) 咖啡出杯与托盘同框建立组合关系 4) 堂食第一口或打包入袋补足真实使用场景 5) 价签菜单与主打组合收束到早餐选择理由 6) 门头回收和营业时段提醒形成到店 CTA",
+        "asset_dependencies": "社区门头、烘焙柜、当日可颂贝果、意式或批次咖啡出杯、热拿铁与冰美式成杯、托盘桌面、纸袋打包、顾客避脸堂食或离店、早餐价签菜单；需锁定 8 点到 11 点供应窗口。",
+        "execution_feasibility_score": "0.88"
+      }
+    },
+    {
+      "id": "visualizer_coffee_case_003",
+      "label": "edge_case",
+      "scenario": "商场新开咖啡档口颜值够但缺少稳定排队与深吧台素材",
+      "input": {
+        "copy_pack": "商场新开咖啡档口脚本，想讲周末逛街顺手带走一杯招牌脏咖和橙咖，门店很容易被看到，杯子也好看，但目前没有稳定排队和持续爆单素材，吧台深处也不允许拍，只有门头、档口、成杯和顾客手持离店镜头。",
+        "brand_assets": [
+          "商场楼层标识与档口门头镜头",
+          "招牌脏咖和橙咖成杯特写",
+          "取杯口与杯套画面",
+          "朋友手持咖啡边走边聊素材",
+          "Logo 墙和新品海报",
+          "外带纸袋或杯托画面"
+        ],
+        "reference_styles": [
+          "明亮真实的商场咖啡档口",
+          "克制的顺手带走感"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "weekend_mall_service": true,
+          "backbar_access": false,
+          "customer_closeup_allowed": false,
+          "queue_stability": "uncertain"
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确当前缺少稳定排队和深吧台工艺镜头",
+        "把说服力放在商场位置、主打单杯和顺手带走场景",
+        "写清楚只能拍门头、取杯口、成杯和手持离店的边界"
+      ],
+      "mustAvoid": [
+        "硬写成商场爆火咖啡新店",
+        "虚构手冲或复杂工艺大场面",
+        "用夸张电影感运镜掩盖证据不足"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在没有稳定排队素材且深吧台不可拍的前提下，把商场新店脚本转成一条以位置便利、主打单杯真实好看和顺手带走为核心的可执行分镜。",
+        "assumptions": [
+          "可在周末客流存在时完成门头、取杯口和手持离店镜头，但不承诺一定拍到可用排队素材。",
+          "招牌脏咖和橙咖已经稳定成杯，可用于单杯主打与手持行走场景。"
+        ],
+        "evidence": [
+          "现有素材集中在楼层标识、档口门头、主打成杯、取杯口和手持离店画面。",
+          "脚本核心卖点是逛街顺手带走和主打单杯颜值，而不是爆单翻台。"
+        ],
+        "confidence": 0.7,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面用手持招牌单杯和商场档口同框，标题聚焦逛街顺手带走这杯，不使用排队和爆款暗示。",
+        "shot_list": "1) 商场楼层标识和档口门头交代位置便利 2) 招牌脏咖与橙咖成杯建立第一眼记忆点 3) 取杯口、杯套和纸袋证明真实拿走场景 4) 朋友手持边走边聊补足逛街适配 5) Logo 墙和新品海报补充品牌识别 6) 收束到顺手带走和门店位置 CTA",
+        "asset_dependencies": "商场楼层标识、档口门头、招牌脏咖和橙咖成杯、取杯口、杯套纸袋、朋友避脸手持离店、Logo 墙、新品海报；缺少稳定排队和深吧台工艺素材。",
+        "execution_feasibility_score": "0.67"
+      }
+    },
+    {
+      "id": "visualizer_coffee_case_004",
+      "label": "failure_case",
+      "scenario": "未开业咖啡新品牌只有效果图和海报却想做爆款探店",
+      "input": {
+        "copy_pack": "新咖啡品牌宣传脚本，希望做出开业就排队、主打咖啡很爆、门店空间很有质感的感觉，但门店还没有正式开业，没有真实成杯、没有顾客、也没有吧台拍摄条件，目前只有装修效果图、菜单海报、品牌 Logo 和开业倒计时物料。",
+        "brand_assets": [
+          "装修效果图",
+          "菜单海报",
+          "主打咖啡 KV",
+          "品牌 Logo",
+          "开业倒计时海报"
+        ],
+        "reference_styles": [
+          "新店预告",
+          "轻明亮品牌视觉"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "store_open": false,
+          "real_cup_assets": false,
+          "customer_assets": false,
+          "counter_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确门店未开业且没有真实成杯和客流证据",
+        "主动降级为开业预告或菜单方向说明",
+        "给出低可执行性评分和开业后补拍建议"
+      ],
+      "mustAvoid": [
+        "把效果图包装成真实营业现场",
+        "拿外部咖啡馆的成杯和排队素材冒充本店",
+        "继续设计真实取杯链路和爆款探店叙事"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在门店未开业且没有真实成杯与客流素材的前提下，输出一条不冒充营业现场的开业预告型视觉路线。",
+        "assumptions": [
+          "当前只能展示品牌视觉、菜单方向和开业时间信息。",
+          "任何真实成杯、取杯、顾客和吧台镜头都需要开业后另行补拍。"
+        ],
+        "evidence": [
+          "现有素材仅有装修效果图、菜单海报、品牌 Logo、主打 KV 和开业倒计时。",
+          "拍摄条件不支持门头实景、吧台、真实顾客和真实饮品证明。"
+        ],
+        "confidence": 0.64,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "封面只做开业预告说明，效果图和 Logo 做主体，标题明确写新店即将开业或主打方向先看，不给任何已经营业的暗示。",
+        "shot_list": "1) 效果图与品牌 Logo 建立新店印象 2) 菜单海报和主打 KV 拆解未来主打方向 3) 开业倒计时说明时间节点 4) 明确当前没有真实成杯和取杯证据 5) 列出开业后需补拍的门头、吧台、成杯、取杯和客流素材 6) 收束到开业提醒和关注 CTA",
+        "asset_dependencies": "装修效果图、菜单海报、主打咖啡 KV、品牌 Logo、开业倒计时海报；缺少门头实景、真实成杯、吧台工艺、取杯交付和顾客客流证明。",
+        "execution_feasibility_score": "0.26"
+      }
+    }
+  ]
+}

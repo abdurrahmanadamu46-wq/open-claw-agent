@@ -1,0 +1,40 @@
+﻿{
+  "name": "lobster_senate_mainline",
+  "version": "2.0.0",
+  "nodes": [
+    { "id": "radar", "label": "Radar" },
+    { "id": "strategist", "label": "Strategist" },
+    { "id": "ink-writer", "label": "InkWriter" },
+    { "id": "visualizer", "label": "Visualizer" },
+    { "id": "dispatcher", "label": "Dispatcher" },
+    { "id": "echoer", "label": "Echoer" },
+    { "id": "catcher", "label": "Catcher" },
+    { "id": "abacus", "label": "Abacus" },
+    { "id": "follow-up", "label": "FollowUp" }
+  ],
+  "edges": [
+    { "from": "radar", "to": "strategist", "artifact": "market_intel" },
+    { "from": "strategist", "to": "ink-writer", "artifact": "campaign_params" },
+    { "from": "ink-writer", "to": "visualizer", "artifact": "storyboard_json" },
+    { "from": "visualizer", "to": "dispatcher", "artifact": "prompt_pack" },
+    { "from": "dispatcher", "to": "echoer", "artifact": "dispatch_plan" },
+    { "from": "echoer", "to": "catcher", "artifact": "interaction_stream" },
+    { "from": "catcher", "to": "abacus", "artifact": "intent_leads" },
+    { "from": "abacus", "to": "follow-up", "artifact": "hot_lead_push" }
+  ],
+  "topologicalOrder": [
+    "radar",
+    "strategist",
+    "ink-writer",
+    "visualizer",
+    "dispatcher",
+    "echoer",
+    "catcher",
+    "abacus",
+    "follow-up"
+  ],
+  "parallelGroups": [
+    ["ink-writer", "visualizer"],
+    ["echoer", "catcher"]
+  ]
+}

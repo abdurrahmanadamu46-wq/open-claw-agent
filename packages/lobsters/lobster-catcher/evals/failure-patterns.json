@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "catcher",
+  "patterns": [
+    {
+      "id": "catcher_false_positive",
+      "label": "false_positive",
+      "description": "Low-fit or spam leads are promoted as high-intent opportunities."
+    },
+    {
+      "id": "catcher_false_reject",
+      "label": "false_reject",
+      "description": "Genuine but soft-interest leads are discarded too early."
+    },
+    {
+      "id": "catcher_risk_blindness",
+      "label": "risk_blindness",
+      "description": "High-risk lead language is ignored because intent seems commercially attractive."
+    }
+  ]
+}

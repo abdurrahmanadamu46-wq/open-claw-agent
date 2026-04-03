@@ -1,0 +1,73 @@
+﻿{
+  "schema_version": "comfy_nodes_lock.v1",
+  "generated_at": 1774263132,
+  "comfy_root": "F:\\ComfyUI-aki\\ComfyUI-latest",
+  "nodes": {
+    "wanvideo_lipsync": {
+      "repo": "https://github.com/kijai/ComfyUI-WanVideoWrapper.git",
+      "kind": "custom_node",
+      "commit": "df8f3e49daaad117cf3090cc916c83f3d001494c",
+      "updated_at": 1774262843
+    },
+    "vibevoice_tts": {
+      "repo": "https://github.com/Enemyx-net/VibeVoice-ComfyUI.git",
+      "kind": "custom_node",
+      "commit": "b0a8efc23c9d902d7ebd8fe3f79515a23d343bc2",
+      "updated_at": 1774262858
+    },
+    "portrait_master": {
+      "repo": "https://github.com/florestefano1975/comfyui-portrait-master.git",
+      "kind": "custom_node",
+      "commit": "dbf65b808ced29d3ec33305dec820bcf3d99652f",
+      "updated_at": 1774262859
+    },
+    "controlnet_aux": {
+      "repo": "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
+      "kind": "custom_node",
+      "commit": "95a13e2e5d8f8ae57583fbebb0be1f670889858b",
+      "updated_at": 1774262873
+    },
+    "layerstyle_compositor": {
+      "repo": "https://github.com/chflame163/ComfyUI_LayerStyle.git",
+      "kind": "custom_node",
+      "commit": "d94bef1ee5ed3656f5ff1bb2830a4ffd94f40935",
+      "updated_at": 1774262876
+    },
+    "easy_use_pack": {
+      "repo": "https://github.com/yolain/ComfyUI-Easy-Use.git",
+      "kind": "custom_node",
+      "commit": "337a03bb19273ee084e56b16a59ad35cb07a1a04",
+      "updated_at": 1774262879
+    },
+    "llm_party_orchestrator": {
+      "repo": "https://github.com/heshengtao/comfyui_LLM_party.git",
+      "kind": "custom_node",
+      "commit": "4d279969d7b08a24857f7455b362b745d6dcf2d0",
+      "updated_at": 1774262964
+    },
+    "copilot_workflow_builder": {
+      "repo": "https://github.com/AIDC-AI/ComfyUI-Copilot.git",
+      "kind": "custom_node",
+      "commit": "41b15d2d879ca92b0395df553d17b22b8cd6d9d3",
+      "updated_at": 1774262968
+    },
+    "custom_scripts_ui": {
+      "repo": "https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git",
+      "kind": "custom_node",
+      "commit": "609f3afaa74b2f88ef9ce8d939626065e3247469",
+      "updated_at": 1774262968
+    },
+    "ai_dock_runtime": {
+      "repo": "https://github.com/ai-dock/comfyui.git",
+      "env_flag": "COMFYUI_ENABLE_AI_DOCK",
+      "kind": "runtime_stack",
+      "installed": false,
+      "commit": "",
+      "deps_ok": null,
+      "messages": [
+        "runtime_stack_not_installed_in_custom_nodes"
+      ],
+      "skipped": true
+    }
+  }
+}

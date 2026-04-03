@@ -1,0 +1,127 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "catcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "catcher_nail_salon_office_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "xiaohongshu_private_message",
+        "lead_content": "周四晚想在国金店做一个短甲法式，第一次做，手上没有旧甲。",
+        "engagement_history": [
+          "saved two office short nail posts",
+          "viewed booking and workbench content",
+          "asked whether a slot can be held"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": true,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "clear style and time window",
+        "followup-ready tier"
+      ],
+      "mustAvoid": [
+        "treating the lead as casual browsing"
+      ]
+    },
+    {
+      "id": "catcher_nail_salon_event_002",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_comment_to_dm",
+        "lead_content": "周六婚礼，想约周四晚上做新娘甲，手上还有旧甲需要卸掉。",
+        "engagement_history": [
+          "watched full bridal-nail video",
+          "liked wedding detail post"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent candidate",
+        "event deadline noted as major signal",
+        "removal fact carried into fit score"
+      ],
+      "mustAvoid": [
+        "downgrading because the user still needs guidance"
+      ]
+    },
+    {
+      "id": "catcher_nail_salon_price_only_003",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "public_comment",
+        "lead_content": "做甲多少钱？",
+        "engagement_history": [
+          "viewed one generic promo"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "not automatically hot",
+        "needs more scope before escalation"
+      ],
+      "mustAvoid": [
+        "marking the lead as followup-ready immediately"
+      ]
+    },
+    {
+      "id": "catcher_nail_salon_returning_guest_004",
+      "label": "long_term_case",
+      "input": {
+        "lead_source": "wechat_private_message",
+        "lead_content": "上次来做过奶灰，这次想换个法式，周末能约一下吗。",
+        "engagement_history": [
+          "existing customer note found",
+          "past visit completed successfully"
+        ],
+        "tenant_rules": {
+          "require_branch_for_booking": false,
+          "forbid_unapproved_slot_guarantee": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "warm relationship signal",
+        "high fit for follow-up",
+        "returning-client value"
+      ],
+      "mustAvoid": [
+        "treating the lead as a cold new inquiry"
+      ]
+    }
+  ]
+}

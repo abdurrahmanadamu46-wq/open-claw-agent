@@ -1,0 +1,152 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "charcoal_sizzle_hits_first",
+      "hook_angle": "charcoal live-grill proof",
+      "hook_line": "You can tell whether a barbecue shop is worth sitting down for by the first grill tray, not by the sign outside.",
+      "target_scene": "street-side charcoal barbecue, lamb skewer shops, visible grill counters, night-market barbecue stores",
+      "cover_direction": "Use a hero grill shot with signature skewers, then support it with a small storefront or outdoor-seating corner.",
+      "first_3_shots": [
+        "working grill or charcoal close-up",
+        "signature skewers turning and getting seasoned",
+        "fresh handoff to the table or first bite"
+      ],
+      "required_proof_assets": [
+        "grill station footage",
+        "signature skewer hero shot",
+        "table handoff or bite feedback"
+      ],
+      "fallback_if_missing": "If grill access is missing, switch to a fresh-handoff route and stop claiming a strong live-fire hook."
+    },
+    {
+      "id": "night_queue_smoke_signal",
+      "hook_angle": "late-night business signal",
+      "hook_line": "If a barbecue shop is really hot at night, the proof is outside the door and on the tables, not in the copy.",
+      "target_scene": "late-night street barbecue, outdoor-seating barbecue, busy after-work barbecue bars, seafood barbecue stalls",
+      "cover_direction": "Frame the storefront and occupied tables together so the audience reads real night-service status at a glance.",
+      "first_3_shots": [
+        "night storefront and seating overview",
+        "real guest arrival or waiting shot",
+        "server delivering skewers, drinks, or refills"
+      ],
+      "required_proof_assets": [
+        "night storefront footage",
+        "occupied seating footage",
+        "service-rhythm footage"
+      ],
+      "fallback_if_missing": "If no real queue or peak-hour footage exists, pivot to a hero-food or group-fit hook instead."
+    },
+    {
+      "id": "signature_skewer_reason_to_visit",
+      "hook_angle": "signature skewer memory point",
+      "hook_line": "People do not remember barbecue shops by the lights. They remember the skewers every table orders twice.",
+      "target_scene": "lamb skewers, chicken wings, grilled waist, mixed skewer trays, signature meat-heavy barbecue shops",
+      "cover_direction": "Let the hero skewer fill the cover, then support it with a menu marker or whole-table context.",
+      "first_3_shots": [
+        "signature skewer beauty close-up",
+        "seasoning or plating action",
+        "repeat-order or bite reaction"
+      ],
+      "required_proof_assets": [
+        "signature skewer close-up",
+        "seasoning or plating shot",
+        "real table feedback"
+      ],
+      "fallback_if_missing": "If there is no stable hero item, move to a night-scene or group-social route."
+    },
+    {
+      "id": "open_grill_craft_memory",
+      "hook_angle": "visible grill craft",
+      "hook_line": "Turn, fire control, and seasoning rhythm explain barbecue skill better than any voice-over ever will.",
+      "target_scene": "visible grill masters, open grill lines, seasoning-heavy barbecue shops, hand-grilled skewer concepts",
+      "cover_direction": "Use the grill master's hands and the hero skewer as the main composition, with charcoal or spice trays as support.",
+      "first_3_shots": [
+        "grill-master control shot",
+        "seasoning detail close-up",
+        "plate-off and table handoff"
+      ],
+      "required_proof_assets": [
+        "grill-master action footage",
+        "seasoning detail footage",
+        "fresh delivery shot"
+      ],
+      "fallback_if_missing": "If grill-master process footage is unavailable, switch to a finished-item experience hook."
+    },
+    {
+      "id": "oyster_or_seafood_freshness_visible",
+      "hook_angle": "fresh seafood proof",
+      "hook_line": "For oysters and shellfish, the audience only believes freshness when the handling and grill stages are visible.",
+      "target_scene": "seafood barbecue, oyster grills, scallop-focused stalls, shrimp and shellfish night-market barbecue",
+      "cover_direction": "Split the cover between seafood handling and a hot finished plate so freshness and appetite support each other.",
+      "first_3_shots": [
+        "seafood prep or display shot",
+        "butter, garlic, or grill-stage shot",
+        "finished handoff or bite reaction"
+      ],
+      "required_proof_assets": [
+        "seafood prep footage",
+        "grill-stage footage",
+        "finished-table feedback"
+      ],
+      "fallback_if_missing": "If prep proof is missing, stop leading with freshness and switch to flavor or late-night social value."
+    },
+    {
+      "id": "beer_and_skewer_gathering",
+      "hook_angle": "after-work social table",
+      "hook_line": "A barbecue shop wins when the table can keep sitting, drinking, and ordering, not just when one skewer looks good.",
+      "target_scene": "barbecue bars, after-work hangouts, outdoor night seating, group-friendly late-night stores",
+      "cover_direction": "Lead with a whole table of skewers and drinks, then support it with face-safe social interaction.",
+      "first_3_shots": [
+        "whole-table food and drink shot",
+        "beer pour or cheers shot",
+        "server handoff followed by shared eating"
+      ],
+      "required_proof_assets": [
+        "whole-table composition",
+        "drink footage",
+        "group interaction footage"
+      ],
+      "fallback_if_missing": "If there is no real group table, switch to a single-table tasting or hero-skewer route."
+    },
+    {
+      "id": "value_combo_table_full",
+      "hook_angle": "visible value and quantity",
+      "hook_line": "Value in barbecue is not a price tag. It is whether the full table actually looks worth ordering.",
+      "target_scene": "combo-heavy barbecue stores, community barbecue, two-person sets, group platters, beer-plus-skewer bundles",
+      "cover_direction": "Use a visibly full table or platter-heavy spread that makes quantity readable before the title is even finished.",
+      "first_3_shots": [
+        "full combo-table shot",
+        "quantity or tray-detail shot",
+        "shared eating or refill-speed shot"
+      ],
+      "required_proof_assets": [
+        "whole-table value shot",
+        "quantity reference shot",
+        "real dining feedback"
+      ],
+      "fallback_if_missing": "If only single-item footage exists, stop pushing value-combo language and return to hero-item proof."
+    },
+    {
+      "id": "clean_smoke_control_signal",
+      "hook_angle": "comfortable to stay",
+      "hook_line": "The strongest barbecue comfort signal is not no smoke at all. It is smoke, service, and table care staying in balance.",
+      "target_scene": "indoor barbecue bars, low-smoke concepts, family-friendly barbecue, longer-stay dining formats",
+      "cover_direction": "Pair a clean table with active grilling and a small service detail such as grate change or empty-skewer clearing.",
+      "first_3_shots": [
+        "clean table and seating baseline",
+        "service-maintenance detail shot",
+        "occupied table with controlled smoke"
+      ],
+      "required_proof_assets": [
+        "clean seating footage",
+        "service-maintenance footage",
+        "comfort or ventilation footage"
+      ],
+      "fallback_if_missing": "If comfort proof is weak, do not use this hook. Switch back to food or social proof."
+    }
+  ]
+}

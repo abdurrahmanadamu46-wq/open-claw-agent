@@ -1,0 +1,8 @@
+{"industry":"本地零售_药店","lobster_id":"abacus","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"short_term_conversion_probability","feature_name":"短期到店转化概率","metric":"conversion_probability","weight":0.24,"scoring_rule":"场景、时间、门店和到店动作越齐全，分值越高。","positive_signals":["明确急用/备药/补药方向","给出今晚、本周末或具体日期","愿意到店、自取或留药"],"negative_signals":["只有泛咨询没有时间","只问价格不补充场景"],"value_guidance":"这是药店短期分最核心的指标。"},
+  {"id":"trust_building_readiness","feature_name":"信任建立就绪度","metric":"trust_readiness","weight":0.18,"scoring_rule":"用户越愿意补充场景、角色和顾虑，分值越高。","positive_signals":["愿意讲给谁用和时间","愿意继续确认药师、门店和说明"],"negative_signals":["持续回避任何事实","只要求先承诺结果"],"value_guidance":"首次到店线索的价值高度依赖信任推进。"},
+  {"id":"repurchase_potential","feature_name":"复购潜力","metric":"repurchase_potential","weight":0.18,"scoring_rule":"慢病补药、耗材续购和家庭常备药回补等周期性需求越明确，分值越高。","positive_signals":["补货周期明确","用户提到长期备药或常买规格"],"negative_signals":["一次性低关联购买","纯围观无后续计划"],"value_guidance":"药店要重视长期复购而不是只看首单。"},
+  {"id":"scene_clarity","feature_name":"场景清晰度","metric":"fit_clarity","weight":0.14,"scoring_rule":"夜间急用、返乡备药、儿童护理和慢病续购场景越清楚，拟合度越高。","positive_signals":["孩子今晚发烧","返乡备药","长期补药"],"negative_signals":["完全不说用途","只说想买点药"],"value_guidance":"场景越清楚，越容易做真实适配。"},
+  {"id":"deadline_pressure","feature_name":"节点紧迫度","metric":"urgency","weight":0.12,"scoring_rule":"夜间、返乡、开学和换季节点越明确，分值越高。","positive_signals":["今晚就要","明天返乡前要备齐"],"negative_signals":["没有时间窗口","长期模糊观望"],"value_guidance":"节点会提高短期效率，但仍需和边界一起看。"},
+  {"id":"risk_penalty","feature_name":"风险扣分","metric":"risk_penalty","weight":0.14,"scoring_rule":"诊断判断、绝对见效和无限时配送承诺越强，扣分越多。","positive_signals":["关注药师说明和真实履约条件"],"negative_signals":["要求保证马上好","要求今晚一定送到或绝对安全"],"value_guidance":"任何看似高价值的线索，只要风险失控，就不能给高总分。"}
+]}

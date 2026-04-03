@@ -1,0 +1,228 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "stay_fact_completeness",
+      "feature_name": "住宿事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.11,
+      "scoring_rule": "5 分：已明确入住日期、离店日期、房型、房量、预计到店时间和结算主体；3 分：其中至少明确 3 项且愿意继续补充；1 分：只有“今晚还有没有房”“最低多少钱”这类模糊问价。",
+      "positive_signals": [
+        "入住和离店日期明确",
+        "房型和房量明确",
+        "预计到店时间明确",
+        "企业主体或发票抬头明确"
+      ],
+      "negative_signals": [
+        "只问最低价",
+        "没有日期",
+        "没有房量",
+        "没有到店时点"
+      ],
+      "value_guidance": "商务酒店的短期价值首先来自可落地的入住事实，而不是热闹的询价流量。"
+    },
+    {
+      "id": "guarantee_and_payment_commitment_strength",
+      "feature_name": "担保与支付承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已确认担保、预付、PO、企业审批或到店支付责任；3 分：愿意补齐担保方式并进入确认环节；1 分：只要求留房、不给担保也不给支付承诺。",
+      "positive_signals": [
+        "信用卡担保或预付",
+        "PO 或企业审批已通过",
+        "到店支付责任人明确",
+        "愿意锁定取消规则"
+      ],
+      "negative_signals": [
+        "拒绝任何担保动作",
+        "只说先留房",
+        "支付责任不明确",
+        "审批状态未知"
+      ],
+      "value_guidance": "对 Abacus 来说，担保和支付承诺比咨询热度更能代表真实成交意愿。"
+    },
+    {
+      "id": "net_adr_after_channel_cost",
+      "feature_name": "扣除渠道与附赠成本后的净房晚收益",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除佣金、早餐、积分、赠项和退款风险后，净 ADR 仍然健康；3 分：净收益偏紧但仍为正；1 分：房费看起来不低，但净房晚收益很薄甚至为负。",
+      "positive_signals": [
+        "直订或低佣金渠道",
+        "赠项成本可控",
+        "退款率低",
+        "升级和早餐主要为付费"
+      ],
+      "negative_signals": [
+        "高佣金 OTA",
+        "强补贴低价券",
+        "免费早餐和晚退叠加",
+        "退款和投诉率高"
+      ],
+      "value_guidance": "真实 ROI 来自净房晚收益，而不是看上去漂亮的房价或入住率。"
+    },
+    {
+      "id": "inventory_pressure_and_turnover_impact",
+      "feature_name": "库存压力与翻房挤压影响",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分：需求与闲置房型、闲时库存或可释放房晚高度匹配，不挤压高峰翻房；3 分：有一定占用但整体可承接；1 分：明显压缩满房日、早到房或关键房型库存。",
+      "positive_signals": [
+        "非满房日入住",
+        "房型库存充足",
+        "不会压缩次日翻房",
+        "可利用闲置房晚"
+      ],
+      "negative_signals": [
+        "展会日满房边缘",
+        "早到晚退挤占翻房",
+        "关键房型紧张",
+        "会务房块释放风险高"
+      ],
+      "value_guidance": "同样一笔房晚，在不同库存状态下的真实价值差异很大。"
+    },
+    {
+      "id": "arrival_timing_and_execution_certainty",
+      "feature_name": "到店时点与执行确定性",
+      "metric": "short_term_score",
+      "weight": 0.07,
+      "scoring_rule": "5 分：到店/离店时间、航班车次和夜班保留时点明确；3 分：有目标时间但仍待确认；1 分：只有“会晚点到”或“明早很早来”这类模糊表述。",
+      "positive_signals": [
+        "航班或车次明确",
+        "晚到保留时点明确",
+        "凌晨入住方式明确",
+        "夜班联系人明确"
+      ],
+      "negative_signals": [
+        "只说会晚点",
+        "没有可联络方式",
+        "凌晨到店但无担保",
+        "离店时间完全不确定"
+      ],
+      "value_guidance": "时间紧迫只有在可执行时才会放大价值，否则只会放大履约风险。"
+    },
+    {
+      "id": "corporate_account_recurrence_and_ltv",
+      "feature_name": "企业账户复住频次与长期价值",
+      "metric": "long_term_score",
+      "weight": 0.12,
+      "scoring_rule": "5 分：主体具备稳定差旅、月度房晚、协议账号或多部门复住特征；3 分：主体稳定但频次一般；1 分：明显一次性、无账户沉淀空间。",
+      "positive_signals": [
+        "企业协议客户",
+        "固定差旅团队",
+        "多部门用房需求",
+        "历史复住记录稳定"
+      ],
+      "negative_signals": [
+        "纯一次性展会散客",
+        "主体不稳定",
+        "只看单次最低价",
+        "历史复住极低"
+      ],
+      "value_guidance": "长期分的核心是未来还能不能持续回来，而不只是这一次的入住热度。"
+    },
+    {
+      "id": "meeting_bundle_expandability",
+      "feature_name": "会务打包与企业场景扩展潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个主体下可扩展到多次会议、培训、接送和多房型组合；3 分：当前场景明确但后续空间一般；1 分：只能做一次、无法复制。",
+      "positive_signals": [
+        "培训和会议场景",
+        "多资源打包",
+        "跨部门活动",
+        "年度复用可能"
+      ],
+      "negative_signals": [
+        "一次性小单",
+        "无房块扩展空间",
+        "没有后续活动",
+        "名单和主体不稳定"
+      ],
+      "value_guidance": "能否从一笔房晚延展成一串企业场景，是商务酒店长期价值的重要来源。"
+    },
+    {
+      "id": "stay_length_and_extension_probability",
+      "feature_name": "停留时长与续住概率",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：连住周期长、存在项目驻场或已表现出明确续住概率；3 分：当前连住有限但有延长空间；1 分：明显单晚、低续住可能。",
+      "positive_signals": [
+        "长住或周租",
+        "项目驻场",
+        "已问续住价格",
+        "账期和延长审批明确"
+      ],
+      "negative_signals": [
+        "纯单晚过夜",
+        "无续住迹象",
+        "频繁跳酒店比价",
+        "历史延住概率低"
+      ],
+      "value_guidance": "商务酒店里，稳定的续住概率往往比单晚高价更有价值。"
+    },
+    {
+      "id": "direct_channel_and_member_asset_leverage",
+      "feature_name": "直订迁移与会员资产杠杆",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：线索来自老客回流、会员直订或可明显节省佣金的企业直连渠道；3 分：有一定转直订潜力；1 分：完全依赖高佣金平台且无沉淀空间。",
+      "positive_signals": [
+        "会员直订",
+        "老客回流",
+        "企业微信或销售直连",
+        "可复用偏好数据"
+      ],
+      "negative_signals": [
+        "只在 OTA 低价时出现",
+        "拒绝会员绑定",
+        "无历史数据沉淀",
+        "对直订权益无感"
+      ],
+      "value_guidance": "节省渠道佣金并沉淀直订资产，是商务酒店最容易被低估的长期价值来源。"
+    },
+    {
+      "id": "attribution_merge_quality",
+      "feature_name": "归因合并与关键推进触点质量",
+      "metric": "reward_signal",
+      "weight": 0.07,
+      "scoring_rule": "5 分：能合并重复询单并识别真正推动担保、审批、名单回收或房块确认的关键触点；3 分：知道主要渠道但归因仍粗糙；1 分：谁最后出现就把 credit 都给谁。",
+      "positive_signals": [
+        "合并 OTA、电话、销售和企业微信重复线索",
+        "区分曝光触点与推进触点",
+        "知道哪一步推动了担保或审批",
+        "统一核算跟进成本"
+      ],
+      "negative_signals": [
+        "重复记同一企业询单价值",
+        "只按最后触点分功",
+        "忽略销售人工推进",
+        "渠道各自重复算 ROI"
+      ],
+      "value_guidance": "奖励信号必须建立在正确归因上，否则团队会持续被错误激励带偏。"
+    },
+    {
+      "id": "governance_compensation_and_service_risk",
+      "feature_name": "治理、补偿与服务恢复风险",
+      "metric": "reward_signal",
+      "weight": 0.06,
+      "scoring_rule": "5 分：价值判断和奖励建议都能主动避开高退款、高投诉、高合规风险场景；3 分：存在轻微模糊但可纠正；1 分：鼓励在客诉、故障或审批未清时继续强推成交。",
+      "positive_signals": [
+        "先经理介入再推进",
+        "对投诉和故障保守处理",
+        "要求担保或审批后再投入重资源",
+        "对高补偿风险客户主动降级"
+      ],
+      "negative_signals": [
+        "忽略严重投诉继续营销",
+        "审批未过先承诺协议价",
+        "免费赠项无限追加",
+        "只追房晚量不做止损"
+      ],
+      "value_guidance": "商务酒店的奖励信号不能只鼓励成交，也要避免补偿和品牌风险被不断放大。"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"scene_specificity","title":"场景方向清晰度","description":"高分信号会明确提到日常送洗、奢护、急洗、窗帘地毯和鞋包等具体方向。","examples":["高分：想洗两件羽绒。","低分：想洗点衣服。"],"priority":"high"},
+  {"id":"timing_clarity","title":"时间窗口清晰度","description":"换季、出差、婚礼、返校等时间窗口越清楚，价值越高。","examples":["高分：后天要穿。","低分：有空再洗。"],"priority":"high"},
+  {"id":"scope_clarity","title":"材质件数清晰度","description":"材质、件数和污渍问题越清楚，后续路线越容易收窄。","examples":["高分：两件羊毛大衣。","低分：几件衣服。"],"priority":"high"},
+  {"id":"trust_sensitivity","title":"赔付与效果敏感度","description":"当用户高度关注缩水、串色、发黄和赔付时，需要提升信号权重与风险识别。","examples":["高分：主动问会不会缩水。","低分：只看海报价格。"],"priority":"medium"},
+  {"id":"pickup_delivery_strength","title":"取送时效强度","description":"门店取送和次日达需求越明确，优先级越高。","examples":["高分：今晚取，明晚送回。","低分：到时候再说。"],"priority":"medium"},
+  {"id":"cycle_signal_strength","title":"续洗回流强度","description":"换季回流、会员续洗和家庭周期洗护需求越明确，越需要提权。","examples":["高分：每季都会洗大衣。","低分：偶尔想起来再洗。"],"priority":"medium"}
+]}

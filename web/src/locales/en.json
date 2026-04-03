@@ -1,0 +1,745 @@
+{
+  "locale": {
+    "zh": "Chinese",
+    "en": "English"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Failed",
+    "status": "Status",
+    "created_at": "Created At",
+    "actions": "Actions",
+    "enable": "Enable",
+    "disable": "Disable",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "refresh": "Refresh",
+    "close": "Close",
+    "retry": "Retry"
+  },
+  "nav": {
+    "overview": "Overview",
+    "onboard": "Onboard",
+    "strategy": "Strategy",
+    "campaigns": "Campaigns",
+    "leads": "Leads",
+    "trace": "Review",
+    "agents_cabinet": "Agent Cabinet",
+    "lobster_pool": "Lobster Pool",
+    "lobster_config": "Lobster Config",
+    "cost": "Cost Analytics",
+    "crm_leads": "CRM Leads",
+    "crm_graph": "CRM Graph",
+    "lobster_skills": "Lobster Skills",
+    "control_panel": "Control Panel",
+    "monitor": "Execution Monitor",
+    "analytics_attribution": "Attribution",
+    "analytics_funnel": "Funnel",
+    "ai_studio": "AI Studio",
+    "fleet": "Fleet",
+    "billing": "Billing",
+    "partner_portal": "Partner Portal",
+    "commercial_readiness": "Launch Gate",
+    "model_providers": "Models",
+    "integrations": "Integrations",
+    "activities": "Activities",
+    "policies": "Policies",
+    "client_center": "Client Workspace",
+    "client_mobile": "Mobile Approval",
+    "help": "Help",
+    "skills_pool": "Skills Market",
+    "feature_flags": "Feature Flags",
+    "experiments": "Experiments",
+    "traces": "Traces",
+    "alerts": "Alerts",
+    "scheduler": "Scheduler",
+    "workflows": "Workflows",
+    "memory": "Memory",
+    "usecases": "Use Cases",
+    "sessions": "Sessions",
+    "channels": "Channels",
+    "mcp": "MCP Tools",
+    "settings": "Settings",
+    "audit": "Audit Logs",
+    "permissions": "Permissions",
+    "widget": "Widget",
+    "white_label": "White Label",
+    "knowledge_base": "Knowledge Base",
+    "kanban": "Lobster Kanban",
+    "onboarding": "Onboarding Wizard",
+    "prompts": "Prompt Manager",
+    "reseller": "Reseller Program",
+    "feishu_webhook": "Feishu Push"
+  },
+  "sidebar": {
+    "groups": {
+      "mainline": "Mainline",
+      "support": "Support",
+      "commercial": "Commercial",
+      "secondary": "Secondary"
+    },
+    "brandTitle": "LobsterPit",
+    "brandSubtitle": "AI Growth OS",
+    "startFromOnboard": "Start From Onboard"
+  },
+  "header": {
+    "badge": "LobsterPit Mainline",
+    "currentStage": "Current Stage",
+    "buttons": {
+      "commercialGate": "Commercial Gate",
+      "helpCenter": "Help Center",
+      "billing": "Billing",
+      "alerts": "Alert Center"
+    },
+    "stageTag": "Mainline",
+    "stages": {
+      "onboard": {
+        "label": "Onboard",
+        "description": "Confirm industry, targets and delivery boundaries, then generate the first batch of executable work."
+      },
+      "strategy": {
+        "label": "Strategy",
+        "description": "Hand the goal to the commander, decide the direction first, then choose how to submit execution."
+      },
+      "campaigns": {
+        "label": "Tasks",
+        "description": "Focus only on the tasks that truly matter today instead of getting lost in back-office tables."
+      },
+      "fleet": {
+        "label": "Execution",
+        "description": "Manage edge nodes, devices and the execution network to keep delivery stable."
+      },
+      "leads": {
+        "label": "Leads",
+        "description": "Bring all incoming results into one workspace and decide whether to follow up."
+      },
+      "review": {
+        "label": "Review",
+        "description": "Go back to Trace for evidence, approval and rollback chains instead of digging through old logs."
+      },
+      "commercial": {
+        "label": "Commercial",
+        "description": "See billing, model configs, integrations and launch blockers without page-hopping."
+      }
+    }
+  },
+  "operations": {
+    "mcp": {
+      "badge": "MCP Gateway",
+      "title": "Lobster MCP Tool Hub",
+      "description": "Connect lobsters directly to the MCP ecosystem with stdio / sse registration, tool discovery, audited calls and health management.",
+      "metrics": {
+        "total": "Servers",
+        "healthy": "Healthy",
+        "enabled": "Enabled"
+      },
+      "form": {
+        "serverId": "Server ID",
+        "name": "Display Name",
+        "transport": "Transport",
+        "command": "Command",
+        "url": "URL",
+        "env": "Environment JSON",
+        "submit": "Register MCP Server",
+        "submitting": "Submitting..."
+      },
+      "serverActions": {
+        "tools": "View Tools",
+        "ping": "Ping",
+        "delete": "Delete"
+      },
+      "sections": {
+        "tools": "Tool Browser",
+        "history": "Call History",
+        "selectHint": "Select a server on the left",
+        "emptyTools": "No tools available for display.",
+        "noDescription": "No description"
+      },
+      "table": {
+        "time": "Time",
+        "lobster": "Lobster",
+        "server": "Server",
+        "tool": "Tool",
+        "duration": "Duration",
+        "status": "Status"
+      },
+      "messages": {
+        "registerSuccess": "Registered MCP Server: {name}",
+        "toggleDisabled": "{name} disabled",
+        "toggleEnabled": "{name} enabled",
+        "deleteSuccess": "Deleted {name}",
+        "pingHealthy": "{name} health check: healthy",
+        "pingUnavailable": "{name} health check: unavailable",
+        "requestFailed": "Request failed"
+      }
+    },
+    "workflows": {
+      "badge": "Workflow Engine",
+      "title": "Deterministic Workflow Console",
+      "description": "Turn lobster collaboration into repeatable workflow steps with YAML definitions, live status, pause and resume.",
+      "metrics": {
+        "total": "Runs",
+        "running": "Running",
+        "paused": "Paused"
+      },
+      "fields": {
+        "workflow": "Workflow",
+        "task": "Task Description",
+        "context": "Context JSON"
+      },
+      "buttons": {
+        "start": "Start Workflow",
+        "starting": "Starting...",
+        "refreshDetail": "Refresh Detail",
+        "resume": "Resume",
+        "pause": "Pause"
+      },
+      "sections": {
+        "runs": "Recent Runs",
+        "task": "Task",
+        "emptyRuns": "No runs yet for this tenant.",
+        "emptyDetail": "Pick a run on the left to inspect step details.",
+        "currentStep": "Current Step",
+        "noOutput": "No output yet",
+        "failureReason": "Failure Reason"
+      },
+      "messages": {
+        "started": "Started workflow {workflowId}, Run #{runNumber}",
+        "resumed": "Requested resume for workflow {runId}",
+        "paused": "Paused workflow {runId}",
+        "requestFailed": "Request failed"
+      }
+    },
+    "lobsterConfig": {
+      "badge": "Config Center",
+      "title": "Lobster Configuration Center",
+      "description": "Review every lobster's autonomy, strategy levels, and tool/skill assignments from one control room.",
+      "list": {
+        "title": "Config List",
+        "total": "total",
+        "strategyReady": "Strategy ready",
+        "autonomyReady": "Autonomy ready",
+        "loading": "Loading lobster configuration...",
+        "empty": "No lobster configs yet."
+      },
+      "detail": {
+        "badge": "Details",
+        "placeholder": "Select a lobster to inspect configuration",
+        "about": "Tune prompts, policies, and tool bindings that guide this lobster.",
+        "updated": "Last updated",
+        "loading": "Loading detail..."
+      },
+      "metrics": {
+        "strategyLevel": "Strategy Level",
+        "autonomyLevel": "Autonomy Level",
+        "tools": "Tools",
+        "empty": "Pending"
+      },
+      "fields": {
+        "strategyLevel": "Strategy Level",
+        "autonomyLevel": "Autonomy Level",
+        "customPrompt": "Custom Prompt",
+        "strategyPlaceholder": "e.g. Balanced Aggression",
+        "autonomyPlaceholder": "e.g. Assistive",
+        "customPromptPlaceholder": "Summarize the briefing or guardrail"
+      },
+      "sections": {
+        "configuration": "Configuration",
+        "tools": "Tool Overview",
+        "skills": "Skills Highlight",
+        "count": "items",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "empty": "No entries yet",
+        "unknown": "Unknown"
+      },
+      "buttons": {
+        "saving": "Saving..."
+      },
+      "messages": {
+        "requestFailed": "Request failed",
+        "saved": "Lobster config updated"
+      }
+    },
+    "lobsterCost": {
+      "badge": "Cost Analytics",
+      "title": "Lobster Cost Analytics",
+      "description": "Track which lobster is consuming budget, how costs move over time, and which calls are the most expensive.",
+      "meta": {
+        "tenant": "Tenant {tenant}",
+        "operator": "Operator {operator}"
+      },
+      "filters": {
+        "title": "Analysis Window",
+        "description": "Switch between recent windows without leaving the console."
+      },
+      "ranges": {
+        "d1": "1 day",
+        "d7": "7 days",
+        "d30": "30 days"
+      },
+      "states": {
+        "nonAdminTitle": "Admin permission required",
+        "nonAdminDescription": "Cost analytics is currently restricted to admin operators because it exposes budget usage across the tenant.",
+        "loading": "Loading...",
+        "loadingDescription": "Fetching the latest lobster cost snapshot."
+      },
+      "summary": {
+        "totalCost": "Total Cost",
+        "lobsterCount": "Active Lobsters",
+        "topLobster": "Top Cost Lobster",
+        "range": "Selected Window",
+        "totalCalls": "Total Calls",
+        "totalTokens": "Total Tokens",
+        "avgCostPerCall": "Avg Cost / Call"
+      },
+      "list": {
+        "title": "Lobster Ranking",
+        "description": "Sorted by total cost so the hottest budget consumers surface immediately.",
+        "emptyTitle": "No lobster cost data",
+        "emptyDescription": "No LLM cost records were found for the selected time window.",
+        "emptyFilteredDescription": "No lobsters match the current search or sort view.",
+        "calls": "{count} calls",
+        "tokens": "{count} tokens",
+        "avgCost": "Avg cost / call",
+        "maxCost": "Max single call",
+        "searchPlaceholder": "Search lobster id",
+        "sortCost": "Sort by cost",
+        "sortCalls": "Sort by calls",
+        "sortTrend": "Sort by trend"
+      },
+      "detail": {
+        "title": "Selected Lobster Detail",
+        "description": "Inspect one lobster more deeply before deciding whether to optimize prompts, routing, or workflow shape.",
+        "totalCalls": "Total Calls",
+        "avgCost": "Average Cost",
+        "maxCost": "Highest Single Call",
+        "totalTokens": "Total Tokens",
+        "inputTokens": "Input Tokens",
+        "outputTokens": "Output Tokens",
+        "emptyTitle": "Select a lobster",
+        "emptyDescription": "Pick a lobster from the list to load detail and timeseries."
+      },
+      "chart": {
+        "title": "Cost Timeseries",
+        "description": "Overlay cost and call volume to see whether spend is driven by more traffic or more expensive calls.",
+        "costLine": "Cost",
+        "callsLine": "Calls",
+        "emptyTitle": "No timeseries data",
+        "emptyDescription": "Timeseries will appear here after cost records are generated."
+      },
+      "topCalls": {
+        "title": "Top Cost Calls",
+        "description": "Use the most expensive calls to find optimization opportunities first.",
+        "emptyTitle": "No expensive call records",
+        "emptyDescription": "No individual calls were returned for the selected lobster.",
+        "latency": "Latency",
+        "inputTokens": "Input Tokens",
+        "outputTokens": "Output Tokens",
+        "noModel": "Unknown model",
+        "noProvider": "Unknown provider",
+        "selected": "Selected Call",
+        "routeTier": "Route Tier",
+        "createdAt": "Created At"
+      }
+    },
+    "promptsRegistry": {
+      "badge": "Prompt Registry",
+      "title": "Prompt Registry Console",
+      "description": "Use real prompt registry data to inspect prompt families, versions, and diffs. If the Nest proxy is still incomplete, this page will show the exact blocked state instead of fake samples.",
+      "meta": {
+        "tenant": "Tenant {tenant}",
+        "operator": "Operator {operator}"
+      },
+      "states": {
+        "readonly": "Prompt registry is admin-only at the API layer.",
+        "blockedTitle": "Prompt registry proxy is not ready",
+        "blockedDescription": "This page is wired to the real registry endpoints. Once Nest exposes list and versions, the data will appear automatically.",
+        "loading": "Loading prompt registry...",
+        "empty": "No prompts found"
+      },
+      "list": {
+        "title": "Prompt Families",
+        "description": "Browse prompt families by lobster and inspect production or preview version status.",
+        "searchPlaceholder": "Search by prompt, lobster, or skill",
+        "all": "All lobsters",
+        "production": "Production",
+        "preview": "Preview",
+        "latest": "Latest",
+        "versions": "Versions"
+      },
+      "versions": {
+        "title": "Versions",
+        "description": "Choose two versions to compare.",
+        "left": "Left Version",
+        "right": "Right Version"
+      },
+      "diff": {
+        "title": "Diff View",
+        "description": "Shows the diff once both versions are selected.",
+        "stats": "Diff Stats",
+        "variables": "Variable Changes",
+        "config": "Config Changes",
+        "content": "Content Diff",
+        "noSelection": "Select a prompt and two versions to inspect the diff."
+      }
+    }
+  },
+  "analytics": {
+    "attribution": {
+      "badge": "Attribution Insights",
+      "title": "Understand contribution mixes",
+      "description": "See which channels or touchpoints drive conversions and how the current strategy touches your funnel.",
+      "meta": {
+        "tenant": "Tenant: {tenant}",
+        "noTenant": "Tenant not selected",
+        "dataHint": "Data refreshes every 30 seconds"
+      },
+      "summary": {
+        "model": "Model",
+        "window": "Window",
+        "channels": "Channels",
+        "unknown": "Unknown"
+      },
+      "totals": {
+        "title": "Totals",
+        "loading": "Fetching totals...",
+        "updated": "Latest totals",
+        "empty": "No totals returned yet"
+      },
+      "series": {
+        "title": "Touchpoint Series",
+        "sub": "Top conversions per channel",
+        "share": "share",
+        "noShare": "Share unavailable",
+        "loading": "Loading touchpoints...",
+        "empty": "No touchpoint data"
+      },
+      "highlights": {
+        "title": "Highlights",
+        "loading": "Scanning for highlights...",
+        "empty": "No highlights yet"
+      }
+    },
+    "funnel": {
+      "badge": "Funnel Health",
+      "title": "Measure drop-offs between stages",
+      "description": "Track each stage from awareness to conversion and stop leaks quickly.",
+      "meta": {
+        "tenant": "Tenant: {tenant}",
+        "noTenant": "Tenant not selected"
+      },
+      "summary": {
+        "window": "Window",
+        "steps": "Steps",
+        "volume": "Volume"
+      },
+      "stages": {
+        "title": "Funnel stages",
+        "loading": "Loading stages...",
+        "active": "Live stages",
+        "dropoff": "Drop-off: {dropoff}",
+        "conversion": "Conversion: {rate}",
+        "empty": "No funnel stages yet"
+      },
+      "totals": {
+        "title": "Funnel totals",
+        "loading": "Loading totals...",
+        "empty": "No funnel totals yet"
+      }
+    }
+  },
+  "fleet": {
+    "badge": "Execution Network",
+    "title": "Manage edge nodes like real delivery infrastructure",
+    "description": "This page answers not just whether nodes are online, but whether the current tenant's execution network is healthy, has enough capacity, needs intervention, and is safe to dispatch into.",
+    "buttons": {
+      "renameTenant": "Rename",
+      "addNode": "Add Lobster Node",
+      "viewGuide": "Open Guide",
+      "offline": "Offline",
+      "dispatch": "Dispatch",
+      "persona": "View Persona",
+      "terminal": "Terminal",
+      "retry": "Retry"
+    },
+    "metrics": {
+      "total": "Total Nodes",
+      "online": "Online / Busy",
+      "offline": "Offline",
+      "intervention": "Need Human"
+    },
+    "table": {
+      "clientName": "Node Name",
+      "nodeId": "Node ID",
+      "status": "Status",
+      "heartbeat": "Last Heartbeat",
+      "load": "Load",
+      "summary": "Current Summary",
+      "actions": "Actions"
+    },
+    "messages": {
+      "loading": "Loading execution network...",
+      "loadFailed": "Failed to load nodes. Please check backend connectivity and login permissions.",
+      "empty": "No nodes for this tenant yet. Connect a lobster client first.",
+      "quota": "Tenant quota: {total}/{quota}",
+      "renamePrompt": "Enter a new tenant name",
+      "renameSuccess": "Renamed to {name}",
+      "offlineSuccess": "Requested offline for {nodeId}",
+      "offlineFailed": "Failed to offline node. Check network or permissions and try again.",
+      "dispatchSuccess": "Dispatched task to {nodeId}.",
+      "dispatchFailed": "Dispatch failed. Check execution network connectivity."
+    },
+    "status": {
+      "ONLINE": "Online",
+      "BUSY": "Busy",
+      "INTERVENTION_REQUIRED": "Need Human",
+      "OFFLINE": "Offline"
+    }
+  },
+  "skillsPool": {
+    "title": "Lobster Skills Pool",
+    "description": "Manage agent extensions, skills and nodes in one place, with industry knowledge and RAG packs aggregated for operations.",
+    "buttons": {
+      "refresh": "Refresh",
+      "save": "Save Config",
+      "saving": "Saving...",
+      "reset": "Reset Default",
+      "addSkill": "+ Add Skill",
+      "addNode": "+ Add Node"
+    }
+  },
+  "strategy": {
+    "title": "Clarify the direction first, then hand it to the commander",
+    "previewButton": "Preview and Confirm",
+    "previewLoading": "Previewing...",
+    "industryIntake": "Industry workflow intake",
+    "surveys": {
+      "badge": "Surveys",
+      "title": "Survey pulse",
+      "description": "Monitor the pulse of stakeholder intent and readiness through lightweight surveys.",
+      "refresh": "Refresh",
+      "refreshing": "Refreshing...",
+      "count": "{count} surveys tracked",
+      "tenant": "Tenant {tenant}",
+      "noTenant": "No tenant selected",
+      "surveyId": "ID: {id}",
+      "loading": "Loading surveys...",
+      "empty": "No surveys yet"
+    },
+    "nlQuery": {
+      "badge": "Natural Language Query",
+      "title": "Ask the AI for insights",
+      "description": "Type a quick question and let the strategy brain respond with what it knows.",
+      "tenant": "Tenant {tenant}",
+      "noTenant": "Tenant unavailable",
+      "placeholder": "e.g. How did last week's campaigns convert?",
+      "submit": "Ask",
+      "submitting": "Querying...",
+      "reset": "Clear",
+      "responseTitle": "Answer",
+      "metadata": "Metadata",
+      "helperActive": "Enter a prompt and click Ask to see the latest summary.",
+      "helperDisabled": "Select a tenant to start querying.",
+      "error": "Request failed"
+    }
+  },
+  "settings": {
+    "policyEngine": {
+      "badge": "Policy Engine",
+      "title": "OPA-style Policy Console",
+      "description": "Manage declarative runtime rules, publish effective bundles, and test decisions against real input payloads.",
+      "meta": {
+        "tenant": "Tenant {tenant}",
+        "operator": "Operator {operator}"
+      },
+      "states": {
+        "loading": "Loading policies...",
+        "empty": "No policy rules yet",
+        "emptyDescription": "Create your first rule to start governing dispatch, compliance, or routing behavior.",
+        "readonly": "You are in read-only mode. Evaluation is available, but create, update, delete, and publish actions require admin access."
+      },
+      "summary": {
+        "rules": "Rules",
+        "enabled": "Enabled",
+        "paths": "Policy Paths",
+        "bundleVersion": "Bundle Version",
+        "allow": "Allow Rules",
+        "deny": "Deny Rules",
+        "dispatch": "Dispatch Rules"
+      },
+      "bundle": {
+        "title": "Current Bundle",
+        "description": "The bundle below is what the runtime should evaluate against right now.",
+        "version": "Version",
+        "checksum": "Checksum",
+        "ruleCount": "Rule Count",
+        "publishedBy": "Published By",
+        "publishedAt": "Published At",
+        "notes": "Notes",
+        "publish": "Publish Bundle",
+        "publishing": "Publishing...",
+        "publishSuccess": "Policy bundle published"
+      },
+      "list": {
+        "title": "Rule Library",
+        "description": "Select a rule to inspect or edit it.",
+        "all": "All paths",
+        "effectsAll": "All effects",
+        "searchPlaceholder": "Search by rule name, path, or tag",
+        "empty": "No rules match the current filters",
+        "priority": "Priority",
+        "disabled": "Disabled",
+        "conditionsCount": "{count} conditions"
+      },
+      "editor": {
+        "title": "Rule Editor",
+        "create": "New Rule",
+        "editing": "Editing {name}",
+        "readonly": "Rule Detail",
+        "save": "Save Rule",
+        "saving": "Saving...",
+        "delete": "Delete Rule",
+        "deleting": "Deleting...",
+        "reset": "Reset Draft",
+        "createSuccess": "Policy rule created",
+        "updateSuccess": "Policy rule updated",
+        "deleteSuccess": "Policy rule deleted"
+      },
+      "fields": {
+        "ruleId": "Rule ID",
+        "policyPath": "Policy Path",
+        "name": "Rule Name",
+        "descriptionField": "Description",
+        "effect": "Effect",
+        "target": "Dispatch Target",
+        "priority": "Priority",
+        "enabled": "Enabled",
+        "conditionLogic": "Condition Logic",
+        "tags": "Tags",
+        "conditions": "Conditions JSON",
+        "conditionsPreview": "Condition Preview",
+        "conditionsPreviewEmpty": "No valid conditions to preview",
+        "notes": "Publish Notes",
+        "version": "Bundle Version"
+      },
+      "placeholders": {
+        "ruleId": "Generated automatically when empty",
+        "policyPath": "e.g. dispatch",
+        "name": "e.g. High score goes to followup",
+        "descriptionField": "Briefly explain why this rule exists",
+        "target": "Required when effect is dispatch",
+        "tags": "comma,separated,tags",
+        "conditions": "[{\"field\":\"lead.score\",\"op\":\"gte\",\"value\":80}]",
+        "notes": "Why are you publishing this bundle?"
+      },
+      "evaluate": {
+        "title": "Decision Sandbox",
+        "description": "Send an input payload through the current rule set and inspect the decision, matched rules, and trace.",
+        "run": "Evaluate Policy",
+        "running": "Evaluating...",
+        "decision": "Decision",
+        "reason": "Reason",
+        "matchedRules": "Matched Rules",
+        "trace": "Trace",
+        "input": "Input JSON",
+        "defaultDecision": "Default Decision",
+        "decisionLogId": "Decision Log ID",
+        "noResult": "Run an evaluation to inspect the decision output."
+      },
+      "messages": {
+        "requestFailed": "Request failed",
+        "invalidConditions": "Conditions JSON is invalid",
+        "invalidInput": "Evaluation input JSON is invalid"
+      }
+    },
+    "widget": {
+      "badge": "Widget Hub",
+      "title": "Embed Widget Settings",
+      "description": "Tailor the embed script, domains, welcome text, and colors that visitors see before they drop tasks.",
+      "buttons": {
+        "refresh": "Refresh Script",
+        "add": "Add",
+        "saving": "Saving...",
+        "copy": "Copy Embed Code",
+        "trackPreview": "Track Preview"
+      },
+      "sections": {
+        "domains": "Allowed Domains",
+        "count": "domains",
+        "script": "Embed Script",
+        "preview": "Widget Preview",
+        "scriptSource": "Current Script Source"
+      },
+      "fields": {
+        "welcomeMessage": "Welcome Message",
+        "themeColor": "Theme Color",
+        "accentColor": "Accent Color",
+        "callToAction": "Call-to-action",
+        "customCss": "Custom CSS",
+        "launcherPosition": "Launcher Position"
+      },
+      "placeholders": {
+        "welcome": "e.g. Hello, please tell us about your goal",
+        "noDomains": "No domains configured",
+        "callToAction": "e.g. Chat with Lobster now",
+        "customCss": "Optional CSS overrides",
+        "script": "Widget script will appear here"
+      },
+      "messages": {
+        "saved": "Widget config saved",
+        "requestFailed": "Request failed",
+        "copied": "Embed code copied.",
+        "positionHint": "Launcher position currently applies to local preview and generated embed code. Once the backend stores the field, this setting can be saved directly."
+      }
+    }
+  },
+  "crm": {
+    "graph": {
+      "badge": "Temporal Graph",
+      "title": "Customer Temporal Graph",
+      "description": "Inspect tenant-level entities, the active relationships between them, and the per-entity timeline that the graph layer is retaining.",
+      "meta": {
+        "tenant": "Tenant {tenant}",
+        "operator": "Operator {operator}"
+      },
+      "summary": {
+        "entities": "Entities",
+        "edges": "Edges",
+        "types": "Entity Types",
+        "referenceTime": "Reference Time",
+        "relatedEdges": "Related Edges",
+        "timelineEvents": "Timeline Events",
+        "selectedEntity": "Selected Entity"
+      },
+      "list": {
+        "title": "Entity Index",
+        "description": "Search the graph snapshot and select one entity to inspect timeline relations.",
+        "searchPlaceholder": "Search by entity name or type",
+        "all": "All types",
+        "empty": "No entities found in the current snapshot"
+      },
+      "detail": {
+        "title": "Entity Detail",
+        "emptyTitle": "Select an entity",
+        "emptyDescription": "Choose an entity from the left to inspect attributes and linked edges.",
+        "attributes": "Attributes",
+        "relations": "Active Relations",
+        "timeline": "Timeline",
+        "timelineEmpty": "No timeline events were returned for this entity.",
+        "allRelations": "All relations",
+        "connectedEntity": "Connected Entity",
+        "confidence": "Confidence",
+        "validAt": "Valid At"
+      }
+    }
+  }
+}

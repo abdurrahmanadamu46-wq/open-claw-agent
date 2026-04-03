@@ -1,0 +1,101 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "catcher",
+  "primaryArtifact": "LeadAssessment",
+  "cases": [
+    {
+      "id": "catcher_high_intent_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "douyin_private_message",
+        "lead_content": "How much is the treatment and when can I book this week?",
+        "engagement_history": [
+          "watched full case-study video",
+          "asked for consultation availability"
+        ],
+        "tenant_rules": {
+          "forbid_unapproved_price_promises": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "high intent",
+        "followup-ready tier"
+      ]
+    },
+    {
+      "id": "catcher_spam_001",
+      "label": "happy_path",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "dm me for traffic trick and crypto earnings",
+        "engagement_history": [],
+        "tenant_rules": {
+          "strict_spam_filter": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "low fit",
+        "high risk or rejection"
+      ]
+    },
+    {
+      "id": "catcher_ambiguous_001",
+      "label": "edge_case",
+      "input": {
+        "lead_source": "private_message",
+        "lead_content": "Can you send me more details first?",
+        "engagement_history": [
+          "liked two case videos"
+        ],
+        "tenant_rules": {
+          "allow_soft_followup": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustInclude": [
+        "medium confidence",
+        "do not over-escalate directly to hard sell"
+      ]
+    },
+    {
+      "id": "catcher_regulated_risk_001",
+      "label": "failure_case",
+      "input": {
+        "lead_source": "comment",
+        "lead_content": "Can you guarantee the result if I pay today?",
+        "engagement_history": [
+          "asks for guarantee and discount"
+        ],
+        "tenant_rules": {
+          "regulated_category": true
+        }
+      },
+      "expectedSignals": [
+        "intent_score",
+        "fit_score",
+        "risk_score",
+        "lead_tier"
+      ],
+      "mustAvoid": [
+        "blindly marking as safe high intent without governance escalation"
+      ]
+    }
+  ]
+}

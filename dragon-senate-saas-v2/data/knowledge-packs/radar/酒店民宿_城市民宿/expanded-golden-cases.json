@@ -1,0 +1,199 @@
+﻿{
+  "industry": "酒店民宿_城市民宿",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_city_homestay_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测城市民宿在携程、美团民宿和抖音本地生活上的标签、收费与入住承诺规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "ota_plus_local_life",
+        "competitor_watchlist": [
+          "地铁口城市民宿A",
+          "场馆旁四人民宿B"
+        ],
+        "raw_signals": [
+          "携程商家后台公告要求涉及“可做饭”“可带宠物”“近地铁”“自助入住”“可住 4 人”“免押金”等标签的页面信息必须可验证，违规可能降权处理",
+          "抖音本地生活更新住宿团购规则，强调清洁费、押金和额外收费需前置展示，不得在用户下单后临时加收",
+          "两家竞品同步把标题中的“免押金”“步行到场馆 5 分钟”改为“收费说明以下单页为准”“场馆距离以地图为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案调整",
+        "需要指出对标签真实性、收费前置展示和入住承诺边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略官方商家公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_city_homestay_event_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现城市演出场馆周边民宿的活动窗口机会",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "体育馆旁民宿C",
+          "商圈 loft 民宿D"
+        ],
+        "raw_signals": [
+          "本地体育馆和票务平台连续发布下月两场演唱会与一场音乐节排期",
+          "地图问答、OTA 评论和私信中连续出现“4 个人住得下吗”“散场后半夜能自助入住吗”“能寄存行李吗”“离地铁口多远”“有投影吗”等问题",
+          "同商圈三家竞品同步上线“演唱会四人房”“散场后自助入住”“行李寄存 + 晚退”套餐"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城活动排期与需求咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求窗口",
+        "把跨城演出热度当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_city_homestay_review_cluster_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测核心商圈城市民宿的履约风险变化",
+        "time_window": "last_72_hours",
+        "platform_or_market_context": "ota_plus_map_reviews",
+        "competitor_watchlist": [
+          "商圈城市民宿E"
+        ],
+        "raw_signals": [
+          "近 72 小时地图评论和 OTA 评论连续提到“密码锁打不开”“入住指引和实际楼栋不一致”“楼道异味重”“夜里很吵”",
+          "多条公开评价提到房东在到店后才临时说明要收清洁费和押金，退押时间超过一周",
+          "没有新的平台规则变化，也没有出现同商圈竞品同步类似问题"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "多平台差评聚类应被识别为高价值风险信号",
+        "需要指出这是履约交付风险而非平台规则变化",
+        "关注级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "因为没有官方公告就忽略重复客诉",
+        "把零散差评和结构性聚类混为一谈"
+      ]
+    },
+    {
+      "id": "radar_city_homestay_policy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测城市民宿在平台流量分配与标签扶持上的变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "ota_platform",
+        "competitor_watchlist": [
+          "地铁口投影民宿F"
+        ],
+        "raw_signals": [
+          "商家群截图称“下周起没有厨房和宠物标签的城市民宿会被平台降权，且半夜自助入住房源会拿不到流量扶持”，但截图没有公告来源",
+          "未发现携程、美团民宿或飞猪商家后台的正式通知，服务商口径也互相矛盾",
+          "核心竞品的房型标签、入住说明和详情页文案暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源传闻应被降级处理",
+        "缺少官方通知和竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断平台算法已经确认变更",
+        "把群聊截图表述成已落地政策"
+      ]
+    },
+    {
+      "id": "radar_city_homestay_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别二线城市核心商圈城市民宿的内容热度与真实机会差异",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "商圈四人民宿G"
+        ],
+        "raw_signals": [
+          "外地海景和洞穴风民宿短视频爆火，内容大量强调拍照、日落和周末打卡",
+          "本地搜索、评论和问答则集中在“离地铁口多远”“4 个人怎么住”“能做饭吗”“能寄存行李吗”“停车方便吗”“能不能带宠物”",
+          "本地竞品开始强调“双床 loft”“可做饭 + 洗衣机”“深夜自助入住”和“长住优惠”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地城市刚需型入住需求应高于跨城审美爆款热度",
+        "需要区分内容热度与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向网红打卡路线",
+        "忽略同城搜索和竞品动作形成的本地互证"
+      ]
+    },
+    {
+      "id": "radar_city_homestay_false_sellout_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描场馆周边城市民宿是否出现爆满与涨价行情",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“演唱会一开，场馆边民宿全部满房、价格翻倍”，只给出一段夜间排队视频，没有日期和房源定位",
+          "OTA 房态日历和地图评论量近几天基本平稳，没有出现明显订满、涨价或入住讨论激增",
+          "没有发现主办方加场、地铁异常或场馆周边限行等外部事件与之互证"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有房态、评论和外部事件互证时不能判定为市场已变化"
+      ],
+      "mustAvoid": [
+        "把自媒体爆料描述成已确认的需求激增",
+        "用单条排队视频替代可验证的市场证据"
+      ]
+    }
+  ]
+}

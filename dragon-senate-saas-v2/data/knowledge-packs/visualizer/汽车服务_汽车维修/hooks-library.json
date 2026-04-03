@@ -1,0 +1,68 @@
+﻿{
+  "industry": "汽车服务_汽车维修",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "auto_repair_visit_visual",
+      "hook_angle": "先看车",
+      "hook_line": "真正想修车的人，不是想看一段炫酷视频，而是想先知道这台车到底出了什么问题。",
+      "target_scene": "异响故障、故障灯、首次到店",
+      "cover_direction": "封面主体给真实车况或检测细节，副元素补门店和设备，不用价格口号主导。",
+      "first_3_shots": ["检测或细节镜头", "门店或讲解镜头", "问题场景提示镜头"],
+      "required_proof_assets": ["真实车辆细节", "门店镜头", "问题相关素材"],
+      "fallback_if_missing": "若缺少检测镜头，改用车况细节和门店素材建立信任。"
+    },
+    {
+      "id": "daily_scene_visual",
+      "hook_angle": "场景先看适配",
+      "hook_line": "很多人不是不想修，而是怕花了钱，最后发现这一步根本没解决自己的问题。",
+      "target_scene": "日常保养、空调、电瓶和节前检查",
+      "cover_direction": "封面强调故障点和使用场景，不拍成空泛广告片。",
+      "first_3_shots": ["故障或部位细节镜头", "场景问题镜头", "到店承接镜头"],
+      "required_proof_assets": ["细节展示", "使用场景", "到店承接"],
+      "fallback_if_missing": "若缺少场景素材，用配件、设备和门店口播补足路径感。"
+    },
+    {
+      "id": "parts_process_visual",
+      "hook_angle": "流程和配件信任",
+      "hook_line": "很多人不是不想修，而是不想把车交给一套自己根本看不懂的检测。",
+      "target_scene": "首次到店、怕踩雷、信任路线",
+      "cover_direction": "封面主体给检测、配件或顾问讲解，副元素补门店环境和故障细节。",
+      "first_3_shots": ["检测或讲解镜头", "细节或环境镜头", "到店流程镜头"],
+      "required_proof_assets": ["检测过程", "细节素材", "流程说明"],
+      "fallback_if_missing": "若环境素材有限，至少拍车辆细节和流程节点。"
+    },
+    {
+      "id": "seasonal_window_visual",
+      "hook_angle": "节点检修窗口",
+      "hook_line": "节前和换季最怕的不是没项目，而是你还没看清哪一类更适合自己。",
+      "target_scene": "节前出行、夏季空调、冬季电瓶窗口",
+      "cover_direction": "封面强调时间窗口和真实到店感，不拍成夸张促销海报。",
+      "first_3_shots": ["时间窗口提示镜头", "门店或施工镜头", "预约承接镜头"],
+      "required_proof_assets": ["时间提示素材", "门店或施工素材", "预约承接"],
+      "fallback_if_missing": "若缺少活动素材，用字幕补足窗口信息。"
+    },
+    {
+      "id": "return_visit_visual",
+      "hook_angle": "到了该复检的时候",
+      "hook_line": "真正会回来的人，通常不是突然想起你，而是开到某一步终于知道自己该继续查什么。",
+      "target_scene": "老客复检、保养回访、返修后跟进",
+      "cover_direction": "封面强调复检和阶段感，不拍成强促销海报。",
+      "first_3_shots": ["阶段提示镜头", "项目方向镜头", "预约承接镜头"],
+      "required_proof_assets": ["阶段提示", "项目方向", "预约承接"],
+      "fallback_if_missing": "缺少复购素材时，用门店镜头和历史记录字幕替代。"
+    },
+    {
+      "id": "truth_over_effect_visual",
+      "hook_angle": "不靠完美修复幻想",
+      "hook_line": "好看的结果很多，真正重要的是你先知道这一步适不适合你的车。",
+      "target_scene": "反夸张修复幻想、真实边界路线",
+      "cover_direction": "封面用车辆细节和判断感，不用夸张前后对比做主视觉。",
+      "first_3_shots": ["车辆细节镜头", "问题提示镜头", "边界说明镜头"],
+      "required_proof_assets": ["细节镜头", "环境", "边界说明"],
+      "fallback_if_missing": "若案例不足，改做真实检测和边界说明路线。"
+    }
+  ]
+}

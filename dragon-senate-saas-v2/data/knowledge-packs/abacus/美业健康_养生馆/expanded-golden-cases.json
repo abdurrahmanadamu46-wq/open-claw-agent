@@ -1,0 +1,179 @@
+﻿{
+  "industry": "美业健康_养生馆",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_wellness_concern_time_001",
+      "label": "happy_path",
+      "scenario_tag": "concern_based_consult_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户想在周五晚去国金店先咨询肩颈和睡眠问题，第一次来，担心按压太重，已明确下班后可到店时间。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.43,
+          "segment_type": "问题型咨询预约",
+          "lifetime_value": 72000,
+          "repeat_visit_probability": 0.32
+        },
+        "cost_data": {
+          "cost_per_lead": 22,
+          "consult_cost": 14,
+          "room_cost": 10,
+          "followup_cost": 8,
+          "estimated_gross_margin_rate": 0.6
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小红书问题型内容咨询",
+            "私信确认周五晚时间窗口",
+            "查看环境和流程内容"
+          ],
+          "last_meaningful_touch": "私信确认周五晚时间窗口"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分建立在问题、时间和体验意愿明确之上",
+        "ROI 需要计入咨询与房间成本",
+        "奖励信号应指向快速体验确认"
+      ],
+      "mustAvoid": [
+        "只因问题焦虑就高估价值",
+        "忽略首次信任成本"
+      ]
+    },
+    {
+      "id": "abacus_wellness_event_002",
+      "label": "happy_path",
+      "scenario_tag": "pre_event_consult_window",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户周六拍照，想周四晚先来体验并了解如何把状态缓一缓，第一次来，已明确门店和时段范围。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.39,
+          "segment_type": "节前放松咨询",
+          "lifetime_value": 68000,
+          "repeat_visit_probability": 0.24
+        },
+        "cost_data": {
+          "cost_per_lead": 21,
+          "consult_cost": 15,
+          "room_cost": 9,
+          "estimated_gross_margin_rate": 0.57
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "节前放松内容咨询",
+            "私信确认周六拍照日期",
+            "补充首次体验事实"
+          ],
+          "last_meaningful_touch": "补充首次体验事实"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分建立在事件日期和体验窗口明确之上",
+        "ROI 需要计入热门时段机会成本",
+        "奖励信号应指向时段和适配方案确认"
+      ],
+      "mustAvoid": [
+        "只因拍照场景就无限抬高价值",
+        "忽略首次体验的解释成本"
+      ]
+    },
+    {
+      "id": "abacus_wellness_hard_close_003",
+      "label": "risk_case",
+      "scenario_tag": "high_pressure_close_after_consult",
+      "input": {
+        "lead_assessment_or_campaign_result": "首次体验后，顾问在现场强推长期次卡，用户当场付款但后续在评论里表达后悔和不想再来。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.49,
+          "segment_type": "高压首单升级",
+          "lifetime_value": 45000,
+          "repeat_visit_probability": 0.12
+        },
+        "cost_data": {
+          "cost_per_lead": 18,
+          "consult_cost": 12,
+          "refund_risk_cost": 75,
+          "estimated_gross_margin_rate": 0.61
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "首次体验",
+            "现场高压成交"
+          ],
+          "last_meaningful_touch": "现场高压成交"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能只按成交金额给高分",
+        "长期分应显著下调",
+        "ROI 必须计入退款与口碑风险"
+      ],
+      "mustAvoid": [
+        "把账面高客单等同于高质量",
+        "忽略后续流失风险"
+      ]
+    },
+    {
+      "id": "abacus_wellness_returning_004",
+      "label": "long_term_case",
+      "scenario_tag": "returning_client_revisit",
+      "input": {
+        "lead_assessment_or_campaign_result": "老客说上次来放松后状态稳定很多，这次想周末复访一下并看看下一步，已明确可来时间。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.61,
+          "segment_type": "周期复访老客",
+          "lifetime_value": 126000,
+          "repeat_visit_probability": 0.55
+        },
+        "cost_data": {
+          "cost_per_lead": 6,
+          "consult_cost": 9,
+          "room_cost": 6,
+          "estimated_gross_margin_rate": 0.69
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "微信回访触达",
+            "用户主动回复想复访"
+          ],
+          "last_meaningful_touch": "用户主动回复想复访"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分显著高于冷启动新客",
+        "短期分建立在本次问题和时间存在之上",
+        "奖励信号应指向复访确认"
+      ],
+      "mustAvoid": [
+        "把老客当普通泛咨询处理",
+        "忽略低获客成本优势"
+      ]
+    }
+  ]
+}

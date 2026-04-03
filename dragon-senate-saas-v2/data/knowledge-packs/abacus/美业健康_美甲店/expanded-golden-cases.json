@@ -1,0 +1,180 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_nail_salon_office_001",
+      "label": "happy_path",
+      "scenario_tag": "office_short_nail_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户想在周四晚去国金店做一单通勤短甲法式，第一次做，不带旧甲，已明确下班后可到店时间。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.46,
+          "segment_type": "工作日基础款预约",
+          "lifetime_value": 61000,
+          "repeat_visit_probability": 0.31
+        },
+        "cost_data": {
+          "cost_per_lead": 24,
+          "tech_time_cost": 28,
+          "material_cost": 16,
+          "seat_cost": 10,
+          "estimated_gross_margin_rate": 0.59
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "小红书通勤短甲内容咨询",
+            "私信确认周四晚时间窗口",
+            "查看工作台和作品内容"
+          ],
+          "last_meaningful_touch": "私信确认周四晚时间窗口"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分建立在风格、时间和范围明确之上",
+        "ROI 需要计入技师工时和材料成本",
+        "奖励信号应指向快速预约确认"
+      ],
+      "mustAvoid": [
+        "只因通勤款简单就忽略首次信任成本",
+        "把泛风格兴趣误判成高值预约"
+      ]
+    },
+    {
+      "id": "abacus_nail_salon_event_002",
+      "label": "happy_path",
+      "scenario_tag": "bridal_nail_with_removal",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户周六婚礼，想周四晚做新娘甲，手上有旧甲需要卸掉，已明确门店和时段范围。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.42,
+          "segment_type": "婚礼档预约",
+          "lifetime_value": 54000,
+          "repeat_visit_probability": 0.21
+        },
+        "cost_data": {
+          "cost_per_lead": 30,
+          "tech_time_cost": 46,
+          "material_cost": 28,
+          "seat_cost": 16,
+          "estimated_gross_margin_rate": 0.55
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "婚礼甲视频咨询",
+            "私信确认周六婚礼日期",
+            "补充旧甲卸除需求"
+          ],
+          "last_meaningful_touch": "补充旧甲卸除需求"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分建立在事件日期和卸甲范围明确之上",
+        "ROI 需要计入更长工时和黄金档机会成本",
+        "奖励信号应指向时段和服务范围确认"
+      ],
+      "mustAvoid": [
+        "只因婚礼场景就无限抬高价值",
+        "忽略卸甲增加的成本"
+      ]
+    },
+    {
+      "id": "abacus_nail_salon_storage_pressure_003",
+      "label": "risk_case",
+      "scenario_tag": "high_pressure_storage_close",
+      "input": {
+        "lead_assessment_or_campaign_result": "新客做完基础纯色后，被现场强推储值和高复杂度升级，当场付了款，但后续在评论里表达后悔和不想再来。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.51,
+          "segment_type": "高压首单升级",
+          "lifetime_value": 39000,
+          "repeat_visit_probability": 0.09
+        },
+        "cost_data": {
+          "cost_per_lead": 18,
+          "tech_time_cost": 24,
+          "refund_risk_cost": 70,
+          "estimated_gross_margin_rate": 0.62
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "低价首单核销",
+            "现场高压储值成交"
+          ],
+          "last_meaningful_touch": "现场高压储值成交"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能只按储值金额给高分",
+        "长期分应显著下调",
+        "ROI 必须计入退款与口碑风险"
+      ],
+      "mustAvoid": [
+        "把账面高客单等同于高质量",
+        "忽略后续流失风险"
+      ]
+    },
+    {
+      "id": "abacus_nail_salon_returning_004",
+      "label": "long_term_case",
+      "scenario_tag": "returning_client_rebook",
+      "input": {
+        "lead_assessment_or_campaign_result": "老客说上次奶灰短甲很耐看，这次想周末换个低调法式，已明确可来时间。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.61,
+          "segment_type": "周期复做老客",
+          "lifetime_value": 148000,
+          "repeat_visit_probability": 0.53
+        },
+        "cost_data": {
+          "cost_per_lead": 7,
+          "tech_time_cost": 26,
+          "material_cost": 15,
+          "estimated_gross_margin_rate": 0.66
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "微信回访触达",
+            "用户主动回复想换款"
+          ],
+          "last_meaningful_touch": "用户主动回复想换款"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分显著高于冷启动新客",
+        "短期分建立在本次风格和时间存在之上",
+        "奖励信号应指向复做确认"
+      ],
+      "mustAvoid": [
+        "把老客当普通泛咨询处理",
+        "忽略低获客成本优势"
+      ]
+    }
+  ]
+}

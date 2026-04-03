@@ -1,0 +1,82 @@
+﻿{
+  "generated_at": "2026-03-28T15:37:14.260590+00:00",
+  "file_count": 14,
+  "files": [
+    {
+      "path": "PROJECT_STATE.md",
+      "sha256": "51ba72fa841cce187af74bd05eaa51cbc4c65afb18d6c63b6f0f2dec53a4c71b",
+      "size_bytes": 1781
+    },
+    {
+      "path": "deploy/new-api/README.md",
+      "sha256": "564e0c7a26b33c9657307202887dc7b0ccc8bb0dc7ff684f90ce0f8aed37609e",
+      "size_bytes": 842
+    },
+    {
+      "path": "docs/ClawCommerce_项目开发总计划与架构白皮书.md",
+      "sha256": "4ccf92ce98d8178ea76aef9a60bf8814d66147e52660a36e9e10ba41b9e49c5b",
+      "size_bytes": 4438
+    },
+    {
+      "path": "docs/handover/03-OPEN-ITEMS.md",
+      "sha256": "48f18d9cc87ac885e1003970461a447db8f5e09aec9d0515e4c67d83e18f77a0",
+      "size_bytes": 2592
+    },
+    {
+      "path": "docs/标准体系_PR与合并规范.md",
+      "sha256": "967458edf22ce9cce4f2a3a5e9b8a8dbab1921c5e14c182fcd437d430adff032",
+      "size_bytes": 3689
+    },
+    {
+      "path": "docs/标准体系_SLO与监控指标定义.md",
+      "sha256": "fc05ef6bcc155d09f9f757d3328523b7d3d9b748d0e4be1430684fd93ec14a1d",
+      "size_bytes": 2806
+    },
+    {
+      "path": "docs/标准体系_发布与变更管理.md",
+      "sha256": "c366662caeee615ce17f610d0c6158feec29454382f6c664b9cf64964097a496",
+      "size_bytes": 2263
+    },
+    {
+      "path": "docs/标准体系_商业化KPI定义与测算规范.md",
+      "sha256": "2bcee8e74ffd5cc168f23eeb94b5f3f2659316a78380e2ddec0a945665573d1e",
+      "size_bytes": 3495
+    },
+    {
+      "path": "docs/标准体系_多租户数据安全与合规白皮书_供融资与大客户审计用.md",
+      "sha256": "1cccc93d57d26a9ca51d65cfff5fd937e58b6750c5c0205d06c61907bf556417",
+      "size_bytes": 8567
+    },
+    {
+      "path": "docs/标准体系_成本与线索测算规范.md",
+      "sha256": "cc7d35daa76ea645adfded6822a599296108501e0fb9ad120e81fc7ca6303fa1",
+      "size_bytes": 2218
+    },
+    {
+      "path": "docs/标准体系_索引.md",
+      "sha256": "a3c42e2733872050aae9bc7810023715daf41af368f878e7118ee5293a6c6dfc",
+      "size_bytes": 3016
+    },
+    {
+      "path": "docs/标准体系_质量门禁细则.md",
+      "sha256": "bc5bf72c2ddf96cb56d774763e3d63232a53f54edccbb44ac743f5adc22f26f0",
+      "size_bytes": 3093
+    },
+    {
+      "path": "docs/标准体系_风险与合规清单模板.md",
+      "sha256": "9cf3c7530294c4c238c897a28141d8a093a29dce84b86f1be43c99823017bcc9",
+      "size_bytes": 2705
+    },
+    {
+      "path": "docs/行为操作系统_设计蓝图_合规边界内.md",
+      "sha256": "33c17972131c01a511d27528128c5bb46e7d7a86640baa45e812ae384e4188d0",
+      "size_bytes": 7891
+    }
+  ],
+  "offline_gaps": [
+    "Business entity certificates",
+    "Domain ownership and real-name verification",
+    "Legal authorization letters",
+    "Production payment contracts"
+  ]
+}

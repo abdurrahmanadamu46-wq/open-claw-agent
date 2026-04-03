@@ -1,0 +1,745 @@
+{
+  "locale": {
+    "zh": "中文",
+    "en": "英文"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "confirm": "确认",
+    "loading": "加载中...",
+    "success": "操作成功",
+    "error": "操作失败",
+    "status": "状态",
+    "created_at": "创建时间",
+    "actions": "操作",
+    "enable": "启用",
+    "disable": "禁用",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "search": "搜索",
+    "filter": "筛选",
+    "export": "导出",
+    "refresh": "刷新",
+    "close": "关闭",
+    "retry": "重试"
+  },
+  "nav": {
+    "overview": "总览",
+    "onboard": "首启",
+    "strategy": "策略",
+    "campaigns": "任务",
+    "leads": "线索",
+    "trace": "复盘",
+    "agents_cabinet": "龙虾岗位舱",
+    "lobster_pool": "龙虾池看板",
+    "lobster_config": "龙虾配置",
+    "cost": "成本分析",
+    "lobster_skills": "龙虾技能",
+    "crm_graph": "客户图谱",
+    "control_panel": "运营控制台",
+    "monitor": "执行监控室",
+    "ai_studio": "AI 中台",
+    "fleet": "执行网络",
+    "billing": "账单与订阅",
+    "partner_portal": "代理经营台",
+    "commercial_readiness": "上线闸门",
+    "model_providers": "模型配置",
+    "integrations": "集成中心",
+    "client_center": "客户工作台",
+    "client_mobile": "移动审批",
+    "help": "帮助中心",
+    "skills_pool": "技能市场",
+    "scheduler": "定时调度",
+    "workflows": "工作流",
+    "memory": "记忆管理",
+    "usecases": "用例市场",
+    "sessions": "会话隔离",
+    "channels": "渠道账号",
+    "mcp": "MCP工具",
+    "analytics_attribution": "归因",
+    "analytics_funnel": "漏斗",
+    "settings": "系统设置",
+    "widget": "嵌入组件",
+    "knowledge_base": "知识库",
+    "kanban": "龙虾看板",
+    "onboarding": "新商家向导",
+    "prompts": "提示词管理",
+    "reseller": "代理招募",
+    "feishu_webhook": "飞书推送",
+    "feature_flags": "功能开关",
+    "experiments": "实验评测",
+    "traces": "链路追踪",
+    "alerts": "告警规则",
+    "audit": "审计日志",
+    "policies": "策略引擎",
+    "permissions": "权限管理",
+    "white_label": "白标主题",
+    "crm_leads": "CRM线索",
+    "activities": "活动流"
+  },
+  "sidebar": {
+    "groups": {
+      "mainline": "主线工作流",
+      "support": "支撑中心",
+      "commercial": "商业化",
+      "secondary": "辅助入口"
+    },
+    "brandTitle": "龙虾池",
+    "brandSubtitle": "AI 增长操作系统",
+    "startFromOnboard": "从首启开始"
+  },
+  "header": {
+    "badge": "龙虾池主线",
+    "currentStage": "当前阶段",
+    "buttons": {
+      "commercialGate": "商业化闸门",
+      "helpCenter": "帮助中心",
+      "billing": "账单与订阅",
+      "alerts": "告警中心"
+    },
+    "stageTag": "主线",
+    "stages": {
+      "onboard": {
+        "label": "首启",
+        "description": "确认行业、目标和交付边界，生成第一批可执行任务。"
+      },
+      "strategy": {
+        "label": "策略",
+        "description": "把目标交给总脑，先决定方向，再决定如何提交执行。"
+      },
+      "campaigns": {
+        "label": "任务",
+        "description": "只看今天真正要推进的任务，不在后台表格里迷路。"
+      },
+      "fleet": {
+        "label": "执行",
+        "description": "管理边缘节点、设备和执行网络，保证交付稳定。"
+      },
+      "leads": {
+        "label": "线索",
+        "description": "把回流结果集中到一个工作台里，统一判断是否跟进。"
+      },
+      "review": {
+        "label": "复盘",
+        "description": "回到 Trace 看证据链、审批链和回滚链，而不是翻旧日志。"
+      },
+      "commercial": {
+        "label": "商业化",
+        "description": "查看账单、模型配置、集成与上线阻塞，不再多页折返。"
+      }
+    }
+  },
+  "operations": {
+    "mcp": {
+      "badge": "MCP Gateway",
+      "title": "龙虾 MCP 工具中枢",
+      "description": "让龙虾直接接入 MCP Server 工具生态，支持 stdio / sse 注册、工具发现、调用审计和健康状态管理。",
+      "metrics": {
+        "total": "总 Server",
+        "healthy": "Healthy",
+        "enabled": "已启用"
+      },
+      "form": {
+        "serverId": "Server ID",
+        "name": "显示名称",
+        "transport": "传输类型",
+        "command": "命令",
+        "url": "URL",
+        "env": "环境变量 JSON",
+        "submit": "注册 MCP Server",
+        "submitting": "提交中..."
+      },
+      "serverActions": {
+        "tools": "查看工具",
+        "ping": "Ping",
+        "delete": "删除"
+      },
+      "sections": {
+        "tools": "工具浏览",
+        "history": "调用记录",
+        "selectHint": "请选择左侧 Server",
+        "emptyTools": "当前没有可展示的工具。",
+        "noDescription": "无描述"
+      },
+      "table": {
+        "time": "时间",
+        "lobster": "龙虾",
+        "server": "Server",
+        "tool": "Tool",
+        "duration": "耗时",
+        "status": "状态"
+      },
+      "messages": {
+        "registerSuccess": "已注册 MCP Server：{name}",
+        "toggleDisabled": "{name} 已禁用",
+        "toggleEnabled": "{name} 已启用",
+        "deleteSuccess": "已删除 {name}",
+        "pingHealthy": "{name} 健康检查：healthy",
+        "pingUnavailable": "{name} 健康检查：unavailable",
+        "requestFailed": "请求失败"
+      }
+    },
+    "workflows": {
+      "badge": "Workflow Engine",
+      "title": "标准工作流运行台",
+      "description": "把龙虾协作从一次性对话切成可复跑的标准步骤，支持 YAML 定义、逐步状态追踪、失败暂停与人工恢复。",
+      "metrics": {
+        "total": "运行总数",
+        "running": "运行中",
+        "paused": "已暂停"
+      },
+      "fields": {
+        "workflow": "工作流模板",
+        "task": "任务描述",
+        "context": "上下文 JSON"
+      },
+      "buttons": {
+        "start": "启动工作流",
+        "starting": "启动中...",
+        "refreshDetail": "刷新详情",
+        "resume": "恢复",
+        "pause": "暂停"
+      },
+      "sections": {
+        "runs": "最近运行记录",
+        "task": "任务",
+        "emptyRuns": "当前租户还没有运行记录。",
+        "emptyDetail": "点击左侧运行记录查看步骤详情。",
+        "currentStep": "当前步骤",
+        "noOutput": "暂无输出",
+        "failureReason": "失败原因"
+      },
+      "messages": {
+        "started": "已启动工作流 {workflowId}，Run #{runNumber}",
+        "resumed": "已请求恢复工作流 {runId}",
+        "paused": "已暂停工作流 {runId}",
+        "requestFailed": "请求失败"
+      }
+    },
+    "lobsterConfig": {
+      "badge": "????",
+      "title": "??????",
+      "description": "??????????????????????????????????",
+      "list": {
+        "title": "????",
+        "total": "?",
+        "strategyReady": "????",
+        "autonomyReady": "??????",
+        "loading": "????????...",
+        "empty": "??????????????"
+      },
+      "detail": {
+        "badge": "??",
+        "placeholder": "???????????",
+        "about": "????????????????????????",
+        "updated": "??????",
+        "loading": "??????..."
+      },
+      "metrics": {
+        "strategyLevel": "????",
+        "autonomyLevel": "????",
+        "tools": "???",
+        "empty": "???"
+      },
+      "fields": {
+        "strategyLevel": "????",
+        "autonomyLevel": "????",
+        "customPrompt": "??????",
+        "strategyPlaceholder": "???1 / 2 / 3 / 4",
+        "autonomyPlaceholder": "???0 / 1 / 2 / 3",
+        "customPromptPlaceholder": "?????????????????????"
+      },
+      "sections": {
+        "configuration": "????",
+        "tools": "????",
+        "skills": "????",
+        "count": "?",
+        "enabled": "???",
+        "disabled": "???",
+        "empty": "?????????",
+        "unknown": "??"
+      },
+      "buttons": {
+        "saving": "???..."
+      },
+      "messages": {
+        "requestFailed": "????",
+        "saved": "???????"
+      }
+    },
+    "lobsterCost": {
+      "badge": "成本分析",
+      "title": "龙虾成本分析",
+      "description": "查看哪只龙虾在消耗预算、成本随时间如何变化，以及哪些调用最昂贵。",
+      "meta": {
+        "tenant": "租户 {tenant}",
+        "operator": "操作者 {operator}"
+      },
+      "filters": {
+        "title": "分析窗口",
+        "description": "在控制台内直接切换最近时间范围，无需跳转页面。"
+      },
+      "ranges": {
+        "d1": "近 1 天",
+        "d7": "近 7 天",
+        "d30": "近 30 天"
+      },
+      "states": {
+        "nonAdminTitle": "需要管理员权限",
+        "nonAdminDescription": "成本分析会暴露租户预算使用情况，当前仅对管理员开放。",
+        "loading": "加载中...",
+        "loadingDescription": "正在拉取最新的龙虾成本快照。"
+      },
+      "summary": {
+        "totalCost": "总成本",
+        "lobsterCount": "活跃龙虾数",
+        "topLobster": "成本最高龙虾",
+        "range": "当前窗口",
+        "totalCalls": "总调用数",
+        "totalTokens": "总 Tokens",
+        "avgCostPerCall": "平均单次成本"
+      },
+      "list": {
+        "title": "龙虾成本排行",
+        "description": "按总成本排序，优先看到最热的预算消耗点。",
+        "emptyTitle": "暂无龙虾成本数据",
+        "emptyDescription": "在当前时间窗口内还没有找到 LLM 成本记录。",
+        "emptyFilteredDescription": "当前搜索或排序条件下没有匹配的龙虾。",
+        "calls": "{count} 次调用",
+        "tokens": "{count} Tokens",
+        "avgCost": "平均单次成本",
+        "maxCost": "单次最高成本",
+        "searchPlaceholder": "搜索龙虾 ID",
+        "sortCost": "按成本排序",
+        "sortCalls": "按调用量排序",
+        "sortTrend": "按趋势排序"
+      },
+      "detail": {
+        "title": "选中龙虾详情",
+        "description": "深入查看单只龙虾，再决定是优化 prompt、路由还是工作流结构。",
+        "totalCalls": "总调用数",
+        "avgCost": "平均成本",
+        "maxCost": "最高单次成本",
+        "totalTokens": "总 Tokens",
+        "inputTokens": "输入 Tokens",
+        "outputTokens": "输出 Tokens",
+        "emptyTitle": "请选择一只龙虾",
+        "emptyDescription": "从左侧列表选择龙虾后，这里会加载详情和趋势。"
+      },
+      "chart": {
+        "title": "成本趋势",
+        "description": "把成本与调用量叠在一起看，判断是流量变多还是单次调用变贵。",
+        "costLine": "成本",
+        "callsLine": "调用量",
+        "emptyTitle": "暂无趋势数据",
+        "emptyDescription": "成本记录生成后，这里会自动显示时间序列。"
+      },
+      "topCalls": {
+        "title": "高成本调用",
+        "description": "先看最贵的调用，最快找到优化空间。",
+        "emptyTitle": "暂无高成本调用记录",
+        "emptyDescription": "当前没有返回选中龙虾的单次调用记录。",
+        "latency": "耗时",
+        "inputTokens": "输入 Tokens",
+        "outputTokens": "输出 Tokens",
+        "noModel": "未知模型",
+        "noProvider": "未知提供商",
+        "selected": "当前选中调用",
+        "routeTier": "路由层级",
+        "createdAt": "创建时间"
+      }
+    },
+    "promptsRegistry": {
+      "badge": "Prompt 注册表",
+      "title": "Prompt 注册表控制台",
+      "description": "这里直接消费真实的 prompt registry 数据，用来查看 prompt 家族、版本和 diff；如果 Nest 代理还没补齐，会明确展示阻塞态，而不是继续显示假样例。",
+      "meta": {
+        "tenant": "租户 {tenant}",
+        "operator": "操作者 {operator}"
+      },
+      "states": {
+        "readonly": "Prompt 注册表在 API 层只对管理员开放。",
+        "blockedTitle": "Prompt 注册表代理尚未就绪",
+        "blockedDescription": "当前页面已经接上真实 registry 端点结构，等 Nest 补齐 list 和 versions 代理后，数据会自动出现。",
+        "loading": "正在加载 Prompt 注册表...",
+        "empty": "当前没有 Prompt 数据"
+      },
+      "list": {
+        "title": "Prompt 家族",
+        "description": "按龙虾维度浏览 prompt 家族，并查看 production / preview 版本状态。",
+        "searchPlaceholder": "按 prompt、龙虾或 skill 搜索",
+        "all": "全部龙虾",
+        "production": "生产版",
+        "preview": "预览版",
+        "latest": "最新版本",
+        "versions": "版本数"
+      },
+      "versions": {
+        "title": "版本选择",
+        "description": "选两个版本做对比。",
+        "left": "左侧版本",
+        "right": "右侧版本"
+      },
+      "diff": {
+        "title": "Diff 视图",
+        "description": "当左右两个版本都选中后，这里展示差异。",
+        "stats": "差异统计",
+        "variables": "变量变化",
+        "config": "配置变化",
+        "content": "内容差异",
+        "noSelection": "请选择一个 prompt，并同时选中两个版本后再查看 diff。"
+      }
+    }
+  },
+  "analytics": {
+    "attribution": {
+      "badge": "归因洞察",
+      "title": "看清贡献组合",
+      "description": "查看当前策略在漏斗中的渠道或触点贡献，评估转化源头。",
+      "meta": {
+        "tenant": "租户：{tenant}",
+        "noTenant": "未选择租户",
+        "dataHint": "数据每 30 秒刷新"
+      },
+      "summary": {
+        "model": "模型",
+        "window": "时间",
+        "channels": "触点",
+        "unknown": "未知"
+      },
+      "totals": {
+        "title": "合计指标",
+        "loading": "加载合计中...",
+        "updated": "最新合计",
+        "empty": "暂无合计数据"
+      },
+      "series": {
+        "title": "触点序列",
+        "sub": "按渠道细分的转化",
+        "share": "占比",
+        "noShare": "占比不可用",
+        "loading": "加载触点中...",
+        "empty": "暂无触点数据"
+      },
+      "highlights": {
+        "title": "亮点",
+        "loading": "搜索亮点中...",
+        "empty": "暂无亮点"
+      }
+    },
+    "funnel": {
+      "badge": "漏斗健康",
+      "title": "衡量阶段流失",
+      "description": "追踪识别—转化每个阶段，快速锁定漏斗泄漏点。",
+      "meta": {
+        "tenant": "租户：{tenant}",
+        "noTenant": "未选择租户"
+      },
+      "summary": {
+        "window": "时间区间",
+        "steps": "阶段数",
+        "volume": "流量"
+      },
+      "stages": {
+        "title": "阶段明细",
+        "loading": "加载阶段中...",
+        "active": "运行中阶段",
+        "dropoff": "流失：{dropoff}",
+        "conversion": "转化：{rate}",
+        "empty": "暂无阶段数据"
+      },
+      "totals": {
+        "title": "漏斗合计",
+        "loading": "加载合计中...",
+        "empty": "暂无合计数据"
+      }
+    }
+  },
+  "fleet": {
+    "badge": "执行网络",
+    "title": "把边缘节点当成真正的交付基础设施来管理",
+    "description": "这里要回答的不是“节点有没有连上”，而是当前租户的执行网络是否健康、容量够不够、哪些节点需要人工介入，以及任务能不能安全下发。",
+    "buttons": {
+      "renameTenant": "重命名",
+      "addNode": "接入新龙虾节点",
+      "viewGuide": "查看接入向导",
+      "offline": "下线",
+      "dispatch": "派发任务",
+      "persona": "查看人设",
+      "terminal": "调试终端",
+      "retry": "重试"
+    },
+    "metrics": {
+      "total": "总节点",
+      "online": "在线 / 执行中",
+      "offline": "离线",
+      "intervention": "待人工"
+    },
+    "table": {
+      "clientName": "节点名称",
+      "nodeId": "节点 ID",
+      "status": "状态",
+      "heartbeat": "最近心跳",
+      "load": "负载",
+      "summary": "当前摘要",
+      "actions": "操作"
+    },
+    "messages": {
+      "loading": "正在加载执行网络...",
+      "loadFailed": "节点列表加载失败，请检查后端连接与登录权限。",
+      "empty": "当前租户暂无节点，请先接入一台龙虾客户端。",
+      "quota": "当前租户配额：{total}/{quota}",
+      "renamePrompt": "请输入新的客户名称",
+      "renameSuccess": "已重命名为 {name}",
+      "offlineSuccess": "已请求下线 {nodeId}",
+      "offlineFailed": "节点下线失败，请检查网络或权限后重试。",
+      "dispatchSuccess": "已向 {nodeId} 下发任务。",
+      "dispatchFailed": "任务下发失败，请检查执行网络连接。"
+    },
+    "status": {
+      "ONLINE": "在线",
+      "BUSY": "执行中",
+      "INTERVENTION_REQUIRED": "待人工",
+      "OFFLINE": "离线"
+    }
+  },
+  "skillsPool": {
+    "title": "龙虾技能沉淀池",
+    "description": "按原生扩展思路管理 9 元老的独立 Agent、技能和节点配置，并统一聚合行业知识库。",
+    "buttons": {
+      "refresh": "刷新",
+      "save": "保存配置",
+      "saving": "保存中...",
+      "reset": "重置默认",
+      "addSkill": "+ 新增技能",
+      "addNode": "+ 新增节点"
+    }
+  },
+  "strategy": {
+    "title": "先把方向讲清楚，再交给总脑",
+    "previewButton": "预览并确认提交",
+    "previewLoading": "正在预览...",
+    "industryIntake": "Industry workflow intake",
+    "surveys": {
+      "badge": "调查",
+      "title": "调查脉搏",
+      "description": "监控轻量调查，捕捉利益相关者与团队准备度。",
+      "refresh": "刷新",
+      "refreshing": "刷新中...",
+      "count": "已追踪 {count} 个调查",
+      "tenant": "租户 {tenant}",
+      "noTenant": "未选择租户",
+      "surveyId": "编号：{id}",
+      "loading": "加载调查中...",
+      "empty": "暂无调查"
+    },
+    "nlQuery": {
+      "badge": "自然语言查询",
+      "title": "向总脑提问",
+      "description": "输入问题，总脑将基于当前数据回传洞察。",
+      "tenant": "租户 {tenant}",
+      "noTenant": "租户未就绪",
+      "placeholder": "例如：上周哪条活动贡献最大？",
+      "submit": "提问",
+      "submitting": "查询中...",
+      "reset": "重置",
+      "responseTitle": "回答",
+      "metadata": "元信息",
+      "helperActive": "输入问题并点击提问，快速拿回简短洞察。",
+      "helperDisabled": "请选择租户再调用自然语言查询。",
+      "error": "请求失败"
+    }
+  },
+  "settings": {
+    "policyEngine": {
+      "badge": "策略引擎",
+      "title": "OPA 风格策略控制台",
+      "description": "统一管理声明式运行规则、发布生效 bundle，并用真实输入载荷验证策略决策结果。",
+      "meta": {
+        "tenant": "租户 {tenant}",
+        "operator": "操作者 {operator}"
+      },
+      "states": {
+        "loading": "正在加载策略...",
+        "empty": "当前还没有策略规则",
+        "emptyDescription": "先创建第一条规则，再开始治理分发、合规或路由行为。",
+        "readonly": "当前为只读模式。你仍然可以做策略评估，但创建、更新、删除和发布 bundle 需要管理员权限。"
+      },
+      "summary": {
+        "rules": "规则数",
+        "enabled": "启用中",
+        "paths": "策略路径",
+        "bundleVersion": "Bundle 版本",
+        "allow": "Allow 规则",
+        "deny": "Deny 规则",
+        "dispatch": "Dispatch 规则"
+      },
+      "bundle": {
+        "title": "当前 Bundle",
+        "description": "这里展示的是运行时当前应该生效的策略 bundle。",
+        "version": "版本",
+        "checksum": "校验和",
+        "ruleCount": "规则数",
+        "publishedBy": "发布人",
+        "publishedAt": "发布时间",
+        "notes": "备注",
+        "publish": "发布 Bundle",
+        "publishing": "发布中...",
+        "publishSuccess": "策略 bundle 已发布"
+      },
+      "list": {
+        "title": "规则库",
+        "description": "选择一条规则查看详情或编辑。",
+        "all": "全部路径",
+        "effectsAll": "全部作用",
+        "searchPlaceholder": "按规则名、路径或标签搜索",
+        "empty": "当前筛选条件下没有规则",
+        "priority": "优先级",
+        "disabled": "已停用",
+        "conditionsCount": "{count} 条条件"
+      },
+      "editor": {
+        "title": "规则编辑器",
+        "create": "新建规则",
+        "editing": "正在编辑 {name}",
+        "readonly": "规则详情",
+        "save": "保存规则",
+        "saving": "保存中...",
+        "delete": "删除规则",
+        "deleting": "删除中...",
+        "reset": "重置草稿",
+        "createSuccess": "策略规则已创建",
+        "updateSuccess": "策略规则已更新",
+        "deleteSuccess": "策略规则已删除"
+      },
+      "fields": {
+        "ruleId": "规则 ID",
+        "policyPath": "策略路径",
+        "name": "规则名称",
+        "descriptionField": "规则说明",
+        "effect": "作用",
+        "target": "分发目标",
+        "priority": "优先级",
+        "enabled": "启用",
+        "conditionLogic": "条件逻辑",
+        "tags": "标签",
+        "conditions": "条件 JSON",
+        "conditionsPreview": "条件预览",
+        "conditionsPreviewEmpty": "当前没有可预览的有效条件",
+        "notes": "发布备注",
+        "version": "Bundle 版本"
+      },
+      "placeholders": {
+        "ruleId": "留空时自动生成",
+        "policyPath": "例如：dispatch",
+        "name": "例如：高分线索转 followup",
+        "descriptionField": "简单说明这条规则为何存在",
+        "target": "当 effect 为 dispatch 时必填",
+        "tags": "comma,separated,tags",
+        "conditions": "[{\"field\":\"lead.score\",\"op\":\"gte\",\"value\":80}]",
+        "notes": "这次发布的原因是什么？"
+      },
+      "evaluate": {
+        "title": "决策沙盒",
+        "description": "把输入载荷送进当前规则集，直接查看决策、命中规则和 trace。",
+        "run": "评估策略",
+        "running": "评估中...",
+        "decision": "决策结果",
+        "reason": "原因",
+        "matchedRules": "命中规则",
+        "trace": "执行轨迹",
+        "input": "输入 JSON",
+        "defaultDecision": "默认决策",
+        "decisionLogId": "决策日志 ID",
+        "noResult": "执行一次策略评估后，这里会展示结果。"
+      },
+      "messages": {
+        "requestFailed": "请求失败",
+        "invalidConditions": "条件 JSON 格式不合法",
+        "invalidInput": "评估输入 JSON 格式不合法"
+      }
+    },
+    "widget": {
+      "badge": "Widget 中心",
+      "title": "嵌入 Widget 配置",
+      "description": "统一管理嵌入脚本、允许域名、欢迎语和主题样式，让访客进入对话前看到一致的品牌体验。",
+      "buttons": {
+        "refresh": "刷新脚本",
+        "add": "添加",
+        "saving": "保存中...",
+        "copy": "复制嵌入代码",
+        "trackPreview": "记录预览事件"
+      },
+      "sections": {
+        "domains": "允许域名",
+        "count": "个域名",
+        "script": "嵌入代码",
+        "preview": "Widget 预览",
+        "scriptSource": "当前脚本内容"
+      },
+      "fields": {
+        "welcomeMessage": "欢迎语",
+        "themeColor": "主题色",
+        "accentColor": "强调色",
+        "callToAction": "行动按钮文案",
+        "customCss": "自定义 CSS",
+        "launcherPosition": "触发按钮位置"
+      },
+      "placeholders": {
+        "welcome": "例如：你好，请先告诉我你的业务目标",
+        "noDomains": "尚未配置域名",
+        "callToAction": "例如：立即咨询龙虾顾问",
+        "customCss": "可选的样式覆盖",
+        "script": "保存后会显示可复制的脚本"
+      },
+      "messages": {
+        "saved": "Widget 配置已保存",
+        "requestFailed": "请求失败",
+        "copied": "嵌入代码已复制。",
+        "positionHint": "按钮位置当前先用于本地预览和嵌入代码生成；后端持久化字段就绪后可直接接入保存。"
+      }
+    }
+  },
+  "crm": {
+    "graph": {
+      "badge": "时序图谱",
+      "title": "客户时序知识图谱",
+      "description": "查看租户级实体、当前仍然生效的关系，以及图谱层为单个实体保留的时间线。",
+      "meta": {
+        "tenant": "租户 {tenant}",
+        "operator": "操作者 {operator}"
+      },
+      "summary": {
+        "entities": "实体数",
+        "edges": "关系数",
+        "types": "实体类型",
+        "referenceTime": "参考时间",
+        "relatedEdges": "关联关系数",
+        "timelineEvents": "时间线事件数",
+        "selectedEntity": "当前实体"
+      },
+      "list": {
+        "title": "实体索引",
+        "description": "先在快照里搜索实体，再查看该实体的时间线关系。",
+        "searchPlaceholder": "按实体名或类型搜索",
+        "all": "全部类型",
+        "empty": "当前快照里没有实体"
+      },
+      "detail": {
+        "title": "实体详情",
+        "emptyTitle": "请选择实体",
+        "emptyDescription": "从左侧选择实体后，这里会展示属性和关联关系。",
+        "attributes": "属性",
+        "relations": "当前关系",
+        "timeline": "时间线",
+        "timelineEmpty": "当前实体没有返回时间线事件。",
+        "allRelations": "全部关系",
+        "connectedEntity": "关联实体",
+        "confidence": "置信度",
+        "validAt": "生效时间"
+      }
+    }
+  }
+}

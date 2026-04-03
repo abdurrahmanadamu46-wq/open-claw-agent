@@ -1,0 +1,53 @@
+{
+  "session_id": "15003b747882c54c",
+  "peer_id": "echoer",
+  "lobster_id": "echoer",
+  "tenant_id": "tenant_main",
+  "channel": "runner",
+  "mode": "shared",
+  "messages": [
+    {
+      "role": "user",
+      "content": "批量删除所有帖子",
+      "timestamp": "2026-03-31T17:32:37.771300+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-03-31T17:32:37.771300+00:00"
+    },
+    {
+      "role": "user",
+      "content": "批量删除所有帖子",
+      "timestamp": "2026-03-31T17:33:03.558084+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-03-31T17:33:03.558084+00:00"
+    },
+    {
+      "role": "user",
+      "content": "批量删除所有帖子",
+      "timestamp": "2026-04-01T13:51:52.017433+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-04-01T13:51:52.017433+00:00"
+    },
+    {
+      "role": "user",
+      "content": "批量删除所有帖子",
+      "timestamp": "2026-04-01T13:55:34.933116+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "ok",
+      "timestamp": "2026-04-01T13:55:34.933116+00:00"
+    }
+  ],
+  "created_at": "2026-03-31T17:31:29.195173+00:00",
+  "last_active_at": "2026-04-01T13:55:34.933116+00:00",
+  "message_count": 8
+}

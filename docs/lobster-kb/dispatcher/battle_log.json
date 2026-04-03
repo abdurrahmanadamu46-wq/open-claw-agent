@@ -1,0 +1,17 @@
+{
+  "meta": { "lobster": "dispatcher", "last_updated": "2026-04-01" },
+  "entries": [
+    {
+      "log_id": "dsp_battle_001",
+      "type": "failure",
+      "date": "2026-03-08",
+      "skill_ref": "dsp_precheck_001",
+      "description": "某账号在收到平台警告后的第2天仍然正常发布，导致账号被限流7天",
+      "root_cause": "发布前账号状态检查步骤被跳过，认为'昨天的警告应该没什么问题'",
+      "action_taken": "账号状态检查列为发布前5步中最高优先级，任何警告状态下，必须等待3天且无新警告才能恢复发布",
+      "status": "已修复",
+      "verified_fixed": true
+    }
+  ],
+  "open_issues": []
+}

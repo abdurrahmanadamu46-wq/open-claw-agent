@@ -1,0 +1,81 @@
+{
+  "lobster_id": "catcher",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "lead-scoring",
+      "prompts": [
+        {
+          "id": "catcher.lead-scoring.intent-eval.v1",
+          "file": "lead-scoring/intent-eval.prompt.md",
+          "skill_id": "catcher_lead_score",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "health", "local-service", "ecommerce"],
+          "variants": ["v1-comment-signal", "v1-dm-signal", "v1-profile-signal"]
+        },
+        {
+          "id": "catcher.lead-scoring.risk-filter.v1",
+          "file": "lead-scoring/risk-filter.prompt.md",
+          "skill_id": "catcher_lead_score",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "health", "finance", "education", "ecommerce"],
+          "variants": ["v1-fake-lead", "v1-black-list", "v1-competitor-spy"]
+        },
+        {
+          "id": "catcher.lead-scoring.priority-ranking.v1",
+          "file": "lead-scoring/priority-ranking.prompt.md",
+          "skill_id": "catcher_lead_score",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "health", "local-service", "ecommerce"],
+          "variants": ["v1-hot-warm-cold", "v1-ltv-estimate"]
+        },
+        {
+          "id": "catcher.lead-scoring.dedup-check.v1",
+          "file": "lead-scoring/dedup-check.prompt.md",
+          "skill_id": "catcher_cross_platform_dedup",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "education", "ecommerce", "health"],
+          "variants": ["v1-cross-platform", "v1-same-platform"]
+        }
+      ]
+    },
+    {
+      "category": "crm-push",
+      "prompts": [
+        {
+          "id": "catcher.crm-push.lead-profile.v1",
+          "file": "crm-push/lead-profile.prompt.md",
+          "skill_id": "catcher_crm_push",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "health", "local-service", "ecommerce"],
+          "variants": ["v1-standard-profile", "v1-high-value-tag", "v1-risk-flagged"]
+        },
+        {
+          "id": "catcher.crm-push.crm-payload-format.v1",
+          "file": "crm-push/crm-payload-format.prompt.md",
+          "skill_id": "catcher_crm_push",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "education", "health", "local-service"],
+          "variants": ["v1-wecom-crm", "v1-custom-crm"]
+        },
+        {
+          "id": "catcher.crm-push.followup-routing.v1",
+          "file": "crm-push/followup-routing.prompt.md",
+          "skill_id": "catcher_crm_push",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "education", "health", "local-service", "ecommerce"],
+          "variants": ["v1-by-score", "v1-by-industry", "v1-by-channel"]
+        },
+        {
+          "id": "catcher.crm-push.batch-assess.v1",
+          "file": "crm-push/batch-assess.prompt.md",
+          "skill_id": "catcher_lead_score",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "education", "health"],
+          "variants": ["v1-daily-batch", "v1-campaign-batch"]
+        }
+      ]
+    }
+  ]
+}

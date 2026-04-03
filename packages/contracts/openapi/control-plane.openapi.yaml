@@ -1,0 +1,101 @@
+﻿openapi: 3.0.3
+info:
+  title: Liaoyuan Control Plane Contract
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:48789
+paths:
+  /api/v1/ai/run-dragon-team:
+    post:
+      summary: trigger main senate graph
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunDragonTeamRequest'
+      responses:
+        '200':
+          description: ok
+  /api/v1/ai/analyze-competitor-formula:
+    post:
+      summary: run competitor formula analysis + ingest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyzeCompetitorRequest'
+      responses:
+        '200':
+          description: ok
+  /api/v1/autopilot/dlq/list:
+    get:
+      summary: list latest dlq entries by sourceQueue
+      parameters:
+        - in: query
+          name: sourceQueue
+          schema:
+            type: string
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ok
+  /api/v1/autopilot/dlq/replay:
+    post:
+      summary: replay dlq item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DlqReplayRequest'
+      responses:
+        '200':
+          description: ok
+  /api/v1/autopilot/trace/{traceId}:
+    get:
+      summary: aggregated troubleshooting view
+      parameters:
+        - in: path
+          name: traceId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
+components:
+  schemas:
+    RunDragonTeamRequest:
+      type: object
+      required: [task_description, user_id]
+      properties:
+        task_description:
+          type: string
+        user_id:
+          type: string
+        analysis_mode:
+          type: boolean
+          default: false
+    AnalyzeCompetitorRequest:
+      type: object
+      required: [target_account_url, user_id]
+      properties:
+        target_account_url:
+          type: string
+        user_id:
+          type: string
+    DlqReplayRequest:
+      type: object
+      required: [sourceQueue, jobId]
+      properties:
+        sourceQueue:
+          type: string
+        jobId:
+          type: string
+        reason:
+          type: string

@@ -1,0 +1,13 @@
+﻿# dev overlay: low-cost and local-friendly defaults
+services:
+  backend:
+    environment:
+      COMPLIANCE_REQUIRE_HITL: "true"
+      NEW_API_TOKEN: ${NEW_API_TOKEN:-dev_local_token}
+  ai-subservice:
+    environment:
+      RAG_ANYTHING_ENABLED: ${DRAGON_AI_RAG_ANYTHING_ENABLED:-false}
+  web:
+    environment:
+      NEXT_PUBLIC_USE_MOCK: "false"
+      NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK: "false"

@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "radar",
+  "artifactType": "SignalBrief",
+  "playbookId": "radar_starter",
+  "title": "Radar Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "load_industry_memory_and_watchlist",
+    "rank_sources_by_reliability",
+    "separate_rule_changes_from_competitor_moves",
+    "produce_signal_brief",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

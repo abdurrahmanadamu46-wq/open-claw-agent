@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "seat_and_tech_capacity_gate",
+      "title": "高峰预约前必须先校验甲位、技师和单客时长",
+      "description": "美甲店的调度核心不是单纯接单，而是把甲位、技师班次、款式复杂度、是否卸甲、是否延长和返修容量一起纳入 task_graph。高峰期不能越过容量门直接放量接待。",
+      "examples": [
+        "周末晚间甲位已满时，先进入候补和分时段预约节点。",
+        "节日前复杂款集中时，先确认可用时长和技师排班。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "removal_extension_must_be_routed",
+      "title": "卸甲、延长甲和加固是独立调度变量",
+      "description": "是否需要卸甲、延长和加固会显著改变单客时长与技师匹配。Dispatcher 不能按普通纯色单量去承接这些场景，必须单独分流。",
+      "examples": [
+        "带旧甲来店的用户需要先进入卸甲节点。",
+        "延长甲和复杂款要优先路由到经验更足的技师。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "style_complexity_before_confirmation",
+      "title": "确认预约前先判断款式复杂度和是否适合该时段",
+      "description": "不同款式复杂度对应的工时不同。基础短甲、节日贴饰和高复杂度延长甲不能共用同一套预约时长假设。",
+      "examples": [
+        "午休档只适合短流程款，不应塞入高复杂度设计。",
+        "婚礼甲和多人同做需提前扩展时长。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "tool_reset_and_hygiene_gate",
+      "title": "工具重置和工作台整理是独立调度节点",
+      "description": "美甲店不是一位客人结束就能立刻无缝接下一位。工具重置、工作台整理和备品补齐必须写进执行链路，尤其在高峰和连台时段。",
+      "examples": [
+        "连续预约时，先插入台面重置和工具准备步骤。",
+        "复杂款做完后不可直接无缝切换下一单。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "peak_slot_hold_window",
+      "title": "热门时段和婚礼节日档要设置保留窗口",
+      "description": "周末、节日前夜和热门技师时段是稀缺资源。Dispatcher 对高需求档期要设置保留时限、提醒节点和释放机制，避免空挂预约。",
+      "examples": [
+        "婚礼档前晚间时段要求限时确认。",
+        "热门技师周末预约超过一定时间未确认则释放。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_repair_and_rebook_backwrite",
+      "title": "做完后必须回写返修风险和复做任务",
+      "description": "美甲执行链路不能在结账后结束。完成后要回写本次款式、材料、是否易掉钻、复做周期和可能返修点，方便后续 followup 承接。",
+      "examples": [
+        "节日贴饰款完成后自动创建返修观察和复做提醒任务。",
+        "记录本次颜色和偏好，便于下次换款推荐。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

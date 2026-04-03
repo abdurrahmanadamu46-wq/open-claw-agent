@@ -1,0 +1,474 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_business_hotel_guaranteed_corporate_arrival_001",
+      "label": "happy_path",
+      "scenario_tag": "guaranteed_late_night_corporate_arrival",
+      "input": {
+        "lead_assessment_or_campaign_result": "企业差旅客原定 21:10 到店，现因航班延误改为 23:40 抵达，已确认大床房、信用卡担保、次日 07:30 离店并需开专票，企业微信上同步给出了航班号和夜班可联系手机。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.46,
+          "segment_type": "企业差旅直订晚到",
+          "lifetime_value": 128000,
+          "repeat_stay_probability": 0.34,
+          "historical_no_show_rate_after_guarantee": 0.03
+        },
+        "cost_data": {
+          "cost_per_lead": 72,
+          "expected_night_shift_support_cost": 24,
+          "expected_breakfast_cost": 38,
+          "room_hold_opportunity_cost": 95,
+          "estimated_gross_margin_rate": 0.56
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "企业微信询房",
+            "销售报价单回传",
+            "电话确认航班延误并补充担保"
+          ],
+          "last_meaningful_touch": "电话确认航班延误并补充担保",
+          "engagement_metrics": {
+            "wechat_response_minutes": 6,
+            "quote_view_count": 2
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "高短期分判断",
+        "把深夜保留房晚机会成本计入后 ROI 仍然健康",
+        "奖励信号应指向担保复核、夜班交接和发票信息提前确认"
+      ],
+      "mustAvoid": [
+        "仅因为到店时间很晚就低估价值",
+        "把有效担保晚到和无担保晚到混为一谈"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_corporate_agreement_pending_002",
+      "label": "edge_case",
+      "scenario_tag": "corporate_agreement_multi_room_credit_pending",
+      "input": {
+        "lead_assessment_or_campaign_result": "企业行政想下周为区域培训团队订 8 间房共 3 晚，希望沿用旧协议价并按月结开票，但今年度信用审批还在流程中，已能给出入住日期、房型结构和公司主体。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.27,
+          "segment_type": "协议价企业团队房",
+          "lifetime_value": 680000,
+          "monthly_room_night_recurring_volume": 42,
+          "contract_renewal_probability": 0.41
+        },
+        "cost_data": {
+          "cost_per_lead": 130,
+          "account_management_cost": 520,
+          "invoice_processing_cost": 90,
+          "credit_risk_reserve": 260,
+          "estimated_gross_margin_rate": 0.33
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "销售拜访",
+            "邮件发送协议价表",
+            "财务审批待处理通知"
+          ],
+          "last_meaningful_touch": "财务审批待处理通知"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分高于短期分",
+        "不能因为月结尚未批完就把长期价值直接归零",
+        "奖励信号应优先指向审批、主体确认和房晚清单锁定"
+      ],
+      "mustAvoid": [
+        "把待审批协议单当成已落地营收",
+        "忽略账期占用和坏账准备成本"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_meeting_package_deposit_003",
+      "label": "happy_path",
+      "scenario_tag": "meeting_package_with_room_block_and_deposit",
+      "input": {
+        "lead_assessment_or_campaign_result": "客户计划下月举办两天培训，需要 16 间房、半天会议室、两轮茶歇和机场接送，已确认参会人数与会期，并支付了 30% 定金，等待补全房间名单。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.39,
+          "segment_type": "会务房块套餐",
+          "lifetime_value": 520000,
+          "annual_event_count": 3,
+          "cross_department_expansion_probability": 0.36
+        },
+        "cost_data": {
+          "cost_per_lead": 160,
+          "expected_meeting_room_cost": 820,
+          "expected_tea_break_cost": 480,
+          "expected_transport_cost": 260,
+          "room_block_release_risk_cost": 150,
+          "estimated_gross_margin_rate": 0.42
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "展会表单留资",
+            "销售电话需求澄清",
+            "PO 和定金到账确认"
+          ],
+          "last_meaningful_touch": "PO 和定金到账确认"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分和长期分都应偏高",
+        "ROI 需要同时覆盖会场、茶歇、接送和房块释放风险",
+        "奖励信号应指向名单回收、设备清单和余款节点确认"
+      ],
+      "mustAvoid": [
+        "只按客房收入估算价值",
+        "忽略会务资源带来的履约成本"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_early_checkin_peak_pressure_004",
+      "label": "edge_case",
+      "scenario_tag": "vip_early_checkin_under_high_occupancy",
+      "input": {
+        "lead_assessment_or_campaign_result": "一位企业协议金卡会员搭乘红眼航班，要求早上 08:00 提前入住 1 晚，酒店当天预计入住率 94%，同房型中午前仍有大量待清扫房，但客人愿意接受付费升级或行政酒廊等待。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.63,
+          "segment_type": "高频会员早到",
+          "lifetime_value": 93000,
+          "repeat_stay_probability": 0.44,
+          "service_escalation_risk_if_denied": 0.28
+        },
+        "cost_data": {
+          "cost_per_lead": 22,
+          "housekeeping_overtime_cost": 80,
+          "inventory_block_cost": 140,
+          "complimentary_breakfast_cost": 38,
+          "estimated_gross_margin_rate": 0.37
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "会员 App 备注早到",
+            "前台电话确认红眼航班",
+            "接受付费升级备选方案"
+          ],
+          "last_meaningful_touch": "接受付费升级备选方案"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分不能因为会员身份而无条件拉满",
+        "长期分可保留中高位以反映关系维护价值",
+        "奖励信号应偏向付费升级、准确到店时间和替代方案落实"
+      ],
+      "mustAvoid": [
+        "默认免费提前入住就是高价值",
+        "忽略高峰翻房压力和库存挤压"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_long_stay_extension_005",
+      "label": "happy_path",
+      "scenario_tag": "project_team_long_stay_extension",
+      "input": {
+        "lead_assessment_or_campaign_result": "驻场项目团队希望把当前 6 间房再续住 21 晚，并按周开票，接受周一到周日固定结算，同时会使用洗衣和少量会议室。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.51,
+          "segment_type": "项目长住续住",
+          "lifetime_value": 980000,
+          "extension_probability": 0.48,
+          "ancillary_spend_per_room_night": 56
+        },
+        "cost_data": {
+          "cost_per_lead": 85,
+          "weekly_account_service_cost": 240,
+          "cleaning_cost_per_occupied_night": 16,
+          "linen_turnover_cost": 6,
+          "discount_rate_impact": 0.08,
+          "estimated_gross_margin_rate": 0.44
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "在住客户提出续住",
+            "销售确认周结方案",
+            "财务确认开票节奏"
+          ],
+          "last_meaningful_touch": "财务确认开票节奏"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "长期分应显著偏高",
+        "ROI 需要体现获客成本摊薄和换房损耗下降",
+        "奖励信号应指向续住日期、账单周期和房型组合确认"
+      ],
+      "mustAvoid": [
+        "只因为有长住折扣就低估价值",
+        "把在住续住视作普通新询单"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_ota_flash_sale_low_adr_006",
+      "label": "failure_case",
+      "scenario_tag": "ota_flash_sale_with_low_net_adr",
+      "input": {
+        "lead_assessment_or_campaign_result": "OTA 闪促带来大量单晚订单，客人多要求免费早餐和延迟退房，房量看起来上涨明显，但平均成交价很低，会员绑定几乎没有增长。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.29,
+          "segment_type": "OTA 低价促销房",
+          "lifetime_value": 14000,
+          "repeat_stay_probability": 0.09,
+          "refund_rate": 0.11
+        },
+        "cost_data": {
+          "cost_per_lead": 48,
+          "ota_commission_rate": 0.21,
+          "coupon_subsidy_per_order": 55,
+          "breakfast_cost_per_order": 32,
+          "late_checkout_cost_per_order": 40,
+          "estimated_gross_margin_rate": 0.18
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "OTA 首页闪促位",
+            "限时优惠券领取",
+            "入住后未绑定会员"
+          ],
+          "last_meaningful_touch": "限时优惠券领取",
+          "engagement_metrics": {
+            "coupon_claims": 420,
+            "member_bind_rate": 0.05
+          }
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "不能把房晚量上涨直接等同于高 ROI",
+        "短期分和 ROI 都应保持谨慎甚至偏低",
+        "奖励信号应偏向会员绑定、直订转化和付费加购"
+      ],
+      "mustAvoid": [
+        "按入住率或订单量直接拉高价值",
+        "忽略佣金、赠早和晚退带来的净收益侵蚀"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_free_upgrade_price_shopper_007",
+      "label": "failure_case",
+      "scenario_tag": "price_shopper_asking_only_for_freebies",
+      "input": {
+        "lead_assessment_or_campaign_result": "客人反复对比多家商务酒店，希望按标准房价格拿到高一级房型，并附送早餐、停车和晚退，但一直不愿确认具体入住日期，也不接受任何担保动作。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.08,
+          "segment_type": "赠项驱动价格比对客",
+          "lifetime_value": 9000,
+          "historical_no_show_rate": 0.26,
+          "complaint_conversion_rate": 0.17
+        },
+        "cost_data": {
+          "cost_per_lead": 34,
+          "upgrade_cannibalization_cost": 180,
+          "breakfast_cost": 36,
+          "parking_cost": 20,
+          "estimated_gross_margin_rate": 0.24
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "电话比价",
+            "发送其他酒店截图要求匹配",
+            "前台询问免费升级"
+          ],
+          "last_meaningful_touch": "发送其他酒店截图要求匹配"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应偏低",
+        "免费升级和赠项诉求不能被当成价值信号",
+        "奖励信号应偏向筛选或改造为付费升级而非继续让利"
+      ],
+      "mustAvoid": [
+        "因为诉求多就误判成高意向",
+        "忽略赠项和升级对净收益的侵蚀"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_duplicate_corporate_inquiry_008",
+      "label": "happy_path",
+      "scenario_tag": "duplicate_corporate_group_inquiry_across_channels",
+      "input": {
+        "lead_assessment_or_campaign_result": "同一家公司先在 OTA 企业通道问了展会周 12 间房，随后销售收到电话询价，最终企业微信发来入住名单模板和接送需求，内容都指向同一批 3 晚团队房。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.31,
+          "segment_type": "企业团队房多渠道询单",
+          "lifetime_value": 420000,
+          "duplicate_project_risk": "high",
+          "repeat_stay_probability": 0.29
+        },
+        "cost_data": {
+          "cost_per_lead_by_channel": {
+            "ota_corporate_channel": 42,
+            "sales_call_followup": 26,
+            "enterprise_wechat_followup": 18
+          },
+          "expected_transport_cost": 180,
+          "expected_account_service_cost": 210,
+          "estimated_gross_margin_rate": 0.39
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "OTA 企业通道询单",
+            "销售电话跟进",
+            "企业微信发送入住名单模板"
+          ],
+          "last_meaningful_touch": "企业微信发送入住名单模板",
+          "duplicate_merge_required": true
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "必须合并为同一个机会计算价值",
+        "奖励信号应更偏向真正推进名单和接送需求落地的关键触点",
+        "不能把多入口重复记成多笔 ROI"
+      ],
+      "mustAvoid": [
+        "让最后一个触点独占全部 credit 而忽略前置跟进成本",
+        "把同一企业团队当成三条高价值线索"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_member_direct_reactivation_009",
+      "label": "happy_path",
+      "scenario_tag": "member_reactivation_to_direct_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "过去经常通过 OTA 住店的差旅会员在收到回流短信后，直接来电预订未来两周的 4 次入住，并要求沿用上次的高楼层安静房和固定开票信息。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.58,
+          "segment_type": "老客直订回流",
+          "lifetime_value": 156000,
+          "direct_booking_rate_after_reactivation": 0.62,
+          "dispute_history": "none"
+        },
+        "cost_data": {
+          "cost_per_lead": 16,
+          "reactivation_sms_cost": 3,
+          "points_cost_per_stay": 18,
+          "saved_channel_commission_rate": 0.17,
+          "estimated_gross_margin_rate": 0.59
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "会员短信回流",
+            "客服电话确认房型偏好",
+            "直接预订 4 次入住"
+          ],
+          "last_meaningful_touch": "直接预订 4 次入住"
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "ROI 应明显高于普通 OTA 新客",
+        "长期分应偏高，体现直订资产回流",
+        "奖励信号应指向偏好复用、会员绑定加深和发票信息复核"
+      ],
+      "mustAvoid": [
+        "把老客回流视作普通低价促销成交",
+        "忽略节省的渠道佣金和复住概率"
+      ]
+    },
+    {
+      "id": "abacus_business_hotel_enterprise_guest_service_recovery_010",
+      "label": "failure_case",
+      "scenario_tag": "enterprise_guest_service_recovery_before_renewal",
+      "input": {
+        "lead_assessment_or_campaign_result": "企业协议客昨晚入住后投诉房间异味和噪音，要求经理说明处理结果后再决定下月是否继续把团队房放在本酒店，当前情绪明显不满。",
+        "crm_data": {
+          "historical_close_rate_for_segment": 0.42,
+          "segment_type": "企业高价值客诉修复",
+          "lifetime_value": 310000,
+          "group_renewal_probability_if_recovered": 0.33,
+          "dispute_history": "low"
+        },
+        "cost_data": {
+          "cost_per_lead": 14,
+          "compensation_reserve": 300,
+          "deep_clean_cost": 120,
+          "brand_risk_reserve": 600,
+          "estimated_gross_margin_rate": 0.0
+        },
+        "attribution_context": {
+          "touchpoints": [
+            "在住投诉异味和噪音",
+            "值班经理回访",
+            "企业采购询问后续处理方案"
+          ],
+          "last_meaningful_touch": "企业采购询问后续处理方案",
+          "duplicate_merge_required": false
+        }
+      },
+      "expectedSignals": [
+        "short_term_score",
+        "long_term_score",
+        "roi_estimate",
+        "reward_signal"
+      ],
+      "mustInclude": [
+        "短期分应明显压低并转向止损",
+        "长期价值不能直接归零，但必须建立在修复成功前提上",
+        "奖励信号应指向经理介入、证据留存和修复方案，而不是继续加售"
+      ],
+      "mustAvoid": [
+        "把历史高消费理解成当前高成交意向",
+        "建议用继续让价代替服务修复和风险隔离"
+      ]
+    }
+  ]
+}

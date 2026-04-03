@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "lobster": "strategist",
+    "name": "苏思",
+    "level": "L4",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "str_battle_001：brief发出前未做5字段自检，导致inkwriter按错误方向创作",
+    "A/B实验结论率55%，强行从小样本中得出结论"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "STR-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "针对str_battle_001：写出一条能在每次发brief前自动执行的检查规则",
+      "deliverable": "一条if-then规则写入skills.json：'如果brief中[X字段]为空，则[做什么]，不发出去'",
+      "pass_criteria": [
+        "规则必须能在无人监督的情况下自动执行（不是靠记忆）",
+        "覆盖5个必填字段：目标/受众/钩子方向/平台/禁忌词"
+      ],
+      "fail_action": "重做，必须写成可执行规则而非提醒",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "STR-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "给一个真实的美妆客户写一份完整的内容策略brief，30分钟内交",
+      "deliverable": "一份brief：品牌背景/目标/受众画像/内容方向（3个）/平台/禁忌词/参考账号",
+      "pass_criteria": [
+        "inkwriter收到后不需要问任何补充问题就能开始写",
+        "3个内容方向的钩子类型必须各不相同",
+        "有具体的参考账号（真实存在的，不是'同类账号'这种模糊表述）"
+      ],
+      "fail_action": "inkwriter提问超过2个问题→FAIL，重写",
+      "collab_required": "inkwriter（验证方）"
+    },
+    {
+      "task_id": "STR-T002",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "分析一个真实的B2B行业案例（找一个你能找到数据的真实品牌），提炼其内容策略逻辑",
+      "deliverable": "一条B2B行业策略模板写入skills.json：行业/目标/内容三段式/平台/参考案例",
+      "pass_criteria": [
+        "必须是真实品牌案例，不能是虚构的",
+        "三段式（痛点/案例/信任背书）每段有具体的内容描述，不是空架子",
+        "写入skills.json后verified_count=0（诚实标注：刚从案例提炼，未经实战验证）"
+      ],
+      "fail_action": "重做，案例必须真实可查",
+      "collab_required": null
+    },
+    {
+      "task_id": "STR-T003",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "收到inkwriter的3个版本后，必须在30分钟内给出选择+原因",
+      "deliverable": "一份版本评分表：选哪个/为什么选/其他两个哪里不对/告诉inkwriter如何改进",
+      "pass_criteria": [
+        "评价必须具体到句子级别（'第2段的钩子不够强，因为...'）",
+        "不能用'整体还不错'这类模糊评价",
+        "告诉inkwriter下次如何避免同样的问题"
+      ],
+      "fail_action": "重做",
+      "collab_required": "inkwriter"
+    },
+    {
+      "task_id": "STR-T004",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "设计一个有效的A/B实验：假设/变量/控制组/样本量/判断标准",
+      "deliverable": "一份A/B实验设计表：完整填写7个字段",
+      "pass_criteria": [
+        "样本量必须填具体数字（不是'足够多'）",
+        "判断标准必须是量化的（不是'看哪个更好'）",
+        "控制组和实验组的区别只能有1个变量"
+      ],
+      "fail_action": "重做，多变量的实验设计直接FAIL",
+      "collab_required": null
+    },
+    {
+      "task_id": "STR-T005",
+      "type": "TYPE-D",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "找出1个历史上A/B实验没有得出结论的案例，找出根因",
+      "deliverable": "复盘记录：实验设计的问题在哪/为什么得不出结论/下次怎么设计才能得出结论",
+      "pass_criteria": [
+        "必须是真实发生的案例",
+        "根因必须具体（'样本量不足'必须说清楚到底缺多少）",
+        "给出一条修正规则写入skills.json"
+      ],
+      "fail_action": "重做",
+      "collab_required": "abacus（验证样本量计算）"
+    },
+    {
+      "task_id": "STR-T006",
+      "type": "TYPE-C",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "和abacus做一次策略→数据→策略的完整闭环：拿上周的数据，反推策略哪里需要调整",
+      "deliverable": "3条策略调整行动：每条必须有abacus数据支撑，并说明调整后预期效果",
+      "pass_criteria": [
+        "每条调整行动有具体的数据依据（引用具体指标数字）",
+        "预期效果是量化的（不是'更好'，是'CTR提升X%'）",
+        "调整行动是可以立刻执行的，不是'继续观察'"
+      ],
+      "fail_action": "重做",
+      "collab_required": "abacus"
+    },
+    {
+      "task_id": "STR-T007",
+      "type": "TYPE-A",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "针对一个具体客户（真实存在的行业），设计一个冷启动期（0粉丝）的内容策略",
+      "deliverable": "冷启动策略文档：前30天内容节奏/内容类型分配/爆款狙击计划/避免踩的坑",
+      "pass_criteria": [
+        "前30天有具体的发布频率（如每周X条）",
+        "爆款狙击计划有具体的内容方向（不是'找热点'）",
+        "避免踩的坑至少3条，每条有对应的替代方案"
+      ],
+      "fail_action": "重做，内容节奏必须具体",
+      "collab_required": "radar（热点输入）"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "STR-DRILL-001",
+      "description": "接到一个真实行业的新客户需求，30分钟内出完整策略brief并发给inkwriter开始执行",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "inkwriter收到后不需要补充提问",
+        "brief中所有5个必填字段全部填写",
+        "参考账号真实存在"
+      ],
+      "evaluation": "inkwriter反馈"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L4",
+    "to": "L5",
+    "hard_requirements": [
+      "STR-T001到STR-T007全部PASS",
+      "连续10次发出的brief，inkwriter不需要追加提问",
+      "A/B实验结论率真实达到≥60%（基于实际执行数据，非预估）",
+      "有≥3套策略模板被验证有效（abacus数据支撑）并写入skills.json",
+      "STR-DRILL-001 PASS ≥ 5次"
+    ]
+  }
+}

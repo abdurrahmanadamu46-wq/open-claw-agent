@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "inkwriter",
+  "artifactType": "CopyPack",
+  "playbookId": "inkwriter_starter",
+  "title": "InkWriter Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read_strategy_route_and_brand_tone",
+    "write_core_message_and_hook_options",
+    "draft_script_with_safe_cta",
+    "mark_risk_phrases_and weak claims",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

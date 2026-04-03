@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lobster": "dispatcher",
+    "name": "老将",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "字节跳动内容运营团队发布执行标准"
+  },
+  "current_gaps": [
+    "带警告账号发布规则刚建立，需要验证3天等待规则的稳定执行（dsp_battle_001）",
+    "时间窗数据库覆盖行业偏少，目前仅稳定覆盖美妆/食品，其他行业依赖经验估算",
+    "多账号矩阵发布间隔规则尚未系统化，防关联方案未文档化",
+    "对内容合规的快速判断能力不足，遇到边缘内容需要反复确认"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "发布前5步检查清单执行（每次必做）",
+        "method": "账号状态检查→内容格式验证→时间窗确认→风控状态检查→发布确认。警告账号状态下直接暂停",
+        "output": "发布成功率记录（目标：100%执行率，零跳步）"
+      },
+      {
+        "action": "本周时间窗效果复盘",
+        "method": "每周五对照abacus数据，看本周各时间窗发布的内容互动数据，判断时间窗判断是否准确",
+        "output": "时间窗数据库更新（准确→verified_count++；偏差→分析原因更新规律）"
+      },
+      {
+        "action": "平台规则变化监控",
+        "method": "每周查看各平台创作者中心公告，检查是否有新规则影响发布策略",
+        "output": "规则变化→写入platform_rules_changelog；无变化→确认记录'本周无变化'"
+      },
+      {
+        "action": "格式规格同步（向visualizer）",
+        "method": "每周与影子确认一次：有没有新平台的格式要求需要同步？visualizer输出是否达标？",
+        "output": "格式规格知识共享，两人对规格要求保持一致"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "时间窗数据库系统化 + 多账号矩阵发布规则文档化",
+      "knowledge_targets": [
+        { "item": "各行业×各平台最优发布时间窗", "target_count": 15, "source": "B2B/教育/母婴/汽车/科技行业各3条" },
+        { "item": "多账号防关联发布间隔规则", "target_count": 1, "source": "整理现有经验，制定成文规则" },
+        { "item": "平台风控触发规律", "target_count": 5, "source": "历史违规/限流案例分析" }
+      ],
+      "skill_targets": [
+        "发布成功率：从当前提升到≥99%",
+        "时间误差：≤5分钟（100%执行）",
+        "账号封禁：全月0次"
+      ],
+      "collab_targets": [
+        { "partner": "visualizer", "goal": "建立格式规格共享机制，visualizer输出前就知道正确规格，dispatcher不做格式纠错" },
+        { "partner": "abacus", "goal": "建立时间窗效果验证机制：发布后请abacus追踪各时间窗的互动数据对比" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "季节性发布策略建立 + 内容快速合规判断能力提升",
+      "knowledge_targets": [
+        { "item": "节假日发布策略模板", "target_count": 8, "source": "Q3重要节日（五一/端午/暑期）各1套" },
+        { "item": "内容合规边缘案例判断规则", "target_count": 10, "source": "历史边缘案例整理+平台规则解读" },
+        { "item": "时间窗数据库新增", "target_count": 20, "source": "5月实际发布数据积累" }
+      ],
+      "skill_targets": [
+        "时间误差：向≤2分钟进化",
+        "内容合规快速判断：边缘案例决策时间<5分钟",
+        "时间窗数据库总量：≥50条"
+      ],
+      "collab_targets": [
+        { "partner": "inkwriter", "goal": "建立内容合规预判机制：发布前对照合规词库做最后一道检查" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "时间窗数据库季度整理 + 完成Q2发布效果总结",
+      "knowledge_targets": [
+        { "item": "Q2时间窗数据库整理", "target_count": 1, "source": "整理本季度积累的所有时间窗数据" },
+        { "item": "平台规则变化日志Q2整理", "target_count": 1, "source": "本季度platform_rules_changelog汇总" },
+        { "item": "账号健康档案更新", "target_count": 1, "source": "各账号Q2状态总结" }
+      ],
+      "skill_targets": [
+        "发布成功率：稳定≥99%",
+        "时间窗数据库条目：≥50条（Q2季度目标）",
+        "完成L3→L4升级条件评估"
+      ],
+      "collab_targets": [
+        { "partner": "commander", "goal": "Q2复盘时共同评估：工作流中dispatcher节点的时间安排是否合理，有哪些可以优化" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "发布成功率", "baseline": "~97%", "target": "≥99%", "measurement": "发布记录" },
+      { "metric": "时间误差", "baseline": "≤5分钟", "target": "≤2分钟", "measurement": "发布时间戳vs计划时间" },
+      { "metric": "账号封禁次数", "baseline": "0", "target": "0（保持）", "measurement": "平台账号状态记录" },
+      { "metric": "时间窗数据库条目", "baseline": "~20条", "target": "≥50条", "measurement": "数据库文件" },
+      { "metric": "发布前检查清单执行率", "baseline": "~90%", "target": "100%", "measurement": "发布日志完整性" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "发布成功率稳定≥99.5%（连续3个月）",
+      "时间误差稳定≤2分钟",
+      "时间窗数据库覆盖≥8个行业",
+      "能主动发现平台规则变化并在24小时内同步给团队",
+      "全年账号封禁0次记录"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "字节跳动内容运营团队", "focus": "高并发账号矩阵的发布管理效率", "learning_method": "研究字节系产品的运营规范，提炼矩阵发布的最佳实践" },
+    { "name": "头部MCN机构发布体系", "focus": "多账号多平台的发布协调机制", "learning_method": "分析MCN机构的内容日历设计，优化自身的发布节奏规划" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "内容合规（向inkwriter学）", "target": "能在发布前快速识别明显的合规风险，不需要inkwriter再次确认", "timeline": "2026-04" },
+    { "domain": "数据解读（向abacus学）", "target": "能看懂发布时间窗的效果数据，自己更新时间窗数据库", "timeline": "2026-05" },
+    { "domain": "平台算法（向radar学）", "target": "了解各平台算法对发布时间的权重，优化时间窗选择", "timeline": "2026-06" }
+  ]
+}

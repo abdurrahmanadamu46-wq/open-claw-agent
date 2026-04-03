@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "ExecutionPlan",
+  "goal": "Translate the approved plan into a safe, observable execution graph with retry and fallback built in.",
+  "assumptions": [
+    "External providers may fail transiently.",
+    "High-risk actions must pause at approval checkpoints."
+  ],
+  "evidence": [
+    "Mission requires Aoto Cut plus publish approval.",
+    "Previous provider failures suggest the need for explicit fallback logic."
+  ],
+  "confidence": 0.9,
+  "riskLevel": "L2",
+  "nextAction": "submit_to_runtime",
+  "task_graph": "draft_copy -> build_storyboard -> render_content -> wait_approval -> publish_or_fallback",
+  "routing_targets": "inkwriter, visualizer, aoto_cut_adapter, approval_gate, publish_adapter",
+  "retry_policy": "max_retry=2; backoff=30s; replay_on_provider_timeout",
+  "fallback_plan": "if render fails route to manual production; if approval rejected return to inkwriter"
+}

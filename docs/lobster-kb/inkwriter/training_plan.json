@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "lobster": "inkwriter",
+    "name": "墨小雅",
+    "level": "L4",
+    "training_version": "DEVIL-Q2-v1",
+    "time_unit": "30min=1day",
+    "created_at": "2026-04-01"
+  },
+  "known_failures": [
+    "ink_battle_001：输出3个版本时钩子类型相同，等于给了1个版本",
+    "ink_battle_002：给visualizer的文案没有视觉方向说明，对方只能猜"
+  ],
+  "boot_sequence": [
+    {
+      "task_id": "INK-BOOT-001",
+      "type": "TYPE-D",
+      "real_time_limit": "20min",
+      "sim_time": "不到1天",
+      "mission": "写出一条强制执行规则，防止3版本钩子同质化",
+      "deliverable": "一条写入skills.json的规则：'输出3版前，必须先写下3个不同的钩子类型关键词，类型相同→不许开始写正文'",
+      "pass_criteria": [
+        "规则包含：触发时机/检查动作/不合格时的处置",
+        "能在无人监督下自动执行"
+      ],
+      "fail_action": "重做",
+      "collab_required": null
+    }
+  ],
+  "training_tasks": [
+    {
+      "task_id": "INK-T001",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "收到一份美妆brief，30分钟内输出3个版本标题，钩子类型必须各不相同",
+      "deliverable": "3个标题 + 每个标题旁边注明：钩子类型/目标情绪/目标平台",
+      "pass_criteria": [
+        "3个钩子类型必须不同（如：情绪共鸣/数字冲击/悬念反转，不能重复）",
+        "strategist收到后不需要追问'这是什么风格'",
+        "每个标题≤20字（平台限制）"
+      ],
+      "fail_action": "钩子类型重复→直接FAIL，重写",
+      "collab_required": "strategist（验证方）"
+    },
+    {
+      "task_id": "INK-T002",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "给visualizer发一份完整的视觉brief（基于你写好的文案）",
+      "deliverable": "视觉brief：文案核心卖点（1句话）/推荐封面画面（描述具体画面）/色调方向/禁忌元素/参考封面（真实存在的）",
+      "pass_criteria": [
+        "visualizer收到后不需要询问'这个文案的重点是什么'",
+        "封面画面描述具体到'前景/背景/人物动作/文字位置'",
+        "参考封面必须是真实可查的"
+      ],
+      "fail_action": "visualizer追问超过1个问题→FAIL，重写",
+      "collab_required": "visualizer（验证方）"
+    },
+    {
+      "task_id": "INK-T003",
+      "type": "TYPE-B",
+      "real_time_limit": "1h",
+      "sim_time": "2天",
+      "mission": "找一篇真实的小红书爆款（点赞≥1万），拆解它的文案结构，提炼1条可复用的钩子公式",
+      "deliverable": "一条写入skills.json的钩子公式：公式结构/适用行业/示例/为什么有效（心理机制）",
+      "pass_criteria": [
+        "必须是真实存在的帖子（能提供链接或截图描述）",
+        "公式必须是可以直接套用的（如'[数字]+[身份词]+[动词]+[结果]'）",
+        "心理机制说清楚（不是'这样写更好'，是'用户为什么会点击'）"
+      ],
+      "fail_action": "重做，公式不能只有结构没有解释",
+      "collab_required": null
+    },
+    {
+      "task_id": "INK-T004",
+      "type": "TYPE-A",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "检查自己的合规词库：找出1个平台最近30天的违规通报，更新黑名单",
+      "deliverable": "更新后的合规词库：新增≥3条黑名单词 + 每条对应的替换方案",
+      "pass_criteria": [
+        "违规通报必须是真实的（哪个平台/哪次通报）",
+        "替换方案是真实可用的（不是'用其他说法'）",
+        "写清楚每条词的风险类型（违规/限流/封号）"
+      ],
+      "fail_action": "重做，替换方案必须具体",
+      "collab_required": "dispatcher（平台规则来源）"
+    },
+    {
+      "task_id": "INK-T005",
+      "type": "TYPE-A",
+      "real_time_limit": "45min",
+      "sim_time": "1.5天",
+      "mission": "写一篇科技行业的抖音爆款文案（之前的薄弱行业），完整版含标题+正文+行动引导",
+      "deliverable": "完整文案：标题（≤20字）/正文（300-500字）/行动引导（1句话）",
+      "pass_criteria": [
+        "标题包含好奇心钩子（不能用情感共鸣类型，必须用悬念/反转/数字冲击）",
+        "正文第一句话必须让人想看下去（strategist评分≥4/5）",
+        "行动引导清晰且自然（不能是'赶紧关注'这种硬插广告）"
+      ],
+      "fail_action": "strategist评分<4→FAIL，重写",
+      "collab_required": "strategist（评分）"
+    },
+    {
+      "task_id": "INK-T006",
+      "type": "TYPE-C",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "mission": "向echoer请教：本周评论区里用户说了什么让你觉得文案方向需要调整？",
+      "deliverable": "1条基于真实用户评论的文案改进记录：用户原话/用户真实想要的/原文案哪里没打中/改进方向",
+      "pass_criteria": [
+        "用户原话必须是真实评论，不能是编造的",
+        "改进方向具体到'下次同类文案应该在第X段加入什么'"
+      ],
+      "fail_action": "重做",
+      "collab_required": "echoer"
+    }
+  ],
+  "combat_drills": [
+    {
+      "drill_id": "INK-DRILL-001",
+      "description": "从收到brief到输出3版标题+正文+视觉brief，全程30分钟",
+      "real_time_limit": "30min",
+      "sim_time": "1天",
+      "pass_criteria": [
+        "3版钩子类型各不相同",
+        "视觉brief完整（5个字段全填）",
+        "strategist选定其中1个版本不需要大改直接用"
+      ],
+      "evaluation": "strategist + visualizer双方反馈"
+    }
+  ],
+  "level_up_gate": {
+    "from": "L4",
+    "to": "L5",
+    "hard_requirements": [
+      "INK-T001到INK-T006全部PASS",
+      "连续10次输出3版本时，钩子类型零重复",
+      "全季度零合规违规（每违规一次，升级时钟重置）",
+      "INK-DRILL-001连续PASS ≥ 5次",
+      "有≥3条自己提炼的钩子公式被strategist写入正式模板库"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "session_id": "a2bb172c068f0b0c",
+  "peer_id": "inkwriter",
+  "lobster_id": "inkwriter",
+  "tenant_id": "tenant_main",
+  "channel": "runner",
+  "mode": "shared",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write copy.",
+      "timestamp": "2026-03-31T13:45:55.783629+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "## 标题\n\n成交型文案内容...",
+      "timestamp": "2026-03-31T13:45:55.783629+00:00"
+    },
+    {
+      "role": "user",
+      "content": "Write copy.",
+      "timestamp": "2026-03-31T14:51:16.564705+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "## 标题\n\n成交型文案内容...",
+      "timestamp": "2026-03-31T14:51:16.564705+00:00"
+    },
+    {
+      "role": "user",
+      "content": "Write copy.",
+      "timestamp": "2026-03-31T15:12:29.395030+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "## 标题\n\n成交型文案内容...",
+      "timestamp": "2026-03-31T15:12:29.395030+00:00"
+    },
+    {
+      "role": "user",
+      "content": "## Relevant History\n- [user] Write copy.\n- [user] Write copy.\n- [user] Write copy.\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n\n## Relevant Skills\n- [skill:inkwriter_dm_script] 生成多轮私信跟进与转化话术。\n私信脚本不要像群发模板，要保留用户上下文。; 连续追问和连续 CTA 容易触发反感或平台风控。\n- [skill:inkwriter_copy_generate] 生成适合当前业务目标的成交导向文案。\n成交文案不要过度承诺效果，尤其是功效类行业。; 标题与正文的承诺要一致，避免首屏诱导。\n- [skill:inkwriter_hashtag_gen] 为每条内容生成最适合的 hashtag 组合。\n标签不要只堆热门词，要混入场景词和长尾词。; 平台标签数量要控制，过多会像垃圾信息。\n- [skill:inkwriter_banned_word_check] 检查敏感词、违规承诺和平台禁用表达。\n违禁词检查不是一次性动作，改稿后要重新校验。; 绝对化表达和医疗化表达要重点盯防。\n- [skill:inkwriter_multiplatform_adapt] 将同一核心信息改写为不同平台风格。\n多平台改写不能只换口语，要同步换结构和 CTA。; 微信、抖音、小红书的敏感词边界不同，不能一稿通吃。\n\n---\n\nWrite copy.",
+      "timestamp": "2026-04-02T16:34:44.921408+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "## 标题\n\n成交型文案内容...",
+      "timestamp": "2026-04-02T16:34:44.921408+00:00"
+    },
+    {
+      "role": "user",
+      "content": "## Relevant History\n- [user] Write copy.\n- [user] Write copy.\n- [user] Write copy.\n- [user] ## Relevant History\n- [user] Write copy.\n- [user] Write copy.\n- [user] Write copy.\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n\n## Relevant Skills\n- [skill:inkwriter_dm_script] 生成多轮私信跟进与转化话术。\n私信脚本不要像群发模板，要保留用户上下文。; 连续追问和连续 CTA 容易触发反感或平台风控。\n- [skill\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n- [assistant] ## 标题\n\n成交型文案内容...\n\n## Relevant Skills\n- [skill:inkwriter_dm_script] 生成多轮私信跟进与转化话术。\n私信脚本不要像群发模板，要保留用户上下文。; 连续追问和连续 CTA 容易触发反感或平台风控。\n- [skill:inkwriter_copy_generate] 生成适合当前业务目标的成交导向文案。\n成交文案不要过度承诺效果，尤其是功效类行业。; 标题与正文的承诺要一致，避免首屏诱导。\n- [skill:inkwriter_hashtag_gen] 为每条内容生成最适合的 hashtag 组合。\n标签不要只堆热门词，要混入场景词和长尾词。; 平台标签数量要控制，过多会像垃圾信息。\n- [skill:inkwriter_banned_word_check] 检查敏感词、违规承诺和平台禁用表达。\n违禁词检查不是一次性动作，改稿后要重新校验。; 绝对化表达和医疗化表达要重点盯防。\n- [skill:inkwriter_multiplatform_adapt] 将同一核心信息改写为不同平台风格。\n多平台改写不能只换口语，要同步换结构和 CTA。; 微信、抖音、小红书的敏感词边界不同，不能一稿通吃。\n\n---\n\nWrite copy.",
+      "timestamp": "2026-04-02T16:41:07.628963+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "## 标题\n\n成交型文案内容...",
+      "timestamp": "2026-04-02T16:41:07.628963+00:00"
+    }
+  ],
+  "created_at": "2026-03-31T13:43:40.870535+00:00",
+  "last_active_at": "2026-04-02T16:41:07.628963+00:00",
+  "message_count": 10,
+  "metadata": {}
+}

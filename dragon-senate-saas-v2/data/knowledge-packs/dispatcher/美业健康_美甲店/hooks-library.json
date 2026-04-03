@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美甲店",
+  "lobster_id": "dispatcher",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "first_time_basic_style_inquiry",
+      "title": "首次到店基础款询单触发轻量优先调度",
+      "description": "当来单中出现第一次做甲、基础纯色、通勤短甲和工作日空档时，Dispatcher 应优先匹配轻流程甲位，而不是塞进复杂款队列。",
+      "examples": [
+        "客户第一次做，想约明天午休纯色短甲。",
+        "工作日下班后想做基础法式。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "removal_and_redo_inquiry",
+      "title": "卸甲加重做询单触发延长时长链路",
+      "description": "当来单明确说手上有旧甲、要卸甲重做、要延长或加固时，Dispatcher 要立即扩展时长和技师匹配，不可按普通预约处理。",
+      "examples": [
+        "客户说手上还有旧甲，周末想重做。",
+        "客户想做延长甲并且带卸甲。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "bridal_or_group_booking",
+      "title": "婚礼档和多人同做触发优先调度",
+      "description": "婚礼甲、伴娘甲、闺蜜同行和多人同做会显著增加档期压力。Dispatcher 应优先创建时段锁定、技师分配和备选方案。",
+      "examples": [
+        "新娘和伴娘想同一天来做。",
+        "两位朋友节日前想一起做节日款。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "lunch_break_fast_slot",
+      "title": "午休短时段询单触发快流程调度",
+      "description": "当用户明确只有午休 45 到 60 分钟窗口时，Dispatcher 应优先匹配短流程基础款，不应给出复杂款或需卸甲重做的承接。",
+      "examples": [
+        "客户只有 12:15 到 13:05。",
+        "白领想约一单快做通勤款。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "peak_slot_hold_confirmation",
+      "title": "热门技师和热门时段询单触发保留确认链路",
+      "description": "当用户点名老师或热门时段时，Dispatcher 要创建限时保留、提醒和释放机制，避免无效占位。",
+      "examples": [
+        "客户指定周六 18:30 的热门老师。",
+        "客户想抢节前最后一个晚间档。"
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "post_visit_rebook_task",
+      "title": "完成后触发复做和返修观察任务",
+      "description": "当系统收到项目完成信号时，Dispatcher 应自动创建返修观察、偏好回写和 followup 复做提醒，而不是让链路断在付款之后。",
+      "examples": [
+        "节日贴饰款完成后创建返修观察任务。",
+        "通勤短甲完成后创建两到三周复做提醒。"
+      ],
+      "priority": "high"
+    }
+  ]
+}

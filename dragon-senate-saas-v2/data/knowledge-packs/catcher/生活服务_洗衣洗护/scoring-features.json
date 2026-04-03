@@ -1,0 +1,8 @@
+{"industry":"生活服务_洗衣洗护","lobster_id":"catcher","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"intent_explicitness","title":"预约动作显性度","description":"评估线索是否明确表达想送、想来、这周末能不能安排、有没有取送时段等动作。","examples":["高分：周六能不能帮我安排取衣。","低分：最近想洗衣服。"],"priority":"high"},
+  {"id":"scene_specificity","title":"场景方向清晰度","description":"高分线索会明确提到换季送洗、急洗、奢护和家庭整单等具体方向。","examples":["高分：最近想做急洗。","低分：想洗点衣服。"],"priority":"high"},
+  {"id":"scope_clarity","title":"件数材质清晰度","description":"评估线索是否给出件数、材质和重点品类。","examples":["高分：两件羽绒一件羊毛。","低分：几件衣服。"],"priority":"high"},
+  {"id":"timing_urgency","title":"时间窗口紧迫度","description":"换季、婚礼、返校和出差节点越明确，分值越高。","examples":["高分：后天前一定要拿到。","低分：有空再洗。"],"priority":"medium"},
+  {"id":"trust_readiness","title":"信任推进 readiness","description":"看用户是否愿意继续补充件数、材质、门店和时间，而不是停留在泛咨询。","examples":["高分：可以，我把件数和时间发你。","低分：先看看再说。"],"priority":"medium"},
+  {"id":"risk_boundary","title":"风险边界稳定度","description":"涉及绝不缩水、绝不串色和超范围次日达的线索要扣分，避免把高风险话题误算成高价值。","examples":["高风险：保证不缩水、明天一定送回。","低风险：想找适合我衣物情况、门店能说明清楚的路线。"],"priority":"medium"}
+]}

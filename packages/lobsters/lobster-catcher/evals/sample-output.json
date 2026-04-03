@@ -1,0 +1,19 @@
+﻿{
+  "artifactType": "LeadAssessment",
+  "goal": "Determine whether the incoming lead should be escalated to FollowUp or contained safely.",
+  "assumptions": [
+    "Booking intent plus timeline question usually signals actionable demand.",
+    "Guarantee-seeking language in regulated categories raises risk."
+  ],
+  "evidence": [
+    "Lead asks for this-week availability",
+    "Lead asks for price and booking details"
+  ],
+  "confidence": 0.9,
+  "riskLevel": "L2",
+  "nextAction": "handoff_to_abacus_and_followup",
+  "intent_score": "0.91",
+  "fit_score": "0.83",
+  "risk_score": "0.28",
+  "lead_tier": "A"
+}

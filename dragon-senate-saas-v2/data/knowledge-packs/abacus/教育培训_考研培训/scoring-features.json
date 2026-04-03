@@ -1,0 +1,116 @@
+﻿{
+  "industry": "教育培训_考研培训",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "concern_clarity",
+      "feature_name": "问题清晰度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：明确提到初试、复试、调剂、二战和择校等具体问题；3 分：问题大致清楚但仍笼统；1 分：只说想考研。",
+      "positive_signals": [
+        "问题具体",
+        "描述当前状态",
+        "与课程方向匹配"
+      ],
+      "negative_signals": [
+        "只说想上岸",
+        "没有问题范围",
+        "诉求过于泛化"
+      ],
+      "value_guidance": "具体问题越清楚，短期价值越容易判断。"
+    },
+    {
+      "id": "booking_time_strength",
+      "feature_name": "试听时间强度",
+      "metric": "short_term_score",
+      "weight": 0.16,
+      "scoring_rule": "5 分：有明确日期、时段或截止时间；3 分：只说周末或最近；1 分：完全没有时间信息。",
+      "positive_signals": [
+        "具体日期",
+        "具体时段",
+        "考试季或复试调剂倒计时"
+      ],
+      "negative_signals": [
+        "有空再来",
+        "完全无时间线索",
+        "时间模糊"
+      ],
+      "value_guidance": "时间越具体，越接近真实试听动作。"
+    },
+    {
+      "id": "trial_intent_strength",
+      "feature_name": "试听意愿强度",
+      "metric": "short_term_score",
+      "weight": 0.15,
+      "scoring_rule": "5 分：明确愿意先试听或先判断适合性；3 分：愿意进一步了解但未明确预约；1 分：只围观内容没有下一步动作。",
+      "positive_signals": [
+        "愿意先试听",
+        "愿意做适合性判断",
+        "继续追问流程"
+      ],
+      "negative_signals": [
+        "只看不问",
+        "完全无下一步动作",
+        "只停留在价格比较"
+      ],
+      "value_guidance": "试听意愿越明确，短期价值越可判断。"
+    },
+    {
+      "id": "first_visit_trust_status",
+      "feature_name": "首次信任门槛状态",
+      "metric": "long_term_score",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首次用户已愿意预约或继续确认细节；3 分：仍在观望但愿意沟通；1 分：只表达担心且无下一步动作。",
+      "positive_signals": [
+        "愿意继续确认流程",
+        "关心真实环境和边界",
+        "继续追问预约可能性"
+      ],
+      "negative_signals": [
+        "只表达犹豫",
+        "拒绝任何下一步",
+        "仅停留在围观"
+      ],
+      "value_guidance": "对考研培训来说，首次信任门槛是长期价值的重要来源。"
+    },
+    {
+      "id": "relationship_warmth",
+      "feature_name": "关系温度",
+      "metric": "long_term_score",
+      "weight": 0.15,
+      "scoring_rule": "5 分：老学员回流、朋友推荐或明确历史到店；3 分：有弱关系信号；1 分：完全陌生冷线索。",
+      "positive_signals": [
+        "上次来过",
+        "朋友推荐",
+        "历史记录可追踪"
+      ],
+      "negative_signals": [
+        "无关系信号",
+        "无历史上下文",
+        "纯公域冷启动"
+      ],
+      "value_guidance": "关系温度越高，长期 ROI 通常越好。"
+    },
+    {
+      "id": "unit_economics_health",
+      "feature_name": "单笔经济性健康度",
+      "metric": "roi_estimate",
+      "weight": 0.16,
+      "scoring_rule": "5 分：试听资源、教室、老师与试听后跟进计入后仍有健康利润；3 分：利润较薄但可接受；1 分：高压成交或黄金档占用导致收益失真。",
+      "positive_signals": [
+        "获客成本可控",
+        "试听资源匹配合理",
+        "退费风险低"
+      ],
+      "negative_signals": [
+        "高压成交风险",
+        "黄金档被低确认度占用",
+        "退费或投诉概率高"
+      ],
+      "value_guidance": "高客单不天然等于高 ROI，Abacus 要把试听和售后成本算细。"
+    }
+  ]
+}

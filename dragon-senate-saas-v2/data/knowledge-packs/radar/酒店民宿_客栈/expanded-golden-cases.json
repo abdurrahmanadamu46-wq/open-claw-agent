@@ -1,0 +1,199 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_inn_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测客栈在 OTA 与本地生活平台上的标签、接驳与场景承诺规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "ota_plus_local_life",
+        "competitor_watchlist": [
+          "古镇临河客栈A",
+          "院落客栈B"
+        ],
+        "raw_signals": [
+          "携程商家后台公告要求涉及“古镇内步行”“临河观景”“免费接站”“包院”“免费早餐”“晚安甜汤”等标签和权益的页面信息必须可验证，违规可能降权处理",
+          "抖音本地生活更新住宿团购规则，强调旅拍、汉服、围炉煮茶和附加收费需前置展示，不得在下单后临时补充限制条件",
+          "两家竞品同步把标题中的“临河正景 + 免费接站 + 包院不打扰”改成“部分房型临河可见景”“接站需预约”“包院范围以下单页为准”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案调整",
+        "需要指出对景观承诺、接站权益和收费前置展示边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改标题当成唯一核心信号",
+        "忽略官方商家公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_inn_holiday_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现古镇景区客栈在节假日与夜游窗口中的机会信号",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "destination_market_plus_search",
+        "competitor_watchlist": [
+          "古城门客栈C",
+          "山景客栈D"
+        ],
+        "raw_signals": [
+          "本地景区公众号和游客中心连续发布清明夜游、灯会巡游和古镇延时开放排期，同时公布节假日外围停车和摆渡换乘安排",
+          "地图问答、OTA 评论和私信中连续出现“车停哪里”“夜游结束后还能入住吗”“带老人孩子走台阶方便吗”“有早餐吗”“能不能包院”“可不可以带宠物”等问题",
+          "同片区三家竞品同步上新“夜游双人房”“接站 + 早餐套餐”“包院围炉夜宵房”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城景区排期与到店摩擦类咨询应被识别为机会信号",
+        "竞品套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的机会提醒"
+      ],
+      "mustAvoid": [
+        "只描述竞品上新而忽略需求窗口",
+        "把跨城网红古镇热度当成主要判断依据"
+      ]
+    },
+    {
+      "id": "radar_inn_review_cluster_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测古镇客栈在节前窗口中的履约风险变化",
+        "time_window": "last_72_hours",
+        "platform_or_market_context": "ota_plus_map_reviews",
+        "competitor_watchlist": [
+          "临河客栈E"
+        ],
+        "raw_signals": [
+          "近 72 小时地图评论和 OTA 评论连续提到“页面写临河正景，实际只看到墙角”“木楼隔音差”“夜里被酒吧和街巷吵醒”",
+          "多条公开评价提到“热水忽冷忽热”“停车后还要换乘摆渡，店主未提前说明”“拎行李走石板路和楼梯很吃力”",
+          "没有新的平台规则变化，也没有发现同片区竞品同步出现类似承诺调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "多平台差评聚类应被识别为高价值风险信号",
+        "需要指出这是履约交付风险而非平台规则变化",
+        "关注级别应至少为中高"
+      ],
+      "mustAvoid": [
+        "因为没有官方公告就忽略重复客诉",
+        "把零散差评和结构性聚类混为一谈"
+      ]
+    },
+    {
+      "id": "radar_inn_policy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测客栈在平台流量分配与标签扶持上的变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "ota_platform",
+        "competitor_watchlist": [
+          "院落客栈F"
+        ],
+        "raw_signals": [
+          "商家群截图称“下周起没有临河和汉服旅拍标签的客栈会被平台降权，且包院房源会拿到更多流量扶持”，但截图没有公告来源",
+          "未发现携程、美团民宿或飞猪商家后台的正式通知，服务商口径也互相矛盾",
+          "核心竞品的房型标签、接站说明和退改政策暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源传闻应被降级处理",
+        "缺少官方通知和竞品动作互证会显著降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断平台算法已经确认变更",
+        "把群聊截图表述成已落地政策"
+      ]
+    },
+    {
+      "id": "radar_inn_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别古镇客栈的内容热度与真实经营机会差异",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "古城口客栈G"
+        ],
+        "raw_signals": [
+          "外地雪山和沙漠客栈短视频爆火，内容大量强调出片、星空、旅拍和情侣打卡",
+          "本地搜索、评论和问答则集中在“车停哪里”“从停车场到客栈要走多久”“带老人孩子上台阶方便吗”“早上有没有早餐”“夜游结束后能否晚到入住”“能不能带宠物”",
+          "本地竞品开始强化“接站服务”“院落围炉”“早班车前打包早餐”和“安静巷内房型”"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地到店摩擦和入住条件需求应高于跨城审美爆款热度",
+        "需要区分内容热度与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向网红打卡路线",
+        "忽略同城搜索和竞品动作形成的本地互证"
+      ]
+    },
+    {
+      "id": "radar_inn_false_sellout_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描古镇客栈是否出现节庆带来的爆满与涨价行情",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料“古镇灯会一开，所有客栈全部满房、价格翻倍”，只给出一段夜间人流和烟花视频，没有日期和门店定位",
+          "OTA 房态日历和地图评论量近几天基本平稳，没有出现明显售罄、涨价或入住讨论激增",
+          "没有发现景区官方加场、交通异常或停车限流升级等外部事件与之互证"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有房态、评论和外部事件互证时不能判定为市场已变化"
+      ],
+      "mustAvoid": [
+        "把自媒体爆料描述成已确认的需求激增",
+        "用单条模糊视频替代可验证的市场证据"
+      ]
+    }
+  ]
+}

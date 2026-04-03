@@ -1,0 +1,178 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u706b\u9505\u5e97",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_booking_without_details",
+      "scene": "public_comment",
+      "intent": "table_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you lock this in.",
+      "bridge": "For hotpot, the branch, arrival time, and party size matter more than a quick yes or no.",
+      "next_step": "Ask for branch, time, and number of guests.",
+      "handoff_suggestion": "Route to Catcher if the user replies with reservation facts."
+    },
+    {
+      "id": "hook_booking_with_details",
+      "scene": "comment_or_dm",
+      "intent": "active_reservation",
+      "emotion": "practical",
+      "hook": "That is already enough to start narrowing the next step.",
+      "bridge": "Once the time and headcount are clear, the next question is usually seating type and whether the group needs a milder broth.",
+      "next_step": "Ask whether they need a private room and what spice level fits the table.",
+      "handoff_suggestion": "High-intent dining lead."
+    },
+    {
+      "id": "hook_family_mild_broth",
+      "scene": "public_comment",
+      "intent": "broth_recommendation",
+      "emotion": "careful",
+      "hook": "That is worth choosing a little carefully for a mixed table.",
+      "bridge": "At hotpot, spice tolerance and whether there are children or elders can change the safest broth direction fast.",
+      "next_step": "Ask who is dining and whether they lean spicy, tomato, mushroom, or a milder yin-yang setup.",
+      "handoff_suggestion": "Menu-guidance opportunity."
+    },
+    {
+      "id": "hook_yin_yang_pot_mixed_group",
+      "scene": "comment_or_dm",
+      "intent": "pot_choice",
+      "emotion": "practical",
+      "hook": "A yin-yang pot usually helps when one table wants two very different heat levels.",
+      "bridge": "The better answer depends on how split the group is and whether the branch supports the exact pot setup you want.",
+      "next_step": "Ask for headcount, spice split, and whether there are children or elders at the table.",
+      "handoff_suggestion": "Good sign of active meal planning."
+    },
+    {
+      "id": "hook_private_room_birthday",
+      "scene": "comment_or_dm",
+      "intent": "private_room_booking",
+      "emotion": "hosting_focused",
+      "hook": "If the meal matters, it makes sense to plan the seating early.",
+      "bridge": "Private room fit usually depends on date, headcount, budget, and whether this is a birthday, family dinner, or team meal.",
+      "next_step": "Ask for dining date, guest count, budget, and whether an invoice or private room matters.",
+      "handoff_suggestion": "Group dining lead for Catcher."
+    },
+    {
+      "id": "hook_company_team_dinner",
+      "scene": "comment_or_dm",
+      "intent": "business_dinner",
+      "emotion": "businesslike",
+      "hook": "Team dinners usually need both the table setup and the service details to line up.",
+      "bridge": "Headcount, invoice needs, private room preference, and arrival time shape the workable plan.",
+      "next_step": "Ask for date, headcount, invoice requirement, and private room need.",
+      "handoff_suggestion": "Route as a high-value banquet lead."
+    },
+    {
+      "id": "hook_wait_time_tonight",
+      "scene": "public_comment",
+      "intent": "queue_check",
+      "emotion": "urgent",
+      "hook": "I get why you do not want to gamble on a long wait.",
+      "bridge": "Queue time can swing a lot by branch, arrival time, and how many people are coming.",
+      "next_step": "Ask for branch, time, and party size, then guide toward reservation or a safer timing window.",
+      "handoff_suggestion": "Send to a human or booking flow quickly."
+    },
+    {
+      "id": "hook_first_time_what_to_order",
+      "scene": "public_comment",
+      "intent": "what_to_order",
+      "emotion": "curious",
+      "hook": "Happy to point you in a practical direction instead of letting you over-order.",
+      "bridge": "For hotpot, the better picks depend on broth style, spice tolerance, and whether the table leans beef, lamb, seafood, or lighter items.",
+      "next_step": "Ask about broth preference and the party mix.",
+      "handoff_suggestion": "Good engagement signal if the user answers with preferences."
+    },
+    {
+      "id": "hook_budget_sensitive_group",
+      "scene": "comment_or_dm",
+      "intent": "budget_planning",
+      "emotion": "price_focused",
+      "hook": "A tighter budget can still work if we trim the right part of the order.",
+      "bridge": "At hotpot, broth choice, meat mix, and whether this is everyday eating or hosting all change the range.",
+      "next_step": "Ask for headcount and whether fullness or signature dishes matter more.",
+      "handoff_suggestion": "Workable lead if the user engages on trade-offs."
+    },
+    {
+      "id": "hook_dietary_restriction",
+      "scene": "comment_or_dm",
+      "intent": "dietary_check",
+      "emotion": "careful",
+      "hook": "That is exactly the kind of thing worth checking carefully before you order.",
+      "bridge": "Broth, dipping sauce, and kitchen handling can all matter, so it is better to confirm the exact restriction than guess.",
+      "next_step": "Ask for the restriction, the ingredient concern, and the branch.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_allergy_high_risk",
+      "scene": "comment_or_dm",
+      "intent": "allergy_safety",
+      "emotion": "serious",
+      "hook": "I am glad you asked before coming in.",
+      "bridge": "Allergy questions should be treated as safety issues, not casual flavor preferences.",
+      "next_step": "Ask for the exact allergen and branch, then escalate for confirmation.",
+      "handoff_suggestion": "Human or branch confirmation required."
+    },
+    {
+      "id": "hook_skeptic_soup_base",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With hotpot, people usually care about different proof points like soup depth, spice aroma, meat quality, or whether the dipping setup feels thoughtful.",
+      "next_step": "Invite the user to name the exact flavor or quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_coupon_groupbuy",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you make the trip.",
+      "bridge": "Group-buy, member, and holiday rules often change by branch, time slot, and minimum spend.",
+      "next_step": "Ask for the branch and the planned dining time.",
+      "handoff_suggestion": "Useful bridge into booking if the user confirms details."
+    },
+    {
+      "id": "hook_freshness_origin_check",
+      "scene": "public_comment",
+      "intent": "ingredient_quality",
+      "emotion": "cautious",
+      "hook": "That is worth checking carefully, especially with hotpot ingredients.",
+      "bridge": "Freshness and sourcing questions are easier to answer when the ingredient, branch, and timing are clear.",
+      "next_step": "Ask which ingredient they care about and which branch they are asking about.",
+      "handoff_suggestion": "Route toward branch confirmation if the question stays specific."
+    },
+    {
+      "id": "hook_takeout_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a hotpot delivery issue is usually the order time, branch, and a clear photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales."
+    },
+    {
+      "id": "hook_holiday_or_late_night_hours",
+      "scene": "public_comment",
+      "intent": "hours_check",
+      "emotion": "practical",
+      "hook": "Good call to check the timing before you head over.",
+      "bridge": "Holiday and late-night hours can differ a lot by branch, and queue pressure shifts with the time slot.",
+      "next_step": "Ask which branch and what time they plan to arrive.",
+      "handoff_suggestion": "Booking-ready if the user already has a fixed time."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The safest first step is still platform DM so reservation or complaint details do not get scattered in public.",
+      "next_step": "Ask for the branch plus booking or order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

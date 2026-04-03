@@ -1,0 +1,268 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_inn_case_001",
+      "label": "happy_path",
+      "scenario": "Old-town courtyard inn with a real lane-to-gate identity chain, host welcome, one quiet king room, lantern courtyard footage, and next-morning breakfast closure.",
+      "input": {
+        "copy_pack": "Short-form inn script centered on leaving the busy old-town street, entering a real lantern courtyard, settling into one quiet king room, and closing the stay with breakfast and a lane walk the next morning.",
+        "brand_assets": [
+          "Old-town lane turn and inn sign footage",
+          "Gate opening and courtyard wide shot",
+          "Host welcome, key handoff, and tea setup",
+          "Hero king room wide shot",
+          "Window seat, tea table, luggage area, and bathroom footage",
+          "Night courtyard lantern and path-back-to-room footage",
+          "Simple breakfast prep and courtyard breakfast table",
+          "Departure walk back into the lane"
+        ],
+        "reference_styles": [
+          "restrained documentary inn stay",
+          "proof-first old-town slow stay"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 4,
+          "host_on_camera_allowed": true,
+          "breakfast_access": true,
+          "night_courtyard_access": true,
+          "guest_closeup_allowed": false,
+          "drone_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A lane-to-gate-to-courtyard proof chain in the opening run",
+        "Real host or key-handoff evidence tied to arrival rather than generic warmth",
+        "One consistent king room with bed, window, seating, luggage, and bathroom proof",
+        "Night courtyard footage that loops back to the actual room",
+        "Breakfast or morning departure that completes the one-night stay arc"
+      ],
+      "mustAvoid": [
+        "Generic old-town atmosphere with no inn identity",
+        "Actor-style host warmth disconnected from check-in proof",
+        "Shared courtyard footage framed as if it belongs privately to one room"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Turn the script into a proof-first one-night inn story from old-town lane arrival to courtyard entry to room settle-in to breakfast departure.",
+        "assumptions": [
+          "The host can appear briefly for greeting or key handoff.",
+          "The courtyard, hero room, and breakfast window are all available within the shoot schedule."
+        ],
+        "evidence": [
+          "Assets cover identity, host touchpoint, room truth, night courtyard use, and morning closure.",
+          "The inn promise is place rhythm and believable warmth rather than luxury spectacle."
+        ],
+        "confidence": 0.91,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the old-town gate opening into the lantern courtyard as the hero image, with a small king-room inset and a headline about finally staying inside the town instead of only walking through it.",
+        "shot_list": "1) Start from a real lane anchor and move into the inn sign and gate so the property identity is unquestionable. 2) Enter the courtyard and show a host greeting, key handoff, or welcome tea to ground human warmth. 3) Move into one consistent king room and prove bed, window seat, luggage area, and bathroom as a real stayable sequence. 4) Use the lantern courtyard at night only after the property has been established, then show the walk back to the room. 5) Close the arc with breakfast setup and a final departure walk back into the lane.",
+        "asset_dependencies": "Old-town route anchor, inn sign, gate, courtyard, permissioned host action, hero king room, bathroom, night courtyard access, breakfast timing, and guest-privacy-safe framing. Confirm low-light shooting limits and whether the courtyard is shared at breakfast time.",
+        "execution_feasibility_score": "0.90"
+      }
+    },
+    {
+      "id": "visualizer_inn_case_002",
+      "label": "happy_path",
+      "scenario": "Hillside inn with parking transfer, stone-path arrival, shared tea terrace, calm room proof, and a mountain-view morning that is visually tied back to the property.",
+      "input": {
+        "copy_pack": "Inn script for a short reset trip that emphasizes parking guidance, the final walk into a hillside property, a room that feels calm after arrival, terrace tea at dusk, and waking up to a mountain view without overselling hotel-like convenience.",
+        "brand_assets": [
+          "Parking lot sign and last-turn road footage",
+          "Luggage walk on the stone path to the inn gate",
+          "Inn facade, courtyard edge, and room-door footage",
+          "Shared tea terrace wide shot and dusk seating setup",
+          "Hero queen room wide shot",
+          "Bathroom, window, and luggage-area footage",
+          "Morning mountain-view terrace footage",
+          "Simple breakfast or morning tea footage"
+        ],
+        "reference_styles": [
+          "credible mountain reset stay",
+          "arrival-truth hospitality documentary"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 4,
+          "parking_access": true,
+          "stairs_present": true,
+          "terrace_access": true,
+          "morning_view_access": true,
+          "host_on_camera_allowed": false,
+          "guest_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A truthful parking-to-path-to-gate arrival sequence",
+        "Honest treatment of stairs or slope instead of pretending direct car access",
+        "Clear labeling of the tea terrace as a shared or common space if it is not room-private",
+        "One real room type plus a morning-view payoff tied back to the inn"
+      ],
+      "mustAvoid": [
+        "Drone-only mountain beauty replacing arrival proof",
+        "Implying the car reaches the room door",
+        "Selling the terrace as a private room amenity when it is actually shared"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Build a reset-stay storyboard that proves the final walk in, the calm room, the shared terrace pause, and the next-morning mountain payoff without hiding access reality.",
+        "assumptions": [
+          "The parking edge, path, terrace, and hero room are available in a single shoot window.",
+          "The terrace can be shown as a shared guest space but not as exclusive room inventory."
+        ],
+        "evidence": [
+          "The asset set can support arrival truth, room truth, and a measured morning closure.",
+          "The creative angle is believable reset value, not frictionless resort luxury."
+        ],
+        "confidence": 0.87,
+        "riskLevel": "L1",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Pair the hillside gate or stone path with the queen-room window and a small terrace inset, and write the cover around slowing down once you are willing to make the last few steps in.",
+        "shot_list": "1) Start at the parking sign or final road turn and walk the viewer into the stone path and inn gate. 2) Show the room-door arrival and settle into the queen room with bed, window, luggage, and bathroom proof. 3) Use the terrace at dusk as a shared pause space only after its relationship to the inn is clear. 4) Return to the room or gate at the end of the evening. 5) Finish with the terrace or window view in the morning plus simple breakfast or tea to validate the reset arc.",
+        "asset_dependencies": "Parking-area access, stone-path footage, gate access, hero queen room, bathroom, terrace-use permission, morning weather window, and honest labeling of shared-space boundaries. Confirm whether heavy luggage assistance can actually be shown or only implied through guidance.",
+        "execution_feasibility_score": "0.86"
+      }
+    },
+    {
+      "id": "visualizer_inn_case_003",
+      "label": "edge_case",
+      "scenario": "Old-house inn with limited assets: one daytime room, one daytime courtyard, lane entrance, and staircase footage, but no host on camera, no breakfast access, and no night shooting rights.",
+      "input": {
+        "copy_pack": "Inn script originally wanted a full old-town slow-stay story with courtyard tea, warm host touch, and next-morning breakfast, but the current shoot only has one attic room, a daytime courtyard, lane entrance footage, and no usable night or breakfast assets.",
+        "brand_assets": [
+          "Lane entrance and small sign footage",
+          "Gate opening footage",
+          "Daytime courtyard wide shot",
+          "One attic queen room wide shot",
+          "Bathroom and window footage",
+          "Staircase and corridor footage",
+          "Room-door close and key footage"
+        ],
+        "reference_styles": [
+          "honest old-house room guide",
+          "proof-first inn introduction"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "host_on_camera_allowed": false,
+          "breakfast_access": false,
+          "night_shoot_access": false,
+          "shared_space_use_not_confirmed": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "An explicit downgrade from full overnight atmosphere to arrival-and-room truth",
+        "Clear callout that breakfast, night courtyard use, and host warmth are currently unproven",
+        "Honest handling of attic-room and staircase boundaries",
+        "A feasibility score lower than a full happy-path inn case"
+      ],
+      "mustAvoid": [
+        "Still selling breakfast or nighttime courtyard emotion",
+        "Cutting the attic room into a fake multi-room stay",
+        "Presenting the courtyard as a confirmed usable guest scene when only beauty footage exists"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Convert the original romantic inn script into a conservative room-and-arrival storyboard that stays truthful under limited daytime assets.",
+        "assumptions": [
+          "Only one attic queen room and the entrance path are reliably available to shoot.",
+          "The courtyard can be shown visually but not promised as confirmed evening-use proof."
+        ],
+        "evidence": [
+          "The current footage supports inn identity, stair-access truth, and one room type.",
+          "The original script's host, breakfast, and night-atmosphere promises are not shootable in this round."
+        ],
+        "confidence": 0.72,
+        "riskLevel": "L2",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the gate and attic-room wide shot as the main cover pair, with a headline about an honest old-house stay rather than a fully romantic overnight escape.",
+        "shot_list": "1) Start from the lane sign and gate so the inn identity is concrete. 2) Show the stairs and corridor honestly before entering the attic queen room. 3) Prove bed, window, bathroom, and compact-room flow in one consistent room type. 4) Use the courtyard only as a daytime atmosphere supplement. 5) End on the room door or gate instead of forcing breakfast or night closure.",
+        "asset_dependencies": "Lane sign, gate, stairs, attic queen room, bathroom, and corridor footage are confirmed. Missing assets include host on camera, breakfast service, night courtyard access, and verified shared-space use. The storyboard must keep those gaps visible and lower the ambition accordingly.",
+        "execution_feasibility_score": "0.67"
+      }
+    },
+    {
+      "id": "visualizer_inn_case_004",
+      "label": "failure_case",
+      "scenario": "Pre-opening design inn with renderings, floor plans, and brand visuals only, but the request still wants a real stay walkthrough from arrival to room to breakfast.",
+      "input": {
+        "copy_pack": "Promotional inn script wants to show a romantic old-town arrival, courtyard tea, room stay, and breakfast scene before the property has actually opened or produced any real operating footage.",
+        "brand_assets": [
+          "Architectural renderings",
+          "Floor plans",
+          "Brand logo",
+          "Opening-soon poster",
+          "Location map or neighborhood illustration",
+          "Construction-stage exterior photo"
+        ],
+        "reference_styles": [
+          "opening preview",
+          "brand-first teaser"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "inn_open": false,
+          "real_room_assets": false,
+          "real_courtyard_assets": false,
+          "breakfast_access": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "A hard downgrade from stay walkthrough to opening preview or design-intent teaser",
+        "Explicit listing of missing proof assets such as gate, room, courtyard, breakfast, and host footage",
+        "No attempt to fake a real overnight inn experience"
+      ],
+      "mustAvoid": [
+        "Passing renderings off as real inn footage",
+        "Designing arrival, host, breakfast, or room-use scenes that do not exist",
+        "Using generic destination footage to simulate a real operating property"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "Output a truthful pre-opening teaser plan rather than an inn stay storyboard, because no real operating evidence exists yet.",
+        "assumptions": [
+          "Only brand materials, renderings, floor plans, and limited construction-stage visuals are currently available.",
+          "All stay-experience claims must wait until the inn has real rooms, gate access, and operating footage."
+        ],
+        "evidence": [
+          "The current asset set can support design direction and opening awareness but not proof-first stay storytelling.",
+          "Any real arrival, courtyard, breakfast, or room-use sequence would be fabricated at this stage."
+        ],
+        "confidence": 0.64,
+        "riskLevel": "L3",
+        "nextAction": "handoff_to_dispatcher",
+        "cover_direction": "Use the brand logo plus one rendering as an opening-soon teaser, and keep the headline clearly framed around design preview or upcoming opening rather than a live-stay invitation.",
+        "shot_list": "1) Open with the brand mark and opening-soon status. 2) Use renderings and floor plans only to explain intended space direction, not real stay proof. 3) Mention approximate location carefully without promising a lived arrival route. 4) List the real assets still needed after opening, including gate, room, courtyard, breakfast, and host process footage. 5) End as a teaser, not as a completed inn recommendation.",
+        "asset_dependencies": "Current assets are limited to renderings, plans, logo, poster, and construction-stage visuals. Missing proof assets include the real gate, lane route, courtyard, room type, bathroom, host interaction, breakfast service, and any executable guest path. The pack should make those gaps explicit.",
+        "execution_feasibility_score": "0.24"
+      }
+    }
+  ]
+}

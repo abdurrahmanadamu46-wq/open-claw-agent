@@ -1,0 +1,41 @@
+{
+  "agent_id": "echoer",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_comments_and_dms",
+      "action": "classify_and_reply"
+    },
+    {
+      "check": "pending_interaction_threads",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "negative_sentiment_spike",
+      "action": "deescalate_or_escalate"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 15,
+      "action": "review_open_threads",
+      "description": "巡检未闭环的评论和私信线程"
+    },
+    {
+      "interval_minutes": 60,
+      "action": "summarize_high_intent_conversations",
+      "description": "提取高意向用户并移交线索层"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "refresh_brand_voice_patterns",
+      "description": "汇总本轮高质量回复与踩雷表达"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_new_interactions AND no_open_threads",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 45,
+    "idle_behavior": "passive_listening"
+  }
+}

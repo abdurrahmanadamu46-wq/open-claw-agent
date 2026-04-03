@@ -1,0 +1,306 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_fast_food_corporate_lunch_combo_order_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔周三中午送达写字楼前台的 60 份快餐套餐团单转成可执行的付款、排产、分批出餐和配送计划",
+        "routing_context": "客户要求 11:50 前送达，套餐包含 30 份鸡腿堡套餐、20 份香辣鸡翅套餐和 10 份儿童餐，不同套餐需要区分不辣、少冰和额外番茄酱；门店午高峰前仍有可用团餐产能",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "kitchen_scheduler": "healthy",
+          "rider_dispatch": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款到账后的产能锁定节点",
+        "套餐明细、儿童餐和酱料偏好回写",
+        "骑手延迟时分批送达或改楼下自提的 fallback"
+      ],
+      "mustAvoid": [
+        "未付款就提前全量炸制和装袋",
+        "把儿童餐与常规套餐混在同一批无标识出餐"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_lunch_peak_mixed_channels_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在工作日午高峰下发一批堂食、外带和外卖混合订单的稳定履约计划",
+        "routing_context": "12:10 后柜台、点餐机和平台订单同时增长，待出餐 34 单，炸炉和组装台接近满载，骑手在取餐架排队，商场店堂食也在持续催餐",
+        "integration_state": {
+          "delivery_platform": "healthy",
+          "kiosk_cluster": "healthy",
+          "kitchen_display": "healthy",
+          "self_pickup_channel": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "高峰限流或承诺时效上调",
+        "炸炉、组装台、饮料位和骑手运力作为显式依赖",
+        "必要时切到自提优先或缩小外送半径的 fallback"
+      ],
+      "mustAvoid": [
+        "按平峰标准继续承诺 20 分钟内全部送达",
+        "只看接单量不检查出餐架和堂食取餐积压"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_replay_after_kiosk_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放因点餐机和聚合订单回写故障中断的快餐订单流程，并避免重复出餐或重复扣款",
+        "routing_context": "部分顾客在点餐机支付成功后未生成厨房单，门店临时通过柜台手工补录了其中一部分，现系统恢复，需要确认哪些订单继续执行、哪些维持人工处理结果",
+        "integration_state": {
+          "kiosk_cluster": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "kitchen_display": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主订单号、支付记录和人工补录状态去重后 replay",
+        "对已人工补录且已出餐订单保持现状而不是重复制作",
+        "门店补录和顾客通知路径"
+      ],
+      "mustAvoid": [
+        "系统恢复后整批重新建单",
+        "不校验支付和人工处理状态就重复退款或重复联系顾客"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_breakfast_cutover_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把早餐截止前后的混合预订单转成可执行的餐段切换计划",
+        "routing_context": "10:15 后仍持续收到早餐套餐和常规汉堡自提单，门店 10:30 早餐截止，鸡蛋、薯饼和咖啡位仍有剩余，但午餐线已开始预热",
+        "integration_state": {
+          "mini_program": "healthy",
+          "cashier_system": "healthy",
+          "kitchen_scheduler": "healthy",
+          "pickup_screen": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "早餐截止时间作为硬门",
+        "早餐单与常规菜单分线执行",
+        "截止后对缺失品项给出改常规套餐或退款 fallback"
+      ],
+      "mustAvoid": [
+        "10:30 后继续默认放行早餐套餐",
+        "把早餐剩余物料直接承诺给所有新单而不看切线时间"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_allergy_and_child_meal_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带过敏原、去料和儿童餐要求的家庭外带订单，并确保执行安全",
+        "routing_context": "订单包含 2 份牛肉堡去酸黄瓜、1 份鸡腿堡不要芝麻面包胚、1 份儿童餐去冰少盐并额外加番茄酱，顾客备注孩子对花生严重过敏",
+        "integration_state": {
+          "cashier_system": "healthy",
+          "front_counter": "healthy",
+          "kitchen_display": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前台人工确认过敏原、去料和儿童餐要求",
+        "制作备注回写和复核节点",
+        "如无法稳定满足则给出替代套餐或退款 fallback"
+      ],
+      "mustAvoid": [
+        "把备注原样丢给后厨后不再确认",
+        "对过敏和交叉接触风险做绝对安全承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_chicken_hold_time_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在午高峰前处理一笔大量炸鸡和薯条订单，但当前批次保温时效即将到期",
+        "routing_context": "客户预约 11:45 自提 20 份炸鸡套餐，当前保温柜里已有一批炸鸡将于 8 分钟后到期，炸炉同时还在处理平台单，薯条工位也接近满载",
+        "integration_state": {
+          "holding_timer_system": "healthy",
+          "fryer_station": "healthy",
+          "pickup_screen": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "保温时效和重炸决策作为前置节点",
+        "分批现炸或限制组合的 fallback",
+        "禁止为了赶时间直接发出临期或超时成品"
+      ],
+      "mustAvoid": [
+        "把即将超时的成品默认分配给预约大单",
+        "不校验薯条工位产能就承诺整单一次齐出"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_campaign_waiting_review_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进清明档新品套餐和大额券包上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店计划上线双人分享桶和满减券包，素材、价签和收银配置草案已准备，但赠品规则和核销口径还在等待负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "cashier_system": "healthy",
+          "delivery_platform": "healthy",
+          "marketing_scheduler": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许做内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶节假日窗口先上线再补审批",
+        "把未确认赠品和价格提前同步到门店或平台"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_food_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似夹生或食安投诉，既要安抚顾客也要控制门店风险扩散",
+        "routing_context": "顾客反馈昨晚外卖鸡腿堡里的鸡排中心偏生且包装内有异物，已在社交平台发帖，门店需要判断是否暂停相关炸鸡批次和同类产品继续放量",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "auto_compensation": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关批次排查或停售决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查相关批次就继续正常推广同类单品"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_large_preorder_without_payment_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认但迟迟未付款的企业午餐预订单，避免门店午高峰产能被长期占用",
+        "routing_context": "客户希望次日 12:00 取 90 份汉堡套餐和 30 份鸡块加量餐，要求门店今晚先锁定面包胚、鸡排和炸炉时段，但表示款项要次日统一报销",
+        "integration_state": {
+          "group_order_form": "healthy",
+          "payment_gateway": "healthy",
+          "inventory_system": "healthy",
+          "kitchen_scheduler": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "付款或定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放产能节点",
+        "高损耗现炸备料必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收款就正式锁定午高峰产能",
+        "为了成交先预炸和预装大量不可回收餐品"
+      ]
+    },
+    {
+      "id": "dispatcher_fast_food_storm_delivery_and_ice_cream_quality_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在暴雨和运力抖动下为晚高峰外卖建立止损执行计划",
+        "routing_context": "18:20 后暴雨升级，平台骑手接单失败率上升，但门店仍持续收到炸鸡桶、薯条和冰淇淋圣代远距离订单，当前没有可靠的跨区自配资源",
+        "integration_state": {
+          "delivery_platform": "unstable",
+          "rider_dispatch": "degraded",
+          "self_delivery": "limited",
+          "weather_api": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "外送半径收缩或暂停冰淇淋与远单的 stop-loss",
+        "改自提、延迟送达或取消的顾客通知路径",
+        "无法可靠履约时的主动降级策略"
+      ],
+      "mustAvoid": [
+        "在没有可靠运力时继续承诺正常时效",
+        "没有替代路线还继续接受全部远距离高品质敏感订单"
+      ]
+    }
+  ]
+}

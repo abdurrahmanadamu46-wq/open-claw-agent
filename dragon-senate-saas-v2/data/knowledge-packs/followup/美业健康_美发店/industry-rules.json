@@ -1,0 +1,68 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐项目、时间和当前头发状态前，本轮目标是锁预约事实，不是先把效果说满",
+      "description": "美发店线索很多从有没有位、多少钱和能不能做同款开场，但真正决定能否推进的是项目方向、预约时间、门店和当前头发状态。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定能做成图上效果。",
+      "examples": [
+        "客户只问周末能不能做时，先问项目和当前头发状态。",
+        "客户只发参考图时，先补时间和门店，再决定如何推进。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_direction_help",
+      "title": "第一次做头发和不会选项目的用户必须先进入低压力引导阶段",
+      "description": "第一次染发、烫发和不知道选什么项目的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入方向缩窄和低压力引导阶段，再推进预约。",
+      "examples": [
+        "先确认是想好打理、想显白还是想做气质变化，而不是先推高客单。",
+        "先让用户选大方向，再谈时段。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "event_booking_needs_fast_scope",
+      "title": "婚礼、旅行和节日前线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和项目。FollowUp 应先确认日期、时段和当前头发基础，再帮助其进入合适预约，而不是在时间紧张时展开长篇销售。",
+      "examples": [
+        "婚礼线索先确认周几可来和是否漂过。",
+        "节日前焕新线索先锁时间，再聊颜色和护理。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_revisit_split",
+      "title": "首单预约跟进和维护回访必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心做成一次，复访回访的目标才是提醒补染、修剪和护理周期。两阶段不能共用同一套推进动作。",
+      "examples": [
+        "首单更多围绕项目、时间和发质。",
+        "复访更多围绕掉色、修根和修刘海。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_feel_feedback",
+      "title": "做完后的跟进要先收状态和满意度，再决定是否推进",
+      "description": "做完头发后的 FollowUp 不是默认销售时刻。应先确认颜色、卷度、打理感受和是否有不适，再根据反馈决定是补救、护理建议还是维护预约。",
+      "examples": [
+        "染发完成后先问颜色和掉色担忧。",
+        "烫发后先问卷度和打理是否顺手。"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老客回访要给具体维护理由，不要只催回来",
+      "description": "补色、修根、修刘海、护理周期到了和节日前焕新，都是合理的回访理由。FollowUp 应用这些具体理由引导老客回来，而不是泛泛问要不要再来做头发。",
+      "examples": [
+        "提醒上次染发的老客，现在正适合补色。",
+        "按修刘海周期提醒剪发老客。"
+      ],
+      "priority": "medium"
+    }
+  ]
+}

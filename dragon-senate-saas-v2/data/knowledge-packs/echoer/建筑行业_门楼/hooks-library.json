@@ -1,0 +1,158 @@
+﻿{
+  "industry": "\u5efa\u7b51\u884c\u4e1a_\u95e8\u697c",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_quote_without_specs",
+      "scene": "public_comment",
+      "intent": "quick_budget",
+      "emotion": "curious",
+      "hook": "I can help with a range, but a gatehouse is not a fixed off-the-shelf item.",
+      "bridge": "Span, total height, finish, and installation city can move the number a lot.",
+      "next_step": "Ask for rough width, height, style, and city in DM.",
+      "handoff_suggestion": "Route to Catcher if the user replies with project facts."
+    },
+    {
+      "id": "hook_quote_with_specs",
+      "scene": "public_comment",
+      "intent": "active_quote_request",
+      "emotion": "practical",
+      "hook": "That is already enough to start judging direction.",
+      "bridge": "For a gatehouse, structure method, finish, and site access still shape the real range.",
+      "next_step": "Ask for preferred material and a site photo.",
+      "handoff_suggestion": "High-intent lead for Catcher and Abacus."
+    },
+    {
+      "id": "hook_style_first",
+      "scene": "public_comment",
+      "intent": "design_direction",
+      "emotion": "expectant",
+      "hook": "Starting from style makes sense for this kind of project.",
+      "bridge": "The right look changes a lot between a factory entrance, village gateway, scenic spot, and community gate.",
+      "next_step": "Invite a site photo and one or two reference images.",
+      "handoff_suggestion": "Mark as design-ready if the user shares references."
+    },
+    {
+      "id": "hook_factory_gate",
+      "scene": "public_comment",
+      "intent": "factory_image_upgrade",
+      "emotion": "businesslike",
+      "hook": "Factory gatehouses usually need both image and traffic practicality.",
+      "bridge": "Vehicle clearance, guard room relation, and brand signage all affect the layout.",
+      "next_step": "Ask for entrance width, truck access, and logo needs.",
+      "handoff_suggestion": "Route to Catcher when the use case is clearly factory entrance."
+    },
+    {
+      "id": "hook_village_gate",
+      "scene": "public_comment",
+      "intent": "village_gate_project",
+      "emotion": "budget_careful",
+      "hook": "Village gate projects often start with budget and image together, which is normal.",
+      "bridge": "Usually the best first move is to lock the overall proportion and finish direction before chasing the lowest number.",
+      "next_step": "Ask for the opening width and the look they want.",
+      "handoff_suggestion": "Budget-sensitive but still workable."
+    },
+    {
+      "id": "hook_material_compare",
+      "scene": "comment_or_dm",
+      "intent": "option_compare",
+      "emotion": "hesitant",
+      "hook": "There is rarely a one-size-fits-all answer on stone versus steel.",
+      "bridge": "It depends on whether you care most about visual weight, timeline, maintenance, or budget.",
+      "next_step": "Ask what scene the gatehouse is for and where it will be built.",
+      "handoff_suggestion": "Lift lead value if the user keeps comparing methods."
+    },
+    {
+      "id": "hook_urgent_timeline",
+      "scene": "comment_or_dm",
+      "intent": "deadline_check",
+      "emotion": "urgent",
+      "hook": "I get why the date matters here.",
+      "bridge": "With gatehouse work, drawing finalization, fabrication, shipping, and site readiness all affect whether the date is realistic.",
+      "next_step": "Ask for target date, city, rough size, and site status.",
+      "handoff_suggestion": "Send to human follow-up quickly."
+    },
+    {
+      "id": "hook_effect_drawing",
+      "scene": "comment_or_dm",
+      "intent": "want_examples",
+      "emotion": "visual",
+      "hook": "Seeing direction first is a good way to avoid wrong turns.",
+      "bridge": "Generic references help less than references matched to your actual proportions and scene.",
+      "next_step": "Ask for the site photo and one reference style.",
+      "handoff_suggestion": "Design-intent lead."
+    },
+    {
+      "id": "hook_skeptic",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "For gatehouse projects, dimensions, details, and how the job lands on site say more than a polished image alone.",
+      "next_step": "Invite the user to name the exact point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_cross_region",
+      "scene": "comment_or_dm",
+      "intent": "remote_delivery",
+      "emotion": "testing_feasibility",
+      "hook": "Distance matters less than landing conditions here.",
+      "bridge": "Transport, crane access, base readiness, and installation coordination are usually the real variables.",
+      "next_step": "Ask for city, access limits, and target date.",
+      "handoff_suggestion": "Human business follow-up if the user gives a real location."
+    },
+    {
+      "id": "hook_after_sales",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can see why that would be frustrating.",
+      "bridge": "The fastest way to judge a gatehouse issue is usually by the problem area, project timing, and a few clear photos.",
+      "next_step": "Move the user to platform DM for photos and timing.",
+      "handoff_suggestion": "Escalate to after-sales."
+    },
+    {
+      "id": "hook_budget_sensitive",
+      "scene": "comment_or_dm",
+      "intent": "cheapest_route",
+      "emotion": "price_focused",
+      "hook": "A tight budget is workable if we cut the right parts, not the wrong ones.",
+      "bridge": "For gatehouses, shape complexity, finish, and method can be traded off very differently.",
+      "next_step": "Ask whether image, durability, or speed matters most.",
+      "handoff_suggestion": "Keep as workable if the user engages on trade-offs."
+    },
+    {
+      "id": "hook_contact_request_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_to_move",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The easiest first step is still to send the site photo, rough size, and city through platform DM so the direction is clear.",
+      "next_step": "Use platform DM instead of public off-platform contact.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    },
+    {
+      "id": "hook_old_gate_renovation",
+      "scene": "comment_or_dm",
+      "intent": "renovation_without_demolition",
+      "emotion": "cost_and_time_conscious",
+      "hook": "Wanting to save demolition time is very normal.",
+      "bridge": "Whether an old gatehouse can be wrapped or upgraded depends heavily on the current structure and base condition.",
+      "next_step": "Ask for front, side, and detail photos of the existing gatehouse.",
+      "handoff_suggestion": "Needs human review before strong commitment."
+    },
+    {
+      "id": "hook_safety_question",
+      "scene": "comment_or_dm",
+      "intent": "structure_and_safety",
+      "emotion": "serious",
+      "hook": "That is the right kind of question to ask early.",
+      "bridge": "For a gatehouse, span, wind exposure, base condition, and local environment all matter together.",
+      "next_step": "Ask for city, rough size, and site condition, then escalate.",
+      "handoff_suggestion": "Human engineering review."
+    }
+  ]
+}

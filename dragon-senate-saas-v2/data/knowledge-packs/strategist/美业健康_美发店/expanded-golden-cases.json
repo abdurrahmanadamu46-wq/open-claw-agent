@@ -1,0 +1,144 @@
+﻿{
+  "industry": "美业健康_美发店",
+  "lobster_id": "strategist",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "strategist_hair_salon_haircut_001",
+      "label": "happy_path",
+      "scenario_tag": "weekday_low_maintenance_cut_growth",
+      "input": {
+        "mission_goal": "在 21 天内为写字楼美发店新增 110 个通勤低维护剪发预约，并提升工作日复访率。",
+        "signal_brief": "最近本地内容里锁骨发和低维护层次剪明显升温，评论区也大量在问洗完自己也能好打理的发型。",
+        "tenant_context": {
+          "budget_limit": 5600,
+          "brand_tone": "克制、好打理、专业",
+          "asset_state": "有真实剪发案例和工作日预约素材",
+          "location_type": "写字楼商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把低维护剪发设为主路线",
+        "强调洗后自己也能打理",
+        "至少一个工作日时段承接动作"
+      ],
+      "mustAvoid": [
+        "同时强推染发和烫发大改造",
+        "忽略上班族时段和时长限制"
+      ]
+    },
+    {
+      "id": "strategist_hair_salon_color_002",
+      "label": "happy_path",
+      "scenario_tag": "brightening_color_window",
+      "input": {
+        "mission_goal": "围绕节日前显白发色在 14 天内提升染发预约。",
+        "signal_brief": "本地内容里显白棕和免漂染方向明显升温，节日前焕新咨询开始集中出现。",
+        "tenant_context": {
+          "budget_limit": 5000,
+          "brand_tone": "显气色、稳妥、不过度承诺",
+          "asset_state": "有真实染发案例和护理说明素材",
+          "location_type": "商场门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "显白发色作为独立路线",
+        "强调底色与是否需漂的边界",
+        "不承诺所有人都能同色同结果"
+      ],
+      "mustAvoid": [
+        "把染发和低维护剪发混推",
+        "只用网图不谈真实交付"
+      ]
+    },
+    {
+      "id": "strategist_hair_salon_capacity_003",
+      "label": "edge_case",
+      "scenario_tag": "low_price_cut_with_capacity_risk",
+      "input": {
+        "mission_goal": "用低价洗剪吹套餐拉新，但周末和晚间总监档已经接近满负荷。",
+        "signal_brief": "咨询上涨明显，近期差评开始提到等待时间变长和赶工感增强。",
+        "tenant_context": {
+          "budget_limit": 7200,
+          "brand_tone": "高效、亲和",
+          "asset_state": "新客套餐素材完整，但高峰排班紧张",
+          "location_type": "社区商圈"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "先处理承接能力而不是直接放量",
+        "至少一个分时段或限复杂度动作",
+        "指出等待与翻车风险"
+      ],
+      "mustAvoid": [
+        "在承接不足时继续冲低价引流",
+        "忽视染烫工时和总监档稀缺"
+      ]
+    },
+    {
+      "id": "strategist_hair_salon_maintenance_004",
+      "label": "long_term_case",
+      "scenario_tag": "maintenance_cycle_route",
+      "input": {
+        "mission_goal": "在 30 天内提升老客补染、修剪和护理复访率。",
+        "signal_brief": "新客获客成本上升，但门店已有稳定老客和历史项目记录。",
+        "tenant_context": {
+          "budget_limit": 2800,
+          "brand_tone": "熟悉、懂状态、不过度促销",
+          "asset_state": "有基础复访记录和项目偏好沉淀",
+          "location_type": "社区门店"
+        }
+      },
+      "expectedSignals": [
+        "goal",
+        "assumptions",
+        "evidence",
+        "confidence",
+        "riskLevel",
+        "nextAction",
+        "primary_route",
+        "alternative_routes"
+      ],
+      "mustInclude": [
+        "把老客维护作为独立主路线",
+        "按补染、修剪和护理做分层",
+        "用项目与周期理由承接而不是只靠折扣"
+      ],
+      "mustAvoid": [
+        "无差别群发优惠",
+        "完全依赖新客流量"
+      ]
+    }
+  ]
+}

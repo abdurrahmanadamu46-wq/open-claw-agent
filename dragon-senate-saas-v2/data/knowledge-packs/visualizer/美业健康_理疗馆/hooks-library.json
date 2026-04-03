@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_理疗馆",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "shoulder_neck_visual",
+      "hook_angle": "肩颈问题切入",
+      "hook_line": "真正想来预约的人，不是想看一段很治愈的视频，而是想知道肩颈到底能不能先缓下来一点。",
+      "target_scene": "肩颈理疗、久坐劳损、上班族路线",
+      "cover_direction": "封面主体给肩颈问题场景和真实房间，副元素补工具和床位，不用空镜主导。",
+      "first_3_shots": [
+        "问题场景提示镜头",
+        "房间或床位镜头",
+        "问询或准备镜头"
+      ],
+      "required_proof_assets": [
+        "问题场景",
+        "环境镜头",
+        "准备过程"
+      ],
+      "fallback_if_missing": "若缺少真人素材，改用办公和肩颈提示加房间镜头。"
+    },
+    {
+      "id": "sports_recovery_visual",
+      "hook_angle": "运动恢复窗口",
+      "hook_line": "运动后最怕的不是酸，而是该缓的时候你还在硬扛。",
+      "target_scene": "运动后恢复、拉伤紧绷、健身恢复",
+      "cover_direction": "封面强调问题场景和恢复判断，不拍成夸张疗效广告。",
+      "first_3_shots": [
+        "运动或疲劳提示镜头",
+        "问询或判断镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "场景提示素材",
+        "问询镜头",
+        "预约承接"
+      ],
+      "fallback_if_missing": "若缺少运动素材，用字幕补足场景。"
+    },
+    {
+      "id": "trust_process_visual",
+      "hook_angle": "流程和环境信任",
+      "hook_line": "很多人不是不想来，而是不想把身体交给一套看不懂边界的流程。",
+      "target_scene": "首次到店、怕踩雷、信任路线",
+      "cover_direction": "封面主体给环境、前台或问询流程，副元素补工具和房间细节。",
+      "first_3_shots": [
+        "前台或环境镜头",
+        "工具或房间细节",
+        "问询流程镜头"
+      ],
+      "required_proof_assets": [
+        "环境",
+        "细节",
+        "问询流程"
+      ],
+      "fallback_if_missing": "若环境素材有限，至少拍房间和问询节点。"
+    },
+    {
+      "id": "maintenance_revisit_visual",
+      "hook_angle": "到了该复诊的时候",
+      "hook_line": "真正会复诊的人，通常不是突然想起你，而是状态一变化就知道该回来看看了。",
+      "target_scene": "老客复诊、状态维护、周期提醒",
+      "cover_direction": "封面强调复诊和状态回落感，不拍成强促销海报。",
+      "first_3_shots": [
+        "状态提示镜头",
+        "本次维护方向镜头",
+        "预约承接镜头"
+      ],
+      "required_proof_assets": [
+        "状态提示",
+        "维护建议",
+        "预约承接"
+      ],
+      "fallback_if_missing": "缺少真实复诊素材时，用周期字幕和环境镜头替代。"
+    },
+    {
+      "id": "truth_over_relief_visual",
+      "hook_angle": "不靠立刻轻松幻想",
+      "hook_line": "舒服的感觉很多，真正重要的是你先知道自己现在适不适合这个方向。",
+      "target_scene": "反夸张轻松幻想、真实边界路线",
+      "cover_direction": "封面用环境和判断感，不用夸张舒服表情做主视觉。",
+      "first_3_shots": [
+        "环境或问询镜头",
+        "问题提示镜头",
+        "边界说明镜头"
+      ],
+      "required_proof_assets": [
+        "问询镜头",
+        "环境",
+        "边界说明"
+      ],
+      "fallback_if_missing": "若案例不足，改做真实流程和边界说明路线。"
+    },
+    {
+      "id": "lunch_break_relief_visual",
+      "hook_angle": "午休看方向",
+      "hook_line": "不是每个人都能腾半天来理疗，但很多人愿意先用一个午休把方向看清。",
+      "target_scene": "写字楼午休评估、轻量缓解",
+      "cover_direction": "封面突出时间窗口和环境效率感，不拍成重项目广告。",
+      "first_3_shots": [
+        "时间窗口提示",
+        "环境或前台镜头",
+        "问询镜头"
+      ],
+      "required_proof_assets": [
+        "时间提示素材",
+        "环境",
+        "问询过程"
+      ],
+      "fallback_if_missing": "若缺时间素材，用字幕明确午休窗口。"
+    }
+  ]
+}

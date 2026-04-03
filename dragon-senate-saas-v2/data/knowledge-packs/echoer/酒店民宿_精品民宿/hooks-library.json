@@ -1,0 +1,168 @@
+﻿{
+  "industry": "酒店民宿_精品民宿",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_weekend_escape",
+      "scene": "comment_or_dm",
+      "intent": "weekend_getaway",
+      "emotion": "lightly_excited",
+      "hook": "That sounds like the kind of stay people usually want to keep simple.",
+      "bridge": "With boutique homestays, the useful starting point is usually the dates, guest count, and whether you care most about the room mood or the location feel.",
+      "next_step": "Ask for the stay dates, number of guests, and the room style they want most.",
+      "handoff_suggestion": "Good boutique-booking signal if the user shares the trip basics."
+    },
+    {
+      "id": "hook_anniversary_or_birthday",
+      "scene": "comment_or_dm",
+      "intent": "celebration_stay",
+      "emotion": "hopeful",
+      "hook": "That sounds like a stay worth planning with a bit of extra care.",
+      "bridge": "For celebration stays, the useful split is usually the date, the room mood, and the one or two details that matter most to the guest.",
+      "next_step": "Ask for the stay date and whether the priority is privacy, decor, cake, or room atmosphere.",
+      "handoff_suggestion": "Celebration-note or reservation follow-up path."
+    },
+    {
+      "id": "hook_real_room_real_view",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That hesitation is fair.",
+      "bridge": "With boutique stays, people usually want clarity on one concrete point first, like the real room view, the tub setup, the courtyard feel, or how close it is to the photos.",
+      "next_step": "Invite the user to name the exact room detail they want clarified first.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_private_tub_or_courtyard",
+      "scene": "comment_or_dm",
+      "intent": "room_atmosphere_preference",
+      "emotion": "aspirational",
+      "hook": "Makes sense to want the room mood to match the trip.",
+      "bridge": "For tub rooms and courtyard rooms, the next useful split is usually the stay date, the room type you are looking at, and which detail matters most in person.",
+      "next_step": "Ask for the property, stay dates, and whether the priority is the tub, privacy, terrace, or view.",
+      "handoff_suggestion": "Room-type clarification lead."
+    },
+    {
+      "id": "hook_pet_friendly_boundary",
+      "scene": "comment_or_dm",
+      "intent": "pet_policy_question",
+      "emotion": "practical",
+      "hook": "Good idea to sort that out before the trip gets locked in.",
+      "bridge": "Pet-friendly answers usually change with the room type, pet size, and the house rules around shared spaces and cleaning.",
+      "next_step": "Ask what pet they are bringing, how big it is, and which room or dates they mean.",
+      "handoff_suggestion": "Pet-policy confirmation path."
+    },
+    {
+      "id": "hook_family_room_fit",
+      "scene": "comment_or_dm",
+      "intent": "family_room_fit",
+      "emotion": "planning_mode",
+      "hook": "That is a sensible thing to check early with a smaller property.",
+      "bridge": "With boutique rooms, the useful details are usually the child's age, the bedding setup, and whether stairs or lofts are part of the room layout.",
+      "next_step": "Ask for the child age, the number of guests, and whether they need extra bedding or a low-stair layout.",
+      "handoff_suggestion": "Family-fit clarification lead."
+    },
+    {
+      "id": "hook_small_group_buyout",
+      "scene": "comment_or_dm",
+      "intent": "group_booking_or_buyout",
+      "emotion": "organized",
+      "hook": "That already sounds like a real planning conversation, not just browsing.",
+      "bridge": "For a boutique buyout or small group stay, the key facts are usually dates, headcount, room count, and whether shared-space use or dining matters.",
+      "next_step": "Ask for the dates, total guests, whether they want full buyout or several rooms, and any gathering needs.",
+      "handoff_suggestion": "High-intent group booking lead."
+    },
+    {
+      "id": "hook_late_arrival_checkin",
+      "scene": "comment_or_dm",
+      "intent": "late_arrival",
+      "emotion": "time_sensitive",
+      "hook": "That is worth checking before the trip gets more stressful.",
+      "bridge": "With boutique homestays, late arrival handling usually depends on the property, the arrival time, and whether the booking is already in place.",
+      "next_step": "Ask for the property, arrival window, and whether the reservation already exists.",
+      "handoff_suggestion": "Reservation or host-confirmation path."
+    },
+    {
+      "id": "hook_breakfast_or_afternoon_tea",
+      "scene": "comment_or_dm",
+      "intent": "inclusion_clarification",
+      "emotion": "clarifying",
+      "hook": "Good call to confirm that before arrival.",
+      "bridge": "Breakfast, afternoon tea, and hosted extras often depend on the room plan or booking channel more than people expect.",
+      "next_step": "Ask whether the booking already exists, which plan or channel they mean, and the exact inclusion they want to confirm.",
+      "handoff_suggestion": "Booking-clarification path."
+    },
+    {
+      "id": "hook_workation_or_quiet_stay",
+      "scene": "comment_or_dm",
+      "intent": "quiet_stay_fit",
+      "emotion": "steady",
+      "hook": "That is a very reasonable thing to check with this kind of stay.",
+      "bridge": "The useful split is usually whether the guest cares most about quiet rest, desk setup, common-area comfort, or network stability.",
+      "next_step": "Ask which matters most: quietness, desk space, Wi-Fi, or common-area feel.",
+      "handoff_suggestion": "Good fit-and-needs clarification signal."
+    },
+    {
+      "id": "hook_parking_and_access",
+      "scene": "comment_or_dm",
+      "intent": "arrival_access_question",
+      "emotion": "practical",
+      "hook": "Good call to sort that out before the drive over.",
+      "bridge": "Access answers usually change with the property layout, the vehicle type, and whether the concern is parking, stairs, or luggage handling.",
+      "next_step": "Ask which property they mean and whether the main concern is parking, stairs, or arrival with luggage.",
+      "handoff_suggestion": "Property-specific arrival confirmation."
+    },
+    {
+      "id": "hook_seasonal_view_or_weather",
+      "scene": "comment_or_dm",
+      "intent": "weather_or_view_concern",
+      "emotion": "worried",
+      "hook": "I can see why you want a clearer read on that before the stay.",
+      "bridge": "Seasonal views and outdoor moments can depend on the dates and same-day weather more than social posts make it seem.",
+      "next_step": "Ask for the stay dates and which outdoor view or atmosphere matters most.",
+      "handoff_suggestion": "Property confirmation path for near-date stays."
+    },
+    {
+      "id": "hook_skeptic_about_photos",
+      "scene": "public_comment",
+      "intent": "photo_truth_check",
+      "emotion": "skeptical",
+      "hook": "That caution is understandable.",
+      "bridge": "People usually care about one proof point first, like whether the room really matches the pictures, whether the tub is private enough, or whether the view is the same room type shown online.",
+      "next_step": "Invite the user to name the exact point they want clarified first.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_cancellation_after_plan_change",
+      "scene": "comment_or_dm",
+      "intent": "refund_or_change",
+      "emotion": "stressed",
+      "hook": "Plan changes can be frustrating, especially when it is a short trip you were looking forward to.",
+      "bridge": "The next useful split is usually where the booking was made and whether the rate is flexible, deposit-based, or non-refundable.",
+      "next_step": "Ask whether the booking already exists, which channel it came through, and what the rate or deposit terms say.",
+      "handoff_suggestion": "Policy-confirmation path."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would take the shine off the stay.",
+      "bridge": "The fastest review usually starts with the property, stay date, and the exact room or booking details tied to the issue.",
+      "next_step": "Move the user to DM for the stay details and a short issue summary.",
+      "handoff_suggestion": "Escalate to reservation support, guest service, or the host."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to help move it forward quickly.",
+      "bridge": "The safest first step is still platform DM so room details, booking info, and personal contact do not get scattered in public comments.",
+      "next_step": "Ask for the property, stay dates, and room preference in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

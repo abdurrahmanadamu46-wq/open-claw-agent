@@ -1,0 +1,118 @@
+﻿{
+  "industry": "餐饮服务_快餐店",
+  "lobster_id": "abacus",
+  "pack_type": "hooks-library",
+  "version": "v1",
+  "items": [
+    {
+      "id": "corporate_group_lunch_lockin_hook",
+      "hook_name": "企业团餐付款锁档钩子",
+      "trigger_pattern": "客户主动确认 20 份以上工作餐、会议午餐或培训供餐，并愿意补齐送达时间、楼层、分装方式、联系人和付款动作。",
+      "value_hypothesis": "这类线索已经从泛咨询进入真实执行阶段，通常比普通散单更接近成交，也更容易沉淀成固定工作餐关系。",
+      "short_term_score_hint": "只要时间、地址、套餐结构和付款动作之间没有明显冲突，可直接上调到高短期分候选。",
+      "long_term_score_hint": "如果客户主体是企业行政、学校老师、园区前台或活动负责人，长期分也应保持中高。",
+      "roi_estimate_hint": "把分装、配送、楼层搬运和高峰人工算进去后，只要付款和菜单确认扎实，ROI 往往仍然健康。",
+      "reward_signal": "奖励付款到帐、套餐锁版、分装标签和交付路线确认动作。",
+      "caution": "没有定金或付款时，不能把先帮我预留当成高确定性营收。"
+    },
+    {
+      "id": "weekday_office_reorder_hook",
+      "hook_name": "写字楼固定工作餐复购钩子",
+      "trigger_pattern": "客户连续在工作日午市从同一楼宇、同一楼层或同一公司订相似套餐，并出现固定预算、固定发票或按周结算习惯。",
+      "value_hypothesis": "这类订单单笔未必惊艳，但复购概率高、执行标准化，往往是门店长期现金流的重要来源。",
+      "short_term_score_hint": "短期分可给到中等偏上，因为订单事实、套餐和时段都更稳定。",
+      "long_term_score_hint": "长期分应显著高于一次性团餐，尤其当客户已提到试单成功后持续合作。",
+      "roi_estimate_hint": "标准工作餐通常备料更可控、售后波动更低，ROI 往往优于随机散单。",
+      "reward_signal": "奖励固定菜单、固定时段提醒、发票流程打通和第二办公区扩展动作。",
+      "caution": "不要因为首单只是试单，就低估其长期价值。"
+    },
+    {
+      "id": "breakfast_preorder_selfpickup_hook",
+      "hook_name": "通勤早餐预点自提钩子",
+      "trigger_pattern": "用户固定在工作日早上通过小程序、社群或企业微信预点早餐套餐，并在同一门店顺路自提，同时出现咖啡、小食或会员行为。",
+      "value_hypothesis": "这类订单单笔金额不高，但履约成本低、频次稳定，常常是高 ROI 且可持续的线索。",
+      "short_term_score_hint": "门店、时间和自提方式清楚后，短期分应明显高于随机到店早餐咨询。",
+      "long_term_score_hint": "如果客户开始形成固定时间预点、月卡或储值习惯，长期分应持续上调。",
+      "roi_estimate_hint": "自提减少配送和包装压力，还容易带动饮料与小食加购，ROI 通常较优。",
+      "reward_signal": "奖励常购绑定、预点提醒、月卡储值和早餐加购动作。",
+      "caution": "不要因客单价低而把这类高频订单误判为低价值。"
+    },
+    {
+      "id": "family_bucket_weekend_reservation_hook",
+      "hook_name": "周末家庭桶预约钩子",
+      "trigger_pattern": "客户提到周末家庭聚餐、儿童餐、多人分享桶餐或生日小聚，并愿意确认到店/自提时间、套餐明细和口味替换。",
+      "value_hypothesis": "这类需求一旦锁定时间和套餐，短期营收往往较高；如果来自固定社区或亲子群体，还可能形成节假日复购。",
+      "short_term_score_hint": "套餐、人数和取餐时间清晰时，短期分可进入高位候选。",
+      "long_term_score_hint": "如果客户来自同一社区、亲子机构或周末固定聚会圈层，长期分可保留中等偏上。",
+      "roi_estimate_hint": "需要同时考虑大包装、赠品、缺件赔付和高峰打包人工，不能只看桶餐票面金额。",
+      "reward_signal": "奖励锁定取餐时间、儿童餐备注、分批打包和自提提醒动作。",
+      "caution": "只有晒单热度没有明确到店/自提事实时，不应直接给高分。"
+    },
+    {
+      "id": "late_night_neighborhood_hotzone_hook",
+      "hook_name": "社区夜宵补给钩子",
+      "trigger_pattern": "订单集中在 21:00 以后，来自同一社区、医院、宿舍或夜班团队，并愿意接受简化菜单、固定取餐点或固定半径配送。",
+      "value_hypothesis": "夜宵看起来像零散流量，但如果需求集中在近半径和稳定人群，实际可能是低峰时段的优质复购机会。",
+      "short_term_score_hint": "半径、菜单和取餐方式清楚后，短期分可从中等上调；远距离和复杂备注则应压低。",
+      "long_term_score_hint": "如果客户是夜班团队或社区固定值守人群，长期分应明显高于普通随机夜宵客。",
+      "roi_estimate_hint": "只有在配送距离、保温损耗和夜间运力可控时，ROI 才会真正成立。",
+      "reward_signal": "奖励收窄半径、简化套餐、固定取餐点和按周补给的动作。",
+      "caution": "不要把远距离券单和临时夜宵热度误判成稳定增长。"
+    },
+    {
+      "id": "coupon_to_member_conversion_hook",
+      "hook_name": "券单转会员钩子",
+      "trigger_pattern": "平台券、买一送一、直播券或会员日带来订单增长，但同时能看到加购、小程序绑定、第二单迹象或自提转化。",
+      "value_hypothesis": "促销本身不等于价值，真正有价值的是把一次性券单转成二单、会员和更低履约成本的关系。",
+      "short_term_score_hint": "只有在促销后出现支付后的真实沉淀动作时，短期分才值得进一步上调。",
+      "long_term_score_hint": "如果券客开始绑定会员、储值或形成早餐/午餐习惯，长期分可保留中等甚至中高。",
+      "roi_estimate_hint": "要从净贡献而非 GMV 出发，重点看抽佣、补贴和加购后的真实回报。",
+      "reward_signal": "奖励二单召回、会员绑定、错峰自提和小食加购设计。",
+      "caution": "单量上升但没有沉淀动作时，不能机械乐观。"
+    },
+    {
+      "id": "office_meal_subscription_trial_hook",
+      "hook_name": "工作餐试单转订阅钩子",
+      "trigger_pattern": "企业行政或团队负责人希望先试一周或一个月固定工作餐，并同步讨论周结、发票、固定时段和扩展到其他楼层。",
+      "value_hypothesis": "首单看起来只是试单，但如果节奏、结算和联系人稳定，这类线索通常具备高长期价值和扩展空间。",
+      "short_term_score_hint": "试单阶段短期分可给中等偏上，前提是试用周期、套餐与结算方式已经明确。",
+      "long_term_score_hint": "长期分应高于多数普通订单，因为它天然带有订阅和多团队扩张属性。",
+      "roi_estimate_hint": "允许承担适度方案沟通成本，但要把每周配送、分装和协同成本全算进 ROI。",
+      "reward_signal": "奖励确认试用周期、固定菜单、发票路径和扩楼联系人动作。",
+      "caution": "不能把未来几个月可能发生的收入一次性都算成已成交价值。"
+    },
+    {
+      "id": "duplicate_channel_merge_hook",
+      "hook_name": "多入口合并归因钩子",
+      "trigger_pattern": "同一手机号、公司名、学校名或楼层地址同时从小程序、电话、企业微信、点评私信等多个入口进入，并指向同一笔工作餐或团餐需求。",
+      "value_hypothesis": "多渠道活跃不等于多笔机会，真正有价值的是哪一个触点把项目推进到付款、锁版或复购。",
+      "short_term_score_hint": "短期分只能算一次，不能因为入口多就重复上调。",
+      "long_term_score_hint": "长期分要更多看哪个渠道沉淀了联系人、发票信息、固定菜单和交付模板。",
+      "roi_estimate_hint": "统一核算 merged lead 的获客和跟进成本，再判断真实回报。",
+      "reward_signal": "奖励合并重复线索、定位关键推进触点和收敛成标准模板的动作。",
+      "caution": "不要让最后一个触点错误独占全部 credit。"
+    },
+    {
+      "id": "allergy_manual_review_hook",
+      "hook_name": "过敏与复杂备注人工复核钩子",
+      "trigger_pattern": "订单出现花生过敏、芝麻过敏、不要酱、不要洋葱、儿童餐、低辣少盐或多人不同禁忌，并且需要尽快出餐或配送。",
+      "value_hypothesis": "这不是单纯的高客单机会，而是带有执行和投诉风险的订单，必须以安全、准确履约为前提再判断价值。",
+      "short_term_score_hint": "短期分应被执行不确定性封顶，不能只按份数或金额给高分。",
+      "long_term_score_hint": "如果客户是高频家庭、学校老师或稳定企业联系人，长期分可保留，但前提是本次确认顺利。",
+      "roi_estimate_hint": "返工、退款、人工复核和替代食材成本都必须进 ROI 计算。",
+      "reward_signal": "奖励人工确认、备注回写、替代方案说明和二次核对动作。",
+      "caution": "不能把高风险定制单当成普通高价值订单粗暴推进。"
+    },
+    {
+      "id": "complaint_recovery_hook",
+      "hook_name": "高价值客户投诉修复钩子",
+      "trigger_pattern": "高频会员、企业联系人或历史高 LTV 客户因漏餐、变冷、超时、包装破损或疑似食安问题发起投诉，但仍愿意继续沟通处理。",
+      "value_hypothesis": "当前不是销售机会，但如果修复得当，可能保住长期关系；如果处理失当，价值会迅速归零甚至转负。",
+      "short_term_score_hint": "短期分应主动压低，重点不在再卖一单，而在止损和修复信任。",
+      "long_term_score_hint": "长期分可保留极低到中等，取决于历史价值和修复成功可能性。",
+      "roi_estimate_hint": "ROI 必须纳入退款、补发、差评扩散和店长处理成本。",
+      "reward_signal": "奖励店长介入、证据留存、批次排查和修复方案确认动作。",
+      "caution": "绝不能把投诉修复场景当成促销或加售机会。"
+    }
+  ]
+}

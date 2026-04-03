@@ -1,0 +1,605 @@
+{
+  "$schema": "lobsters-registry-v2",
+  "updated_at": "2026-04-02T19:27:01.612310+00:00",
+  "lobsters": {
+    "commander": {
+      "display_name": "Commander",
+      "zh_name": "元老院总脑",
+      "status": "idle",
+      "phase": "⓪ 编排总控",
+      "role": "编排仲裁",
+      "icon": "🏛️",
+      "default_model_tier": "frontier",
+      "skills": [
+        "commander_mission_plan",
+        "commander_orchestrate",
+        "commander_arbitrate",
+        "commander_exception_handle",
+        "commander_retrospect"
+      ],
+      "upstream": [],
+      "downstream": [
+        "radar",
+        "strategist",
+        "inkwriter",
+        "visualizer",
+        "dispatcher",
+        "echoer",
+        "catcher",
+        "abacus",
+        "followup"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "commander",
+      "description": "编排仲裁",
+      "lifecycle": "production",
+      "system": "follow-growth",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "radar": {
+      "display_name": "Radar",
+      "zh_name": "触须虾",
+      "status": "idle",
+      "phase": "① 信号发现",
+      "role": "信号发现",
+      "icon": "📡",
+      "default_model_tier": "standard",
+      "skills": [
+        "radar_web_search",
+        "radar_trend_analysis",
+        "radar_hotspot_monitor",
+        "radar_competitor_track",
+        "radar_keyword_radar",
+        "radar_user_profiling",
+        "radar_metrics_feedback",
+        "radar_sentiment_alert",
+        "radar_industry_tag_confirm"
+      ],
+      "skill_detail": {
+        "radar_industry_tag_confirm": {
+          "desc": "按行业标签加载对应知识池并锁定策略模板（步骤1）",
+          "output": "行业路由策略",
+          "step_ref": 1
+        }
+      },
+      "upstream": [],
+      "downstream": [
+        "strategist"
+      ],
+      "last_heartbeat": "2026-04-02T19:27:01.610800+00:00",
+      "last_task_id": "ef30a5ec-5278-4ffb-9fa2-19696200e682:summarize",
+      "error_count": 0,
+      "run_count": 44,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "radar",
+      "description": "信号发现",
+      "lifecycle": "production",
+      "system": "content-intelligence",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "strategist": {
+      "display_name": "Strategist",
+      "zh_name": "脑虫虾",
+      "status": "idle",
+      "phase": "② 策略制定",
+      "role": "策略制定",
+      "icon": "🧠",
+      "default_model_tier": "complex",
+      "skills": [
+        "strategist_goal_decompose",
+        "strategist_platform_allocation",
+        "strategist_content_calendar",
+        "strategist_ab_test_design",
+        "strategist_budget_suggestion",
+        "strategist_adaptive_adjust",
+        "strategist_competitor_playbook",
+        "strategist_industry_tag_lock",
+        "strategist_customer_profile_ingest",
+        "strategist_topic_generate"
+      ],
+      "skill_detail": {
+        "strategist_industry_tag_lock": {
+          "desc": "确认行业标签，锁定策略模板（步骤1协同触须虾）",
+          "output": "行业路由策略",
+          "step_ref": 1
+        },
+        "strategist_customer_profile_ingest": {
+          "desc": "沉淀客户痛点优势人设信息进入租户记忆层（步骤2）",
+          "output": "客户画像档案",
+          "step_ref": 2
+        },
+        "strategist_topic_generate": {
+          "desc": "按行业策略生成候选选题并完成转化评分（步骤3）",
+          "output": "高分选题清单",
+          "step_ref": 3
+        }
+      },
+      "upstream": [
+        "radar"
+      ],
+      "downstream": [
+        "inkwriter",
+        "visualizer"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "strategist",
+      "description": "策略制定",
+      "lifecycle": "production",
+      "system": "content-intelligence",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "inkwriter": {
+      "display_name": "InkWriter",
+      "zh_name": "吐墨虾",
+      "status": "idle",
+      "phase": "③-A 文案",
+      "role": "文案生产",
+      "icon": "✍️",
+      "default_model_tier": "complex",
+      "skills": [
+        "inkwriter_copy_generate",
+        "inkwriter_multiplatform_adapt",
+        "inkwriter_hashtag_gen",
+        "inkwriter_banned_word_check",
+        "inkwriter_dm_script",
+        "inkwriter_industry_vertical_copy",
+        "inkwriter_voiceover_script",
+        "inkwriter_title_ab_generate"
+      ],
+      "skill_detail": {
+        "inkwriter_industry_vertical_copy": {
+          "desc": "生成行业垂直文案，合成旁白与口播声音（步骤5协同回访虾）",
+          "output": "文案与语音资产",
+          "step_ref": 5
+        },
+        "inkwriter_voiceover_script": {
+          "desc": "生成口播脚本用于TTS合成或真人录制（步骤5）",
+          "output": "口播脚本",
+          "step_ref": 5
+        },
+        "inkwriter_title_ab_generate": {
+          "desc": "输出多版本标题封面用于后续效果对比（步骤8协同幻影虾）",
+          "output": "标题封面组合",
+          "step_ref": 8
+        }
+      },
+      "upstream": [
+        "strategist"
+      ],
+      "downstream": [
+        "visualizer",
+        "dispatcher"
+      ],
+      "last_heartbeat": "2026-04-02T16:41:07.475726+00:00",
+      "last_task_id": "task_001",
+      "error_count": 0,
+      "run_count": 7,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "inkwriter",
+      "description": "文案生产",
+      "lifecycle": "production",
+      "system": "content-production",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "visualizer": {
+      "display_name": "Visualizer",
+      "zh_name": "幻影虾",
+      "status": "idle",
+      "phase": "③-B 视觉",
+      "role": "视觉生产",
+      "icon": "🎬",
+      "default_model_tier": "reasoning",
+      "skills": [
+        "visualizer_storyboard",
+        "visualizer_ai_prompt",
+        "visualizer_image_gen",
+        "visualizer_cover_design",
+        "visualizer_digital_human_script",
+        "visualizer_digital_human_video",
+        "visualizer_video_edit",
+        "visualizer_subtitle_gen",
+        "visualizer_semantic_material_match",
+        "visualizer_subtitle_fx_bgm",
+        "visualizer_cover_ab_generate"
+      ],
+      "skill_detail": {
+        "visualizer_semantic_material_match": {
+          "desc": "按文案语义自动匹配分镜画面和素材（步骤6）",
+          "output": "分镜素材包",
+          "step_ref": 6
+        },
+        "visualizer_subtitle_fx_bgm": {
+          "desc": "自动生成字幕特效背景音乐形成发布成片（步骤7协同点兵虾）",
+          "output": "成片草案",
+          "step_ref": 7
+        },
+        "visualizer_cover_ab_generate": {
+          "desc": "输出多版本标题封面用于后续A/B效果对比（步骤8）",
+          "output": "标题封面组合",
+          "step_ref": 8
+        }
+      },
+      "upstream": [
+        "strategist",
+        "inkwriter"
+      ],
+      "downstream": [
+        "dispatcher"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "visualizer",
+      "description": "视觉生产",
+      "lifecycle": "production",
+      "system": "content-production",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "dispatcher": {
+      "display_name": "Dispatcher",
+      "zh_name": "点兵虾",
+      "status": "idle",
+      "phase": "④ 分发",
+      "role": "调度执行",
+      "icon": "📦",
+      "default_model_tier": "simple",
+      "skills": [
+        "dispatcher_task_split",
+        "dispatcher_scheduled_publish",
+        "dispatcher_multi_account_rotate",
+        "dispatcher_emergency_takedown",
+        "dispatcher_bgm_pack",
+        "dispatcher_cloud_archive",
+        "dispatcher_edge_health_check",
+        "dispatcher_edge_task_push"
+      ],
+      "skill_detail": {
+        "dispatcher_bgm_pack": {
+          "desc": "为成片配乐并打包成发布素材（步骤7协同幻影虾）",
+          "output": "成片草案",
+          "step_ref": 7
+        },
+        "dispatcher_cloud_archive": {
+          "desc": "内容素材策略报告统一归档保留审计轨迹（步骤9协同金算虾）",
+          "output": "归档任务包",
+          "step_ref": 9
+        },
+        "dispatcher_edge_health_check": {
+          "desc": "云端检查设备健康和租户策略后下发执行任务（步骤10）",
+          "output": "边缘执行计划",
+          "step_ref": 10
+        },
+        "dispatcher_edge_task_push": {
+          "desc": "将归档内容和发布计划推送到边缘节点执行（步骤10）",
+          "output": "边缘执行计划",
+          "step_ref": 10
+        }
+      },
+      "upstream": [
+        "inkwriter",
+        "visualizer"
+      ],
+      "downstream": [
+        "echoer"
+      ],
+      "last_heartbeat": "2026-03-31T13:45:55.698783+00:00",
+      "last_task_id": "dispatcher_1774964755",
+      "error_count": 0,
+      "run_count": 4,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "dispatcher",
+      "description": "调度执行",
+      "lifecycle": "production",
+      "system": "channel-delivery",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "echoer": {
+      "display_name": "Echoer",
+      "zh_name": "回声虾",
+      "status": "idle",
+      "phase": "⑤-A 互动",
+      "role": "互动转化",
+      "icon": "💬",
+      "default_model_tier": "standard",
+      "skills": [
+        "echoer_reply_generate",
+        "echoer_comment_manage",
+        "echoer_dm_auto_reply",
+        "echoer_wechat_funnel",
+        "echoer_realtime_comment_stream",
+        "echoer_dm_lead_capture"
+      ],
+      "skill_detail": {
+        "echoer_realtime_comment_stream": {
+          "desc": "边缘节点回传评论私信形成实时线索流（步骤11协同铁网虾）",
+          "output": "线索事件流",
+          "step_ref": 11
+        },
+        "echoer_dm_lead_capture": {
+          "desc": "自动回复私信并识别意向客户信号（步骤11）",
+          "output": "线索事件流",
+          "step_ref": 11
+        }
+      },
+      "upstream": [
+        "dispatcher"
+      ],
+      "downstream": [
+        "catcher"
+      ],
+      "last_heartbeat": "2026-03-31T17:33:03.430745+00:00",
+      "last_task_id": "echoer_1774978383",
+      "error_count": 0,
+      "run_count": 2,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "echoer",
+      "description": "互动转化",
+      "lifecycle": "production",
+      "system": "channel-delivery",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "catcher": {
+      "display_name": "Catcher",
+      "zh_name": "铁网虾",
+      "status": "idle",
+      "phase": "⑤-B 线索",
+      "role": "线索识别",
+      "icon": "🎯",
+      "default_model_tier": "standard",
+      "skills": [
+        "catcher_lead_score",
+        "catcher_crm_push",
+        "catcher_cross_platform_dedup",
+        "catcher_compliance_audit",
+        "catcher_sensitive_word_filter",
+        "catcher_complaint_risk_flag"
+      ],
+      "skill_detail": {
+        "catcher_compliance_audit": {
+          "desc": "违规词承诺语词敏感词审核低置信内容自动拒坑（步骤4）",
+          "output": "合规审核报告",
+          "step_ref": 4,
+          "approval_required": true
+        },
+        "catcher_sensitive_word_filter": {
+          "desc": "实时过滤评论私信中的违禁词和风险内容（步骤11协同回声虾）",
+          "output": "线索事件流",
+          "step_ref": 11
+        },
+        "catcher_complaint_risk_flag": {
+          "desc": "按转化概率投诉风险重放成功率综合打分（步骤12）",
+          "output": "线索评分结果",
+          "step_ref": 12
+        }
+      },
+      "upstream": [
+        "echoer"
+      ],
+      "downstream": [
+        "followup",
+        "abacus"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "catcher",
+      "description": "线索识别",
+      "lifecycle": "production",
+      "system": "channel-delivery",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "abacus": {
+      "display_name": "Abacus",
+      "zh_name": "金算虾",
+      "status": "idle",
+      "phase": "⑦ 复盘",
+      "role": "数据分析",
+      "icon": "🧮",
+      "default_model_tier": "complex",
+      "skills": [
+        "abacus_roi_calc",
+        "abacus_multi_touch_attribution",
+        "abacus_strategy_report",
+        "abacus_feedback_loop",
+        "abacus_topic_score",
+        "abacus_archive_report",
+        "abacus_lead_score_model",
+        "abacus_call_log_ingest"
+      ],
+      "skill_detail": {
+        "abacus_topic_score": {
+          "desc": "按行业策略选候选选题并完成转化评分（步骤3协同脑虫虾吐墨虾）",
+          "output": "高分选题清单",
+          "step_ref": 3
+        },
+        "abacus_archive_report": {
+          "desc": "内容素材策略报告统一归档保留审计轨迹（步骤9协同点兵虾）",
+          "output": "归档任务包",
+          "step_ref": 9
+        },
+        "abacus_lead_score_model": {
+          "desc": "按转化概率投诉风险重放成功率综合打分（步骤12）",
+          "output": "线索评分结果",
+          "step_ref": 12
+        },
+        "abacus_call_log_ingest": {
+          "desc": "接收飞书通话录音并录入线索摘要（步骤14协同回访虾）",
+          "output": "飞书线索通知与对话录音附件",
+          "step_ref": 14
+        }
+      },
+      "upstream": [
+        "catcher",
+        "followup"
+      ],
+      "downstream": [
+        "radar"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "abacus",
+      "description": "数据分析",
+      "lifecycle": "production",
+      "system": "follow-growth",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    },
+    "followup": {
+      "display_name": "FollowUp",
+      "zh_name": "回访虾",
+      "status": "idle",
+      "phase": "⑥ 跟进",
+      "role": "客户跟进",
+      "icon": "📞",
+      "default_model_tier": "standard",
+      "skills": [
+        "followup_sop_generate",
+        "followup_multi_touch",
+        "followup_dormant_wake",
+        "followup_voiceover_collab",
+        "followup_phone_trigger",
+        "followup_feishu_notify",
+        "followup_call_summary_push"
+      ],
+      "skill_detail": {
+        "followup_voiceover_collab": {
+          "desc": "协同吐墨虾生成行业垂直文案与口播声音（步骤5）",
+          "output": "文案与语音资产",
+          "step_ref": 5
+        },
+        "followup_phone_trigger": {
+          "desc": "高分线索进入人工审批后触发电话跟进（步骤13）",
+          "output": "电话跟进记录",
+          "step_ref": 13,
+          "approval_required": true
+        },
+        "followup_feishu_notify": {
+          "desc": "对有意向客户自动通过飞书回传线索摘要（步骤14）",
+          "output": "飞书线索通知与对话录音附件",
+          "step_ref": 14
+        },
+        "followup_call_summary_push": {
+          "desc": "附上通话录音并回传到飞书/CRM归档（步骤14协同金算虾）",
+          "output": "飞书线索通知与对话录音附件",
+          "step_ref": 14
+        }
+      },
+      "upstream": [
+        "catcher"
+      ],
+      "downstream": [
+        "abacus"
+      ],
+      "last_heartbeat": null,
+      "last_task_id": null,
+      "error_count": 0,
+      "run_count": 0,
+      "token_usage_today": 0,
+      "created_at": null,
+      "id": "followup",
+      "description": "客户跟进",
+      "lifecycle": "production",
+      "system": "follow-growth",
+      "annotations": {
+        "openclaw/edge-compatible": "true",
+        "openclaw/prompt-version": "stable"
+      },
+      "scheduling_priority": 100
+    }
+  },
+  "systems": [
+    {
+      "name": "content-intelligence",
+      "description": "内容情报与策略分析",
+      "lobsters": [
+        "radar",
+        "strategist"
+      ]
+    },
+    {
+      "name": "content-production",
+      "description": "内容创作与视觉生产",
+      "lobsters": [
+        "inkwriter",
+        "visualizer"
+      ]
+    },
+    {
+      "name": "channel-delivery",
+      "description": "渠道分发与互动承接",
+      "lobsters": [
+        "dispatcher",
+        "echoer",
+        "catcher"
+      ]
+    },
+    {
+      "name": "follow-growth",
+      "description": "跟进、复盘与增长闭环",
+      "lobsters": [
+        "abacus",
+        "followup",
+        "commander"
+      ]
+    }
+  ]
+}

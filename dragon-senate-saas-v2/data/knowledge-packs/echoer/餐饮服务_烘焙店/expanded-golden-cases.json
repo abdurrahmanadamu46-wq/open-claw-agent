@@ -1,0 +1,456 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_bakery_first_order_not_too_sweet_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "First time ordering from you. I want something soft and not too sweet. What should I try?",
+        "brand_tone": "helpful and human",
+        "negative_patterns": [
+          "generic bestseller dumping",
+          "salesy pressure"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is open to guidance",
+          "taste preference already surfaced"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the first-order uncertainty",
+        "anchor the reply in sweetness and texture preference",
+        "guide toward one practical next detail such as bread or dessert"
+      ],
+      "mustAvoid": [
+        "one-size-fits-all recommendations",
+        "ignoring the not-too-sweet request"
+      ]
+    },
+    {
+      "id": "echoer_bakery_birthday_cake_size_style_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I need a birthday cake for 8 people this Saturday. We want something lighter, not too heavy on cream. What size should we look at?",
+        "brand_tone": "thoughtful and reassuring",
+        "negative_patterns": [
+          "oversimplified size claim",
+          "hard upsell"
+        ],
+        "context_window": [
+          "celebration purchase",
+          "user already gave headcount",
+          "cake guidance request"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the celebration planning context",
+        "use headcount and lighter flavor preference in the reply",
+        "guide toward size range and any next detail such as fruit versus mousse direction"
+      ],
+      "mustAvoid": [
+        "acting like size choice is automatic",
+        "ignoring the lighter-cream preference"
+      ]
+    },
+    {
+      "id": "echoer_bakery_same_day_custom_cake_cutoff_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "Can you do a two-tier dinosaur birthday cake by 6 tonight if I order now?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "instant yes",
+          "customization guarantee"
+        ],
+        "context_window": [
+          "urgent request",
+          "complex cake customization",
+          "high expectation risk"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the urgency",
+        "separate simple same-day options from true custom work",
+        "guide toward store, pickup time, and customization scope rather than promise"
+      ],
+      "mustAvoid": [
+        "guaranteeing the custom cake",
+        "pretending complex decoration does not affect readiness"
+      ]
+    },
+    {
+      "id": "echoer_bakery_morning_sellout_croissant_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Will your butter croissants still be there around 10:30 at the mall branch?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket stock promise",
+          "fake urgency pressure"
+        ],
+        "context_window": [
+          "branch specified",
+          "morning product question",
+          "user may be ready to visit"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid a wasted trip",
+        "mention that stock can vary by branch and timing",
+        "guide toward the next availability check"
+      ],
+      "mustAvoid": [
+        "guaranteeing stock without confirmation",
+        "panic wording"
+      ]
+    },
+    {
+      "id": "echoer_bakery_office_pastry_invoice_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need pastry boxes for 25 people for a client meeting tomorrow afternoon and we need an invoice. Can your downtown store handle that?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "fixed promise without store check",
+          "ignoring invoice needs"
+        ],
+        "context_window": [
+          "business order lead",
+          "high-intent group purchase",
+          "user is organized"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize this as a real group order",
+        "ask for quantity confirmation, timing, and pickup or delivery details",
+        "guide toward a clear order follow-up naturally"
+      ],
+      "mustAvoid": [
+        "assuming every store handles bulk orders identically",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_bakery_gift_box_visit_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "I need something nice to bring to my in-laws tomorrow. Do you have a bakery gift box that feels decent but not over the top?",
+        "brand_tone": "warm and practical",
+        "negative_patterns": [
+          "generic prestige talk",
+          "high-pressure upsell"
+        ],
+        "context_window": [
+          "gifting occasion",
+          "user wants guidance",
+          "budget sensitivity is implied"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the gifting occasion",
+        "frame the answer around gifting tone, box count, or budget range",
+        "guide toward one practical next detail"
+      ],
+      "mustAvoid": [
+        "assuming luxury is always preferred",
+        "vague showroom-style language"
+      ]
+    },
+    {
+      "id": "echoer_bakery_coupon_group_buy_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I use this birthday coupon at your campus store tonight if I order the cake in the app?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket yes",
+          "discount bait"
+        ],
+        "context_window": [
+          "promotion check",
+          "store and channel partially known",
+          "user may be close to ordering"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the offer question",
+        "mention that coupon rules can depend on store and ordering channel",
+        "guide toward confirming the next usable detail"
+      ],
+      "mustAvoid": [
+        "approving the coupon without conditions",
+        "vague promotional hype"
+      ]
+    },
+    {
+      "id": "echoer_bakery_cheapest_breakfast_boxes_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We need 15 breakfast boxes. What is the cheapest way to order from you? I do not care about anything fancy.",
+        "brand_tone": "respectful and practical",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "price-led inquiry",
+          "group order",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget focus",
+        "explain that the workable range still depends on item type or box scope",
+        "reframe toward one or two useful trade-offs"
+      ],
+      "mustAvoid": [
+        "instant fixed quote without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_bakery_quality_skeptic_real_butter_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every bakery online says real butter and fresh cream. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete quality concern like sweetness, bread texture, butter flavor, or cream feel",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-town bragging",
+        "sarcasm"
+      ]
+    },
+    {
+      "id": "echoer_bakery_delivery_squashed_cake_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My cake arrived smashed on one side and the writing was wrong too. Is this how you handle birthday orders?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request store or order details through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming delivery in public",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_bakery_nut_allergy_zero_cross_contact_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My son has a tree nut allergy. Can you guarantee zero cross-contact if we order the strawberry cake?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "absolute allergen guarantee",
+          "casual reassurance"
+        ],
+        "context_window": [
+          "allergy topic",
+          "family purchase intent",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the allergy as serious",
+        "avoid making a zero-risk promise",
+        "move toward exact cake and store confirmation with human review"
+      ],
+      "mustAvoid": [
+        "100 percent safe language",
+        "guessing preparation handling"
+      ]
+    },
+    {
+      "id": "echoer_bakery_pregnancy_low_sugar_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "I am pregnant and trying to keep sugar lower. Is your yogurt cheesecake definitely safe for me?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "medical advice",
+          "pregnancy-safe guarantee"
+        ],
+        "context_window": [
+          "ingredient and suitability topic",
+          "high-risk wording",
+          "user wants reassurance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the concern as important",
+        "avoid making a safety or medical guarantee",
+        "move toward exact ingredient or nutrition confirmation with careful escalation"
+      ],
+      "mustAvoid": [
+        "definite medical reassurance",
+        "guessing suitability casually"
+      ]
+    },
+    {
+      "id": "echoer_bakery_exact_ready_time_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I order now can you guarantee the cake will be ready by 5 exactly?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "exact ready-time guarantee",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "pickup deadline",
+          "public comment thread",
+          "user is in a hurry"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid a delay",
+        "state that readiness depends on store load and cake scope",
+        "guide toward store and order details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_bakery_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to place the order now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "order is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request store plus order details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    }
+  ]
+}

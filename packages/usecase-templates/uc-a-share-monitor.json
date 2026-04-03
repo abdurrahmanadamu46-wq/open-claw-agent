@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-a-share-monitor",
+  "name": "A股行情监控",
+  "name_en": "A-share Market Monitor",
+  "category": "analytics",
+  "difficulty": "intermediate",
+  "description": "监控 A 股板块与个股信号变化，生成盘前盘后摘要和异常提醒。",
+  "pain_point": "市场信号变化快，人工盯盘成本高，盘中事件也容易错过回顾窗口。",
+  "lobsters": ["radar", "abacus"],
+  "skills_required": ["radar_web_search", "radar_sentiment_alert", "abacus_strategy_report"],
+  "channels": ["wechat", "feishu"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "录入股票池",
+      "code_type": "config",
+      "code": "输入关注的板块、指数和个股列表，作为触须虾的长期监控对象。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "定义提醒阈值",
+      "code_type": "prompt",
+      "code": "说明价格波动、舆情变化或成交量阈值，决定何时触发提醒。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "选择报告时点",
+      "code_type": "config",
+      "code": "建议盘前 08:45 与盘后 15:30 各输出一次摘要。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启用行情监控",
+      "code_type": "none",
+      "code": "触须虾抓信号，金算虾总结结构化观察并输出可读报告。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "cron",
+    "schedule": "45 8 * * 1-5",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "这类场景适合做观察和提醒，不应直接替代投资决策。",
+    "如果提醒太多，先提高阈值再放开股票池。",
+    "盘中提醒建议走 isolated，盘后复盘适合 shared。"
+  ],
+  "estimated_cost_per_run": "$0.05-0.15",
+  "tags": ["A股", "监控", "行情", "摘要"]
+}

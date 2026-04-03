@@ -1,0 +1,158 @@
+﻿{
+  "industry": "酒店民宿_商务酒店",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_same_day_room_search",
+      "scene": "comment_or_dm",
+      "intent": "same_day_booking",
+      "emotion": "urgent_but_orderly",
+      "hook": "I can see why you want a clear answer quickly.",
+      "bridge": "For a same-day hotel stay, the key details are usually the property, arrival time, and whether you are still choosing or already booked.",
+      "next_step": "Ask for the property, arrival window, and room count.",
+      "handoff_suggestion": "Booking-support opportunity if the user shares same-day stay details."
+    },
+    {
+      "id": "hook_red_eye_early_checkin",
+      "scene": "comment_or_dm",
+      "intent": "early_checkin",
+      "emotion": "tired_and_hopeful",
+      "hook": "That kind of arrival can make a long day even longer.",
+      "bridge": "Early check-in usually depends on live room turnover and the booked rate, so the useful next step is to narrow the timing and property first.",
+      "next_step": "Ask for the hotel, stay date, expected arrival time, and whether the booking is already made.",
+      "handoff_suggestion": "Front-desk or reservation confirmation path."
+    },
+    {
+      "id": "hook_evening_flight_late_checkout",
+      "scene": "comment_or_dm",
+      "intent": "late_checkout",
+      "emotion": "schedule_pressure",
+      "hook": "Makes sense to line that up before the day gets hectic.",
+      "bridge": "Late checkout depends on occupancy and room status more than people expect, especially on busy business-travel days.",
+      "next_step": "Ask for the property, stay date, and the departure time they are trying to cover.",
+      "handoff_suggestion": "Live checkout-flexibility check."
+    },
+    {
+      "id": "hook_quiet_room_and_wifi",
+      "scene": "public_comment",
+      "intent": "workspace_or_rest_fit",
+      "emotion": "practical",
+      "hook": "That is a very reasonable thing to check for a work trip.",
+      "bridge": "With business hotels, the useful split is usually whether you care most about quiet rest, desk setup, or where you plan to work.",
+      "next_step": "Ask which property they mean and whether quietness, desk space, or Wi-Fi matters most.",
+      "handoff_suggestion": "Good fit-and-needs clarification signal."
+    },
+    {
+      "id": "hook_corporate_invoice",
+      "scene": "comment_or_dm",
+      "intent": "invoice_question",
+      "emotion": "businesslike",
+      "hook": "Happy to help you make the billing side cleaner.",
+      "bridge": "Invoice handling usually depends on whether the stay is already booked and which channel the booking went through.",
+      "next_step": "Ask whether the reservation is already made, where it was booked, and what invoice title is needed.",
+      "handoff_suggestion": "Business-booking lead if the user shares billing details."
+    },
+    {
+      "id": "hook_team_room_block",
+      "scene": "comment_or_dm",
+      "intent": "group_booking",
+      "emotion": "organized",
+      "hook": "That already sounds like a real booking conversation, not just browsing.",
+      "bridge": "For multiple rooms, the key facts are usually dates, room count, room mix, and whether breakfast or invoice needs matter.",
+      "next_step": "Ask for dates, number of rooms, room type mix, and any company billing requirement.",
+      "handoff_suggestion": "High-intent group booking lead."
+    },
+    {
+      "id": "hook_meeting_room_setup",
+      "scene": "comment_or_dm",
+      "intent": "meeting_space",
+      "emotion": "planning_mode",
+      "hook": "Meeting space works best when the scope is clear upfront.",
+      "bridge": "The right answer depends on the date, headcount, time block, and whether you need equipment or refreshments.",
+      "next_step": "Ask for date, time range, attendee count, and setup needs.",
+      "handoff_suggestion": "Event or sales handoff if details are concrete."
+    },
+    {
+      "id": "hook_airport_transfer",
+      "scene": "comment_or_dm",
+      "intent": "transport_question",
+      "emotion": "time_sensitive",
+      "hook": "That is worth checking before the travel window gets tight.",
+      "bridge": "Hotel transfer support can vary by property, route, and operating hours, so the property and timing matter first.",
+      "next_step": "Ask for the hotel, travel date, and whether they need pickup or drop-off.",
+      "handoff_suggestion": "Property-specific transport confirmation."
+    },
+    {
+      "id": "hook_parking_ev",
+      "scene": "comment_or_dm",
+      "intent": "parking_question",
+      "emotion": "practical",
+      "hook": "Good call to sort that out before arrival.",
+      "bridge": "Parking and charging answers usually change with the property and the kind of vehicle you are bringing.",
+      "next_step": "Ask which hotel, what vehicle they have, and whether the concern is overnight parking or charging.",
+      "handoff_suggestion": "Operations check if vehicle details are specific."
+    },
+    {
+      "id": "hook_breakfast_plan",
+      "scene": "comment_or_dm",
+      "intent": "rate_benefit_question",
+      "emotion": "clarifying",
+      "hook": "That is one of the most useful things to confirm before arrival.",
+      "bridge": "Breakfast and lounge access usually depend on the room category or rate plan rather than the hotel name alone.",
+      "next_step": "Ask whether the room is already booked, which channel or rate they are looking at, and which benefit they want to confirm.",
+      "handoff_suggestion": "Booking-clarification path."
+    },
+    {
+      "id": "hook_cancellation_policy",
+      "scene": "comment_or_dm",
+      "intent": "refund_or_cancellation",
+      "emotion": "stressed",
+      "hook": "Travel changes can be a hassle, so it is worth checking the right policy path first.",
+      "bridge": "With hotel bookings, the answer usually depends on where the reservation was made and what rate terms were chosen.",
+      "next_step": "Ask whether the booking already exists, which channel it was booked through, and whether the rate is flexible or non-refundable.",
+      "handoff_suggestion": "Policy-confirmation path."
+    },
+    {
+      "id": "hook_long_stay_rate",
+      "scene": "comment_or_dm",
+      "intent": "long_stay_or_corporate_rate",
+      "emotion": "businesslike",
+      "hook": "That sounds more like an ongoing stay need than a one-off room question.",
+      "bridge": "For repeat or longer business stays, the useful next step is to narrow the dates, volume, and billing expectations.",
+      "next_step": "Ask for expected dates, room nights or room count, and whether invoice or breakfast matters.",
+      "handoff_suggestion": "High-value corporate lead."
+    },
+    {
+      "id": "hook_skeptic_quiet_wifi_claim",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "Business travelers often care about different proof points, like quiet rest, desk setup, Wi-Fi stability, or how the hotel handles late arrivals.",
+      "next_step": "Invite the user to name the exact point they want clarified first.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_service_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would wear on you.",
+      "bridge": "The fastest review usually starts with the hotel, stay date, and the exact room or booking details.",
+      "next_step": "Move the user to DM for stay details and the issue summary.",
+      "handoff_suggestion": "Escalate to guest service or hotel operations."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to help move it forward quickly.",
+      "bridge": "The safest first step is still platform DM so stay details and billing info do not get scattered in public comments.",
+      "next_step": "Ask for the property, stay dates, and room count in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

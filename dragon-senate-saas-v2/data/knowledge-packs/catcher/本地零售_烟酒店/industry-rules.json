@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"catcher","pack_type":"industry-rules","version":"v1","items":[
+  {"id":"qualify_by_scene_budget_scope","title":"先看场景、预算和时间，再判断是不是高意向","description":"烟酒店线索只有在明确提到送礼、婚宴、自饮、团购等场景，预算或数量，以及到店时间或节点时，才能被视为高意向。","examples":["高价值信号：周五晚想去国金门店看白酒礼盒，预算 500 左右，送客户。","低确定性信号：最近想买点酒，先了解下。"],"priority":"high"},
+  {"id":"deadline_visit_is_high_intent","title":"节庆、婚礼和拜访出现明确日期时要显著提权","description":"节庆送礼、婚宴和公司拜访等节点，一旦带着明确日期进入私信，通常比普通泛咨询更接近真实到店动作。","examples":["周六要送礼，想约周四晚上先来看看。","下个月婚礼，这周想先把路线理顺。"],"priority":"high"},
+  {"id":"first_time_and_trust_questions_are_not_low_intent","title":"第一次到店和真假顾虑不应被误判成低意向","description":"第一次来、怕踩坑、担心真假和不懂怎么选，并不等于低意向。","examples":["第一次来，担心送错场景，这周末有空想先看看。","想先看红酒礼盒，但比较怕不稳妥。"],"priority":"high"},
+  {"id":"price_only_needs_scope_before_upgrade","title":"只问价格不等于高意向，除非同时带着场景和时间","description":"价格问题本身并不低意向，但如果没有场景范围、预算带和时间窗口等事实，Catcher 不能把它直接提到最高层。","examples":["高意向：这周末想来看礼盒，预算五百左右。","普通意向：这酒多少钱。"],"priority":"medium"},
+  {"id":"returning_customer_signal_upgrade","title":"老客补货和企业续采要抬高拟合度","description":"老客复购、企业续采和之前买过同品牌又回来问新批次等信号，通常意味着信任门槛已经降低。","examples":["上次来店里买过，这次想继续补一箱。","公司活动上次采购过，这次还想按那个标准来。"],"priority":"medium"},
+  {"id":"public_budget_anxiety_should_not_hide_intent","title":"公开场合的预算焦虑不应掩盖真实意向","description":"有些用户会在评论区用很轻的语气掩饰强烈需求，比如预算不高还能不能送、怕不体面和怕买到不真。","examples":["预算不高也能先来看看吗，这周末能到店吗。","第一次买送领导的酒，怕踩坑，也能先来看看吗。"],"priority":"medium"}
+]}

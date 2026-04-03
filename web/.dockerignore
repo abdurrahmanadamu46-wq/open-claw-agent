@@ -1,0 +1,14 @@
+﻿.git
+.gitignore
+node_modules
+.next
+.playwright-browsers
+.npm-cache
+playwright-report
+test-results
+coverage
+*.log
+*.tsbuildinfo
+.env
+.env.local
+.env.*

@@ -1,0 +1,23 @@
+id: catcher_lead_capture
+lobster_id: catcher
+name: 线索捕获与入库
+description: "识别高意向线索、做跨平台去重，并把高价值对象推送到 CRM。"
+trigger_keywords:
+  - 线索
+  - 入库
+  - CRM
+  - 去重
+  - 高意向
+allowed_tools:
+  - crm_write
+  - lead_store
+  - memory_read
+industry_tags: []
+priority: medium
+publish_status: approved
+version: "1.0.0"
+max_tokens_budget: 6000
+system_prompt_path: prompt-kit/system.prompt.md
+user_template_path: prompt-kit/user-template.md
+scan_status: not_scanned
+scan_report: {}

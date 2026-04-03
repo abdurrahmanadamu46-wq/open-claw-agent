@@ -1,0 +1,20 @@
+﻿{
+  "thread_id": "sd-04",
+  "name": "Memory Compiler",
+  "owner_scope": "lossless event ingestion and retrieval-pack compilation",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "ingest": "MQ or REST",
+    "retrieve": "REST"
+  },
+  "source_anchors": [
+    "dragon-senate-saas-v2/lossless_memory.py",
+    "dragon-senate-saas-v2/memory_governor.py",
+    "services/lobster-memory"
+  ]
+}

@@ -1,0 +1,8 @@
+{"industry":"本地零售_烟酒店","lobster_id":"catcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"scene_plus_time_hook","title":"场景加时间同时出现时的高意向钩子","description":"当线索同时出现送礼/婚宴/自饮方向和到店时间时，应优先判为高意向候选。","examples":["周五晚想先看白酒礼盒。","这周日想先配一套婚宴用酒。"],"priority":"high"},
+  {"id":"first_visit_process_hook","title":"首次到店与真假顾虑钩子","description":"用户主动提到第一次来、不懂怎么选、怕踩坑和担心真假时，说明其到店意图更具体。","examples":["第一次来，周末想先看适不适合送客户。","担心扫码价差太大，想先来了解一下。"],"priority":"high"},
+  {"id":"seasonal_window_hook","title":"节点送礼与婚礼窗口钩子","description":"节前、婚礼、开业和拜访节点如果带着明确时间进入私信，应显著提权。","examples":["中秋前想先看一批礼盒。","婚礼前一周想先确定整箱路线。"],"priority":"high"},
+  {"id":"authenticity_specific_hook","title":"真假与授权细问钩子","description":"当用户明确提到授权、批次、扫码价和真假差异时，往往意味着真实购买需求已经收窄。","examples":["这款有授权证明吗。","为什么这个批次和扫码价不一样。"],"priority":"high"},
+  {"id":"old_client_restock_hook","title":"老客补货与推荐回流钩子","description":"老客复购、朋友推荐和之前买过同品牌又回来问新批次，通常有更高的成交确定性。","examples":["上次在你们家买过，这周想再补一箱。","朋友推荐你们店，说礼盒搭配比较稳。"],"priority":"medium"},
+  {"id":"price_plus_budget_hook","title":"价格叠加预算范围钩子","description":"只问价格不一定高意向，但如果同时出现预算、场景和到店时间，质量明显更高。","examples":["这周末想来看礼盒，预算 300 到 500。","婚宴用酒一桌大概什么预算更稳。"],"priority":"medium"}
+]}

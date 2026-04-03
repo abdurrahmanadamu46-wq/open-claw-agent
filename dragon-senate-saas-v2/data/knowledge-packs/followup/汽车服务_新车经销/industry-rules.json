@@ -1,0 +1,50 @@
+﻿{
+  "industry": "汽车服务_新车经销",
+  "lobster_id": "followup",
+  "pack_type": "industry-rules",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "facts_before_slot_commitment",
+      "title": "没补齐预算、时间和看车方向前，本轮目标是锁预约事实，不是先把结果说满",
+      "description": "新车经销线索很多从有没有车、多少钱和能不能零首付开场，但真正决定能否推进的是预算范围、预约时间、门店和是否第一次来。FollowUp 本轮目标应是补齐预约事实，而不是先承诺一定能买到最低价。",
+      "examples": ["客户只问周末能不能看车时，先问预算和看车方向。", "客户只说最近想换车时，先补时间和门店，再决定如何推进。"],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_needs_safety_trust_stage",
+      "title": "第一次到店和怕选错配置的用户必须先进入信任建立阶段",
+      "description": "第一次来、担心不会选配置、怕金融套路和怕被绑定保险装潢的用户，跟进动作不能直接写成催成交。FollowUp 需要先进入信任建立阶段，围绕到店、试驾和边界做收口。",
+      "examples": ["先确认最担心的是什么，再给出到店路径。", "先讲清流程和权益，再谈时间。"],
+      "priority": "high"
+    },
+    {
+      "id": "seasonal_booking_needs_fast_scope",
+      "title": "提车、返乡和节点购车线索要走快节奏但不失边界的决策路径",
+      "description": "这类用户最在意的是还有没有适合的时间和车型方向。FollowUp 应先确认日期、时段和当前问题，再帮助其进入合适到店，而不是在时间紧张时展开长篇销售。",
+      "examples": ["提车线索先确认周几可来和这次最在意什么。", "换车线索先锁时间，再讲看车范围。"],
+      "priority": "high"
+    },
+    {
+      "id": "first_visit_and_revisit_split",
+      "title": "首次预约跟进和复访维护必须拆开",
+      "description": "首单跟进的目标通常是帮用户安心完成一次看车，复访维护的目标才是提醒节点、反馈状态和下一步选择。两阶段不能共用同一套推进动作。",
+      "examples": ["首单更多围绕预算、时间和风险边界。", "复访更多围绕上次试驾感受、家人决策和下一步。"],
+      "priority": "high"
+    },
+    {
+      "id": "post_visit_followup_needs_feedback",
+      "title": "看车后的跟进要先收感受和状态变化，再决定是否推进",
+      "description": "看车后的 FollowUp 不是默认销售时刻。应先确认感受、车型适配和满意度，再根据反馈决定是安抚、复访还是推进下一步建议。",
+      "examples": ["看车后先问感觉和最在意的点。", "试驾后先问空间和驾驶感受是否合适。"],
+      "priority": "high"
+    },
+    {
+      "id": "old_client_return_needs_specific_reason",
+      "title": "老客回访要给具体复访或置换理由，不要只催回来",
+      "description": "提车节点到了、家庭用车变化、预算调整和上次建议的车型方向，都是合理的回访理由。FollowUp 应用这些具体理由引导老客回来，而不是泛泛问要不要再来。",
+      "examples": ["提醒上次来看车的客户提车节点到了。", "按家庭变化提醒换大空间车型。"],
+      "priority": "medium"
+    }
+  ]
+}

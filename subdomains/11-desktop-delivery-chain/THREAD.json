@@ -1,0 +1,18 @@
+﻿{
+  "thread_id": "sd-11",
+  "name": "Desktop Delivery Chain",
+  "owner_scope": "desktop runtime sync, packaging, and update manifest verification",
+  "maturity": "executing",
+  "isolation": {
+    "share_database": false,
+    "share_memory": false,
+    "contract_only": true
+  },
+  "communication": {
+    "manifest": "REST",
+    "artifact": "object storage download"
+  },
+  "source_anchors": [
+    "apps/desktop-client/README.md"
+  ]
+}

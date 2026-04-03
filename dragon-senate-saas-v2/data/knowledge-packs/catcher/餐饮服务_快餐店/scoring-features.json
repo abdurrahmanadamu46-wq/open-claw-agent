@@ -1,0 +1,108 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u5feb\u9910\u5e97",
+  "lobster_id": "catcher",
+  "pack_type": "scoring",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "order_action_explicitness",
+      "title": "Order-action explicitness",
+      "description": "Measure whether the lead clearly asks to order, reserve, prep, deliver, arrange pickup, or send the final list now. High scores mean the buyer has moved from interest into execution.",
+      "examples": [
+        "High: If you can do it, I will send the full list now.",
+        "Low: Which combo is most popular?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "order_fact_completeness",
+      "title": "Order-fact completeness",
+      "description": "Measure whether the lead includes store, date, meal window, quantity, combo structure, dine-in or pickup or delivery mode, address, floor, invoice need, and contact details. More complete facts make intent and tiering more trustworthy.",
+      "examples": [
+        "High: Store, time, quantity, address, combo split, and contact are present.",
+        "Low: We may order some fast food this week."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "branch_and_delivery_specificity",
+      "title": "Store and delivery-scope specificity",
+      "description": "Measure whether the lead is tied to a real store or at least a workable delivery scope. Fast-food capacity, breakfast timing, rider reach, and building handoff constraints all depend on the store.",
+      "examples": [
+        "High: Pickup at Jingan Temple store at 8:20.",
+        "Low: Can any of your stores deliver to our office?"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "meal_window_and_urgency_quality",
+      "title": "Meal-window and urgency quality",
+      "description": "Measure whether the urgency is grounded in a real breakfast or lunch or dinner window and a workable arrival or delivery node. Good urgency has execution facts behind it. Bad urgency is only pressure without facts.",
+      "examples": [
+        "High: Deliver before the 11:50 meeting start with a confirmed floor and list.",
+        "Low: Do it right now or forget it."
+      ],
+      "priority": "medium"
+    },
+    {
+      "id": "order_mode_and_scene_fit",
+      "title": "Order-mode and scene fit",
+      "description": "Measure whether the scenario matches common fast-food demand such as office lunch delivery, meeting meals, breakfast pickup, after-work takeaway, or simple family meals. The clearer and more realistic the scene, the stronger the fit.",
+      "examples": [
+        "High: Department lunch delivered to the office lobby.",
+        "Low: A vague future maybe with no use-case."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "organizer_ownership",
+      "title": "Buyer ownership",
+      "description": "Measure whether the speaker is the eater, the family organizer, the office admin, or the event owner, versus a random intermediary or price collector. Higher ownership means better conversion odds and better follow-up value.",
+      "examples": [
+        "High: I am the office admin arranging 32 lunch sets.",
+        "Low: I am just asking for a friend."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "budget_and_commercial_feasibility",
+      "title": "Budget feasibility",
+      "description": "Measure whether the budget matches quantity, combo structure, invoice needs, and delivery complexity. When the service ask is much larger than the budget can support, fit should drop even if intent is real.",
+      "examples": [
+        "High: Budget roughly matches combo level and delivery need.",
+        "Low: Many labeled meals, two delivery waves, and invoice support on a very low per-meal budget."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "customization_and_execution_feasibility",
+      "title": "Customization and execution feasibility",
+      "description": "Measure whether the requested no-spice notes, drink swaps, kids meals, split delivery, upstairs handoff, labels, and special remarks stay inside normal store capability. Complexity near peak hours should increase caution.",
+      "examples": [
+        "High: A few no-spice notes and normal drink swaps.",
+        "Low: Per-person labels, two delivery waves, upstairs handoff, and exact timing during lunch rush."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "followup_readiness",
+      "title": "Follow-up readiness",
+      "description": "Measure whether the lead already has enough structure to hand over for rapid next-step action. High readiness means store, time, quantity, contact, address, and next action are already clear.",
+      "examples": [
+        "High: The lead is ready to send the full meal list and contact right now.",
+        "Low: The lead only wants to browse the menu first."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "risk_and_noise_intensity",
+      "title": "Risk and noise intensity",
+      "description": "This is the risk-side feature. Exact-arrival demands, zero-contact allergy language, absolute pregnancy or kids safety claims, food safety complaints, undercooked reports, operator pitches, franchise offers, and price-sheet fishing should all push risk upward. This feature is allowed to override commercial temptation.",
+      "examples": [
+        "High risk: Must arrive exactly at 11:50 and guarantee zero cross-contact.",
+        "Low risk: Normal combo confirmation around store, time, and quantity."
+      ],
+      "priority": "high"
+    }
+  ]
+}

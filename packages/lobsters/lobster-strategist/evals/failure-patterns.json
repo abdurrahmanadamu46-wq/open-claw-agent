@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "strategist",
+  "patterns": [
+    {
+      "id": "strategist_missing_tradeoff",
+      "label": "missing_tradeoff",
+      "description": "StrategyRoute gives a route but omits cost, risk, or priority tradeoffs."
+    },
+    {
+      "id": "strategist_evidence_blindness",
+      "label": "evidence_blindness",
+      "description": "Strategist acts confident even though Radar evidence is weak or contradictory."
+    },
+    {
+      "id": "strategist_overexpansion",
+      "label": "overexpansion",
+      "description": "Strategy recommends broad expensive execution before validating the core route."
+    }
+  ]
+}

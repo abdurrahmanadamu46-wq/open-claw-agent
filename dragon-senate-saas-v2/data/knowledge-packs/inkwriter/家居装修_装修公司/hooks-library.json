@@ -1,0 +1,7 @@
+﻿{"industry":"家居装修_装修公司","lobster_id":"inkwriter","pack_type":"hooks-library","version":"v1","items":[
+{"id":"renovation_hook_problem","title":"装修问题开头模板","description":"适合预算、户型、旧改和婚房路线。","examples":["很多人想来咨询的，不是随便装一下，而是眼前这个家到底该怎么做才不走弯路。 ","问题不是你不懂，而是你已经到了该先把路线看清的时候。 ","装修这件事，最怕的是越急越乱签。 "],"priority":"high"},
+{"id":"renovation_hook_daily_scene","title":"日常居住开头模板","description":"适合收纳、旧改、局改和日常翻新路线。","examples":["很多人来做装修，不是因为想花更多钱，而是现在真的需要先知道这个家值不值得这样改。 ","如果你最近一直卡在预算、风格和收纳之间，先别急着盲目开工。 ","真正让人安心的，不是一次做满，而是先知道你现在适不适合从哪一步开始。 "],"priority":"high"},
+{"id":"renovation_hook_window_scene","title":"节点季装修开头模板","description":"适合交房、婚房和节前入住前的短周期量房路线。","examples":["离交房或入住只剩几周的时候，很多人需要的不是再刷更多视频，而是一趟别踩坑的量房。 ","节点前最怕的不是没方案，而是方向根本没理清。 ","越临近节点，越需要的是先看清，而不是先冲动。 "],"priority":"high"},
+{"id":"renovation_hook_trust_and_process","title":"流程与边界建立信任模板","description":"适合新客冷启动和怕踩雷用户。","examples":["很多人不是不想装，而是不想把钱交给一套看不懂报价和工地的方案。 ","真正让人安心的，不是一句很省，而是每一步都知道自己在做什么。 ","比起低价，很多第一次来的人更在意这家公司会不会乱增项。 "],"priority":"high"},
+{"id":"renovation_hook_first_visit","title":"第一次量房低压力模板","description":"适合第一次来公司和犹豫用户。","examples":["第一次来的人，很多不是没想法，是不知道从哪一步开始最稳。 ","如果你是第一次认真装修，先把方向看清，通常比一上来签单更安心。 ","第一次量房，选对比选快更重要。 "],"priority":"medium"},
+{"id":"renovation_hook_revisit_cycle","title":"复访与局改提醒模板","description":"适合老客回访和阶段维护提醒。","examples":["很多人不是突然想回来，而是住到某一步就知道该继续改哪一块。 ","比起盲目开工，知道什么时候该继续更重要。 ","老客回来的理由，通常不是便宜了，而是现在正好到了。 "],"priority":"medium"}]}

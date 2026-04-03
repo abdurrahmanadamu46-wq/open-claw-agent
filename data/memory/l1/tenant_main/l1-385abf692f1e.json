@@ -1,0 +1,16 @@
+{
+  "report_id": "l1-385abf692f1e",
+  "source_entry_id": "task-1",
+  "lobster_id": "radar",
+  "task_summary": "????????????????success????????????",
+  "decision": "rule_fallback",
+  "outcome": "success",
+  "next_steps": [],
+  "key_entities": [],
+  "metrics": {},
+  "tenant_id": "tenant_main",
+  "created_at": "2026-04-03T13:09:26.282688+00:00",
+  "token_count": 1,
+  "source_token_count": 42,
+  "promoted_to_l2": false
+}

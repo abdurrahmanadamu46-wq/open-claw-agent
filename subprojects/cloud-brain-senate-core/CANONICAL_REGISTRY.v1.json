@@ -1,0 +1,24 @@
+﻿{
+  "schema_version": "cloud_brain.registry.v1",
+  "subproject_id": "cloud-brain-senate-core",
+  "source_of_truth": true,
+  "commander": {
+    "canonical_id": "commander",
+    "display_name": "Commander",
+    "zh_name": "元老院总脑"
+  },
+  "elders": [
+    { "canonical_id": "radar", "display_name": "Radar", "zh_name": "触须虾", "aliases": ["radar"] },
+    { "canonical_id": "strategist", "display_name": "Strategist", "zh_name": "脑虫虾", "aliases": ["strategist"] },
+    { "canonical_id": "inkwriter", "display_name": "InkWriter", "zh_name": "吐墨虾", "aliases": ["inkwriter", "ink-writer"] },
+    { "canonical_id": "visualizer", "display_name": "Visualizer", "zh_name": "幻影虾", "aliases": ["visualizer"] },
+    { "canonical_id": "dispatcher", "display_name": "Dispatcher", "zh_name": "点兵虾", "aliases": ["dispatcher"] },
+    { "canonical_id": "echoer", "display_name": "Echoer", "zh_name": "回声虾", "aliases": ["echoer"] },
+    { "canonical_id": "catcher", "display_name": "Catcher", "zh_name": "铁网虾", "aliases": ["catcher"] },
+    { "canonical_id": "abacus", "display_name": "Abacus", "zh_name": "金算虾", "aliases": ["abacus"] },
+    { "canonical_id": "followup", "display_name": "FollowUp", "zh_name": "回访虾", "aliases": ["followup", "follow-up"] }
+  ],
+  "non_seat_support_roles": [
+    { "canonical_id": "feedback", "display_name": "Feedback Kernel", "zh_name": "反馈内核" }
+  ]
+}

@@ -1,0 +1,16 @@
+﻿{
+  "schemaVersion": "lobster.playbook.v0.2",
+  "roleId": "visualizer",
+  "artifactType": "StoryboardPack",
+  "playbookId": "visualizer_starter",
+  "title": "Visualizer Starter Playbook",
+  "steps": [
+    "load_role_card",
+    "read_copy_pack_and_asset_inventory",
+    "design_cover_direction_with_evidence_priority",
+    "draft_shot_list_and asset dependencies",
+    "score_execution_feasibility",
+    "run_role_eval",
+    "write_back_learning_if_valid"
+  ]
+}

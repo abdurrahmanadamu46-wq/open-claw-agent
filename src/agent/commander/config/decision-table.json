@@ -1,0 +1,317 @@
+﻿{
+  "meta": {
+    "version": "commander.decision-table.v0.2",
+    "name": "LobsterPool Commander Decision Table",
+    "description": "Hot-reloadable lineup, budget, approval, and override policies for the Commander.",
+    "lastUpdated": "2026-03-30"
+  },
+  "lineupCatalog": {
+    "reconnaissance": {
+      "id": "reconnaissance",
+      "label": "Reconnaissance Team",
+      "roles": ["commander", "radar", "strategist"]
+    },
+    "content": {
+      "id": "content",
+      "label": "Content Team",
+      "roles": ["commander", "strategist", "inkwriter", "visualizer", "dispatcher"]
+    },
+    "interaction": {
+      "id": "interaction",
+      "label": "Interaction Team",
+      "roles": ["commander", "echoer", "catcher", "abacus"]
+    },
+    "conversion": {
+      "id": "conversion",
+      "label": "Conversion Team",
+      "roles": ["commander", "catcher", "abacus", "followup"]
+    },
+    "recovery": {
+      "id": "recovery",
+      "label": "Recovery Team",
+      "roles": ["commander", "dispatcher", "feedback"]
+    },
+    "review": {
+      "id": "review",
+      "label": "Review Team",
+      "roles": ["commander", "abacus", "feedback"]
+    }
+  },
+  "missionProfiles": {
+    "signal_scan": {
+      "baseLineups": ["reconnaissance"],
+      "stagePlan": [
+        { "stageId": "understand", "label": "Clarify mission", "ownerRole": "commander", "lineupId": "reconnaissance", "parallelAllowed": false },
+        { "stageId": "scan", "label": "Scan signals", "ownerRole": "radar", "lineupId": "reconnaissance", "parallelAllowed": true },
+        { "stageId": "route", "label": "Frame direction", "ownerRole": "strategist", "lineupId": "reconnaissance", "parallelAllowed": false },
+        { "stageId": "close", "label": "Close scan", "ownerRole": "commander", "lineupId": "reconnaissance", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 90000, "toolBudget": 12, "latencyBudgetSec": 900, "parallelismBudget": 2 },
+      "approvalActions": [],
+      "stopLossProfile": "standard"
+    },
+    "strategy_design": {
+      "baseLineups": ["reconnaissance"],
+      "stagePlan": [
+        { "stageId": "understand", "label": "Clarify mission", "ownerRole": "commander", "lineupId": "reconnaissance", "parallelAllowed": false },
+        { "stageId": "route", "label": "Design route", "ownerRole": "strategist", "lineupId": "reconnaissance", "parallelAllowed": false },
+        { "stageId": "close", "label": "Freeze route", "ownerRole": "commander", "lineupId": "reconnaissance", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 70000, "toolBudget": 6, "latencyBudgetSec": 1200, "parallelismBudget": 1 },
+      "approvalActions": [],
+      "stopLossProfile": "standard"
+    },
+    "content_production": {
+      "baseLineups": ["content"],
+      "stagePlan": [
+        { "stageId": "frame", "label": "Frame route", "ownerRole": "strategist", "lineupId": "content", "parallelAllowed": false },
+        { "stageId": "write", "label": "Draft copy", "ownerRole": "inkwriter", "lineupId": "content", "parallelAllowed": true },
+        { "stageId": "visualize", "label": "Plan storyboard", "ownerRole": "visualizer", "lineupId": "content", "parallelAllowed": true },
+        { "stageId": "execute", "label": "Prepare execution", "ownerRole": "dispatcher", "lineupId": "content", "parallelAllowed": false },
+        { "stageId": "close", "label": "Release package", "ownerRole": "commander", "lineupId": "content", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 140000, "toolBudget": 18, "latencyBudgetSec": 1800, "parallelismBudget": 3 },
+      "approvalActions": ["publish_external", "sensitive_claims"],
+      "stopLossProfile": "standard"
+    },
+    "interaction_handling": {
+      "baseLineups": ["interaction"],
+      "stagePlan": [
+        { "stageId": "triage", "label": "Triage interaction", "ownerRole": "echoer", "lineupId": "interaction", "parallelAllowed": true },
+        { "stageId": "qualify", "label": "Qualify lead intent", "ownerRole": "catcher", "lineupId": "interaction", "parallelAllowed": true },
+        { "stageId": "score", "label": "Score value", "ownerRole": "abacus", "lineupId": "interaction", "parallelAllowed": true },
+        { "stageId": "close", "label": "Choose next step", "ownerRole": "commander", "lineupId": "interaction", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 40000, "toolBudget": 4, "latencyBudgetSec": 120, "parallelismBudget": 4 },
+      "approvalActions": ["price_commitment", "sensitive_claims"],
+      "stopLossProfile": "fast"
+    },
+    "lead_qualification": {
+      "baseLineups": ["interaction"],
+      "stagePlan": [
+        { "stageId": "qualify", "label": "Classify lead", "ownerRole": "catcher", "lineupId": "interaction", "parallelAllowed": true },
+        { "stageId": "score", "label": "Score value", "ownerRole": "abacus", "lineupId": "interaction", "parallelAllowed": true },
+        { "stageId": "close", "label": "Queue next action", "ownerRole": "commander", "lineupId": "interaction", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 25000, "toolBudget": 3, "latencyBudgetSec": 90, "parallelismBudget": 3 },
+      "approvalActions": [],
+      "stopLossProfile": "fast"
+    },
+    "conversion_push": {
+      "baseLineups": ["conversion"],
+      "stagePlan": [
+        { "stageId": "qualify", "label": "Re-check lead", "ownerRole": "catcher", "lineupId": "conversion", "parallelAllowed": false },
+        { "stageId": "score", "label": "Estimate value", "ownerRole": "abacus", "lineupId": "conversion", "parallelAllowed": true },
+        { "stageId": "followup", "label": "Plan touchpoint", "ownerRole": "followup", "lineupId": "conversion", "parallelAllowed": false },
+        { "stageId": "close", "label": "Authorize next action", "ownerRole": "commander", "lineupId": "conversion", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 65000, "toolBudget": 8, "latencyBudgetSec": 300, "parallelismBudget": 2 },
+      "approvalActions": ["outbound_call", "bulk_message", "price_commitment"],
+      "stopLossProfile": "strict"
+    },
+    "recovery_replay": {
+      "baseLineups": ["recovery"],
+      "stagePlan": [
+        { "stageId": "diagnose", "label": "Diagnose failure", "ownerRole": "dispatcher", "lineupId": "recovery", "parallelAllowed": false },
+        { "stageId": "repair", "label": "Repair route", "ownerRole": "dispatcher", "lineupId": "recovery", "parallelAllowed": false },
+        { "stageId": "review", "label": "Patch learnings", "ownerRole": "feedback", "lineupId": "recovery", "parallelAllowed": false },
+        { "stageId": "close", "label": "Return control", "ownerRole": "commander", "lineupId": "recovery", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 35000, "toolBudget": 6, "latencyBudgetSec": 600, "parallelismBudget": 1 },
+      "approvalActions": [],
+      "stopLossProfile": "strict"
+    },
+    "review_evolution": {
+      "baseLineups": ["review"],
+      "stagePlan": [
+        { "stageId": "score", "label": "Analyze outcome", "ownerRole": "abacus", "lineupId": "review", "parallelAllowed": false },
+        { "stageId": "compile", "label": "Compile feedback", "ownerRole": "feedback", "lineupId": "review", "parallelAllowed": false },
+        { "stageId": "close", "label": "Freeze patch", "ownerRole": "commander", "lineupId": "review", "parallelAllowed": false }
+      ],
+      "budgetPlan": { "tokenBudget": 50000, "toolBudget": 5, "latencyBudgetSec": 1800, "parallelismBudget": 1 },
+      "approvalActions": ["global_policy_change"],
+      "stopLossProfile": "standard"
+    }
+  },
+  "riskPolicies": {
+    "L0": {
+      "requiresCommanderSupervision": false,
+      "requiresHumanReview": false,
+      "approvalActions": [],
+      "budgetMultiplier": 1,
+      "parallelismCap": null
+    },
+    "L1": {
+      "requiresCommanderSupervision": false,
+      "requiresHumanReview": false,
+      "approvalActions": [],
+      "budgetMultiplier": 1,
+      "parallelismCap": null
+    },
+    "L2": {
+      "requiresCommanderSupervision": true,
+      "requiresHumanReview": false,
+      "approvalActions": ["publish_external", "bulk_message", "outbound_call", "price_commitment", "sensitive_claims"],
+      "budgetMultiplier": 0.95,
+      "parallelismCap": 2
+    },
+    "L3": {
+      "requiresCommanderSupervision": true,
+      "requiresHumanReview": true,
+      "approvalActions": ["publish_external", "bulk_message", "outbound_call", "price_commitment", "sensitive_claims", "high_risk_customer_touchpoint"],
+      "budgetMultiplier": 0.8,
+      "parallelismCap": 1
+    }
+  },
+  "stopLossProfiles": {
+    "fast": {
+      "maxRetry": 1,
+      "maxBudgetOverrunRatio": 1.1,
+      "killOnRepeatedFailure": true,
+      "freezeOnApprovalReject": true
+    },
+    "standard": {
+      "maxRetry": 2,
+      "maxBudgetOverrunRatio": 1.2,
+      "killOnRepeatedFailure": true,
+      "freezeOnApprovalReject": true
+    },
+    "strict": {
+      "maxRetry": 2,
+      "maxBudgetOverrunRatio": 1.05,
+      "killOnRepeatedFailure": true,
+      "freezeOnApprovalReject": true
+    }
+  },
+  "arbitrationPriority": [
+    "platform_governance",
+    "tenant_policy",
+    "risk_boundary",
+    "revenue_value",
+    "latency_priority",
+    "expression_strength"
+  ],
+  "overrideRules": [
+    {
+      "id": "route_to_recon_when_evidence_low",
+      "enabled": true,
+      "priority": 90,
+      "weight": 1,
+      "tags": ["evidence", "routing"],
+      "notes": "Force evidence recovery before expensive execution paths.",
+      "when": {
+        "evidenceSufficiency": ["low"],
+        "missionType": ["content_production", "lead_qualification", "conversion_push"]
+      },
+      "effects": {
+        "prependLineups": ["reconnaissance"],
+        "prependStages": [
+          { "stageId": "scan", "label": "Backfill evidence", "ownerRole": "radar", "lineupId": "reconnaissance", "parallelAllowed": true },
+          { "stageId": "route", "label": "Reframe route", "ownerRole": "strategist", "lineupId": "reconnaissance", "parallelAllowed": false }
+        ],
+        "reasons": ["Evidence is weak, so Commander inserts reconnaissance before execution-heavy work."]
+      }
+    },
+    {
+      "id": "promote_conversion_for_warm_high_value_leads",
+      "enabled": true,
+      "priority": 80,
+      "weight": 1.2,
+      "tags": ["warm-lead", "revenue", "latency"],
+      "notes": "Fast-track warm leads into the conversion lane.",
+      "when": {
+        "missionType": ["interaction_handling", "lead_qualification"],
+        "revenueImpact": ["high", "strategic"],
+        "latencyPriority": ["high", "urgent"],
+        "hasWarmLead": true
+      },
+      "effects": {
+        "appendLineups": ["conversion"],
+        "appendStages": [
+          { "stageId": "followup", "label": "Escalate warm lead", "ownerRole": "followup", "lineupId": "conversion", "parallelAllowed": false }
+        ],
+        "reasons": ["Warm, high-value lead needs a faster conversion lane."]
+      }
+    },
+    {
+      "id": "force_recovery_on_instability",
+      "enabled": true,
+      "priority": 100,
+      "weight": 2,
+      "tags": ["stability", "recovery"],
+      "notes": "External instability overrides business intent.",
+      "when": {
+        "externalDependencyUnstable": true
+      },
+      "effects": {
+        "replaceLineups": ["recovery"],
+        "replaceStagesFromMission": "recovery_replay",
+        "reasons": ["External dependency is unstable, so Commander routes to recovery."]
+      }
+    },
+    {
+      "id": "force_recovery_on_repeated_failures",
+      "enabled": true,
+      "priority": 95,
+      "weight": 1.6,
+      "tags": ["stability", "retry"],
+      "notes": "Repeated failures require supervised recovery.",
+      "when": {
+        "recentFailureCountAtLeast": 2
+      },
+      "effects": {
+        "appendLineups": ["recovery"],
+        "reasons": ["Repeated failures trigger recovery supervision."]
+      }
+    },
+    {
+      "id": "insert_approval_for_external_action",
+      "enabled": true,
+      "priority": 85,
+      "weight": 1.1,
+      "tags": ["approval", "external-action"],
+      "notes": "Any external execution should be explicitly governed.",
+      "when": {
+        "requiresExternalAction": true
+      },
+      "effects": {
+        "addApprovalActions": ["publish_external"],
+        "forceCommanderSupervision": true,
+        "reasons": ["External execution requires explicit approval and supervision."]
+      }
+    },
+    {
+      "id": "insert_approval_for_human_touchpoint",
+      "enabled": true,
+      "priority": 88,
+      "weight": 1.15,
+      "tags": ["approval", "human-touchpoint"],
+      "notes": "Human touchpoints carry brand and compliance risk.",
+      "when": {
+        "requiresHumanTouchpoint": true
+      },
+      "effects": {
+        "addApprovalActions": ["outbound_call", "high_risk_customer_touchpoint"],
+        "forceCommanderSupervision": true,
+        "reasons": ["Human touchpoints can create trust or risk, so approval is required."]
+      }
+    },
+    {
+      "id": "tighten_budget_when_urgent_and_high_risk",
+      "enabled": true,
+      "priority": 70,
+      "weight": 0.9,
+      "tags": ["budget", "risk", "latency"],
+      "notes": "Urgency under high risk needs a narrower operating envelope.",
+      "when": {
+        "latencyPriority": ["urgent"],
+        "riskLevel": ["L2", "L3"]
+      },
+      "effects": {
+        "budgetMultiplier": 0.9,
+        "parallelismCap": 1,
+        "reasons": ["Urgent and high-risk tasks need a tighter control envelope."]
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "agent_id": "inkwriter",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_strategy_routes",
+      "action": "prioritize_and_write"
+    },
+    {
+      "check": "pending_copy_tasks",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "compliance_flags",
+      "action": "rewrite_or_escalate"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "review_platform_constraints",
+      "description": "检查平台规则和当前文案风险"
+    },
+    {
+      "interval_minutes": 120,
+      "action": "refresh_copy_variants",
+      "description": "补足不同受众和平台版本"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "summarize_copy_patterns",
+      "description": "汇总本轮高频有效表达与风险词"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_new_routes AND no_pending_copy_tasks",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 90,
+    "idle_behavior": "passive_drafting"
+  }
+}

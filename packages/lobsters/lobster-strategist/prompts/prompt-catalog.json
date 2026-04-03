@@ -1,0 +1,81 @@
+{
+  "lobster_id": "strategist",
+  "version": "1.0.0",
+  "total_prompts": 8,
+  "categories": [
+    {
+      "category": "strategy-planning",
+      "prompts": [
+        {
+          "id": "strategist.strategy-planning.goal-breakdown.v1",
+          "file": "strategy-planning/goal-breakdown.prompt.md",
+          "skill_id": "strategist_strategy_plan",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "education", "local-service", "ecommerce", "health"],
+          "variants": ["v1-brand-awareness", "v1-lead-gen", "v1-conversion"]
+        },
+        {
+          "id": "strategist.strategy-planning.channel-strategy.v1",
+          "file": "strategy-planning/channel-strategy.prompt.md",
+          "skill_id": "strategist_strategy_plan",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "food", "mother-baby", "local-service"],
+          "variants": ["v1-xiaohongshu-focus", "v1-douyin-focus", "v1-omni-channel"]
+        },
+        {
+          "id": "strategist.strategy-planning.experiment-design.v1",
+          "file": "strategy-planning/experiment-design.prompt.md",
+          "skill_id": "strategist_strategy_plan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "3c", "education"],
+          "variants": ["v1-ab-content", "v1-ab-audience", "v1-ab-channel"]
+        },
+        {
+          "id": "strategist.strategy-planning.strategy-route.v1",
+          "file": "strategy-planning/strategy-route.prompt.md",
+          "skill_id": "strategist_strategy_plan",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "health", "food", "fashion", "education"],
+          "variants": ["v1-30day-sprint", "v1-quarterly-plan"]
+        }
+      ]
+    },
+    {
+      "category": "schedule-design",
+      "prompts": [
+        {
+          "id": "strategist.schedule-design.content-calendar.v1",
+          "file": "schedule-design/content-calendar.prompt.md",
+          "skill_id": "strategist_schedule_plan",
+          "effectiveness_rating": 5,
+          "industries": ["beauty", "ecommerce", "education", "local-service", "food"],
+          "variants": ["v1-weekly", "v1-monthly", "v1-campaign-burst"]
+        },
+        {
+          "id": "strategist.schedule-design.priority-ranking.v1",
+          "file": "schedule-design/priority-ranking.prompt.md",
+          "skill_id": "strategist_schedule_plan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "local-service", "health"],
+          "variants": ["v1-resource-constrained", "v1-high-velocity"]
+        },
+        {
+          "id": "strategist.schedule-design.resource-allocation.v1",
+          "file": "schedule-design/resource-allocation.prompt.md",
+          "skill_id": "strategist_schedule_plan",
+          "effectiveness_rating": 4,
+          "industries": ["ecommerce", "beauty", "education", "3c"],
+          "variants": ["v1-budget-driven", "v1-team-capacity"]
+        },
+        {
+          "id": "strategist.schedule-design.milestone-tracker.v1",
+          "file": "schedule-design/milestone-tracker.prompt.md",
+          "skill_id": "strategist_schedule_plan",
+          "effectiveness_rating": 4,
+          "industries": ["beauty", "ecommerce", "health", "local-service"],
+          "variants": ["v1-okr-align", "v1-sprint-plan"]
+        }
+      ]
+    }
+  ]
+}

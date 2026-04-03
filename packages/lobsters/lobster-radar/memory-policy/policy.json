@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.memory-policy.v0.1",
+  "roleId": "radar",
+  "readScope": [
+    "industry_memory",
+    "global_memory"
+  ],
+  "writeScope": [
+    "mission_memory",
+    "industry_memory"
+  ],
+  "writePolicy": {
+    "allowAutoWrite": true,
+    "requireFeedbackCompileForGlobalPromotion": true
+  },
+  "retentionPolicy": {
+    "sessionDays": 3,
+    "missionDays": 14,
+    "tenantDays": 90
+  }
+}

@@ -1,0 +1,53 @@
+﻿name: dragon-senate-v3-gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  python-syntax-and-compose-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dragon-senate-saas-v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Compile key modules
+        run: |
+          python -m compileall app.py dragon_senate.py qdrant_config.py telegram_bot.py dingtalk_channel.py feishu_channel.py
+
+      - name: Stage2 chain regression (chat + clawteam + memory replay)
+        run: |
+          python scripts/test_stage2_chain.py
+
+      - name: run-dragon-team baseline regression
+        run: |
+          python scripts/test_run_dragon_team_baseline.py
+
+      - name: DeepSeek cloud smoke (release gate)
+        if: ${{ secrets.DEEPSEEK_API_KEY != '' }}
+        env:
+          DEEPSEEK_FORCE_CLOUD: "true"
+          DEEPSEEK_EXPECT_BACKEND: "chatopenai:deepseek"
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python scripts/test_llm_deepseek_smoke.py
+
+      - name: DeepSeek cloud smoke skipped (no secret)
+        if: ${{ secrets.DEEPSEEK_API_KEY == '' }}
+        run: |
+          echo "DEEPSEEK_API_KEY secret is empty; cloud smoke skipped in this run."
+
+      - name: Compose config validation
+        run: |
+          cp .env.example .env
+          docker compose -f docker-compose.yml config > /dev/null

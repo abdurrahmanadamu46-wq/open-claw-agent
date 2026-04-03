@@ -1,0 +1,392 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u4e2d\u9910\u9986",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_chinese_restaurant_private_room_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need a private room for 10 people this Saturday night. Do you still have space?",
+        "brand_tone": "steady and warm",
+        "negative_patterns": [
+          "promise room availability without checking",
+          "pushy upsell"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is close to booking",
+          "group dining scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge booking intent",
+        "ask for branch and exact time",
+        "guide toward the next reservation step naturally"
+      ],
+      "mustAvoid": [
+        "guaranteeing room availability",
+        "hard off-platform diversion"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_family_menu_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Taking my parents and a child there for lunch. What should we order if we do not want it too spicy?",
+        "brand_tone": "helpful and human",
+        "negative_patterns": [
+          "generic menu dumping",
+          "salesy pressure"
+        ],
+        "context_window": [
+          "menu guidance request",
+          "mixed-age group",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize the mixed family group",
+        "anchor the reply in flavor preference",
+        "guide toward one practical next detail such as party size or preferred style"
+      ],
+      "mustAvoid": [
+        "one-size-fits-all recommendations",
+        "ignoring the not-spicy request"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_authenticity_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Every place online says they are authentic. Why should I believe yours is any different?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "defensive argument",
+          "mocking the user"
+        ],
+        "context_window": [
+          "public trust check",
+          "user is skeptical but still engaged",
+          "brand risk is visible"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "invite a concrete flavor or craft concern",
+        "leave room for the user to keep the conversation going"
+      ],
+      "mustAvoid": [
+        "best-in-city bragging",
+        "sarcasm"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_queue_guarantee_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "If I come at 7 tonight can you guarantee there will be no wait?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "no-wait guarantee",
+          "fear-based urgency"
+        ],
+        "context_window": [
+          "peak dining hour",
+          "public comment thread",
+          "user is in a hurry"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the wish to avoid wasting a trip",
+        "state that queue depends on branch traffic and party size",
+        "guide toward reservation or sharing branch and time details"
+      ],
+      "mustAvoid": [
+        "promise-like wording",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_allergy_risk_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My child has a peanut allergy. Can you guarantee there will be zero cross-contact?",
+        "brand_tone": "careful and serious",
+        "negative_patterns": [
+          "absolute allergen guarantee",
+          "casual reassurance"
+        ],
+        "context_window": [
+          "food safety topic",
+          "family dining intent",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "treat the concern as serious",
+        "avoid making a guarantee",
+        "move toward exact allergen confirmation and human or branch review"
+      ],
+      "mustAvoid": [
+        "100 percent safe language",
+        "guessing kitchen handling"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_company_banquet_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need a team dinner for 18 people next Wednesday and an invoice. Do you have a private room option?",
+        "brand_tone": "professional and warm",
+        "negative_patterns": [
+          "ignoring invoice needs",
+          "package hard sell"
+        ],
+        "context_window": [
+          "business dining lead",
+          "high-intent group booking",
+          "user is organized"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize this as a business meal",
+        "ask for branch, time, and seating preference",
+        "guide toward a clear booking follow-up"
+      ],
+      "mustAvoid": [
+        "assuming every branch supports the same arrangement",
+        "skipping the invoice context"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_takeout_complaint_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "My delivery arrived cold and one dish is missing. Is this how you treat customers?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public argument",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request order time or order details through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "blaming delivery in public",
+        "asking for excessive personal details in comments"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_coupon_question_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I use this group-buy coupon tonight at your downtown branch?",
+        "brand_tone": "clear and helpful",
+        "negative_patterns": [
+          "blanket yes",
+          "discount bait"
+        ],
+        "context_window": [
+          "promotion check",
+          "branch partially known",
+          "user may be close to dining"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the offer question",
+        "mention that coupon rules can depend on branch and time",
+        "guide toward confirming branch and dining time"
+      ],
+      "mustAvoid": [
+        "approving the coupon without conditions",
+        "vague promotional hype"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_cheapest_group_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "We are 8 people. What is the cheapest package you can do? I do not care about anything else.",
+        "brand_tone": "respectful and practical",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "price-led inquiry",
+          "group dining",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget focus",
+        "explain that the workable range still depends on dish count or dining purpose",
+        "reframe toward one or two trade-offs"
+      ],
+      "mustAvoid": [
+        "instant fixed price without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_custom_birthday_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can you arrange a birthday noodle dish and a small surprise for tomorrow night?",
+        "brand_tone": "warm and measured",
+        "negative_patterns": [
+          "instant yes",
+          "ignoring notice time"
+        ],
+        "context_window": [
+          "special arrangement request",
+          "time-sensitive event",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "validate the birthday request",
+        "mention that branch capability and notice time matter",
+        "ask for branch and dining time"
+      ],
+      "mustAvoid": [
+        "promising every detail can be arranged immediately",
+        "overlooking the event timing"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_holiday_hours_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Are you open on Qingming evening, and should I book ahead?",
+        "brand_tone": "natural and reliable",
+        "negative_patterns": [
+          "guessing holiday hours",
+          "ignoring branch differences"
+        ],
+        "context_window": [
+          "holiday planning",
+          "branch not specified",
+          "user needs practical guidance"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the planning question",
+        "mention that holiday timing can vary by branch",
+        "guide toward branch and arrival time details"
+      ],
+      "mustAvoid": [
+        "fixed holiday answer without branch context",
+        "generic booking pressure"
+      ]
+    },
+    {
+      "id": "echoer_chinese_restaurant_fast_contact_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat or phone. I want to confirm the booking now.",
+        "brand_tone": "friendly and composed",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "high-intent user",
+          "booking is likely close"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request branch plus booking details as the next action"
+      ],
+      "mustAvoid": [
+        "posting off-platform contact publicly",
+        "replying only with DM me and no context"
+      ]
+    }
+  ]
+}

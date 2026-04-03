@@ -1,0 +1,8 @@
+{"industry":"生活服务_家政服务","lobster_id":"visualizer","pack_type":"scoring-features","version":"v1","items":[
+  {"id":"real_scene_visibility","metric_group":"visual_proof_density","feature":"真实场景可见度","weight":0.17,"definition":"分镜是否把本店真实家庭场景、工具和区域细节放在前排位置。","high_score_signals":["前 3 镜内出现真实区域或工具细节","看得出是真实服务场景","细节与场景能接上"],"low_score_signals":["开场长时间只有海报和广告图","看不出是真实现场还是样板图","场景证据太弱"],"score_rule":"真实场景证据越靠前、越连贯，得分越高。"},
+  {"id":"process_visibility","metric_group":"trust_building","feature":"清洁与交付过程可见度","weight":0.17,"definition":"分镜是否把清洁、讲解、打包和完工确认串成可信路径。","high_score_signals":["有清洁或讲解步骤","有真实流程准备","有边界或时段说明"],"low_score_signals":["只有结果没有过程","步骤跳跃严重","流程看起来像促销秀"],"score_rule":"流程越可见、越完整，得分越高。"},
+  {"id":"scene_match","metric_group":"scene_fit","feature":"场景匹配度","weight":0.16,"definition":"深清、开荒、周期保洁和退租场景是否被清楚区分并与镜头一致。","high_score_signals":["封面和分镜指向同一场景","用户能看出这条片是给谁看的"],"low_score_signals":["所有保洁都拍成一种氛围","看不出适合谁"],"score_rule":"场景越明确、越统一，得分越高。"},
+  {"id":"trust_boundary_control","metric_group":"risk_control","feature":"边界控制感","weight":0.16,"definition":"分镜是否避免绝对干净、绝不加价和超范围上门暗示。","high_score_signals":["有真实证据和边界提示","不依赖高风险词"],"low_score_signals":["把绝对词做主视觉","暗示无条件极速上门"],"score_rule":"边界越稳，得分越高。"},
+  {"id":"timeproof_density","metric_group":"delivery_fit","feature":"时段证据密度","weight":0.16,"definition":"高峰和节点型内容是否给足时段、候补或排班边界证据。","high_score_signals":["出现时段或门店信息","CTA 前已说明预约方式"],"low_score_signals":["只有急促氛围没有履约事实"],"score_rule":"时段证据越明确，时效型内容得分越高。"},
+  {"id":"cycle_familiarity","metric_group":"retention","feature":"续约熟悉感","weight":0.18,"definition":"复购片是否让人感到补做自然、省心、熟悉。","high_score_signals":["频率和服务镜头明确","节奏直接不过度教育"],"low_score_signals":["复购片仍像新客种草广告"],"score_rule":"越像真实补做提醒，得分越高。"}
+]}

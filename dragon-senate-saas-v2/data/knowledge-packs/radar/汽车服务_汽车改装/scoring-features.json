@@ -1,0 +1,14 @@
+﻿{
+  "industry": "汽车服务_汽车改装",
+  "lobster_id": "radar",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    { "id": "source_reliability", "title": "来源可信度", "description": "优先给平台后台公告、主管部门通告、门店后台数据和真实评价更高分；对营销号搬运、群聊截图和无出处截图给低分。", "examples": ["平台后台规则高于同行转述", "真实到店数据高于账号主观判断", "带门店定位和时间的评价高于模糊截图"], "priority": "high" },
+    { "id": "problem_specificity", "title": "问题指向清晰度", "description": "高分信号能明确落到轮毂、避震、排气、程序、灯光和内饰等具体问题，而不是泛泛说想改车。", "examples": ["高分：轮毂和避震问题同时被集中提问", "低分：最近大家都想改车"], "priority": "high" },
+    { "id": "local_visit_relevance", "title": "本地到店相关性", "description": "能反映门店、施工时段和本地用车场景需求的信号，应高于全国泛流行信息。", "examples": ["本地车展季咨询增加", "同赛道门店同时调整套餐或权益"], "priority": "high" },
+    { "id": "execution_actionability", "title": "执行可转化度", "description": "高分信号应能直接指导选题、上新、到店承接或风控动作，例如某类升级热度上升、某类投诉集中和某类权益变化落地。", "examples": ["可执行：避震咨询升温，可强化姿态路线", "可执行：返工投诉集中，可优先排查施工流程"], "priority": "high" },
+    { "id": "risk_urgency", "title": "风险紧迫度", "description": "涉及施工翻车、备案扯皮、报码和售后失联等风险的信号应显著提权，因为它们直接影响口碑和成交安全。", "examples": ["施工风险高于一般流量变化", "合规风险高于普通套餐波动"], "priority": "high" },
+    { "id": "repeatability", "title": "复现度", "description": "单一爆款或偶发吐槽不能直接代表趋势。能跨平台、跨时间重复出现的问题偏好和风险反馈，才应作为重点信号。", "examples": ["同一周评论、私信和本地内容都提到避震和排气", "多家门店同时出现复检权益变化"], "priority": "medium" }
+  ]
+}

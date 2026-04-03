@@ -1,0 +1,70 @@
+﻿{
+  "industry": "汽车服务_汽车美容",
+  "lobster_id": "abacus",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "abacus_car_beauty_project_time_001",
+      "label": "happy_path",
+      "scenario_tag": "project_based_visit_booking",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户想在周五晚去国金门店先看新车贴膜，第一次来，担心不会选项目，已明确下班后可到店时间。",
+        "crm_data": { "historical_close_rate_for_segment": 0.44, "segment_type": "项目型到店预约", "lifetime_value": 62000, "repeat_visit_probability": 0.38 },
+        "cost_data": { "cost_per_lead": 24, "visit_cost": 16, "material_cost": 10, "followup_cost": 8, "estimated_gross_margin_rate": 0.58 },
+        "attribution_context": {
+          "touchpoints": ["小红书项目型内容咨询", "私信确认周五晚时间窗口", "查看门店和施工流程内容"],
+          "last_meaningful_touch": "私信确认周五晚时间窗口"
+        }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["高短期分建立在项目、时间和到店意愿明确之上", "ROI 需要计入到店与材料成本", "奖励信号应指向快速到店确认"],
+      "mustAvoid": ["只因价格敏感就高估价值", "忽略首次信任成本"]
+    },
+    {
+      "id": "abacus_car_beauty_deadline_002",
+      "label": "happy_path",
+      "scenario_tag": "seasonal_window_visit",
+      "input": {
+        "lead_assessment_or_campaign_result": "用户周六返乡，想周四晚先来看看并了解如何把车况理顺，第一次来看，已明确门店和时段范围。",
+        "crm_data": { "historical_close_rate_for_segment": 0.4, "segment_type": "节前养护到店", "lifetime_value": 54000, "repeat_visit_probability": 0.28 },
+        "cost_data": { "cost_per_lead": 22, "visit_cost": 14, "material_cost": 8, "estimated_gross_margin_rate": 0.57 },
+        "attribution_context": {
+          "touchpoints": ["节前养护内容咨询", "私信确认返乡日期", "补充首次到店事实"],
+          "last_meaningful_touch": "补充首次到店事实"
+        }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["高短期分建立在节点日期和到店窗口明确之上", "ROI 需要计入热门时段机会成本", "奖励信号应指向时段和适配方案确认"],
+      "mustAvoid": ["只因节前场景就无限抬高价值", "忽略首次到店的解释成本"]
+    },
+    {
+      "id": "abacus_car_beauty_hard_close_003",
+      "label": "risk_case",
+      "scenario_tag": "high_pressure_close_after_visit",
+      "input": {
+        "lead_assessment_or_campaign_result": "首次到店后，顾问在现场强推高客单车衣方案，用户当场付款但后续在评论里表达后悔和不想再来。",
+        "crm_data": { "historical_close_rate_for_segment": 0.46, "segment_type": "高压首单升级", "lifetime_value": 38000, "repeat_visit_probability": 0.14 },
+        "cost_data": { "cost_per_lead": 20, "visit_cost": 12, "refund_risk_cost": 80, "estimated_gross_margin_rate": 0.56 },
+        "attribution_context": { "touchpoints": ["首次到店", "现场高压成交"], "last_meaningful_touch": "现场高压成交" }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["不能只按成交金额给高分", "长期分应显著下调", "ROI 必须计入返工与口碑风险"],
+      "mustAvoid": ["把账面高客单等同于高质量", "忽略后续流失风险"]
+    },
+    {
+      "id": "abacus_car_beauty_returning_004",
+      "label": "long_term_case",
+      "scenario_tag": "returning_owner_revisit",
+      "input": {
+        "lead_assessment_or_campaign_result": "老客说上次做过后方向清楚很多，这次想周末再来并看看下一步养护，已明确可来时间。",
+        "crm_data": { "historical_close_rate_for_segment": 0.62, "segment_type": "复购会员老客", "lifetime_value": 78000, "repeat_visit_probability": 0.6 },
+        "cost_data": { "cost_per_lead": 6, "visit_cost": 8, "material_cost": 6, "estimated_gross_margin_rate": 0.64 },
+        "attribution_context": { "touchpoints": ["微信回访触达", "用户主动回复想再来"], "last_meaningful_touch": "用户主动回复想再来" }
+      },
+      "expectedSignals": ["short_term_score", "long_term_score", "roi_estimate", "reward_signal"],
+      "mustInclude": ["长期分显著高于冷启动新客", "短期分建立在本次问题和时间存在之上", "奖励信号应指向复购确认"],
+      "mustAvoid": ["把老客当普通泛咨询处理", "忽略低获客成本优势"]
+    }
+  ]
+}

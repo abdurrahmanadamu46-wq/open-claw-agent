@@ -1,0 +1,26 @@
+id: system_error_notifier
+name: 通用错误通知
+description: 当主工作流失败时，统一把失败信息整理成可通知内容。
+agents:
+  - id: dispatcher
+    lobster: dispatcher
+steps:
+  - id: notify
+    agent: dispatcher
+    type: single
+    input: |
+      你是一只负责发送失败通知的龙虾，请将下面的错误上下文整理成简洁、可执行的告警摘要。
+
+      工作流：{{context.error.workflow_name}} ({{context.error.workflow_id}})
+      执行 ID：{{context.error.execution_id}}
+      失败步骤：{{context.error.failed_step_id}}
+      失败龙虾：{{context.error.failed_lobster_id}}
+      错误类型：{{context.error.error_type}}
+      错误信息：{{context.error.error_message}}
+
+      输出要求：
+      1. 第一行以 ErrorNotice: 开头
+      2. 给出 1 句摘要
+      3. 给出 2-3 条建议动作
+    expects: ErrorNotice:
+    max_retries: 1

@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": "lobster.eval.scorecard.v0.2",
+  "roleId": "dispatcher",
+  "primaryArtifact": "ExecutionPlan",
+  "metrics": [
+    {
+      "id": "dispatch_success_rate",
+      "weight": 0.35,
+      "order": 1
+    },
+    {
+      "id": "replay_recovery_time",
+      "weight": 0.2,
+      "order": 2
+    },
+    {
+      "id": "fallback_correctness",
+      "weight": 0.25,
+      "order": 3
+    },
+    {
+      "id": "idempotency_safety",
+      "weight": 0.2,
+      "order": 4
+    }
+  ],
+  "acceptance": {
+    "artifactSchemaPassRate": 0.99,
+    "benchmarkPassRate": 0.92,
+    "regressionBudgetCeilingRatio": 1.02
+  }
+}

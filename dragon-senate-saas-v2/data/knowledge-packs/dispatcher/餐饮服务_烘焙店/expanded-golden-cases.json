@@ -1,0 +1,307 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70d8\u7119\u5e97",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_bakery_office_tea_break_delivery_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Turn a weekday office tea break order into an executable payment, batching, packing, and delivery plan",
+        "routing_context": "The customer wants Friday 15:30 delivery to an office front desk. The order contains 24 butter croissants, 12 cheesecake bars, 12 ambient cookie gift boxes, and 2 six-inch fresh cream fruit cakes. Contact, invoice details, and delivery floor are already provided, and the store still has afternoon packing and chilled capacity.",
+        "integration_state": {
+          "preorder_system": "healthy",
+          "payment_gateway": "healthy",
+          "production_board": "healthy",
+          "rider_dispatch": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "capacity lock only after payment confirmation",
+        "ambient and chilled items split into distinct packing and handoff routes",
+        "fallback for partial delivery, pickup conversion, or delay handling"
+      ],
+      "mustAvoid": [
+        "full prep and cream whipping before payment lands",
+        "mixing ambient gift boxes and chilled cakes into one undifferentiated route"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_morning_shelf_and_pickup_peak_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Build a stable plan while morning restock, pickups, and instant delivery run in parallel",
+        "routing_context": "After 07:45 breakfast traffic rises quickly. Bread output is already queued into the third oven round. There are three pickup orders due before 09:00 and six instant delivery orders. Top sellers are toast, croissants, red bean buns, and two ready-made four-inch cream cakes.",
+        "integration_state": {
+          "production_board": "healthy",
+          "front_desk": "healthy",
+          "delivery_platform": "healthy",
+          "inventory_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "oven, proofing, cooling, and packing rhythm as explicit dependencies",
+        "separate restock versus pickup and delivery routes",
+        "promise widening or rate limiting under peak load"
+      ],
+      "mustAvoid": [
+        "continuing flat normal-speed promises during backlog",
+        "looking only at front-desk intake while ignoring oven and packing congestion"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_replay_after_pos_writeback_outage_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Replay bakery orders after mini program and POS writeback failure without duplicate production or duplicate charging",
+        "routing_context": "Some paid orders never reached the store production board. Front desk staff manually logged part of them, including birthday cakes and bread pickups. Systems are back now, and the store needs to decide which orders should continue through replay and which should preserve the manual result.",
+        "integration_state": {
+          "mini_program": "degraded",
+          "order_replay_service": "healthy",
+          "cashier_system": "healthy",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "deduplicated replay by master order, payment state, and latest version",
+        "preservation of already manually completed orders",
+        "store backfill and customer notice path after recovery"
+      ],
+      "mustAvoid": [
+        "rebuilding the whole batch blindly after recovery",
+        "repeating decoration or refunds without checking manual status"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_holiday_gift_box_pickup_overflow_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "Convert holiday gift-box pickup congestion into a controlled time-windowed handoff plan",
+        "routing_context": "On the first pickup afternoon of a seasonal gift-box presale, the front desk queue keeps stretching. There are 70 boxes still waiting for pickup and 20 still waiting for bagging, while normal retail sales continue and the pickup area is small.",
+        "integration_state": {
+          "preorder_system": "healthy",
+          "pickup_screen": "healthy",
+          "cashier_system": "healthy",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "pickup time windows, call-number handling, and no-show return logic",
+        "split routes for campaign gift boxes versus normal retail",
+        "fallback for front-desk congestion and delay notice"
+      ],
+      "mustAvoid": [
+        "promising every box as immediate pickup under overflow",
+        "letting customers accumulate at the counter without staging logic"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_same_day_birthday_cake_customization_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "Handle a same-day custom birthday cake safely with text, candle, and allergen requirements",
+        "routing_context": "At 16:20 a customer orders an eight-inch strawberry fresh cream cake for 20:00 pickup. The note asks for inscription text, ten candles, no pistachio exposure, and no alcohol ingredients. The evening decoration bench is already under pressure.",
+        "integration_state": {
+          "preorder_system": "healthy",
+          "front_desk": "healthy",
+          "inventory_system": "healthy",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "manual confirmation of inscription, candle count, allergen notes, and alcohol-free requirement",
+        "capacity check on the decoration bench and same-day cutoff logic",
+        "fallback to size change, later slot, or refund if stable execution is not possible"
+      ],
+      "mustAvoid": [
+        "sending complex notes straight to production without confirmation",
+        "promising completion even when decoration capacity is already tight"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_heatwave_cream_cake_delivery_risk_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "Build a safe dispatch plan for fresh cream cake delivery under heatwave and rider shortage",
+        "routing_context": "After 17:30 the outdoor temperature is still above 35 degrees. The customer orders two eight-inch fresh cream fruit cakes and six chilled desserts for roughly 8 kilometers away, and rider acceptance is slow. The requested arrival is before 19:00.",
+        "integration_state": {
+          "delivery_platform": "degraded",
+          "rider_dispatch": "degraded",
+          "cold_chain_monitor": "healthy",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "checks for packaging strength, ice packs, radius, and rider capacity",
+        "stop-loss for pickup conversion, specialized delivery, or reschedule",
+        "customer explanation and compensation path"
+      ],
+      "mustAvoid": [
+        "keeping the ordinary delivery promise under heat and low rider capacity",
+        "accepting the risky route with no backup handoff plan"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_fruit_and_cream_stock_gap_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "Handle an evening custom cake preorder when core stock and replenishment are still uncertain",
+        "routing_context": "The customer reserved three custom cakes for 18:30 pickup. Two require strawberry fruit decoration and one requires a chocolate writing plaque. Cream stock, strawberry stock, and plaque inventory are all near limit, and the replenishment channel is still uncertain.",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "procurement_channel": "degraded",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "cream, strawberry, plaque, and cake-box confirmation as prerequisites",
+        "fallback for substitute flavor, edited order, or later slot",
+        "a ban on absolute flavor promises before stock is locked"
+      ],
+      "mustAvoid": [
+        "promising the full original design before stock is secured",
+        "locking evening decoration capacity while ingredient feasibility is still unknown"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_campaign_waiting_review_008",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "Prepare a seasonal co-branded gift-box launch while campaign approval is still pending",
+        "routing_context": "The store plans to launch a co-branded strawberry gift box and a member discount campaign. Packaging drafts, price draft, and training checklist are ready, but the gift rule, redemption logic, and release timing are still waiting for approval.",
+        "integration_state": {
+          "approval_center": "healthy",
+          "marketing_scheduler": "healthy",
+          "cashier_system": "healthy",
+          "mini_program": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "an explicit paused state while approval is pending",
+        "internal prep and checklist cleanup only",
+        "no public launch or volume release before approval clears"
+      ],
+      "mustAvoid": [
+        "shipping the campaign first and backfilling approval later",
+        "syncing unapproved prices or gift rules to channels and front desk"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_quality_safety_complaint_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "Handle a suspected quality and safety complaint while containing store-side risk",
+        "routing_context": "A customer reports that last night's fresh cream cake arrived partly collapsed, tasted sour, and had the wrong name on the chocolate plaque. The customer has already posted photos online, and the store must decide whether to stop the cream batch or writing template from further release.",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "production_board": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "manager escalation, evidence retention, and batch investigation",
+        "stop-loss logic for the cream batch or writing template",
+        "a ban on resolving the issue through auto-compensation alone"
+      ],
+      "mustAvoid": [
+        "closing the complaint without human review",
+        "continuing normal release of similar cakes before root-cause checks"
+      ]
+    },
+    {
+      "id": "dispatcher_bakery_large_wedding_preorder_without_deposit_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "Handle a verbally confirmed but unpaid wedding dessert-table preorder without letting it occupy scarce bakery capacity",
+        "routing_context": "The customer wants delivery tomorrow at 10:00 for three double-layer celebration cakes, eighty dessert cups, and sixty gift-box pastries. The store is asked to lock midnight prep and morning delivery capacity first, but the customer says both deposit and balance will only be reimbursed after the event.",
+        "integration_state": {
+          "preorder_system": "healthy",
+          "payment_gateway": "healthy",
+          "inventory_system": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "a frozen or short-hold state before deposit receipt",
+        "payment chase and capacity release at expiry",
+        "a rule that high-loss cream and decor prep must stay behind payment confirmation"
+      ],
+      "mustAvoid": [
+        "formally locking midnight prep and morning delivery capacity before payment",
+        "mass-producing non-recoverable components just to improve the chance of conversion"
+      ]
+    }
+  ]
+}

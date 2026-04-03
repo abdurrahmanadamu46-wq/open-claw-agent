@@ -1,0 +1,104 @@
+﻿{
+  "industry": "教育培训_语言培训",
+  "lobster_id": "strategist",
+  "pack_type": "industry-rules",
+  "version": "v1",
+  "items": [
+    {
+      "id": "problem_route_first",
+      "rule_name": "先锁一个核心问题路线，再放大流量",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构同时想做雅思、托福、口语、零基础英语和小语种",
+        "预算有限，但真实咨询集中在少数问题和场景"
+      ],
+      "recommended_primary_route": "先选择一个证据最强的问题路线作为主线，例如雅思提分、口语开口或零基础英语，再统一内容、试听承接和 followup 话术。",
+      "recommended_alternative_route": "若证据分散，先并行验证最多 2 条路线，保留试听率和续课率更优的一条。",
+      "hard_constraints": [
+        "不能用一套内容同时覆盖所有问题和所有班型",
+        "不能在证据尚弱时同时主推多个高客单方向"
+      ],
+      "risk_tradeoff": "接受覆盖面更窄，换取更稳定的试听链路和更低的承接损耗。"
+    },
+    {
+      "id": "first_trial_and_program_split",
+      "rule_name": "首次试听路线和高客单班型承接必须拆开设计",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构既想靠低门槛试听获客，又想快速转高客单班型",
+        "新客咨询很多，但后续承接和转化表现不稳定"
+      ],
+      "recommended_primary_route": "把首次试听目标定义为建立信任和判断适合性，把高客单承接放在试听后的 followup 与二次到店节点，不要同一轮硬推。",
+      "recommended_alternative_route": "若机构已有成熟顾问体系，可测试少量试听后升级脚本，但仍要保留温和承接路径。",
+      "hard_constraints": [
+        "不能把低门槛试听文案直接写成高客单成交文案",
+        "不能要求评论区和首次私信完成高客单成交"
+      ],
+      "risk_tradeoff": "短期单客产出可能更慢，但能显著降低反感、退费和投诉。"
+    },
+    {
+      "id": "trust_and_result_boundary_proof",
+      "rule_name": "语言培训转化先看真实案例、路径和边界信任感",
+      "priority": "P0",
+      "trigger_signals": [
+        "用户持续追问适不适合自己、有没有基础、能不能出分或能不能开口",
+        "内容播放不错，但试听和报名转化偏低"
+      ],
+      "recommended_primary_route": "优先走真实案例与信任证明路线，用课程结构、试听流程、学习起点差异、阶段路径和边界说明建立安全感，再承接试听预约。",
+      "recommended_alternative_route": "若真实案例和流程素材不足，先补齐证据再做放量测试。",
+      "hard_constraints": [
+        "不能用保分、包过和出国结果承诺掩盖真实边界",
+        "不能用夸张逆袭故事替代信任证明"
+      ],
+      "risk_tradeoff": "点击率可能不如强刺激文案，但能提高真实报名和降低退费风险。"
+    },
+    {
+      "id": "exam_window_and_longterm_learning_split",
+      "rule_name": "考试申请节点和日常语言提升是两条不同策略路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "一部分用户只在考试季、申请季和面试季短期决策",
+        "另一部分用户更在意长期口语和语言能力提升"
+      ],
+      "recommended_primary_route": "把考试申请路线聚焦时间窗口、目标分数和备考节奏，把日常提升路线聚焦口语开口、学习习惯和长期能力。",
+      "recommended_alternative_route": "资源有限时，先做占比更高的一类，另一类只用轻量内容验证。",
+      "hard_constraints": [
+        "不能把短期考试承诺写成长期人生结果",
+        "不能用申请季逻辑覆盖长期语言提升用户"
+      ],
+      "risk_tradeoff": "拆路线能减少错配和预期落差。"
+    },
+    {
+      "id": "capacity_before_discount",
+      "rule_name": "试听时段、老师和陪练资源先于折扣放量",
+      "priority": "P0",
+      "trigger_signals": [
+        "机构准备上线低门槛试听或报名季活动",
+        "晚高峰和周末已出现咨询挤压和等待"
+      ],
+      "recommended_primary_route": "先校验试听时段、老师、顾问和陪练资源，再决定是否扩投低门槛引流。",
+      "recommended_alternative_route": "若容量不足，优先分流时段和问题范围，而不是继续压价冲咨询。",
+      "hard_constraints": [
+        "不能在承接不足时继续加大低价引流",
+        "不能承诺复杂问题也能极短时间完成判断"
+      ],
+      "risk_tradeoff": "短期咨询量可能更少，但交付体验和续课更稳。"
+    },
+    {
+      "id": "reenroll_route",
+      "rule_name": "老学员续课和复训要作为独立增长路线",
+      "priority": "P1",
+      "trigger_signals": [
+        "机构已有一定老学员和学习记录",
+        "新客获客成本上升，续课复训更值得经营"
+      ],
+      "recommended_primary_route": "围绕续课、复训、模考复盘和开口打卡中断，设计复访提醒与老学员专属路线。",
+      "recommended_alternative_route": "若老学员记录弱，先从最近 60 天试听或开课学员做分层回访。",
+      "hard_constraints": [
+        "不能无差别群发所有老学员同一条优惠",
+        "不能只靠降价而没有问题与阶段对应逻辑"
+      ],
+      "risk_tradeoff": "老学员续课起量更慢，但 ROI 通常高于纯冷启动流量。"
+    }
+  ]
+}

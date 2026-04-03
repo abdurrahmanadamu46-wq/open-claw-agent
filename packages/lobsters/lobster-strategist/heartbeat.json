@@ -1,0 +1,41 @@
+{
+  "agent_id": "strategist",
+  "version": "1.0.0",
+  "on_wake": [
+    {
+      "check": "new_signal_briefs",
+      "action": "prioritize_and_route"
+    },
+    {
+      "check": "unfinished_strategy_tasks",
+      "action": "resume_or_report_blocked"
+    },
+    {
+      "check": "risk_conflicts",
+      "action": "escalate_to_commander"
+    }
+  ],
+  "periodic": [
+    {
+      "interval_minutes": 30,
+      "action": "review_active_routes",
+      "description": "检查当前策略路线与执行状态"
+    },
+    {
+      "interval_minutes": 120,
+      "action": "check_experiment_feedback",
+      "description": "回看实验反馈并决定是否调路"
+    },
+    {
+      "interval_minutes": 360,
+      "action": "refresh_strategy_priorities",
+      "description": "重排主线、备线与风险优先级"
+    }
+  ],
+  "stand_down": {
+    "condition": "no_signal_input AND no_pending_routes",
+    "action": "HEARTBEAT_OK",
+    "max_idle_minutes": 90,
+    "idle_behavior": "passive_review"
+  }
+}

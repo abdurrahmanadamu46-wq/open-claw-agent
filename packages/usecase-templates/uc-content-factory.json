@@ -1,0 +1,54 @@
+﻿{
+  "id": "uc-content-factory",
+  "name": "多 Agent 内容工厂",
+  "name_en": "Multi-Agent Content Factory",
+  "category": "content_creation",
+  "difficulty": "advanced",
+  "description": "把热点发现、选题规划、文案脚本、视觉物料和发布动作串成稳定的内容工厂。",
+  "pain_point": "内容团队经常被跨角色协作卡住，产能受制于选题、脚本和素材串联效率。",
+  "lobsters": ["radar", "strategist", "inkwriter", "visualizer", "dispatcher"],
+  "skills_required": ["radar_trend_analysis", "strategist_content_calendar", "inkwriter_copy_generate", "visualizer_storyboard", "dispatcher_task_split"],
+  "channels": ["douyin", "xiaohongshu", "wechat"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "定义产线目标",
+      "code_type": "prompt",
+      "code": "输入周产能目标、内容垂类和优先平台，作为工厂排产依据。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "准备品牌资产",
+      "code_type": "config",
+      "code": "上传品牌调性、视觉参考、禁用词和核心卖点。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设定审批门",
+      "code_type": "config",
+      "code": "为脚本、视觉和发布三个环节设置人工审核规则。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "启动内容工厂",
+      "code_type": "none",
+      "code": "龙虾会按热点→选题→文案→视觉→分发的主链自动运行，并把工件沉淀到控制面。",
+      "requires_user_input": false
+    }
+  ],
+  "scheduler_config": {
+    "kind": "cron",
+    "schedule": "0 10 * * 1-5",
+    "session_mode": "shared"
+  },
+  "tips": [
+    "高级模式建议先在单一垂类试运行一周。",
+    "内容工厂最适合配合 prompt 资产库和策略强度面板一起用。",
+    "尽量让一个品牌只对应一套明确的视觉参考。"
+  ],
+  "estimated_cost_per_run": "$0.20-0.60",
+  "tags": ["内容工厂", "自动化", "多龙虾", "高产能"]
+}

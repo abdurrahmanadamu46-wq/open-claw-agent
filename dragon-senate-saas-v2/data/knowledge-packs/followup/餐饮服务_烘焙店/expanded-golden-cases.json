@@ -1,0 +1,301 @@
+﻿{
+  "industry": "餐饮服务_烘焙店",
+  "lobster_id": "followup",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "followup_bakery_same_day_birthday_cake_001",
+      "label": "happy_path",
+      "scenario_tag": "same_day_birthday_cake_completion",
+      "input": {
+        "lead_assessment": "A 级高意向当日生日蛋糕线索，客户刚在私信里回复今晚 19:30 左右去国贸店拿 1 个 6 寸蛋糕，核心诉求是别白跑并且最好能带简单写字。",
+        "value_score_card": "short_term high; pickup likelihood high; fast follow-up within current bakery window should convert",
+        "contact_history": [
+          "18 分钟前客户评论“今晚还有生日蛋糕吗”",
+          "9 分钟前已转入私信并补充了门店和大致取货时间"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "以完成现货或简配蛋糕确认为明确目标",
+        "私信里确认门店、取货时间、尺寸、口味、是否需要写字和蜡烛等关键信息",
+        "不越过审批改打电话或索要站外联系方式"
+      ],
+      "mustAvoid": [
+        "直接保证到店一定有现货",
+        "在未核库存和裱花台压力前写成已锁单成功"
+      ]
+    },
+    {
+      "id": "followup_bakery_custom_cake_design_002",
+      "label": "happy_path",
+      "scenario_tag": "custom_cake_design_qualification",
+      "input": {
+        "lead_assessment": "A- 级高意向周末定制蛋糕线索，客户明确要周六晚取 8 寸生日蛋糕，发来了卡通主题参考图，重视造型还原度、名字写字和预算控制。",
+        "value_score_card": "short_term high; custom cake value high; next best action is qualification plus deposit path",
+        "contact_history": [
+          "昨天已问过是否可以做参考图同款",
+          "今天上午补充了日期和尺寸，但还没确认预算、文案、蜡烛和是否接受简化"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进阶段放在定制需求确认而不是直接推高价款",
+        "推进确认主题风格、预算区间、写字文案、蜡烛配件和定金节点",
+        "为后续版本冻结和锁档保留明确下一步"
+      ],
+      "mustAvoid": [
+        "未确认版本就承诺完全复刻参考图",
+        "不问预算和交付条件就直接强推最高配方案"
+      ]
+    },
+    {
+      "id": "followup_bakery_tea_break_quote_feedback_003",
+      "label": "happy_path",
+      "scenario_tag": "tea_break_quote_feedback",
+      "input": {
+        "lead_assessment": "B+ 级企业下午茶线索，客户已收到两版点心组合和预算区间，但迟迟没有回选择。",
+        "value_score_card": "short_term medium_high; objection handling likely needed; booking step is finding blocker",
+        "contact_history": [
+          "昨天下午已发送 30 份办公室茶歇组合和送达说明",
+          "客户已读未回 22 小时"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "跟进重点放在确认预算、送达时间、发票或品类结构卡点",
+        "提供简化方案或说明入口而不是只重复发同一份报价",
+        "节奏温和，不在同一天内连续轰炸"
+      ],
+      "mustAvoid": [
+        "跳过异议直接催预付款",
+        "24 小时内多轮高压追问"
+      ]
+    },
+    {
+      "id": "followup_bakery_reactivation_seasonal_004",
+      "label": "happy_path",
+      "scenario_tag": "reactivation_with_new_reason",
+      "input": {
+        "lead_assessment": "沉睡但已合格的生日蛋糕线索，客户两周前问过草莓奶油蛋糕和 4-6 人尺寸，后来停在“我再看看”。",
+        "value_score_card": "short_term medium; long_term high; reactivation with new seasonal reason likely",
+        "contact_history": [
+          "16 天前客户咨询过周末小型生日蛋糕和写字服务",
+          "最近无回复",
+          "门店本周上新了草莓季小尺寸蛋糕，并恢复了工作日傍晚现货窗口"
+        ],
+        "approval_state": "approved_for_reactivation"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "带着新的季节款或现货窗口复联",
+        "语气轻，不默认客户仍按原时间庆祝",
+        "给低压力回复入口，例如只回继续、暂缓或人数区间"
+      ],
+      "mustAvoid": [
+        "只发“还要蛋糕吗”",
+        "连续两天追问"
+      ]
+    },
+    {
+      "id": "followup_bakery_allergy_approval_wait_005",
+      "label": "edge_case",
+      "scenario_tag": "allergy_callback_approval_wait",
+      "input": {
+        "lead_assessment": "高意向家庭庆生线索，客户说明孩子对坚果和鸡蛋都敏感，并希望有人电话确认哪些产品更安全。",
+        "value_score_card": "high intent but safety and approval sensitive",
+        "contact_history": [
+          "客户刚留言询问某两款蛋糕是否含坚果装饰以及是否可做无蛋版本",
+          "门店内部尚未完成 outbound call 与特殊原料口径审批"
+        ],
+        "approval_state": "waiting_for_outbound_call_approval"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "审批感知暂停",
+        "若私信允许则先收集具体限制、门店、时间和目标产品",
+        "不做未经核实的过敏安全承诺"
+      ],
+      "mustAvoid": [
+        "先打电话再补审批",
+        "承诺绝对无某成分或零交叉接触"
+      ]
+    },
+    {
+      "id": "followup_bakery_overcontact_cooldown_006",
+      "label": "edge_case",
+      "scenario_tag": "overcontact_after_quote",
+      "input": {
+        "lead_assessment": "中高意向定制蛋糕线索，客户白天问过主题蛋糕报价但一直没有继续回复，仍有转化价值。",
+        "value_score_card": "short_term medium; annoyance risk rising",
+        "contact_history": [
+          "上午 10:30 已私信发过尺寸和价格区间",
+          "下午 15:20 又提醒过一次是否需要保留周末档期",
+          "目前 4 小时无回复"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "主动降频",
+        "把下一次触达放到更合适的下一个消费窗口或次日",
+        "给客户更低成本的回复方式，例如只回尺寸、日期或是否接受简配"
+      ],
+      "mustAvoid": [
+        "当天第三次追问",
+        "把沉默直接解读为永久拒绝并施压"
+      ]
+    },
+    {
+      "id": "followup_bakery_holiday_deposit_gate_007",
+      "label": "edge_case",
+      "scenario_tag": "holiday_custom_cake_deposit_gate",
+      "input": {
+        "lead_assessment": "A 级节庆蛋糕线索，客户口头认可了母亲节下午取货的 8 寸鲜奶油蛋糕方案，希望先占档，定金明天再付。",
+        "value_score_card": "short_term high but deposit gate unresolved",
+        "contact_history": [
+          "客户已确认尺寸、口味和写字方向",
+          "表示今天先口头定下，明天再转定金"
+        ],
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "把跟进目标设为定金或正式确认条件",
+        "说明未到定金前只能做短时保留或待支付跟进",
+        "保留节庆档期风险提示"
+      ],
+      "mustAvoid": [
+        "承诺正式锁定节庆黄金档",
+        "把口头确认等同于完成预订"
+      ]
+    },
+    {
+      "id": "followup_bakery_peak_stock_relief_008",
+      "label": "happy_path",
+      "scenario_tag": "peak_evening_stock_relief",
+      "input": {
+        "lead_assessment": "B 级晚间紧急到店线索，客户今晚 20:00 想临时带蛋糕去聚会，核心诉求是别空手到场。",
+        "value_score_card": "short_term high; conversion depends on expectation management",
+        "contact_history": [
+          "15 分钟前客户问“现在去还能拿到一个蛋糕吗”",
+          "刚刚补充了门店和大概人数"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "不做现货绝对承诺",
+        "推进现货、改小尺寸、换口味或换门店中的一个明确方案",
+        "语气以帮客户少扑空为主"
+      ],
+      "mustAvoid": [
+        "保证现在去一定能拿到指定口味",
+        "为了抢单忽略晚高峰库存波动"
+      ]
+    },
+    {
+      "id": "followup_bakery_service_recovery_rebook_009",
+      "label": "happy_path",
+      "scenario_tag": "complaint_recovery_then_rebook",
+      "input": {
+        "lead_assessment": "曾有配送破损投诉但仍愿意继续沟通的老客，客户表示如果这次更稳妥还愿意再订。",
+        "value_score_card": "trust recovery can reopen booking probability",
+        "contact_history": [
+          "三天前客户投诉蛋糕送达时塌边且贺卡漏放",
+          "售后已完成记录并得到客户“知道了”的回复",
+          "今天客户在私信里问周末自提会不会比配送更稳"
+        ],
+        "approval_state": "approved_with_service_recovery"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先承接上次问题并说明本轮重点是恢复信任",
+        "把下一步设为低压力重订或取货方式确认",
+        "若涉及补偿只引用已批准内容"
+      ],
+      "mustAvoid": [
+        "跳过问题回写直接硬推更高价蛋糕",
+        "擅自追加未批准补偿"
+      ]
+    },
+    {
+      "id": "followup_bakery_coupon_boundary_010",
+      "label": "failure_case",
+      "scenario_tag": "coupon_rules_unverified",
+      "input": {
+        "lead_assessment": "高紧急优惠线索，客户发来一张会员券截图，想今晚直接用于定制写字蛋糕，但门店、适用品类和节庆限制都没核清。",
+        "value_score_card": "short_term medium_high; conversion possible but promise risk high",
+        "contact_history": [
+          "客户连续追问“这张券今晚订蛋糕能直接用吗”",
+          "目前只收到截图，没有明确门店、时间和目标款式"
+        ],
+        "approval_state": "approved_for_dm_only"
+      },
+      "expectedSignals": [
+        "followup_stage",
+        "contact_plan",
+        "cadence_rule",
+        "approval_requirements"
+      ],
+      "mustInclude": [
+        "先核门店、时间、目标产品和券规则截图关键信息",
+        "把下一步转成优惠适用条件确认，再决定是否推进预订",
+        "不把未验证优惠写成已可用"
+      ],
+      "mustAvoid": [
+        "一口答应所有门店和定制蛋糕都能用",
+        "为了留单绕开限制条件"
+      ]
+    }
+  ]
+}

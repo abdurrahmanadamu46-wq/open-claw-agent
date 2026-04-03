@@ -1,0 +1,21 @@
+﻿{
+  "schemaVersion": "lobster.eval.failure-patterns.v0.2",
+  "roleId": "abacus",
+  "patterns": [
+    {
+      "id": "abacus_vanity_bias",
+      "label": "vanity_bias",
+      "description": "High engagement metrics are mistaken for high commercial value."
+    },
+    {
+      "id": "abacus_short_term_only",
+      "label": "short_term_only",
+      "description": "Scoring ignores long-term value or nurture potential."
+    },
+    {
+      "id": "abacus_bad_attribution",
+      "label": "bad_attribution",
+      "description": "Reward signal is assigned without consistent touchpoint logic."
+    }
+  ]
+}

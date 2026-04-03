@@ -1,0 +1,7 @@
+{"industry":"医疗健康_口腔门诊","lobster_id":"dispatcher","pack_type":"hooks-library","version":"v1","items":[
+  {"id":"first_visit_inquiry","title":"首次预约问询触发优先调度","description":"当来单中出现第一次来、想先到诊、想先看看方案或具体牙位问题时，Dispatcher 应优先匹配预约链路。","examples":["客户第一次来，想周末先看洗牙方案。","客户想先看种植路线是否适合自己。"],"priority":"high"},
+  {"id":"window_inquiry","title":"夜间与寒暑假窗口询单触发时效优先调度","description":"当来单明确说明夜间、寒暑假和婚礼节点时，Dispatcher 要立即优先判断热门时段可用性和排班边界。","examples":["客户今晚想先到诊。","客户说明寒假想先做正畸评估。"],"priority":"high"},
+  {"id":"scope_trigger","title":"牙位项目触发高工时优先调度","description":"当用户明确牙位、项目和治疗范围时，Dispatcher 应优先分配专项路线。","examples":["客户门牙补牙。","客户正畸加拍片评估。"],"priority":"high"},
+  {"id":"peak_schedule_trigger","title":"高峰时段触发排班优先调度","description":"当用户需要今晚或假期到诊时，Dispatcher 要优先判断候补与改时段路径。","examples":["今晚能不能先看。","寒假这两天想先排上。"],"priority":"medium"},
+  {"id":"repeat_trigger","title":"复诊复查触发复购链路","description":"复诊复查一旦出现时段和项目需求，应直接进入标准化复购链路。","examples":["这个月想再来复查。","上次那颗牙还想再看看。"],"priority":"medium"},
+  {"id":"orthodontic_trigger","title":"正畸与种植触发专项链路","description":"正畸和种植应优先走专项链路，而不是普通洁牙初诊流程。","examples":["隐形矫正评估。","种植牙初诊。"],"priority":"medium"}]}

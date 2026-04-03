@@ -1,0 +1,96 @@
+﻿{
+  "schemaVersion": "lobster.subprojects.registry.v0.1",
+  "generatedAt": "2026-03-30",
+  "packages": [
+    {
+      "packageName": "@lobsterpool/lobster-commander",
+      "roleId": "commander",
+      "primaryArtifact": "MissionPlan",
+      "path": "packages/lobsters/lobster-commander",
+      "priorityTier": "T0",
+      "trainingStage": "design-ready",
+      "nextMilestone": "connect commander runtime to dynamic graph assembly"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-radar",
+      "roleId": "radar",
+      "primaryArtifact": "SignalBrief",
+      "path": "packages/lobsters/lobster-radar",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect shadow scans to real market inputs"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-strategist",
+      "roleId": "strategist",
+      "primaryArtifact": "StrategyRoute",
+      "path": "packages/lobsters/lobster-strategist",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "run route A/B simulations against Commander mission batches"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-inkwriter",
+      "roleId": "inkwriter",
+      "primaryArtifact": "CopyPack",
+      "path": "packages/lobsters/lobster-inkwriter",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect copy variants to real conversion and compliance review outcomes"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-visualizer",
+      "roleId": "visualizer",
+      "primaryArtifact": "StoryboardPack",
+      "path": "packages/lobsters/lobster-visualizer",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "compare storyboard feasibility and proof density against real production runs"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-dispatcher",
+      "roleId": "dispatcher",
+      "primaryArtifact": "ExecutionPlan",
+      "path": "packages/lobsters/lobster-dispatcher",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect runtime traces and replay outcomes for real fallback verification"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-echoer",
+      "roleId": "echoer",
+      "primaryArtifact": "EngagementReplyPack",
+      "path": "packages/lobsters/lobster-echoer",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect real comment threads and complaint outcomes for reply tuning"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-catcher",
+      "roleId": "catcher",
+      "primaryArtifact": "LeadAssessment",
+      "path": "packages/lobsters/lobster-catcher",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect scoring checks to CRM truth labels"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-abacus",
+      "roleId": "abacus",
+      "primaryArtifact": "ValueScoreCard",
+      "path": "packages/lobsters/lobster-abacus",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect attribution truth labels and business outcome feedback loops"
+    },
+    {
+      "packageName": "@lobsterpool/lobster-followup",
+      "roleId": "followup",
+      "primaryArtifact": "FollowUpActionPlan",
+      "path": "packages/lobsters/lobster-followup",
+      "priorityTier": "T1",
+      "trainingStage": "shadow-ready",
+      "nextMilestone": "connect follow-up cadence decisions to booking and complaint outcomes"
+    }
+  ]
+}

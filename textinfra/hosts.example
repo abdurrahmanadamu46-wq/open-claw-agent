@@ -1,0 +1,5 @@
+# ClawCommerce 本地 Demo — 将下面一行追加到本机 hosts 文件
+# Windows: C:\Windows\System32\drivers\etc\hosts
+# macOS/Linux: /etc/hosts
+# 追加内容（一行）：
+127.0.0.1   app.clawcommerce.local   api.clawcommerce.local

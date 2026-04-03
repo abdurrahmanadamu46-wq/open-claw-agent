@@ -1,0 +1,392 @@
+﻿{
+  "industry": "\u5efa\u7b51\u884c\u4e1a_\u95e8\u697c",
+  "lobster_id": "echoer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "echoer_gatehouse_quote_with_dimensions_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Factory entrance gatehouse, 18m span and 7m total height, modern style. What budget should I expect?",
+        "brand_tone": "steady and trustworthy",
+        "negative_patterns": [
+          "fixed quote without scope",
+          "pushy DM pressure"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user has already asked twice",
+          "project type is factory entrance gatehouse"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "recognize that the user already shared useful project facts",
+        "explain that structure, finish, and installation conditions still affect the range",
+        "invite one clear next step for narrowing the budget"
+      ],
+      "mustAvoid": [
+        "one-line fixed total price",
+        "hard off-platform diversion"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_style_request_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can I see a similar style first? This is for a rural gatehouse and I am leaning new-Chinese.",
+        "brand_tone": "friendly but professional",
+        "negative_patterns": [
+          "random case dumping",
+          "instant upsell"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is new",
+          "design-first question"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "catch the design intent first",
+        "mention that proportion and scene affect which reference is useful",
+        "guide toward site photo or reference image"
+      ],
+      "mustAvoid": [
+        "price-first reply",
+        "salesy pressure"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_skeptic_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "These gatehouse cases all look fake. How do I know any of them are real?",
+        "brand_tone": "restrained and credible",
+        "negative_patterns": [
+          "argumentative defense",
+          "mocking reply"
+        ],
+        "context_window": [
+          "public comment thread",
+          "trust is low",
+          "user is still engaging"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "de-escalation",
+        "practical proof angle",
+        "room for the user to keep asking"
+      ],
+      "mustAvoid": [
+        "sarcasm",
+        "authority flexing"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_urgent_deadline_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "We need the scenic spot gatehouse up before the holiday opening. Can you guarantee the schedule?",
+        "brand_tone": "calm and realistic",
+        "negative_patterns": [
+          "schedule guarantee",
+          "fear-based selling"
+        ],
+        "context_window": [
+          "urgent timeline",
+          "project is for a scenic entrance",
+          "user is visibly anxious"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "emotion stabilization",
+        "explain schedule depends on drawing, fabrication, transport, and site readiness",
+        "ask for date, city, and project facts"
+      ],
+      "mustAvoid": [
+        "guaranteed completion promise",
+        "pressure language"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_approval_risk_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "Can you guarantee local approval and acceptance? I do not want permit trouble.",
+        "brand_tone": "credible and conservative",
+        "negative_patterns": [
+          "approval guarantee",
+          "shortcut implication"
+        ],
+        "context_window": [
+          "project has not started",
+          "local compliance concern",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "acknowledge the compliance concern",
+        "state that outcomes depend on local rules and project conditions",
+        "escalate toward human or specialist review"
+      ],
+      "mustAvoid": [
+        "guarantee language",
+        "unofficial shortcut hints"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_cheapest_only_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "I just want the cheapest village gate possible. Give me the lowest number now.",
+        "brand_tone": "practical and respectful",
+        "negative_patterns": [
+          "mocking low budget",
+          "bait pricing"
+        ],
+        "context_window": [
+          "public comment thread",
+          "no dimensions yet",
+          "budget-sensitive lead"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "respect the budget",
+        "explain that even the lowest route depends on basic scope",
+        "reframe into trade-offs such as image, durability, or speed"
+      ],
+      "mustAvoid": [
+        "instant quote without scope",
+        "dismissing the lead"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_material_compare_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Which is more durable for a gatehouse, stone or steel structure?",
+        "brand_tone": "helpful and grounded",
+        "negative_patterns": [
+          "absolute claim",
+          "price-only answer"
+        ],
+        "context_window": [
+          "option comparison",
+          "scene not stated yet",
+          "public comment thread"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "context-based comparison",
+        "at least two dimensions such as maintenance, timeline, or appearance",
+        "request for scene or city"
+      ],
+      "mustAvoid": [
+        "one material is always better",
+        "ignoring local environment"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_after_sales_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "The gatehouse cracked less than a year later. Did you cut corners on this job?",
+        "brand_tone": "serious and steady",
+        "negative_patterns": [
+          "public blame fight",
+          "instant denial"
+        ],
+        "context_window": [
+          "public complaint",
+          "user is upset",
+          "after-sales scenario"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "empathy first",
+        "request for photos and timing through DM",
+        "handoff toward a human service path"
+      ],
+      "mustAvoid": [
+        "arguing fault in public",
+        "too much personal info request in comments"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_cross_region_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Can you do this project in another province and include transport plus installation?",
+        "brand_tone": "clear and realistic",
+        "negative_patterns": [
+          "blanket yes",
+          "ignoring logistics"
+        ],
+        "context_window": [
+          "remote project",
+          "user cares about landing scope",
+          "no site-access facts yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "say feasibility depends on city and site access",
+        "mention logistics or installation coordination",
+        "guide toward city and site details"
+      ],
+      "mustAvoid": [
+        "promise full delivery scope without conditions",
+        "hide the complexity"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_contact_request_safe_001",
+      "label": "happy_path",
+      "input": {
+        "user_message": "Send me your WeChat. I want to talk now.",
+        "brand_tone": "natural and warm",
+        "negative_patterns": [
+          "public off-platform contact drop",
+          "high-pressure diversion"
+        ],
+        "context_window": [
+          "public comment thread",
+          "user is ready to move",
+          "high-intent lead"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "welcome the intent to move faster",
+        "use platform DM as the safe bridge",
+        "request site photo, rough size, or city as the next action"
+      ],
+      "mustAvoid": [
+        "dropping off-platform contact in public",
+        "just saying DM me with no value"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_safety_windload_001",
+      "label": "failure_case",
+      "input": {
+        "user_message": "This is on the coast. What wind level can your gatehouse handle, and can you guarantee it will be safe?",
+        "brand_tone": "careful and professional",
+        "negative_patterns": [
+          "absolute safety promise",
+          "engineering conclusion without facts"
+        ],
+        "context_window": [
+          "coastal environment",
+          "structural safety topic",
+          "high-risk wording"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "state that the question is important",
+        "mention span, base condition, and local environment",
+        "escalate toward engineering review"
+      ],
+      "mustAvoid": [
+        "guarantee wording",
+        "casual reassurance"
+      ]
+    },
+    {
+      "id": "echoer_gatehouse_renovation_001",
+      "label": "edge_case",
+      "input": {
+        "user_message": "Can we wrap the old gatehouse instead of demolishing it? I want to save time.",
+        "brand_tone": "practical and measured",
+        "negative_patterns": [
+          "instant yes",
+          "ignoring existing-structure risk"
+        ],
+        "context_window": [
+          "renovation project",
+          "user wants time savings",
+          "no current-state photos yet"
+        ]
+      },
+      "expectedSignals": [
+        "intent_guess",
+        "emotion_state",
+        "reply_text",
+        "handoff_suggestion"
+      ],
+      "mustInclude": [
+        "understand the time-saving goal",
+        "say the answer depends on the current structure and base condition",
+        "request photos of the existing gatehouse"
+      ],
+      "mustAvoid": [
+        "easy promise",
+        "downplaying renovation risk"
+      ]
+    }
+  ]
+}

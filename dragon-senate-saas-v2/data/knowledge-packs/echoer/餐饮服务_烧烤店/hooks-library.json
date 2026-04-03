@@ -1,0 +1,188 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70e7\u70e4\u5e97",
+  "lobster_id": "echoer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "hook_booking_without_details",
+      "scene": "public_comment",
+      "intent": "table_booking",
+      "emotion": "ready_to_move",
+      "hook": "Happy to help you lock this in.",
+      "bridge": "For barbecue, the branch, arrival time, and party size matter more than a quick yes or no.",
+      "next_step": "Ask for branch, time, and number of guests.",
+      "handoff_suggestion": "Route to Catcher if the user replies with reservation facts."
+    },
+    {
+      "id": "hook_booking_with_details",
+      "scene": "comment_or_dm",
+      "intent": "active_reservation",
+      "emotion": "practical",
+      "hook": "That is already enough to start narrowing the next step.",
+      "bridge": "Once the time and headcount are clear, the next question is usually seating type and what kind of barbecue experience the table wants.",
+      "next_step": "Ask whether they need a private room, terrace table, or self-grill setup.",
+      "handoff_suggestion": "High-intent dining lead."
+    },
+    {
+      "id": "hook_group_table_or_private_room",
+      "scene": "comment_or_dm",
+      "intent": "group_booking",
+      "emotion": "hosting_focused",
+      "hook": "If the meal matters, it makes sense to plan the seating early.",
+      "bridge": "The right fit usually depends on date, headcount, budget, and whether you need a private room, terrace spot, or invoice support.",
+      "next_step": "Ask for dining date, guest count, and seating preference.",
+      "handoff_suggestion": "Group dining lead for Catcher."
+    },
+    {
+      "id": "hook_family_not_spicy_skewers",
+      "scene": "public_comment",
+      "intent": "dish_recommendation",
+      "emotion": "careful",
+      "hook": "That is worth choosing a little carefully for a mixed table.",
+      "bridge": "At barbecue, spice level, marinade style, and whether there are children or elders can change the safest order direction fast.",
+      "next_step": "Ask who is dining and whether they lean cumin-heavy, mild, sweet-savory, or mixed skewers.",
+      "handoff_suggestion": "Menu-guidance opportunity."
+    },
+    {
+      "id": "hook_self_grill_or_pregrilled",
+      "scene": "comment_or_dm",
+      "intent": "service_style",
+      "emotion": "practical",
+      "hook": "That is a smart thing to check before you book.",
+      "bridge": "The easier choice depends on whether your table wants the fun of grilling or a simpler ready-to-serve flow, and that can differ by branch.",
+      "next_step": "Ask for branch, headcount, and whether children or elders are joining.",
+      "handoff_suggestion": "Good sign of active meal planning."
+    },
+    {
+      "id": "hook_company_bbq_gathering",
+      "scene": "comment_or_dm",
+      "intent": "business_dinner",
+      "emotion": "businesslike",
+      "hook": "Team dinners usually need both the seating and the service details to line up.",
+      "bridge": "Headcount, invoice needs, arrival time, and whether you want private or outdoor seating shape the workable plan.",
+      "next_step": "Ask for date, headcount, invoice requirement, and seating need.",
+      "handoff_suggestion": "Route as a high-value banquet lead."
+    },
+    {
+      "id": "hook_wait_time_tonight",
+      "scene": "public_comment",
+      "intent": "queue_check",
+      "emotion": "urgent",
+      "hook": "I get why you do not want to gamble on a long wait.",
+      "bridge": "Queue pressure can swing a lot by branch, arrival time, party size, and whether everyone wants indoor or terrace seating.",
+      "next_step": "Ask for branch, time, and party size, then guide toward reservation or a safer timing window.",
+      "handoff_suggestion": "Send to a human or booking flow quickly."
+    },
+    {
+      "id": "hook_first_time_what_to_order",
+      "scene": "public_comment",
+      "intent": "what_to_order",
+      "emotion": "curious",
+      "hook": "Happy to point you in a practical direction instead of letting you over-order.",
+      "bridge": "For barbecue, the better picks depend on spice level, whether the table leans lamb, beef, seafood, or vegetables, and how adventurous everyone feels.",
+      "next_step": "Ask about flavor preference and the party mix.",
+      "handoff_suggestion": "Good engagement signal if the user answers with preferences."
+    },
+    {
+      "id": "hook_budget_sensitive_group",
+      "scene": "comment_or_dm",
+      "intent": "budget_planning",
+      "emotion": "price_focused",
+      "hook": "A tighter budget can still work if we trim the right part of the order.",
+      "bridge": "At barbecue, protein mix, drinks, and whether this is everyday eating or hosting all change the range.",
+      "next_step": "Ask for headcount and whether fullness or signature skewers matter more.",
+      "handoff_suggestion": "Workable lead if the user engages on trade-offs."
+    },
+    {
+      "id": "hook_dietary_restriction",
+      "scene": "comment_or_dm",
+      "intent": "dietary_check",
+      "emotion": "careful",
+      "hook": "That is exactly the kind of thing worth checking carefully before you order.",
+      "bridge": "Marinade, seasoning, and grill handling can all matter, so it is better to confirm the exact restriction than guess.",
+      "next_step": "Ask for the restriction, the ingredient concern, and the branch.",
+      "handoff_suggestion": "Flag for careful confirmation."
+    },
+    {
+      "id": "hook_allergy_high_risk",
+      "scene": "comment_or_dm",
+      "intent": "allergy_safety",
+      "emotion": "serious",
+      "hook": "I am glad you asked before coming in.",
+      "bridge": "Allergy questions should be treated as safety issues, not casual flavor preferences.",
+      "next_step": "Ask for the exact allergen and branch, then escalate for confirmation.",
+      "handoff_suggestion": "Human or branch confirmation required."
+    },
+    {
+      "id": "hook_smoke_sensitive_table",
+      "scene": "comment_or_dm",
+      "intent": "comfort_check",
+      "emotion": "cautious",
+      "hook": "That concern makes sense, especially if comfort matters for the whole table.",
+      "bridge": "Smoke feel and seating comfort often depend on the branch, time slot, and whether indoor or outdoor seating is available.",
+      "next_step": "Ask which branch, what time they plan to arrive, and whether outdoor seating is preferred.",
+      "handoff_suggestion": "Route toward branch-aware booking help if they share seating details."
+    },
+    {
+      "id": "hook_skeptic_charcoal_flavor",
+      "scene": "public_comment",
+      "intent": "trust_check",
+      "emotion": "skeptical",
+      "hook": "That caution is fair.",
+      "bridge": "With barbecue, people usually care about different proof points like charcoal aroma, meat quality, marinade balance, or how family-friendly the setup feels.",
+      "next_step": "Invite the user to name the exact flavor or quality point they doubt.",
+      "handoff_suggestion": "Trust-repair opportunity."
+    },
+    {
+      "id": "hook_coupon_or_beer_combo",
+      "scene": "public_comment",
+      "intent": "promotion_question",
+      "emotion": "value_seeking",
+      "hook": "Makes sense to check the offer before you make the trip.",
+      "bridge": "Coupon, beer-combo, and late-night rules often change by branch, time slot, and minimum spend.",
+      "next_step": "Ask for the branch and planned dining time.",
+      "handoff_suggestion": "Useful bridge into booking if the user confirms details."
+    },
+    {
+      "id": "hook_takeout_complaint",
+      "scene": "public_comment",
+      "intent": "service_issue",
+      "emotion": "upset",
+      "hook": "I can understand why that would feel frustrating.",
+      "bridge": "The fastest way to check a barbecue delivery issue is usually the order time, branch, and a clear photo if there is one.",
+      "next_step": "Move the user to DM for order details and photos.",
+      "handoff_suggestion": "Escalate to after-sales."
+    },
+    {
+      "id": "hook_holiday_or_late_night_hours",
+      "scene": "public_comment",
+      "intent": "hours_check",
+      "emotion": "practical",
+      "hook": "Good call to check the timing before you head over.",
+      "bridge": "Holiday and late-night hours can differ a lot by branch, and queue pressure shifts with the time slot.",
+      "next_step": "Ask which branch and what time they plan to arrive.",
+      "handoff_suggestion": "Booking-ready if the user already has a fixed time."
+    },
+    {
+      "id": "hook_freshness_or_origin_check",
+      "scene": "public_comment",
+      "intent": "ingredient_quality",
+      "emotion": "careful",
+      "hook": "That is worth checking carefully, especially with grilled meats and seafood.",
+      "bridge": "Freshness and sourcing questions are easier to answer when the exact item, branch, and timing are clear.",
+      "next_step": "Ask which item they care about and which branch they are asking about.",
+      "handoff_suggestion": "Route toward branch confirmation if the question stays specific."
+    },
+    {
+      "id": "hook_fast_contact_safe",
+      "scene": "public_comment",
+      "intent": "wants_fast_contact",
+      "emotion": "ready_now",
+      "hook": "Happy to move faster on this.",
+      "bridge": "The safest first step is still platform DM so reservation or complaint details do not get scattered in public.",
+      "next_step": "Ask for the branch plus booking or order details in DM.",
+      "handoff_suggestion": "High-intent lead for Catcher."
+    }
+  ]
+}

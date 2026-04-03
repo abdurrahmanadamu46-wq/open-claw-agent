@@ -1,0 +1,209 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "visualizer",
+  "pack_type": "expanded-golden-cases",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "visualizer_beauty_salon_case_001",
+      "label": "happy_path",
+      "scenario": "换季敏感修护的真实流程分镜",
+      "input": {
+        "copy_pack": "美容院短视频脚本，核心卖点是换季敏感时先判断再做温和护理，强调房间卫生、一次性用品和不过度承诺。",
+        "brand_assets": [
+          "前台接待镜头",
+          "护理房间镜头",
+          "一次性用品准备视频",
+          "咨询检测片段",
+          "温和护理过程镜头",
+          "护理后状态说明镜头"
+        ],
+        "reference_styles": [
+          "克制纪实",
+          "信任感优先"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 2,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现房间和咨询证据",
+        "一次性用品和卫生细节",
+        "流程透明而非神奇变脸"
+      ],
+      "mustAvoid": [
+        "只拍精修脸和空镜",
+        "用夸张前后对比当主卖点",
+        "忽略隐私边界"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把敏感修护脚本转成一条以信任、卫生和真实流程为核心的可执行分镜。",
+        "assumptions": [
+          "顾客正脸不适合近拍，需要侧脸和手部镜头。",
+          "门店可提供真实咨询与房间准备素材。"
+        ],
+        "evidence": [
+          "具备房间、咨询和用品准备镜头。",
+          "脚本主卖点是先判断再护理。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_beauty_salon_case_002",
+      "label": "happy_path",
+      "scenario": "黑头闭口清洁的问题型分镜",
+      "input": {
+        "copy_pack": "问题型脚本，围绕鼻翼黑头、下巴闭口和反复清洁无效展开，强调先判断再做对应清洁护理。",
+        "brand_assets": [
+          "局部问题状态镜头",
+          "咨询说明镜头",
+          "清洁步骤镜头",
+          "结束后的边界说明镜头"
+        ],
+        "reference_styles": [
+          "问题先于项目",
+          "局部纪实"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1.5,
+          "customer_closeup_allowed": true
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "问题镜头和步骤镜头对应",
+        "不过度磨皮",
+        "有结束后的边界说明"
+      ],
+      "mustAvoid": [
+        "所有画面都像广告样片",
+        "问题和方案脱节",
+        "没有预约路径"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "让观众先确认问题，再相信门店的处理方式。",
+        "assumptions": [
+          "可使用局部脸部镜头。",
+          "护理过程允许拍摄。"
+        ],
+        "evidence": [
+          "问题型素材齐全。",
+          "脚本强调别急着乱做。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_beauty_salon_case_003",
+      "label": "happy_path",
+      "scenario": "节前状态急救的预约导向分镜",
+      "input": {
+        "copy_pack": "节前急救脚本，适用于婚礼、拍照和约会前，重点是单次状态整理和预约时效。",
+        "brand_assets": [
+          "前台接待镜头",
+          "护理流程镜头",
+          "时间窗口字幕素材",
+          "预约承接镜头"
+        ],
+        "reference_styles": [
+          "轻效率",
+          "日期压力明确"
+        ],
+        "production_constraints": {
+          "team_size": 2,
+          "shoot_time_hours": 1,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "前排出现重要场合或日期压力",
+        "护理流程和预约路径同在",
+        "不过度承诺效果"
+      ],
+      "mustAvoid": [
+        "拍成长期疗程广告",
+        "没有时效感",
+        "只有结果没有过程"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "把节前状态整理路线拍成高相关、高信任的预约视频。",
+        "assumptions": [
+          "可以通过字幕补足节前场景。",
+          "门店具备预约承接镜头。"
+        ],
+        "evidence": [
+          "流程素材完整。",
+          "脚本以单次状态管理为主。"
+        ]
+      }
+    },
+    {
+      "id": "visualizer_beauty_salon_case_004",
+      "label": "risk_case",
+      "scenario": "缺少真实流程时的安全降级拍法",
+      "input": {
+        "copy_pack": "新客冷启动脚本，强调门店流程透明和卫生感，但当前顾客实拍很少。",
+        "brand_assets": [
+          "房间镜头",
+          "工具和一次性用品镜头",
+          "前台或咨询台镜头"
+        ],
+        "reference_styles": [
+          "克制可信",
+          "降级保真"
+        ],
+        "production_constraints": {
+          "team_size": 1,
+          "shoot_time_hours": 1,
+          "customer_closeup_allowed": false
+        }
+      },
+      "expectedSignals": [
+        "cover_direction",
+        "shot_list",
+        "asset_dependencies",
+        "execution_feasibility_score"
+      ],
+      "mustInclude": [
+        "明确以房间、用品和咨询台证明门店可信度",
+        "不强造顾客案例",
+        "给出后续补拍建议"
+      ],
+      "mustAvoid": [
+        "拿外部顾客素材冒充本店案例",
+        "把空镜包装成热卖现场",
+        "靠重滤镜掩盖素材缺口"
+      ],
+      "referenceStoryboardPack": {
+        "goal": "在缺少顾客实拍时，仍用真实门店证据建立最低可信度。",
+        "assumptions": [
+          "暂无稳定顾客授权出镜素材。",
+          "门店空间和用品可以拍。"
+        ],
+        "evidence": [
+          "空间证据存在。",
+          "脚本核心是先建立信任。"
+        ]
+      }
+    }
+  ]
+}

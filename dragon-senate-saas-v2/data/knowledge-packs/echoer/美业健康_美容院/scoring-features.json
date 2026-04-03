@@ -1,0 +1,105 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "explicit_concern_type",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_concern_type",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "blackheads",
+        "sensitive skin",
+        "redness",
+        "pores",
+        "before a wedding"
+      ],
+      "why_it_matters": "Beauty buyers who name the actual concern are usually easier to route into a useful next step than users who only say they want to look better.",
+      "echoer_action": "Acknowledge the concern and keep gathering time and branch facts."
+    },
+    {
+      "id": "explicit_time_window",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_time_window",
+      "category": "booking_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "this weekend",
+        "tomorrow evening",
+        "lunch break",
+        "before Saturday"
+      ],
+      "why_it_matters": "Appointment timing is one of the clearest signs that a salon inquiry is moving toward action.",
+      "echoer_action": "Keep the reply warm and direct the next step toward booking facts."
+    },
+    {
+      "id": "first_time_caution_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "first_time_caution_signal",
+      "category": "trust_barrier",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "first time",
+        "never been before",
+        "a bit scared",
+        "worried about reaction"
+      ],
+      "why_it_matters": "First-time caution means the reply should optimize for reassurance and trust, not speed or upsell pressure.",
+      "echoer_action": "Use calm language and guide toward a consult-style next step."
+    },
+    {
+      "id": "event_driven_urgency",
+      "applies_to": "incoming_message",
+      "feature_name": "event_driven_urgency",
+      "category": "timing_pressure",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "wedding",
+        "photoshoot",
+        "date night",
+        "holiday gathering"
+      ],
+      "why_it_matters": "Event-driven salon requests often convert quickly if the time window is handled well.",
+      "echoer_action": "Acknowledge urgency and ask for date plus available slot."
+    },
+    {
+      "id": "price_only_without_context",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_context",
+      "category": "context_gap",
+      "score_direction": "negative",
+      "weight": 6,
+      "trigger_patterns": [
+        "how much",
+        "price?",
+        "cheapest option",
+        "what's the cost"
+      ],
+      "why_it_matters": "Price-only questions are not low intent by default, but they need concern scope before the next step becomes useful.",
+      "echoer_action": "Answer lightly and recover one scope detail."
+    },
+    {
+      "id": "public_embarrassment_risk",
+      "applies_to": "incoming_message",
+      "feature_name": "public_embarrassment_risk",
+      "category": "brand_safety",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "my face is terrible",
+        "really embarrassed",
+        "acne everywhere",
+        "skin is so bad"
+      ],
+      "why_it_matters": "When the concern is personal and exposed in public, the response must protect dignity while staying useful.",
+      "echoer_action": "Reply gently, avoid repeating the wording harshly, and move toward a safer follow-up path."
+    }
+  ]
+}

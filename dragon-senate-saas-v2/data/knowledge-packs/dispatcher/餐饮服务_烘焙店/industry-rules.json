@@ -1,0 +1,108 @@
+﻿{
+  "industry": "\u9910\u996e\u670d\u52a1_\u70d8\u7119\u5e97",
+  "lobster_id": "dispatcher",
+  "pack_type": "industry_rules",
+  "version": "v0.1",
+  "items": [
+    {
+      "id": "preorder_spec_and_deposit_lock_rule",
+      "title": "Lock cake specs, inscription, candles, and pickup slot before production",
+      "description": "Bakery dispatch should not reserve production first and clarify details later. Size, flavor, filling, cream type, inscription text, candles, cutlery, pickup or delivery window, and contact must be frozen in the task_graph. For birthday cakes, celebration cakes, number cakes, and premium gift boxes, payment or deposit confirmation must be a prerequisite before decoration capacity is locked.",
+      "examples": [
+        "A same day 8 inch strawberry cream cake with inscription and candles should stay in waiting state until size, text, candles, and deposit are confirmed.",
+        "A corporate gift box preorder that is still changing flavors can only keep a short hold and must not occupy packaging slots for the morning rush."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "split_routes_for_shelf_restock_custom_cakes_delivery_and_group_orders",
+      "title": "Split shelf restock, custom cakes, retail walk-ins, delivery, and group orders into separate routes",
+      "description": "A bakery often runs bread restock, cake decoration, walk-in retail, self pickup, delivery, and tea break group orders at the same time. Dispatcher should split routing_targets across front desk, baking line, decoration bench, packing station, cold storage handoff, rider handoff, and manager review. Different service modes must not be mixed into one vague route.",
+      "examples": [
+        "Morning bread replenishment should not block a prepaid birthday cake pickup route that has a firm deadline.",
+        "A 40 box afternoon tea order should go through its own payment, batching, packing, and handoff line instead of the normal retail queue."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "allergen_inscription_and_alcohol_customization_gate",
+      "title": "Allergen, inscription, alcohol-free, and kid-safe notes require manual confirmation",
+      "description": "Bakery orders often include nut avoidance, dairy concerns, egg concerns, low sugar requests, alcohol-free notes, child-safe notes, or precise inscription requirements. Dispatcher must not auto-release these requests to production. The plan must add a manual confirmation gate, write back the confirmed outcome, and pause when approval_state or feasibility is still unclear.",
+      "examples": [
+        "A cake note that says no nuts and no pistachio garnish must trigger manual confirmation before decoration starts.",
+        "An order that asks for a child-safe cake with no rum syrup must insert confirmation and label writeback before release."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "freshness_shelf_life_and_batch_dependency_rule",
+      "title": "Proofing, bake batch, cooling window, and shelf life are hard dependencies",
+      "description": "Stable bakery dispatch depends on proofing time, oven batch timing, cooling, slicing, bagging, and same day shelf life. Dispatcher must make these dependencies explicit in task_graph. If bread is not out of the oven, cake layers are still cooling, or a planned batch is near its sell-by window, the system must not promise immediate pickup or stable delivery.",
+      "examples": [
+        "Fresh toast cannot be marked ready at oven exit time if cooling and slicing still need another 25 minutes.",
+        "A late afternoon pastry group order should switch to the next batch or a substitute SKU when the planned batch is near sell-out or freshness limits."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "cream_fruit_chocolate_and_cold_chain_dependencies",
+      "title": "Cream, fruit, mousse, chocolate decor, and cold storage capacity must be checked explicitly",
+      "description": "Fresh cream cakes, fruit cakes, mousse products, mille crepe cakes, and chocolate plaques depend on whipped cream batches, fruit prep, decor inventory, cake boxes, ice packs, and cold storage space. Dispatcher should treat these as explicit prerequisites. If core ingredients, decor pieces, or cold chain space are not locked, the plan must not promise a fixed flavor, stable pickup time, or long-distance delivery.",
+      "examples": [
+        "If strawberries are nearly out, the plan should trigger a substitution confirmation before promising the original fruit design.",
+        "If the cold room is almost full, new cream cake reservations should be limited by time window rather than accepted normally."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "prepayment_lock_for_custom_cakes_and_high_loss_preorders",
+      "title": "Custom cakes, dessert tables, and high-loss preorders require payment before capacity lock",
+      "description": "Custom cakes, wedding dessert tables, seasonal gift boxes, and large cold dessert orders can consume decoration, cold storage, and packaging resources far in advance. Dispatcher should make payment receipt, deposit deadline, final version freeze, and contact confirmation mandatory prerequisites. Without payment, the order may keep only a short hold or move into a payment chase path, not a formal capacity lock.",
+      "examples": [
+        "A wedding dessert table for tomorrow morning should not block midnight prep time until the deposit lands.",
+        "A large holiday gift box order that is still waiting for company approval should stay in pre-confirmation rather than occupy packing labor."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "delivery_promise_depends_on_packaging_temperature_and_rider_window",
+      "title": "Delivery promises must depend on packaging strength, temperature window, and rider capacity",
+      "description": "Bakery delivery quality depends on cake structure, support packaging, ice packs, travel distance, weather, and rider availability. Dispatcher must model these as hard dependencies and prepare a fallback_plan for delay explanation, self-pickup conversion, rescheduling, or stop-loss on fragile cream cakes and tall celebration cakes.",
+      "examples": [
+        "An 8 kilometer cream fruit cake order in 35 degree weather should be downgraded to self-pickup or a safer delivery method.",
+        "A double-layer cake should not stay on the normal rider route when rain and long travel time create a high collapse risk."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "equipment_failover_for_oven_proofer_mixer_and_chiller",
+      "title": "Oven, proofer, mixer, decoration bench, and chiller failures must trigger degraded dispatch",
+      "description": "Bakery output depends heavily on ovens, proofers, mixers, whipping stations, decoration benches, slicers, and cold storage equipment. When any of these fail or become unstable, Dispatcher must isolate affected routes, shrink the sellable menu, raise manual review, and write an executable fallback_plan such as keeping simple ambient products, pausing complex cream cakes, or limiting delivery.",
+      "examples": [
+        "If the whipping mixer fails, new cream cake orders should pause while bread and stable ambient items continue.",
+        "If cold storage temperature becomes unstable, mousse and cream cake promises should stop immediately."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "duplicate_change_refund_and_reschedule_merge",
+      "title": "Duplicate orders, text edits, schedule changes, refunds, and delayed pickup must be merged first",
+      "description": "Bakery customers often modify the same order through a mini program, marketplace, phone, and in-store contact. Dispatcher must deduplicate and merge by master order id, payment record, latest inscription version, latest pickup time, and cancellation state before building the execution plan. This prevents duplicate baking, duplicate decoration, duplicate refunds, and old-version delivery.",
+      "examples": [
+        "If a customer first cancels, then changes to delayed pickup, the planner should rebuild one merged state rather than run cancel and production in parallel.",
+        "If the cake text and candle count are changed by phone after digital checkout, the newest version must replace the older one everywhere."
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "writeback_and_shift_handoff",
+      "title": "Every dispatch must write back batch, cake version, pickup code, storage mode, and abnormal reason",
+      "description": "Dispatcher is responsible not only for sending work out, but also for preserving traceable state after each key checkpoint. The plan should write back bake batch, layer version, inscription text, candles, packaging mode, cold storage instructions, expected pickup or delivery time, rider status, and abnormal reasons. This is required for replay safety and shift handoff.",
+      "examples": [
+        "After a birthday cake is confirmed, the final inscription, candle count, contact, and cold storage note should be written back for packing and handoff review.",
+        "If a delivery order is converted to pickup because of weather, the new pickup code, notice channel, and compensation status should be recorded."
+      ],
+      "priority": "high"
+    }
+  ]
+}

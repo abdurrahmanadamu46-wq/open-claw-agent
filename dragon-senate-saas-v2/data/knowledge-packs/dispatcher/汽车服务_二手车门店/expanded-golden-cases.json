@@ -1,0 +1,128 @@
+﻿{
+  "industry": "汽车服务_二手车门店",
+  "lobster_id": "dispatcher",
+  "pack_type": "expanded-golden-cases",
+  "version": "v1",
+  "cases": [
+    {
+      "id": "dispatcher_used_car_visit_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条首次到店问题型线索转成可执行看车计划",
+        "routing_context": "客户第一次来，想约工作日晚间先看一台家用 SUV，不做立即决策",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "class_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "到店优先链路",
+        "顾问与车辆安排",
+        "完成后回写复访任务"
+      ],
+      "mustAvoid": [
+        "把首单导向高压成交队列",
+        "忽略首次信任成本"
+      ]
+    },
+    {
+      "id": "dispatcher_used_car_window_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条返乡季看车询单转成可执行计划",
+        "routing_context": "客户返乡在即，想周四晚先看车并了解如何把选择理顺，已明确门店和时段范围",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "class_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "返乡季时段确认",
+        "扩展看车时长判断",
+        "热门档期保留窗口"
+      ],
+      "mustAvoid": [
+        "按普通轻量看车时长去排",
+        "忽略返乡季档期稀缺"
+      ]
+    },
+    {
+      "id": "dispatcher_used_car_multi_need_003",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "把一条多问题看车线索转成排班计划",
+        "routing_context": "客户同时提到预算、车况、金融和置换，想同一天看车并判断优先级",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "class_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "多问题扩展时长或分阶段安排",
+        "顾问与车辆匹配",
+        "备选方案"
+      ],
+      "mustAvoid": [
+        "只按单一轻量看车安排",
+        "忽略问题复杂度"
+      ]
+    },
+    {
+      "id": "dispatcher_used_car_peak_004",
+      "label": "risk_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理换车季晚高峰连续复杂看车导致的车辆和回访压力",
+        "routing_context": "18:00 到 21:00 同一位核心顾问被排了 3 单，其中两单为复杂金融与置换评估",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "class_scheduler": "healthy",
+          "followup_service": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "复杂度分流或顺延动作",
+        "车辆准备与资料节点",
+        "避免压缩看车质量"
+      ],
+      "mustAvoid": [
+        "假设复杂看车可以无缝衔接三单",
+        "靠压缩判断过程硬接"
+      ]
+    }
+  ]
+}

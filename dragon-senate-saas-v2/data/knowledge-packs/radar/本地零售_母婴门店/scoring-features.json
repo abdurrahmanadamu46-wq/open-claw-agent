@@ -1,0 +1,7 @@
+﻿{"industry":"本地零售_母婴门店","lobster_id":"radar","pack_type":"scoring-features","version":"v1","items":[
+{"id":"source_reliability","title":"来源可信度","description":"优先给平台后台公告、主管部门通告、门店后台数据和真实评价更高分。","examples":["平台后台规则高于同行转述","真实订单数据高于账号主观判断","带社区定位和时间的评价高于模糊截图"],"priority":"high"},
+{"id":"problem_specificity","title":"问题指向清晰度","description":"高分信号能明确落到奶粉、尿裤、辅食、洗护和月龄等具体问题。","examples":["高分：奶粉和尿裤问题同时被集中提问","低分：最近大家都想逛母婴店"],"priority":"high"},
+{"id":"local_visit_relevance","title":"本地到店相关性","description":"能反映门店、到店时段和本地家庭场景需求的信号，应高于全国泛流行信息。","examples":["本地换季补货咨询增加","同赛道门店同时调整权益"],"priority":"high"},
+{"id":"execution_actionability","title":"执行可转化度","description":"高分信号应能直接指导选题、上新、到店承接或风控动作。","examples":["可执行：辅食咨询升温，可强化月龄路线","可执行：过敏投诉集中，可优先排查推荐流程"],"priority":"high"},
+{"id":"risk_urgency","title":"风险紧迫度","description":"涉及真伪争议、过敏、临期和售后失联等风险的信号应显著提权。","examples":["安全风险高于一般流量变化","合规风险高于普通套餐波动"],"priority":"high"},
+{"id":"repeatability","title":"复现度","description":"单一爆款或偶发吐槽不能直接代表趋势。","examples":["同一周评论、私信和本地内容都提到奶粉和尿裤","多家门店同时出现会员权益变化"],"priority":"medium"}]}

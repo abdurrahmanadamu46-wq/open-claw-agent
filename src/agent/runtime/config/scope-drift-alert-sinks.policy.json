@@ -1,0 +1,8 @@
+﻿{
+  "version": "lobster.scope-drift-alert-sinks.policy.v0.1",
+  "name": "Default Scope Drift Alert Sinks Policy",
+  "dashboardFeedDirectory": "F:\\openclaw-agent\\run\\scope-drift-dashboard-feed",
+  "webhookOutboxDirectory": "F:\\openclaw-agent\\run\\scope-drift-webhook-outbox",
+  "publishDashboardFeed": true,
+  "publishWebhookOutbox": true
+}

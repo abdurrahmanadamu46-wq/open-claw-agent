@@ -1,0 +1,265 @@
+﻿{
+  "industry": "餐饮服务_奶茶店",
+  "lobster_id": "radar",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "radar_milk_tea_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测奶茶店在抖音和美团上的团购与直播卖券规则变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_plus_local_life",
+        "competitor_watchlist": [
+          "鲜果茶品牌A",
+          "轻乳茶品牌B"
+        ],
+        "raw_signals": [
+          "抖音本地生活公告要求团购标题里涉及 0糖、低卡、鲜果现切、鲜奶现打、第二杯半价 和 全网最低价 等表述时必须提供可核验依据，违规会被降权处理",
+          "美团商家后台通知加强现制茶饮门店资质、原料标签和后场实拍抽检",
+          "两家竞品把商品文案从 0糖轻负担第二杯半价 改成 招牌双杯套餐，甜度冰量以商品页说明为准"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "官方平台规则变化优先于竞品文案变化",
+        "需要指出对营养宣称和价格承诺边界的影响",
+        "关注级别应为高"
+      ],
+      "mustAvoid": [
+        "把竞品改文案当成唯一核心信号",
+        "忽略资质抽检和规则公告的高可信度"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_weather_campus_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "发现同城奶茶店受天气和校园商圈驱动的需求窗口",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_search",
+        "competitor_watchlist": [
+          "校园茶饮店C",
+          "连锁奶茶店D"
+        ],
+        "raw_signals": [
+          "同城连续高温叠加高校开学，搜索词、评论和私信里集中出现 大杯冰饮、学生套餐、第二杯半价、外卖更快吗 和 晚上营业到几点 等咨询",
+          "同校园商圈三家竞品同步上线双杯学生套餐和夜间自提券，门店营业时间延长到 23 点",
+          "地图评论连续提到放学后排队和晚间外卖单量上升，但写字楼商圈没有同步放大"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "同城天气变化与校园时段需求应被识别为机会信号",
+        "竞品营业时段和套餐动作需要与需求端信号分开归类",
+        "输出应形成面向 Commander 的高关注窗口提醒"
+      ],
+      "mustAvoid": [
+        "把天气变化单独夸大为确定性结论",
+        "用跨城联名热度替代本地校园需求判断"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_collab_window_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "判断奶茶店 IP 联名首发是否形成高价值机会窗口",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "联名茶饮品牌E",
+          "区域奶茶品牌F"
+        ],
+        "raw_signals": [
+          "品牌官方账号官宣动漫联名，首周限量杯套和徽章需到店领取，并同步在小程序和商场屏幕投放",
+          "同城三家门店连续两天出现取单排队、晒单和周边转卖讨论，地图评价新增等待时长和限购说明",
+          "两家竞品在一周内跟进推出节日限定杯和赠品活动，但常规产品页和会员权益暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要把官方联名首发识别为短窗机会而不是长期需求定论",
+        "排队证据和竞品跟进需要被分别归类和综合判断",
+        "输出应提醒这是高关注但时效性强的窗口"
+      ],
+      "mustAvoid": [
+        "把联名热度直接等同于稳定复购提升",
+        "忽略限量周边和限购规则对热度的放大作用"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_takeaway_subsidy_rumor_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "监测奶茶店外卖成本风险与平台补贴变化",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "takeaway_platform",
+        "competitor_watchlist": [
+          "外卖奶茶店G"
+        ],
+        "raw_signals": [
+          "同城商家群截图称平台下周将取消茶饮买一送一补贴并上调抽佣 2%，但截图没有公告来源",
+          "未发现美团或饿了么商家后台正式通知，片区运营口径也不一致",
+          "核心竞品的配送费、满减结构、起送门槛和外卖杯型说明暂未同步调整"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "单一来源补贴传闻应被降级",
+        "缺少官方通知和竞品动作互证会降低置信度",
+        "关注级别不应高于中"
+      ],
+      "mustAvoid": [
+        "直接判断外卖利润将全面恶化",
+        "把群聊截图表述成已确认的平台政策"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_locality_mismatch_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "识别社区型奶茶店的内容与价格带机会",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video_plus_local_market",
+        "competitor_watchlist": [
+          "社区奶茶店H"
+        ],
+        "raw_signals": [
+          "外地旅游城市的高颜值手打果茶短视频爆火，大量内容强调景观、打卡和高客单限定杯",
+          "本地平台最近新增搜索和评论集中在 9.9 元、双杯套餐、外卖更快吗、少糖少冰 和 学生价",
+          "本地竞品开始上新双杯下午茶套餐和工作日学生券，没有跟进高客单景观打卡路线"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "本地刚需型需求应高于跨城打卡爆款热度",
+        "需要区分审美爆款与真实经营机会",
+        "关注级别应为中"
+      ],
+      "mustAvoid": [
+        "因为短视频爆火就建议直接转向高客单打卡路线",
+        "忽略同城搜索与竞品套餐的本地互证"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_food_safety_rumor_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "快速扫描同城奶茶店食品安全风险",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "自媒体账号爆料某连锁奶茶店门店使用隔夜水果和过期奶基底，只给出模糊后场偷拍视频",
+          "该说法被两个营销号转发，但都没有提供门店名称、监管链接或处罚文书",
+          "未发现市场监管局通报、平台下架信息或门店停业公告"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "该信号应被隔离为低可信传闻",
+        "没有官方证据不能判定为已确认的食安事件"
+      ],
+      "mustAvoid": [
+        "把爆料描述成已经发生的监管结论",
+        "用营销号转发次数替代可靠性判断"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_fake_queue_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "监测高热度奶茶竞品的真实门店热度变化",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [
+          "网红奶茶店I",
+          "联名茶饮店J"
+        ],
+        "raw_signals": [
+          "竞品发布 排队两小时 的短视频，但没有给出日期、门店定位或取单系统截图",
+          "地图平台近 7 天评分与评论量基本持平，未出现明显等待时长讨论",
+          "周边探店账号未同步拍到排队场景，门店也没有新增限购、限量周边或预约说明"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "证据链薄弱时不能确认门店热度爆发",
+        "缺少地图评论和第三方实拍互证时可信度应偏低"
+      ],
+      "mustAvoid": [
+        "把单条长队视频当成已确认的市场变化",
+        "忽略没有外部证据支持的热度表述"
+      ]
+    },
+    {
+      "id": "radar_milk_tea_store_network_shift_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "监测同城奶茶品牌门店网络扩张与收缩变化",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_market_plus_competitor_watch",
+        "competitor_watchlist": [
+          "连锁奶茶品牌K",
+          "区域茶饮品牌L"
+        ],
+        "raw_signals": [
+          "同商圈两家竞品门店在地图页上改为暂停营业，评论区连续出现撤柜和闭店讨论",
+          "商场公告显示其中一家原铺位将由另一茶饮品牌接手，同时新品牌开始公开招聘店员和店长",
+          "未发现平台规则变化，但同城另外两家品牌同步延长营业到 23 点并上线夜间自提券"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "需要明确这是竞品经营网络变化而不是平台规则变化",
+        "暂停营业、商场公告和招聘信息应被识别为互证链条",
+        "输出应形成面向 Commander 的中高关注竞争格局提醒"
+      ],
+      "mustAvoid": [
+        "把闭店个案直接泛化成全行业衰退",
+        "忽略同商圈新品牌进驻带来的替代性机会"
+      ]
+    }
+  ]
+}

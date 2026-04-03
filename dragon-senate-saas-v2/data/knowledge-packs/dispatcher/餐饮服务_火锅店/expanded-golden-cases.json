@@ -1,0 +1,308 @@
+﻿{
+  "industry": "餐饮服务_火锅店",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_hotpot_private_room_birthday_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一条周六晚 10 人生日火锅包间询单转成可执行的预订、定金、锅底确认和备台计划",
+        "routing_context": "客户说明需要包间、鸳鸯锅、1 把儿童座椅和不过辣的番茄锅半边，希望先锁定 19:00 档期，门店当前还剩 1 个包间可售",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "crm": "healthy",
+          "payment_gateway": "healthy",
+          "hotpot_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "包间锁定前的定金节点",
+        "鸳鸯锅和儿童座椅备注回写",
+        "包间不可用时的候补或散台拼接 fallback"
+      ],
+      "mustAvoid": [
+        "未收定金就长期锁死包间",
+        "忽略锅底偏好和儿童同席信息直接下发备台"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_dinner_peak_waitlist_002",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把周五晚高峰持续增长的 walk-in 客流转成可控的等位、回流和限流计划",
+        "routing_context": "18:40 起门店散台满台，当前已有 22 组等位，预计翻台时间已从 50 分钟拉长到 90 分钟，仍有顾客持续到店询位",
+        "integration_state": {
+          "queue_manager": "healthy",
+          "sms_gateway": "healthy",
+          "reservation_system": "healthy",
+          "hotpot_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "等位队列和预计等待区间",
+        "短信回流或错峰到店通知",
+        "停止继续给出模糊即时入座承诺"
+      ],
+      "mustAvoid": [
+        "满台状态下继续直接确认新散台入座",
+        "没有候补和通知机制就让顾客原地空等"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_takeaway_rain_degrade_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "在暴雨和运力紧张下为晚市火锅外卖建立稳定履约计划",
+        "routing_context": "18:10 后暴雨升级，平台骑手接单速度明显下降，但门店持续收到 3 到 5 公里火锅外卖订单，顾客对锅底保温要求较高",
+        "integration_state": {
+          "delivery_platform": "degraded",
+          "rider_dispatch": "degraded",
+          "self_pickup_channel": "healthy",
+          "weather_api": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "保温包装和配送半径依赖",
+        "必要时改自提或延迟送达的 fallback",
+        "对顾客的时效变更通知路径"
+      ],
+      "mustAvoid": [
+        "按晴天标准继续承诺正常时效",
+        "没有替代路线还继续接收所有远距离订单"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_replay_after_miniprogram_outage_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放因小程序回写故障中断的火锅预订流程，并避免重复锁桌或重复收款",
+        "routing_context": "顾客在小程序中支付了双人火锅套餐订金，但预订状态未回传门店系统，现系统恢复，门店需要确认哪些订单已人工登记、哪些仍待继续执行",
+        "integration_state": {
+          "mini_program": "degraded",
+          "reservation_system": "healthy",
+          "order_replay_service": "healthy",
+          "payment_gateway": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按主预订号和支付状态去重后 replay",
+        "对已人工登记订单保持现状而不是重复锁台",
+        "门店补录和顾客通知路线"
+      ],
+      "mustAvoid": [
+        "系统恢复后整批重复建单",
+        "不校验支付和人工登记状态就重复联系顾客"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_allergy_and_no_beef_confirmation_005",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔带严重过敏和忌口备注的家庭火锅预订，并确保后厨执行安全",
+        "routing_context": "客户预订 6 人晚餐，备注对花生和芝麻严重过敏，不吃牛肉，希望一半清汤一半微辣，且有 1 位老人和 1 位儿童同行",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "front_desk": "healthy",
+          "kitchen_display": "healthy",
+          "hotpot_station_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "前厅人工确认过敏原、分锅和忌口需求",
+        "后厨与配锅备注回写和复核节点",
+        "如无法完全规避则给出替代蘸料或替代锅底 fallback"
+      ],
+      "mustAvoid": [
+        "把备注原样丢给后厨后不再确认",
+        "对交叉接触风险做绝对化承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_signature_broth_stock_gap_006",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市前处理一笔点名招牌锅底和鲜货的大桌预订，但当日库存尚未锁定",
+        "routing_context": "客户计划 8 人商务聚餐，指定要番茄锅、菌汤锅和鲜切吊龙、毛肚、虾滑，当前库存系统显示锅底余量偏低，鲜货补货是否及时仍不确定",
+        "integration_state": {
+          "inventory_system": "healthy",
+          "procurement_channel": "degraded",
+          "reservation_system": "healthy",
+          "cold_chain_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "锅底与鲜货库存确认作为前置节点",
+        "库存不足时的替代锅底或改期 fallback",
+        "禁止在原料未锁定前做绝对菜品承诺"
+      ],
+      "mustAvoid": [
+        "先确认整套菜单再临时通知缺货",
+        "无视补货不确定性继续锁定高规格接待承诺"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_seasonal_combo_waiting_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "推进清明前新品锅底和直播团购券上线前的执行准备，但活动审批仍未完成",
+        "routing_context": "门店计划上线一款季节菌香锅和双人套餐，直播素材已备好，但价格、核销规则和赠品边界仍在等负责人审批",
+        "integration_state": {
+          "approval_center": "healthy",
+          "marketing_scheduler": "healthy",
+          "cashier_system": "healthy",
+          "voucher_system": "healthy"
+        },
+        "approval_state": "waiting_campaign_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "待审批暂停状态",
+        "只允许做内部准备和灰度清单整理",
+        "审批通过前禁止正式发布和放量"
+      ],
+      "mustAvoid": [
+        "为了赶节前窗口先上线再补审批",
+        "把未确认价格和核销规则直接同步到前厅或渠道"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_food_safety_complaint_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一条疑似食品安全投诉，既要保护顾客沟通也要控制门店风险扩散",
+        "routing_context": "顾客反馈昨晚外卖火锅中的鲜毛肚有异味，食用后出现不适，并已在社交平台发帖，门店需要立刻决定是否暂停相关批次售卖",
+        "integration_state": {
+          "crm": "healthy",
+          "store_manager": "healthy",
+          "quality_tracker": "healthy",
+          "cold_chain_monitor": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "店长升级和证据留存节点",
+        "相关批次排查或停卖决策",
+        "禁止仅靠自动赔付结束流程"
+      ],
+      "mustAvoid": [
+        "绕过人工复核直接关闭投诉",
+        "未排查批次就继续正常售卖同类鲜货"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_large_party_without_deposit_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔口头确认团建聚餐但迟迟未付定金的高价值订单，避免资源被长期占用",
+        "routing_context": "客户希望先锁 2 个包间和 3 张大桌，称两天后统一转账，目前还要求门店提前备好高价鲜切肉和海鲜拼盘",
+        "integration_state": {
+          "reservation_system": "healthy",
+          "payment_gateway": "healthy",
+          "procurement_channel": "healthy",
+          "crm": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "定金到账前的冻结或短时保留状态",
+        "到期未付款时的催付与释放资源节点",
+        "高价鲜货采购必须滞后于收款确认"
+      ],
+      "mustAvoid": [
+        "未收定金就正式锁定多个包间和大桌",
+        "为了成交先采购不可退高价鲜货"
+      ]
+    },
+    {
+      "id": "dispatcher_hotpot_power_or_gas_fault_010",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在晚市高峰炉具和燃气异常时建立止损执行计划，避免继续超卖接待能力",
+        "routing_context": "18:20 后门店一侧区域电磁炉连续故障，另有燃气报警待排查，可用锅位骤减，但门店仍有排队和线上到店预订持续进入",
+        "integration_state": {
+          "induction_cooktop_monitor": "unstable",
+          "gas_supply_monitor": "degraded",
+          "queue_manager": "healthy",
+          "reservation_system": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "受影响桌位隔离和接待容量收缩",
+        "对排队客人和已预订客人的通知路径",
+        "无法可靠履约时的改约或暂停放号 stop-loss"
+      ],
+      "mustAvoid": [
+        "在设备异常未处理时继续按正常容量接待",
+        "没有替代方案还继续确认新增大桌入座"
+      ]
+    }
+  ]
+}

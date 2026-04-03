@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "lobster": "visualizer",
+    "name": "影子",
+    "current_level": "L4",
+    "target_level": "L5",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "@完美日记/@珂拉琪（美妆）× @绝味鸭脖/@三只松鼠（食品）视觉水准"
+  },
+  "current_gaps": [
+    "码率设置规范已修复（vis_battle_001），但需要验证新规范稳定执行",
+    "数字人素材库不足50套，行业/风格分类尚不完整",
+    "AI提示词模板库（ComfyUI/Kling）条目偏少，每次新项目仍需从零摸索",
+    "接收文案时有时直接开始制作，没有先做文案核心卖点理解"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作",
+    "actions": [
+      {
+        "action": "爆款视觉拆解（每周3个）",
+        "method": "选各平台Top爆款视频各1个，拆解：封面构图/色调/字体风格/3秒画面/BGM情绪，对照模板库",
+        "output": "新增模板条目 或 更新existing条目的verified_count"
+      },
+      {
+        "action": "格式规格自检清单执行",
+        "method": "每次输出前对照发布规格清单（码率/分辨率/时长/格式），100%执行",
+        "output": "零格式错误（历史教训：vis_battle_001，源文件码率≥平台最低×1.5）"
+      },
+      {
+        "action": "文案核心理解训练",
+        "method": "收到inkwriter文案后，先用1-2句话写出'这个文案的视觉核心是什么'，再开始制作",
+        "output": "视觉brief理解记录（作为沟通存档，也是自身理解力的训练）"
+      },
+      {
+        "action": "AI提示词库更新",
+        "method": "每次成功的AI生图/视频，记录完整的提示词和参数，分类存档",
+        "output": "每周新增≥2条提示词模板（含成功案例截图描述）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "数字人素材库扩充 + AI提示词库系统化",
+      "knowledge_targets": [
+        { "item": "数字人素材新增（按行业/风格分类）", "target_count": 15, "source": "Midjourney/ComfyUI生成+筛选" },
+        { "item": "Kling视频提示词模板", "target_count": 10, "source": "实际项目中成功的提示词整理" },
+        { "item": "各行业封面构图公式", "target_count": 5, "source": "美妆/食品/教育/科技/母婴各1套" }
+      ],
+      "skill_targets": [
+        "封面CTR：稳定在行业均值+25%",
+        "格式规格零错误：全月0次",
+        "数字人素材库：从当前扩充到≥35套"
+      ],
+      "collab_targets": [
+        { "partner": "inkwriter", "goal": "建立文案→视觉brief的标准交接格式，收到brief后30分钟内确认理解" },
+        { "partner": "dispatcher", "goal": "提前了解各平台最新的格式规格要求，不再等dispatcher反馈才知道" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "BGM情感地图完善 + 调色风格档案扩充",
+      "knowledge_targets": [
+        { "item": "BGM情感地图（行业×情绪×BGM类型）", "target_count": 20, "source": "各行业爆款BGM分析" },
+        { "item": "LUT调色风格档案（行业/品牌调性）", "target_count": 8, "source": "对标品牌视觉分析" },
+        { "item": "3秒完播率提升技巧", "target_count": 5, "source": "分析完播率≥行业均值+20%的视频开场" }
+      ],
+      "skill_targets": [
+        "视频完播率：稳定在行业均值+20%",
+        "S级作品比例：从当前提升到≥25%",
+        "数字人素材库：达到≥45套"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "建立视觉质量→数据表现的追踪机制：每批视频发布后，请abacus给封面CTR数据" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "S级作品比例冲刺 + Q2视觉模板库整理",
+      "knowledge_targets": [
+        { "item": "Q2视觉模板库整理", "target_count": 1, "source": "整理本季度新增模板，按行业分类" },
+        { "item": "数字人素材库完成50套目标", "target_count": 5, "source": "补齐剩余行业/风格" },
+        { "item": "Q2封面CTR Top案例归档", "target_count": 10, "source": "本季度CTR最高的封面" }
+      ],
+      "skill_targets": [
+        "S级作品比例：达到≥30%（Q2目标）",
+        "数字人素材库：≥50套",
+        "月度新增模板：≥10套"
+      ],
+      "collab_targets": [
+        { "partner": "strategist", "goal": "了解Q3的策略方向，提前准备对应行业的视觉素材和模板" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "封面CTR", "baseline": "行业均值+20%", "target": "稳定在行业均值+25%", "measurement": "abacus的CTR数据报告" },
+      { "metric": "视频完播率", "baseline": "行业均值+15%", "target": "稳定在行业均值+20%", "measurement": "各平台数据" },
+      { "metric": "S级作品比例", "baseline": "~18%", "target": "≥30%", "measurement": "发布后数据评级" },
+      { "metric": "新增视觉模板", "baseline": "0", "target": "≥30套", "measurement": "模板库文件" },
+      { "metric": "数字人素材库", "baseline": "~30套", "target": "≥50套", "measurement": "素材库文件" },
+      { "metric": "格式规格错误", "baseline": "偶发", "target": "0次", "measurement": "dispatcher反馈记录" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L4",
+    "to": "L5",
+    "requirements": [
+      "封面CTR稳定在行业均值+30%以上（连续3个月）",
+      "S级作品比例稳定≥35%",
+      "数字人素材库≥80套（覆盖≥8个行业）",
+      "能主动提出视觉方向建议（不只是执行brief，而是参与创意决策）",
+      "AI提示词库≥50条，能在10分钟内生成符合要求的参考图"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "@完美日记", "focus": "美妆封面的构图和色调标准", "learning_method": "每月分析其最近30天封面，提炼构图公式" },
+    { "name": "@三只松鼠", "focus": "食品内容的视觉饱和度和标签设计", "learning_method": "拆解其封面的设计元素，提炼'食欲感'的视觉公式" },
+    { "name": "国际广告奖获奖短视频", "focus": "视觉叙事节奏", "learning_method": "每季度研究1个获奖案例，提炼叙事结构中的视觉转场技巧" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "文案理解（向inkwriter学）", "target": "能准确识别文案的'视觉核心'，不需要对方反复解释", "timeline": "2026-04" },
+    { "domain": "数据解读（向abacus学）", "target": "能自己看封面CTR和完播率，判断视觉质量在哪一层", "timeline": "2026-05" },
+    { "domain": "发布规格（向dispatcher学）", "target": "提前掌握各平台规格要求，输出即达标，无需二次确认", "timeline": "2026-06" }
+  ]
+}

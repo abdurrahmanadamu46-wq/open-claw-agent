@@ -1,0 +1,228 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "abacus",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "booking_fact_completeness",
+      "feature_name": "入住事实完整度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确入住日期、离店日期、房型、成人儿童人数、套餐范围和到店方式；3 分：其中至少明确 3 项且客人愿意继续补齐；1 分：只有“周末想去看看”“先问下价格和天气”这类模糊表达。",
+      "positive_signals": [
+        "入住和离店日期明确",
+        "房型和房量明确",
+        "成人儿童人数及年龄明确",
+        "套餐内容或活动安排明确"
+      ],
+      "negative_signals": [
+        "只问最低价",
+        "不确认日期",
+        "不确认人数结构",
+        "只看图不落事实"
+      ],
+      "value_guidance": "度假酒店的短期价值首先来自可执行的入住事实，而不是浏览热度或咨询气氛。"
+    },
+    {
+      "id": "deposit_and_cancellation_commitment_strength",
+      "feature_name": "定金与取消承诺强度",
+      "metric": "short_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已支付定金、确认不可退/限退规则或接受明确的改退边界；3 分：愿意补齐支付动作并进入确认环节；1 分：只要求留房、不愿付定金也不接受取消规则。",
+      "positive_signals": [
+        "定金已支付",
+        "接受取消和改期规则",
+        "支付责任人明确",
+        "愿意锁定房态"
+      ],
+      "negative_signals": [
+        "拒绝任何定金动作",
+        "只想先占房",
+        "反复拖延确认",
+        "支付责任不明确"
+      ],
+      "value_guidance": "对 Abacus 而言，定金和取消承诺比聊天热度更能代表真实成交意愿。"
+    },
+    {
+      "id": "package_net_margin_after_redemption",
+      "feature_name": "扣除套餐兑现成本后的净收益质量",
+      "metric": "roi_estimate",
+      "weight": 0.13,
+      "scoring_rule": "5 分：扣除早餐、温泉、乐园、旅拍、晚餐、接驳等兑现成本后，净收益仍健康；3 分：净收益偏紧但仍为正；1 分：套餐表面售价不低，但净收益很薄甚至被赠项和补贴侵蚀为负。",
+      "positive_signals": [
+        "付费套餐比例高",
+        "加购项目多于免费赠项",
+        "核销成本可控",
+        "退款和改期率低"
+      ],
+      "negative_signals": [
+        "高补贴低净价",
+        "免费权益叠加过多",
+        "旅拍或门票兑现成本高",
+        "改退和投诉率高"
+      ],
+      "value_guidance": "套餐不应按销售额评分，而应按扣除兑现成本后的净收益评分。"
+    },
+    {
+      "id": "peak_inventory_scarcity_and_opportunity_cost",
+      "feature_name": "旺季库存稀缺度与机会成本",
+      "metric": "roi_estimate",
+      "weight": 0.1,
+      "scoring_rule": "5 分：需求与相对空闲或可释放库存高度匹配，不挤占稀缺高价房型；3 分：存在一定库存占用但整体可承受；1 分：明显锁住旺季核心房型、周末高峰资源或关键活动档期。",
+      "positive_signals": [
+        "淡季或平峰日期入住",
+        "房型库存充足",
+        "不会压缩高价销售窗口",
+        "可用闲置资源承接"
+      ],
+      "negative_signals": [
+        "暑期周末满房边缘",
+        "稀缺房型被长时间占用",
+        "活动档期被免费保留",
+        "高峰期房态释放风险高"
+      ],
+      "value_guidance": "同样一笔订单，在不同库存状态下的真实 ROI 差异很大。"
+    },
+    {
+      "id": "occupancy_fit_and_guest_structure_clarity",
+      "feature_name": "入住结构匹配度与客群清晰度",
+      "metric": "short_term_score",
+      "weight": 0.07,
+      "scoring_rule": "5 分：成人儿童人数、年龄、床型安排、加床需求和房型承载完全清晰；3 分：主体结构明确但仍缺个别细节；1 分：人数结构模糊、房型承载不清或潜在超员。",
+      "positive_signals": [
+        "儿童年龄明确",
+        "床型和加床方案明确",
+        "客群场景清晰",
+        "房型承载匹配"
+      ],
+      "negative_signals": [
+        "超员风险",
+        "儿童年龄不明",
+        "只说一家人住",
+        "房型和人数不匹配"
+      ],
+      "value_guidance": "度假酒店很多履约成本来自人数结构不清，结构越清晰，短期确定性越高。"
+    },
+    {
+      "id": "multi_night_stay_and_extension_potential",
+      "feature_name": "连住时长与续住潜力",
+      "metric": "long_term_score",
+      "weight": 0.1,
+      "scoring_rule": "5 分：连住两晚以上，且存在续住、旅居、康养或在住延长迹象；3 分：当前停留有限但仍有延长空间；1 分：明显单晚、无续住可能、只做冲动型低价尝试。",
+      "positive_signals": [
+        "连住两晚以上",
+        "在住续住询问",
+        "旅居或远程办公需求",
+        "有加购康养和餐饮计划"
+      ],
+      "negative_signals": [
+        "明显单晚尝鲜",
+        "无延长空间",
+        "频繁改期比价",
+        "只盯极低价格"
+      ],
+      "value_guidance": "连住和续住往往比单晚高价更能沉淀长期价值。"
+    },
+    {
+      "id": "direct_booking_and_membership_asset_leverage",
+      "feature_name": "直订迁移与会员资产杠杆",
+      "metric": "long_term_score",
+      "weight": 0.09,
+      "scoring_rule": "5 分：线索来自私域、老客回流、会员推荐或小程序直订，可明显节省佣金并沉淀偏好；3 分：存在转直订潜力；1 分：完全依赖高佣金平台且无会员绑定空间。",
+      "positive_signals": [
+        "小程序或企业微信直订",
+        "老客回流",
+        "推荐来源清晰",
+        "可复用历史偏好"
+      ],
+      "negative_signals": [
+        "只在 OTA 低价期出现",
+        "拒绝会员绑定",
+        "无私域沉淀",
+        "历史偏好不可用"
+      ],
+      "value_guidance": "节省佣金并沉淀直订关系，是度假酒店最稳定的长期价值来源之一。"
+    },
+    {
+      "id": "family_and_celebration_ancillary_expandability",
+      "feature_name": "亲子与庆祝场景的附加消费扩展性",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：订单可扩展到儿童活动、晚餐、SPA、旅拍、庆祝包等多个附加场景；3 分：存在部分加购空间；1 分：只有房晚且几乎没有可复制的附加消费。",
+      "positive_signals": [
+        "儿童活动加购",
+        "庆祝包或旅拍付费",
+        "餐饮 SPA 预约意愿",
+        "节假日复购可能"
+      ],
+      "negative_signals": [
+        "只要免费赠项",
+        "无附加消费意愿",
+        "完全一次性体验",
+        "过度依赖让利成交"
+      ],
+      "value_guidance": "度假酒店的长期价值往往来自房晚之外的可重复附加消费。"
+    },
+    {
+      "id": "destination_event_bundle_expandability",
+      "feature_name": "婚礼团建等事件型场景的扩展潜力",
+      "metric": "long_term_score",
+      "weight": 0.08,
+      "scoring_rule": "5 分：一个主体下可扩展到房块、草坪、宴会、接驳和后续转介绍；3 分：当前活动明确但后续空间一般；1 分：只有一次性小单、无法复用或名单主体不稳定。",
+      "positive_signals": [
+        "婚礼策划或企业活动方",
+        "多资源打包",
+        "可复制到后续活动",
+        "统一结算主体明确"
+      ],
+      "negative_signals": [
+        "一次性小型活动",
+        "主体不稳定",
+        "雨天预案缺失",
+        "房块释放规则不清"
+      ],
+      "value_guidance": "能从一次活动延展出多次合作，是度假酒店长期价值的重要来源。"
+    },
+    {
+      "id": "attribution_traceability_across_channels",
+      "feature_name": "多渠道归因可追踪度",
+      "metric": "reward_signal",
+      "weight": 0.08,
+      "scoring_rule": "5 分：能合并 OTA、私域、电话、推荐和内容合作等重复线索，并识别真正推动定金、改期、加购或房块锁定的关键触点；3 分：知道主要渠道但归因仍较粗；1 分：谁最后出现就把 credit 全给谁。",
+      "positive_signals": [
+        "重复线索已合并",
+        "推荐来源清晰",
+        "知道哪一步推动支付",
+        "统一核算渠道成本"
+      ],
+      "negative_signals": [
+        "同一客人重复记功",
+        "只按最后触点归因",
+        "忽略私域跟进贡献",
+        "内容曝光无追踪方案"
+      ],
+      "value_guidance": "奖励信号必须建立在正确归因上，否则团队会被错误激励带偏。"
+    },
+    {
+      "id": "weather_service_and_content_risk_governance",
+      "feature_name": "天气、服务和热度类场景的风险治理",
+      "metric": "reward_signal",
+      "weight": 0.07,
+      "scoring_rule": "5 分：价值判断能主动识别天气改期、设施关闭、过度赠送和内容热度误判风险，并把奖励信号转向止损、改期保留或可追踪合作；3 分：存在轻微模糊但可纠正；1 分：在客诉、不可抗力或高热度曝光面前仍盲目追求表面成交。",
+      "positive_signals": [
+        "先确认改期和补偿边界",
+        "客诉场景优先经理介入",
+        "达人合作要求可追踪转化",
+        "控制免费权益边界"
+      ],
+      "negative_signals": [
+        "设施关闭仍继续硬推加售",
+        "天气受阻仍按原收入记分",
+        "因为粉丝多就高估价值",
+        "免费赠项无上限追加"
+      ],
+      "value_guidance": "Abacus 在度假酒店场景里不仅要找高价值，还要避免被不可抗力、客诉和热度幻觉拖偏。"
+    }
+  ]
+}

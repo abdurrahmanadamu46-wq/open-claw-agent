@@ -1,0 +1,178 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_trip_motive_clarity",
+      "feature_name": "核心度假动机清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确单一主场景，如亲子周末、情侣纪念日、温泉疗愈、两晚慢住或小团包栋，并与房型和时段匹配；3 分：有 2 个候选场景但优先级仍可判断；1 分：亲子、情侣、团建、直播团购和节假日抢量全部想做且没有排序。",
+      "positive_signals": [
+        "明确核心客群与出游动机",
+        "平日、周末和节假日路线已拆开",
+        "主路线与房型结构和套餐形态一致"
+      ],
+      "negative_signals": [
+        "所有人群和所有季节一起推",
+        "场景选择与现有订单证据明显错位"
+      ],
+      "route_guidance": "度假动机越清晰，越适合集中预算与承接资源；动机越混乱，越应该先缩小范围做验证。"
+    },
+    {
+      "id": "experience_evidence_density",
+      "feature_name": "度假体验证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：具备真实房型与景观图、活动排期、温泉或泳池规则、餐饮说明和稳定住后评价；3 分：有部分房型或配套证据，但缺少关键体验边界或真实评价；1 分：主要靠样板图和低价标签，几乎没有真实体验证明。",
+      "positive_signals": [
+        "真实房型、景观和活动照片完整",
+        "配套开放时间、预约规则和边界清晰",
+        "住后评价反复提到核心体验优势"
+      ],
+      "negative_signals": [
+        "主要依赖样片或旧素材",
+        "优势配套经常关闭或说不清规则"
+      ],
+      "route_guidance": "证据越强，越适合走体验与信任路线；证据越弱，越要先补素材和评价，再谈扩量。"
+    },
+    {
+      "id": "source_city_radius_fit",
+      "feature_name": "客源城市圈与到店半径匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确 1 到 3 小时核心客源城市圈、主要到店方式和高峰路程；3 分：知道大致客源区域，但未细化到具体城市和交通方式；1 分：默认全省或全国都能稳定转化，没有半径判断。",
+      "positive_signals": [
+        "清楚主要出发城市和自驾或高铁到店路径",
+        "知道周末与节假日的高峰路况差异",
+        "到店便利与停车接驳边界明确"
+      ],
+      "negative_signals": [
+        "盲目追求全域曝光",
+        "忽略高峰时段路程和接驳体验"
+      ],
+      "route_guidance": "客源半径越清晰，越容易把预算压到高转化人群；半径越模糊，越应该先缩小地理范围。"
+    },
+    {
+      "id": "package_qualification_completeness",
+      "feature_name": "套餐与高客单线索资格完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集日期、晚数、成人儿童人数、儿童年龄、房间数、餐饮需求、活动偏好、接驳方式和预算边界；3 分：知道日期和人数，但活动或权益需求仍不完整；1 分：只问价格就直接投入大量人工承接。",
+      "positive_signals": [
+        "日期、人数和房量清晰",
+        "孩子年龄、活动偏好和餐饮需求明确",
+        "知道是否需要私汤、包栋或接驳"
+      ],
+      "negative_signals": [
+        "档期和人数不明就想锁房",
+        "把高客单定制需求按散客逻辑处理"
+      ],
+      "route_guidance": "资格信息越完整，越值得投入人工承接；信息不足时，应先用标准套餐和表单筛选。"
+    },
+    {
+      "id": "old_guest_reactivation_readiness",
+      "feature_name": "老客与会员回流就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有出游动机、出发城市、孩子年龄、常住房型、加购记录和复住季节偏好等可分层信息；3 分：有联系方式但标签较粗；1 分：几乎没有可用历史资产，却仍忽视老客回流路线。",
+      "positive_signals": [
+        "有会员或历史入住标签",
+        "可按亲子、情侣、温泉和季节偏好分层",
+        "知道哪些人群最可能二刷"
+      ],
+      "negative_signals": [
+        "只有粗名单没有有效标签",
+        "完全不考虑复购与季节回流"
+      ],
+      "route_guidance": "历史资产越强，越应该优先做低成本回流；资产越弱，再考虑加大陌生渠道投入。"
+    },
+    {
+      "id": "channel_lane_fit",
+      "feature_name": "直订、私域与 OTA 路线匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：OTA 负责冷启动和口碑展示，直订与私域负责复购、套餐升级和高确定性预订，价盘与权益边界清晰；3 分：知道渠道差异，但仍有部分套餐相互打架；1 分：所有渠道都用同一最低价和同一承诺硬推。",
+      "positive_signals": [
+        "渠道目标分工明确",
+        "价格、取消规则和权益边界清晰",
+        "有住后导向复购的路径"
+      ],
+      "negative_signals": [
+        "全渠道同价同权无区分",
+        "直播团购、OTA 和直订彼此压价"
+      ],
+      "route_guidance": "渠道分工越清楚，资源估算越准；渠道互相蚕食时，应先治理再扩量。"
+    },
+    {
+      "id": "ancillary_capacity_stability",
+      "feature_name": "餐饮、温泉、活动与保洁承接稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：可售房量、早餐时段、温泉或泳池名额、儿童活动、接驳和翻房效率都有余量；3 分：可承接但需要限制房型、时段或预约名额；1 分：高峰期频繁排队、翻房慢、项目超额或接驳失控。",
+      "positive_signals": [
+        "房型结构和可售库存清晰",
+        "活动、餐饮与接驳有明确容量边界",
+        "保洁和前台节奏稳定"
+      ],
+      "negative_signals": [
+        "活动预约与餐饮高峰经常失控",
+        "翻房和接驳导致投诉频发"
+      ],
+      "route_guidance": "承接越稳，越适合做高峰放量；承接越弱，越应该转向预付、限量和高确定性订单。"
+    },
+    {
+      "id": "holiday_weather_governance",
+      "feature_name": "节假日与天气波动治理完备度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：峰值日期、最短连住、预付规则、取消边界、天气兜底和预约资源都已确认；3 分：知道高峰窗口，但部分取消或天气预案仍不清晰；1 分：只知道旺季要来，就想靠低价抢量，没有治理方案。",
+      "positive_signals": [
+        "高峰日期与最短连住已锁定",
+        "预付、改期和取消规则明确",
+        "有天气变化时的室内备选与通知机制"
+      ],
+      "negative_signals": [
+        "旺季仍承诺固定低价和无限量权益",
+        "忽略天气、No-show 和超售波动"
+      ],
+      "route_guidance": "治理越充分，越能把旺季变成高质量收益窗口；治理越弱，越应该先收缩承诺。"
+    },
+    {
+      "id": "reputation_health",
+      "feature_name": "口碑与差评修复健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定，差评主题集中且已在修复，近 30 天真实好评持续出现；3 分：评分一般但问题集中，可通过限制房型和时段修复；1 分：差评明显扩散，却仍计划大规模低价扩量。",
+      "positive_signals": [
+        "近 30 天真实好评稳定",
+        "核心差评原因已识别并在处理",
+        "口碑更稳的房型和时段可单独承接"
+      ],
+      "negative_signals": [
+        "卫生、排队、设施维护问题持续出现",
+        "差评期仍继续追求快速冲量"
+      ],
+      "route_guidance": "口碑越稳，越能放心放大；口碑不稳时，应先修体验再谈增长。"
+    },
+    {
+      "id": "claim_safety_level",
+      "feature_name": "承诺边界与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：所有表达都基于真实房型、真实评价、明确活动规则和取消政策；3 分：有少量模糊承诺但可修正；1 分：存在保证海景、保证雪景、百分百无蚊虫、无限次私汤或所有日期可免费取消等高风险说法。",
+      "positive_signals": [
+        "政策边界和活动规则说得清楚",
+        "房型、景观和配套证据可核验",
+        "避免绝对化承诺"
+      ],
+      "negative_signals": [
+        "夸大景观、天气、活动可得性或房态保障",
+        "伪造评分、图片或达人背书"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心，并优先修正话术与承接边界。"
+    }
+  ]
+}

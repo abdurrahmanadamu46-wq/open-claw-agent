@@ -1,0 +1,316 @@
+﻿{
+  "industry": "酒店民宿_客栈",
+  "lobster_id": "dispatcher",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "dispatcher_inn_night_tour_late_arrival_001",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔古镇夜游结束后晚到的客栈订单转成可执行的实名核验、停车换乘和夜间入住计划",
+        "routing_context": "住客看完夜游演出后预计 23:40 到店，自驾抵达但车辆只能停在景区外围停车场，之后需步行 8 分钟进入石板路巷子；订单为一间院落大床房，客栈可支持夜间接应和自助开门，但要求先完成实名登记并遵守院落安静规则",
+        "integration_state": {
+          "pms": "healthy",
+          "host_chat": "healthy",
+          "smart_lock": "healthy",
+          "parking_partner": "healthy",
+          "public_security_uploader": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "实名完成后再下发院门和房门权限的闸门",
+        "停车点、步行路线、夜间接应和最晚保留时间的分段任务",
+        "住客失联、夜游延迟或停车换乘异常时的夜间回退规则"
+      ],
+      "mustAvoid": [
+        "在实名未完成前直接发送完整门锁密码",
+        "把停车换乘问题留给住客到达后自行摸索"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_early_arrival_no_storage_002",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔上午早到的客栈入住请求，但目标房仍在翻房且门店没有前台寄存空间",
+        "routing_context": "住客 10:10 到店，希望先放两个大箱子并尽量中午前进房；目标房上一单 11:30 才退房，保洁预估 13:20 完成，客栈没有前台和值守寄存间，但附近商场储物柜和一家合作咖啡店可短时寄存随身行李",
+        "integration_state": {
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "nearby_locker_partner": "healthy",
+          "host_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "上一单退房、保洁 ETA 和查房完成作为放房前置条件",
+        "无前台寄存场景下的外部寄存替代路径和预计放房时间回写",
+        "若住客不接受外部寄存时的明确拒绝或改时段入住 fallback"
+      ],
+      "mustAvoid": [
+        "在房间尚未可交付时承诺中午前一定可进房",
+        "明知没有安全寄存条件仍安排把行李放在走廊或保洁间"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_rainy_drive_transfer_003",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔雨天自驾到店订单转成可执行的停车换乘、雨天路线和行李协助计划",
+        "routing_context": "周末傍晚突降大雨，住客 19:20 自驾到古镇外围停车场，携带两只 28 寸行李箱和一辆婴儿车；从停车场到客栈平时需步行 12 分钟，雨天部分石板路容易打滑，客栈可提供固定点接应但无法直接开车到门口",
+        "integration_state": {
+          "parking_partner": "healthy",
+          "host_chat": "healthy",
+          "weather_feed": "healthy",
+          "smart_lock": "healthy",
+          "pms": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "雨天停车点、接应点、步行路线和行李协助的拆分链路",
+        "婴儿车和湿滑路面风险下的替代入口或分次搬运方案",
+        "接应超时或天气继续恶化时的回退路径"
+      ],
+      "mustAvoid": [
+        "只发送晴天版地图定位而不调整雨天动线",
+        "默认住客可以自己拖着行李和婴儿车穿过湿滑石板路"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_ota_paid_not_synced_last_view_room_004",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "重放一笔 OTA 已支付但客栈后台未落单的入住流程，并避免最后一间临河房被重复占用",
+        "routing_context": "住客已在 OTA 支付成功并到店出示订单页，但 PMS 没有对应订单；当前只剩最后一间临河房，同一晚私域还有一笔订金待确认订单也指向该房型；住客希望今晚 21:30 前拿到入住权限",
+        "integration_state": {
+          "ota_channel": "degraded",
+          "pms": "healthy",
+          "payment_gateway": "healthy",
+          "smart_lock": "healthy",
+          "host_chat": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "按订单号、手机号和支付流水去重补录的链路",
+        "最后一间临河房冻结与临时保底入住的中间态",
+        "渠道恢复后的 replay 顺序和房态回写规则"
+      ],
+      "mustAvoid": [
+        "未去重就新建第二张订单继续占用最后一间房",
+        "在支付状态未复核前再次向住客收费"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_package_split_routing_005",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "把一笔客栈复合体验订单拆成房间、接站、早餐、旅拍和院落茶歇的执行计划",
+        "routing_context": "双人住客预订一晚院落房，并加购高铁站接站、次晨早餐、汉服旅拍和下午院落茶歇；旅拍需要在古镇主街和客栈院子两个点位完成，茶歇和拍摄时段不能冲突，店主可提供路线建议但无法全程陪同",
+        "integration_state": {
+          "pms": "healthy",
+          "pickup_partner": "healthy",
+          "breakfast_service": "healthy",
+          "photography_partner": "healthy",
+          "courtyard_scheduler": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "房间、接站、早餐、旅拍、院落时段和结算确认的拆线任务",
+        "任一资源未锁定时的等待状态或降级路线",
+        "拍摄超时、天气变化或茶歇冲突时的替代安排"
+      ],
+      "mustAvoid": [
+        "把所有附加服务合并成一句“店里会安排”",
+        "在旅拍和院落时段未确认前就对外确认完整套餐无冲突"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_early_departure_breakfast_006",
+      "label": "happy_path",
+      "input": {
+        "mission_plan_or_execution_need": "为一笔次日清晨离店的客栈订单安排早退房、打包早餐和安静离店计划",
+        "routing_context": "住客只住一晚，第二天 06:10 需要退房赶高铁，希望带走简餐并在不打扰其他住客的情况下离开；客栈早餐常规供应时间是 08:00 以后，可提前准备面包水果和热饮，但需要前一晚确认数量和领取方式",
+        "integration_state": {
+          "pms": "healthy",
+          "breakfast_service": "healthy",
+          "host_chat": "healthy",
+          "payment_gateway": "healthy",
+          "access_control": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "早退房、押金核清和打包早餐准备的前夜确认节点",
+        "早餐简化供应或无法供应时的明示方案",
+        "安静离店路线和钥匙或门禁回收逻辑"
+      ],
+      "mustAvoid": [
+        "把常规早餐时段默认等同于可提供清晨现做早餐",
+        "忽略早退房和门禁回收导致次晨卡在离店环节"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_courtyard_gathering_waiting_007",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理在住客临时申请院落庆生和额外访客进入的场景，确保不越过客栈安静和访客规则",
+        "routing_context": "住客 21:20 提出想让 4 位朋友来院子里切蛋糕拍照到 22:30，客栈规定额外访客需登记，22:00 后院落不得喧哗，且当晚院落旁边房间已入住亲子客；当前店主尚未完成审批",
+        "integration_state": {
+          "visitor_registry": "healthy",
+          "quiet_hours_policy": "healthy",
+          "host_chat": "healthy",
+          "manager_console": "healthy"
+        },
+        "approval_state": "waiting_manager_review"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "访客登记、店主审批和最晚结束时间的闸门",
+        "审批未完成前暂停扩大发码或开放公共空间的中间状态",
+        "被拒后改成室内简化庆生或缩短访客停留的替代路线"
+      ],
+      "mustAvoid": [
+        "在审批未完成前先把院门权限发给额外访客",
+        "无视亲子房和夜间静音要求直接默认庆生活动可执行"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_holiday_view_room_overbooking_008",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "在节假日客栈稀缺景观房发生超卖时建立止损执行计划，确保到店住客有明确去向",
+        "routing_context": "小长假前夜出现 OTA 与人工订单重叠，临河房实际缺口 2 间，客栈仅剩普通房和一间院落房；19:00 后将集中到店，部分住客明确只接受景观房，附近合作客栈尚有少量同价位房源",
+        "integration_state": {
+          "pms": "healthy",
+          "ota_channel": "degraded",
+          "host_chat": "healthy",
+          "partner_inn_network": "healthy",
+          "transport_support": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "库存冻结、订单优先级排序和去重节点",
+        "免费升级普通房、改住合作客栈或交通补偿的分流路线",
+        "到店前主动通知与现场接应方案"
+      ],
+      "mustAvoid": [
+        "明知景观房缺口已出现仍继续对外确认同房型",
+        "把超卖处置完全留给晚班店主现场临时兜底"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_midnight_hot_water_failure_009",
+      "label": "failure_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔住客午夜投诉热水和采暖故障的场景，并在接近满房前提下给出可执行兜底",
+        "routing_context": "住客 00:30 反馈房间热水忽冷忽热且空调制热无效，房间位于木结构老房二楼；客栈当晚只剩一间低一级普通房，维修师傅可远程判断但不能保证半小时内修复，若原房问题无法尽快恢复就需要停卖排查",
+        "integration_state": {
+          "engineering_support": "healthy",
+          "pms": "healthy",
+          "housekeeping_app": "healthy",
+          "host_chat": "healthy",
+          "partner_inn_network": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "问题房停卖、维修判断和换房优先级节点",
+        "本店可替代房、合作客栈改住或补偿路径",
+        "修复失败后的回写和次日房态管控规则"
+      ],
+      "mustAvoid": [
+        "只创建维修工单而不处理住客当晚住宿去向",
+        "问题未排查完成就把原房重新放回可售库存"
+      ]
+    },
+    {
+      "id": "dispatcher_inn_room_fit_mismatch_elder_pet_010",
+      "label": "edge_case",
+      "input": {
+        "mission_plan_or_execution_need": "处理一笔入住前临时暴露房型不适配的订单，确保老人和宠物需求先于发码被重新校验",
+        "routing_context": "住客原本预订三楼木梯 loft 房，出发前 4 小时补充说明同行有一位膝盖不好的长辈和一只中型犬；当前只剩一间一楼院落房和一间二楼普通房可替代，一楼房需要加宠物清洁费，住客尚未确认是否接受改房和补差",
+        "integration_state": {
+          "pms": "healthy",
+          "pet_policy_registry": "healthy",
+          "pricing_rules": "healthy",
+          "host_chat": "healthy",
+          "smart_lock": "healthy"
+        },
+        "approval_state": "approved"
+      },
+      "expectedSignals": [
+        "task_graph",
+        "routing_targets",
+        "retry_policy",
+        "fallback_plan"
+      ],
+      "mustInclude": [
+        "老人和宠物适配复核、额外收费说明和二次确认节点",
+        "一楼院落房替代、补差和清洁路线的明确分支",
+        "若住客不接受替代房时的改期或取消 fallback"
+      ],
+      "mustAvoid": [
+        "在适配关系未确认前直接发送 loft 房的入住权限",
+        "把老人爬楼和宠物限制留到到店后再解释"
+      ]
+    }
+  ]
+}

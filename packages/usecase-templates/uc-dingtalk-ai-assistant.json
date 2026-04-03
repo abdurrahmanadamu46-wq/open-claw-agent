@@ -1,0 +1,49 @@
+﻿{
+  "id": "uc-dingtalk-ai-assistant",
+  "name": "钉钉 AI 助手",
+  "name_en": "DingTalk AI Assistant",
+  "category": "customer_service",
+  "difficulty": "beginner",
+  "description": "把回声虾接进钉钉机器人，用于常见问题回复、任务转派和通知。",
+  "pain_point": "团队在钉钉里反复问同样的问题，信息密度高时容易错过需要响应的消息。",
+  "lobsters": ["echoer"],
+  "skills_required": ["echoer_reply_generate", "echoer_comment_manage"],
+  "channels": ["dingtalk"],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "配置钉钉 webhook",
+      "code_type": "config",
+      "code": "填入钉钉机器人 webhook 或 session webhook。",
+      "requires_user_input": true
+    },
+    {
+      "step": 2,
+      "action": "指定应答边界",
+      "code_type": "prompt",
+      "code": "定义 AI 助手能回答哪些业务问题，哪些消息需要人工接管。",
+      "requires_user_input": true
+    },
+    {
+      "step": 3,
+      "action": "设置通知升级规则",
+      "code_type": "config",
+      "code": "为高优先级关键词配置通知人或群组。",
+      "requires_user_input": true
+    },
+    {
+      "step": 4,
+      "action": "开始值守",
+      "code_type": "none",
+      "code": "回声虾会在钉钉入口中持续处理消息、分派任务并保留操作痕迹。",
+      "requires_user_input": false
+    }
+  ],
+  "tips": [
+    "尽量先让钉钉机器人处理标准问题，而不是复杂业务判断。",
+    "可把升级通知发给值班群，形成值守闭环。",
+    "如果要对接工单系统，先从 webhook 转发开始。"
+  ],
+  "estimated_cost_per_run": "$0.01-0.05",
+  "tags": ["钉钉", "机器人", "客服", "值守"]
+}

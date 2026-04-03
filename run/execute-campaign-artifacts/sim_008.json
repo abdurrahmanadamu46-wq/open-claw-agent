@@ -1,0 +1,70 @@
+﻿{
+  "adapterVersion": "lobster.execute-task-content-adapter.v0.1",
+  "generatedAt": "2026-03-30T02:19:42.431Z",
+  "nodeId": "e7e2571e-eba7-483d-b669-2fdab0efa12d",
+  "campaignId": "sim_008",
+  "tenantId": "shadow-tenant-sim_008",
+  "platform": "xiaohongshu",
+  "industry": "beauty",
+  "benchmarkCount": 1,
+  "script": {
+    "platform": "xiaohongshu",
+    "copy": "很多内容不是没人看，而是没有把信任和线索承接接起来。\n把真实案例、流程和可验证细节讲出来，客户更愿意继续聊。\n想要一套更稳的获客打法，可以直接私信聊聊。",
+    "hashtags": [
+      "#本地商家增长",
+      "#内容获客",
+      "#线索转化"
+    ],
+    "metadata": {
+      "rawLength": 101
+    }
+  },
+  "sceneCount": 3,
+  "postResult": {
+    "ok": true,
+    "screenshotPath": "/tmp/xiaohongshu-post-1774837182431.png"
+  },
+  "artifactPath": "F:\\openclaw-agent\\run\\execute-campaign-artifacts\\sim_008.json",
+  "scenes": [
+    {
+      "spoken_text": "先把真实问题讲清楚，再给客户一个可执行的下一步。",
+      "visual_prompt": "门店实景特写，字幕突出真实问题与下一步动作",
+      "duration_estimate": 2
+    },
+    {
+      "spoken_text": "我们不用夸张承诺，用真实案例和流程把信任建立起来。",
+      "visual_prompt": "展示案例截图、流程图和对话框证据元素",
+      "duration_estimate": 3
+    },
+    {
+      "spoken_text": "看完如果你也想跑通这条链路，直接私信拿方案。",
+      "visual_prompt": "人物正面镜头，结尾出现私信引导和品牌标识",
+      "duration_estimate": 2
+    }
+  ],
+  "benchmarkAccounts": [
+    {
+      "id": "benchmark_1",
+      "handle": "handle_1",
+      "platform": "xiaohongshu",
+      "recentContents": [
+        {
+          "id": "content_1",
+          "accountId": "benchmark_1",
+          "platform": "xiaohongshu",
+          "contentType": "video",
+          "text": "对标内容样本 1: https://example.com/placeholder",
+          "mediaUrls": [
+            "https://example.com/placeholder"
+          ],
+          "publishedAt": "2026-03-30T02:19:41.867Z",
+          "engagement": {
+            "likes": 100,
+            "comments": 12,
+            "shares": 5
+          }
+        }
+      ]
+    }
+  ]
+}

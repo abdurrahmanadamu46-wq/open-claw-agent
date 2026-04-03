@@ -1,0 +1,179 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "core_dining_occasion_clarity",
+      "feature_name": "核心用餐场景清晰度",
+      "metric": "route_quality",
+      "weight": 0.14,
+      "scoring_rule": "5 分：已明确唯一主场景，如午市白领、家庭聚餐或包间宴请；3 分：有 2 个候选场景但优先级仍可判断；1 分：午市、晚市、外卖、夜宵全部想做且没有排序。",
+      "positive_signals": [
+        "明确核心时段和客群",
+        "主打场景与菜品证据一致",
+        "主路线和备选路线分层清楚"
+      ],
+      "negative_signals": [
+        "所有场景一起推",
+        "主场景和现有评价完全错位"
+      ],
+      "route_guidance": "场景越清晰，越适合集中预算和内容；场景越混乱，越应先缩小范围做验证。"
+    },
+    {
+      "id": "signature_dish_evidence_density",
+      "feature_name": "招牌菜证据密度",
+      "metric": "route_quality",
+      "weight": 0.12,
+      "scoring_rule": "5 分：有稳定招牌菜实拍、份量证明、复购评价和出餐稳定性；3 分：有菜品素材但缺少真实评价或稳定记录；1 分：主要依赖环境图或优惠图，没有菜品证据。",
+      "positive_signals": [
+        "真实出品图",
+        "稳定高频点单",
+        "菜品相关评价反复出现"
+      ],
+      "negative_signals": [
+        "只有装修照没有菜品证明",
+        "菜品经常断货或品质波动大"
+      ],
+      "route_guidance": "证据越强，越适合走真菜真店路线；证据越弱，越应先补评价和试吃，再谈放大。"
+    },
+    {
+      "id": "local_catchment_fit",
+      "feature_name": "本地半径匹配度",
+      "metric": "priority_accuracy",
+      "weight": 0.1,
+      "scoring_rule": "5 分：已明确主要辐射半径、交通方式和周边人群结构；3 分：知道大致商圈但未细化到社区或写字楼；1 分：默认全城都可转化，没有半径判断。",
+      "positive_signals": [
+        "清楚 1 到 5 公里核心客源",
+        "知道社区、写字楼或园区占比",
+        "对停车和步行便利有说明"
+      ],
+      "negative_signals": [
+        "盲目追求全城曝光",
+        "忽视导航成本和临时到店门槛"
+      ],
+      "route_guidance": "本地半径越清楚，越容易先把预算压到高转化人群；半径模糊时应缩小目标区域。"
+    },
+    {
+      "id": "customer_asset_reactivation_readiness",
+      "feature_name": "老客资产重激活就绪度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：有会员、联系方式、订单标签和可分层触达方式；3 分：有联系方式但标签有限；1 分：几乎没有可用老客资产却仍忽略冷启动成本。",
+      "positive_signals": [
+        "有会员体系或企微",
+        "可按到店时段或菜品偏好分层",
+        "有生日或节日节点信息"
+      ],
+      "negative_signals": [
+        "只有粗糙名单没有任何标签",
+        "完全不考虑老客回流路线"
+      ],
+      "route_guidance": "老客资产越强，越应优先安排低成本重激活；资产弱时再考虑外部拉新。"
+    },
+    {
+      "id": "reputation_health",
+      "feature_name": "口碑与评分健康度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：评分稳定，差评主题可控，且近期真实好评持续出现；3 分：评分一般但问题集中且可修复；1 分：差评扩散明显，仍计划强推扩量。",
+      "positive_signals": [
+        "评分稳定在高位",
+        "差评原因少且已在修复",
+        "有新近真实好评"
+      ],
+      "negative_signals": [
+        "近期评分快速下滑",
+        "差评集中在服务慢、断货或卫生问题"
+      ],
+      "route_guidance": "口碑越稳，越适合把主路线押在真实评价和复购；口碑不稳时必须先修承接和评价。"
+    },
+    {
+      "id": "capacity_service_stability",
+      "feature_name": "座位、后厨与服务稳定度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.12,
+      "scoring_rule": "5 分：高峰期座位、出餐和服务有余量且节奏稳定；3 分：可承接但需要限定时段或限定套餐；1 分：高峰已经频繁排队、断货或服务崩盘。",
+      "positive_signals": [
+        "清楚高峰翻台和出餐上限",
+        "人手和备货可覆盖当前路线",
+        "可用预约或错峰分流"
+      ],
+      "negative_signals": [
+        "后厨依赖单点人员",
+        "高峰断货和投诉频发"
+      ],
+      "route_guidance": "承接越稳，越适合扩量；承接越弱，越应转向预约、低峰和老客路线。"
+    },
+    {
+      "id": "dinein_delivery_economics_fit",
+      "feature_name": "堂食与外卖单位经济匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：堂食与外卖菜单、毛利和承接边界清晰；3 分：知道两边差异但尚未拆开运营；1 分：用同一套满减和菜单强行覆盖两边。",
+      "positive_signals": [
+        "堂食和外卖有不同主打 SKU",
+        "清楚配送半径和包装限制",
+        "能核算各路线毛利"
+      ],
+      "negative_signals": [
+        "把外卖爆品当成堂食主推",
+        "不看毛利只追求单量"
+      ],
+      "route_guidance": "单位经济越清楚，越能安全扩量；若毛利和体验边界不清，应先拆路线再投放。"
+    },
+    {
+      "id": "banquet_lead_qualification",
+      "feature_name": "包间宴请线索资格完整度",
+      "metric": "priority_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已收集日期、人数、预算、桌数、包间需求和停车条件；3 分：知道人数和大致预算但信息不全；1 分：只问价格就直接投入大量人工跟进。",
+      "positive_signals": [
+        "日期和人数明确",
+        "预算区间清楚",
+        "知道是否需要包间或酒水"
+      ],
+      "negative_signals": [
+        "档期不明就想锁单",
+        "把高客单宴请当普通团购承接"
+      ],
+      "route_guidance": "资格信息越完整，越适合投入人工承接；信息不足时先用标准套餐带筛选。"
+    },
+    {
+      "id": "seasonal_supply_timing_fit",
+      "feature_name": "时令活动供给与时机匹配度",
+      "metric": "resource_estimation_accuracy",
+      "weight": 0.08,
+      "scoring_rule": "5 分：已确认供应、备货、排班和档期规则；3 分：有活动想法但部分供给仍待验证；1 分：只有营销主题，没有备货和服务准备。",
+      "positive_signals": [
+        "限量菜或节庆套餐可落实",
+        "高峰时段有人手和备货计划",
+        "预订和取消规则清楚"
+      ],
+      "negative_signals": [
+        "供应不稳却想公开大促",
+        "节庆档期超卖风险高"
+      ],
+      "route_guidance": "供给越稳，越能把节庆或时令做成增长机会；供给弱时应缩成预约或限量路线。"
+    },
+    {
+      "id": "governance_safe_claim_level",
+      "feature_name": "承诺合规与治理安全度",
+      "metric": "risk_tradeoff_quality",
+      "weight": 0.1,
+      "scoring_rule": "5 分：表述基于真实出品、评价、预约规则和食材证据；3 分：有少量模糊夸张但可修正；1 分：存在全城第一、绝对新鲜、零等待或功效暗示等高风险表达。",
+      "positive_signals": [
+        "真实评价替代夸张承诺",
+        "明确等待和预订边界",
+        "食材与出品证据可核验"
+      ],
+      "negative_signals": [
+        "医疗功效暗示",
+        "绝对无预制或绝对无等待",
+        "伪造名厨、非遗或平台背书"
+      ],
+      "route_guidance": "治理安全度过低时，应直接降低扩量信心并优先修正话术与承接边界。"
+    }
+  ]
+}

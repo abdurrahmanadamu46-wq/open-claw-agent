@@ -1,0 +1,12 @@
+﻿{
+  "services": {
+    "dragon_senate": 18000,
+    "policy_router": 8010,
+    "trust_verification": 8020,
+    "cti_engine": 8030,
+    "xai_scorer": 8040,
+    "lobster_memory": 8000,
+    "backend": 48789,
+    "web": 3301
+  }
+}

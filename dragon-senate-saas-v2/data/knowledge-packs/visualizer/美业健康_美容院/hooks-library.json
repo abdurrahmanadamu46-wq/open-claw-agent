@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_美容院",
+  "lobster_id": "visualizer",
+  "pack_type": "hooks-library",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "consult_then_touch",
+      "hook_angle": "先判断再护理",
+      "hook_line": "真正让人放心的美容院，不是上来就动手，而是先判断你现在到底适不适合做。",
+      "target_scene": "敏感修护、初次到店、怕踩雷用户",
+      "cover_direction": "封面主体给咨询或检测动作，副元素补真实房间与护理床，不用完美皮肤特写做主视觉。",
+      "first_3_shots": [
+        "咨询或检测镜头",
+        "护理房间或护理床准备镜头",
+        "一次性用品或工具拆封镜头"
+      ],
+      "required_proof_assets": [
+        "咨询过程",
+        "房间环境",
+        "用品准备"
+      ],
+      "fallback_if_missing": "没有检测设备时，改成顾问问诊加房间准备路线。"
+    },
+    {
+      "id": "blackhead_problem_solution",
+      "hook_angle": "问题先于项目名",
+      "hook_line": "黑头闭口这件事，很多人不是不洗脸，是一直没找对处理方式。",
+      "target_scene": "清洁、毛孔、粗糙感内容",
+      "cover_direction": "封面给鼻翼、下巴局部状态和真实操作手法，不用过度磨皮。",
+      "first_3_shots": [
+        "局部问题状态",
+        "咨询判断或说明镜头",
+        "对应护理步骤镜头"
+      ],
+      "required_proof_assets": [
+        "局部问题镜头",
+        "护理步骤",
+        "结束后的状态说明"
+      ],
+      "fallback_if_missing": "如果不能拍局部脸部，改用咨询描述加清洁步骤建立问题感。"
+    },
+    {
+      "id": "seasonal_sensitive_repair",
+      "hook_angle": "换季先稳住",
+      "hook_line": "敏感的时候，很多人需要的不是更猛，而是更稳。",
+      "target_scene": "换季修护、泛红敏感、晒后舒缓",
+      "cover_direction": "封面主体给轻柔护理动作和房间安静感，副元素补温和用品和边界说明。",
+      "first_3_shots": [
+        "脸部或手部敏感相关细节",
+        "温和护理准备镜头",
+        "护理过程中的轻动作镜头"
+      ],
+      "required_proof_assets": [
+        "温和流程镜头",
+        "用品准备",
+        "房间环境"
+      ],
+      "fallback_if_missing": "没有顾客脸部素材时，用手部、用品和咨询过程替代。"
+    },
+    {
+      "id": "pre_event_rescue_visual",
+      "hook_angle": "重要日子前的状态整理",
+      "hook_line": "重要日子前，最怕的不是没做项目，是做错项目。",
+      "target_scene": "约会、婚礼、拍照、节前急救",
+      "cover_direction": "封面给日期压力感和单次护理准备，不拍夸张前后对比。",
+      "first_3_shots": [
+        "场景提示镜头",
+        "咨询确认日期或需求镜头",
+        "快速护理流程镜头"
+      ],
+      "required_proof_assets": [
+        "场景相关字幕或道具",
+        "护理流程",
+        "预约时效信息"
+      ],
+      "fallback_if_missing": "若缺场景素材，改用字幕明确拍照前或节前时间窗口。"
+    },
+    {
+      "id": "lunch_break_fast_care",
+      "hook_angle": "午休也能做完",
+      "hook_line": "真正适合上班族的护理，不是项目多，而是时间刚好能塞进一个午休。",
+      "target_scene": "写字楼门店、快护理、轻项目预约",
+      "cover_direction": "封面主体给时钟或时间窗口感，副元素补前台和护理房效率感。",
+      "first_3_shots": [
+        "时间或午休提示镜头",
+        "前台接待或快速入房镜头",
+        "高效护理步骤镜头"
+      ],
+      "required_proof_assets": [
+        "门店效率感素材",
+        "护理步骤",
+        "到店或预约镜头"
+      ],
+      "fallback_if_missing": "若无明确时钟素材，用字幕和快节奏转场补足时间感。"
+    },
+    {
+      "id": "member_return_visual",
+      "hook_angle": "老客这次为什么回来",
+      "hook_line": "老客再回来，不是因为突然想起你，而是现在正好有一个值得回来的理由。",
+      "target_scene": "复访、换季回访、续卡提醒",
+      "cover_direction": "封面强调熟悉感和本次回来的理由，不拍成冷启动种草。",
+      "first_3_shots": [
+        "熟悉门店或历史记录提示",
+        "本次状态理由镜头",
+        "本次护理流程镜头"
+      ],
+      "required_proof_assets": [
+        "老客回访相关素材",
+        "本次护理原因",
+        "护理过程"
+      ],
+      "fallback_if_missing": "若无真实老客素材，可用门店口播和护理房熟悉感替代。"
+    }
+  ]
+}

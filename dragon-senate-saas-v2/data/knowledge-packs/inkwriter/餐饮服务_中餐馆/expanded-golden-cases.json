@@ -1,0 +1,164 @@
+﻿{
+  "industry": "餐饮服务_中餐馆",
+  "lobster_id": "inkwriter",
+  "pack_type": "golden_cases",
+  "version": "v0.1",
+  "cases": [
+    {
+      "id": "inkwriter_chinese_rest_happy_001",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Promote a local Chinese restaurant for family gatherings using signature-dish proof and a reservation-first CTA",
+        "brand_tone": "warm, trustworthy, and grounded",
+        "offer_info": "signature dishes, family-style set options, reservation support, no exaggerated ranking claims",
+        "audience_segment": "local families planning weekend meals with elders and children"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "scene-based opening around family gathering or taking elders out for a meal",
+        "specific dish or menu proof instead of generic delicious claims",
+        "CTA that collects dining time, party size, and private-room needs if relevant"
+      ],
+      "mustAvoid": [
+        "best-in-city claims",
+        "fake scarcity",
+        "guaranteed no-wait promise"
+      ]
+    },
+    {
+      "id": "inkwriter_chinese_rest_happy_002",
+      "label": "happy_path",
+      "input": {
+        "strategy_route": "Drive business banquet bookings with private-room trust signals and service-stability messaging",
+        "brand_tone": "professional, refined, and credible",
+        "offer_info": "private rooms, banquet-friendly menu structure, parking guidance, consultative reservation flow",
+        "audience_segment": "hosts arranging client dinners, team banquets, or important business meals"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "opening tied to hosting, face, or avoiding awkward banquet experiences",
+        "trust modules around private rooms, service rhythm, and menu stability",
+        "low-pressure next step asking for date, headcount, and banquet needs"
+      ],
+      "mustAvoid": [
+        "guaranteed deal-closing claims",
+        "overstated luxury language without evidence",
+        "lowest banquet price promise"
+      ]
+    },
+    {
+      "id": "inkwriter_chinese_rest_edge_001",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Write copy for a budget-sensitive group meal inquiry with unclear headcount and mixed banquet expectations",
+        "brand_tone": "helpful and restrained",
+        "offer_info": "group dining packages under discussion, limited details, flexible dish combinations",
+        "audience_segment": "office admins and team organizers comparing several Chinese restaurants"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "implicit request for missing headcount, budget, or private-room details",
+        "conservative wording around per-person budget and package scope",
+        "tiered or scenario-based framing instead of a single exact quote"
+      ],
+      "mustAvoid": [
+        "instant one-price quote",
+        "claiming every taste preference will be satisfied",
+        "overconfident certainty"
+      ]
+    },
+    {
+      "id": "inkwriter_chinese_rest_edge_002",
+      "label": "edge_case",
+      "input": {
+        "strategy_route": "Promote a seasonal Chinese menu when the restaurant has strong dishes but limited public proof assets",
+        "brand_tone": "credible, appetite-led, and calm",
+        "offer_info": "seasonal dishes, soft reservation push, limited photo assets, no hard urgency",
+        "audience_segment": "local diners and visiting friends deciding where to eat on short notice"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "sensory language anchored to real dishes or dining scenes",
+        "practical local information such as reservation timing or arrival convenience",
+        "conservative handling of popularity or freshness claims"
+      ],
+      "mustAvoid": [
+        "every table orders this style absolutes",
+        "health-function claims",
+        "countdown-driven fake urgency"
+      ]
+    },
+    {
+      "id": "inkwriter_chinese_rest_failure_001",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Grow bookings fast for a Chinese restaurant using aggressive ranking claims, urgency, and guaranteed convenience messaging",
+        "brand_tone": "high conversion and aggressive sales",
+        "offer_info": "high-demand meal periods, mixed dine-in scenarios, pressure to increase reservations fast",
+        "audience_segment": "cold local traffic comparing multiple dining options"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "explicit identification of risky sales expressions in risk_phrases",
+        "reframed urgency into reservation or planning guidance",
+        "trust built through dish proof and scene fit instead of hype"
+      ],
+      "mustAvoid": [
+        "top-ranked or number-one claims without evidence",
+        "guaranteed queue-free promise",
+        "instant viral popularity language"
+      ]
+    },
+    {
+      "id": "inkwriter_chinese_rest_failure_002",
+      "label": "failure_case",
+      "input": {
+        "strategy_route": "Push immediate conversion for a Chinese restaurant by promising health benefits, the city's lowest price, and guaranteed table availability",
+        "brand_tone": "hard-selling and promotional",
+        "offer_info": "pricing-sensitive restaurant offer with multiple dining variables and regulatory risk around claims",
+        "audience_segment": "mixed cold leads asking for quick booking decisions"
+      },
+      "expectedSignals": [
+        "core_message",
+        "hooks",
+        "script_body",
+        "risk_phrases"
+      ],
+      "mustInclude": [
+        "clear conservative rewrite of risky health and pricing language",
+        "explicit marking of red-flag phrases in risk_phrases",
+        "CTA oriented to collecting time, party size, and dining needs before confirming options"
+      ],
+      "mustAvoid": [
+        "therapeutic or wellness-cure claims",
+        "citywide lowest-price promise",
+        "guaranteed table availability at any time"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+﻿{
+  "schemaVersion": "lobster.dataset.golden-cases.v0.2",
+  "roleId": "radar",
+  "primaryArtifact": "SignalBrief",
+  "cases": [
+    {
+      "id": "radar_rule_change_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "Monitor Douyin policy shifts for local healthcare merchants",
+        "time_window": "last_7_days",
+        "platform_or_market_context": "short_video_platform",
+        "competitor_watchlist": [
+          "regional dental clinic A",
+          "regional dental clinic B"
+        ],
+        "raw_signals": [
+          "Official creator notice tightens medical efficacy claims",
+          "Two competitors shifted from before/after claims to consultation-booking hooks"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "official signal outranks rumor",
+        "impact on healthcare content",
+        "attention should be high"
+      ]
+    },
+    {
+      "id": "radar_noise_filter_001",
+      "label": "edge_case",
+      "input": {
+        "mission_scope": "Detect channel opportunities for local education",
+        "time_window": "last_3_days",
+        "platform_or_market_context": "mixed_platform",
+        "competitor_watchlist": [
+          "training center C"
+        ],
+        "raw_signals": [
+          "Anonymous forum rumor with no source",
+          "Small creator claims secret traffic loophole",
+          "Official announcement for new local service ad format"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "low reliability rumor should be filtered",
+        "official ad format should be surfaced"
+      ]
+    },
+    {
+      "id": "radar_competitor_001",
+      "label": "happy_path",
+      "input": {
+        "mission_scope": "Watch high-ticket home renovation competitors",
+        "time_window": "last_14_days",
+        "platform_or_market_context": "local_life",
+        "competitor_watchlist": [
+          "decor studio X",
+          "decor studio Y"
+        ],
+        "raw_signals": [
+          "Competitor X launched free measurement campaign",
+          "Competitor Y increased case-study posting frequency",
+          "No official platform rule changes detected"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustInclude": [
+        "competitive move categorized separately from platform rule",
+        "opportunity framing for Commander"
+      ]
+    },
+    {
+      "id": "radar_regression_001",
+      "label": "failure_case",
+      "input": {
+        "mission_scope": "Rapid trend scan for wedding photography",
+        "time_window": "last_24_hours",
+        "platform_or_market_context": "social_short_video",
+        "competitor_watchlist": [],
+        "raw_signals": [
+          "Three duplicate reposted claims from unknown aggregator sites"
+        ]
+      },
+      "expectedSignals": [
+        "signal_summary",
+        "source_reliability",
+        "impact_level",
+        "recommended_attention"
+      ],
+      "mustAvoid": [
+        "presenting rumor as confirmed market shift"
+      ]
+    }
+  ]
+}

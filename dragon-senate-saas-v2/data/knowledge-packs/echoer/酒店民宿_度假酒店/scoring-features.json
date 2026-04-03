@@ -1,0 +1,694 @@
+﻿{
+  "industry": "酒店民宿_度假酒店",
+  "lobster_id": "echoer",
+  "pack_type": "scoring-features",
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "explicit_stay_dates",
+      "applies_to": "incoming_message",
+      "feature_name": "explicit_stay_dates",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "check in on Friday",
+        "stay from May 2 to May 4",
+        "for the Dragon Boat holiday",
+        "next weekend"
+      ],
+      "why_it_matters": "Specific stay timing moves a resort conversation from browsing into real booking behavior.",
+      "echoer_action": "Use the date signal to guide toward guest mix, room type, and property details."
+    },
+    {
+      "id": "stay_length_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "stay_length_declared",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "2 nights",
+        "three-night getaway",
+        "a full week",
+        "long weekend stay"
+      ],
+      "why_it_matters": "Length of stay helps Echoer distinguish between casual curiosity and concrete vacation planning.",
+      "echoer_action": "Anchor the reply in trip duration and gather any package or activity context."
+    },
+    {
+      "id": "property_or_area_specified",
+      "applies_to": "incoming_message",
+      "feature_name": "property_or_area_specified",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "beachfront resort",
+        "hot spring property",
+        "island branch",
+        "lake-view resort"
+      ],
+      "why_it_matters": "Property detail makes package, transport, weather, and room answers much more actionable.",
+      "echoer_action": "Reply with property-aware language instead of generic resort claims."
+    },
+    {
+      "id": "family_guest_mix_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "family_guest_mix_declared",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "2 adults and 2 kids",
+        "traveling with a 4-year-old",
+        "family of five",
+        "need a crib"
+      ],
+      "why_it_matters": "Family occupancy details make room-fit and package guidance much more concrete.",
+      "echoer_action": "Reflect the family context and gather only the next room or bedding fact."
+    },
+    {
+      "id": "room_type_or_view_preference",
+      "applies_to": "incoming_message",
+      "feature_name": "room_type_or_view_preference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "ocean-view room",
+        "private pool villa",
+        "family suite",
+        "ground-floor garden room"
+      ],
+      "why_it_matters": "Room preference signals that the guest is already imagining the stay, not just asking casually.",
+      "echoer_action": "Acknowledge the preference and narrow only the next booking fact."
+    },
+    {
+      "id": "package_or_rate_plan_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "package_or_rate_plan_reference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "breakfast and dinner package",
+        "hot spring package",
+        "room only rate",
+        "holiday offer"
+      ],
+      "why_it_matters": "Package questions usually show the guest is comparing real booking options rather than browsing broadly.",
+      "echoer_action": "Tie the reply back to rate plan, package name, or booking channel."
+    },
+    {
+      "id": "activity_or_spa_request",
+      "applies_to": "incoming_message",
+      "feature_name": "activity_or_spa_request",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "book the spa",
+        "kids club",
+        "snorkeling session",
+        "paddleboard class"
+      ],
+      "why_it_matters": "Activity planning is a strong sign the guest is moving from room interest to trip execution.",
+      "echoer_action": "Gather date, headcount, age rules, and the activity or time slot that matters."
+    },
+    {
+      "id": "celebration_signal",
+      "applies_to": "incoming_message",
+      "feature_name": "celebration_signal",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "honeymoon",
+        "anniversary trip",
+        "birthday weekend",
+        "proposal stay"
+      ],
+      "why_it_matters": "Celebration context often marks a high-emotion, high-consideration resort booking.",
+      "echoer_action": "Acknowledge the occasion and ask which special detail matters most."
+    },
+    {
+      "id": "transport_timing_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "transport_timing_declared",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "landing at 11 pm",
+        "arrive by ferry at 8:30",
+        "late-night train",
+        "need pickup from the airport"
+      ],
+      "why_it_matters": "Arrival timing usually signals operational intent around shuttle support, room holding, or check-in handling.",
+      "echoer_action": "Use the timing to guide toward property and booking-status clarification."
+    },
+    {
+      "id": "pet_policy_need",
+      "applies_to": "incoming_message",
+      "feature_name": "pet_policy_need",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "small dog",
+        "bringing our cat",
+        "pet fee",
+        "pet-friendly room"
+      ],
+      "why_it_matters": "Pet details make the stay request operationally specific and easier to route accurately.",
+      "echoer_action": "Ask for the property, pet type, and room or date context."
+    },
+    {
+      "id": "weather_or_season_concern",
+      "applies_to": "incoming_message",
+      "feature_name": "weather_or_season_concern",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "if it rains",
+        "typhoon season",
+        "too cold for the pool",
+        "windy beach"
+      ],
+      "why_it_matters": "Weather framing usually means the guest is deciding based on real trip conditions, not generic interest.",
+      "echoer_action": "Use condition-based language and narrow the outdoor experience they care about most."
+    },
+    {
+      "id": "meal_plan_reference",
+      "applies_to": "incoming_message",
+      "feature_name": "meal_plan_reference",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "breakfast included",
+        "half board",
+        "afternoon tea",
+        "dinner package"
+      ],
+      "why_it_matters": "Meal-plan questions show the guest is comparing the real value of a stay, not just room price.",
+      "echoer_action": "Anchor the reply in plan details and dates rather than broad property claims."
+    },
+    {
+      "id": "booking_channel_mentioned",
+      "applies_to": "incoming_message",
+      "feature_name": "booking_channel_mentioned",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "booked on an app",
+        "through your website",
+        "OTA package",
+        "travel platform booking"
+      ],
+      "why_it_matters": "Channel detail shapes refund, package, and invoice answers.",
+      "echoer_action": "Use the channel to avoid generic policy language."
+    },
+    {
+      "id": "group_retreat_or_event_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "group_retreat_or_event_scope",
+      "category": "purchase_intent",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "family reunion",
+        "company retreat",
+        "small wedding",
+        "villa buyout"
+      ],
+      "why_it_matters": "Group or event framing is a high-value resort signal, not a casual inquiry.",
+      "echoer_action": "Gather dates, headcount, room count, and any event coordination needs."
+    },
+    {
+      "id": "ready_to_book",
+      "applies_to": "incoming_message",
+      "feature_name": "ready_to_book",
+      "category": "handoff_readiness",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "I want to lock it now",
+        "ready to reserve",
+        "can I book this now",
+        "want to confirm tonight"
+      ],
+      "why_it_matters": "Direct booking language is one of the clearest conversion signals in resort conversations.",
+      "echoer_action": "Keep the reply warm and funnel toward the minimum reservation facts."
+    },
+    {
+      "id": "complaint_case_details_ready",
+      "applies_to": "incoming_message",
+      "feature_name": "complaint_case_details_ready",
+      "category": "service_recovery",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "room 8206",
+        "booking number",
+        "checked in today",
+        "already spoke with the front desk"
+      ],
+      "why_it_matters": "Complaint resolution moves faster when the guest already has usable case details.",
+      "echoer_action": "Lead with empathy and route to structured service handling."
+    },
+    {
+      "id": "same_day_or_deadline",
+      "applies_to": "incoming_message",
+      "feature_name": "same_day_or_deadline",
+      "category": "urgency",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "tonight",
+        "tomorrow morning",
+        "this weekend",
+        "need to decide now"
+      ],
+      "why_it_matters": "Deadline language often means the guest is close to booking or needs fast routing.",
+      "echoer_action": "Calm urgency first, then collect the few facts needed for the next step."
+    },
+    {
+      "id": "budget_band_declared",
+      "applies_to": "incoming_message",
+      "feature_name": "budget_band_declared",
+      "category": "solution_clarity",
+      "score_direction": "positive",
+      "weight": 5,
+      "trigger_patterns": [
+        "under 2000",
+        "mid-range resort",
+        "budget for two nights",
+        "not too expensive"
+      ],
+      "why_it_matters": "Budget framing helps Echoer keep resort guidance realistic instead of overly broad.",
+      "echoer_action": "Reframe toward room type, dates, and package trade-offs."
+    },
+    {
+      "id": "accessibility_or_stroller_need",
+      "applies_to": "incoming_message",
+      "feature_name": "accessibility_or_stroller_need",
+      "category": "context_strength",
+      "score_direction": "positive",
+      "weight": 6,
+      "trigger_patterns": [
+        "wheelchair access",
+        "traveling with a stroller",
+        "avoid too many steps",
+        "need elevator access"
+      ],
+      "why_it_matters": "Mobility needs strongly shape room placement and resort-fit guidance.",
+      "echoer_action": "Acknowledge the comfort need and gather the property plus the main accessibility concern."
+    },
+    {
+      "id": "absolute_view_or_upgrade_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "absolute_view_or_upgrade_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guarantee ocean view",
+        "promise a private pool villa",
+        "free upgrade for sure",
+        "must have the exact sunset view"
+      ],
+      "why_it_matters": "Absolute premium-room promises create avoidable inventory and trust risk.",
+      "echoer_action": "Shift from guarantee language to stay-date, room-type, and preference clarification."
+    },
+    {
+      "id": "weather_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "weather_guarantee_request",
+      "category": "weather_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee the beach is open",
+        "promise the weather will be fine",
+        "definitely no rain issue",
+        "ensure water sports will run"
+      ],
+      "why_it_matters": "Weather guarantees create false certainty around safety-sensitive resort operations.",
+      "echoer_action": "Use condition-based wording tied to date, property, and the activity involved."
+    },
+    {
+      "id": "activity_availability_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "activity_availability_guarantee_request",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "guarantee the kids club slot",
+        "spa must be available",
+        "definitely get the hot spring private room",
+        "book it without checking the time"
+      ],
+      "why_it_matters": "Experience-slot guarantees can backfire when activities depend on session limits, age rules, or live operations.",
+      "echoer_action": "Guide toward date, headcount, and slot confirmation instead of broad reassurance."
+    },
+    {
+      "id": "full_refund_guarantee_request",
+      "applies_to": "incoming_message",
+      "feature_name": "full_refund_guarantee_request",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "full refund no matter what",
+        "guarantee I can cancel",
+        "promise the package can be refunded",
+        "refund it anyway"
+      ],
+      "why_it_matters": "Refund guarantees create policy and trust risk when booking channel and package rules are still unknown.",
+      "echoer_action": "Move toward channel and rate-plan confirmation rather than reassuring broadly."
+    },
+    {
+      "id": "public_off_platform_contact",
+      "applies_to": "incoming_message",
+      "feature_name": "public_off_platform_contact",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "send WeChat",
+        "leave your phone",
+        "call me now",
+        "drop the number in comments"
+      ],
+      "why_it_matters": "Public contact exchange creates privacy and platform risk when DM can handle resort booking details safely.",
+      "echoer_action": "Use platform DM as the safer bridge."
+    },
+    {
+      "id": "price_only_without_scope",
+      "applies_to": "incoming_message",
+      "feature_name": "price_only_without_scope",
+      "category": "lead_quality_risk",
+      "score_direction": "negative",
+      "weight": 4,
+      "trigger_patterns": [
+        "just give me the cheapest room",
+        "price only",
+        "quote now no details",
+        "lowest package immediately"
+      ],
+      "why_it_matters": "Price-only traffic is not useless, but it needs reframing before it becomes a workable resort lead.",
+      "echoer_action": "Guide the user toward dates, property, or guest basics before trying to answer."
+    },
+    {
+      "id": "freebie_or_compensation_demand",
+      "applies_to": "incoming_message",
+      "feature_name": "freebie_or_compensation_demand",
+      "category": "expectation_risk",
+      "score_direction": "negative",
+      "weight": 7,
+      "trigger_patterns": [
+        "free room upgrade",
+        "complimentary cake for sure",
+        "give us free dinner",
+        "upgrade us because it is our anniversary"
+      ],
+      "why_it_matters": "Compensation or freebie demands can push the reply toward unsafe promises if not handled carefully.",
+      "echoer_action": "Acknowledge the occasion or issue, then move toward policy and availability context."
+    },
+    {
+      "id": "troll_or_abuse",
+      "applies_to": "incoming_message",
+      "feature_name": "troll_or_abuse",
+      "category": "interaction_quality",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "insults",
+        "baiting",
+        "pure attack wording",
+        "spam hostility"
+      ],
+      "why_it_matters": "Public fights harm brand tone and almost never create healthy resort conversion.",
+      "echoer_action": "Stay calm, reply briefly, and do not overinvest."
+    },
+    {
+      "id": "reply_stabilizes_emotion",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_stabilizes_emotion",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "acknowledges disappointment",
+        "acknowledges family stress",
+        "acknowledges travel fatigue"
+      ],
+      "why_it_matters": "Emotion-first stabilization is core Echoer behavior in hospitality conversations.",
+      "echoer_action": "Calm first, move second."
+    },
+    {
+      "id": "reply_collects_core_trip_facts",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_collects_core_trip_facts",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "asks for stay dates",
+        "asks for property",
+        "asks for guest mix",
+        "asks for package or booking channel"
+      ],
+      "why_it_matters": "A strong resort reply turns broad interest into usable booking or service data.",
+      "echoer_action": "Keep the ask to the next three to five critical facts."
+    },
+    {
+      "id": "reply_handles_family_context",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_handles_family_context",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "asks for child ages",
+        "asks about bedding setup",
+        "mentions family comfort",
+        "clarifies connecting-room need"
+      ],
+      "why_it_matters": "Family stays feel more supported when the reply reflects the real occupancy and comfort questions behind the trip.",
+      "echoer_action": "Use family-aware language instead of generic room advice."
+    },
+    {
+      "id": "reply_sets_condition_based_expectation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_sets_condition_based_expectation",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "depends on live inventory",
+        "varies by property and package",
+        "subject to weather and operations",
+        "avoid promising availability"
+      ],
+      "why_it_matters": "Condition-based wording keeps resort replies useful without overpromising live operations.",
+      "echoer_action": "Use realistic qualifiers while still guiding the user forward."
+    },
+    {
+      "id": "reply_anchors_on_rate_plan_or_property",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_anchors_on_rate_plan_or_property",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "mentions package name",
+        "mentions booking channel",
+        "mentions room category",
+        "mentions resort branch"
+      ],
+      "why_it_matters": "Resort answers feel more credible when they reflect the actual policy or property context behind the question.",
+      "echoer_action": "Use plan-aware wording instead of generic policy claims."
+    },
+    {
+      "id": "reply_single_safe_next_step",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_single_safe_next_step",
+      "category": "handoff_quality",
+      "score_direction": "positive",
+      "weight": 9,
+      "trigger_patterns": [
+        "send the stay dates in DM",
+        "share the package name",
+        "confirm the resort plus timing",
+        "send the booking details"
+      ],
+      "why_it_matters": "One clear next step is easier for guests to act on and for downstream roles to handle.",
+      "echoer_action": "Prefer one direct action instead of many scattered asks."
+    },
+    {
+      "id": "reply_routes_service_issue_to_human",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_routes_service_issue_to_human",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 10,
+      "trigger_patterns": [
+        "complaint escalated",
+        "guest service follow-up",
+        "concierge review path",
+        "human handling suggested"
+      ],
+      "why_it_matters": "Echoer should not improvise past active stay issues or service recovery boundaries.",
+      "echoer_action": "Escalate naturally instead of sounding evasive."
+    },
+    {
+      "id": "reply_keeps_public_info_minimal",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_keeps_public_info_minimal",
+      "category": "privacy_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "moves details to DM",
+        "does not ask for phone publicly",
+        "keeps booking details minimal in comments"
+      ],
+      "why_it_matters": "Resort conversations often involve private stay, family, or payment information that should not be collected publicly.",
+      "echoer_action": "Use platform DM when detail depth grows."
+    },
+    {
+      "id": "reply_acknowledges_celebration_or_vacation_purpose",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_acknowledges_celebration_or_vacation_purpose",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 7,
+      "trigger_patterns": [
+        "mentions anniversary",
+        "mentions family getaway",
+        "mentions birthday trip",
+        "mentions honeymoon"
+      ],
+      "why_it_matters": "Vacationers respond better when the reply reflects the reason behind the stay, not just the room.",
+      "echoer_action": "Use the trip purpose to guide a more relevant next question."
+    },
+    {
+      "id": "reply_respects_weather_uncertainty",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_respects_weather_uncertainty",
+      "category": "risk_control",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "depends on weather conditions",
+        "subject to same-day operations",
+        "safety-first framing",
+        "no weather promise"
+      ],
+      "why_it_matters": "Weather-aware replies reduce disappointment and keep the brand credible in resort contexts.",
+      "echoer_action": "Balance reassurance with clear uncertainty framing."
+    },
+    {
+      "id": "reply_scopes_activity_reservation",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_scopes_activity_reservation",
+      "category": "reply_quality",
+      "score_direction": "positive",
+      "weight": 8,
+      "trigger_patterns": [
+        "asks for activity date",
+        "asks for headcount",
+        "asks for child age",
+        "asks for preferred session"
+      ],
+      "why_it_matters": "Activities and wellness plans need more than a yes or no to become operationally useful.",
+      "echoer_action": "Guide toward date, headcount, and slot details."
+    },
+    {
+      "id": "reply_absolute_experience_promise",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_absolute_experience_promise",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 10,
+      "trigger_patterns": [
+        "guaranteed ocean view",
+        "guaranteed free upgrade",
+        "definitely open no matter the weather",
+        "absolute room availability"
+      ],
+      "why_it_matters": "Absolute resort promises create avoidable operational and trust risk.",
+      "echoer_action": "Replace with condition-based and property-aware wording."
+    },
+    {
+      "id": "reply_unchecked_policy_statement",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_unchecked_policy_statement",
+      "category": "policy_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "all packages include breakfast",
+        "every booking can be refunded",
+        "all resorts allow pets",
+        "all properties have shuttle service"
+      ],
+      "why_it_matters": "Broad policy claims are risky when resort rules differ by property, package, and booking channel.",
+      "echoer_action": "Ground the answer in channel, property, or rate context."
+    },
+    {
+      "id": "reply_publicly_requests_phone",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_publicly_requests_phone",
+      "category": "platform_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "leave your phone",
+        "drop your WeChat",
+        "send your number in comments",
+        "public contact capture"
+      ],
+      "why_it_matters": "Public contact collection is unnecessary and risky when platform DM exists.",
+      "echoer_action": "Use DM as the bridge."
+    },
+    {
+      "id": "reply_argues_with_complaint",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_argues_with_complaint",
+      "category": "service_risk",
+      "score_direction": "negative",
+      "weight": 9,
+      "trigger_patterns": [
+        "guest is wrong",
+        "defensive blame",
+        "public argument",
+        "instant denial"
+      ],
+      "why_it_matters": "Complaint threads need calm recovery energy, not public friction.",
+      "echoer_action": "Lead with empathy and move to structured review."
+    },
+    {
+      "id": "reply_hard_sell_pressure",
+      "applies_to": "generated_reply",
+      "feature_name": "reply_hard_sell_pressure",
+      "category": "reply_quality_risk",
+      "score_direction": "negative",
+      "weight": 8,
+      "trigger_patterns": [
+        "book now or lose it",
+        "only today lowest price",
+        "pressure to reserve fast",
+        "fear-based urgency"
+      ],
+      "why_it_matters": "High-pressure sales language clashes with Echoer's steady, human mission.",
+      "echoer_action": "Keep urgency calm and grounded in real next steps."
+    }
+  ]
+}

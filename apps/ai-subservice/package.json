@@ -1,0 +1,15 @@
+﻿{
+  "name": "@liaoyuan/ai-subservice-bridge",
+  "private": true,
+  "scripts": {
+    "dev": "uvicorn app:app --host 0.0.0.0 --port 8000 --app-dir ../../dragon-senate-saas-v2",
+    "test:stage2": "python ../../dragon-senate-saas-v2/scripts/test_stage2_chain.py",
+    "test:baseline": "python ../../dragon-senate-saas-v2/scripts/test_run_dragon_team_baseline.py",
+    "up": "docker compose -f ../../docker-compose.yml up -d ai-subservice",
+    "up:heavy": "docker compose -f ../../docker-compose.yml --profile ai-heavy up -d ai-subservice-heavy",
+    "down": "docker compose -f ../../docker-compose.yml stop ai-subservice",
+    "down:heavy": "docker compose -f ../../docker-compose.yml stop ai-subservice-heavy",
+    "logs": "docker compose -f ../../docker-compose.yml logs -f ai-subservice",
+    "logs:heavy": "docker compose -f ../../docker-compose.yml logs -f ai-subservice-heavy"
+  }
+}

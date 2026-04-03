@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "lobster": "commander",
+    "name": "陈",
+    "current_level": "L3",
+    "target_level": "L4",
+    "plan_version": "2026-Q2",
+    "created_at": "2026-04-01",
+    "review_date": "2026-06-30",
+    "benchmark_ref": "麦肯锡项目管理标准 × 字节跳动项目交付效率"
+  },
+  "current_gaps": [
+    "龙虾能力评估体系（cmd_talent_001）只做过1次，方法论尚未完全验证",
+    "工作流首次成功率目前约82%，距离目标85%还有差距",
+    "对各行业的'最优起步工作流'缺乏系统性文档，依赖经验判断",
+    "暂无对各龙虾行业专精度的量化地图"
+  ],
+  "weekly_routine": {
+    "description": "每周固定学习动作（每周五前完成）",
+    "actions": [
+      {
+        "action": "本周最高分任务复盘",
+        "method": "找出quality_score最高的1个任务，提取：哪个工作流设计让它成功？哪两只龙虾配合最流畅？",
+        "output": "新增1条 skills.json 条目 或 更新 verified_count"
+      },
+      {
+        "action": "本周阻塞/异常复盘",
+        "method": "回顾本周所有阻塞事件，归因（上游输入缺失/LLM超时/格式不对齐），判断是否有新的规律",
+        "output": "如果是新类型阻塞→写入 battle_log.json；如果是已知类型→更新已有条目的 failure_log"
+      },
+      {
+        "action": "龙虾配合质量扫描",
+        "method": "统计本周各龙虾对的协作冲突率（格式返工/任务打回），找出问题最多的配对",
+        "output": "更新'已知失败配合模式'记录，如果同一对出现2次以上→提出接口改进方案"
+      },
+      {
+        "action": "跨域学习：主动向1只龙虾请教",
+        "method": "轮流向不同龙虾请教（本周：向abacus请教数据洞察如何翻译成调度决策）",
+        "output": "记录跨域知识条目到 cross_domain_notes（每周1条）"
+      }
+    ]
+  },
+  "monthly_targets": {
+    "q2_month1": {
+      "period": "2026-04",
+      "core_focus": "完成第一次完整的龙虾能力季度评估框架验证",
+      "knowledge_targets": [
+        { "item": "新增工作流降级策略条目", "target_count": 2, "source": "本月实际发生的降级案例" },
+        { "item": "建立各行业起步工作流推荐表", "target_count": 1, "source": "综合历史任务数据" },
+        { "item": "完善龙虾配合质量记录", "target_count": 5, "source": "每周协作扫描结果" }
+      ],
+      "skill_targets": [
+        "工作流首次成功率：从82%提升到84%",
+        "异常自愈率：维持≥90%",
+        "跨龙虾协作冲突率：从当前水平降低1个百分点"
+      ],
+      "collab_targets": [
+        { "partner": "abacus", "goal": "建立月度数据复盘联动机制，abacus的报告直接驱动commander的调度优化" },
+        { "partner": "strategist", "goal": "在任务开始前5分钟完成接口格式对齐，验证新的对齐流程是否减少返工" }
+      ]
+    },
+    "q2_month2": {
+      "period": "2026-05",
+      "core_focus": "行业专精地图初版建立",
+      "knowledge_targets": [
+        { "item": "各行业最优起步工作流模板", "target_count": 5, "source": "美妆/餐饮/教育/B2B/母婴行业各1套" },
+        { "item": "高频异常根因归档", "target_count": 3, "source": "4月份出现的新异常类型" }
+      ],
+      "skill_targets": [
+        "工作流首次成功率：从84%提升到85%（达到Q2目标）",
+        "建立行业专精地图初版：哪只龙虾在哪个行业表现最好"
+      ],
+      "collab_targets": [
+        { "partner": "radar", "goal": "建立热点→工作流快速启动的标准流程，热点出现后工作流启动时间<30分钟" }
+      ]
+    },
+    "q2_month3": {
+      "period": "2026-06",
+      "core_focus": "完成Q2季度能力评估 + 龙虾成长计划输出",
+      "knowledge_targets": [
+        { "item": "Q2全员能力评估报告", "target_count": 1, "source": "对照cmd_talent_001方法论执行" },
+        { "item": "Q2最有价值经验条目精选", "target_count": 10, "source": "从本季度所有battle_log中提取" }
+      ],
+      "skill_targets": [
+        "完成第一次完整季度评估，验证评估方法的有效性",
+        "为每只龙虾输出Q3学习计划草案"
+      ],
+      "collab_targets": [
+        { "partner": "all", "goal": "组织Q2对标复盘会，对照成长手册中的指标确认各龙虾进化情况" }
+      ]
+    }
+  },
+  "quarterly_kpis": {
+    "q2_target": "2026-06-30",
+    "metrics": [
+      { "metric": "工作流首次成功率", "baseline": "82%", "target": "≥85%", "measurement": "每次工作流执行记录" },
+      { "metric": "异常自愈率", "baseline": "90%", "target": "≥92%", "measurement": "异常事件日志" },
+      { "metric": "跨龙虾协作冲突率", "baseline": "~8%/月", "target": "<5%/月", "measurement": "每周协作质量扫描" },
+      { "metric": "skills.json条目数", "baseline": "7", "target": "≥15", "measurement": "文件版本对比" },
+      { "metric": "龙虾能力评估完成", "baseline": "未完成", "target": "完成1次完整季度评估", "measurement": "评估报告存档" }
+    ]
+  },
+  "level_up_conditions": {
+    "from": "L3",
+    "to": "L4",
+    "requirements": [
+      "工作流首次成功率稳定≥88%（连续3个月）",
+      "能一眼识别任何新工作流设计中的关键风险点",
+      "已建立完整的行业专精地图（≥5个行业）",
+      "完成≥2次完整的全员季度能力评估",
+      "异常自愈率稳定≥93%"
+    ],
+    "estimated_timeline": "2026-Q3结束时具备升级条件"
+  },
+  "benchmark_accounts": [
+    { "name": "麦肯锡项目交付标准", "focus": "任务颗粒度拆分 + 优先级裁决框架", "learning_method": "研读项目管理案例，提炼可以用到调度决策中的方法" },
+    { "name": "字节跳动敏捷运营", "focus": "高频迭代中的异常处理速度", "learning_method": "学习OKR+周复盘的节奏设计，应用到龙虾系统的进化节奏中" }
+  ],
+  "cross_domain_learning": [
+    { "domain": "数据分析（向abacus学）", "target": "能看懂月度洞察报告，并将结论转化为调度决策", "timeline": "2026-04" },
+    { "domain": "内容策略（向strategist学）", "target": "能理解不同行业的内容节奏要求，提前预留正确的工作流时间", "timeline": "2026-05" },
+    { "domain": "线索转化（向followup学）", "target": "理解线索跟进周期，在工作流设计中给followup留足时间", "timeline": "2026-06" }
+  ]
+}

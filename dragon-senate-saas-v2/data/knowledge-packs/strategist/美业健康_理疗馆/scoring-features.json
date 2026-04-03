@@ -1,0 +1,116 @@
+﻿{
+  "industry": "美业健康_理疗馆",
+  "lobster_id": "strategist",
+  "pack_type": "scoring-features",
+  "version": "v1",
+  "items": [
+    {
+      "id": "problem_route_clarity",
+      "feature_name": "核心问题路线清晰度",
+      "metric": "route_quality",
+      "weight": 0.16,
+      "scoring_rule": "5 分：已明确唯一主问题路线，如肩颈劳损、腰背酸痛、运动恢复或节前放松；3 分：有 2 条候选路线但优先级可判断；1 分：所有问题都想一起推。",
+      "positive_signals": [
+        "主问题与咨询证据一致",
+        "场景和人群清楚",
+        "主线与备选线分层明确"
+      ],
+      "negative_signals": [
+        "所有问题一起推",
+        "问题很多但主线不清",
+        "主线和证据错位"
+      ],
+      "route_guidance": "问题越清晰，越适合集中内容和档期。"
+    },
+    {
+      "id": "trust_proof_density",
+      "feature_name": "信任证明密度",
+      "metric": "route_quality",
+      "weight": 0.15,
+      "scoring_rule": "5 分：路线清楚包含流程、环境和边界说明；3 分：只有部分证据；1 分：主要依赖夸张缓解和低价。",
+      "positive_signals": [
+        "流程和环境证据充分",
+        "边界说明清楚",
+        "素材真实可验证"
+      ],
+      "negative_signals": [
+        "全靠夸张承诺",
+        "缺真实流程和边界",
+        "忽略信任感"
+      ],
+      "route_guidance": "对理疗馆来说，信任证明通常比低价更决定预约质量。"
+    },
+    {
+      "id": "first_assessment_vs_package_split",
+      "feature_name": "首次评估与疗程承接分离度",
+      "metric": "conversion_safety",
+      "weight": 0.14,
+      "scoring_rule": "5 分：首次评估、复诊和疗程承接完全拆开；3 分：大体拆开但仍有混用；1 分：所有流量都直接推长期恢复。",
+      "positive_signals": [
+        "评估目标明确是建立信任",
+        "复诊路径独立设计",
+        "疗程承接放在后链路"
+      ],
+      "negative_signals": [
+        "评估文案直接卖疗程",
+        "评论区就开始强推长期恢复",
+        "承接节奏过重"
+      ],
+      "route_guidance": "分离得越清楚，越能降低反感和退款风险。"
+    },
+    {
+      "id": "capacity_alignment",
+      "feature_name": "承接能力匹配度",
+      "metric": "execution_feasibility",
+      "weight": 0.14,
+      "scoring_rule": "5 分：评估时段、房间和理疗师资源互相匹配；3 分：略有挤压但可调整；1 分：高峰和低价引流同时放量。",
+      "positive_signals": [
+        "档期控制清楚",
+        "资源分层合理",
+        "关键资源可承接"
+      ],
+      "negative_signals": [
+        "只看咨询量不看资源",
+        "高峰满载还继续冲量",
+        "复杂问题边界被低估"
+      ],
+      "route_guidance": "执行能力越稳，路线越值得放量。"
+    },
+    {
+      "id": "event_vs_daily_specificity",
+      "feature_name": "节前窗口与日常维护区分度",
+      "metric": "route_quality",
+      "weight": 0.13,
+      "scoring_rule": "5 分：清楚区分节前放松和日常功能维护复诊；3 分：有区分但仍混用；1 分：所有场景用同一套路线。",
+      "positive_signals": [
+        "节前和日常路线分开",
+        "预约逻辑不同",
+        "问题与档期匹配"
+      ],
+      "negative_signals": [
+        "场景混乱",
+        "节前和维护混推",
+        "看不出什么时候做什么"
+      ],
+      "route_guidance": "场景越分明，预约和排班越容易稳定。"
+    },
+    {
+      "id": "maintenance_path_strength",
+      "feature_name": "维护复诊路径强度",
+      "metric": "long_term_value",
+      "weight": 0.14,
+      "scoring_rule": "5 分：复诊、状态维护和节前放松提醒都有清晰路径；3 分：只有零散提醒；1 分：完全靠新客流量续命。",
+      "positive_signals": [
+        "复诊周期明确",
+        "老客偏好沉淀",
+        "回访理由自然"
+      ],
+      "negative_signals": [
+        "老客没有回访逻辑",
+        "只会打折",
+        "没有项目历史承接"
+      ],
+      "route_guidance": "维护路径越强，长期 ROI 越健康。"
+    }
+  ]
+}
