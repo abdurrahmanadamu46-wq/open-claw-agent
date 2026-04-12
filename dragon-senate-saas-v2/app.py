@@ -203,6 +203,8 @@ from workflow_engine import list_workflows as list_workflow_definitions
 from workflow_admin import load_workflow_document
 from workflow_admin import update_workflow_document
 from voice_orchestrator import get_voice_orchestrator
+from voice_profile_registry import get_voice_profile_registry
+from voice_consent_registry import get_voice_consent_registry
 from workflow_idempotency import get_workflow_idempotency_store
 from workflow_realtime import get_workflow_realtime_hub
 from lead_conversion_fsm import get_lead_conversion_fsm
@@ -1366,10 +1368,34 @@ class VoiceSynthesizeRequest(BaseModel):
     run_id: str = Field(default="voice_preview", min_length=1, max_length=128)
     voice_mode: str = Field(default="standard", min_length=1, max_length=64)
     voice_prompt: str | None = Field(default=None, max_length=1000)
+    voice_profile_id: str | None = Field(default=None, max_length=128)
     voice_profile: dict[str, Any] = Field(default_factory=dict)
     subtitle_required: bool = Field(default=False)
     step_index: int | None = Field(default=None, ge=0, le=10000)
     triggered_by: str | None = Field(default=None, max_length=128)
+    meta: dict[str, Any] = Field(default_factory=dict)
+
+
+class VoiceProfileCreateRequest(BaseModel):
+    name: str = Field(..., min_length=1, max_length=160)
+    owner_type: str = Field(..., min_length=1, max_length=64)
+    reference_audio_path: str = Field(..., min_length=1, max_length=2000)
+    voice_prompt: str | None = Field(default=None, max_length=2000)
+    language: str = Field(default="zh", min_length=2, max_length=16)
+    sample_rate: int = Field(default=48000, ge=16000, le=48000)
+    consent_doc_id: str | None = Field(default=None, max_length=128)
+    clone_enabled: bool = False
+    tags: list[str] = Field(default_factory=list)
+    meta: dict[str, Any] = Field(default_factory=dict)
+
+
+class VoiceConsentCreateRequest(BaseModel):
+    owner_name: str = Field(..., min_length=1, max_length=160)
+    owner_type: str = Field(..., min_length=1, max_length=64)
+    consent_doc_id: str = Field(..., min_length=1, max_length=128)
+    scope: str = Field(..., min_length=1, max_length=128)
+    reference_audio_path: str = Field(..., min_length=1, max_length=2000)
+    notes: str | None = Field(default=None, max_length=1000)
     meta: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -8681,11 +8707,145 @@ async def voice_health_api(current_user: UserClaims = Depends(_decode_user)):
     }
 
 
+@app.get("/api/v1/voice/profiles")
+async def list_voice_profiles_api(current_user: UserClaims = Depends(_decode_user)):
+    items = [
+        profile.to_dict()
+        for profile in get_voice_profile_registry().list_profiles(current_user.tenant_id)
+    ]
+    return {"ok": True, "items": items}
+
+
+@app.post("/api/v1/voice/profiles")
+async def create_voice_profile_api(
+    body: VoiceProfileCreateRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    profile = get_voice_profile_registry().create_profile(
+        tenant_id=current_user.tenant_id,
+        name=body.name,
+        owner_type=body.owner_type,
+        reference_audio_path=body.reference_audio_path,
+        voice_prompt=str(body.voice_prompt or "").strip(),
+        language=body.language,
+        sample_rate=body.sample_rate,
+        consent_doc_id=str(body.consent_doc_id or "").strip(),
+        clone_enabled=bool(body.clone_enabled),
+        tags=body.tags,
+        meta={**body.meta, "created_by": current_user.sub},
+    )
+    artifact_id = get_artifact_store().save(
+        run_id=f"voice_profile_{profile.profile_id}",
+        lobster="visualizer",
+        artifact_type="voice_profile",
+        content=profile.name,
+        status="approved",
+        meta=profile.to_dict(),
+    )
+    await get_audit_service().log(
+        event_type=AuditEventType.SYSTEM_CONFIG_UPDATE,
+        tenant_id=current_user.tenant_id,
+        user_id=current_user.sub,
+        resource_type="voice_profile",
+        resource_id=profile.profile_id,
+        details={"artifact_id": artifact_id, "clone_enabled": profile.clone_enabled},
+    )
+    return {"ok": True, "profile": profile.to_dict(), "artifact_id": artifact_id}
+
+
+@app.get("/api/v1/voice/profiles/{profile_id}")
+async def get_voice_profile_api(profile_id: str, current_user: UserClaims = Depends(_decode_user)):
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    return {"ok": True, "profile": profile.to_dict()}
+
+
+@app.post("/api/v1/voice/profiles/{profile_id}/disable")
+async def disable_voice_profile_api(profile_id: str, current_user: UserClaims = Depends(_decode_user)):
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    ok = get_voice_profile_registry().disable_profile(profile_id)
+    await get_audit_service().log(
+        event_type=AuditEventType.SYSTEM_CONFIG_UPDATE,
+        tenant_id=current_user.tenant_id,
+        user_id=current_user.sub,
+        resource_type="voice_profile",
+        resource_id=profile_id,
+        details={"disabled": ok},
+    )
+    return {"ok": True, "disabled": ok, "profile_id": profile_id}
+
+
+@app.get("/api/v1/voice/consents")
+async def list_voice_consents_api(current_user: UserClaims = Depends(_decode_user)):
+    items = [
+        consent.to_dict()
+        for consent in get_voice_consent_registry().list_consents(current_user.tenant_id)
+    ]
+    return {"ok": True, "items": items}
+
+
+@app.post("/api/v1/voice/consents")
+async def create_voice_consent_api(
+    body: VoiceConsentCreateRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    consent = get_voice_consent_registry().create_consent(
+        tenant_id=current_user.tenant_id,
+        owner_name=body.owner_name,
+        owner_type=body.owner_type,
+        consent_doc_id=body.consent_doc_id,
+        scope=body.scope,
+        reference_audio_path=body.reference_audio_path,
+        notes=str(body.notes or "").strip(),
+        meta={**body.meta, "created_by": current_user.sub},
+    )
+    await get_audit_service().log(
+        event_type=AuditEventType.SYSTEM_CONFIG_UPDATE,
+        tenant_id=current_user.tenant_id,
+        user_id=current_user.sub,
+        resource_type="voice_consent",
+        resource_id=consent.consent_id,
+        details={"scope": consent.scope, "owner_type": consent.owner_type},
+    )
+    return {"ok": True, "consent": consent.to_dict()}
+
+
+@app.get("/api/v1/voice/consents/{consent_id}")
+async def get_voice_consent_api(consent_id: str, current_user: UserClaims = Depends(_decode_user)):
+    consent = get_voice_consent_registry().get_consent(consent_id)
+    if consent is None or consent.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_consent_not_found")
+    return {"ok": True, "consent": consent.to_dict()}
+
+
 @app.post("/api/v1/voice/synthesize")
 async def voice_synthesize_api(
     body: VoiceSynthesizeRequest,
     current_user: UserClaims = Depends(_decode_user),
 ):
+    voice_profile = dict(body.voice_profile or {})
+    if body.voice_profile_id:
+        profile = get_voice_profile_registry().get_profile(body.voice_profile_id)
+        if profile is None or profile.tenant_id != current_user.tenant_id or not profile.enabled:
+            raise HTTPException(status_code=404, detail="voice_profile_not_found")
+        voice_profile = profile.to_dict()
+        if body.voice_mode == "brand_clone":
+            if not profile.clone_enabled:
+                raise HTTPException(status_code=403, detail="voice_profile_clone_disabled")
+            consent_doc_id = str(profile.consent_doc_id or "").strip()
+            if not consent_doc_id:
+                raise HTTPException(status_code=403, detail="voice_profile_missing_consent")
+            matching = [
+                item
+                for item in get_voice_consent_registry().list_consents(current_user.tenant_id)
+                if str(item.consent_doc_id or "").strip() == consent_doc_id and item.status == "active"
+            ]
+            if not matching:
+                raise HTTPException(status_code=403, detail="voice_consent_not_active")
+
     result = await get_voice_orchestrator().synthesize_and_store(
         run_id=body.run_id,
         lobster_id=body.lobster_id,
@@ -8693,7 +8853,7 @@ async def voice_synthesize_api(
         text=body.text,
         voice_mode=body.voice_mode,
         voice_prompt=str(body.voice_prompt or "").strip(),
-        voice_profile=body.voice_profile,
+        voice_profile=voice_profile,
         subtitle_required=bool(body.subtitle_required),
         step_index=body.step_index,
         triggered_by=str(body.triggered_by or "").strip() or None,
@@ -8701,6 +8861,7 @@ async def voice_synthesize_api(
             **body.meta,
             "tenant_id": current_user.tenant_id,
             "user_id": current_user.sub,
+            "voice_profile_id": str(body.voice_profile_id or "").strip() or None,
         },
     )
     if not result.ok:
