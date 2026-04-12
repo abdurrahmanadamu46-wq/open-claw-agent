@@ -151,6 +151,8 @@ class VoiceOrchestrator:
             status="draft",
             meta={
                 **payload_meta,
+                "provider": result.provider,
+                "voice_mode": voice_mode,
                 "voice_artifact_id": voice_artifact_id,
                 "subtitle_srt_path": result.subtitle_srt_path,
                 "tenant_id": tenant_id,

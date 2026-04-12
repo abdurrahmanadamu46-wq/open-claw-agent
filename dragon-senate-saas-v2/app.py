@@ -1352,12 +1352,15 @@ class LobsterExecuteRequest(BaseModel):
     prompt: str = Field(..., min_length=1, max_length=4000)
     industry: str | None = Field(default=None, min_length=1, max_length=120)
     industry_tag: str | None = Field(default=None, min_length=1, max_length=120)
+    stage_id: str | None = Field(default=None, min_length=1, max_length=64)
     session_mode: str = Field(default="per-peer", pattern="^(shared|per-peer|isolated)$")
     peer_id: str | None = Field(default=None, max_length=128)
     fresh_context: bool = False
     execution_mode: str = Field(default="auto", pattern="^(foreground|background|auto)$")
     enable_output_validation: bool = False
     auto_retry_on_violation: bool = False
+    risk_flags: list[str] = Field(default_factory=list)
+    shared_state: dict[str, Any] = Field(default_factory=dict)
     reply_channel_id: str | None = Field(default=None, max_length=128)
     reply_chat_id: str | None = Field(default=None, max_length=128)
 
@@ -1400,6 +1403,11 @@ class VoiceConsentCreateRequest(BaseModel):
 
 
 class VoiceReviewActionRequest(BaseModel):
+    note: str | None = Field(default=None, max_length=1000)
+
+
+class VoiceStatusPatchRequest(BaseModel):
+    status: str = Field(..., min_length=1, max_length=32)
     note: str | None = Field(default=None, max_length=1000)
 
 
@@ -8598,8 +8606,11 @@ async def execute_single_lobster_api(
             "channel": "console",
             "industry": industry_hint or None,
             "industry_tag": industry_hint or None,
+            "stage_id": str(body.stage_id or "").strip() or None,
             "enable_output_validation": bool(body.enable_output_validation),
             "auto_retry_on_violation": bool(body.auto_retry_on_violation),
+            "risk_flags": [str(item).strip().lower() for item in (body.risk_flags or []) if str(item).strip()],
+            "orla_shared_state": dict(body.shared_state or {}),
             "reply_channel_id": str(body.reply_channel_id or "").strip() or None,
             "reply_chat_id": str(body.reply_chat_id or "").strip() or None,
         },
@@ -8682,6 +8693,7 @@ async def execute_single_lobster_api(
         "stop_reason": result.stop_reason,
         "error": result.error,
         "failure_reason": result.failure_reason,
+        "orla_routing": result.orla_routing,
         "doc_id": doc_id,
         "citations": citations,
         "survey_suggestions": survey_suggestions,
@@ -8711,13 +8723,106 @@ async def voice_health_api(current_user: UserClaims = Depends(_decode_user)):
     }
 
 
+def _serialize_voice_profile(profile: Any) -> dict[str, Any]:
+    payload = profile.to_dict() if hasattr(profile, "to_dict") else dict(profile or {})
+    return {
+        "profile_id": str(payload.get("profile_id") or ""),
+        "tenant_id": str(payload.get("tenant_id") or ""),
+        "name": str(payload.get("name") or ""),
+        "owner_type": str(payload.get("owner_type") or ""),
+        "reference_audio_path": str(payload.get("reference_audio_path") or ""),
+        "voice_prompt": str(payload.get("voice_prompt") or ""),
+        "language": str(payload.get("language") or "zh"),
+        "sample_rate": int(payload.get("sample_rate") or 0),
+        "consent_doc_id": str(payload.get("consent_doc_id") or ""),
+        "clone_enabled": bool(payload.get("clone_enabled")),
+        "status": str(payload.get("status") or ""),
+        "enabled": bool(payload.get("enabled")),
+        "review_note": str(payload.get("review_note") or ""),
+        "reviewed_by": str(payload.get("reviewed_by") or ""),
+        "reviewed_at": str(payload.get("reviewed_at") or ""),
+        "revoked_at": str(payload.get("revoked_at") or ""),
+        "tags": payload.get("tags") if isinstance(payload.get("tags"), list) else [],
+        "meta": payload.get("meta") if isinstance(payload.get("meta"), dict) else {},
+        "created_at": str(payload.get("created_at") or ""),
+        "updated_at": str(payload.get("updated_at") or ""),
+    }
+
+
+def _serialize_voice_consent(consent: Any) -> dict[str, Any]:
+    payload = consent.to_dict() if hasattr(consent, "to_dict") else dict(consent or {})
+    return {
+        "consent_id": str(payload.get("consent_id") or ""),
+        "tenant_id": str(payload.get("tenant_id") or ""),
+        "owner_name": str(payload.get("owner_name") or ""),
+        "owner_type": str(payload.get("owner_type") or ""),
+        "consent_doc_id": str(payload.get("consent_doc_id") or ""),
+        "scope": str(payload.get("scope") or ""),
+        "reference_audio_path": str(payload.get("reference_audio_path") or ""),
+        "status": str(payload.get("status") or ""),
+        "notes": str(payload.get("notes") or ""),
+        "review_note": str(payload.get("review_note") or ""),
+        "reviewed_by": str(payload.get("reviewed_by") or ""),
+        "reviewed_at": str(payload.get("reviewed_at") or ""),
+        "revoked_at": str(payload.get("revoked_at") or ""),
+        "meta": payload.get("meta") if isinstance(payload.get("meta"), dict) else {},
+        "created_at": str(payload.get("created_at") or ""),
+        "updated_at": str(payload.get("updated_at") or ""),
+    }
+
+
+def _serialize_voice_job(job: Any) -> dict[str, Any]:
+    payload = job.to_dict() if hasattr(job, "to_dict") else dict(job or {})
+    meta = payload.get("meta") if isinstance(payload.get("meta"), dict) else {}
+    return {
+        "job_id": str(payload.get("artifact_id") or ""),
+        "run_id": str(payload.get("run_id") or ""),
+        "lobster_id": str(payload.get("lobster") or ""),
+        "status": str(payload.get("status") or ""),
+        "voice_mode": str(meta.get("voice_mode") or ""),
+        "provider": str(meta.get("provider") or ""),
+        "audio_path": str(meta.get("audio_path") or ""),
+        "subtitle_srt_path": str(meta.get("subtitle_srt_path") or ""),
+        "voice_artifact_id": str(meta.get("voice_artifact_id") or ""),
+        "voice_profile_id": str(meta.get("voice_profile_id") or ""),
+        "quality_report": meta.get("quality_report") if isinstance(meta.get("quality_report"), dict) else {},
+        "content_preview": str(payload.get("content") or "")[:200],
+        "created_at": str(payload.get("created_at") or ""),
+        "updated_at": str(payload.get("updated_at") or ""),
+    }
+
+
+def _serialize_voice_artifact_summary(row: Any) -> dict[str, Any]:
+    payload = row.to_summary() if hasattr(row, "to_summary") else dict(row or {})
+    return {
+        "artifact_id": str(payload.get("artifact_id") or ""),
+        "run_id": str(payload.get("run_id") or ""),
+        "lobster_id": str(payload.get("lobster") or ""),
+        "artifact_type": str(payload.get("artifact_type") or ""),
+        "content_preview": str(payload.get("content_preview") or ""),
+        "content_url": str(payload.get("content_url") or ""),
+        "status": str(payload.get("status") or ""),
+        "score": payload.get("score"),
+        "created_at": str(payload.get("created_at") or ""),
+    }
+
+
 @app.get("/api/v1/voice/profiles")
-async def list_voice_profiles_api(current_user: UserClaims = Depends(_decode_user)):
-    items = [
-        profile.to_dict()
-        for profile in get_voice_profile_registry().list_profiles(current_user.tenant_id)
-    ]
-    return {"ok": True, "items": items}
+async def list_voice_profiles_api(
+    status: str | None = Query(default=None, max_length=32),
+    owner_type: str | None = Query(default=None, max_length=64),
+    clone_enabled: bool | None = Query(default=None),
+    current_user: UserClaims = Depends(_decode_user),
+):
+    rows = get_voice_profile_registry().list_profiles(current_user.tenant_id)
+    items = [_serialize_voice_profile(profile) for profile in rows]
+    if status:
+        items = [item for item in items if item["status"] == str(status).strip()]
+    if owner_type:
+        items = [item for item in items if item["owner_type"] == str(owner_type).strip()]
+    if clone_enabled is not None:
+        items = [item for item in items if bool(item["clone_enabled"]) == bool(clone_enabled)]
+    return {"ok": True, "count": len(items), "items": items}
 
 
 @app.post("/api/v1/voice/profiles")
@@ -8754,7 +8859,7 @@ async def create_voice_profile_api(
         resource_id=profile.profile_id,
         details={"artifact_id": artifact_id, "clone_enabled": profile.clone_enabled},
     )
-    return {"ok": True, "profile": profile.to_dict(), "artifact_id": artifact_id}
+    return {"ok": True, "profile": _serialize_voice_profile(profile), "artifact_id": artifact_id}
 
 
 @app.get("/api/v1/voice/profiles/{profile_id}")
@@ -8762,7 +8867,7 @@ async def get_voice_profile_api(profile_id: str, current_user: UserClaims = Depe
     profile = get_voice_profile_registry().get_profile(profile_id)
     if profile is None or profile.tenant_id != current_user.tenant_id:
         raise HTTPException(status_code=404, detail="voice_profile_not_found")
-    return {"ok": True, "profile": profile.to_dict()}
+    return {"ok": True, "profile": _serialize_voice_profile(profile)}
 
 
 @app.post("/api/v1/voice/profiles/{profile_id}/disable")
@@ -8842,13 +8947,43 @@ async def revoke_voice_profile_api(
     return {"ok": True, "revoked": ok, "profile_id": profile_id}
 
 
+@app.patch("/api/v1/voice/profiles/{profile_id}/status")
+async def patch_voice_profile_status_api(
+    profile_id: str,
+    body: VoiceStatusPatchRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    try:
+        ok = get_voice_profile_registry().set_review_status(
+            profile_id,
+            status=body.status,
+            reviewer=current_user.sub,
+            note=str(body.note or "").strip(),
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    updated = get_voice_profile_registry().get_profile(profile_id)
+    return {"ok": True, "updated": ok, "profile": _serialize_voice_profile(updated) if updated else None}
+
+
 @app.get("/api/v1/voice/consents")
-async def list_voice_consents_api(current_user: UserClaims = Depends(_decode_user)):
-    items = [
-        consent.to_dict()
-        for consent in get_voice_consent_registry().list_consents(current_user.tenant_id)
-    ]
-    return {"ok": True, "items": items}
+async def list_voice_consents_api(
+    status: str | None = Query(default=None, max_length=32),
+    owner_type: str | None = Query(default=None, max_length=64),
+    current_user: UserClaims = Depends(_decode_user),
+):
+    rows = get_voice_consent_registry().list_consents(current_user.tenant_id)
+    items = [_serialize_voice_consent(consent) for consent in rows]
+    if status:
+        items = [item for item in items if item["status"] == str(status).strip()]
+    if owner_type:
+        items = [item for item in items if item["owner_type"] == str(owner_type).strip()]
+    return {"ok": True, "count": len(items), "items": items}
 
 
 @app.post("/api/v1/voice/consents")
@@ -8874,7 +9009,7 @@ async def create_voice_consent_api(
         resource_id=consent.consent_id,
         details={"scope": consent.scope, "owner_type": consent.owner_type},
     )
-    return {"ok": True, "consent": consent.to_dict()}
+    return {"ok": True, "consent": _serialize_voice_consent(consent)}
 
 
 @app.get("/api/v1/voice/consents/{consent_id}")
@@ -8882,7 +9017,7 @@ async def get_voice_consent_api(consent_id: str, current_user: UserClaims = Depe
     consent = get_voice_consent_registry().get_consent(consent_id)
     if consent is None or consent.tenant_id != current_user.tenant_id:
         raise HTTPException(status_code=404, detail="voice_consent_not_found")
-    return {"ok": True, "consent": consent.to_dict()}
+    return {"ok": True, "consent": _serialize_voice_consent(consent)}
 
 
 @app.post("/api/v1/voice/consents/{consent_id}/approve")
@@ -8945,6 +9080,30 @@ async def revoke_voice_consent_api(
     return {"ok": True, "revoked": ok, "consent_id": consent_id}
 
 
+@app.patch("/api/v1/voice/consents/{consent_id}/status")
+async def patch_voice_consent_status_api(
+    consent_id: str,
+    body: VoiceStatusPatchRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    consent = get_voice_consent_registry().get_consent(consent_id)
+    if consent is None or consent.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_consent_not_found")
+    try:
+        ok = get_voice_consent_registry().set_review_status(
+            consent_id,
+            status=body.status,
+            reviewer=current_user.sub,
+            note=str(body.note or "").strip(),
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    updated = get_voice_consent_registry().get_consent(consent_id)
+    return {"ok": True, "updated": ok, "consent": _serialize_voice_consent(updated) if updated else None}
+
+
 @app.get("/api/v1/voice/jobs")
 async def list_voice_jobs_api(
     run_id: str | None = Query(default=None, max_length=128),
@@ -8973,12 +9132,7 @@ async def list_voice_jobs_api(
             rows = [row for row in rows if str(row.status or "").strip() == str(status).strip()]
     items = []
     for row in rows:
-        payload = row.to_dict()
-        payload["voice_artifact_id"] = str(row.meta.get("voice_artifact_id") or "")
-        payload["subtitle_srt_path"] = str(row.meta.get("subtitle_srt_path") or "")
-        payload["audio_path"] = str(row.meta.get("audio_path") or "")
-        payload["quality_report"] = row.meta.get("quality_report") or {}
-        items.append(payload)
+        items.append(_serialize_voice_job(row))
     return {"ok": True, "count": len(items), "items": items}
 
 
@@ -8996,7 +9150,7 @@ async def get_voice_job_api(job_id: str, current_user: UserClaims = Depends(_dec
             related_subtitles.append(row.to_dict())
     return {
         "ok": True,
-        "job": artifact.to_dict(),
+        "job": _serialize_voice_job(artifact),
         "voice_artifact": voice_artifact.to_dict() if voice_artifact is not None else None,
         "subtitles": related_subtitles,
     }
@@ -9022,7 +9176,7 @@ async def list_voice_artifacts_api(
             rows = store.list_by_run(run_id=run_id, artifact_type=current_type, lobster=lobster_id, limit=limit)
         else:
             rows = store.list_by_lobster(lobster=str(lobster_id or "visualizer").strip() or "visualizer", artifact_type=current_type, limit=limit)
-        items.extend(row.to_summary() for row in rows)
+        items.extend(_serialize_voice_artifact_summary(row) for row in rows)
     items.sort(key=lambda item: str(item.get("created_at") or ""), reverse=True)
     return {"ok": True, "count": len(items[:limit]), "items": items[:limit]}
 
@@ -9082,6 +9236,7 @@ async def voice_synthesize_api(
         "subtitle_srt_path": result.subtitle_srt_path,
         "duration_sec": result.duration_sec,
         "fallback_used": result.fallback_used,
+        "quality_report": result.quality_report or {},
         "artifact_ids": result.artifact_ids or [],
     }
 

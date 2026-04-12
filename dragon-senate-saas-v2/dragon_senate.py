@@ -7,7 +7,9 @@ import re
 import time
 import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Annotated, Any, Callable
+from urllib.parse import urlparse
 
 from langchain_core.documents import Document
 from langgraph.graph import END, START, StateGraph
@@ -23,6 +25,7 @@ from clawteam_inbox import summary as clawteam_summary
 from comfyui_adapter import generate_storyboard_video_local
 from comfyui_capability_matrix import build_comfyui_generation_plan
 from comfyui_capability_matrix import inspect_comfyui_capabilities
+from artifact_store import get_artifact_store
 from industry_workflows import detect_industry, resolve_workflow
 from libtv_skill_adapter import generate_storyboard_video
 from llm_router import RouteMeta, llm_router
@@ -309,6 +312,109 @@ def _agent_log(agent: str, summary: str, payload: dict[str, Any] | None = None) 
             "payload": payload or {},
         }
     ]
+
+
+def _local_media_path(url: str) -> str | None:
+    raw = str(url or "").strip()
+    if not raw:
+        return None
+    if re.match(r"^[a-zA-Z]:[\\/]", raw):
+        return raw
+    parsed = urlparse(raw)
+    if parsed.scheme == "file":
+        path = parsed.path or ""
+        if path.startswith("/") and re.match(r"^/[a-zA-Z]:", path):
+            path = path[1:]
+        return path
+    return None
+
+
+def _collect_local_video_paths(media_pack: list[dict[str, Any]]) -> list[str]:
+    paths: list[str] = []
+    for item in media_pack:
+        if not isinstance(item, dict):
+            continue
+        media_type = str(item.get("type") or "").strip().lower()
+        candidate = str(item.get("local_path") or item.get("path") or item.get("url") or "").strip()
+        if media_type != "video" or not candidate:
+            continue
+        local_path = _local_media_path(candidate) or candidate
+        if not Path(local_path).exists():
+            continue
+        paths.append(local_path)
+    return paths
+
+
+def _maybe_compose_visualizer_video(
+    *,
+    trace_id: str,
+    tenant_id: str,
+    media_pack: list[dict[str, Any]],
+    voice_result: dict[str, Any],
+) -> dict[str, Any]:
+    if str(os.getenv("VOICE_DISABLE_VISUALIZER_AUTO_COMPOSE") or "false").strip().lower() in {"1", "true", "yes", "on"}:
+        return {"ok": False, "reason": "disabled_by_env"}
+    if not bool(voice_result.get("ok")):
+        return {"ok": False, "reason": "voice_not_ready"}
+
+    audio_path = str(voice_result.get("audio_path") or "").strip()
+    subtitle_srt_path = str(voice_result.get("subtitle_srt_path") or "").strip()
+    if not audio_path or not Path(audio_path).exists():
+        return {"ok": False, "reason": "missing_audio_path"}
+
+    clip_paths = _collect_local_video_paths(media_pack)
+    if not clip_paths:
+        return {"ok": False, "reason": "no_local_video_inputs"}
+
+    output_dir = Path(str(os.getenv("VOICE_COMPOSE_OUTPUT_DIR") or "data/voice-composed"))
+    if not output_dir.is_absolute():
+        output_dir = (Path(__file__).resolve().parent / output_dir).resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{trace_id or uuid.uuid4().hex[:8]}_voice_compose.mp4"
+
+    try:
+        from video_composer import VideoAspect, VideoComposer, VideoComposerConfig, VideoTransitionMode
+
+        composer = VideoComposer(
+            VideoComposerConfig(
+                output_path=str(output_path),
+                aspect=VideoAspect.portrait,
+                transition=VideoTransitionMode.fade_in,
+                voice_path=audio_path,
+                subtitle_srt=subtitle_srt_path,
+            )
+        )
+        result = composer.compose(clip_paths=clip_paths)
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "reason": "compose_exception", "error": str(exc)}
+
+    if not result.ok:
+        return {"ok": False, "reason": "compose_failed", "error": result.error}
+
+    artifact_id = get_artifact_store().save(
+        run_id=trace_id or f"voice_compose_{uuid.uuid4().hex[:8]}",
+        lobster="visualizer",
+        artifact_type="visual",
+        content="voice_composed_video",
+        content_url=str(result.output_path),
+        status="draft",
+        meta={
+            "tenant_id": tenant_id,
+            "compose_mode": "voice_overlay",
+            "clip_paths": clip_paths,
+            "audio_path": audio_path,
+            "subtitle_srt_path": subtitle_srt_path,
+            "duration_sec": result.duration_sec,
+            "file_size_mb": result.file_size_mb,
+        },
+    )
+    return {
+        "ok": True,
+        "artifact_id": artifact_id,
+        "output_path": str(result.output_path),
+        "duration_sec": result.duration_sec,
+        "file_size_mb": result.file_size_mb,
+    }
 
 
 async def _invoke_clawhub_skill(agent: str, skill_name: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -1584,6 +1690,24 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
     elif narration_script and disable_voice:
         voice_result = {"ok": False, "reason": "disabled_by_env"}
 
+    compose_result = _maybe_compose_visualizer_video(
+        trace_id=str(state.get("trace_id") or ""),
+        tenant_id=tenant_id,
+        media_pack=media_pack,
+        voice_result=voice_result,
+    )
+    if bool(compose_result.get("ok")) and str(compose_result.get("output_path") or "").strip():
+        composed_path = str(compose_result.get("output_path") or "").strip()
+        media_pack.append(
+            {
+                "scene": len(media_pack) + 1,
+                "url": composed_path,
+                "local_path": composed_path,
+                "type": "video",
+                "source": "video_composer",
+            }
+        )
+
     return {
         "visualizer_output": {
             "prompt_pack": prompts,
@@ -1593,6 +1717,7 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
             "subtitle_text": subtitle_text,
             "voice_mode": voice_mode,
             "voice_result": voice_result,
+            "compose_result": compose_result,
             "style_profile": {
                 "digital_human_mode": digital_human_mode,
                 "vlog_narration_mode": vlog_mode,
@@ -1693,6 +1818,8 @@ async def dispatcher(state: DragonState) -> dict[str, Any]:
                 "comfyui_mode": comfyui_render.get("mode"),
                 "libtv_session_id": libtv_session.get("session_id"),
                 "libtv_project_url": libtv_session.get("project_url"),
+                "voice_result": state.get("visualizer_output", {}).get("voice_result", {}),
+                "compose_result": state.get("visualizer_output", {}).get("compose_result", {}),
             },
         },
     }

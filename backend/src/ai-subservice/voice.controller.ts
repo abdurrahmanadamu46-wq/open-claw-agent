@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, ForbiddenException, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, ForbiddenException, Get, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AuditLog } from '../common/decorators/audit-log.decorator';
 import { AiSubserviceService } from './ai-subservice.service';
@@ -30,8 +30,20 @@ export class VoiceController {
   }
 
   @Get('profiles')
-  listVoiceProfiles(@Req() req?: AuthedRequest) {
-    return this.aiSubservice.listVoiceProfiles(req?.headers?.authorization);
+  listVoiceProfiles(
+    @Req() req?: AuthedRequest,
+    @Query('status') status?: string,
+    @Query('owner_type') ownerType?: string,
+    @Query('clone_enabled') cloneEnabled?: string,
+  ) {
+    return this.aiSubservice.listVoiceProfiles(
+      {
+        status: status ? String(status).trim() : undefined,
+        owner_type: ownerType ? String(ownerType).trim() : undefined,
+        clone_enabled: typeof cloneEnabled === 'string' ? ['1', 'true', 'yes', 'on'].includes(cloneEnabled.trim().toLowerCase()) : undefined,
+      },
+      req?.headers?.authorization,
+    );
   }
 
   @Post('profiles')
@@ -82,9 +94,30 @@ export class VoiceController {
     return this.aiSubservice.revokeVoiceProfile(normalized, body ?? {}, req?.headers?.authorization);
   }
 
+  @Patch('profiles/:profileId/status')
+  @AuditLog({ action: 'patch_voice_profile_status', resource: 'voice_profile' })
+  patchVoiceProfileStatus(@Req() req?: AuthedRequest, @Param('profileId') profileId?: string, @Body() body?: Record<string, unknown>) {
+    if (!isAdmin(req)) throw new ForbiddenException('Admin role required');
+    const normalized = String(profileId ?? '').trim();
+    if (!normalized) throw new BadRequestException('profileId is required');
+    const status = String(body?.status ?? '').trim();
+    if (!status) throw new BadRequestException('status is required');
+    return this.aiSubservice.patchVoiceProfileStatus(normalized, body ?? {}, req?.headers?.authorization);
+  }
+
   @Get('consents')
-  listVoiceConsents(@Req() req?: AuthedRequest) {
-    return this.aiSubservice.listVoiceConsents(req?.headers?.authorization);
+  listVoiceConsents(
+    @Req() req?: AuthedRequest,
+    @Query('status') status?: string,
+    @Query('owner_type') ownerType?: string,
+  ) {
+    return this.aiSubservice.listVoiceConsents(
+      {
+        status: status ? String(status).trim() : undefined,
+        owner_type: ownerType ? String(ownerType).trim() : undefined,
+      },
+      req?.headers?.authorization,
+    );
   }
 
   @Post('consents')
@@ -125,6 +158,17 @@ export class VoiceController {
     const normalized = String(consentId ?? '').trim();
     if (!normalized) throw new BadRequestException('consentId is required');
     return this.aiSubservice.revokeVoiceConsent(normalized, body ?? {}, req?.headers?.authorization);
+  }
+
+  @Patch('consents/:consentId/status')
+  @AuditLog({ action: 'patch_voice_consent_status', resource: 'voice_consent' })
+  patchVoiceConsentStatus(@Req() req?: AuthedRequest, @Param('consentId') consentId?: string, @Body() body?: Record<string, unknown>) {
+    if (!isAdmin(req)) throw new ForbiddenException('Admin role required');
+    const normalized = String(consentId ?? '').trim();
+    if (!normalized) throw new BadRequestException('consentId is required');
+    const status = String(body?.status ?? '').trim();
+    if (!status) throw new BadRequestException('status is required');
+    return this.aiSubservice.patchVoiceConsentStatus(normalized, body ?? {}, req?.headers?.authorization);
   }
 
   @Post('synthesize')

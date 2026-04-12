@@ -2820,11 +2820,20 @@ export class AiSubserviceService {
     );
   }
 
-  listVoiceProfiles(authHeader?: string): Promise<Record<string, unknown>> {
+  listVoiceProfiles(
+    input?: { status?: string; owner_type?: string; clone_enabled?: boolean },
+    authHeader?: string,
+  ): Promise<Record<string, unknown>> {
+    const query: Record<string, unknown> = {};
+    if (input?.status) query.status = input.status;
+    if (input?.owner_type) query.owner_type = input.owner_type;
+    if (typeof input?.clone_enabled === 'boolean') query.clone_enabled = input.clone_enabled;
     return this.authedRequestWithUserHeader<Record<string, unknown>>(
       authHeader,
       'GET',
       '/api/v1/voice/profiles',
+      undefined,
+      query,
     );
   }
 
@@ -2881,11 +2890,28 @@ export class AiSubserviceService {
     );
   }
 
-  listVoiceConsents(authHeader?: string): Promise<Record<string, unknown>> {
+  patchVoiceProfileStatus(profileId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'PATCH',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}/status`,
+      input,
+    );
+  }
+
+  listVoiceConsents(
+    input?: { status?: string; owner_type?: string },
+    authHeader?: string,
+  ): Promise<Record<string, unknown>> {
+    const query: Record<string, unknown> = {};
+    if (input?.status) query.status = input.status;
+    if (input?.owner_type) query.owner_type = input.owner_type;
     return this.authedRequestWithUserHeader<Record<string, unknown>>(
       authHeader,
       'GET',
       '/api/v1/voice/consents',
+      undefined,
+      query,
     );
   }
 
@@ -2929,6 +2955,15 @@ export class AiSubserviceService {
       authHeader,
       'POST',
       `/api/v1/voice/consents/${encodeURIComponent(consentId)}/revoke`,
+      input,
+    );
+  }
+
+  patchVoiceConsentStatus(consentId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'PATCH',
+      `/api/v1/voice/consents/${encodeURIComponent(consentId)}/status`,
       input,
     );
   }
