@@ -126,3 +126,5 @@ export interface ProvisioningToken {
   /** 已绑定 nodeId（未绑定前为空） */
   boundNodeId?: string;
 }
+
+export * from './voice';
