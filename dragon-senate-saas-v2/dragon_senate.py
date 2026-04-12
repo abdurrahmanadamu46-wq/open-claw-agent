@@ -2055,6 +2055,8 @@ def _route_distribution(state: DragonState):
 
 
 async def edge_delivery_worker(state: DragonState) -> dict[str, Any]:
+    from runtime_stage_router import derive_dispatcher_risk_flags
+
     content_package = state.get("content_package", {})
     targets = state.get("edge_targets", [])
     user_id = str(state.get("user_id") or "shared")
@@ -2117,6 +2119,14 @@ async def edge_delivery_worker(state: DragonState) -> dict[str, Any]:
                 error=f"delivery_not_fully_accepted accepted={accepted}/{len(rows)}",
             )
     queue_summary = clawteam_summary(user_id=user_id, trace_id=trace_id) if trace_id else {}
+    risk_flags = derive_dispatcher_risk_flags(
+        queue_summary=queue_summary,
+        selected_edges=len(targets),
+        expected_deliveries=len(targets),
+        delivered=len(rows),
+        accepted=accepted,
+        worker_failed_count=worker_failed,
+    )
 
     return {
         "delivery_results": rows,
@@ -2126,6 +2136,10 @@ async def edge_delivery_worker(state: DragonState) -> dict[str, Any]:
             "delivery_completed_count": worker_completed,
             "delivery_failed_count": worker_failed,
             "summary": queue_summary,
+        },
+        "dispatch_plan": {
+            **(state.get("dispatch_plan", {}) or {}),
+            "risk_flags": risk_flags,
         },
         "call_log": _agent_log(
             "distribute_to_edge",
@@ -2142,6 +2156,8 @@ async def edge_delivery_worker(state: DragonState) -> dict[str, Any]:
 
 
 async def collect_delivery(state: DragonState) -> dict[str, Any]:
+    from runtime_stage_router import derive_dispatcher_risk_flags
+
     expected = len(state.get("edge_targets", []))
     delivered = len(state.get("delivery_results", []))
     accepted = len([x for x in state.get("delivery_results", []) if x.get("accepted")])
@@ -2184,6 +2200,14 @@ async def collect_delivery(state: DragonState) -> dict[str, Any]:
         "accepted": accepted,
         "clawteam_marked_completed": completed_count,
         "clawteam_marked_failed": failed_count,
+        "risk_flags": derive_dispatcher_risk_flags(
+            queue_summary=queue_summary,
+            selected_edges=expected,
+            expected_deliveries=expected,
+            delivered=delivered,
+            accepted=accepted,
+            worker_failed_count=failed_count,
+        ),
     }
     queue_summary = clawteam_summary(user_id=user_id, trace_id=trace_id) if trace_id else {}
     return {
