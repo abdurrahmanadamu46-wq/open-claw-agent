@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "tauri-app",
   "private": true,
   "version": "0.1.0",
@@ -7,11 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "runtime:sync": "powershell -ExecutionPolicy Bypass -File scripts/sync-runtime.ps1",
-    "runtime:manifest:sign": "python scripts/sign-runtime-manifest.py --out runtime/updates/stable.json",
-    "tauri": "tauri",
-    "tauri:dev": "npm run runtime:sync && tauri dev",
-    "tauri:build": "npm run runtime:sync && tauri build"
+    "tauri": "tauri"
   },
   "dependencies": {
     "react": "^19.1.0",

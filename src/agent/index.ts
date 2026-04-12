@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Public API
  * @module agent
  */
@@ -23,3 +23,12 @@ export type { BehaviorLogPayload, BehaviorLogReportResult } from './behavior-rep
 export * from './types.js';
 export { NodeStatusEnum } from '../shared/contracts.js';
 export type { ICampaignConfig, CampaignJobData, NodeHeartbeatPayload, ILeadSubmissionPayload } from '../shared/contracts.js';
+
+// ── Industry Preview API (runtime-owned, stable handler-level entry) ──
+export { getIndustryCatalogHandler, compileIndustryWorkflowHandler } from './industry-preview-api.js';
+
+// ── Lead Runtime Config (decoupled from lead-pusher) ──
+export { resolveLeadPushRuntimeConfig } from './lead/lead-runtime-config.js';
+
+// ── Commander Decision Engine ──
+export { resolveCommanderDecision } from './commander/engine.js';

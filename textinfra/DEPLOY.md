@@ -1,4 +1,4 @@
-﻿# ClawCommerce 部署说明（textinfra）
+# ClawCommerce 部署说明（textinfra）
 
 ## 架构图
 

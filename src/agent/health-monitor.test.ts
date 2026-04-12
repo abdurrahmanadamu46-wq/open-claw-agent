@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - HealthMonitor unit tests
  */
 

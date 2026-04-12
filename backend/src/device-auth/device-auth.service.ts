@@ -1,4 +1,8 @@
-﻿import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { RedisService } from '@liaoliaots/nestjs-redis';
 import { JwtService } from '@nestjs/jwt';
 import type Redis from 'ioredis';
@@ -6,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { DeviceService } from '../device/device.service';
 import { AgentCCGateway } from '../gateway/agent-cc.gateway';
 
+/** Redis Ticket 状态机 — 本版仅 PENDING → CONFIRMED 后 Burn */
 type TicketStatus = 'PENDING' | 'SCANNED' | 'CONFIRMED';
 
 interface TicketPayload {
@@ -29,6 +34,7 @@ export class DeviceAuthService {
     return this.redisService.getOrThrow();
   }
 
+  /** Step 1: Tauri 生成 5 分钟有效 Ticket，展示二维码并联 WS */
   async createBindTicket(machineCode: string) {
     if (!machineCode?.trim()) {
       throw new BadRequestException('Machine code is required');
@@ -53,16 +59,19 @@ export class DeviceAuthService {
     };
   }
 
+  /** Step 2: 商家确认授权 → DB 绑定 → JWT → 删 Ticket → WS 推送 */
   async confirmTicketAndBind(tenantId: string, ticketId: string) {
     const redisKey = `device_bind:${ticketId}`;
     const ticketDataStr = await this.redis.get(redisKey);
+
     if (!ticketDataStr) {
-      throw new BadRequestException('ticket expired or invalid, please refresh on client');
+      throw new BadRequestException('二维码已过期或无效，请在客户端刷新重试');
     }
 
     const ticketData = JSON.parse(ticketDataStr) as TicketPayload;
+
     if (ticketData.status !== 'PENDING') {
-      throw new BadRequestException('ticket already consumed');
+      throw new BadRequestException('该二维码已被处理');
     }
 
     await this.deviceService.upsertDevice({
@@ -77,21 +86,20 @@ export class DeviceAuthService {
       role: 'agent_node',
     });
 
-    // Burn after successful bind.
+    // Burn after reading
     await this.redis.del(redisKey);
 
     const wsRoom = `auth_room_${ticketId}`;
     this.agentGateway.emitAuthSuccess(wsRoom, {
-      message: 'bind ok',
+      message: '授权成功',
       access_token: accessToken,
       tenant_id: tenantId,
     });
 
-    this.logger.log(`[Auth] Device ${ticketData.machine_code} bound to tenant ${tenantId} via ${ticketId}`);
-    return { success: true, message: 'device bound' };
-  }
+    this.logger.log(
+      `[Auth] Device ${ticketData.machine_code} bound to tenant ${tenantId} via ${ticketId}`,
+    );
 
-  async listBoundDevices(tenantId: string, limit = 100) {
-    return this.deviceService.listDevices(tenantId, limit);
+    return { success: true, message: '设备绑定成功' };
   }
 }

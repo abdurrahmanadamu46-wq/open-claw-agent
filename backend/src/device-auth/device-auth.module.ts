@@ -1,4 +1,4 @@
-﻿import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { DeviceAuthController } from './device-auth.controller';
 import { DeviceAuthService } from './device-auth.service';
 import { DeviceService } from '../device/device.service';

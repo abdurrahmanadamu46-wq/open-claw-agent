@@ -1,4 +1,4 @@
-﻿# ClawCommerce 本地 Demo 跑通指南
+# ClawCommerce 本地 Demo 跑通指南
 
 用 **docker-compose.local.yml** 和 **hosts** 在本地电脑跑通整站；老板看完满意再决定买服务器上生产。
 

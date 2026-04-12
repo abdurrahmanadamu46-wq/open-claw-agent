@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Logger interface (Winston-backed)
  * @module agent/logger
  */

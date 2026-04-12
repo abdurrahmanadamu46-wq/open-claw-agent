@@ -1,4 +1,4 @@
-﻿import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
 import { IntegrationsController } from './integrations.controller';
 import { IntegrationsService } from './integrations.service';

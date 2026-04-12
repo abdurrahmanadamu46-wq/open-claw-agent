@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Mock Adapter — 无 API 调用，用于单测与本地开发
  * 环境变量：LLM_PROVIDER=mock 时使用
  */

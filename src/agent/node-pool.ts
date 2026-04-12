@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Node pool with in-memory + Redis persistence
  * Manages OpenClaw node lifecycle: register, allocate, release, persist.
  * @module agent/node-pool

@@ -1,0 +1,8 @@
+一号客户 · 龙虾池总控公网地址（临时）
+
+https://loud-feet-rescue.loca.lt
+
+说明：
+- 此为 localtunnel 临时隧道，本机「总控后端」需保持运行在 3000 端口，且运行 npx localtunnel --port 3000 的窗口不能关。
+- 客户端 .env.vip 中已填写：C_AND_C_SERVER_URL=https://loud-feet-rescue.loca.lt/agent-cc
+- 若您重启了本机或关闭了隧道，需重新执行 npx localtunnel --port 3000 会得到新网址，需同步更新 .env.vip 后重新打包或把新 .env.vip 发给客户。

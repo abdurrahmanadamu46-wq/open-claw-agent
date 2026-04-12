@@ -1,4 +1,4 @@
-﻿# ClawCommerce Agent 内部 API 清单（供后端对接）
+# ClawCommerce Agent 内部 API 清单（供后端对接）
 
 > 后端通过内部 REST/WebSocket 调用以下能力，**不直接暴露给前端**。前端只调用后端的 `agent.service.ts` 等封装接口。
 

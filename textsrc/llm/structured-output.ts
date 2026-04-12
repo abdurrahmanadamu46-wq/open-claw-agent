@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 强制结构化 JSON 输出工具
  * - 根据 JSON Schema 生成 Prompt 引导文案
  * - 从模型返回中提取并解析 JSON（兼容 markdown 代码块）

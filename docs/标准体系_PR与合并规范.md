@@ -1,4 +1,4 @@
-﻿# ClawCommerce PR 与合并规范
+# ClawCommerce PR 与合并规范
 
 > 总负责人要求：单次 PR 必须 100% 满足本规范方可合并 main，确保商业化成品质量可追溯。
 

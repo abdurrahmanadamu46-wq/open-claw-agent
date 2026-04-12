@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - OpenClaw node management core engine
  * Dynamic allocation (campaign -> node + phone), idle release, health-driven recovery.
  * Concurrency protected by Redis/distributed lock.
@@ -25,8 +25,6 @@ import { campaignConfigFromPayload } from './workers/campaign-worker.js';
 const LOCK_KEY = 'clawcommerce:node-manager:lock';
 const LOCK_TTL_MS = 15000;
 const IDLE_RELEASE_DEFAULT_MINUTES = 30;
-const EXECUTION_IDEMPOTENCY_KEY_PREFIX = 'clawcommerce:execution:idempotency:';
-const EXECUTION_IDEMPOTENCY_TTL_SECONDS = 7 * 24 * 60 * 60;
 
 /** Simple distributed lock (Redis SET NX PX) */
 async function withLock<T>(redis: import('ioredis').Redis, fn: () => Promise<T>): Promise<T> {
@@ -258,35 +256,13 @@ export class NodeManager {
   async runCampaignTask(
     payload: ICampaignConfig,
     executeTask?: (params: { nodeId: string; config: ICampaignConfig }) => Promise<void>
-  ): Promise<{ ok: boolean; nodeId?: string; campaignId: string; tenantId: string; error?: string; skipped?: boolean }> {
+  ): Promise<{ ok: boolean; nodeId?: string; campaignId: string; tenantId: string; error?: string }> {
     const campaign = campaignConfigFromPayload(payload);
     const allocation = await this.allocate(campaign);
     if (!allocation) {
       return { ok: false, campaignId: payload.campaign_id, tenantId: payload.tenant_id, error: 'NO_NODE_AVAILABLE' };
     }
     const { nodeId } = allocation;
-    const taskId =
-      ((payload as unknown as { task_id?: string; job_id?: string }).task_id ||
-        (payload as unknown as { task_id?: string; job_id?: string }).job_id ||
-        payload.campaign_id) as string;
-    const executionKey = `${EXECUTION_IDEMPOTENCY_KEY_PREFIX}${payload.tenant_id}:${payload.campaign_id}:${taskId}:${nodeId}`;
-    const claimed = await this.redis.set(
-      executionKey,
-      new Date().toISOString(),
-      'EX',
-      EXECUTION_IDEMPOTENCY_TTL_SECONDS,
-      'NX',
-    );
-    if (claimed !== 'OK') {
-      this.logger.warn('Duplicate campaign execution ignored', {
-        tenantId: payload.tenant_id,
-        campaignId: payload.campaign_id,
-        taskId,
-        nodeId,
-      });
-      await this.release(nodeId);
-      return { ok: true, skipped: true, nodeId, campaignId: payload.campaign_id, tenantId: payload.tenant_id };
-    }
     demoLogBullMQ(payload.campaign_id);
     try {
       await this.nodePool.setWorkflowState(nodeId, NodeStatusEnum.SCRAPING);

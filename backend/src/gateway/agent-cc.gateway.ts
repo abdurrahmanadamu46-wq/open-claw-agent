@@ -1,8 +1,6 @@
-﻿import { Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import {
   ConnectedSocket,
-  OnGatewayConnection,
-  OnGatewayDisconnect,
   MessageBody,
   OnGatewayInit,
   SubscribeMessage,
@@ -10,7 +8,6 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { ensureSocketTrace, wsTracePrefix } from '../common/socket-trace.util';
 
 /**
  * Agent C&C Gateway — 路径与 v1.24 蓝图一致：/agent-cc
@@ -20,7 +17,7 @@ import { ensureSocketTrace, wsTracePrefix } from '../common/socket-trace.util';
   path: '/agent-cc',
   cors: { origin: true },
 })
-export class AgentCCGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class AgentCCGateway implements OnGatewayInit {
   private readonly logger = new Logger(AgentCCGateway.name);
 
   @WebSocketServer()
@@ -30,37 +27,22 @@ export class AgentCCGateway implements OnGatewayInit, OnGatewayConnection, OnGat
     this.logger.log('AgentCCGateway initialized at /agent-cc');
   }
 
-  handleConnection(client: Socket) {
-    const trace = ensureSocketTrace(client);
-    this.logger.log(`${wsTracePrefix(trace.traceId, trace.spanId)}[WS] AgentCC connected socketId=${client.id}`);
-  }
-
-  handleDisconnect(client: Socket) {
-    const trace = ensureSocketTrace(client);
-    this.logger.log(`${wsTracePrefix(trace.traceId, trace.spanId)}[WS] AgentCC disconnected socketId=${client.id}`);
-  }
-
   /**
    * Tauri 拿到 ticket 后先发此事件，后端将其加入专属房间，confirm-bind 后向该房间 emit server.auth.success
    */
   @SubscribeMessage('client.auth.listen')
   handleAuthListen(
     @ConnectedSocket() client: Socket,
-    @MessageBody() payload: { ticket_id?: string; traceId?: string },
+    @MessageBody() payload: { ticket_id?: string },
   ) {
     if (!payload?.ticket_id) return;
-    const trace = ensureSocketTrace(client, payload.traceId);
     const roomName = `auth_room_${payload.ticket_id}`;
     client.join(roomName);
-    this.logger.log(
-      `${wsTracePrefix(trace.traceId, trace.spanId)}[WS] Client ${client.id} joined ${roomName} (waiting for scan)`,
-    );
+    this.logger.log(`[WS] Client ${client.id} joined ${roomName} (waiting for scan)`);
   }
 
   /** 供 DeviceAuthService 调用：定向推送 JWT，避免 Service 直接依赖 server 实例 */
   emitAuthSuccess(roomName: string, data: Record<string, unknown>) {
-    const traceId = typeof data.traceId === 'string' ? data.traceId : undefined;
-    this.logger.log(`${wsTracePrefix(traceId)}[WS] Emit server.auth.success room=${roomName}`);
     this.server.to(roomName).emit('server.auth.success', data);
   }
 }

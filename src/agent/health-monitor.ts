@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Health monitor: CDP heartbeat + Playwright state + auto-recovery
  * Runs every 5 minutes (configurable); on anomaly: log, restart container, switch node.
  * @module agent/health-monitor

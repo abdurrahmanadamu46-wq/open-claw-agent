@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM v1.3 Sprint 1 - Agent 端交付说明
+# ClawCommerce PM v1.3 Sprint 1 - Agent 端交付说明
 
 > 对齐文档：研发协同协议 & 第一阶段双端开发任务书  
 > 协作：小丽(PM)、小明(后端)、Cursor(AI Agent 工程师)

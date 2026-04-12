@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 定制龙虾 Agent — 7 大角色统一导出
  * 与前端 data/custom-lobster-agents 的 id 保持一致，便于 LangGraph/工具链接入
  */

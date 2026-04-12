@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM 文档 v1.23
+# ClawCommerce PM 文档 v1.23
 
 ## 龙虾池核心大脑：分布式多节点智能调度策略 (Smart Dispatching)
 

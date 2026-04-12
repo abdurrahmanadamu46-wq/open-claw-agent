@@ -1,4 +1,4 @@
-﻿# BYOK 算力中台 — new-api
+# BYOK 算力中台 — new-api
 
 基于 [QuantumNous/new-api](https://github.com/QuantumNous/new-api) 的 OpenAI 兼容 API 网关，用于密钥池化、计费、多模型路由。
 

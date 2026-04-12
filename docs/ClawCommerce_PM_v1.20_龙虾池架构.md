@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM 文档 v1.20  
+# ClawCommerce PM 文档 v1.20  
 ## 战略级升级：分布式「龙虾池」架构 (Remote C&C) 与客户端下放
 
 **致：** 小军（全栈/Agent）、小明（后端）  

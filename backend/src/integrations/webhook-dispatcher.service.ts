@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectQueue } from '@nestjs/bullmq';
 import { Queue } from 'bullmq';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,7 +6,7 @@ import { IntegrationsService } from './integrations.service';
 import { WEBHOOK_DISPATCH_QUEUE } from './webhook-queue.const';
 import type { StandardLeadPayload } from '../interfaces/standard-lead-payload.interface';
 
-/** 闃熷垪 Job 鏁版嵁缁撴瀯 */
+/** 队列 Job 数据结构 */
 export interface WebhookJobData {
   payload: StandardLeadPayload;
 }
@@ -19,8 +19,8 @@ export class WebhookDispatcherService {
   ) {}
 
   /**
-   * 鑾峰彇绉熸埛閰嶇疆鐨?Webhook URL锛坙eadCaptureUrl锛?
-   * 鏈厤缃垨鏈惎鐢ㄦ椂杩斿洖 null
+   * 获取租户配置的 Webhook URL（leadCaptureUrl）
+   * 未配置或未启用时返回 null
    */
   async getWebhookUrl(tenantId: string): Promise<string | null> {
     const integrations = await this.integrationsService.getIntegrations(tenantId);
@@ -30,14 +30,14 @@ export class WebhookDispatcherService {
   }
 
   /**
-   * 灏嗙嚎绱㈡姇鍏ユ寔涔呭寲闃熷垪锛岀敱 WebhookWorker 寮傛鍙戦€?
-   * - 鏈厤缃?URL 鏃剁洿鎺ヨ繑鍥炲け璐ワ紝涓嶅叆闃?
-   * - BullMQ 鍘熺敓鎸囨暟閫€閬块噸璇曪紝鏈€澶?3 娆?
+   * 将线索投入持久化队列，由 WebhookWorker 异步发送
+   * - 未配置 URL 时直接返回失败，不入队
+   * - BullMQ 原生指数退避重试，最多 3 次
    */
   async enqueueLead(payload: StandardLeadPayload): Promise<{ ok: true; jobId: string } | { ok: false; error: string }> {
     const url = await this.getWebhookUrl(payload.tenantId);
     if (!url) {
-      return { ok: false, error: 'Webhook 鏈厤缃垨鏈惎鐢?(leadCaptureUrl)' };
+      return { ok: false, error: 'Webhook 未配置或未启用 (leadCaptureUrl)' };
     }
 
     const job = await this.webhookQueue.add(
@@ -52,7 +52,7 @@ export class WebhookDispatcherService {
   }
 
   /**
-   * 鍏煎鏃ц皟鐢細fireWebhook 鏀逛负鍏ラ槦锛岃繑鍥炶涔変笌鍘熷厛涓€鑷达紙ok + error锛?
+   * 兼容旧调用：fireWebhook 改为入队，返回语义与原先一致（ok + error）
    */
   async fireWebhook(payload: StandardLeadPayload): Promise<{ ok: boolean; jobId?: string; error?: string }> {
     const result = await this.enqueueLead(payload);
@@ -61,7 +61,8 @@ export class WebhookDispatcherService {
   }
 
   /**
-   * 鍙戦€佹祴璇曠嚎绱?鈥?鍚屾牱鍏ラ槦锛岀敱 Worker 鍙戦€?   */
+   * 发送测试用 Mock 线索 — 同样入队，由 Worker 发送
+   */
   async fireTestWebhook(tenantId: string): Promise<{ ok: boolean; jobId?: string; error?: string }> {
     const payload: StandardLeadPayload = {
       eventId: uuidv4(),
@@ -69,13 +70,12 @@ export class WebhookDispatcherService {
       tenantId,
       source: 'douyin',
       leadDetails: {
-        username: '[娴嬭瘯] 灏忔槑',
-        profileUrl: 'https://www.douyin.com/user/test-account',
-        content: '杩欎釜鎬庝箞鍗栵紵',
-        sourceVideoUrl: 'https://www.douyin.com/video/test-content',
+        username: '[测试] 小明',
+        profileUrl: 'https://example.com/profile/test',
+        content: '这个怎么卖？',
+        sourceVideoUrl: 'https://example.com/video/123',
       },
     };
     return this.fireWebhook(payload);
   }
 }
-

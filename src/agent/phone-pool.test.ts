@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - PhonePool unit tests
  */
 

@@ -1,31 +1,26 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
-榫欒櫨鐭ヨ瘑鍖呮壒閲忓～鍏呰剼鏈?鈥?SP2 Knowledge Pack Generator
+🦞 龙虾知识包批量填充脚本 — SP2 Knowledge Pack Generator
 ==========================================================
 
-璇诲彇姣忓彧铏剧殑 role-card.json + prompt-kit锛岃皟鐢?OpenAI 鍏煎鎺ュ彛鐢熸垚锛?  1. industry-rules.json          姣忚櫨闇€瑕佺煡閬撶殑琛屼笟瑙勫垯 / 鏈€浣冲疄璺?  2. hooks-library.json           姣忚櫨鍙敤鐨勮Е鍙戦挬瀛?/ 琛屽姩妯℃澘
-  3. scoring-features.json        姣忚櫨璇勪及璐ㄩ噺鐨勭壒寰佺淮搴?  4. expanded-golden-cases.json   鎵╁睍 datasets/golden-cases.json
+读取每只虾的 role-card.json + prompt-kit，调用 LLM 生成：
+  1. 行业规则库 (industry-rules.json)     — 每虾需要知道的行业规则/最佳实践
+  2. 钩子库 (hooks-library.json)          — 每虾可用的触发钩子/行动模板
+  3. 评分特征库 (scoring-features.json)   — 每虾评估质量的特征维度
+  4. 扩展金案例 (expanded-golden-cases.json) — 扩展 datasets/golden-cases.json
 
-浣跨敤鏂规硶锛?  1. 璁剧疆鐜鍙橀噺锛堜笉瑕佹妸瀵嗛挜鍐欒繘浠撳簱锛?     set OPENAI_API_KEY=sk-xxx
-     set OPENAI_BASE_URL=https://www.ananapi.com/
-     set OPENAI_MODEL=gpt-5.4
-
-     鍙€夛細澶?key 杞崲
-     set OPENAI_API_KEYS=sk-a,sk-b,sk-c
-
-  2. 杩愯
+使用方法:
+  1. 设置环境变量:
+     set OPENAI_API_KEY=sk-xxx
+     set OPENAI_BASE_URL=https://www.ananapi.com/v1  (可选，默认 https://api.openai.com/v1)
+     set OPENAI_MODEL=gpt-4o  (可选，默认 gpt-4o)
+  2. 运行:
      python scripts/generate-knowledge-packs.py
-
-  3. 鍙€夊弬鏁?     --lobster radar
-     --lobster all
-     --dry-run
-     --industries "椁愰ギ鏈嶅姟_涓棣?鍖荤枟鍋ュ悍_鍙ｈ厰闂ㄨ瘖"
-     --pack-types industry_rules,hooks,scoring,golden_cases
-
-璇存槑锛?  - 榛樿杈撳嚭鍒?dragon-senate-saas-v2/data/knowledge-packs/<lobster>/<industry>/
-  - 榛樿妯″瀷閰嶇疆瀵归綈褰撳墠椤圭洰涓荤嚎锛?      base_url = https://www.ananapi.com/
-      model    = gpt-5.4
-  - 鑴氭湰鍙細鎻愰啋鈥滄€昏皟鐢ㄦ鏁扳€濓紝鏃犳硶绮剧‘鐭ラ亾绗笁鏂瑰钩鍙扮殑鐪熷疄浣欓鏄惁鑰楀敖
+  3. 可选参数:
+     --lobster radar          只处理一只虾
+     --lobster all            处理全部9只（默认）
+     --dry-run                只打印prompt，不调用LLM
+     --industries "医疗,教育,家装"  指定行业（默认5个核心行业）
 """
 
 from __future__ import annotations
@@ -33,13 +28,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import ssl
 import sys
 import time
-import urllib.request
 from pathlib import Path
 from typing import Any
-
 
 # ---------------------------------------------------------------------------
 # Config
@@ -50,376 +42,278 @@ LOBSTERS_DIR = REPO_ROOT / "packages" / "lobsters"
 OUTPUT_DIR = REPO_ROOT / "dragon-senate-saas-v2" / "data" / "knowledge-packs"
 
 ALL_LOBSTER_IDS = [
-    "radar",
-    "strategist",
-    "inkwriter",
-    "visualizer",
-    "dispatcher",
-    "echoer",
-    "catcher",
-    "abacus",
-    "followup",
+    "radar", "strategist", "inkwriter", "visualizer",
+    "dispatcher", "echoer", "catcher", "abacus", "followup",
 ]
 
 DEFAULT_INDUSTRIES = [
-    "椁愰ギ鏈嶅姟_涓棣?,
-    "椁愰ギ鏈嶅姟_鐏攨搴?,
-    "椁愰ギ鏈嶅姟_鐑х儰搴?,
-    "椁愰ギ鏈嶅姟_濂惰尪搴?,
-    "椁愰ギ鏈嶅姟_鍜栧暋搴?,
-    "椁愰ギ鏈嶅姟_鐑樼剻搴?,
-    "椁愰ギ鏈嶅姟_蹇搴?,
-    "閰掑簵姘戝_鍟嗗姟閰掑簵",
-    "閰掑簵姘戝_搴﹀亣閰掑簵",
-    "閰掑簵姘戝_绮惧搧姘戝",
-    "閰掑簵姘戝_鍩庡競姘戝",
-    "閰掑簵姘戝_瀹㈡爤",
-    "閰掑簵姘戝_鍏瘬閰掑簵",
-    "缇庝笟鍋ュ悍_缇庡闄?,
-    "缇庝笟鍋ュ悍_缇庣敳搴?,
-    "缇庝笟鍋ュ悍_缇庡彂搴?,
-    "缇庝笟鍋ュ悍_杞诲尰缇庢満鏋?,
-    "缇庝笟鍋ュ悍_鐨偆绠＄悊",
-    "缇庝笟鍋ュ悍_鍏荤敓棣?,
-    "缇庝笟鍋ュ悍_鐞嗙枟棣?,
-    "鏁欒偛鍩硅_鑱屼笟鏁欒偛",
-    "鏁欒偛鍩硅_璇█鍩硅",
-    "鏁欒偛鍩硅_鑰冪爺鍩硅",
-    "鏁欒偛鍩硅_鑹烘湳鍩硅",
-    "鏁欒偛鍩硅_灏戝効绱犺川鏁欒偛",
-    "鏁欒偛鍩硅_鎴愪汉鎶€鑳藉煿璁?,
-    "姹借溅鏈嶅姟_浜屾墜杞﹂棬搴?,
-    "姹借溅鏈嶅姟_鏂拌溅缁忛攢",
-    "姹借溅鏈嶅姟_姹借溅缇庡",
-    "姹借溅鏈嶅姟_姹借溅缁翠慨",
-    "姹借溅鏈嶅姟_姹借溅鏀硅",
-    "姹借溅鏈嶅姟_姹借溅绉熻祦",
-    "寤虹瓚琛屼笟_闂ㄦゼ",
-    "瀹跺眳瑁呬慨_瑁呬慨鍏徃",
-    "瀹跺眳瑁呬慨_鍏ㄥ眿瀹氬埗",
-    "瀹跺眳瑁呬慨_瀹跺眳寤烘潗",
-    "瀹跺眳瑁呬慨_瀹剁數闂ㄥ簵",
-    "瀹跺眳瑁呬慨_鏅鸿兘瀹跺眳",
-    "瀹跺眳瑁呬慨_杞璁捐",
-    "鏈湴闆跺敭_鐢熼矞闂ㄥ簵",
-    "鏈湴闆跺敭_绀惧尯瓒呭競",
-    "鏈湴闆跺敭_姣嶅┐闂ㄥ簵",
-    "鏈湴闆跺敭_瀹犵墿闂ㄥ簵",
-    "鏈湴闆跺敭_鐑熼厭搴?,
-    "鏈湴闆跺敭_鑽簵",
-    "鐢熸椿鏈嶅姟_瀹舵斂鏈嶅姟",
-    "鐢熸椿鏈嶅姟_鎼鏈嶅姟",
-    "鐢熸椿鏈嶅姟_娲楄。娲楁姢",
-    "鐢熸椿鏈嶅姟_寮€閿佹湇鍔?,
-    "鐢熸椿鏈嶅姟_绠￠亾缁翠慨",
-    "鐢熸椿鏈嶅姟_瀹剁數娓呮礂",
-    "鍖荤枟鍋ュ悍_鍙ｈ厰闂ㄨ瘖",
-    "鍖荤枟鍋ュ悍_鐪肩闂ㄨ瘖",
-    "鍖荤枟鍋ュ悍_浣撴涓績",
-    "鍖荤枟鍋ュ悍_搴峰涓績",
-    "鍖荤枟鍋ュ悍_涓尰璇婃墍",
-    "鍖荤枟鍋ュ悍_蹇冪悊鍜ㄨ",
+    "本地生活_医疗口腔",
+    "本地生活_家装装修",
+    "本地生活_教育培训",
+    "本地生活_婚纱摄影",
+    "电商_美妆护肤",
 ]
 
-PACK_TYPE_TO_FILENAME = {
-    "industry_rules": "industry-rules.json",
-    "hooks": "hooks-library.json",
-    "scoring": "scoring-features.json",
-    "golden_cases": "expanded-golden-cases.json",
-}
-
+# Per-lobster knowledge generation prompts
 LOBSTER_KB_INSTRUCTIONS: dict[str, dict[str, str]] = {
     "radar": {
-        "industry_rules": "浣滀负瑙﹂』铏?Radar)锛屼綘璐熻矗淇″彿鎵弿鍜屽櫔闊宠繃婊ゃ€傝鐢熸垚璇ヨ涓氫腑锛?锛夊钩鍙拌鍒欏彉鏇寸殑甯歌妯″紡 2锛夌珵鍝佺洃鎺х殑鍏抽敭鎸囨爣 3锛変俊鍙峰彲淇″害璇勪及瑙勫垯 4锛夊櫔闊宠繃婊よ鍒?,
-        "hooks": "璇风敓鎴怰adar铏惧湪璇ヨ涓氬彲鐢ㄧ殑鐩戞帶閽╁瓙锛?锛夊钩鍙板叕鍛婄洃鎺цЕ鍙戝櫒 2锛夌珵鍝佽涓哄彉鍖栨娴嬬偣 3锛夎秼鍔夸俊鍙疯仛鍚堣鍒?4锛夐璀﹂槇鍊艰缃?,
-        "scoring": "璇风敓鎴怰adar铏捐瘎浼颁俊鍙疯川閲忕殑璇勫垎鐗瑰緛锛?锛夋潵婧愬彲淇″害(0-1) 2锛変俊鍙锋柊椴滃害 3锛夊奖鍝嶈寖鍥?4锛夊彲鎿嶄綔鎬?5锛夊櫔闊虫鐜?,
+        "industry_rules": "作为触须虾(Radar)，你负责信号扫描和噪音过滤。请生成该行业中：1）平台规则变更的常见模式 2）竞品监控的关键指标 3）信号可信度评估规则 4）噪音过滤规则",
+        "hooks": "请生成Radar虾在该行业可用的监控钩子：1）平台公告监控触发器 2）竞品行为变化检测点 3）趋势信号聚合规则 4）预警阈值设置",
+        "scoring": "请生成Radar虾评估信号质量的评分特征：1）来源可信度(0-1) 2）信号新鲜度 3）影响范围 4）可操作性 5）噪音概率",
     },
     "strategist": {
-        "industry_rules": "浣滀负鑴戣櫕铏?Strategist)锛屼綘璐熻矗鐩爣鎷嗚В鍜岀瓥鐣ヨ矾鐢便€傝鐢熸垚璇ヨ涓氫腑锛?锛夊吀鍨嬭幏瀹㈢瓥鐣ユā寮?2锛塕OI 浼樺厛绾ф帓搴忚鍒?3锛夐闄╄瘎浼版爣鍑?4锛夎祫婧愬垎閰嶅師鍒?,
-        "hooks": "璇风敓鎴怱trategist铏惧湪璇ヨ涓氬彲鐢ㄧ殑绛栫暐閽╁瓙锛?锛夌瓥鐣ヨЕ鍙戞潯浠?2锛堿/B娴嬭瘯妗嗘灦 3锛夐绠楀垎閰嶆ā鏉?4锛夋鎹熻Е鍙戠偣",
-        "scoring": "璇风敓鎴怱trategist铏捐瘎浼扮瓥鐣ヨ川閲忕殑璇勫垎鐗瑰緛锛?锛夌洰鏍囪揪鎴愭鐜?2锛夎祫婧愭晥鐜?3锛夐闄╂毚闇插害 4锛夊彲鎵ц鎬?5锛夋椂闂寸獥鍙ｉ€傞厤搴?,
+        "industry_rules": "作为脑虫虾(Strategist)，你负责目标拆解和策略路由。请生成该行业中：1）典型获客策略模式 2）ROI 优先级排序规则 3）风险评估标准 4）资源分配原则",
+        "hooks": "请生成Strategist虾在该行业可用的策略钩子：1）策略触发条件 2）A/B测试框架 3）预算分配模板 4）止损触发点",
+        "scoring": "请生成Strategist虾评估策略质量的评分特征：1）目标达成概率 2）资源效率 3）风险暴露度 4）可执行性 5）时间窗口适配度",
     },
     "inkwriter": {
-        "industry_rules": "浣滀负鍚愬ⅷ铏?InkWriter)锛屼綘璐熻矗鎴愪氦瀵煎悜鏂囨銆傝鐢熸垚璇ヨ涓氫腑锛?锛夐珮杞寲鏂囨缁撴瀯妯℃澘 2锛夎涓氫笓涓氭湳璇簱 3锛夊悎瑙勭孩绾胯瘝姹?4锛夋儏鎰熼挬瀛愭ā寮?,
-        "hooks": "璇风敓鎴怚nkWriter铏惧湪璇ヨ涓氬彲鐢ㄧ殑鏂囨閽╁瓙锛?锛夋爣棰樻ā鏉垮簱 2锛夌棝鐐?瑙ｅ喅鏂规瀵圭収琛?3锛夎鍔ㄥ彿鍙?CTA)妯℃澘 4锛変俊浠昏儗涔﹀厓绱?,
-        "scoring": "璇风敓鎴怚nkWriter铏捐瘎浼版枃妗堣川閲忕殑璇勫垎鐗瑰緛锛?锛夐挬瀛愬己搴?2锛変笓涓氬害 3锛夋儏鎰熷叡楦?4锛夊悎瑙勫畨鍏ㄦ€?5锛塁TA娓呮櫚搴?,
+        "industry_rules": "作为吐墨虾(InkWriter)，你负责成交导向文案。请生成该行业中：1）高转化文案结构模板 2）行业专业术语库 3）合规红线词汇 4）情感钩子模式",
+        "hooks": "请生成InkWriter虾在该行业可用的文案钩子：1）标题模板库 2）痛点-解决方案对照表 3）行动号召(CTA)模板 4）信任背书元素",
+        "scoring": "请生成InkWriter虾评估文案质量的评分特征：1）钩子强度 2）专业度 3）情感共鸣 4）合规安全性 5）CTA清晰度",
     },
     "visualizer": {
-        "industry_rules": "浣滀负骞诲奖铏?Visualizer)锛屼綘璐熻矗鍒嗛暅鍜岃瑙夎璁°€傝鐢熸垚璇ヨ涓氫腑锛?锛夐珮瀹屾挱鐜囪棰戠粨鏋?2锛夐灞忓惛寮曞姏瑙勫垯 3锛夎瑙夐鏍兼爣鍑?4锛夎瘉鎹劅鐢婚潰瑙勮寖",
-        "hooks": "璇风敓鎴怴isualizer铏惧湪璇ヨ涓氬彲鐢ㄧ殑瑙嗚閽╁瓙锛?锛夊紑鍦?绉掓ā鏉?2锛夊垎闀滆妭濂忔ā鏉?3锛夊瓧骞?鏍囨敞鏍峰紡 4锛夎浆鍦烘晥鏋滄帹鑽?,
-        "scoring": "璇风敓鎴怴isualizer铏捐瘎浼拌瑙夎川閲忕殑璇勫垎鐗瑰緛锛?锛夐灞忓仠鐣欑巼棰勬祴 2锛変俊鎭瘑搴?3锛夊搧鐗屼竴鑷存€?4锛夎瘉鎹劅寮哄害 5锛夊畬鎾巼棰勬祴",
+        "industry_rules": "作为幻影虾(Visualizer)，你负责分镜和视觉设计。请生成该行业中：1）高完播率视频结构 2）首屏吸引力规则 3）视觉风格标准 4）证据感画面规范",
+        "hooks": "请生成Visualizer虾在该行业可用的视觉钩子：1）开场3秒模板 2）分镜节奏模板 3）字幕/标注样式 4）转场效果推荐",
+        "scoring": "请生成Visualizer虾评估视觉质量的评分特征：1）首屏停留率预测 2）信息密度 3）品牌一致性 4）证据感强度 5）完播率预测",
     },
     "dispatcher": {
-        "industry_rules": "浣滀负鐐瑰叺铏?Dispatcher)锛屼綘璐熻矗鎵ц璁″垝鎷嗗寘銆傝鐢熸垚璇ヨ涓氫腑锛?锛夊彂甯冭妭濂忚鍒?2锛夋笭閬撻€夋嫨鐭╅樀 3锛夌伆搴﹀彂甯冪瓥鐣?4锛夋鎹熸潯浠?,
-        "hooks": "璇风敓鎴怐ispatcher铏惧湪璇ヨ涓氬彲鐢ㄧ殑璋冨害閽╁瓙锛?锛夋渶浣冲彂甯冩椂闂寸獥鍙?2锛夋笭閬撲紭鍏堢骇瑙勫垯 3锛夐绠楀垎閰嶈Е鍙戝櫒 4锛夌揣鎬ユ鎹熻Е鍙戝櫒",
-        "scoring": "璇风敓鎴怐ispatcher铏捐瘎浼版墽琛岃鍒掕川閲忕殑璇勫垎鐗瑰緛锛?锛夎鐩栫巼 2锛夎妭濂忓悎鐞嗘€?3锛夎祫婧愬埄鐢ㄧ巼 4锛夐闄╃紦閲婂害 5锛夊搷搴旈€熷害",
+        "industry_rules": "作为点兵虾(Dispatcher)，你负责执行计划拆包。请生成该行业中：1）发布节奏规则 2）渠道选择矩阵 3）灰度发布策略 4）止损条件",
+        "hooks": "请生成Dispatcher虾在该行业可用的调度钩子：1）最佳发布时间窗口 2）渠道优先级规则 3）预算分配触发器 4）紧急止损触发器",
+        "scoring": "请生成Dispatcher虾评估执行计划质量的评分特征：1）覆盖率 2）节奏合理性 3）资源利用率 4）风险缓释度 5）响应速度",
     },
     "echoer": {
-        "industry_rules": "浣滀负鍥炲０铏?Echoer)锛屼綘璐熻矗浜掑姩鍥炲鍜岃瘎璁虹鐞嗐€傝鐢熸垚璇ヨ涓氫腑锛?锛夌湡浜烘劅鍥炲妯℃澘 2锛夎礋闈㈣瘎璁哄鐞嗚鍒?3锛変簰鍔ㄨ浆鍖栬瘽鏈?4锛夋儏缁壙鎺ョ瓥鐣?,
-        "hooks": "璇风敓鎴怑choer铏惧湪璇ヨ涓氬彲鐢ㄧ殑浜掑姩閽╁瓙锛?锛夋闈㈣瘎璁鸿窡杩涙ā鏉?2锛夎川鐤戝洖搴旀ā鏉?3锛夊紩瀵肩鑱婅瘽鏈?4锛夌ぞ缇や簰鍔ㄨЕ鍙戝櫒",
-        "scoring": "璇风敓鎴怑choer铏捐瘎浼颁簰鍔ㄨ川閲忕殑璇勫垎鐗瑰緛锛?锛夌湡浜烘劅璇勫垎 2锛夋儏缁尮閰嶅害 3锛夎浆鍖栧紩瀵肩巼 4锛夊洖澶嶅強鏃舵€?5锛夊搧鐗岃皟鎬т竴鑷存€?,
+        "industry_rules": "作为回声虾(Echoer)，你负责互动回复和评论管理。请生成该行业中：1）真人感回复模板 2）负面评论处理规则 3）互动转化话术 4）情绪承接策略",
+        "hooks": "请生成Echoer虾在该行业可用的互动钩子：1）正面评论跟进模板 2）质疑回应模板 3）引导私聊话术 4）社群互动触发器",
+        "scoring": "请生成Echoer虾评估互动质量的评分特征：1）真人感评分 2）情绪匹配度 3）转化引导率 4）回复及时性 5）品牌调性一致性",
     },
     "catcher": {
-        "industry_rules": "浣滀负閾佺綉铏?Catcher)锛屼綘璐熻矗绾跨储璇嗗埆鍜岃繃婊ゃ€傝鐢熸垚璇ヨ涓氫腑锛?锛夐珮鎰忓悜淇″彿璇嗗埆瑙勫垯 2锛変綆璐ㄩ噺绾跨储杩囨护瑙勫垯 3锛夐绠楀垽鏂爣鍑?4锛夌揣杩害璇勪及缁村害",
-        "hooks": "璇风敓鎴怌atcher铏惧湪璇ヨ涓氬彲鐢ㄧ殑绾跨储鎹曡幏閽╁瓙锛?锛夋剰鍚戝叧閿瘝搴?2锛夎涓轰俊鍙疯Е鍙戝櫒 3锛夌珵鍝佹瘮杈冧俊鍙?4锛夎喘涔版椂鏈轰俊鍙?,
-        "scoring": "璇风敓鎴怌atcher铏捐瘎浼扮嚎绱㈣川閲忕殑璇勫垎鐗瑰緛锛?锛夋剰鍚戝己搴?0-100) 2锛夐绠楀尮閰嶅害 3锛夊喅绛栭樁娈?4锛夋椂鏁堟€?5锛夎浆鍖栨鐜?,
+        "industry_rules": "作为铁网虾(Catcher)，你负责线索识别和过滤。请生成该行业中：1）高意向信号识别规则 2）低质量线索过滤规则 3）预算判断标准 4）紧迫度评估维度",
+        "hooks": "请生成Catcher虾在该行业可用的线索捕获钩子：1）意向关键词库 2）行为信号触发器 3）竞品比较信号 4）购买时机信号",
+        "scoring": "请生成Catcher虾评估线索质量的评分特征：1）意向强度(0-100) 2）预算匹配度 3）决策阶段 4）时效性 5）转化概率",
     },
     "abacus": {
-        "industry_rules": "浣滀负閲戠畻铏?Abacus)锛屼綘璐熻矗璇勫垎鍜孯OI璁＄畻銆傝鐢熸垚璇ヨ涓氫腑锛?锛塕OI璁＄畻鍏紡 2锛夊綊鍥犳ā鍨嬭鍒?3锛夋垚鏈熀鍑嗙嚎 4锛夋晥鏋滃鏍囨爣鍑?,
-        "hooks": "璇风敓鎴怉bacus铏惧湪璇ヨ涓氬彲鐢ㄧ殑璇勪及閽╁瓙锛?锛夊疄鏃禦OI璁＄畻瑙﹀彂鍣?2锛夋垚鏈秴鏍囬璀?3锛夋晥鏋滄嫄鐐规娴?4锛夊綊鍥犵獥鍙ｈ鍒?,
-        "scoring": "璇风敓鎴怉bacus铏捐瘎浼版晥鏋滆川閲忕殑璇勫垎鐗瑰緛锛?锛塁PA(鍗曞鎴愭湰) 2锛塕OAS(骞垮憡鍥炴姤) 3锛塋TV棰勬祴 4锛夋笭閬撴晥鐜?5锛夎竟闄呮敹鐩?,
+        "industry_rules": "作为金算虾(Abacus)，你负责评分和ROI计算。请生成该行业中：1）ROI计算公式 2）归因模型规则 3）成本基准线 4）效果对标标准",
+        "hooks": "请生成Abacus虾在该行业可用的评估钩子：1）实时ROI计算触发器 2）成本超标预警 3）效果拐点检测 4）归因窗口规则",
+        "scoring": "请生成Abacus虾评估效果质量的评分特征：1）CPA(单客成本) 2）ROAS(广告回报) 3）LTV预测 4）渠道效率 5）边际收益",
     },
     "followup": {
-        "industry_rules": "浣滀负鍥炶铏?FollowUp)锛屼綘璐熻矗瀹㈡埛璺熻繘鍜屼簩娆℃縺娲汇€傝鐢熸垚璇ヨ涓氫腑锛?锛夎窡杩涜妭濂廠OP 2锛変簩娆℃縺娲昏瘽鏈?3锛夊鎴峰垎灞傝鍒?4锛夋祦澶遍璀︿俊鍙?,
-        "hooks": "璇风敓鎴怓ollowUp铏惧湪璇ヨ涓氬彲鐢ㄧ殑璺熻繘閽╁瓙锛?锛夐娆¤窡杩涙椂鏈?2锛夊娆¤窡杩涜妭濂忔ā鏉?3锛夋縺娲讳紭鎯犺Е鍙戝櫒 4锛夋祦澶辨尳鍥炶Е鍙戝櫒",
-        "scoring": "璇风敓鎴怓ollowUp铏捐瘎浼拌窡杩涜川閲忕殑璇勫垎鐗瑰緛锛?锛夎窡杩涘強鏃舵€?2锛夊鎴锋弧鎰忓害 3锛変簩娆¤浆鍖栫巼 4锛夋祦澶辨尳鍥炵巼 5锛塋TV鎻愬崌",
+        "industry_rules": "作为回访虾(FollowUp)，你负责客户跟进和二次激活。请生成该行业中：1）跟进节奏SOP 2）二次激活话术 3）客户分层规则 4）流失预警信号",
+        "hooks": "请生成FollowUp虾在该行业可用的跟进钩子：1）首次跟进时机 2）多次跟进节奏模板 3）激活优惠触发器 4）流失挽回触发器",
+        "scoring": "请生成FollowUp虾评估跟进质量的评分特征：1）跟进及时性 2）客户满意度 3）二次转化率 4）流失挽回率 5）LTV提升",
     },
 }
-
 
 # ---------------------------------------------------------------------------
 # LLM Client
 # ---------------------------------------------------------------------------
 
-def _load_api_keys() -> list[str]:
-    multi = os.getenv("OPENAI_API_KEYS", "").strip()
-    if multi:
-        return [item.strip() for item in multi.split(",") if item.strip()]
-    single = os.getenv("OPENAI_API_KEY", "").strip()
-    return [single] if single else []
+def _call_llm(prompt: str, system: str = "", model: str = "gpt-4o", base_url: str = "", api_key: str = "") -> str:
+    """Call OpenAI-compatible API. Returns raw text response."""
+    import urllib.request
+    import ssl
 
-
-def _call_llm(
-    prompt: str,
-    *,
-    system: str,
-    model: str,
-    base_url: str,
-    api_key: str,
-) -> str:
     if not api_key:
-        raise RuntimeError("No OpenAI-compatible API key available")
+        raise RuntimeError("OPENAI_API_KEY not set")
 
     url = f"{base_url.rstrip('/')}/chat/completions"
+
     payload = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": prompt},
-        ],
+        "messages": [],
         "temperature": 0.7,
         "max_tokens": 4000,
     }
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}",
-        },
-        method="POST",
-    )
+    if system:
+        payload["messages"].append({"role": "system", "content": system})
+    payload["messages"].append({"role": "user", "content": prompt})
+
+    data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+    }
+
+    req = urllib.request.Request(url, data=data, headers=headers, method="POST")
     ctx = ssl.create_default_context()
-    with urllib.request.urlopen(req, timeout=180, context=ctx) as resp:
-        body = json.loads(resp.read().decode("utf-8"))
-        return body["choices"][0]["message"]["content"]
+
+    try:
+        with urllib.request.urlopen(req, timeout=120, context=ctx) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"  ❌ LLM call failed: {e}")
+        raise
 
 
 def _parse_json_from_llm(text: str) -> Any:
-    cleaned = text.strip()
-    if cleaned.startswith("```"):
-        lines = cleaned.splitlines()
-        if len(lines) >= 2:
-            lines = lines[1:]
-        if lines and lines[-1].strip().startswith("```"):
-            lines = lines[:-1]
-        cleaned = "\n".join(lines).strip()
+    """Extract JSON from LLM response (handles markdown code fences)."""
+    text = text.strip()
+    if text.startswith("```"):
+        lines = text.split("\n")
+        # Remove first and last lines (code fences)
+        start = 1
+        end = len(lines)
+        for i in range(len(lines) - 1, 0, -1):
+            if lines[i].strip().startswith("```"):
+                end = i
+                break
+        text = "\n".join(lines[start:end])
     try:
-        return json.loads(cleaned)
+        return json.loads(text)
     except json.JSONDecodeError:
-        for idx, ch in enumerate(cleaned):
-            if ch in {"{", "["}:
+        # Try to find JSON object/array in text
+        for i, ch in enumerate(text):
+            if ch in ("{", "["):
                 try:
-                    return json.loads(cleaned[idx:])
+                    return json.loads(text[i:])
                 except json.JSONDecodeError:
                     continue
-        return {"_raw_text": cleaned}
+        print(f"  ⚠️ Could not parse JSON, saving as raw text")
+        return {"_raw_text": text}
 
 
 # ---------------------------------------------------------------------------
-# Data Loading
+# Knowledge Pack Generator
 # ---------------------------------------------------------------------------
 
 def load_role_card(lobster_id: str) -> dict[str, Any]:
+    """Load role-card.json for a lobster."""
     path = LOBSTERS_DIR / f"lobster-{lobster_id}" / "role-card.json"
     if not path.exists():
         raise FileNotFoundError(f"Role card not found: {path}")
-    return json.loads(path.read_text(encoding="utf-8"))
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
 def load_system_prompt(lobster_id: str) -> str:
+    """Load system.prompt.md for a lobster."""
     path = LOBSTERS_DIR / f"lobster-{lobster_id}" / "prompt-kit" / "system.prompt.md"
-    return path.read_text(encoding="utf-8") if path.exists() else ""
+    if not path.exists():
+        return ""
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
 
 
 def load_existing_golden_cases(lobster_id: str) -> dict[str, Any]:
+    """Load existing golden-cases.json."""
     path = LOBSTERS_DIR / f"lobster-{lobster_id}" / "datasets" / "golden-cases.json"
     if not path.exists():
         return {"cases": []}
-    return json.loads(path.read_text(encoding="utf-8"))
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-# ---------------------------------------------------------------------------
-# Prompt Builders
-# ---------------------------------------------------------------------------
-
-def build_system_message(role_card: dict[str, Any], system_prompt: str) -> str:
-    return (
-        f"浣犳槸 OpenClaw Agent 榫欒櫨鍏冭€侀櫌涓殑 {role_card.get('zhName', role_card.get('roleId', 'lobster'))}"
-        f" ({role_card.get('displayName', role_card.get('roleId', 'lobster'))})銆俓n"
-        f"浣犵殑鑱岃矗锛歿role_card.get('mission', '')}\n"
-        f"浣犵殑涓昏宸ヤ欢锛歿role_card.get('primaryArtifact', '')}\n"
-        f"浣犵殑杈撳叆濂戠害锛歿json.dumps(role_card.get('inputContract', []), ensure_ascii=False)}\n"
-        f"浣犵殑杈撳嚭濂戠害锛歿json.dumps(role_card.get('outputContract', []), ensure_ascii=False)}\n"
-        f"浣犵殑璇勬祴鍏虫敞鐐癸細{json.dumps(role_card.get('evalFocus', []), ensure_ascii=False)}\n\n"
-        f"鍙傝€冪郴缁熸彁绀鸿瘝鐗囨锛歕n{system_prompt[:1200]}\n\n"
-        "璇蜂弗鏍煎彧杈撳嚭 JSON锛屼笉瑕佹坊鍔犺В閲娿€佹爣棰樻垨 Markdown 浠ｇ爜鍧椼€?
-    )
-
-
-def build_pack_prompt(lobster_id: str, industry: str, pack_type: str) -> str:
-    instruction = LOBSTER_KB_INSTRUCTIONS.get(lobster_id, {}).get(pack_type, "")
-    return (
-        f"琛屼笟锛歿industry}\n\n"
-        f"{instruction}\n\n"
-        "璇蜂互 JSON 鏍煎紡杈撳嚭锛岃姹傦細\n"
-        '- 椤跺眰瀛楁蹇呴』鍖呭惈: "industry", "lobster_id", "pack_type", "version", "items"\n'
-        '- "items" 鏄暟缁勶紝姣忎釜 item 蹇呴』鍖呭惈: '
-        '"id", "title", "description", "examples"(鏁扮粍), "priority"(high/medium/low)\n'
-        "- 鑷冲皯鐢熸垚 8 鍒?12 涓?items\n"
-        "- 鍏ㄩ儴鍐呭鐢ㄤ腑鏂囷紝蹇呰涓撲笟鏈鍙互淇濈暀鑻辨枃\n"
-    )
-
-
-def build_golden_cases_prompt(
-    industry: str,
-    existing_cases: dict[str, Any],
-) -> str:
-    existing_count = len(existing_cases.get("cases", []))
-    existing_sample = json.dumps(existing_cases.get("cases", [])[:2], ensure_ascii=False, indent=2)
-    return (
-        f"琛屼笟锛歿industry}\n"
-        f"褰撳墠宸叉湁 {existing_count} 涓噾妗堜緥锛屾牱渚嬪涓嬶細\n{existing_sample}\n\n"
-        "璇烽澶栫敓鎴?6 涓珮璐ㄩ噺閲戞渚嬶紝瑕佹眰锛歕n"
-        "- 2 涓?happy_path锛堟甯告垚鍔熸祦绋嬶級\n"
-        "- 2 涓?edge_case锛堣竟鐣屾儏鍐碉級\n"
-        "- 2 涓?failure_case锛堝け璐?闄嶇骇鍦烘櫙锛塡n\n"
-        "姣忎釜妗堜緥鏍煎紡锛歕n"
-        '{"id": "...", "label": "happy_path|edge_case|failure_case", '
-        '"input": {...}, "expectedSignals": [...], "mustInclude": [...], "mustAvoid": [...]}'
-        "\n\n杈撳嚭鏍煎紡锛歕n"
-        '{"industry": "...", "cases": [...]}'
-    )
-
-
-# ---------------------------------------------------------------------------
-# Generators
-# ---------------------------------------------------------------------------
-
-def generate_pack(
-    *,
+def generate_knowledge_pack(
     lobster_id: str,
     industry: str,
     pack_type: str,
+    *,
     role_card: dict[str, Any],
     system_prompt: str,
     model: str,
     base_url: str,
-    api_keys: list[str],
-    call_index: int,
-    dry_run: bool,
+    api_key: str,
+    dry_run: bool = False,
 ) -> dict[str, Any]:
-    system_msg = build_system_message(role_card, system_prompt)
-    user_msg = build_pack_prompt(lobster_id, industry, pack_type)
+    """Generate one knowledge pack for one lobster x one industry x one pack type."""
+
+    instructions = LOBSTER_KB_INSTRUCTIONS.get(lobster_id, {})
+    specific_instruction = instructions.get(pack_type, "")
+
+    system_msg = (
+        f"你是 OpenClaw Agent 龙虾元老院中的 {role_card.get('zhName', lobster_id)} ({role_card.get('displayName', lobster_id)})。\n"
+        f"你的职责：{role_card.get('mission', '')}\n"
+        f"你的主要工件：{role_card.get('primaryArtifact', '')}\n\n"
+        f"已有系统提示词：\n{system_prompt[:800]}\n\n"
+        f"请严格以 JSON 格式回答，不要加任何解释文字。"
+    )
+
+    user_msg = (
+        f"行业：{industry}\n\n"
+        f"{specific_instruction}\n\n"
+        f"请以 JSON 格式输出，要求：\n"
+        f'- 顶层字段: "industry", "lobster_id", "pack_type", "version", "items"\n'
+        f'- "items" 是一个数组，每个 item 包含: "id", "title", "description", "examples"(数组), "priority"(high/medium/low)\n'
+        f"- 至少生成 8-12 个 items\n"
+        f"- 所有内容用中文，但专业术语可保留英文"
+    )
 
     if dry_run:
         print(f"\n--- DRY RUN: {lobster_id} / {industry} / {pack_type} ---")
-        print(f"System: {system_msg[:240]}...")
-        print(f"User: {user_msg[:240]}...")
-        return {
-            "_dry_run": True,
-            "lobster_id": lobster_id,
-            "industry": industry,
-            "pack_type": pack_type,
-        }
+        print(f"System: {system_msg[:200]}...")
+        print(f"User: {user_msg[:200]}...")
+        return {"_dry_run": True, "lobster_id": lobster_id, "industry": industry, "pack_type": pack_type}
 
-    api_key = api_keys[call_index % len(api_keys)]
-    print(f"  [LLM] Calling {lobster_id}/{industry}/{pack_type} ...")
-    raw = _call_llm(
-        user_msg,
-        system=system_msg,
-        model=model,
-        base_url=base_url,
-        api_key=api_key,
-    )
+    print(f"  🤖 Calling LLM for {lobster_id}/{industry}/{pack_type}...")
+    raw = _call_llm(user_msg, system=system_msg, model=model, base_url=base_url, api_key=api_key)
     result = _parse_json_from_llm(raw)
+
+    # Ensure metadata
     if isinstance(result, dict):
         result.setdefault("industry", industry)
         result.setdefault("lobster_id", lobster_id)
         result.setdefault("pack_type", pack_type)
         result.setdefault("version", "v0.1")
         result.setdefault("generated_at", time.strftime("%Y-%m-%dT%H:%M:%S%z"))
+
     return result
 
 
-def generate_golden_cases(
-    *,
+def generate_expanded_golden_cases(
     lobster_id: str,
     industry: str,
+    *,
     role_card: dict[str, Any],
     system_prompt: str,
     existing_cases: dict[str, Any],
     model: str,
     base_url: str,
-    api_keys: list[str],
-    call_index: int,
-    dry_run: bool,
+    api_key: str,
+    dry_run: bool = False,
 ) -> dict[str, Any]:
-    system_msg = build_system_message(role_card, system_prompt)
-    user_msg = build_golden_cases_prompt(industry, existing_cases)
+    """Generate expanded golden cases for a lobster x industry."""
+
+    existing_count = len(existing_cases.get("cases", []))
+    existing_sample = json.dumps(existing_cases.get("cases", [])[:2], ensure_ascii=False, indent=2)
+
+    system_msg = (
+        f"你是 {role_card.get('zhName', lobster_id)}，职责是 {role_card.get('mission', '')}。\n"
+        f"你的输入契约: {json.dumps(role_card.get('inputContract', []), ensure_ascii=False)}\n"
+        f"你的输出契约: {json.dumps(role_card.get('outputContract', []), ensure_ascii=False)}\n"
+        f"请严格以 JSON 格式回答。"
+    )
+
+    user_msg = (
+        f"行业：{industry}\n"
+        f"当前已有 {existing_count} 个金案例，样例：\n{existing_sample}\n\n"
+        f"请为该行业额外生成 6 个高质量金案例，包含：\n"
+        f"- 2个 happy_path（正常成功流程）\n"
+        f"- 2个 edge_case（边界情况）\n"
+        f"- 2个 failure_case（失败/降级场景）\n\n"
+        f"每个案例格式：\n"
+        f'{{"id": "...", "label": "happy_path|edge_case|failure_case", '
+        f'"input": {{按照输入契约填写}}, '
+        f'"expectedSignals": [...], "mustInclude": [...], "mustAvoid": [...]}}\n\n'
+        f'输出格式：{{"industry": "...", "cases": [...]}}'
+    )
 
     if dry_run:
-        print(f"\n--- DRY RUN: {lobster_id} / {industry} / golden_cases ---")
-        print(f"System: {system_msg[:240]}...")
-        print(f"User: {user_msg[:240]}...")
-        return {"_dry_run": True, "lobster_id": lobster_id, "industry": industry, "pack_type": "golden_cases"}
+        print(f"\n--- DRY RUN: {lobster_id} / {industry} / golden-cases ---")
+        return {"_dry_run": True}
 
-    api_key = api_keys[call_index % len(api_keys)]
-    print(f"  [LLM] Calling {lobster_id}/{industry}/golden_cases ...")
-    raw = _call_llm(
-        user_msg,
-        system=system_msg,
-        model=model,
-        base_url=base_url,
-        api_key=api_key,
-    )
-    result = _parse_json_from_llm(raw)
-    if isinstance(result, dict):
-        result.setdefault("industry", industry)
-        result.setdefault("lobster_id", lobster_id)
-        result.setdefault("pack_type", "golden_cases")
-        result.setdefault("version", "v0.1")
-        result.setdefault("generated_at", time.strftime("%Y-%m-%dT%H:%M:%S%z"))
-    return result
+    print(f"  🤖 Calling LLM for {lobster_id}/{industry}/golden-cases...")
+    raw = _call_llm(user_msg, system=system_msg, model=model, base_url=base_url, api_key=api_key)
+    return _parse_json_from_llm(raw)
 
 
 def save_pack(lobster_id: str, industry: str, pack_type: str, data: dict[str, Any]) -> Path:
+    """Save knowledge pack to disk."""
     industry_slug = industry.replace("/", "_").replace(" ", "_")
     out_dir = OUTPUT_DIR / lobster_id / industry_slug
     out_dir.mkdir(parents=True, exist_ok=True)
-    filename = PACK_TYPE_TO_FILENAME.get(pack_type, f"{pack_type}.json")
-    out_path = out_dir / filename
-    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    out_path = out_dir / f"{pack_type}.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
     return out_path
 
 
@@ -428,121 +322,115 @@ def save_pack(lobster_id: str, industry: str, pack_type: str, data: dict[str, An
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate lobster knowledge packs via OpenAI-compatible LLM")
+    parser = argparse.ArgumentParser(description="Generate lobster knowledge packs via LLM")
     parser.add_argument("--lobster", default="all", help="Lobster ID or 'all'")
     parser.add_argument("--industries", default=None, help="Comma-separated industry list")
     parser.add_argument("--dry-run", action="store_true", help="Print prompts without calling LLM")
-    parser.add_argument(
-        "--pack-types",
-        default="industry_rules,hooks,scoring,golden_cases",
-        help="Comma-separated pack types",
-    )
+    parser.add_argument("--pack-types", default="industry_rules,hooks,scoring,golden_cases",
+                        help="Comma-separated pack types")
     args = parser.parse_args()
 
-    api_keys = _load_api_keys()
-    base_url = os.getenv("OPENAI_BASE_URL", "https://www.ananapi.com/").strip()
-    model = os.getenv("OPENAI_MODEL", "gpt-5.4").strip()
+    # Config
+    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1").strip()
+    model = os.getenv("OPENAI_MODEL", "gpt-4o").strip()
 
-    if not api_keys and not args.dry_run:
-        print("[ERROR] OPENAI_API_KEY or OPENAI_API_KEYS not set. Use --dry-run to preview prompts.")
+    if not api_key and not args.dry_run:
+        print("❌ OPENAI_API_KEY not set. Use --dry-run to preview prompts.")
         sys.exit(1)
 
+    # Lobsters
     lobster_ids = ALL_LOBSTER_IDS if args.lobster == "all" else [args.lobster]
-    for lobster_id in lobster_ids:
-        if lobster_id not in ALL_LOBSTER_IDS:
-            print(f"[ERROR] Unknown lobster: {lobster_id}")
+    for lid in lobster_ids:
+        if lid not in ALL_LOBSTER_IDS:
+            print(f"❌ Unknown lobster: {lid}")
             sys.exit(1)
 
+    # Industries
     industries = DEFAULT_INDUSTRIES
     if args.industries:
-        industries = [item.strip() for item in args.industries.split(",") if item.strip()]
+        industries = [x.strip() for x in args.industries.split(",") if x.strip()]
 
-    pack_types = [item.strip() for item in args.pack_types.split(",") if item.strip()]
-    valid_pack_types = {"industry_rules", "hooks", "scoring", "golden_cases"}
-    invalid_pack_types = [item for item in pack_types if item not in valid_pack_types]
-    if invalid_pack_types:
-        print(f"[ERROR] Unknown pack types: {', '.join(invalid_pack_types)}")
-        sys.exit(1)
+    # Pack types
+    pack_types = [x.strip() for x in args.pack_types.split(",") if x.strip()]
 
-    est_calls = len(lobster_ids) * len(industries) * len(pack_types)
+    # Stats
     total_calls = 0
     total_saved = 0
     start_time = time.time()
 
-    print("=" * 72)
-    print("榫欒櫨鐭ヨ瘑鍖呮壒閲忓～鍏呰剼鏈?)
-    print(f"   榫欒櫨: {', '.join(lobster_ids)}")
-    print(f"   琛屼笟鏁伴噺: {len(industries)}")
-    print(f"   鍖呯被鍨? {', '.join(pack_types)}")
-    print(f"   妯″瀷: {model}")
+    print("=" * 60)
+    print(f"🦞 龙虾知识包填充脚本")
+    print(f"   龙虾: {', '.join(lobster_ids)}")
+    print(f"   行业: {', '.join(industries)}")
+    print(f"   包类型: {', '.join(pack_types)}")
+    print(f"   模型: {model}")
     print(f"   API: {base_url}")
     print(f"   Dry Run: {args.dry_run}")
-    print(f"   鍙敤 Key 鏁伴噺: {len(api_keys)}")
-    print(f"   棰勪及璋冪敤娆℃暟: {est_calls}")
-    if est_calls > 500:
-        print("   [WARN] 杩欐槸涓€涓ぇ鎵归噺浠诲姟锛岃鍏堣€冭檻鍒嗘壒杩愯銆?)
-    print("=" * 72)
+    est_calls = len(lobster_ids) * len(industries) * len(pack_types)
+    print(f"   预估调用次数: {est_calls}")
+    print("=" * 60)
 
     for lobster_id in lobster_ids:
-        print(f"\n=== {lobster_id.upper()} ===")
+        print(f"\n🦞 === {lobster_id.upper()} ===")
+
         try:
             role_card = load_role_card(lobster_id)
             system_prompt = load_system_prompt(lobster_id)
             existing_golden = load_existing_golden_cases(lobster_id)
-        except FileNotFoundError as exc:
-            print(f"  [WARN] Skipping {lobster_id}: {exc}")
+        except FileNotFoundError as e:
+            print(f"  ⚠️ Skipping {lobster_id}: {e}")
             continue
 
-        print(f"  [OK] Loaded role-card: {role_card.get('zhName', lobster_id)} / {role_card.get('primaryArtifact', '')}")
+        print(f"  ✅ Loaded role-card: {role_card.get('zhName', '')} / {role_card.get('mission', '')[:60]}...")
 
         for industry in industries:
-            print(f"\n  [INDUSTRY] {industry}")
+            print(f"\n  📦 Industry: {industry}")
+
             for pack_type in pack_types:
                 if pack_type == "golden_cases":
-                    result = generate_golden_cases(
-                        lobster_id=lobster_id,
-                        industry=industry,
+                    # Special handling for golden cases
+                    result = generate_expanded_golden_cases(
+                        lobster_id, industry,
                         role_card=role_card,
                         system_prompt=system_prompt,
                         existing_cases=existing_golden,
-                        model=model,
-                        base_url=base_url,
-                        api_keys=api_keys,
-                        call_index=total_calls,
+                        model=model, base_url=base_url, api_key=api_key,
                         dry_run=args.dry_run,
                     )
                 else:
-                    result = generate_pack(
-                        lobster_id=lobster_id,
-                        industry=industry,
-                        pack_type=pack_type,
+                    result = generate_knowledge_pack(
+                        lobster_id, industry, pack_type,
                         role_card=role_card,
                         system_prompt=system_prompt,
-                        model=model,
-                        base_url=base_url,
-                        api_keys=api_keys,
-                        call_index=total_calls,
+                        model=model, base_url=base_url, api_key=api_key,
                         dry_run=args.dry_run,
                     )
+
                 total_calls += 1
 
                 if not args.dry_run:
                     path = save_pack(lobster_id, industry, pack_type, result)
                     total_saved += 1
-                    print(f"    [SAVED] {path.relative_to(REPO_ROOT)}")
+                    print(f"    ✅ Saved: {path.relative_to(REPO_ROOT)}")
+
+                    # Rate limiting: 1 second between calls
                     time.sleep(1)
 
     elapsed = time.time() - start_time
-    print("\n" + "=" * 72)
-    print("瀹屾垚")
-    print(f"   鎬昏皟鐢ㄦ鏁? {total_calls}")
-    print(f"   鎬讳繚瀛樻枃浠? {total_saved}")
-    print(f"   鑰楁椂: {elapsed:.1f} 绉?)
-    print(f"   杈撳嚭鐩綍: {OUTPUT_DIR.relative_to(REPO_ROOT)}")
-    print("   鎻愰啋锛氳剼鏈彧鑳界粺璁¤皟鐢ㄦ鏁帮紝鏃犳硶绮剧‘鍒ゆ柇绗笁鏂瑰钩鍙颁綑棰濇槸鍚︾湡姝ｈ€楀敖銆?)
-    print("=" * 72)
+    print("\n" + "=" * 60)
+    print(f"🏁 完成!")
+    print(f"   总调用次数: {total_calls}")
+    print(f"   总保存文件: {total_saved}")
+    print(f"   耗时: {elapsed:.1f}秒")
+    print(f"   输出目录: {OUTPUT_DIR.relative_to(REPO_ROOT)}")
+
+    if total_calls >= est_calls:
+        print(f"\n⚠️  算力已消耗完毕 — 共 {total_calls} 次 LLM 调用")
+        print(f"   请检查你的 API 用量！")
+
+    print("=" * 60)
 
 
 if __name__ == "__main__":
     main()
-

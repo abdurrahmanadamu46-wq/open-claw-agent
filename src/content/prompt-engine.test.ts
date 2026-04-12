@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Prompt engine tests
  */
 

@@ -1,4 +1,4 @@
-﻿import { Processor, WorkerHost } from '@nestjs/bullmq';
+import { Processor, WorkerHost } from '@nestjs/bullmq';
 import axios from 'axios';
 import type { Job } from 'bullmq';
 import { IntegrationsService } from './integrations.service';

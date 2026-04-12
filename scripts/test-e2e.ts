@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce 无头 E2E 联调脚本 (PM v1.14 - API First)
  * 纯 API 链路贯通，不依赖 Next.js / UI。跑通后即可接 UI。
  *

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Dashboard API for nodes status
  * GET /api/agent/nodes/status + WebSocket real-time push via onEvent.
  * Backend mounts the handler and forwards NodeManager.onEvent to WebSocket.

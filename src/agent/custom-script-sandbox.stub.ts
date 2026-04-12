@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 自定义脚本沙盒 — 空壳实现（占位）
  * 生产实现：使用 vm2 或 isolated-vm 注入 { page, jobId, params }，执行 script 并捕获返回值；
  * 必须设置 timeoutMs、禁止访问 process/require('fs') 等

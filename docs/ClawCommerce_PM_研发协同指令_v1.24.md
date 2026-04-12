@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM 研发协同指令 v1.24
+# ClawCommerce PM 研发协同指令 v1.24
 
 **主题：** C&C 分布式架构 — **WebSocket 调度协议** 与 **客户端授权闭环**  
 **致：** 小明（后端总控）· 小军（Tauri / Agent 客户端）  

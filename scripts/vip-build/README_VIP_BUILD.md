@@ -1,73 +1,37 @@
-﻿# VIP Client Build Guide
+# VIP 一号客户特供版 — 打包与交付
 
-This folder contains the single-customer edge runtime build assets.
+## 1. 准备
 
-## 1. Prepare
+- 根目录已 `npm install`（需要 `socket.io-client`）。
+- 小明已签发 **CLIENT_DEVICE_TOKEN**（JWT），且 **ClientDevice** 已白名单 **MACHINE_CODE**。
+
+## 2. 本地验证
 
 ```powershell
-cd C:\path\to\openclaw-agent
+cd 仓库根目录
 copy scripts\vip-build\.env.vip.example scripts\vip-build\.env.vip
-```
+# 编辑 .env.vip 填入真实 URL / TOKEN / MACHINE_CODE
 
-Edit `.env.vip`:
-
-- `C_AND_C_SERVER_URL=http://<backend-host>:3000`
-- `SOCKETIO_PATH=/fleet`
-- `CLIENT_DEVICE_TOKEN=<jwt>`
-- `MACHINE_CODE=<unique-node-id>`
-- optional update:
-  - `APP_VERSION=0.1.0`
-  - `AUTO_UPDATE_MANIFEST_URL=http://<backend-host>:3000/api/v1/client-updates/latest?platform=win-x64&channel=stable`
-  - `AUTO_UPDATE_DOWNLOAD=false`
-  - `AUTO_UPDATE_REQUIRE_SIGNATURE=true`
-  - `AUTO_UPDATE_DEFAULT_KEY_ID=default`
-  - `AUTO_UPDATE_PUBLIC_KEY_PATH=./keys/release-public.pem`
-  - `AUTO_UPDATE_PUBLIC_KEYS_PATH=./keys/release-public-keys.json`
-
-## 2. Run local client
-
-```powershell
 node scripts/vip-build/vip-lobster-entry.cjs
 ```
 
-Expected:
+看到 **🟢 龙虾节点已连接云端** 即通过。
 
-- connects to `/fleet`
-- waits for `execute_task` (and also supports legacy `server.task.dispatch`)
-- reports `node_ping`, `task_progress`, `task_completed`, `client.task.ack`, `client.lead.report`
-
-## 3. Build Windows executable
+## 3. 打 Windows exe（pkg）
 
 ```powershell
 npm install -D pkg
-npm run vip:pkg
+npx pkg scripts/vip-build/vip-lobster-entry.cjs --targets node18-win-x64 --output dist/vip-lobster.exe
 ```
 
-Output:
+- 把 **vip-lobster.exe** 与 **.env.vip** 放同一目录交给客户；或仅发 exe，token 写死进 cjs 再打包（**仅一号客户临时**）。
+- 若 pkg 报缺模块，在仓库根目录执行打包，确保 `node_modules/socket.io-client` 存在。
 
-- `dist/vip-lobster.exe`
+## 4. Mac .dmg
 
-Deliver `vip-lobster.exe` with `.env.vip` to customer machine.
+Tauri 默认打包或 pkg `node18-macos-x64` 同理；客户机器需能访问总控 URL（防火墙/HTTPS）。
 
-## 4. Publish update metadata
+## 5. 总控侧
 
-Use release publish script:
-
-```powershell
-$env:BACKEND_BASE_URL='http://127.0.0.1:3000'
-$env:BACKEND_ADMIN_JWT='<admin-jwt>'
-$env:RELEASE_VERSION='0.1.1'
-$env:RELEASE_DOWNLOAD_URL='https://cdn.example.com/vip-lobster-0.1.1.exe'
-$env:RELEASE_FILE_PATH='dist/vip-lobster.exe'  # auto compute sha256
-# optional signing:
-# $env:RELEASE_SIGN_PRIVATE_KEY_PATH='.\keys\release-private.pem'
-# $env:RELEASE_SIGN_KEY_ID='default'
-# optional rollout:
-# $env:RELEASE_ROLLOUT_PERCENT='20'
-# $env:RELEASE_ROLLOUT_TENANTS_ALLOWLIST='tenant_a,tenant_b'
-# $env:RELEASE_ROLLOUT_TENANTS_DENYLIST='tenant_x'
-npm run vip:release:publish
-```
-
-Then clients with `AUTO_UPDATE_MANIFEST_URL` enabled will detect new versions on startup,
-verify manifest signature (if enabled), and always verify package SHA-256 before saving.
+- 网关 **全天候** 监听；设备一连即 ONLINE。
+- 第一条线索：可对 VIP 节点手动 dispatch 一次，或走 BullMQ；客户端已带验收用 `client.lead.report`。

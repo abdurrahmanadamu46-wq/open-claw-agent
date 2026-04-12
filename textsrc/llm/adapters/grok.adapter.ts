@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Grok Adapter — 占位实现，xAI API 兼容 OpenAI 形态时可复用 OpenAI 调用方式
  * 环境变量：XAI_API_KEY 或 GROK_API_KEY，GROK_MODEL（如 grok-2）
  */

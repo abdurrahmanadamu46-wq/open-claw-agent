@@ -1,4 +1,4 @@
-﻿# ClawCommerce 全局 E2E 联调验收 Checklist v1.12
+# ClawCommerce 全局 E2E 联调验收 Checklist v1.12
 
 > 5 个核心必须通过的测试用例 — P0 大动脉 + P1 线索闭环
 

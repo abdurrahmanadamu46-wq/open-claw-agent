@@ -1,8 +1,8 @@
-﻿import { Body, Controller, Get, Patch, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { IntegrationsService } from './integrations.service';
 import { WebhookDispatcherService } from './webhook-dispatcher.service';
-import type { PluginAdapterConfig, TenantIntegrations } from './tenant-integrations.types';
+import type { TenantIntegrations } from './tenant-integrations.types';
 
 @Controller('api/v1/tenant/integrations')
 @UseGuards(JwtAuthGuard)
@@ -27,24 +27,16 @@ export class IntegrationsController {
     return { code: 0, data };
   }
 
+  /**
+   * 发送测试线索 — 将 Mock StandardLeadPayload 投入 webhook_dispatch_queue
+   * Worker 异步推送，BullMQ 自动重试最多 3 次（指数退避）
+   */
   @Post('webhook/test')
   async sendTestWebhook(@Req() req: { user: { tenantId: string } }) {
     const result = await this.webhookDispatcher.fireTestWebhook(req.user.tenantId);
     if (result.ok) {
-      return { code: 0, message: 'test payload enqueued', jobId: result.jobId };
+      return { code: 0, message: '测试线索已加入推送队列', jobId: result.jobId };
     }
-    return { code: 1, message: result.error ?? 'webhook not configured or enqueue failed' };
-  }
-
-  @Post('adapter/test')
-  async testPluginAdapter(
-    @Req() req: { user: { tenantId: string } },
-    @Body() body: { adapter?: Partial<PluginAdapterConfig> },
-  ) {
-    const adapter = body?.adapter ?? {};
-    const result = await this.integrationsService.testPluginAdapter(req.user.tenantId, adapter);
-    if (result.ok) return { code: 0, data: result };
-    return { code: 1, data: result, message: result.reason ?? 'adapter test failed' };
+    return { code: 1, message: result.error ?? 'Webhook 未配置或入队失败' };
   }
 }
-

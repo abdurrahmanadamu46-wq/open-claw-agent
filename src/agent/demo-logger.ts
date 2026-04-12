@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Demo 录屏用：终端高亮日志（PM v1.17 第三幕）
  * 仅当 DEMO_LOGS=1 或 NODE_ENV=staging 时输出带 ANSI 颜色的可读行
  */

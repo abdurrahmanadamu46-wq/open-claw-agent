@@ -1,4 +1,4 @@
-﻿# ClawCommerce PRD v1.9 Phase 3 — Agent 端对接说明
+# ClawCommerce PRD v1.9 Phase 3 — Agent 端对接说明
 
 > 商家前端控制台（Dashboard & CRUD）由小明后端提供 API；Agent 仅需提供「终止任务」时的节点释放接口，其余均为后端职责。
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Content generator tests (incl. PM v1.8 validateClipLogic)
  */
 

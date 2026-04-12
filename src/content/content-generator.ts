@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - LLM-driven 二创 script generator
  * Uses prompt-engine + RAG; calls LLM (Grok/Claude/GPT-4o); outputs ErChuangScript.
  * PM v1.8：分镜字数/时长校验 validateClipLogic，校验不通过本地 retry 最多 3 次。

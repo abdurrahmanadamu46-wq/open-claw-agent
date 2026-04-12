@@ -1,4 +1,4 @@
-﻿/**
+/**
  * LLM Adapter 工厂 — 根据 env 一行配置切换模型
  * LLM_PROVIDER=deepseek | openai | grok | mock
  */

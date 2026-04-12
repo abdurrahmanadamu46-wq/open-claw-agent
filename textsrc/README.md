@@ -1,4 +1,4 @@
-﻿# ClawCommerce 顶级 API 缝合怪框架（textsrc）
+# ClawCommerce 顶级 API 缝合怪框架（textsrc）
 
 三大硬仗骨架：**雷达大脑** → **AI 内容工厂** → **龙虾底座**，所有外部能力可插拔，换模型/换 API 仅改配置。
 

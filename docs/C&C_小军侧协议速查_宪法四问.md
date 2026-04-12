@@ -1,4 +1,4 @@
-﻿# C&C WebSocket 协议 — 小军（Agent）侧「宪法四问」速查
+# C&C WebSocket 协议 — 小军（Agent）侧「宪法四问」速查
 
 **角色：** 小军 — 起草/执行 Agent 客户端与 PoC 脚本  
 **传输：** Socket.io，命名空间 `/agent-cc`  

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Phone number pool (SMS-Activate, 5SIM, TigerSMS)
  * Acquire, allocate to node, auto-renew or release (idle > 30min).
  * PM v1.3：支持查询余额、获取号码、获取验证码，并做好异常重试（见 sms-activate-adapter）。

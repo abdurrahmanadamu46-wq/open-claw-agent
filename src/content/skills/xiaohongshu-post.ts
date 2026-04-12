@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content Skill - 小红书发帖
  * Uses browser-orchestrator + anti-detection; posts copy/media per ErChuangScript.
  * @module content/skills/xiaohongshu-post

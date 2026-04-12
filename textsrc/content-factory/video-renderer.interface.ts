@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AI 内容工厂 — 视频渲染抽象接口
  * 可插拔：HeyGen / 腾讯智影 等，传 JSON 剧本 → 返回任务 ID，通过 webhook 或轮询获取 MP4 链接
  * 剧本可来自 script-generator 或 VideoGenerationService.finalScriptToScriptOutput（按语意断句，每镜含 visual_prompt）

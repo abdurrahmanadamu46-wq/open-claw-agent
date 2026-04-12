@@ -1,4 +1,4 @@
-﻿"""
+"""
 Unit tests for ContextNavigator and selector parsing.
 Run with: python -m pytest edge-runtime/tests/ -v
 """

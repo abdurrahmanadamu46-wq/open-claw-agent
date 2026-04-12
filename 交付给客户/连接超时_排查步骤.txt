@@ -1,0 +1,30 @@
+【客户端报「连接失败: timeout」】
+
+说明：客户端打不通 总控IP:3000，多半是总控未跑、端口未监听或防火墙拦截。  
+（本机 localhost 自测已通过：总控 + Redis 起好后，客户端连 http://127.0.0.1:3000/agent-cc 可正常显示🟢。）
+
+--- 在「总控那台电脑」上按顺序做 ---
+
+一、确认总控已启动并监听 3000
+1. 总控电脑上先运行「启动总控后端.bat」，等出现：
+   C&C backend listening on http://localhost:3000
+2. 在同一台电脑打开浏览器访问：http://localhost:3000
+   - 若打不开或一直转圈，说明 3000 没在监听，请检查后端是否真的启动成功、是否有报错。
+
+二、放行 Windows 防火墙 3000 端口（必做）
+在「总控电脑」上以管理员身份打开 PowerShell，复制整段执行：
+
+   New-NetFirewallRule -DisplayName "ClawCommerce-3000" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+
+执行后本机 3000 端口才对局域网内其他电脑可见。
+
+三、确认 IP 正确
+在总控电脑上打开 PowerShell 执行：ipconfig
+- 看「以太网适配器」或「WLAN」下的 IPv4 地址，例如 192.168.1.100。
+- 客户端的 .env.vip 里 C_AND_C_SERVER_URL 必须用这个 IP，例如：
+  C_AND_C_SERVER_URL=http://192.168.1.100:3000/agent-cc
+
+四、用客户电脑测一下能否访问
+在「客户电脑」上打开浏览器访问：http://192.168.1.100:3000
+- 若浏览器也打不开（超时），说明网络或防火墙仍不通，继续检查防火墙、是否同一 WiFi。
+- 若浏览器能打开（哪怕显示 404 或 Cannot GET），说明端口已通，再运行客户端试一次。

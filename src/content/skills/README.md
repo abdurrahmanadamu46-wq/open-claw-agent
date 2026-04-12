@@ -1,4 +1,4 @@
-﻿# ClawCommerce Content Skills
+# ClawCommerce Content Skills
 
 OpenClaw-compatible skills for 发帖、点赞、评论、私信. One file per platform/action; hot-loadable.
 

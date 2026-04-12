@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - 人类化延迟（正态分布）
  * 用于鼠标移动、点击、滑动等间隔，100% 模拟真人节奏。
  * @module content/human-delay

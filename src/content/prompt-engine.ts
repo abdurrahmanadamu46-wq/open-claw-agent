@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Prompt template engine + RAG
  * Loads versioned JSON templates per industry/platform, renders with variables, supports RAG context.
  * @module content/prompt-engine

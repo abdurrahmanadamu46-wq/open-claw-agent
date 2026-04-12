@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM v1.8 动态分镜与校验 — Agent 端交付说明
+# ClawCommerce PM v1.8 动态分镜与校验 — Agent 端交付说明
 
 > 研发协同指令 v1.8：弹性语意分镜与动态校验引擎
 

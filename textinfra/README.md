@@ -1,4 +1,4 @@
-﻿# ClawCommerce 基础设施与 DevOps 交付库
+# ClawCommerce 基础设施与 DevOps 交付库
 
 - **目标**：企业级生产就绪、一键部署、监控零死角、支持水平扩展
 - **范围**：Docker / Docker Compose / K8s / GitHub Actions / Prometheus / Grafana / 成本脚本

@@ -1,4 +1,4 @@
-﻿# ClawCommerce Phase 3 后端交付与对接确认 v1.12
+# ClawCommerce Phase 3 后端交付与对接确认 v1.12
 
 > 小明 Phase 3 商家前端控制台接口已交付；小军侧（前端 + Agent）对接状态与建议下一步。
 

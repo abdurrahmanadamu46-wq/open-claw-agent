@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ASR 提供方工厂 — 根据 env 切换（后续可接阿里听悟 / Whisper / 通义听悟）
  * ASR_PROVIDER=mock | aliyun | whisper | tongyi
  */

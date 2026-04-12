@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DeepSeek Adapter — OpenAI 兼容 API + JSON mode
  * 环境变量：DEEPSEEK_API_KEY（必填）、可选 DEEPSEEK_BASE_URL、DEEPSEEK_MODEL
  */

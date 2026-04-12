@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 视频渲染提供方工厂 — 根据 env 切换
  * VIDEO_RENDERER=mock | heygen | tencent
  */

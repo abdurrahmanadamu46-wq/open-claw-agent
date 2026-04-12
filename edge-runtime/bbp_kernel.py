@@ -1,4 +1,4 @@
-﻿"""
+"""
 BBP Kernel — 生物行为物理引擎 (Biometric Behavior Physics)
 将起止坐标转化为带菲茨定律、贝塞尔弧线与高斯抖动的人类鼠标轨迹。
 适用于 PC 端 Playwright/Selenium 隐身模式；Android 可移植算法到 GestureDescription。

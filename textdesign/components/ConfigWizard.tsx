@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce 配置向导 — 步骤式 ≤3 步
  * 文字原型：textdesign/prototypes/config-wizard.md
  * 数据来源：web/src/services/endpoints/campaign.ts (createCampaign)

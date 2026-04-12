@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AI 内容工厂 — 全流程 Pipeline
  * 剧本生成 → 可选视频渲染，串联 script-generator 与 video-renderer
  */

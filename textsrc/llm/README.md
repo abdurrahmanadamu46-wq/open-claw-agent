@@ -1,4 +1,4 @@
-﻿# ClawCommerce LLM 抽象层
+# ClawCommerce LLM 抽象层
 
 所有大模型调用必须走本抽象层，**切换模型只需改 env，零业务改动**。
 

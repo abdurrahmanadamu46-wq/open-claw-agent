@@ -1,0 +1,24 @@
+【在总控电脑（192.168.1.100）上必须做完这 4 步，客户机才能连上】
+
+每一步做完再试客户端的「测试总控是否可达.bat」。
+
+--- 第 1 步：确认本机 IP ---
+PowerShell 执行：ipconfig
+记下「以太网」或「WLAN」的 IPv4 地址（例如 192.168.1.7），客户端的 .env.vip 里 C_AND_C_SERVER_URL 必须用这个 IP。
+
+--- 第 2 步：启动 Redis ---
+双击项目根目录的「启动Redis.bat」，看到 “Redis 已启动” 或无明显报错。
+
+--- 第 3 步：启动总控后端 ---
+双击「启动总控后端.bat」，窗口里必须出现：
+  C&C backend listening on http://localhost:3000
+此窗口不能关。
+
+--- 第 4 步：放行 3000 端口（最关键，否则客户机必超时）---
+右键“以管理员身份”打开 PowerShell，复制整行执行：
+
+New-NetFirewallRule -DisplayName "ClawCommerce-3000" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+
+执行成功后，客户机再运行「测试总控是否可达.bat」输入 192.168.1.100:3000，应显示 [成功]。
+
+若仍超时：确认总控和客户机在同一 WiFi/局域网；总控电脑上暂时关闭杀毒/防火墙的“公用网络”再试一次。

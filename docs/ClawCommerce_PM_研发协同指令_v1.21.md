@@ -1,4 +1,4 @@
-﻿# ClawCommerce PM 研发协同指令 v1.21
+# ClawCommerce PM 研发协同指令 v1.21
 
 **主题：** Sprint 4 — 龙虾池 C&C 架构重构：**协议先行 / 无头 PoC，拒绝先套壳**  
 **决策人：** 小丽（PM）  

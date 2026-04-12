@@ -1,4 +1,4 @@
-﻿# ClawCommerce Design System — Tokens
+# ClawCommerce Design System — Tokens
 
 ## 主色与语义色
 

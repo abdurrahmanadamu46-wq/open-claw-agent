@@ -1,4 +1,4 @@
-﻿# C&C WebSocket 协议数据格式规范 (JSON) — v1.20
+# C&C WebSocket 协议数据格式规范 (JSON) — v1.20
 
 **目的：** 对齐小明（Nest C&C Gateway）与小军（Agent 客户端 / Tauri-Electron）双端契约，避免先写壳后返工。  
 **传输：** Socket.io，命名空间 **`/agent-cc`**。  

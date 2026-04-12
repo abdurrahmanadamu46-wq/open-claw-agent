@@ -1,13 +1,14 @@
-﻿/**
+/**
  * BYOK 算力中台 — 统一 LLM 调用
  * 请求强制指向 new-api 本地端口，Header 自动带后台生成的 Token
  * 任何 AI Agent 需要调用 OpenAI / DeepSeek 时，通过本 Service 走 new-api
  */
 
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import axios, { AxiosInstance } from 'axios';
-import { getOptionalEnv, getRequiredUrlEnv, isProductionLikeEnv } from '../config/env';
 
+const NEW_API_BASE = process.env.NEW_API_BASE_URL ?? 'http://localhost:3001';
+const NEW_API_TOKEN = process.env.NEW_API_TOKEN ?? '';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
@@ -31,26 +32,15 @@ export interface ChatCompletionResult {
 
 @Injectable()
 export class LlmService {
-  private readonly logger = new Logger(LlmService.name);
   private readonly client: AxiosInstance;
-  private readonly newApiBase: string;
 
   constructor() {
-    this.newApiBase = getRequiredUrlEnv('NEW_API_BASE_URL');
-    const newApiToken = getOptionalEnv('NEW_API_TOKEN');
-    if (isProductionLikeEnv() && !newApiToken) {
-      throw new Error('NEW_API_TOKEN is required in staging/production environments');
-    }
-    if (!newApiToken) {
-      this.logger.warn('NEW_API_TOKEN is not configured; upstream gateway calls may be rejected');
-    }
-
     this.client = axios.create({
-      baseURL: this.newApiBase.replace(/\/$/, '') + '/v1',
+      baseURL: NEW_API_BASE.replace(/\/$/, '') + '/v1',
       timeout: 120_000,
       headers: {
         'Content-Type': 'application/json',
-        ...(newApiToken ? { Authorization: `Bearer ${newApiToken}` } : {}),
+        ...(NEW_API_TOKEN ? { Authorization: `Bearer ${NEW_API_TOKEN}` } : {}),
       },
     });
   }
@@ -81,6 +71,6 @@ export class LlmService {
 
   /** 是否已配置 new-api（有 base URL 且可选 token） */
   isConfigured(): boolean {
-    return !!this.newApiBase;
+    return !!NEW_API_BASE;
   }
 }

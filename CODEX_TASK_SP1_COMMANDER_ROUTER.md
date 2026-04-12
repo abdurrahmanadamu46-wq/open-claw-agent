@@ -1,4 +1,4 @@
-﻿# 🎯 Codex Task: SP1 — Commander 智能路由器
+# 🎯 Codex Task: SP1 — Commander 智能路由器
 
 > **给 Codex 的任务说明书**
 > 复制以下全部内容发送给 Codex 即可。

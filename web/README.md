@@ -1,16 +1,36 @@
-﻿# ClawCommerce Web
+# ClawCommerce 商家控制台（前端）
 
-Next.js 14 frontend for Liaoyuan/ClawCommerce control panel.
+PRD v1.9 / v1.10：前端架构限制与 React Query 数据流规范。
 
-## Tech Stack
+**架构底线（v1.12）**：前端只允许请求后端 NestJS（`NEXT_PUBLIC_API_BASE_URL`），禁止直连 Agent。
 
-- Next.js 14 (App Router)
-- React 18
+## 技术栈
+
+- Next.js 14 (App Router) + React 18
 - Tailwind CSS
-- TanStack Query
-- Axios
+- TanStack Query v5
+- Axios（仅限 `src/services/`）
 
-## Quick Start
+## 目录结构
+
+```
+src/
+├── components/
+│   ├── ui/          # Skeleton, Button
+│   ├── business/    # CampaignStatusBadge, LeadScoreTag
+│   └── layouts/     # Sidebar, Header
+├── hooks/
+│   ├── queries/     # useDashboardMetrics, useCampaigns, useLeads
+│   └── mutations/   # useCreateCampaign, useTerminateCampaign
+├── services/
+│   ├── api.ts       # Axios 实例 + JWT + 统一错误 Toast
+│   ├── mock-data.ts # PRD v1.9 示例 Mock
+│   └── endpoints/   # dashboard, campaign, lead
+├── store/           # (可选) Zustand UI 状态
+└── app/             # 路由与页面
+```
+
+## 启动
 
 ```bash
 cd web
@@ -19,69 +39,11 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-## Real Run Mode (No Mock)
+- **Mock 模式**：`NEXT_PUBLIC_USE_MOCK=true` 时使用 `services/mock-data.ts`，不请求后端。
+- **联调**：设置 `NEXT_PUBLIC_API_BASE_URL` 为后端地址，并关闭 Mock。
 
-To make page actions hit real backend APIs:
+## 规范（PM v1.10）
 
-1. Start Redis on `127.0.0.1:6379`.
-2. Start backend service in `../backend`.
-3. Set `web/.env.local`:
-
-```env
-NEXT_PUBLIC_USE_MOCK=false
-NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:38789
-NEXT_PUBLIC_RUNTIME_ENV=development
-NEXT_PUBLIC_DASHBOARD_ALLOW_MOCK_FALLBACK=false
-```
-
-4. Open `/login` and use:
-   - username: `admin`
-   - password: `change_me`
-
-## API Mapping
-
-- `/dashboard` -> `/api/v1/dashboard/metrics`
-- `/fleet` -> `/api/v1/fleet/nodes`, `/api/v1/fleet/commands`
-- `/campaigns` -> `/api/v1/campaigns`
-- `/leads` -> `/api/v1/leads`, `/api/v1/leads/:id/reveal`
-- `/dashboard/settings/integrations` -> `/api/v1/tenant/integrations`
-
-## Release Regression (Real Chain)
-
-Live regression script for release gate:
-
-```bash
-cd web
-npm run test:e2e:release
-```
-
-The runner will:
-
-1. Build backend
-2. Ensure Redis is available (priority: existing `127.0.0.1:6379` -> Docker `redis:7-alpine` -> local `redis-server`)
-3. Start backend + web
-4. Run the 5-page Playwright real-chain test
-5. Exit non-zero to block release on failure
-
-This runs the 5-page real chain:
-
-1. Login (`/login`)
-2. Dashboard metrics (`/`)
-3. Campaign create (`/campaigns/new`)
-4. Fleet dispatch (`/fleet`)
-5. Leads and reveal (`/leads`)
-
-For direct Playwright run against already-started services:
-
-```bash
-cd web
-npm run test:e2e:live
-```
-
-If `test:e2e:release` fails with `No Redis runtime available`, start Docker Desktop (or install/start local `redis-server`) and rerun.
-
-## Notes
-
-- HTTP calls should only be made through `src/services/*`.
-- Do not call backend directly inside React components.
-- Keep mock mode only for local UI demo; disable it for integration testing.
+- 前端 100% 通过 `src/services/` 发起请求，禁止在组件内裸写 fetch/axios。
+- 所有列表/大盘数据经 React Query hooks 获取，组件只消费 `data | isLoading | isError`。
+- 加载态统一用 Skeleton；API 错误由 `api.ts` 响应拦截器触发全局 Toast。

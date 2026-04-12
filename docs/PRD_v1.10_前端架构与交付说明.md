@@ -1,4 +1,4 @@
-﻿# ClawCommerce PRD v1.10 前端架构与交付说明
+# ClawCommerce PRD v1.10 前端架构与交付说明
 
 > 前端架构限制与 React Query 数据流规范 — 已按规范在 `web/` 落地。
 

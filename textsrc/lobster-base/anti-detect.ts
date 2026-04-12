@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 龙虾底座 — 防风控：吸收 AdsPower 防封锁环境
  * playwright-extra + stealth 插件（或内置注入抹除 webdriver）+ 随机 UA + 每账号独立 Proxy
  * 运行前需安装：npm install playwright-extra playwright

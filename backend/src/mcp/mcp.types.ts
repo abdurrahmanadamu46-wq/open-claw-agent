@@ -1,4 +1,4 @@
-﻿/**
+/**
  * MCP (Model Context Protocol) over WebSocket — JSON-RPC 2.0 消息类型
  * 中心端 NestJS 通过 Socket.io 向边缘 Tauri 节点发送 MCP 格式指令
  */

@@ -1,49 +1,86 @@
-﻿# Edge Runtime
+# Edge Runtime — OpenClaw Agent
 
-`edge-runtime/` is the edge executor for OpenClaw Agent.
-It runs on customer machines or edge nodes and is responsible for:
+Executor-only modules that run on edge nodes (Windows machines with browsers).  
+These modules receive commands from the cloud control plane and execute them locally using Playwright + BBP Kernel for human-like browser automation.
 
-- receiving cloud commands over the fleet socket
-- executing SOP packets locally
-- storing local memory and scheduled tasks
-- exposing a safe debug terminal
-- supporting local backup / restore
+## Architecture Boundary
 
-## Main Entry
+**Edge runtime is executor-only.** It:
+- ✅ Receives SOP packets from cloud via WebSocket
+- ✅ Resolves DOM selectors to screen coordinates
+- ✅ Executes browser actions with human-like mouse/keyboard behavior
+- ✅ Reports progress and results back to cloud
+- ❌ Never makes strategy/content decisions
+- ❌ Never calls LLMs directly
 
-- [client_main.py](/F:/openclaw-agent/edge-runtime/client_main.py)
+## Modules
 
-## Key Components
+### `wss_receiver.py` — WebSocket Client
+Connects to the Fleet WebSocket Gateway, maintains heartbeat, receives `execute_task` / `execute_behavior_session` commands, and dispatches them to registered handlers.
 
-- [wss_receiver.py](/F:/openclaw-agent/edge-runtime/wss_receiver.py)
-- [edge_scheduler.py](/F:/openclaw-agent/edge-runtime/edge_scheduler.py)
-- [backup_manager.py](/F:/openclaw-agent/edge-runtime/backup_manager.py)
-- [terminal_bridge.py](/F:/openclaw-agent/edge-runtime/terminal_bridge.py)
-- [memory_store.py](/F:/openclaw-agent/edge-runtime/memory_store.py)
-- [marionette_executor.py](/F:/openclaw-agent/edge-runtime/marionette_executor.py)
+```python
+from wss_receiver import WSSReceiver
 
-## Operations
+receiver = WSSReceiver(
+    gateway_url="wss://fleet-gw.openclaw.io/edge",
+    node_id="node-001",
+    edge_secret="your-secret",
+)
 
-### Backup
+async def handle_task(payload: dict) -> dict:
+    # Execute the task...
+    return {"status": "done"}
 
-```bash
-bash edge-runtime/scripts/backup.sh
+receiver.on_task(handle_task)
 ```
 
-### Restore Preview
+### `context_navigator.py` — Selector Resolution
+Resolves cloud-issued target selectors (CSS, XPath, text hints, coordinate hints) into concrete `(x, y)` screen coordinates for the BBP Kernel.
 
-```bash
-bash edge-runtime/scripts/restore.sh /path/to/archive.tar.gz --dry-run
+Supported selector formats:
+| Format | Example | Description |
+|--------|---------|-------------|
+| CSS | `.submit-btn`, `#editor` | Standard CSS selector |
+| XPath | `//div[@class='editor']` | XPath expression |
+| Text | `text:发布` | Match by visible text |
+| Coordinate | `xy:100,200` | Direct coordinate hint |
+
+```python
+from context_navigator import ContextNavigator
+
+nav = ContextNavigator(viewport=(1920, 1080))
+resolution = await nav.resolve("text:发布", page=playwright_page)
+print(resolution.center_x, resolution.center_y)
 ```
 
-### Restore
+### `marionette_executor.py` — SOP Step Runner
+Executes `MarionetteSopPacket` steps sequentially with human-like timing. Integrates ContextNavigator for target resolution and BBP Kernel for mouse trajectories.
+
+Supported actions:
+- `WAIT` — Pause for specified milliseconds
+- `NAVIGATE` — Go to URL
+- `CLICK_SELECTOR` — Click element with human-like mouse trajectory
+- `INPUT_TEXT` — Type text with realistic per-character timing
+- `SCROLL` — Scroll page
+- `SCREENSHOT` — Capture screenshot
+- `UPLOAD_VIDEO` / `UPLOAD_IMAGE` — Upload files
+- `DOWNLOAD_ASSET` — Download from URL
+- `GRAB_SOURCE` — Extract page content
+- `REPORT_BACK` — Report status
+
+## Testing
 
 ```bash
-bash edge-runtime/scripts/restore.sh /path/to/archive.tar.gz
+# Run all edge-runtime tests
+python -m pytest edge-runtime/tests/ -v
+
+# Run specific test file
+python -m pytest edge-runtime/tests/test_context_navigator.py -v
 ```
 
-## Notes
+## Dependencies
 
-- Edge runtime is executor-only. It does not perform business reasoning.
-- `node_ping` is the canonical heartbeat event.
-- Backup / restore and scheduler state both live under `~/.openclaw`.
+- Python 3.10+
+- `playwright` (async API)
+- `psutil` (optional, for system metrics in heartbeat)
+- `bbp_kernel` (project internal — human-like mouse movement)

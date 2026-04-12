@@ -1,68 +1,97 @@
-﻿# OpenClaw Agent（Liaoyuan / 龙虾元老院）
+# ClawCommerce Agent
 
-本仓库当前采用**统一控制面**：
+基于 OpenClaw 的商业化 AI 运营 SaaS（代号 ClawCommerce）— Agent 核心：节点管理、内容产出、线索提取、Prompt 优化与安全合规。
 
-- `web`（前端）
-- `backend`（控制面 API）
-- `dragon-senate-saas-v2`（AI 子服务，作为 backend 下游）
+---
 
-> `dragon-senate-saas-v2` 不再作为平行产品线对外暴露控制接口。
+## 最终成品入口（总负责人签发）
 
-## 快速开始
+| 你要… | 做法 |
+|--------|------|
+| **一眼看完交付物与启动方式** | 打开 **[docs/最终交付_总负责人签发_v1.0.md](docs/最终交付_总负责人签发_v1.0.md)** |
+| **客户演示（无后端）** | 双击 **`启动演示控制台.bat`** 或 `cd web && npm run dev`，浏览器打开 **终端里显示的 Local 地址 + `/demo.html`**（如 `http://localhost:3005/demo.html`） |
+| **一号客户 VIP 黑框连总控** | 配置 `scripts/vip-build/.env.vip` 后双击 **`scripts/vip-build/启动VIP客户端.bat`** 或 `npm run vip:run` |
+| **总控后端 + Redis** | `docker compose -f docker-compose.backend.yml up -d` 后 `cd backend && npm run start:dev` |
+| **客户能装什么 / 不能装什么** | **[docs/项目进度与安装就绪_客户版.md](docs/项目进度与安装就绪_客户版.md)** |
 
-```powershell
-# 启动统一控制面
-npm run module:up:control
+---
 
-# 查看状态
-npm run module:ps
+## 当前交付：OpenClaw 节点管理核心引擎
+
+- **node-manager**：主调度引擎（带 Redis 分布式锁）
+- **node-pool**：节点池（内存 + Redis 持久化）
+- **health-monitor**：5 分钟 CDP 心跳 + 自动恢复
+- **phone-pool**：手机号池（SMS-Activate / 5SIM / TigerSMS 集成位）
+- **Dashboard API**：`GET /api/agent/nodes/status` + WebSocket 事件推送说明
+
+### 使用方法
+
+见 [src/agent/README.md](src/agent/README.md)。
+
+### 测试
+
+```bash
+# 需要本地 Redis
+export REDIS_URL=redis://localhost:6379
+npm install
+npm run build
+npm test
 ```
 
-访问地址：
+### Docker
 
-- Web: `http://127.0.0.1:3301`
-- Backend: `http://127.0.0.1:48789`
-- AI Subservice: `http://127.0.0.1:18000`
-
-## 主干门禁（发版必须通过）
-
-- GitHub workflow: `.github/workflows/mainline-gate.yml`
-- 必过检查：
-  - `contracts`
-  - `week3-e2e-live`
-
-## 模块化命令
-
-```powershell
-npm run module:help
-npm run apps:help
-npm run module:test:release
+```bash
+docker compose up -d
+# Redis + Agent 进程（Agent 依赖 Redis 健康后启动）
 ```
 
-## 交接文档（新团队必读）
+### 配置项
 
-- `docs/handover/00-START-HERE.md`
-- `docs/handover/01-REPO-MAP.md`
-- `docs/handover/02-RUN-AND-VERIFY.md`
-- `docs/handover/03-OPEN-ITEMS.md`
-- `docs/handover/04-CODEX-CLAUDE-ONBOARDING.md`
-- `docs/handover/handover_manifest.json`
+| 环境变量 | 说明 |
+|----------|------|
+| REDIS_URL | Redis 连接（必填） |
+| MAX_NODES | 最大节点数 |
+| IDLE_RELEASE_MINUTES | 闲置释放分钟数 |
+| HEARTBEAT_INTERVAL_MS | 健康检查间隔（毫秒） |
+| LOG_LEVEL | 日志级别 |
 
-可生成当前运行快照：
+## 技术栈
 
-```powershell
-npm run handover:snapshot
-```
+- TypeScript + Node.js 20+
+- Redis（节点状态、锁）、MongoDB（日志，后续）
+- BullMQ（定时任务，后续）、Winston、Zod
 
-## 备份与存储
+## 与后端协作
 
-```powershell
-# 代码同步到 F 盘备份目录
-npm run backup:f:sync
+- 后端提供多租户、WebSocket、数据库持久化。
+- 本仓库提供 **内部 API**：`NodeManager.getNodesStatus()`、`NodeManager.allocate(campaign)`、`NodeManager.release(nodeId)`。
+- Dashboard：后端挂载 `getNodesStatusHandler(nodeManager)` 为 `GET /api/agent/nodes/status`，并通过 `onEvent` 将事件推送到 WebSocket。
 
-# Docker 数据固定到 F 盘
-npm run docker:data:f:pin
-```
+## 本地运行（三步）
 
-说明文档：`docs/DockerDesktop_默认数据目录固定到F盘.md`
+1. **安装与构建**（需 Node 20+、Redis）
+   ```bash
+   npm install
+   npm run build
+   npm test
+   ```
 
+2. **挂载 Dashboard API + WebSocket**
+   - 示例后端：`npm run server` 启动后：
+     - `GET http://localhost:38789/api/agent/nodes/status` 获取节点状态
+     - `WS ws://localhost:38789/api/agent/nodes/events` 接收实时事件
+   - 或在你自己的后端中挂载 `getNodesStatusHandler(nodeManager)`，并在创建 NodeManager 时传入 `onEvent` 做 WebSocket 广播。
+
+3. **内容产出与二创（content/）**
+   - `src/content/prompt-engine.ts`：Prompt 模板 + RAG，按行业/平台加载 JSON
+   - `src/content/content-generator.ts`：LLM 二创脚本生成
+   - `src/content/browser-orchestrator.ts`：Playwright 真实操作（骨架）
+   - `src/content/anti-detection.ts`：反检测策略
+   - `src/content/skills/`：小红书发帖等技能（可热加载）
+   - 模板示例：`src/content/templates/beauty/`、`fitness/`
+   - 测试：`npm run test:content`
+
+## 后续模块（按 PRD）
+
+- 线索提取与自动回传（lead/）
+- Prompt 持续优化与 A/B 测试 + 安全与合规

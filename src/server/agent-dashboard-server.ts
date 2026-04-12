@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - Example backend: GET /api/agent/nodes/status + WebSocket
  * Mounts getNodesStatusHandler and broadcasts NodeManager.onEvent to WS clients.
  * Run: node dist/server/agent-dashboard-server.js (after npm run build)
@@ -16,6 +16,8 @@ import {
   NodePool,
   createLogger,
   getNodesStatusHandler,
+  getIndustryCatalogHandler,
+  compileIndustryWorkflowHandler,
 } from '../agent/index.js';
 import type { NodePoolEvent, NodeStatus } from '../agent/types.js';
 import type { ICampaignConfig } from '../shared/contracts.js';
@@ -282,6 +284,29 @@ server.on('request', async (req, res) => {
 
   if (method === 'POST' && path === '/internal/campaign/terminate') {
     await handleInternalCampaignTerminate(req, res);
+    return;
+  }
+
+  // ── Industry Preview API (runtime-owned stable handlers) ──
+  if (method === 'GET' && path === '/api/agent/industry/catalog') {
+    try {
+      const handler = getIndustryCatalogHandler();
+      await handler(req, res);
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: (err as Error).message }));
+    }
+    return;
+  }
+
+  if (method === 'POST' && path === '/api/agent/industry/compile') {
+    try {
+      const handler = compileIndustryWorkflowHandler();
+      await handler(req, res);
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: (err as Error).message }));
+    }
     return;
   }
 

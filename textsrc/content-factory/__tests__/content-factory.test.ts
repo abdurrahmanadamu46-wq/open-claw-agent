@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AI 内容工厂单测 — 剧本生成 + Pipeline（Mock LLM + Mock Renderer）
  */
 

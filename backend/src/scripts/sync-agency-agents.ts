@@ -1,4 +1,4 @@
-﻿/**
+/**
  * GitHub 自动同步脚本：拉取 msitarzewski/agency-agents 仓库 60+ 角色
  * 解析 Markdown frontmatter + ## 段落，批量 upsert 到 AgentRole 存储（JSON 文件 + 可选 Redis）
  *

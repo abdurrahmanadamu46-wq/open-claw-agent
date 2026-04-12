@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - 执行单次 Campaign 任务（供后端 RPC 调用）
  * 后端 CampaignProcessor 消费 BullMQ 后调用 agentService.executeCampaignTask(payload)，
  * 即 HTTP POST 到本服务的 /internal/campaign/execute，本模块执行分配→状态机→回收。

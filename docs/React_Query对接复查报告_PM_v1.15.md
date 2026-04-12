@@ -1,4 +1,4 @@
-﻿# ClawCommerce React Query 对接复查报告 (PM v1.15)
+# ClawCommerce React Query 对接复查报告 (PM v1.15)
 
 > 小军侧前端与后端 API 的对接状态复查，确保 E2E 跑通后 MVP 界面一把点亮，并满足 Demo 录屏 SOP 四幕。
 

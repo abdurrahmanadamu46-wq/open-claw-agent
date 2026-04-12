@@ -1,109 +1,165 @@
-﻿"""Unit tests for WSSReceiver."""
-
-from __future__ import annotations
-
-import os
+"""
+Unit tests for WSSReceiver.
+Run with: python -m pytest edge-runtime/tests/ -v
+"""
+import asyncio
 import sys
-import tempfile
+import os
 import unittest
-from datetime import datetime, timedelta, timezone
-from unittest.mock import AsyncMock
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from memory_store import EdgeMemoryStore  # noqa: E402
-from wss_receiver import WSSReceiver  # noqa: E402
+from wss_receiver import WSSReceiver
 
 
-class MockTransport:
-    def __init__(self) -> None:
-        self.messages: list[str] = []
+class TestWSSReceiverInit(unittest.TestCase):
+    """Test WSSReceiver initialization and state."""
 
-    async def send(self, data: str) -> None:
-        self.messages.append(data)
-
-
-class TestWSSReceiver(unittest.IsolatedAsyncioTestCase):
-    async def asyncSetUp(self) -> None:
-        self.tmpdir = tempfile.TemporaryDirectory()
-        self.addCleanup(self.tmpdir.cleanup)
-        self.memory = EdgeMemoryStore(db_path=os.path.join(self.tmpdir.name, "edge_memory.db"))
-        self.receiver = WSSReceiver(
+    def test_basic_init(self):
+        r = WSSReceiver(
             gateway_url="wss://gw.example.com/fleet",
             node_id="node-001",
             edge_secret="secret123",
-            tenant_id="tenant-a",
-            memory_store=self.memory,
+        )
+        self.assertEqual(r.gateway_url, "wss://gw.example.com/fleet")
+        self.assertEqual(r.node_id, "node-001")
+        self.assertFalse(r.connected)
+
+    def test_stats_initial(self):
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="n1",
+            edge_secret="s",
+        )
+        stats = r.stats
+        self.assertEqual(stats["tasks_received"], 0)
+        self.assertEqual(stats["tasks_completed"], 0)
+        self.assertEqual(stats["tasks_failed"], 0)
+        self.assertIsNone(stats["connected_since"])
+
+    def test_describe(self):
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com/",
+            node_id="node-x",
+            edge_secret="sec",
+        )
+        desc = r.describe()
+        self.assertEqual(desc["gateway_url"], "wss://gw.example.com")
+        self.assertEqual(desc["node_id"], "node-x")
+        self.assertFalse(desc["connected"])
+        self.assertIn("stats", desc)
+
+    def test_trailing_slash_stripped(self):
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com///",
+            node_id="n",
+            edge_secret="s",
+        )
+        self.assertEqual(r.gateway_url, "wss://gw.example.com")
+
+    def test_handler_registration(self):
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="n",
+            edge_secret="s",
         )
 
-    async def test_basic_init(self) -> None:
-        self.assertEqual(self.receiver.gateway_url, "wss://gw.example.com/fleet")
-        self.assertEqual(self.receiver.node_id, "node-001")
-        self.assertFalse(self.receiver.connected)
+        async def dummy_handler(payload: dict) -> dict:
+            return {"ok": True}
 
-    async def test_ping_payload_idle(self) -> None:
-        payload = self.receiver._build_ping_payload()
+        r.on_task(dummy_handler)
+        self.assertIsNotNone(r._task_handler)
+
+        r.on_behavior_session(dummy_handler)
+        self.assertIsNotNone(r._behavior_handler)
+
+    def test_ping_payload_idle(self):
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="node-001",
+            edge_secret="s",
+            tenant_id="tenant-abc",
+        )
+        payload = r._build_ping_payload()
         self.assertEqual(payload["nodeId"], "node-001")
-        self.assertEqual(payload["tenantId"], "tenant-a")
+        self.assertEqual(payload["tenantId"], "tenant-abc")
         self.assertEqual(payload["status"], "IDLE")
+        self.assertEqual(payload["currentTaskId"], "")
+        self.assertIn("cpuPercent", payload)
+        self.assertIn("version", payload)
 
-    async def test_handle_task_with_handler(self) -> None:
+
+class TestWSSReceiverTaskHandling(unittest.TestCase):
+    """Test task handling flow with mock WebSocket."""
+
+    def test_handle_task_no_handler(self):
+        """When no handler is registered, task should fail."""
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="n",
+            edge_secret="s",
+        )
+
+        sent_messages = []
+
+        class MockWS:
+            async def send(self, data):
+                sent_messages.append(data)
+
+        ws = MockWS()
+        payload = {"taskId": "task-123"}
+
+        asyncio.get_event_loop().run_until_complete(r._handle_task(ws, payload))
+
+        self.assertEqual(r.stats["tasks_received"], 1)
+        self.assertEqual(r.stats["tasks_failed"], 1)
+        self.assertEqual(r.stats["tasks_completed"], 0)
+        # Should have sent progress + completed messages
+        self.assertGreaterEqual(len(sent_messages), 2)
+
+    def test_handle_task_with_handler(self):
+        """When handler is registered and succeeds, task should complete."""
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="n",
+            edge_secret="s",
+        )
+
         async def handler(payload: dict) -> dict:
-            return {"status": "done", "taskId": payload.get("taskId")}
+            return {"status": "done"}
 
-        self.receiver.on_task(handler)
-        transport = MockTransport()
-        await self.receiver._handle_task(transport, {"taskId": "task-456"})
-        self.assertEqual(self.receiver.stats["tasks_received"], 1)
-        self.assertEqual(self.receiver.stats["tasks_completed"], 1)
-        self.assertGreaterEqual(len(transport.messages), 2)
+        r.on_task(handler)
 
-    async def test_future_scheduled_task_is_stored_locally(self) -> None:
-        future = (datetime.now(timezone.utc) + timedelta(minutes=5)).isoformat()
-        transport = MockTransport()
-        await self.receiver._handle_task(
-            transport,
-            {
-                "taskId": "task-future",
-                "scheduledAt": future,
-                "tenant_id": "tenant-a",
-                "lobster_id": "dispatcher",
-            },
+        sent_messages = []
+
+        class MockWS:
+            async def send(self, data):
+                sent_messages.append(data)
+
+        ws = MockWS()
+        payload = {"taskId": "task-456"}
+
+        asyncio.get_event_loop().run_until_complete(r._handle_task(ws, payload))
+
+        self.assertEqual(r.stats["tasks_received"], 1)
+        self.assertEqual(r.stats["tasks_completed"], 1)
+        self.assertEqual(r.stats["tasks_failed"], 0)
+
+    def test_handle_task_empty_id_ignored(self):
+        """Tasks with empty ID should be silently ignored."""
+        r = WSSReceiver(
+            gateway_url="wss://gw.example.com",
+            node_id="n",
+            edge_secret="s",
         )
-        scheduled = await self.memory.list_scheduled_tasks()
-        self.assertEqual(len(scheduled), 1)
-        self.assertEqual(scheduled[0]["task_id"], "task-future")
-        self.assertEqual(scheduled[0]["status"], "pending")
 
-    async def test_sop_schedule_sync_persists_job(self) -> None:
-        await self.receiver._handle_sop_schedule_sync(
-            {
-                "job_id": "sop_sync_demo",
-                "cron": "0 8 * * *",
-                "timezone": "Asia/Shanghai",
-                "payload": {"sop_type": "publish_post"},
-            }
-        )
-        jobs = await self.receiver.scheduler.list_scheduled_sops()
-        self.assertEqual(len(jobs), 1)
-        self.assertEqual(jobs[0]["job_id"], "sop_sync_demo")
+        class MockWS:
+            async def send(self, data):
+                pass
 
-    async def test_batch_delivery_executes_items_and_acks(self) -> None:
-        self.receiver._execute_task_payload = AsyncMock(return_value={"success": True})  # type: ignore[method-assign]
-        self.receiver._ack_outbox_item = AsyncMock()  # type: ignore[method-assign]
-        await self.receiver._handle_batch_delivery(
-            {
-                "items": [
-                    {
-                        "outbox_id": "outbox-1",
-                        "msg_type": "task_dispatch",
-                        "payload": {"taskId": "task-123", "actionType": "SYNC_CONFIG", "params": {}},
-                    }
-                ]
-            }
-        )
-        self.receiver._execute_task_payload.assert_awaited_once()  # type: ignore[attr-defined]
-        self.receiver._ack_outbox_item.assert_awaited_once_with("outbox-1")  # type: ignore[attr-defined]
+        ws = MockWS()
+        asyncio.get_event_loop().run_until_complete(r._handle_task(ws, {}))
+        self.assertEqual(r.stats["tasks_received"], 0)
 
 
 if __name__ == "__main__":

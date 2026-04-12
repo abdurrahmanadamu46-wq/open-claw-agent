@@ -1,0 +1,24 @@
+【总控电脑 — 正确启动顺序】
+
+0. 先启动 Docker Desktop（必做）
+   若执行 docker 命令报错 "cannot find the file specified" 或 "pipe/dockerDesktopLinuxEngine"：
+   - 请从开始菜单打开「Docker Desktop」，等托盘图标就绪（约 30 秒）；
+   - 关掉当前 PowerShell/cmd 窗口，重新开一个再执行第 1 步（否则可能仍报错）。
+
+1. 启动 Redis（必做，否则后端会报 ECONNREFUSED 127.0.0.1:6380）
+   双击项目根目录的「启动Redis.bat」；或在新开的 PowerShell 里执行：
+   docker start openclaw-redis
+   若提示容器不存在则执行：docker run -d -p 6380:6379 --name openclaw-redis redis:7-alpine
+
+2. 启动总控后端
+   双击「启动总控后端.bat」，等出现：
+   C&C backend listening on http://localhost:3000
+
+3. 放行防火墙（让客户能连）
+   以管理员身份打开 PowerShell，执行：
+   New-NetFirewallRule -DisplayName "ClawCommerce-3000" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+
+4. 客户端的 .env.vip 里填：
+   C_AND_C_SERVER_URL=http://本机IP:3000/agent-cc
+
+若 Redis 未启动，后端会反复报 [RedisModule] connect ECONNREFUSED 127.0.0.1:6380，需先完成第 1 步。

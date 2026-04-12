@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 租户配置实体 — 目标 schema（接入 TypeORM 时使用）
  * 当前实现：IntegrationsService 将 integrations 存于 Redis key tenant_integrations:{tenantId}
  * 迁移到 Postgres 时：建表 tenant_config (id, tenant_id, integrations JSONB, updated_at)

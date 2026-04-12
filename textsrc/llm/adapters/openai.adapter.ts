@@ -1,4 +1,4 @@
-﻿/**
+/**
  * OpenAI Adapter — 官方 API + JSON mode
  * 环境变量：OPENAI_API_KEY，可选 OPENAI_MODEL（默认 gpt-4o）
  */

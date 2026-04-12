@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - NodeManager unit tests
  */
 

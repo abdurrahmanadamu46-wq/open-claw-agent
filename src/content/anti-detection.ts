@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Anti-detection strategy library
  * Fingerprint (canvas/webgl/audio), User-Agent + proxy rotation, device fingerprint pool.
  * @module content/anti-detection

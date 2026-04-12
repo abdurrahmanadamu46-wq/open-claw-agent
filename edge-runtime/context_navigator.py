@@ -1,4 +1,4 @@
-﻿"""
+"""
 Context Navigator — DOM/Selector Target Resolution for Edge Runtime
 Resolves cloud-issued target selectors (CSS / XPath / text hints)
 into concrete (x, y) screen coordinates for the BBP Kernel.
@@ -240,42 +240,3 @@ class ContextNavigator:
             "cache_size": len(self._resolution_cache),
             "stats": dict(self._stats),
         }
-
-    def build_selector_candidates(self, instruction: str) -> list[str]:
-        """
-        Build best-effort text-oriented selector candidates from natural language.
-
-        Example:
-        - "点击发布按钮" -> ["text:发布", "text:发布按钮"]
-        - "在标题框输入: xxx" -> ["input[placeholder*='标题']", "textarea[placeholder*='标题']"]
-        """
-        text = str(instruction or "").strip()
-        if not text:
-            return []
-
-        candidates: list[str] = []
-        cleaned = text.replace("点击", "").replace("按钮", "").replace("输入框", "").replace("框", "").strip(" ：:")
-        if cleaned:
-            candidates.append(f"text:{cleaned}")
-        if "标题" in text:
-            candidates.extend([
-                "input[placeholder*='标题']",
-                "textarea[placeholder*='标题']",
-                "[contenteditable='true']",
-            ])
-        if any(token in text for token in ("内容", "正文", "文案", "回复", "评论")):
-            candidates.extend([
-                "textarea",
-                "[contenteditable='true']",
-            ])
-        if "发布" in text:
-            candidates.extend(["text:发布", "text:发表"])
-        # keep order but dedupe
-        seen: set[str] = set()
-        output: list[str] = []
-        for item in candidates:
-            if item in seen:
-                continue
-            seen.add(item)
-            output.append(item)
-        return output

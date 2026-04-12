@@ -1,4 +1,4 @@
-﻿# 提线木偶协议 (Marionette Protocol) — 云边协同 SOP 说明
+# 提线木偶协议 (Marionette Protocol) — 云边协同 SOP 说明
 
 **高级虾（云端 AI 内阁）与干活虾（客户本地物理龙虾）之间沟通的「加密语言」。**
 

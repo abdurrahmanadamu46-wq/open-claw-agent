@@ -1,12 +1,8 @@
-﻿import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { buildAgentWorkflowGraph } from './agent-workflow.graph';
 import type { FinalActionPayload } from './agent-workflow.types';
 import { IntegrationsService } from '../integrations/integrations.service';
-import type {
-  LLMFunctionJsonSchema,
-  LLMFunctionTool,
-  LLMToolsInput,
-} from './agent-coordinator.types';
+import type { LLMFunctionTool, LLMToolsInput } from './agent-coordinator.types';
 
 /**
  * 智能体调度引擎 — LangGraph 多脑协同 + 动态工具箱 (Tool Registry)
@@ -74,23 +70,6 @@ export class AgentCoordinatorService {
     }
 
     // 自定义 API：按 OpenAPI schema 转成 function
-    const normalizeSchemaType = (
-      value: unknown,
-    ): NonNullable<LLMFunctionJsonSchema['type']> => {
-      switch (value) {
-        case 'string':
-        case 'number':
-        case 'integer':
-        case 'boolean':
-        case 'object':
-        case 'array':
-        case 'null':
-          return value;
-        default:
-          return 'string';
-      }
-    };
-
     for (const api of customTools.customApis ?? []) {
       if (!api.name || !api.endpoint) continue;
       const raw = api.schema && typeof api.schema === 'object' ? api.schema as { properties?: Record<string, unknown>; required?: string[] } : {};
@@ -99,14 +78,11 @@ export class AgentCoordinatorService {
             Object.entries(raw.properties).map(([k, v]) => [
               k,
               typeof v === 'object' && v && 'type' in v
-                ? {
-                    type: normalizeSchemaType((v as { type?: unknown }).type),
-                    description: (v as { description?: string }).description,
-                  }
+                ? { type: String((v as { type?: string }).type ?? 'string'), description: (v as { description?: string }).description }
                 : { type: 'string' as const },
             ])
           )
-        : {}) as Record<string, LLMFunctionJsonSchema>;
+        : {}) as Record<string, { type: string; description?: string }>;
       tools.push({
         type: 'function',
         function: {

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * LangGraph 多智能体调度图：Scout -> Director -> (条件) -> Publish / 重试 / 失败
  * 自我纠错：Director 输出格式校验不通过时打回 Director，最多重试 3 次
  */

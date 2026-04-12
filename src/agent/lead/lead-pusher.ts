@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - 线索回传（战果回收）
  * POST 到后端内部 API，携带 x-internal-secret；后端负责 AES 落库与 lead-webhook-queue。
  * @module agent/lead/lead-pusher

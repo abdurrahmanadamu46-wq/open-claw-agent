@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 去水印提供方工厂 — 根据 env 切换
  * WATERMARK_REMOVER=mock | internal | 第三方
  */

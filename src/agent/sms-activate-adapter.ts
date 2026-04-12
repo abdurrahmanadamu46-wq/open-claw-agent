@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - 手机号池与第三方接码平台 API 契约
  * SMS-Activate / 5SIM 等：查询余额、获取号码、获取验证码，带异常重试。
  * @module agent/sms-activate-adapter

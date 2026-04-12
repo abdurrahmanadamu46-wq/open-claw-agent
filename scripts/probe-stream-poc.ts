@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 【选项 B】Agent 侧 probe.stream 发送端 — 1fps JPEG，不抢抓取算力
  *
  * 无 Playwright 时：发 1x1 或极小 JPEG base64，验证网关 Relay + 前端 Modal。

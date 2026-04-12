@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce 数据字典约定 - 双端必须严格遵守
  * 来源：PM 文档 v1.3 研发协同协议 & 第一阶段双端开发任务书
  * @module shared/contracts
@@ -124,7 +124,6 @@ export type OpenClawTaskStep =
  */
 export interface OpenClawTaskPayload {
   job_id: string;
-  trace_id?: string;
   campaign_id: string;
   action: string;
   config?: ICampaignConfig;

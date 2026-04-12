@@ -1,14 +1,7 @@
-﻿import { BadRequestException, Body, Controller, Get, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { DeviceAuthService } from './device-auth.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AgentCCGateway } from '../gateway/agent-cc.gateway';
-import { AdminRoleGuard } from '../auth/admin-role.guard';
-
-type AuthedRequest = {
-  user?: {
-    tenantId?: string;
-  };
-};
 
 @Controller('api/v1/devices')
 export class DeviceAuthController {
@@ -17,11 +10,13 @@ export class DeviceAuthController {
     private readonly agentGateway: AgentCCGateway,
   ) {}
 
+  /** Tauri：生成绑定二维码 Ticket */
   @Post('bind-ticket')
   async requestBindTicket(@Body() body: { machine_code: string }) {
     return this.deviceAuthService.createBindTicket(body.machine_code);
   }
 
+  /** 手机/Web：扫码后确认授权（需登录） */
   @UseGuards(JwtAuthGuard)
   @Post('confirm-bind')
   async confirmDeviceBind(
@@ -31,36 +26,22 @@ export class DeviceAuthController {
     if (!body?.ticket_id) {
       return { success: false, message: 'ticket_id required' };
     }
-    return this.deviceAuthService.confirmTicketAndBind(req.user.tenantId, body.ticket_id);
+    return this.deviceAuthService.confirmTicketAndBind(
+      req.user.tenantId,
+      body.ticket_id,
+    );
   }
 
-  @UseGuards(JwtAuthGuard, AdminRoleGuard)
-  @Get()
-  async listBoundDevices(@Req() req?: AuthedRequest, @Query('limit') limit?: string) {
-    const tenantId = req?.user?.tenantId?.trim();
-    if (!tenantId) {
-      throw new BadRequestException('tenant scope is required');
-    }
-    const parsedLimit = limit ? Number.parseInt(limit, 10) : 100;
-    if (!Number.isFinite(parsedLimit) || parsedLimit <= 0) {
-      throw new BadRequestException('limit must be a positive integer');
-    }
-    const devices = await this.deviceAuthService.listBoundDevices(tenantId, parsedLimit);
-    return { code: 0, data: { list: devices } };
-  }
-
-  @UseGuards(JwtAuthGuard, AdminRoleGuard)
+  /** 测试用：向当前所有已连上的龙虾客户端下发一条任务。Payload 可含 steps（含 custom_script），见 shared/contracts OpenClawTaskPayload */
   @Post('test-dispatch')
   async testDispatch() {
-    const traceId = `trc_test_${Date.now()}`;
     const payload = {
       job_id: 'JOB_TEST_' + Date.now(),
-      trace_id: traceId,
       campaign_id: 'CAMP_VIP_TEST',
       action: 'EXECUTE_CAMPAIGN',
       config: { test: true },
     };
     this.agentGateway.server.emit('server.task.dispatch', payload);
-    return { ok: true, message: 'test dispatch emitted', payload, traceId };
+    return { ok: true, message: '已向所有已连接客户端下发测试任务', payload };
   }
 }

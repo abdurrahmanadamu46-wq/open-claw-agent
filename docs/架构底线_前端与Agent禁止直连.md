@@ -1,4 +1,4 @@
-﻿# ClawCommerce 架构底线：前端与 Agent 禁止直连
+# ClawCommerce 架构底线：前端与 Agent 禁止直连
 
 > PM 研发协同指令 v1.12 — 人员调整后边界不退让
 

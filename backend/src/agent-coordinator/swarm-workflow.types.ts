@@ -1,4 +1,4 @@
-﻿/**
+/**
  * LangGraph Swarm 蜂群状态类型
  * 支持动态移交 (Dynamic Handoff)：编剧 → 审核 → 违规则回编剧重写
  */

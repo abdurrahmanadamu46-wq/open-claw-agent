@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 视觉 GUI 自动化调度 Hook
  * 流程：Rust 截图 → 后端 VLM 分析 → 解析坐标/动作 → Rust enigo 执行
  * 用于 Tauri Lobster 节点，绕过 DOM 反爬

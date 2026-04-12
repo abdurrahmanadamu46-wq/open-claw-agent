@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import {
   AUTOPILOT_QUEUES,
   CIRCUIT_BREAKER_FAILURE_THRESHOLD,

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 统一 Pipeline 单测 — Mock LLM + Mock Renderer
  */
 

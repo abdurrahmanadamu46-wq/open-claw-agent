@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 打码平台工厂 — 根据 env 切换
  * CAPTCHA_SOLVER=mock | 2captcha | anticaptcha | tujian
  */

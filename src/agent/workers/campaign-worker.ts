@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Agent - BullMQ campaign-queue 消费者
  * 后端通过 campaign-queue 下发任务；Agent 只监听队列执行，不轮询。
  * 流程：收 job → 带锁分配节点 → 状态机 SCRAPING → GENERATING → PUBLISHING → 回收节点

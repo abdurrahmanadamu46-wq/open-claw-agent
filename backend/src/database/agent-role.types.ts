@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 虚拟员工角色表 (AgentRole) — 与 agency-agents Markdown 结构对齐
  * 用于龙虾兵营 / 弹药库角色库，支持 GitHub 同步与出厂默认 Personas
  */

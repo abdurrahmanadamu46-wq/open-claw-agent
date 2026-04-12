@@ -1,4 +1,4 @@
-﻿# ClawCommerce C&C WebSocket 协议规范 v1.21
+# ClawCommerce C&C WebSocket 协议规范 v1.21
 
 **Endpoint：**  
 - 生产：`wss://api.clawcommerce.com/agent-cc`  

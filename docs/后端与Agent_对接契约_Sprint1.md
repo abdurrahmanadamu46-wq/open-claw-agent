@@ -1,4 +1,4 @@
-﻿# ClawCommerce 后端与 Agent 对接契约（Sprint 1 闭环）
+# ClawCommerce 后端与 Agent 对接契约（Sprint 1 闭环）
 
 > 边界：**后端绝对权威** — 前端零业务逻辑，**Agent 零数据落盘权**。所有流转经后端强校验与加解密。
 

@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CONVERSION_HACKER_NAME = exports.CONVERSION_HACKER_ID = exports.SCHEDULE_OFFICER_NAME = exports.SCHEDULE_OFFICER_ID = exports.VISUAL_DIRECTOR_NAME = exports.VISUAL_DIRECTOR_ID = exports.GOLDEN_WRITER_NAME = exports.GOLDEN_WRITER_ID = exports.VIRAL_ENGINE_NAME = exports.VIRAL_ENGINE_ID = exports.RISK_AUDITOR_NAME = exports.RISK_AUDITOR_ID = exports.COMMUNITY_NINJA_NAME = exports.COMMUNITY_NINJA_ID = void 0;
+var community_ninja_1 = require("./community-ninja");
+Object.defineProperty(exports, "COMMUNITY_NINJA_ID", { enumerable: true, get: function () { return community_ninja_1.AGENT_ID; } });
+Object.defineProperty(exports, "COMMUNITY_NINJA_NAME", { enumerable: true, get: function () { return community_ninja_1.AGENT_NAME; } });
+var risk_auditor_1 = require("./risk-auditor");
+Object.defineProperty(exports, "RISK_AUDITOR_ID", { enumerable: true, get: function () { return risk_auditor_1.AGENT_ID; } });
+Object.defineProperty(exports, "RISK_AUDITOR_NAME", { enumerable: true, get: function () { return risk_auditor_1.AGENT_NAME; } });
+var viral_engine_1 = require("./viral-engine");
+Object.defineProperty(exports, "VIRAL_ENGINE_ID", { enumerable: true, get: function () { return viral_engine_1.AGENT_ID; } });
+Object.defineProperty(exports, "VIRAL_ENGINE_NAME", { enumerable: true, get: function () { return viral_engine_1.AGENT_NAME; } });
+var golden_writer_1 = require("./golden-writer");
+Object.defineProperty(exports, "GOLDEN_WRITER_ID", { enumerable: true, get: function () { return golden_writer_1.AGENT_ID; } });
+Object.defineProperty(exports, "GOLDEN_WRITER_NAME", { enumerable: true, get: function () { return golden_writer_1.AGENT_NAME; } });
+var visual_director_1 = require("./visual-director");
+Object.defineProperty(exports, "VISUAL_DIRECTOR_ID", { enumerable: true, get: function () { return visual_director_1.AGENT_ID; } });
+Object.defineProperty(exports, "VISUAL_DIRECTOR_NAME", { enumerable: true, get: function () { return visual_director_1.AGENT_NAME; } });
+var schedule_officer_1 = require("./schedule-officer");
+Object.defineProperty(exports, "SCHEDULE_OFFICER_ID", { enumerable: true, get: function () { return schedule_officer_1.AGENT_ID; } });
+Object.defineProperty(exports, "SCHEDULE_OFFICER_NAME", { enumerable: true, get: function () { return schedule_officer_1.AGENT_NAME; } });
+var conversion_hacker_1 = require("./conversion-hacker");
+Object.defineProperty(exports, "CONVERSION_HACKER_ID", { enumerable: true, get: function () { return conversion_hacker_1.AGENT_ID; } });
+Object.defineProperty(exports, "CONVERSION_HACKER_NAME", { enumerable: true, get: function () { return conversion_hacker_1.AGENT_NAME; } });
+//# sourceMappingURL=index.js.map

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Playwright 反检测底座
  * 封装 Playwright，注入 stealth 逻辑（等价 puppeteer-extra-plugin-stealth）。
  * Canvas/WebGL/User-Agent 指纹随机化；人类化延迟 + 行为库（human-cursor 风格）。

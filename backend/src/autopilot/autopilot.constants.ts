@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 全自动无人值守引擎 — BullMQ 队列名与生命周期契约
  * 流转顺序：radar_sniffing -> content_forge -> matrix_dispatch -> lead_harvest
  */
@@ -7,23 +7,12 @@ export const RADAR_SNIFFING_QUEUE = 'radar_sniffing_queue';
 export const CONTENT_FORGE_QUEUE = 'content_forge_queue';
 export const MATRIX_DISPATCH_QUEUE = 'matrix_dispatch_queue';
 export const LEAD_HARVEST_QUEUE = 'lead_harvest_queue';
-export const RADAR_SNIFFING_DLQ = 'radar_sniffing_dlq';
-export const CONTENT_FORGE_DLQ = 'content_forge_dlq';
-export const MATRIX_DISPATCH_DLQ = 'matrix_dispatch_dlq';
-export const LEAD_HARVEST_DLQ = 'lead_harvest_dlq';
 
 export const AUTOPILOT_QUEUES = [
   RADAR_SNIFFING_QUEUE,
   CONTENT_FORGE_QUEUE,
   MATRIX_DISPATCH_QUEUE,
   LEAD_HARVEST_QUEUE,
-] as const;
-
-export const AUTOPILOT_DLQS = [
-  RADAR_SNIFFING_DLQ,
-  CONTENT_FORGE_DLQ,
-  MATRIX_DISPATCH_DLQ,
-  LEAD_HARVEST_DLQ,
 ] as const;
 
 /** 每日内容生成上限（content_forge 熔断前检查） */

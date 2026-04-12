@@ -1,4 +1,4 @@
-﻿# OpenClaw Agent — Development Progress
+# OpenClaw Agent — Development Progress
 
 ## Completed Modules
 

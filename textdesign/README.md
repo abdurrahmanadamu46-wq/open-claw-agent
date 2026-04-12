@@ -1,4 +1,4 @@
-﻿# ClawCommerce 设计交付库 (UI/UX Designer)
+# ClawCommerce 设计交付库 (UI/UX Designer)
 
 - **设计规范**：Figma 级文字原型 + Shadcn/UI + Tailwind + Radix + 暗黑模式
 - **目标**：配置→启动→查看线索 ≤3 步，视觉评分 ≥9.5，移动端线索页 100% 可用

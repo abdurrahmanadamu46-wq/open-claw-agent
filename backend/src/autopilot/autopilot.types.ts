@@ -1,89 +1,37 @@
-﻿/**
- * Autopilot job payload definitions and pipeline contracts.
+/**
+ * 全自动引擎 — Job Payload 与流转数据结构
  */
 
-export interface ReplayMeta {
-  replayOfJobId?: string;
-  replayCount?: number;
-  replayNonce?: string;
-}
-
-export interface DlqReplayOperator {
-  operatorId: string;
-  operatorName?: string;
-  operatorSource?: string;
-}
-
-export type DlqReplayResult = 'success' | 'failed' | 'already_replayed' | 'lock_not_acquired';
-
-export interface DlqReplayAuditLog {
-  auditId: string;
-  sourceQueue: string;
-  dlqJobId: string;
-  sourceJobId?: string;
-  taskId?: string;
-  stage?: string;
-  traceId?: string;
-  replayJobId?: string;
-  replayCount?: number;
-  requestedAt: string;
-  completedAt?: string;
-  operatorId: string;
-  operatorName?: string;
-  operatorSource?: string;
-  result: DlqReplayResult;
-  errorMessage?: string;
-  tenantId?: string;
-}
-
-export interface BaseJobPayload {
-  jobId: string;
-  traceId: string;
-  replay?: ReplayMeta;
-}
-
-export interface RadarSniffingJobPayload extends BaseJobPayload {
+/** 侦察队列入参：探针任务 */
+export interface RadarSniffingJobPayload {
   tenantId: string;
   competitorUrl: string;
   industryKeywords: string[];
+  jobId: string;
 }
 
-export interface ContentForgeJobPayload extends BaseJobPayload {
+/** 侦察队列输出 → content_forge 入参 */
+export interface ContentForgeJobPayload {
   tenantId: string;
   viralText: string;
   sourceUrl?: string;
+  jobId: string;
 }
 
-export interface MatrixDispatchJobPayload extends BaseJobPayload {
+/** 内容熔炼输出 → matrix_dispatch 入参 */
+export interface MatrixDispatchJobPayload {
   tenantId: string;
   videoUrl: string;
   script: string;
   nodeIds: string[];
   scheduledAt?: string;
+  jobId: string;
 }
 
-export interface LeadHarvestJobPayload extends BaseJobPayload {
+/** 矩阵派发输出 → lead_harvest 入参 */
+export interface LeadHarvestJobPayload {
   tenantId: string;
   campaignId: string;
   publishedAt: string;
-}
-
-export interface AutopilotDeadLetterPayload<TPayload extends BaseJobPayload = BaseJobPayload> {
-  sourceQueue: string;
-  sourceJobId: string;
-  tenantId: string;
-  traceId: string;
-  campaignId?: string;
-  taskId: string;
-  nodeId: string;
-  stage: string;
-  errorCode: string;
-  errorMessage: string;
-  retryable: boolean;
-  attemptsMade: number;
-  maxAttempts: number;
-  originalPayload: TPayload;
-  failedAt: string;
-  replayedAt?: string;
-  replayJobId?: string;
+  jobId: string;
 }

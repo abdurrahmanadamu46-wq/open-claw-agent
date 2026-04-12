@@ -1,4 +1,4 @@
-﻿# ClawCommerce 无头联调作战书 (PM v1.14 - API First)
+# ClawCommerce 无头联调作战书 (PM v1.14 - API First)
 
 > 在 UI 接入前，用纯 API 脚本打通「创建任务 → 后端入队 → Agent 执行 → 线索回传 → 列表脱敏」大动脉。
 

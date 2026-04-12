@@ -1,0 +1,16 @@
+【VIP 一号客户交付包】
+
+一、您收到的内容
+- 公网总控网址：见 公网总控网址.txt
+- vip-lobster.exe：客户电脑双击运行，连上总控后显示「🟢 龙虾节点已连接云端，等待任务下发...」
+- .env.vip：须与 vip-lobster.exe 放在同一文件夹，客户运行时自动读取（勿泄露给他人，内含 Token）
+
+二、您本机需保持运行（否则客户连不上）
+1. Docker 已启动，且执行过：docker compose -f docker-compose.backend.yml up -d
+2. 总控后端：在项目目录运行「启动总控后端.bat」，或 PowerShell 执行：
+   cd backend
+   $env:REDIS_PORT="6380"; $env:JWT_SECRET="test-secret"; $env:PORT="3000"; npm run start:dev
+3. 公网隧道：PowerShell 执行 npx localtunnel --port 3000，窗口不关，得到的网址即 公网总控网址.txt 中的地址（若重开会变）
+
+三、客户使用
+把「vip-lobster.exe」和「.env.vip」放在同一文件夹，双击 exe 即可。无需安装 Node。

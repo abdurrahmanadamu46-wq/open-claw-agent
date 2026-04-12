@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 雷达大脑骨架单测 — crawler-task 序列化 + content-disassembler（Mock LLM）
  */
 

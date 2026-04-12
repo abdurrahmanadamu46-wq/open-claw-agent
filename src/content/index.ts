@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ClawCommerce Content - Public API
  * @module content
  */

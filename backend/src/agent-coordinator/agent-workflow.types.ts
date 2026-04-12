@@ -1,4 +1,4 @@
-﻿/**
+/**
  * LangGraph 多智能体工作流 — 全局图状态与分镜契约
  * 与 shared/contracts 弹性分镜规则、OpenClawTaskPayload 对齐
  */

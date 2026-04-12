@@ -1,4 +1,4 @@
-﻿# ClawCommerce MVP 极简前端界面规范 v1.12
+# ClawCommerce MVP 极简前端界面规范 v1.12
 
 > 为小军减负：砍掉一半花哨，先保 P0 大动脉与 P1 线索可见
 

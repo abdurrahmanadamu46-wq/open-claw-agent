@@ -1,5 +1,9 @@
-﻿import { BadRequestException, Body, Controller, ServiceUnavailableException, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
+/**
+ * VLM 视觉大模型分析接口
+ * 接收 Lobster 节点截屏 Base64，返回建议的点击坐标或输入文本，供前端调用 enigo 执行
+ */
 export interface VlmAnalyzeDto {
   imageBase64: string;
 }
@@ -12,70 +16,22 @@ export interface VlmAnalyzeResult {
   reason?: string;
 }
 
-type UpstreamResult = {
-  action?: unknown;
-  x?: unknown;
-  y?: unknown;
-  text?: unknown;
-  reason?: unknown;
-};
-
 @Controller('api/v1/vlm')
 export class VlmController {
+  /**
+   * 分析截屏并返回建议动作（演示用：返回固定坐标；生产可接入 GPT-4V / Claude Vision / 自建 VLM）
+   */
   @Post('analyze')
-  async analyze(@Body() dto: VlmAnalyzeDto): Promise<VlmAnalyzeResult> {
-    const imageBase64 = String(dto?.imageBase64 ?? '').trim();
-    if (!imageBase64) {
-      throw new BadRequestException('imageBase64 is required');
+  analyze(@Body() dto: VlmAnalyzeDto): VlmAnalyzeResult {
+    if (!dto?.imageBase64) {
+      return { action: 'click', x: 100, y: 200, reason: 'missing image (demo fallback)' };
     }
-
-    const endpoint = String(process.env.VLM_ENDPOINT_URL ?? '').trim();
-    if (!endpoint) {
-      throw new ServiceUnavailableException('VLM provider not configured');
-    }
-
-    const authToken = String(process.env.VLM_API_KEY ?? '').trim();
-    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-    if (authToken) headers.Authorization = `Bearer ${authToken}`;
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ imageBase64 }),
-    });
-    if (!response.ok) {
-      throw new ServiceUnavailableException(`VLM upstream failed: ${response.status}`);
-    }
-
-    const data = (await response.json()) as UpstreamResult;
-    const action = String(data?.action ?? '').trim();
-    if (action !== 'click' && action !== 'type') {
-      throw new ServiceUnavailableException('Invalid VLM response: action');
-    }
-
-    if (action === 'click') {
-      const x = Number(data?.x);
-      const y = Number(data?.y);
-      if (!Number.isFinite(x) || !Number.isFinite(y)) {
-        throw new ServiceUnavailableException('Invalid VLM response: coordinates');
-      }
-      return {
-        action: 'click',
-        x,
-        y,
-        reason: String(data?.reason ?? '').trim() || 'vlm_click',
-      };
-    }
-
-    const text = String(data?.text ?? '').trim();
-    if (!text) {
-      throw new ServiceUnavailableException('Invalid VLM response: text');
-    }
+    // TODO: 调用真实 VLM，解析画面中的可点击区域或输入框+文案
     return {
-      action: 'type',
-      text,
-      reason: String(data?.reason ?? '').trim() || 'vlm_type',
+      action: 'click',
+      x: 400,
+      y: 300,
+      reason: 'demo: fixed position, replace with real VLM call',
     };
   }
 }
-

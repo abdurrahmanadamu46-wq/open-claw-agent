@@ -1,0 +1,25 @@
+【客户端报「websocket error」或连接失败】
+
+一、若您用的是 localtunnel 公网网址（如 xxx.loca.lt）
+1. 隧道是否还在跑：运行 npx localtunnel --port 3000 的那个窗口不能关，关了网址就失效。
+2. 首次必须「点击通过」：用浏览器打开一次该网址（如 https://loud-feet-rescue.loca.lt），页面上有按钮要点一下，通过后隧道才真正打通。
+3. 总控是否在 3000 端口：本机要先运行「启动总控后端.bat」，看到 C&C backend listening on http://localhost:3000 再让客户连。
+
+二、推荐：客户与您在同一 WiFi / 局域网时
+不必用公网隧道，直接让客户连您本机 IP：
+1. 在本机 PowerShell 执行 ipconfig，记下「IPv4 地址」（如 192.168.1.100）。
+2. 把客户包里的 .env.vip 或 env.vip 中改成：
+   C_AND_C_SERVER_URL=http://192.168.1.100:3000/agent-cc
+   （把 192.168.1.100 换成您的实际 IP）
+3. 确保本机防火墙放行 3000 端口，总控后端已启动。
+4. 客户再运行客户端即可。
+
+三、报「timeout」时
+- 多半是总控电脑的 Windows 防火墙没放行 3000 端口。
+- 在总控电脑上以管理员打开 PowerShell，执行：
+  New-NetFirewallRule -DisplayName "ClawCommerce-3000" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+- 详细步骤见「连接超时_排查步骤.txt」。
+
+四、仍失败时
+- 确认本机浏览器访问 http://localhost:3000 能打开（或返回 404 也算端口通）。
+- 再用客户端的 .env.vip 里 C_AND_C_SERVER_URL 改成 http://本机IP:3000/agent-cc 试一次。
