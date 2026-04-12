@@ -63,6 +63,30 @@ services:
       retries: 10
     restart: unless-stopped
 
+  voxcpm-service:
+    build:
+      context: ./services/voxcpm-service
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      VOXCPM_MODEL_NAME: ${VOXCPM_MODEL_NAME:-VoxCPM2}
+      VOXCPM_DEVICE: ${VOXCPM_DEVICE:-cuda:0}
+      VOXCPM_OUTPUT_DIR: /app/data/output
+      VOXCPM_REFERENCE_DIR: /app/data/reference
+      VOXCPM_ENABLE_CLONE: ${VOXCPM_ENABLE_CLONE:-false}
+      VOXCPM_FAKE_MODE: ${VOXCPM_FAKE_MODE:-true}
+    ports:
+      - "${VOXCPM_HOST_PORT:-18120}:8000"
+    volumes:
+      - voxcpm_output_data:/app/data/output
+      - voxcpm_reference_data:/app/data/reference
+      - voxcpm_model_cache:/root/.cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
   ollama:
     image: ollama/ollama:latest
     ports:
@@ -140,12 +164,19 @@ services:
       RAG_ANYTHING_ENABLED: ${DRAGON_AI_RAG_ANYTHING_ENABLED:-false}
       JWT_SECRET: ${DRAGON_AI_JWT_SECRET:-change_me_please_at_least_16_chars}
       HITL_ENABLED: ${DRAGON_AI_HITL_ENABLED:-true}
+      VOICE_PROVIDER: ${VOICE_PROVIDER:-voxcpm}
+      VOXCPM_BASE_URL: ${VOXCPM_BASE_URL:-http://voxcpm-service:8000}
+      VOICE_FALLBACK_PROVIDER: ${VOICE_FALLBACK_PROVIDER:-basic_tts}
+      VOICE_TIMEOUT_SEC: ${VOICE_TIMEOUT_SEC:-60}
+      VOICE_SUBTITLE_DIR: ${VOICE_SUBTITLE_DIR:-data/voice-subtitles}
       EDGE_SHARED_SECRET: ${EDGE_SHARED_SECRET:-edge-demo-secret}
       HITL_SHARED_SECRET: ${HITL_SHARED_SECRET:-edge-demo-secret}
     depends_on:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      voxcpm-service:
         condition: service_healthy
       ollama:
         condition: service_started
@@ -181,12 +212,19 @@ services:
       RAG_ANYTHING_ENABLED: "true"
       JWT_SECRET: ${DRAGON_AI_JWT_SECRET:-change_me_please_at_least_16_chars}
       HITL_ENABLED: ${DRAGON_AI_HITL_ENABLED:-true}
+      VOICE_PROVIDER: ${VOICE_PROVIDER:-voxcpm}
+      VOXCPM_BASE_URL: ${VOXCPM_BASE_URL:-http://voxcpm-service:8000}
+      VOICE_FALLBACK_PROVIDER: ${VOICE_FALLBACK_PROVIDER:-basic_tts}
+      VOICE_TIMEOUT_SEC: ${VOICE_TIMEOUT_SEC:-60}
+      VOICE_SUBTITLE_DIR: ${VOICE_SUBTITLE_DIR:-data/voice-subtitles}
       EDGE_SHARED_SECRET: ${EDGE_SHARED_SECRET:-edge-demo-secret}
       HITL_SHARED_SECRET: ${HITL_SHARED_SECRET:-edge-demo-secret}
     depends_on:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      voxcpm-service:
         condition: service_healthy
       ollama:
         condition: service_started
@@ -362,6 +400,9 @@ volumes:
   postgres_data:
   qdrant_data:
   lobster_memory_data:
+  voxcpm_output_data:
+  voxcpm_reference_data:
+  voxcpm_model_cache:
   ollama_data:
   prometheus_data:
   grafana_data:

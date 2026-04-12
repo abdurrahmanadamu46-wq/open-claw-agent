@@ -83,6 +83,16 @@ ARTIFACT_TYPES = {
 }
 
 
+ARTIFACT_TYPES.update(
+    {
+        "voice": "voice",
+        "voice_profile": "voice_profile",
+        "subtitle": "subtitle",
+        "dub_job": "dub_job",
+    }
+)
+
+
 class ArtifactRecord:
     """单条产出物记录"""
 
@@ -552,6 +562,16 @@ _ARTIFACT_DOWNSTREAM_MAP: dict[str, Optional[str]] = {
 
 
 # ── 全局单例 ─────────────────────────────────────────────────────
+
+_ARTIFACT_DOWNSTREAM_MAP.update(
+    {
+        "voice": "dispatcher",
+        "subtitle": "dispatcher",
+        "dub_job": "visualizer",
+        "voice_profile": None,
+    }
+)
+
 
 _default_store: Optional[ArtifactStore] = None
 

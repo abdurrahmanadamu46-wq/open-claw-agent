@@ -202,6 +202,7 @@ from workflow_engine import WorkflowEngine
 from workflow_engine import list_workflows as list_workflow_definitions
 from workflow_admin import load_workflow_document
 from workflow_admin import update_workflow_document
+from voice_orchestrator import get_voice_orchestrator
 from workflow_idempotency import get_workflow_idempotency_store
 from workflow_realtime import get_workflow_realtime_hub
 from lead_conversion_fsm import get_lead_conversion_fsm
@@ -1357,6 +1358,19 @@ class LobsterExecuteRequest(BaseModel):
     auto_retry_on_violation: bool = False
     reply_channel_id: str | None = Field(default=None, max_length=128)
     reply_chat_id: str | None = Field(default=None, max_length=128)
+
+
+class VoiceSynthesizeRequest(BaseModel):
+    text: str = Field(..., min_length=1, max_length=10000)
+    lobster_id: str = Field(default="visualizer", min_length=1, max_length=64)
+    run_id: str = Field(default="voice_preview", min_length=1, max_length=128)
+    voice_mode: str = Field(default="standard", min_length=1, max_length=64)
+    voice_prompt: str | None = Field(default=None, max_length=1000)
+    voice_profile: dict[str, Any] = Field(default_factory=dict)
+    subtitle_required: bool = Field(default=False)
+    step_index: int | None = Field(default=None, ge=0, le=10000)
+    triggered_by: str | None = Field(default=None, max_length=128)
+    meta: dict[str, Any] = Field(default_factory=dict)
 
 
 class SkillStatusPatchRequest(BaseModel):
@@ -8641,6 +8655,65 @@ async def execute_single_lobster_api(
         "doc_id": doc_id,
         "citations": citations,
         "survey_suggestions": survey_suggestions,
+    }
+
+
+@app.get("/api/v1/voice/health")
+async def voice_health_api(current_user: UserClaims = Depends(_decode_user)):
+    base_url = str(os.getenv("VOXCPM_BASE_URL") or "http://voxcpm-service:8000").strip().rstrip("/")
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.get(f"{base_url}/healthz")
+            response.raise_for_status()
+            payload = response.json()
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "ok": False,
+            "service": "voice-orchestrator",
+            "provider": str(os.getenv("VOICE_PROVIDER") or "voxcpm").strip().lower() or "voxcpm",
+            "error": str(exc),
+        }
+    return {
+        "ok": True,
+        "service": "voice-orchestrator",
+        "provider": str(os.getenv("VOICE_PROVIDER") or "voxcpm").strip().lower() or "voxcpm",
+        "backend": payload,
+    }
+
+
+@app.post("/api/v1/voice/synthesize")
+async def voice_synthesize_api(
+    body: VoiceSynthesizeRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    result = await get_voice_orchestrator().synthesize_and_store(
+        run_id=body.run_id,
+        lobster_id=body.lobster_id,
+        tenant_id=current_user.tenant_id,
+        text=body.text,
+        voice_mode=body.voice_mode,
+        voice_prompt=str(body.voice_prompt or "").strip(),
+        voice_profile=body.voice_profile,
+        subtitle_required=bool(body.subtitle_required),
+        step_index=body.step_index,
+        triggered_by=str(body.triggered_by or "").strip() or None,
+        meta={
+            **body.meta,
+            "tenant_id": current_user.tenant_id,
+            "user_id": current_user.sub,
+        },
+    )
+    if not result.ok:
+        raise HTTPException(status_code=502, detail=result.error or "voice_synthesize_failed")
+    return {
+        "ok": True,
+        "provider": result.provider,
+        "mode": result.mode,
+        "audio_path": result.audio_path,
+        "subtitle_srt_path": result.subtitle_srt_path,
+        "duration_sec": result.duration_sec,
+        "fallback_used": result.fallback_used,
+        "artifact_ids": result.artifact_ids or [],
     }
 
 

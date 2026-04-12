@@ -49,6 +49,7 @@ from policy_bandit import update_policy as policy_bandit_update
 from lobster_pool_manager import get_lobster_registry
 from workflow_template_registry import list_templates_by_industry
 from workflow_template_registry import resolve_template
+from voice_orchestrator import get_voice_orchestrator
 from followup_subagent_store import create_spawn_run as create_followup_spawn_run
 from followup_subagent_store import finish_spawn_run as finish_followup_spawn_run
 from followup_subagent_store import get_spawn_run as get_followup_spawn_run
@@ -1535,11 +1536,56 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
                 )
         if media_pack:
             engine = "libtv-skill"
+
+    narration_lines = [
+        str(item.get("copy") or "").strip()
+        for item in scenes
+        if isinstance(item, dict) and str(item.get("copy") or "").strip()
+    ]
+    narration_script = "\n".join(narration_lines).strip()
+    subtitle_text = narration_script
+    voice_mode = "brand_clone" if str(voice_profile.get("reference_audio_path") or "").strip() else "standard"
+    voice_result: dict[str, Any] = {"ok": False, "reason": "disabled"}
+    if narration_script and str(os.getenv("VOICE_AUTO_SYNTHESIZE_VISUALIZER") or "false").strip().lower() in {"1", "true", "yes", "on"}:
+        try:
+            synthesized = await get_voice_orchestrator().synthesize_and_store(
+                run_id=str(state.get("trace_id") or f"visualizer_{uuid.uuid4().hex[:8]}"),
+                lobster_id="visualizer",
+                tenant_id=tenant_id,
+                text=narration_script,
+                voice_mode=voice_mode,
+                voice_prompt=f"{voice_profile.get('style', 'neutral')} / {voice_profile.get('pace', 'medium')}",
+                voice_profile=voice_profile,
+                subtitle_required=True,
+                meta={
+                    "user_id": user_id,
+                    "industry": industry,
+                    "engine": engine,
+                },
+            )
+            voice_result = {
+                "ok": synthesized.ok,
+                "provider": synthesized.provider,
+                "mode": synthesized.mode,
+                "audio_path": synthesized.audio_path,
+                "subtitle_srt_path": synthesized.subtitle_srt_path,
+                "duration_sec": synthesized.duration_sec,
+                "artifact_ids": synthesized.artifact_ids or [],
+                "fallback_used": synthesized.fallback_used,
+                "error": synthesized.error,
+            }
+        except Exception as exc:  # noqa: BLE001
+            voice_result = {"ok": False, "reason": "orchestrator_error", "error": str(exc)}
+
     return {
         "visualizer_output": {
             "prompt_pack": prompts,
             "media_pack": media_pack,
             "engine": engine,
+            "narration_script": narration_script,
+            "subtitle_text": subtitle_text,
+            "voice_mode": voice_mode,
+            "voice_result": voice_result,
             "style_profile": {
                 "digital_human_mode": digital_human_mode,
                 "vlog_narration_mode": vlog_mode,

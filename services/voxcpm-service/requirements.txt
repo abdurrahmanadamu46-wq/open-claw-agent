@@ -1,0 +1,6 @@
+fastapi==0.115.12
+uvicorn==0.34.0
+pydantic==2.11.3
+httpx==0.28.1
+# Real deployment should pin the exact VoxCPM runtime stack here.
+# Keep this separate from the control-plane deps to avoid polluting app.py runtime.
