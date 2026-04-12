@@ -8945,6 +8945,88 @@ async def revoke_voice_consent_api(
     return {"ok": True, "revoked": ok, "consent_id": consent_id}
 
 
+@app.get("/api/v1/voice/jobs")
+async def list_voice_jobs_api(
+    run_id: str | None = Query(default=None, max_length=128),
+    lobster_id: str = Query(default="visualizer", max_length=64),
+    status: str | None = Query(default=None, max_length=32),
+    limit: int = Query(default=50, ge=1, le=200),
+    current_user: UserClaims = Depends(_decode_user),
+):
+    store = get_artifact_store()
+    normalized_lobster_id = str(lobster_id or "visualizer").strip() or "visualizer"
+    if run_id:
+        rows = store.list_by_run(
+            run_id=run_id,
+            artifact_type="dub_job",
+            lobster=normalized_lobster_id,
+            status=status,
+            limit=limit,
+        )
+    else:
+        rows = store.list_by_lobster(
+            lobster=normalized_lobster_id,
+            artifact_type="dub_job",
+            limit=limit,
+        )
+        if status:
+            rows = [row for row in rows if str(row.status or "").strip() == str(status).strip()]
+    items = []
+    for row in rows:
+        payload = row.to_dict()
+        payload["voice_artifact_id"] = str(row.meta.get("voice_artifact_id") or "")
+        payload["subtitle_srt_path"] = str(row.meta.get("subtitle_srt_path") or "")
+        payload["audio_path"] = str(row.meta.get("audio_path") or "")
+        payload["quality_report"] = row.meta.get("quality_report") or {}
+        items.append(payload)
+    return {"ok": True, "count": len(items), "items": items}
+
+
+@app.get("/api/v1/voice/jobs/{job_id}")
+async def get_voice_job_api(job_id: str, current_user: UserClaims = Depends(_decode_user)):
+    store = get_artifact_store()
+    artifact = store.get(job_id)
+    if artifact is None or artifact.artifact_type != "dub_job":
+        raise HTTPException(status_code=404, detail="voice_job_not_found")
+    voice_artifact_id = str(artifact.meta.get("voice_artifact_id") or "").strip()
+    voice_artifact = store.get(voice_artifact_id) if voice_artifact_id else None
+    related_subtitles = []
+    for row in store.list_by_run(artifact.run_id, artifact_type="subtitle", lobster=artifact.lobster, limit=50):
+        if str((row.meta or {}).get("voice_artifact_id") or "").strip() == voice_artifact_id:
+            related_subtitles.append(row.to_dict())
+    return {
+        "ok": True,
+        "job": artifact.to_dict(),
+        "voice_artifact": voice_artifact.to_dict() if voice_artifact is not None else None,
+        "subtitles": related_subtitles,
+    }
+
+
+@app.get("/api/v1/voice/artifacts")
+async def list_voice_artifacts_api(
+    run_id: str | None = Query(default=None, max_length=128),
+    lobster_id: str = Query(default="visualizer", max_length=64),
+    artifact_type: str | None = Query(default=None, max_length=32),
+    limit: int = Query(default=100, ge=1, le=300),
+    current_user: UserClaims = Depends(_decode_user),
+):
+    store = get_artifact_store()
+    normalized_type = str(artifact_type or "").strip().lower()
+    allowed_types = {"voice", "subtitle", "dub_job"}
+    if normalized_type and normalized_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="invalid_voice_artifact_type")
+    selected_types = [normalized_type] if normalized_type else ["voice", "subtitle", "dub_job"]
+    items: list[dict[str, Any]] = []
+    for current_type in selected_types:
+        if run_id:
+            rows = store.list_by_run(run_id=run_id, artifact_type=current_type, lobster=lobster_id, limit=limit)
+        else:
+            rows = store.list_by_lobster(lobster=str(lobster_id or "visualizer").strip() or "visualizer", artifact_type=current_type, limit=limit)
+        items.extend(row.to_summary() for row in rows)
+    items.sort(key=lambda item: str(item.get("created_at") or ""), reverse=True)
+    return {"ok": True, "count": len(items[:limit]), "items": items[:limit]}
+
+
 @app.post("/api/v1/voice/synthesize")
 async def voice_synthesize_api(
     body: VoiceSynthesizeRequest,

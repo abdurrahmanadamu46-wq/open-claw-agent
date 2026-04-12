@@ -2941,4 +2941,48 @@ export class AiSubserviceService {
       input,
     );
   }
+
+  listVoiceJobs(
+    input?: { run_id?: string; lobster_id?: string; status?: string; limit?: number },
+    authHeader?: string,
+  ): Promise<Record<string, unknown>> {
+    const query: Record<string, unknown> = {};
+    if (input?.run_id) query.run_id = input.run_id;
+    if (input?.lobster_id) query.lobster_id = input.lobster_id;
+    if (input?.status) query.status = input.status;
+    if (typeof input?.limit === 'number') query.limit = input.limit;
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      '/api/v1/voice/jobs',
+      undefined,
+      query,
+    );
+  }
+
+  getVoiceJob(jobId: string, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      `/api/v1/voice/jobs/${encodeURIComponent(jobId)}`,
+    );
+  }
+
+  listVoiceArtifacts(
+    input?: { run_id?: string; lobster_id?: string; artifact_type?: string; limit?: number },
+    authHeader?: string,
+  ): Promise<Record<string, unknown>> {
+    const query: Record<string, unknown> = {};
+    if (input?.run_id) query.run_id = input.run_id;
+    if (input?.lobster_id) query.lobster_id = input.lobster_id;
+    if (input?.artifact_type) query.artifact_type = input.artifact_type;
+    if (typeof input?.limit === 'number') query.limit = input.limit;
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      '/api/v1/voice/artifacts',
+      undefined,
+      query,
+    );
+  }
 }

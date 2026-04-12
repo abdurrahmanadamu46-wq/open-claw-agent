@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, ForbiddenException, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, ForbiddenException, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AuditLog } from '../common/decorators/audit-log.decorator';
 import { AiSubserviceService } from './ai-subservice.service';
@@ -133,5 +133,52 @@ export class VoiceController {
     const text = String(body?.text ?? '').trim();
     if (!text) throw new BadRequestException('text is required');
     return this.aiSubservice.synthesizeVoice(body ?? {}, req?.headers?.authorization);
+  }
+
+  @Get('jobs')
+  listVoiceJobs(
+    @Req() req?: AuthedRequest,
+    @Query('run_id') runId?: string,
+    @Query('lobster_id') lobsterId?: string,
+    @Query('status') status?: string,
+    @Query('limit') limit?: string,
+  ) {
+    const parsedLimit = Number(limit ?? 50);
+    return this.aiSubservice.listVoiceJobs(
+      {
+        run_id: runId ? String(runId).trim() : undefined,
+        lobster_id: lobsterId ? String(lobsterId).trim() : undefined,
+        status: status ? String(status).trim() : undefined,
+        limit: Number.isFinite(parsedLimit) ? parsedLimit : 50,
+      },
+      req?.headers?.authorization,
+    );
+  }
+
+  @Get('jobs/:jobId')
+  getVoiceJob(@Req() req?: AuthedRequest, @Param('jobId') jobId?: string) {
+    const normalized = String(jobId ?? '').trim();
+    if (!normalized) throw new BadRequestException('jobId is required');
+    return this.aiSubservice.getVoiceJob(normalized, req?.headers?.authorization);
+  }
+
+  @Get('artifacts')
+  listVoiceArtifacts(
+    @Req() req?: AuthedRequest,
+    @Query('run_id') runId?: string,
+    @Query('lobster_id') lobsterId?: string,
+    @Query('artifact_type') artifactType?: string,
+    @Query('limit') limit?: string,
+  ) {
+    const parsedLimit = Number(limit ?? 100);
+    return this.aiSubservice.listVoiceArtifacts(
+      {
+        run_id: runId ? String(runId).trim() : undefined,
+        lobster_id: lobsterId ? String(lobsterId).trim() : undefined,
+        artifact_type: artifactType ? String(artifactType).trim() : undefined,
+        limit: Number.isFinite(parsedLimit) ? parsedLimit : 100,
+      },
+      req?.headers?.authorization,
+    );
   }
 }

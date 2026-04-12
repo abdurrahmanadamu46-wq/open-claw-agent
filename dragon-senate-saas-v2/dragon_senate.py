@@ -1545,8 +1545,13 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
     narration_script = "\n".join(narration_lines).strip()
     subtitle_text = narration_script
     voice_mode = "brand_clone" if str(voice_profile.get("reference_audio_path") or "").strip() else "standard"
-    voice_result: dict[str, Any] = {"ok": False, "reason": "disabled"}
-    if narration_script and str(os.getenv("VOICE_AUTO_SYNTHESIZE_VISUALIZER") or "false").strip().lower() in {"1", "true", "yes", "on"}:
+    voice_result: dict[str, Any] = {"ok": False, "reason": "not_required"}
+    force_enable_voice = str(os.getenv("VOICE_AUTO_SYNTHESIZE_VISUALIZER") or "false").strip().lower() in {"1", "true", "yes", "on"}
+    disable_voice = str(os.getenv("VOICE_DISABLE_VISUALIZER_AUTO_SYNTHESIZE") or "false").strip().lower() in {"1", "true", "yes", "on"}
+    should_auto_voice = bool(narration_script) and not disable_voice and (
+        force_enable_voice or digital_human_mode or vlog_mode
+    )
+    if narration_script and should_auto_voice:
         try:
             synthesized = await get_voice_orchestrator().synthesize_and_store(
                 run_id=str(state.get("trace_id") or f"visualizer_{uuid.uuid4().hex[:8]}"),
@@ -1576,6 +1581,8 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
             }
         except Exception as exc:  # noqa: BLE001
             voice_result = {"ok": False, "reason": "orchestrator_error", "error": str(exc)}
+    elif narration_script and disable_voice:
+        voice_result = {"ok": False, "reason": "disabled_by_env"}
 
     return {
         "visualizer_output": {
