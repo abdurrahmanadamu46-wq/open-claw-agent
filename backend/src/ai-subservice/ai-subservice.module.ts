@@ -35,6 +35,7 @@ import { PromptsController } from './prompts.controller';
 import { ModulesController } from './modules.controller';
 import { FilesController } from './files.controller';
 import { MindMapController } from './mind-map.controller';
+import { VoiceController } from './voice.controller';
 
 @Module({
   imports: [FleetModule],
@@ -73,6 +74,7 @@ import { MindMapController } from './mind-map.controller';
     ModulesController,
     FilesController,
     MindMapController,
+    VoiceController,
     WorkflowsController,
     WorkflowTemplatesController,
     ConcurrencyController,

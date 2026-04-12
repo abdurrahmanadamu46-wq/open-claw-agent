@@ -2811,4 +2811,134 @@ export class AiSubserviceService {
       input,
     );
   }
+
+  getVoiceHealth(authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      '/api/v1/voice/health',
+    );
+  }
+
+  listVoiceProfiles(authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      '/api/v1/voice/profiles',
+    );
+  }
+
+  createVoiceProfile(input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      '/api/v1/voice/profiles',
+      input,
+    );
+  }
+
+  getVoiceProfile(profileId: string, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}`,
+    );
+  }
+
+  disableVoiceProfile(profileId: string, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}/disable`,
+      {},
+    );
+  }
+
+  approveVoiceProfile(profileId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}/approve`,
+      input,
+    );
+  }
+
+  rejectVoiceProfile(profileId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}/reject`,
+      input,
+    );
+  }
+
+  revokeVoiceProfile(profileId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/profiles/${encodeURIComponent(profileId)}/revoke`,
+      input,
+    );
+  }
+
+  listVoiceConsents(authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      '/api/v1/voice/consents',
+    );
+  }
+
+  createVoiceConsent(input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      '/api/v1/voice/consents',
+      input,
+    );
+  }
+
+  getVoiceConsent(consentId: string, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'GET',
+      `/api/v1/voice/consents/${encodeURIComponent(consentId)}`,
+    );
+  }
+
+  approveVoiceConsent(consentId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/consents/${encodeURIComponent(consentId)}/approve`,
+      input,
+    );
+  }
+
+  rejectVoiceConsent(consentId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/consents/${encodeURIComponent(consentId)}/reject`,
+      input,
+    );
+  }
+
+  revokeVoiceConsent(consentId: string, input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      `/api/v1/voice/consents/${encodeURIComponent(consentId)}/revoke`,
+      input,
+    );
+  }
+
+  synthesizeVoice(input: Record<string, unknown>, authHeader?: string): Promise<Record<string, unknown>> {
+    return this.authedRequestWithUserHeader<Record<string, unknown>>(
+      authHeader,
+      'POST',
+      '/api/v1/voice/synthesize',
+      input,
+    );
+  }
 }

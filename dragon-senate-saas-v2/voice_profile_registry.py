@@ -37,7 +37,12 @@ class VoiceProfile:
     sample_rate: int = 48000
     consent_doc_id: str = ""
     clone_enabled: bool = False
+    status: str = "review"
     enabled: bool = True
+    review_note: str = ""
+    reviewed_by: str = ""
+    reviewed_at: str = ""
+    revoked_at: str = ""
     tags: list[str] = field(default_factory=list)
     meta: dict[str, Any] = field(default_factory=dict)
     created_at: str = field(default_factory=_utc_now)
@@ -73,7 +78,12 @@ class VoiceProfileRegistry:
                     sample_rate INTEGER NOT NULL DEFAULT 48000,
                     consent_doc_id TEXT NOT NULL DEFAULT '',
                     clone_enabled INTEGER NOT NULL DEFAULT 0,
+                    status TEXT NOT NULL DEFAULT 'approved',
                     enabled INTEGER NOT NULL DEFAULT 1,
+                    review_note TEXT NOT NULL DEFAULT '',
+                    reviewed_by TEXT NOT NULL DEFAULT '',
+                    reviewed_at TEXT NOT NULL DEFAULT '',
+                    revoked_at TEXT NOT NULL DEFAULT '',
                     tags_json TEXT NOT NULL DEFAULT '[]',
                     meta_json TEXT NOT NULL DEFAULT '{}',
                     created_at TEXT NOT NULL,
@@ -84,6 +94,17 @@ class VoiceProfileRegistry:
                     ON voice_profiles(tenant_id, updated_at DESC);
                 """
             )
+            columns = {str(row["name"]) for row in conn.execute("PRAGMA table_info(voice_profiles)").fetchall()}
+            if "status" not in columns:
+                conn.execute("ALTER TABLE voice_profiles ADD COLUMN status TEXT NOT NULL DEFAULT 'approved'")
+            if "review_note" not in columns:
+                conn.execute("ALTER TABLE voice_profiles ADD COLUMN review_note TEXT NOT NULL DEFAULT ''")
+            if "reviewed_by" not in columns:
+                conn.execute("ALTER TABLE voice_profiles ADD COLUMN reviewed_by TEXT NOT NULL DEFAULT ''")
+            if "reviewed_at" not in columns:
+                conn.execute("ALTER TABLE voice_profiles ADD COLUMN reviewed_at TEXT NOT NULL DEFAULT ''")
+            if "revoked_at" not in columns:
+                conn.execute("ALTER TABLE voice_profiles ADD COLUMN revoked_at TEXT NOT NULL DEFAULT ''")
             conn.commit()
 
     def _row_to_profile(self, row: sqlite3.Row) -> VoiceProfile:
@@ -110,7 +131,12 @@ class VoiceProfileRegistry:
             sample_rate=int(row["sample_rate"] or 48000),
             consent_doc_id=str(row["consent_doc_id"] or ""),
             clone_enabled=bool(int(row["clone_enabled"] or 0)),
+            status=str(row["status"] or "approved"),
             enabled=bool(int(row["enabled"] or 0)),
+            review_note=str(row["review_note"] or ""),
+            reviewed_by=str(row["reviewed_by"] or ""),
+            reviewed_at=str(row["reviewed_at"] or ""),
+            revoked_at=str(row["revoked_at"] or ""),
             tags=[str(item) for item in tags if str(item).strip()],
             meta=meta,
             created_at=str(row["created_at"]),
@@ -161,7 +187,12 @@ class VoiceProfileRegistry:
             sample_rate=max(16000, min(int(sample_rate or 48000), 48000)),
             consent_doc_id=str(consent_doc_id or "").strip()[:128],
             clone_enabled=bool(clone_enabled),
+            status="review",
             enabled=True,
+            review_note="",
+            reviewed_by="",
+            reviewed_at="",
+            revoked_at="",
             tags=[str(item).strip()[:64] for item in (tags or []) if str(item).strip()],
             meta=dict(meta or {}),
         )
@@ -170,8 +201,9 @@ class VoiceProfileRegistry:
                 """
                 INSERT INTO voice_profiles(
                     profile_id, tenant_id, name, owner_type, reference_audio_path, voice_prompt, language,
-                    sample_rate, consent_doc_id, clone_enabled, enabled, tags_json, meta_json, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    sample_rate, consent_doc_id, clone_enabled, status, enabled, review_note, reviewed_by, reviewed_at,
+                    revoked_at, tags_json, meta_json, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     profile.profile_id,
@@ -184,7 +216,12 @@ class VoiceProfileRegistry:
                     profile.sample_rate,
                     profile.consent_doc_id,
                     1 if profile.clone_enabled else 0,
+                    profile.status,
                     1 if profile.enabled else 0,
+                    profile.review_note,
+                    profile.reviewed_by,
+                    profile.reviewed_at,
+                    profile.revoked_at,
                     json.dumps(profile.tags, ensure_ascii=False),
                     json.dumps(profile.meta, ensure_ascii=False),
                     profile.created_at,
@@ -198,8 +235,34 @@ class VoiceProfileRegistry:
         now = _utc_now()
         with self._connect() as conn:
             updated = conn.execute(
-                "UPDATE voice_profiles SET enabled = 0, updated_at = ? WHERE profile_id = ?",
+                "UPDATE voice_profiles SET status = 'disabled', enabled = 0, updated_at = ? WHERE profile_id = ?",
                 (now, str(profile_id)),
+            ).rowcount
+            conn.commit()
+        return bool(updated)
+
+    def set_review_status(
+        self,
+        profile_id: str,
+        *,
+        status: str,
+        reviewer: str,
+        note: str = "",
+    ) -> bool:
+        now = _utc_now()
+        normalized = str(status or "").strip().lower()
+        if normalized not in {"review", "approved", "rejected", "disabled", "revoked"}:
+            raise ValueError("invalid_voice_profile_status")
+        enabled = 1 if normalized == "approved" else 0
+        revoked_at = now if normalized == "revoked" else ""
+        with self._connect() as conn:
+            updated = conn.execute(
+                """
+                UPDATE voice_profiles
+                SET status = ?, enabled = ?, review_note = ?, reviewed_by = ?, reviewed_at = ?, revoked_at = ?, updated_at = ?
+                WHERE profile_id = ?
+                """,
+                (normalized, enabled, str(note or "")[:1000], str(reviewer or "")[:128], now, revoked_at, now, str(profile_id)),
             ).rowcount
             conn.commit()
         return bool(updated)

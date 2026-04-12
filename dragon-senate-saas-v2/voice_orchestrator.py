@@ -8,6 +8,7 @@ from typing import Any
 import httpx
 
 from artifact_store import get_artifact_store
+from voice_quality_guard import get_voice_quality_guard
 
 
 @dataclass(slots=True)
@@ -20,6 +21,7 @@ class VoiceSynthesisResult:
     duration_sec: float = 0.0
     fallback_used: bool = False
     artifact_ids: list[str] | None = None
+    quality_report: dict[str, Any] | None = None
     error: str = ""
 
 
@@ -79,6 +81,13 @@ class VoiceOrchestrator:
         if not result.ok:
             return result
 
+        quality_report = get_voice_quality_guard().validate_audio_file(result.audio_path)
+        result.quality_report = quality_report.to_dict()
+        if not quality_report.ok:
+            result.ok = False
+            result.error = quality_report.error or "voice_quality_failed"
+            return result
+
         artifact_ids: list[str] = []
         store = get_artifact_store()
         voice_artifact_id = store.save(
@@ -98,6 +107,7 @@ class VoiceOrchestrator:
                 "voice_prompt": voice_prompt,
                 "voice_profile": voice_profile,
                 "fallback_used": result.fallback_used,
+                "quality_report": result.quality_report,
                 "tenant_id": tenant_id,
             },
             triggered_by=triggered_by,
@@ -122,6 +132,7 @@ class VoiceOrchestrator:
                     **payload_meta,
                     "subtitle_srt_path": str(subtitle_path),
                     "voice_artifact_id": voice_artifact_id,
+                    "quality_report": result.quality_report,
                     "tenant_id": tenant_id,
                 },
                 triggered_by=voice_artifact_id,
@@ -144,6 +155,7 @@ class VoiceOrchestrator:
                 "subtitle_srt_path": result.subtitle_srt_path,
                 "tenant_id": tenant_id,
                 "audio_path": result.audio_path,
+                "quality_report": result.quality_report,
             },
             triggered_by=triggered_by,
         )

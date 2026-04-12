@@ -34,11 +34,14 @@ class VoiceConsent:
     consent_doc_id: str
     scope: str
     reference_audio_path: str
-    status: str = "active"
+    status: str = "review"
     notes: str = ""
     meta: dict[str, Any] = field(default_factory=dict)
     created_at: str = field(default_factory=_utc_now)
     updated_at: str = field(default_factory=_utc_now)
+    review_note: str = ""
+    reviewed_by: str = ""
+    reviewed_at: str = ""
     revoked_at: str = ""
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,6 +76,9 @@ class VoiceConsentRegistry:
                     meta_json TEXT NOT NULL DEFAULT '{}',
                     created_at TEXT NOT NULL,
                     updated_at TEXT NOT NULL,
+                    review_note TEXT NOT NULL DEFAULT '',
+                    reviewed_by TEXT NOT NULL DEFAULT '',
+                    reviewed_at TEXT NOT NULL DEFAULT '',
                     revoked_at TEXT NOT NULL DEFAULT ''
                 );
 
@@ -80,6 +86,13 @@ class VoiceConsentRegistry:
                     ON voice_consents(tenant_id, updated_at DESC);
                 """
             )
+            columns = {str(row["name"]) for row in conn.execute("PRAGMA table_info(voice_consents)").fetchall()}
+            if "review_note" not in columns:
+                conn.execute("ALTER TABLE voice_consents ADD COLUMN review_note TEXT NOT NULL DEFAULT ''")
+            if "reviewed_by" not in columns:
+                conn.execute("ALTER TABLE voice_consents ADD COLUMN reviewed_by TEXT NOT NULL DEFAULT ''")
+            if "reviewed_at" not in columns:
+                conn.execute("ALTER TABLE voice_consents ADD COLUMN reviewed_at TEXT NOT NULL DEFAULT ''")
             conn.commit()
 
     def _row_to_consent(self, row: sqlite3.Row) -> VoiceConsent:
@@ -102,6 +115,9 @@ class VoiceConsentRegistry:
             meta=meta,
             created_at=str(row["created_at"]),
             updated_at=str(row["updated_at"]),
+            review_note=str(row["review_note"] or ""),
+            reviewed_by=str(row["reviewed_by"] or ""),
+            reviewed_at=str(row["reviewed_at"] or ""),
             revoked_at=str(row["revoked_at"] or ""),
         )
 
@@ -143,7 +159,7 @@ class VoiceConsentRegistry:
             consent_doc_id=str(consent_doc_id).strip()[:128],
             scope=str(scope).strip()[:128],
             reference_audio_path=str(reference_audio_path).strip(),
-            status="active",
+            status="review",
             notes=str(notes or "").strip()[:1000],
             meta=dict(meta or {}),
         )
@@ -152,8 +168,8 @@ class VoiceConsentRegistry:
                 """
                 INSERT INTO voice_consents(
                     consent_id, tenant_id, owner_name, owner_type, consent_doc_id, scope, reference_audio_path,
-                    status, notes, meta_json, created_at, updated_at, revoked_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    status, notes, meta_json, created_at, updated_at, review_note, reviewed_by, reviewed_at, revoked_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     consent.consent_id,
@@ -168,6 +184,9 @@ class VoiceConsentRegistry:
                     json.dumps(consent.meta, ensure_ascii=False),
                     consent.created_at,
                     consent.updated_at,
+                    consent.review_note,
+                    consent.reviewed_by,
+                    consent.reviewed_at,
                     consent.revoked_at,
                 ),
             )
@@ -180,10 +199,35 @@ class VoiceConsentRegistry:
             updated = conn.execute(
                 """
                 UPDATE voice_consents
-                SET status = 'revoked', updated_at = ?, revoked_at = ?
+                SET status = 'revoked', updated_at = ?, reviewed_at = ?, revoked_at = ?
                 WHERE consent_id = ?
                 """,
-                (now, now, str(consent_id)),
+                (now, now, now, str(consent_id)),
+            ).rowcount
+            conn.commit()
+        return bool(updated)
+
+    def set_review_status(
+        self,
+        consent_id: str,
+        *,
+        status: str,
+        reviewer: str,
+        note: str = "",
+    ) -> bool:
+        now = _utc_now()
+        normalized = str(status or "").strip().lower()
+        if normalized not in {"review", "active", "rejected", "revoked"}:
+            raise ValueError("invalid_voice_consent_status")
+        revoked_at = now if normalized == "revoked" else ""
+        with self._connect() as conn:
+            updated = conn.execute(
+                """
+                UPDATE voice_consents
+                SET status = ?, review_note = ?, reviewed_by = ?, reviewed_at = ?, updated_at = ?, revoked_at = ?
+                WHERE consent_id = ?
+                """,
+                (normalized, str(note or "")[:1000], str(reviewer or "")[:128], now, now, revoked_at, str(consent_id)),
             ).rowcount
             conn.commit()
         return bool(updated)

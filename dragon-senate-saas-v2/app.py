@@ -1399,6 +1399,10 @@ class VoiceConsentCreateRequest(BaseModel):
     meta: dict[str, Any] = Field(default_factory=dict)
 
 
+class VoiceReviewActionRequest(BaseModel):
+    note: str | None = Field(default=None, max_length=1000)
+
+
 class SkillStatusPatchRequest(BaseModel):
     status: str = Field(..., min_length=1, max_length=32)
     note: str | None = Field(default=None, max_length=1000)
@@ -8739,7 +8743,7 @@ async def create_voice_profile_api(
         lobster="visualizer",
         artifact_type="voice_profile",
         content=profile.name,
-        status="approved",
+        status="draft",
         meta=profile.to_dict(),
     )
     await get_audit_service().log(
@@ -8776,6 +8780,66 @@ async def disable_voice_profile_api(profile_id: str, current_user: UserClaims = 
         details={"disabled": ok},
     )
     return {"ok": True, "disabled": ok, "profile_id": profile_id}
+
+
+@app.post("/api/v1/voice/profiles/{profile_id}/approve")
+async def approve_voice_profile_api(
+    profile_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    ok = get_voice_profile_registry().set_review_status(
+        profile_id,
+        status="approved",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "approved": ok, "profile_id": profile_id}
+
+
+@app.post("/api/v1/voice/profiles/{profile_id}/reject")
+async def reject_voice_profile_api(
+    profile_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    ok = get_voice_profile_registry().set_review_status(
+        profile_id,
+        status="rejected",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "rejected": ok, "profile_id": profile_id}
+
+
+@app.post("/api/v1/voice/profiles/{profile_id}/revoke")
+async def revoke_voice_profile_api(
+    profile_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    profile = get_voice_profile_registry().get_profile(profile_id)
+    if profile is None or profile.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_profile_not_found")
+    ok = get_voice_profile_registry().set_review_status(
+        profile_id,
+        status="revoked",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "revoked": ok, "profile_id": profile_id}
 
 
 @app.get("/api/v1/voice/consents")
@@ -8821,6 +8885,66 @@ async def get_voice_consent_api(consent_id: str, current_user: UserClaims = Depe
     return {"ok": True, "consent": consent.to_dict()}
 
 
+@app.post("/api/v1/voice/consents/{consent_id}/approve")
+async def approve_voice_consent_api(
+    consent_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    consent = get_voice_consent_registry().get_consent(consent_id)
+    if consent is None or consent.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_consent_not_found")
+    ok = get_voice_consent_registry().set_review_status(
+        consent_id,
+        status="active",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "approved": ok, "consent_id": consent_id}
+
+
+@app.post("/api/v1/voice/consents/{consent_id}/reject")
+async def reject_voice_consent_api(
+    consent_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    consent = get_voice_consent_registry().get_consent(consent_id)
+    if consent is None or consent.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_consent_not_found")
+    ok = get_voice_consent_registry().set_review_status(
+        consent_id,
+        status="rejected",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "rejected": ok, "consent_id": consent_id}
+
+
+@app.post("/api/v1/voice/consents/{consent_id}/revoke")
+async def revoke_voice_consent_api(
+    consent_id: str,
+    body: VoiceReviewActionRequest,
+    current_user: UserClaims = Depends(_decode_user),
+):
+    if "admin" not in current_user.roles:
+        raise HTTPException(status_code=403, detail="Admin role required")
+    consent = get_voice_consent_registry().get_consent(consent_id)
+    if consent is None or consent.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=404, detail="voice_consent_not_found")
+    ok = get_voice_consent_registry().set_review_status(
+        consent_id,
+        status="revoked",
+        reviewer=current_user.sub,
+        note=str(body.note or "").strip(),
+    )
+    return {"ok": True, "revoked": ok, "consent_id": consent_id}
+
+
 @app.post("/api/v1/voice/synthesize")
 async def voice_synthesize_api(
     body: VoiceSynthesizeRequest,
@@ -8831,6 +8955,8 @@ async def voice_synthesize_api(
         profile = get_voice_profile_registry().get_profile(body.voice_profile_id)
         if profile is None or profile.tenant_id != current_user.tenant_id or not profile.enabled:
             raise HTTPException(status_code=404, detail="voice_profile_not_found")
+        if str(profile.status or "").strip().lower() != "approved":
+            raise HTTPException(status_code=403, detail="voice_profile_not_approved")
         voice_profile = profile.to_dict()
         if body.voice_mode == "brand_clone":
             if not profile.clone_enabled:
@@ -8841,7 +8967,7 @@ async def voice_synthesize_api(
             matching = [
                 item
                 for item in get_voice_consent_registry().list_consents(current_user.tenant_id)
-                if str(item.consent_doc_id or "").strip() == consent_doc_id and item.status == "active"
+                if str(item.consent_doc_id or "").strip() == consent_doc_id and str(item.status or "").strip().lower() == "active"
             ]
             if not matching:
                 raise HTTPException(status_code=403, detail="voice_consent_not_active")
