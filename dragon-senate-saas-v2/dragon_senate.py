@@ -329,7 +329,45 @@ def _local_media_path(url: str) -> str | None:
     return None
 
 
-def _collect_local_video_paths(media_pack: list[dict[str, Any]]) -> list[str]:
+def _media_cache_dir() -> Path:
+    raw = str(os.getenv("VOICE_MEDIA_CACHE_DIR") or "data/voice-compose-cache").strip()
+    path = Path(raw)
+    if not path.is_absolute():
+        path = (Path(__file__).resolve().parent / path).resolve()
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+async def _ensure_local_media_path(url: str) -> str | None:
+    raw = str(url or "").strip()
+    if not raw:
+        return None
+    local_candidate = _local_media_path(raw)
+    if local_candidate and Path(local_candidate).exists():
+        return local_candidate
+
+    parsed = urlparse(raw)
+    if parsed.scheme not in {"http", "https"}:
+        return None
+
+    import hashlib
+    import httpx
+
+    suffix = Path(parsed.path or "").suffix.lower() or ".bin"
+    cache_key = hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
+    target = _media_cache_dir() / f"{cache_key}{suffix}"
+    if target.exists():
+        return str(target)
+
+    timeout_sec = float(os.getenv("VOICE_MEDIA_CACHE_TIMEOUT_SEC", "20"))
+    async with httpx.AsyncClient(timeout=timeout_sec, follow_redirects=True) as client:
+        response = await client.get(raw)
+        response.raise_for_status()
+        target.write_bytes(response.content)
+    return str(target)
+
+
+async def _collect_local_video_paths(media_pack: list[dict[str, Any]]) -> list[str]:
     paths: list[str] = []
     for item in media_pack:
         if not isinstance(item, dict):
@@ -338,14 +376,15 @@ def _collect_local_video_paths(media_pack: list[dict[str, Any]]) -> list[str]:
         candidate = str(item.get("local_path") or item.get("path") or item.get("url") or "").strip()
         if media_type != "video" or not candidate:
             continue
-        local_path = _local_media_path(candidate) or candidate
-        if not Path(local_path).exists():
+        local_path = await _ensure_local_media_path(candidate)
+        if not local_path or not Path(local_path).exists():
             continue
+        item["local_path"] = local_path
         paths.append(local_path)
     return paths
 
 
-def _maybe_compose_visualizer_video(
+async def _maybe_compose_visualizer_video(
     *,
     trace_id: str,
     tenant_id: str,
@@ -362,7 +401,7 @@ def _maybe_compose_visualizer_video(
     if not audio_path or not Path(audio_path).exists():
         return {"ok": False, "reason": "missing_audio_path"}
 
-    clip_paths = _collect_local_video_paths(media_pack)
+    clip_paths = await _collect_local_video_paths(media_pack)
     if not clip_paths:
         return {"ok": False, "reason": "no_local_video_inputs"}
 
@@ -1690,7 +1729,7 @@ async def visualizer(state: DragonState) -> dict[str, Any]:
     elif narration_script and disable_voice:
         voice_result = {"ok": False, "reason": "disabled_by_env"}
 
-    compose_result = _maybe_compose_visualizer_video(
+    compose_result = await _maybe_compose_visualizer_video(
         trace_id=str(state.get("trace_id") or ""),
         tenant_id=tenant_id,
         media_pack=media_pack,
