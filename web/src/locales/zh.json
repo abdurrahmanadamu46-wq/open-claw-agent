@@ -84,7 +84,12 @@
       "mainline": "主线工作流",
       "support": "支撑中心",
       "commercial": "商业化",
-      "secondary": "辅助入口"
+      "secondary": "辅助入口",
+      "operations": "运营中心",
+      "ai": "AI 龙虾",
+      "fleet": "舰队 & 监控",
+      "data": "数据 & 增长",
+      "settings": "系统设置"
     },
     "brandTitle": "龙虾池",
     "brandSubtitle": "AI 增长操作系统",

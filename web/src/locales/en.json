@@ -84,7 +84,12 @@
       "mainline": "Mainline",
       "support": "Support",
       "commercial": "Commercial",
-      "secondary": "Secondary"
+      "secondary": "Secondary",
+      "operations": "Operations",
+      "ai": "AI Lobsters",
+      "fleet": "Fleet & Monitor",
+      "data": "Data & Growth",
+      "settings": "Settings"
     },
     "brandTitle": "LobsterPit",
     "brandSubtitle": "AI Growth OS",
