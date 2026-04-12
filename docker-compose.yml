@@ -122,7 +122,8 @@ services:
 
   ai-subservice:
     build:
-      context: ./dragon-senate-saas-v2
+      context: .
+      dockerfile: dragon-senate-saas-v2/Dockerfile
       args:
         AI_INSTALL_HEAVY: ${DRAGON_AI_INSTALL_HEAVY:-0}
     env_file:
@@ -161,7 +162,8 @@ services:
 
   ai-subservice-heavy:
     build:
-      context: ./dragon-senate-saas-v2
+      context: .
+      dockerfile: dragon-senate-saas-v2/Dockerfile
       args:
         AI_INSTALL_HEAVY: "1"
     profiles: ["ai-heavy"]
@@ -272,7 +274,8 @@ services:
 
   telegram-bot:
     build:
-      context: ./dragon-senate-saas-v2
+      context: .
+      dockerfile: dragon-senate-saas-v2/Dockerfile
       args:
         AI_INSTALL_HEAVY: ${DRAGON_AI_INSTALL_HEAVY:-0}
     profiles: ["telegram"]

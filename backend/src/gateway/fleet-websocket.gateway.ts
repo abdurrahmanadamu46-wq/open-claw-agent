@@ -174,6 +174,60 @@ export class FleetWebSocketGateway
     return true;
   }
 
+  /**
+   * 向指定 nodeId 发送控制指令（reboot/stop/update_config 等）
+   */
+  dispatchControlMessage(nodeId: string, payload: Record<string, unknown>): boolean {
+    const socketId = this.nodeToSocket.get(nodeId);
+    if (!socketId) {
+      this.logger.warn(`[Fleet] ControlMsg failed: node not connected nodeId=${nodeId}`);
+      return false;
+    }
+    this.server.to(socketId).emit('control_message', payload);
+    this.logger.log(`[Fleet] ControlMsg sent to nodeId=${nodeId} type=${String(payload['type'] ?? '')}`);
+    return true;
+  }
+
+  /**
+   * 向指定 nodeId 发送终端指令
+   */
+  dispatchTerminalMessage(nodeId: string, payload: Record<string, unknown>): boolean {
+    const socketId = this.nodeToSocket.get(nodeId);
+    if (!socketId) {
+      this.logger.warn(`[Fleet] TerminalMsg failed: node not connected nodeId=${nodeId}`);
+      return false;
+    }
+    this.server.to(socketId).emit('terminal_message', payload);
+    return true;
+  }
+
+  /**
+   * 请求边缘节点上报其 MCP 工具清单
+   */
+  requestEdgeToolManifest(nodeId: string): boolean {
+    const socketId = this.nodeToSocket.get(nodeId);
+    if (!socketId) return false;
+    this.server.to(socketId).emit('request_tool_manifest', {});
+    return true;
+  }
+
+  /**
+   * 向边缘节点发起 MCP 工具调用
+   */
+  dispatchMcpToolCall(nodeId: string, payload: Record<string, unknown>): boolean {
+    const socketId = this.nodeToSocket.get(nodeId);
+    if (!socketId) return false;
+    this.server.to(socketId).emit('mcp_tool_call', payload);
+    return true;
+  }
+
+  /**
+   * 列出当前所有在线节点的工具清单（广播请求）
+   */
+  listEdgeToolManifests(): void {
+    this.server.emit('request_tool_manifest', {});
+  }
+
   /** 总控前端连接后加入 fleet:report，即可收到心跳/进度/完成事件 */
   joinReportRoom(client: Socket) {
     client.join('fleet:report');

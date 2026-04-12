@@ -11,7 +11,7 @@ export interface LLMFunctionTool {
     description: string;
     parameters: {
       type: 'object';
-      properties?: Record<string, { type: string; description?: string }>;
+      properties?: Record<string, { type: string; description?: string; enum?: string[] | number[] }>;
       required?: string[];
     };
   };

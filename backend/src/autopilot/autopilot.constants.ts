@@ -8,6 +8,12 @@ export const CONTENT_FORGE_QUEUE = 'content_forge_queue';
 export const MATRIX_DISPATCH_QUEUE = 'matrix_dispatch_queue';
 export const LEAD_HARVEST_QUEUE = 'lead_harvest_queue';
 
+/** 各队列对应的死信队列（DLQ） */
+export const RADAR_SNIFFING_DLQ = 'radar_sniffing_queue:dlq';
+export const CONTENT_FORGE_DLQ = 'content_forge_queue:dlq';
+export const MATRIX_DISPATCH_DLQ = 'matrix_dispatch_queue:dlq';
+export const LEAD_HARVEST_DLQ = 'lead_harvest_queue:dlq';
+
 export const AUTOPILOT_QUEUES = [
   RADAR_SNIFFING_QUEUE,
   CONTENT_FORGE_QUEUE,

@@ -191,7 +191,7 @@ export class FleetService {
     nodeId: string;
     sessionId?: string;
   }): boolean {
-    return this.fleetGateway.requestEdgeToolManifest(input.nodeId, input.sessionId ?? '');
+    return this.fleetGateway.requestEdgeToolManifest(input.nodeId);
   }
 
   async dispatchMcpToolCall(input: {
@@ -202,15 +202,17 @@ export class FleetService {
     sessionId?: string;
     timeoutMs?: number;
   }): Promise<Record<string, unknown>> {
-    return await this.fleetGateway.dispatchMcpToolCall(input.nodeId, {
+    const ok = this.fleetGateway.dispatchMcpToolCall(input.nodeId, {
       tool: input.tool,
       params: input.params ?? {},
       session_id: input.sessionId ?? '',
       timeout_ms: input.timeoutMs,
     });
+    return { dispatched: ok };
   }
 
   listEdgeToolManifests(): Array<Record<string, unknown>> {
-    return this.fleetGateway.listEdgeToolManifests();
+    this.fleetGateway.listEdgeToolManifests();
+    return [];
   }
 }

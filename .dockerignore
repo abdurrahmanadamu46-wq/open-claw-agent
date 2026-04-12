@@ -1,0 +1,30 @@
+# Global dockerignore for repo-root build contexts (ai-subservice)
+.git
+.gitignore
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.pytest_cache/
+**/.venv/
+**/.env
+**/node_modules/
+**/dist/
+**/.next/
+
+# Exclude large/irrelevant dirs from ai-subservice builds
+backend/dist/
+backend/node_modules/
+web/node_modules/
+web/.next/
+_ARCHIVED_dragon-senate-saas-v1/
+docker-data/
+
+# Exclude dragon-senate-saas-v2 data dirs (per original .dockerignore)
+dragon-senate-saas-v2/raganything_workdir/
+dragon-senate-saas-v2/data/
+dragon-senate-saas-v2/updates/
+dragon-senate-saas-v2/monitoring/
+dragon-senate-saas-v2/cloudflared/
+dragon-senate-saas-v2/*.db
+dragon-senate-saas-v2/*.sqlite
+dragon-senate-saas-v2/*.sqlite3

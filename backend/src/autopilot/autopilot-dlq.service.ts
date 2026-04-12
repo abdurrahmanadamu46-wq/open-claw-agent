@@ -368,7 +368,7 @@ export class AutopilotDlqService {
         tenantId: payload.tenantId,
         traceId: ensureTraceId(payload.traceId ?? payload.originalPayload.traceId),
         campaignId: payload.campaignId,
-        taskId: payload.taskId,
+        taskId: payload.taskId ?? '',
         stage: payload.stage,
         errorCode: payload.errorCode,
         errorMessage: payload.errorMessage,
