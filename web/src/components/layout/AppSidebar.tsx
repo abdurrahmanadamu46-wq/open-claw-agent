@@ -339,33 +339,33 @@ export function AppSidebar() {
 
             return (
               <section key={group.id}>
-                {/* Group header / toggle */}
+                {/* Group header / toggle — 父级：白色 + 加粗 + 稍大图标，与子项明显区分 */}
                 <button
                   type="button"
                   onClick={() => toggleGroup(group.id)}
                   className={cn(
-                    'flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm font-medium transition',
+                    'flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition',
                     groupHasActive
-                      ? 'text-cyan-300'
-                      : 'text-slate-400 hover:bg-white/[0.05] hover:text-slate-200',
-                    collapsed && 'justify-center px-0 py-2.5',
+                      ? 'text-white'
+                      : 'text-slate-300 hover:bg-white/[0.06] hover:text-white',
+                    collapsed && 'justify-center px-0 py-3',
                   )}
                   title={collapsed ? t(group.titleKey) : undefined}
                 >
-                  <GroupIcon className="h-[18px] w-[18px] shrink-0" />
+                  <GroupIcon className={cn('shrink-0', groupHasActive ? 'h-[18px] w-[18px] text-cyan-400' : 'h-[18px] w-[18px]')} />
                   {!collapsed && (
                     <>
                       <span className="flex-1 truncate">{t(group.titleKey)}</span>
                       <ChevronRight
-                        className={cn('h-4 w-4 text-slate-500 transition-transform duration-200', isOpen && 'rotate-90')}
+                        className={cn('h-3.5 w-3.5 text-slate-500 transition-transform duration-200', isOpen && 'rotate-90')}
                       />
                     </>
                   )}
                 </button>
 
-                {/* Sub-items */}
+                {/* Sub-items — 子级：灰色 + 细字 + 左侧竖线锚点 + 更深缩进 */}
                 {!collapsed && isOpen && (
-                  <div className="mt-0.5 mb-1 space-y-0.5 pl-3 pr-1">
+                  <div className="mb-1 ml-[22px] mt-0.5 space-y-0.5 border-l border-white/[0.08] pl-3 pr-1">
                     {group.items.map((item) => (
                       <NavItemLink key={item.href} item={item} pathname={pathname} collapsed={false} t={t} indent />
                     ))}
@@ -410,11 +410,17 @@ function NavItemLink({
       href={item.href}
       title={collapsed ? t(item.labelKey) : undefined}
       className={cn(
-        'flex items-center gap-2.5 rounded-xl text-sm transition',
-        collapsed ? 'justify-center px-0 py-2.5' : indent ? 'px-2.5 py-1.5' : 'px-3 py-2',
+        'flex items-center gap-2 rounded-lg transition',
+        // 子项比父级更小、更暗
+        indent ? 'px-2 py-1.5 text-[13px]' : 'px-3 py-2 text-sm font-medium',
+        collapsed ? 'justify-center px-0 py-2.5' : '',
         active
-          ? 'bg-cyan-400/10 text-cyan-100'
-          : 'text-slate-400 hover:bg-white/[0.05] hover:text-slate-200',
+          ? indent
+            ? 'bg-cyan-400/10 text-cyan-300'          // 子项激活：细青色
+            : 'bg-cyan-400/10 text-cyan-100 font-semibold' // 顶级激活（Overview）
+          : indent
+            ? 'text-slate-500 hover:bg-white/[0.04] hover:text-slate-300' // 子项默认：更暗
+            : 'text-slate-300 hover:bg-white/[0.05] hover:text-white',    // 顶级默认
       )}
     >
       <Icon className={cn('shrink-0', indent ? 'h-3.5 w-3.5' : 'h-4 w-4')} />
