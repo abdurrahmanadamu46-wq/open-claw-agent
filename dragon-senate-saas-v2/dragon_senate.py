@@ -2231,6 +2231,7 @@ async def collect_delivery(state: DragonState) -> dict[str, Any]:
                 worker_id=audit_worker,
                 error=f"audit_rejected accepted={accepted} expected={expected}",
             )
+    queue_summary = clawteam_summary(user_id=user_id, trace_id=trace_id) if trace_id else {}
 
     dispatch_plan = {
         **state.get("dispatch_plan", {}),
@@ -2248,7 +2249,6 @@ async def collect_delivery(state: DragonState) -> dict[str, Any]:
             worker_failed_count=failed_count,
         ),
     }
-    queue_summary = clawteam_summary(user_id=user_id, trace_id=trace_id) if trace_id else {}
     return {
         "dispatch_plan": dispatch_plan,
         "clawteam_queue": {
