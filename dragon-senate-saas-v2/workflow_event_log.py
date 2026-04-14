@@ -736,6 +736,71 @@ class WorkflowEventLog:
         finally:
             conn.close()
 
+    def list_recent_runs(self, limit: int = 50) -> list[dict[str, Any]]:
+        """
+        列出最近的工作流运行记录（不限租户）。
+        供 /api/v1/ai/execution-monitor/snapshot 接口使用。
+        """
+        conn = self._conn()
+        try:
+            rows = conn.execute(
+                "SELECT * FROM workflow_runs ORDER BY started_at DESC LIMIT ?",
+                (limit,)
+            ).fetchall()
+            result = []
+            for r in rows:
+                d = dict(r)
+                total = int(d.get("total_steps") or 14)
+                last = int(d.get("last_completed_step") or -1)
+                d["progress"] = max(0, min(100, int((last + 1) / total * 100))) if total > 0 else 0
+                result.append(d)
+            return result
+        except Exception:
+            return []
+        finally:
+            conn.close()
+
+    def get_failed_step(self, run_id: str) -> Optional[dict[str, Any]]:
+        """
+        返回该 run 中第一个 step_failed 事件，方便快速定位卡点。
+        断点恢复调试专用。
+        """
+        conn = self._conn()
+        try:
+            row = conn.execute(
+                """SELECT * FROM workflow_events
+                   WHERE workflow_run_id = ? AND event_type = 'step_failed'
+                   ORDER BY event_index ASC LIMIT 1""",
+                (run_id,)
+            ).fetchone()
+            if not row:
+                return None
+            d = dict(row)
+            # 解析 payload JSON
+            try:
+                d["payload"] = json.loads(d.get("payload") or "{}")
+            except Exception:
+                pass
+            return d
+        finally:
+            conn.close()
+
+    def can_resume(self, run_id: str) -> bool:
+        """
+        判断该工作流是否可以从断点恢复。
+        条件：存在 workflow_started 且状态不是 completed/cancelled。
+        """
+        conn = self._conn()
+        try:
+            run = conn.execute(
+                "SELECT status FROM workflow_runs WHERE run_id = ?", (run_id,)
+            ).fetchone()
+            if not run:
+                return False
+            return str(run["status"]) not in {"completed", "cancelled"}
+        finally:
+            conn.close()
+
 
 # ─────────────────────────────────────────────────────────────────
 # 全局单例
