@@ -41,6 +41,7 @@ class WSSReceiver:
 
         self._task_handler: Optional[Callable[[dict], Awaitable[dict]]] = None
         self._behavior_handler: Optional[Callable[[dict], Awaitable[dict]]] = None
+        self.doctor_status_provider: Optional[Callable[[], dict[str, Any]]] = None
         self._connected = False
         self._should_run = False
         self._current_task_id: Optional[str] = None
@@ -90,6 +91,7 @@ class WSSReceiver:
             "memoryPercent": round(memory_percent, 1),
             "platforms": ["xiaohongshu", "douyin"],
             "version": "1.0.0-edge",
+            "doctor": self.doctor_status_provider() if self.doctor_status_provider else {},
         }
 
     async def _send_progress(
@@ -130,14 +132,47 @@ class WSSReceiver:
         except Exception:
             pass
 
+    async def _task_heartbeat_loop(
+        self, ws: Any, task_id: str, interval_sec: float = 30.0
+    ) -> None:
+        """Background coroutine: emit task_progress heartbeats while a task runs.
+
+        The cloud-side HeartbeatMonitor marks tasks as *stalled* if no heartbeat
+        arrives within its timeout window (default 90 s).  This loop fires every
+        `interval_sec` (default 30 s) so the cloud always sees a live signal even
+        for long-running publish / browser-SOP tasks.
+        """
+        elapsed = 0
+        while True:
+            await asyncio.sleep(interval_sec)
+            elapsed += interval_sec
+            try:
+                await self._send_progress(
+                    ws,
+                    task_id,
+                    progress=min(90, 10 + int(elapsed)),
+                    message=f"task alive — {int(elapsed)}s elapsed",
+                    step="heartbeat",
+                )
+            except Exception:
+                break  # ws gone; the main handler will catch the real error
+
     async def _handle_task(self, ws: Any, payload: dict[str, Any]) -> None:
-        """Handle incoming execute_task."""
+        """Handle incoming execute_task.
+
+        Runs the registered task handler inside a concurrent heartbeat loop so the
+        cloud never mistakes a long-running publish job for a stalled/offline edge.
+        """
         task_id = str(payload.get("taskId") or payload.get("task_id") or "").strip()
         if not task_id:
             return
         self._current_task_id = task_id
         self._stats["tasks_received"] += 1
 
+        # Start background heartbeat loop (cancelled once handler finishes)
+        hb_task = asyncio.ensure_future(
+            self._task_heartbeat_loop(ws, task_id, interval_sec=30.0)
+        )
         try:
             await self._send_progress(ws, task_id, 10, "Task received, starting execution")
             if self._task_handler:
@@ -153,6 +188,11 @@ class WSSReceiver:
             await self._send_completed(ws, task_id, False, error=str(exc)[:500])
             self._stats["tasks_failed"] += 1
         finally:
+            hb_task.cancel()
+            try:
+                await hb_task
+            except asyncio.CancelledError:
+                pass
             self._current_task_id = None
 
     async def _handle_behavior_session(self, ws: Any, payload: dict[str, Any]) -> None:
@@ -182,4 +222,5 @@ class WSSReceiver:
             "connected": self._connected,
             "stats": dict(self._stats),
             "platform": platform.system(),
+            "doctor": self.doctor_status_provider() if self.doctor_status_provider else {},
         }
