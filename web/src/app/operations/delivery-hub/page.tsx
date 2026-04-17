@@ -173,6 +173,9 @@ function resolveCustomerProof(
     closeoutSteps: string;
     screenshotCoverage: string;
     operationsCoverage: string;
+    closeoutArtifact: string;
+    screenshotArtifact: string;
+    operationsArtifact: string;
   },
 ) {
   if (proofKey === 'screenshots') return `${input.screenshotCoverage} critical pages passed`;
@@ -186,6 +189,9 @@ function buildCustomerOnePageMarkdown(input: {
   closeoutSteps: string;
   screenshotCoverage: string;
   operationsCoverage: string;
+  closeoutArtifact: string;
+  screenshotArtifact: string;
+  operationsArtifact: string;
 }) {
   return [
     '# OpenClaw 客户版一页交付卡',
@@ -197,6 +203,11 @@ function buildCustomerOnePageMarkdown(input: {
     ...CUSTOMER_ONE_PAGE_CARDS.map(
       (item) => `- ${item.title}: ${item.detail}\n  - 证据: ${resolveCustomerProof(item.proofKey, input)}`,
     ),
+    '',
+    '## 证据来源',
+    `- 前端收尾证据包: ${input.closeoutArtifact}`,
+    `- 关键页面截图证据: ${input.screenshotArtifact}`,
+    `- operations 页面扫描证据: ${input.operationsArtifact}`,
     '',
     '## 推荐演示顺序',
     '1. `/` 租户增长总控台',
@@ -590,6 +601,9 @@ export default async function DeliveryHubPage() {
     closeoutSteps: frontendCloseoutStatus.stepsText,
     screenshotCoverage: frontendCloseoutStatus.screenshotText,
     operationsCoverage: frontendCloseoutStatus.operationsText,
+    closeoutArtifact: frontendCloseoutStatus.artifactDir || '-',
+    screenshotArtifact: frontendCritical?.artifact_dir || '-',
+    operationsArtifact: operationsScan?.artifact_dir || '-',
   };
   const engineerHandoffSummary = buildEngineerHandoffMarkdown({
     releaseGateArtifact: releaseGate?.artifact_dir || '-',
