@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { LifecycleBadge } from '@/components/lobster/LifecycleBadge';
 import { LobsterStatusBadge } from '@/components/lobster/LobsterStatusBadge';
 import type { LobsterEntity } from '@/types/lobster';
@@ -24,6 +25,20 @@ export function LobsterEntityHeader({ lobster }: { lobster: LobsterEntity }) {
             <span>技能 {lobster.skill_count} 个</span>
             <span>本周 {lobster.weekly_runs} 次</span>
             {lobster.active_experiment ? <span className="text-amber-300">A/B 实验 {lobster.active_experiment.rollout}%</span> : null}
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href={`/lobsters/${encodeURIComponent(lobster.id)}/capabilities`}
+              className="rounded-2xl border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-100 transition hover:bg-cyan-400/15"
+            >
+              查看能力树
+            </Link>
+            <Link
+              href="/operations/lobster-config"
+              className="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-2 text-sm text-white transition hover:bg-white/[0.08]"
+            >
+              打开能力配置
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import api from '../api';
 import type {
   FeatureFlag,
+  FeatureFlagChangelogItem,
   FlagCheckResult,
   FlagStrategy,
   FlagVariant,
@@ -56,7 +57,7 @@ export async function updateFeatureFlagStrategies(name: string, payload: { envir
 
 export async function fetchFeatureFlagChangelog(input?: { limit?: number; environment?: string; tenant_id?: string }) {
   const { data } = await api.get('/api/v1/feature-flags/changelog', { params: input });
-  return data as { ok: boolean; items: Array<Record<string, unknown>> };
+  return data as { ok: boolean; items: FeatureFlagChangelogItem[] };
 }
 
 export async function checkFeatureFlag(payload: {

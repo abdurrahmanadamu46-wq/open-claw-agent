@@ -41,11 +41,13 @@ function ValueWithTrend({
 }
 
 function SystemTime() {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
+    setNow(new Date());
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
+  if (!now) return <span className="font-mono text-sm" style={{ color: 'var(--commander-text)' }}>--:--:--</span>;
   return (
     <span className="font-mono text-sm" style={{ color: 'var(--commander-text)' }}>
       {now.toLocaleTimeString('zh-CN', { hour12: false })}

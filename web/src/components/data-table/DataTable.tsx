@@ -122,11 +122,12 @@ export function DataTable<T>({
       : setInternalPagination,
   });
 
-  const selectedRows = table.getSelectedRowModel().rows.map((row) => row.original);
+  const selectedRowCount = useMemo(() => Object.keys(rowSelection).length, [rowSelection]);
 
   useEffect(() => {
-    onSelectionChange?.(selectedRows);
-  }, [onSelectionChange, selectedRows]);
+    if (!onSelectionChange) return;
+    onSelectionChange(table.getSelectedRowModel().rows.map((row) => row.original));
+  }, [onSelectionChange, rowSelection, table]);
 
   const currentPageIndex = serverSide ? pageIndex : internalPagination.pageIndex;
   const currentPageSize = serverSide ? pageSize : internalPagination.pageSize;
@@ -134,9 +135,9 @@ export function DataTable<T>({
 
   return (
     <div className="space-y-3">
-      {selectable && selectedRows.length > 0 ? (
+      {selectable && selectedRowCount > 0 ? (
         <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-100">
-          <span>已选 {selectedRows.length} 项</span>
+          <span>已选 {selectedRowCount} 项</span>
           <button
             type="button"
             onClick={() => table.resetRowSelection()}

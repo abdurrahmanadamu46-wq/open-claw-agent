@@ -35,58 +35,12 @@ export type LobsterPipelineStage = {
   label: string;
   description: string;
   ownerIds: string[];
+  artifacts: string[];
+  representativeSkills: string[];
+  upstreamStageKeys: LobsterStageKey[];
+  downstreamStageKeys: LobsterStageKey[];
+  semanticSource: 'frontend_shared';
 };
-
-export const LOBSTER_PIPELINE_STAGES: LobsterPipelineStage[] = [
-  {
-    key: 'signal',
-    label: '01 信号发现',
-    description: '先找增量机会，再把有价值的信号送入策略主链。',
-    ownerIds: ['radar'],
-  },
-  {
-    key: 'strategy',
-    label: '02 策略制定',
-    description: '把行业事实、目标和风险边界编成可执行路线。',
-    ownerIds: ['strategist'],
-  },
-  {
-    key: 'copy',
-    label: '03-A 文案生产',
-    description: '把策略落成各平台可发布、可转化、可审计的文案包。',
-    ownerIds: ['inkwriter'],
-  },
-  {
-    key: 'visual',
-    label: '03-B 视觉生产',
-    description: '把脚本变成分镜、图片、数字人视频和后期素材。',
-    ownerIds: ['visualizer'],
-  },
-  {
-    key: 'dispatch',
-    label: '04 分发调度',
-    description: '决定何时、由谁、在哪个账号与边缘节点执行。',
-    ownerIds: ['dispatcher'],
-  },
-  {
-    key: 'engage',
-    label: '05 互动与线索',
-    description: '先承接互动，再把高意向线索送入跟进与复盘。',
-    ownerIds: ['echoer', 'catcher'],
-  },
-  {
-    key: 'followup',
-    label: '06 跟进成交',
-    description: '跨触点跟进高价值对象，把成交和唤醒结果回写。',
-    ownerIds: ['followup'],
-  },
-  {
-    key: 'review',
-    label: '07 复盘反馈',
-    description: '把 attribution、价值分和结论反哺给下一轮增长。',
-    ownerIds: ['abacus'],
-  },
-];
 
 const ROLE_ORDER = [
   'commander',
@@ -246,6 +200,22 @@ const ROLE_META: Record<string, LobsterRoleMeta> = {
     upstreamIds: ['dispatcher', 'echoer', 'catcher'],
     downstreamIds: ['abacus'],
   },
+  feedback: {
+    id: 'feedback',
+    zhName: '反馈内核',
+    enName: 'Feedback',
+    label: '反馈内核 Feedback',
+    icon: '📊',
+    stageKey: 'review',
+    stageLabel: '复盘反馈',
+    stageIndex: '07-K',
+    artifact: 'TraceReviewReport',
+    summary: '负责复盘、回滚判断、经验回写与反馈升维的内核角色。',
+    expectedSkillCount: 3,
+    representativeSkills: ['trace analysis', 'rollback judge', 'launch gate'],
+    upstreamIds: ['dispatcher', 'followup', 'abacus'],
+    downstreamIds: ['commander', 'strategist'],
+  },
   abacus: {
     id: 'abacus',
     zhName: '金算虾',
@@ -263,6 +233,106 @@ const ROLE_META: Record<string, LobsterRoleMeta> = {
     downstreamIds: ['commander', 'radar', 'strategist'],
   },
 };
+
+const PIPELINE_STAGE_ORDER: Array<Exclude<LobsterStageKey, 'global'>> = [
+  'signal',
+  'strategy',
+  'copy',
+  'visual',
+  'dispatch',
+  'engage',
+  'followup',
+  'review',
+];
+
+const PIPELINE_STAGE_META: Record<Exclude<LobsterStageKey, 'global'>, { label: string; description: string }> = {
+  signal: {
+    label: '01 信号发现',
+    description: '先找增量机会，再把有价值的信号送入策略主链。',
+  },
+  strategy: {
+    label: '02 策略制定',
+    description: '把行业事实、目标和风险边界编成可执行路线。',
+  },
+  copy: {
+    label: '03-A 文案生产',
+    description: '把策略落成各平台可发布、可转化、可审计的文案包。',
+  },
+  visual: {
+    label: '03-B 视觉生产',
+    description: '把脚本变成分镜、图片、数字人视频和后期素材。',
+  },
+  dispatch: {
+    label: '04 分发调度',
+    description: '决定何时、由谁、在哪个账号与边缘节点执行。',
+  },
+  engage: {
+    label: '05 互动与线索',
+    description: '先承接互动，再把高意向线索送入跟进与复盘。',
+  },
+  followup: {
+    label: '06 跟进成交',
+    description: '跨触点跟进高价值对象，把成交和唤醒结果回写。',
+  },
+  review: {
+    label: '07 复盘反馈',
+    description: '把 attribution、价值分和结论反哺给下一轮增长。',
+  },
+};
+
+function uniqueStrings(values: string[]): string[] {
+  return Array.from(new Set(values.filter((item) => item.trim().length > 0)));
+}
+
+function sortStageKeys(stageKeys: LobsterStageKey[]): LobsterStageKey[] {
+  return Array.from(new Set(stageKeys))
+    .filter((key): key is Exclude<LobsterStageKey, 'global'> => PIPELINE_STAGE_ORDER.includes(key as Exclude<LobsterStageKey, 'global'>))
+    .sort(
+      (left, right) =>
+        PIPELINE_STAGE_ORDER.indexOf(left as Exclude<LobsterStageKey, 'global'>)
+        - PIPELINE_STAGE_ORDER.indexOf(right as Exclude<LobsterStageKey, 'global'>),
+    );
+}
+
+function buildLobsterPipelineStages(): LobsterPipelineStage[] {
+  return PIPELINE_STAGE_ORDER.map((stageKey) => {
+    const owners = ROLE_ORDER.map((roleId) => ROLE_META[roleId]).filter((role) => role.stageKey === stageKey);
+    const artifacts = uniqueStrings(owners.map((owner) => owner.artifact));
+    const representativeSkills = uniqueStrings(owners.flatMap((owner) => owner.representativeSkills)).slice(0, 6);
+    const upstreamStageKeys = sortStageKeys(
+      owners.flatMap((owner) =>
+        owner.upstreamIds
+          .map((agentId) => ROLE_META[agentId as keyof typeof ROLE_META]?.stageKey)
+          .filter((value): value is LobsterStageKey => Boolean(value) && value !== stageKey && value !== 'global'),
+      ),
+    );
+    const downstreamStageKeys = sortStageKeys(
+      owners.flatMap((owner) =>
+        owner.downstreamIds
+          .map((agentId) => ROLE_META[agentId as keyof typeof ROLE_META]?.stageKey)
+          .filter((value): value is LobsterStageKey => Boolean(value) && value !== stageKey && value !== 'global'),
+      ),
+    );
+
+    return {
+      key: stageKey,
+      label: PIPELINE_STAGE_META[stageKey].label,
+      description: PIPELINE_STAGE_META[stageKey].description,
+      ownerIds: owners.map((owner) => owner.id),
+      artifacts,
+      representativeSkills,
+      upstreamStageKeys,
+      downstreamStageKeys,
+      semanticSource: 'frontend_shared',
+    };
+  });
+}
+
+export const LOBSTER_PIPELINE_STAGES: LobsterPipelineStage[] = buildLobsterPipelineStages();
+
+export function getLobsterPipelineStage(stageKey: LobsterStageKey): LobsterPipelineStage | null {
+  return LOBSTER_PIPELINE_STAGES.find((stage) => stage.key === stageKey) ?? null;
+}
 
 export function getLobsterRoleMeta(agentId: string): LobsterRoleMeta {
   const known = ROLE_META[agentId];

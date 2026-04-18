@@ -4,6 +4,17 @@ import api from '@/services/api';
 
 export type LobsterHealthState = 'healthy' | 'degraded' | 'critical' | 'idle';
 export type LobsterTier = 'simple' | 'standard' | 'complex' | 'reasoning';
+export type LobsterBindingSource = 'live' | 'mock' | 'fallback';
+
+export interface LobsterBindingMeta {
+  source: LobsterBindingSource;
+  endpoint: string;
+  detail: string;
+}
+
+type WithBinding<T> = T & {
+  binding: LobsterBindingMeta;
+};
 
 export interface LobsterOverviewRow {
   id: string;
@@ -374,15 +385,88 @@ const MOCK_SCORING: LobsterScoringResponse = {
 
 function shouldUseMock() {
   if (typeof window === 'undefined') return false;
+  if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') return true;
   const { hostname, port } = window.location;
-  return (hostname === '127.0.0.1' || hostname === 'localhost') && ['3000', '3001', '3002', '3003', '3005'].includes(port || '');
+  return (hostname === '127.0.0.1' || hostname === 'localhost') && ['3000', '3001', '3002', '3003', '3005', '3101'].includes(port || '');
 }
 
-function withMockFallback<T>(factory: () => Promise<T>, fallback: T | (() => T)): Promise<T> {
+function cloneData<T>(value: T | (() => T)): T {
+  return typeof value === 'function' ? (value as () => T)() : value;
+}
+
+function normalizeErrorMessage(error: unknown): string {
+  const maybe = error as {
+    response?: {
+      status?: number;
+      data?: {
+        message?: string;
+        detail?: string;
+      };
+    };
+    message?: string;
+  };
+  const detail = maybe?.response?.data?.message || maybe?.response?.data?.detail || maybe?.message;
+  const status = maybe?.response?.status;
+  if (status && detail) return `${status}: ${detail}`;
+  return detail || 'request failed';
+}
+
+function attachBinding<T extends { ok: boolean }>(data: T, binding: LobsterBindingMeta): WithBinding<T> {
+  return {
+    ...data,
+    binding,
+  };
+}
+
+function withMockFallback<T extends { ok: boolean }>(
+  factory: () => Promise<T>,
+  fallback: T | (() => T),
+  endpoint: string,
+): Promise<WithBinding<T>> {
   if (shouldUseMock()) {
-    return Promise.resolve(typeof fallback === 'function' ? (fallback as () => T)() : fallback);
+    return Promise.resolve(
+      attachBinding(cloneData(fallback), {
+        source: 'mock',
+        endpoint,
+        detail: 'Rendered from local preview fixtures because preview mock mode is enabled.',
+      }),
+    );
   }
-  return factory().catch(() => (typeof fallback === 'function' ? (fallback as () => T)() : fallback));
+  return factory()
+    .then((data) =>
+      attachBinding(data, {
+        source: 'live',
+        endpoint,
+        detail: `Read from live endpoint ${endpoint}.`,
+      }))
+    .catch((error) =>
+      attachBinding(cloneData(fallback), {
+        source: 'fallback',
+        endpoint,
+        detail: `Fell back to local fixtures because ${normalizeErrorMessage(error)}.`,
+      }));
+}
+
+function withMockOnly<T extends { ok: boolean }>(
+  factory: () => Promise<T>,
+  fallback: T | (() => T),
+  endpoint: string,
+): Promise<WithBinding<T>> {
+  if (shouldUseMock()) {
+    return Promise.resolve(
+      attachBinding(cloneData(fallback), {
+        source: 'mock',
+        endpoint,
+        detail: 'Rendered from local preview fixtures because preview mock mode is enabled.',
+      }),
+    );
+  }
+  return factory().then((data) =>
+    attachBinding(data, {
+      source: 'live',
+      endpoint,
+      detail: `Read from live endpoint ${endpoint}.`,
+    }));
 }
 
 export async function fetchLobsterPoolOverview(tenantId = 'tenant_main') {
@@ -394,6 +478,7 @@ export async function fetchLobsterPoolOverview(tenantId = 'tenant_main') {
       return data;
     },
     MOCK_OVERVIEW,
+    '/lobster/pool/overview',
   );
 }
 
@@ -406,6 +491,7 @@ export async function fetchLobsterPoolMetrics(rangeHours = 24, granularity: 'hou
       return data;
     },
     MOCK_METRICS,
+    '/lobster/pool/metrics',
   );
 }
 
@@ -420,6 +506,7 @@ export async function fetchLobsterRegistry() {
       lobsters: REGISTRY,
       tier_map: TIER_MAP,
     },
+    '/lobster/pool/registry',
   );
 }
 
@@ -432,6 +519,7 @@ export async function fetchLobsterDetail(lobsterId: string, limit = 50) {
       return data;
     },
     () => createDetail(lobsterId),
+    `/lobster/${encodeURIComponent(lobsterId)}/detail`,
   );
 }
 
@@ -442,13 +530,28 @@ export async function simulateLobsterScoring(payload: {
   risk_level?: string;
   tool_count?: number;
 }) {
-  return withMockFallback(
+  return withMockOnly(
     async () => {
-      const { data } = await api.post<LobsterScoringResponse>('/lobster/scoring/simulate', payload);
+      const { data } = await api.post<LobsterScoringResponse>('/api/v1/lobsters/scoring/simulate', payload);
       return data;
     },
     MOCK_SCORING,
+    '/api/v1/lobsters/scoring/simulate',
   );
+}
+
+export function getLobsterScoringBindingPlan(): LobsterBindingMeta {
+  return shouldUseMock()
+    ? {
+        source: 'mock',
+        endpoint: '/api/v1/lobsters/scoring/simulate',
+        detail: 'Explicit preview mock mode is enabled, so the scorer will use local simulated output.',
+      }
+    : {
+        source: 'live',
+        endpoint: '/api/v1/lobsters/scoring/simulate',
+        detail: 'The scorer will call the live backend endpoint and show an error if the request fails.',
+      };
 }
 
 export async function fetchLobsterRoutingHistory(params?: {
@@ -471,6 +574,7 @@ export async function fetchLobsterRoutingHistory(params?: {
         return true;
       }).slice(0, params?.limit || 50),
     },
+    '/lobster/routing/history',
   );
 }
 
@@ -481,6 +585,7 @@ export async function recordLobsterRun(payload: LobsterRunRecordPayload) {
       return data as { ok: boolean };
     },
     { ok: true },
+    '/lobster/run/record',
   );
 }
 

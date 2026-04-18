@@ -82,7 +82,7 @@ export default function DeviceFleetPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] text-slate-50">
+    <div className="relative text-slate-50">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_80%_14%,rgba(245,158,11,0.12),transparent_22%),linear-gradient(180deg,rgba(10,15,28,0.98),rgba(7,17,31,1))]" />
 
       <div className="relative space-y-6 p-6">

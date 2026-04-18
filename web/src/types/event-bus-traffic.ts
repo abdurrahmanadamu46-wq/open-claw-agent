@@ -12,5 +12,5 @@ export interface EventBusPrefixSummary {
   total_count: number;
   count_last_minute: number;
   count_last_hour: number;
-  subjects: EventBusSubjectStat[];
+  subjects?: EventBusSubjectStat[];
 }

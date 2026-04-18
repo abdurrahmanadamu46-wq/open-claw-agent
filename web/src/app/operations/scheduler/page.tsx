@@ -103,17 +103,17 @@ function SchedulerPageContent() {
   }, [tenantId]);
 
   useEffect(() => {
-    const preset = searchParams.get('preset');
+    const preset = searchParams?.get('preset');
     if (preset !== '1') {
       return;
     }
-    const nextName = searchParams.get('name');
-    const nextKind = searchParams.get('kind');
-    const nextSchedule = searchParams.get('schedule');
-    const nextLobsterId = searchParams.get('lobster_id');
-    const nextPrompt = searchParams.get('prompt');
-    const nextSessionMode = searchParams.get('session_mode');
-    const nextDeliveryChannel = searchParams.get('delivery_channel');
+    const nextName = searchParams?.get('name');
+    const nextKind = searchParams?.get('kind');
+    const nextSchedule = searchParams?.get('schedule');
+    const nextLobsterId = searchParams?.get('lobster_id');
+    const nextPrompt = searchParams?.get('prompt');
+    const nextSessionMode = searchParams?.get('session_mode');
+    const nextDeliveryChannel = searchParams?.get('delivery_channel');
 
     if (nextName) setName(nextName);
     if (nextKind === 'cron' || nextKind === 'every' || nextKind === 'once') setKind(nextKind);
@@ -214,7 +214,7 @@ function SchedulerPageContent() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto grid max-w-7xl gap-6 xl:grid-cols-[420px_minmax(0,1fr)]">
         <section
           className="rounded-[28px] border p-5"
@@ -507,7 +507,7 @@ function SchedulerPageContent() {
 
 export default function SchedulerPage() {
   return (
-    <Suspense fallback={<div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-sm text-slate-300">正在加载定时任务面板...</div>}>
+    <Suspense fallback={<div className="p-6 text-sm text-slate-300">正在加载定时任务面板...</div>}>
       <SchedulerPageContent />
     </Suspense>
   );

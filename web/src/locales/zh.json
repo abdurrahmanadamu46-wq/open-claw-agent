@@ -224,54 +224,54 @@
       }
     },
     "lobsterConfig": {
-      "badge": "????",
-      "title": "??????",
-      "description": "??????????????????????????????????",
+      "badge": "龙虾配置",
+      "title": "龙虾配置中心",
+      "description": "在这里统一管理每只龙虾的策略等级、自主等级和自定义提示词配置。",
       "list": {
-        "title": "????",
-        "total": "?",
-        "strategyReady": "????",
-        "autonomyReady": "??????",
-        "loading": "????????...",
-        "empty": "??????????????"
+        "title": "龙虾列表",
+        "total": "个",
+        "strategyReady": "已配置策略",
+        "autonomyReady": "已配置自主等级",
+        "loading": "正在加载...",
+        "empty": "当前没有龙虾配置数据。"
       },
       "detail": {
-        "badge": "??",
-        "placeholder": "???????????",
-        "about": "????????????????????????",
-        "updated": "??????",
-        "loading": "??????..."
+        "badge": "详情",
+        "placeholder": "请从左侧选择一只龙虾",
+        "about": "暂无描述信息，可通过保存配置补充。",
+        "updated": "最近更新",
+        "loading": "加载中..."
       },
       "metrics": {
-        "strategyLevel": "????",
-        "autonomyLevel": "????",
-        "tools": "???",
-        "empty": "???"
+        "strategyLevel": "策略等级",
+        "autonomyLevel": "自主等级",
+        "tools": "工具数",
+        "empty": "未设置"
       },
       "fields": {
-        "strategyLevel": "????",
-        "autonomyLevel": "????",
-        "customPrompt": "??????",
-        "strategyPlaceholder": "???1 / 2 / 3 / 4",
-        "autonomyPlaceholder": "???0 / 1 / 2 / 3",
-        "customPromptPlaceholder": "?????????????????????"
+        "strategyLevel": "策略等级",
+        "autonomyLevel": "自主等级",
+        "customPrompt": "自定义提示词",
+        "strategyPlaceholder": "等级 1 / 2 / 3 / 4",
+        "autonomyPlaceholder": "等级 0 / 1 / 2 / 3",
+        "customPromptPlaceholder": "输入该龙虾的专属提示词覆盖内容..."
       },
       "sections": {
-        "configuration": "????",
-        "tools": "????",
-        "skills": "????",
-        "count": "?",
-        "enabled": "???",
-        "disabled": "???",
-        "empty": "?????????",
-        "unknown": "??"
+        "configuration": "配置",
+        "tools": "工具",
+        "skills": "技能",
+        "count": "个",
+        "enabled": "已启用",
+        "disabled": "已禁用",
+        "empty": "暂无数据",
+        "unknown": "未知"
       },
       "buttons": {
-        "saving": "???..."
+        "saving": "保存中..."
       },
       "messages": {
-        "requestFailed": "????",
-        "saved": "???????"
+        "requestFailed": "请求失败",
+        "saved": "配置已保存成功"
       }
     },
     "lobsterCost": {
@@ -643,7 +643,7 @@
         "descriptionField": "简单说明这条规则为何存在",
         "target": "当 effect 为 dispatch 时必填",
         "tags": "comma,separated,tags",
-        "conditions": "[{\"field\":\"lead.score\",\"op\":\"gte\",\"value\":80}]",
+      "conditions": "条件 JSON 示例",
         "notes": "这次发布的原因是什么？"
       },
       "evaluate": {

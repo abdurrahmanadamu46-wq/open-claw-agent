@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { AlertTriangle, CheckCircle, RefreshCw, SkipForward, RotateCcw } from 'lucide-react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchEscalations, resolveEscalation } from '@/services/endpoints/ai-subservice';
+import { AlertTriangle, CheckCircle, RefreshCw, RotateCcw, SkipForward } from 'lucide-react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchEscalations, resolveEscalation, type EscalationItem } from '@/services/endpoints/ai-subservice';
 
 const BORDER = 'rgba(71,85,105,0.42)';
 const PANEL_BG = '#16243b';
@@ -16,9 +16,9 @@ const STATUS_OPTIONS = [
 
 function formatDateTime(value?: string | null): string {
   if (!value) return '-';
-  const dt = new Date(value);
-  if (Number.isNaN(dt.getTime())) return value;
-  return dt.toLocaleString('zh-CN', {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleString('zh-CN', {
     hour12: false,
     month: '2-digit',
     day: '2-digit',
@@ -28,6 +28,12 @@ function formatDateTime(value?: string | null): string {
   });
 }
 
+function statusLabel(status: string) {
+  if (status === 'pending_human_review') return '待处理';
+  if (status === 'resolved') return '已解决';
+  return status || '未知';
+}
+
 function StatusBadge({ status }: { status: string }) {
   const tone =
     status === 'pending_human_review'
@@ -35,9 +41,7 @@ function StatusBadge({ status }: { status: string }) {
       : status === 'resolved'
         ? 'bg-emerald-500/15 text-emerald-200'
         : 'bg-slate-700 text-slate-300';
-  const label =
-    status === 'pending_human_review' ? '待处理' : status === 'resolved' ? '已解决' : status;
-  return <span className={`rounded-full px-3 py-1 text-xs ${tone}`}>{label}</span>;
+  return <span className={`rounded-full px-3 py-1 text-xs ${tone}`}>{statusLabel(status)}</span>;
 }
 
 function ResolutionBadge({ resolution }: { resolution?: string }) {
@@ -68,13 +72,14 @@ function EmptyState({ text }: { text: string }) {
   );
 }
 
-type EscalationItem = Record<string, unknown>;
-
 export default function EscalationsPage() {
   const queryClient = useQueryClient();
   const [statusFilter, setStatusFilter] = useState('pending_human_review');
   const [lobsterFilter, setLobsterFilter] = useState('');
-  const [resolveTarget, setResolveTarget] = useState<{ id: string; resolution: 'continue' | 'skip' | 'retry' } | null>(null);
+  const [resolveTarget, setResolveTarget] = useState<{
+    id: string;
+    resolution: 'continue' | 'skip' | 'retry';
+  } | null>(null);
   const [resolveNote, setResolveNote] = useState('');
 
   const { data, isLoading, error, refetch } = useQuery({
@@ -93,13 +98,13 @@ export default function EscalationsPage() {
     },
   });
 
-  const items: EscalationItem[] = (data?.items ?? []) as EscalationItem[];
+  const items = useMemo<EscalationItem[]>(() => data?.items ?? [], [data?.items]);
 
   const lobsterOptions = useMemo(() => {
     const set = new Set<string>();
     items.forEach((item) => {
-      const lid = String(item.lobster_id || '');
-      if (lid) set.add(lid);
+      const lobsterId = String(item.lobster_id || '');
+      if (lobsterId) set.add(lobsterId);
     });
     return ['', ...Array.from(set)];
   }, [items]);
@@ -113,51 +118,45 @@ export default function EscalationsPage() {
   const resolvedCount = items.filter((item) => item.status === 'resolved').length;
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto max-w-7xl space-y-5">
-        {/* Header */}
         <section
           className="rounded-[30px] border p-6"
-          style={{ background: 'linear-gradient(135deg, rgba(20,34,58,0.98), rgba(11,21,35,0.98))', borderColor: BORDER }}
+          style={{
+            background: 'linear-gradient(135deg, rgba(20,34,58,0.98), rgba(11,21,35,0.98))',
+            borderColor: BORDER,
+          }}
         >
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="max-w-3xl">
               <div className="text-xs uppercase tracking-[0.18em] text-amber-300">Escalations</div>
-              <h1 className="mt-3 text-3xl font-semibold text-white">人工干预升级队列</h1>
+              <h1 className="mt-3 text-3xl font-semibold text-white">人工介入升级队列</h1>
               <p className="mt-3 text-sm leading-7 text-slate-300">
-                显示所有龙虾触发人工审核的升级事件。可按状态和龙虾过滤，并在线执行 continue / skip / retry 决策。
+                这里集中展示龙虾执行过程中触发的人审升级事件。运营可以按状态和主管角色过滤，并对待处理事件执行 continue、skip 或 retry 决策。
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => void refetch()}
-                className="inline-flex items-center gap-2 rounded-2xl border border-slate-600 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800/70"
-              >
-                <RefreshCw className="h-4 w-4" />
-                {isLoading ? '刷新中...' : '刷新'}
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => void refetch()}
+              className="inline-flex items-center gap-2 rounded-2xl border border-slate-600 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800/70"
+            >
+              <RefreshCw className="h-4 w-4" />
+              {isLoading ? '刷新中...' : '刷新'}
+            </button>
           </div>
 
-          {error ? (
-            <div className="mt-4 text-sm text-rose-200">加载失败，请稍后重试</div>
-          ) : null}
+          {error ? <div className="mt-4 text-sm text-rose-200">升级队列加载失败，请稍后重试。</div> : null}
 
           <div className="mt-5 grid gap-3 md:grid-cols-4">
-            <MetricCard label="总升级数" value={String(items.length)} />
+            <MetricCard label="升级总数" value={String(items.length)} />
             <MetricCard label="待处理" value={String(pendingCount)} accent="text-amber-300" />
             <MetricCard label="已解决" value={String(resolvedCount)} accent="text-emerald-300" />
-            <MetricCard label="涉及龙虾" value={String(lobsterOptions.length - 1)} />
+            <MetricCard label="涉及主管" value={String(Math.max(0, lobsterOptions.length - 1))} />
           </div>
         </section>
 
-        {/* Filters + List */}
-        <section
-          className="rounded-[28px] border p-5"
-          style={{ backgroundColor: PANEL_BG, borderColor: BORDER }}
-        >
+        <section className="rounded-[28px] border p-5" style={{ backgroundColor: PANEL_BG, borderColor: BORDER }}>
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-amber-300">
               <AlertTriangle className="h-4 w-4" />
@@ -167,24 +166,24 @@ export default function EscalationsPage() {
             <div className="ml-auto flex flex-wrap items-center gap-3">
               <select
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
+                onChange={(event) => setStatusFilter(event.target.value)}
                 className="rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100"
               >
-                {STATUS_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
+                {STATUS_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
                   </option>
                 ))}
               </select>
 
               <select
                 value={lobsterFilter}
-                onChange={(e) => setLobsterFilter(e.target.value)}
+                onChange={(event) => setLobsterFilter(event.target.value)}
                 className="rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100"
               >
-                {lobsterOptions.map((lid) => (
-                  <option key={lid} value={lid}>
-                    {lid || '全部龙虾'}
+                {lobsterOptions.map((lobsterId) => (
+                  <option key={lobsterId} value={lobsterId}>
+                    {lobsterId || '全部主管'}
                   </option>
                 ))}
               </select>
@@ -193,22 +192,18 @@ export default function EscalationsPage() {
 
           <div className="mt-4 space-y-3">
             {isLoading ? (
-              <EmptyState text="加载中..." />
+              <EmptyState text="正在加载升级事件..." />
             ) : filtered.length ? (
-              filtered.map((item, idx) => {
-                const eid = String(item.escalation_id || item.id || idx);
+              filtered.map((item, index) => {
+                const escalationId = String(item.escalation_id || item.id || index);
                 const isPending = item.status === 'pending_human_review';
                 return (
-                  <div key={eid} className="rounded-2xl border border-slate-700/70 bg-slate-950/35 p-4">
+                  <div key={escalationId} className="rounded-2xl border border-slate-700/70 bg-slate-950/35 p-4">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="rounded-full bg-white/5 px-3 py-1 font-mono text-xs text-slate-300">
-                          {eid}
-                        </span>
+                        <span className="rounded-full bg-white/5 px-3 py-1 font-mono text-xs text-slate-300">{escalationId}</span>
                         {item.lobster_id ? (
-                          <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
-                            {String(item.lobster_id)}
-                          </span>
+                          <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">{String(item.lobster_id)}</span>
                         ) : null}
                         <StatusBadge status={String(item.status || '')} />
                         {item.resolution ? <ResolutionBadge resolution={String(item.resolution)} /> : null}
@@ -218,7 +213,7 @@ export default function EscalationsPage() {
                         <div className="flex gap-2">
                           <button
                             type="button"
-                            onClick={() => setResolveTarget({ id: eid, resolution: 'continue' })}
+                            onClick={() => setResolveTarget({ id: escalationId, resolution: 'continue' })}
                             className="inline-flex items-center gap-1 rounded-xl bg-emerald-500/15 px-3 py-1.5 text-xs text-emerald-200 hover:bg-emerald-500/25"
                           >
                             <CheckCircle className="h-3 w-3" />
@@ -226,7 +221,7 @@ export default function EscalationsPage() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setResolveTarget({ id: eid, resolution: 'skip' })}
+                            onClick={() => setResolveTarget({ id: escalationId, resolution: 'skip' })}
                             className="inline-flex items-center gap-1 rounded-xl bg-slate-700/60 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700"
                           >
                             <SkipForward className="h-3 w-3" />
@@ -234,7 +229,7 @@ export default function EscalationsPage() {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setResolveTarget({ id: eid, resolution: 'retry' })}
+                            onClick={() => setResolveTarget({ id: escalationId, resolution: 'retry' })}
                             className="inline-flex items-center gap-1 rounded-xl bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-200 hover:bg-cyan-400/20"
                           >
                             <RotateCcw className="h-3 w-3" />
@@ -244,71 +239,68 @@ export default function EscalationsPage() {
                       ) : null}
                     </div>
 
-                    <div className="mt-3 text-sm text-slate-100">
-                      {String(item.reason || item.message || '无描述')}
-                    </div>
+                    <div className="mt-3 text-sm text-slate-100">{String(item.reason || item.message || '暂无描述')}</div>
 
                     <div className="mt-3 grid gap-2 text-xs text-slate-400 md:grid-cols-3">
                       {item.task_id ? (
-                        <span>任务: <span className="font-mono text-slate-300">{String(item.task_id)}</span></span>
+                        <span>
+                          任务：<span className="font-mono text-slate-300">{String(item.task_id)}</span>
+                        </span>
                       ) : null}
                       {item.tenant_id ? (
-                        <span>租户: <span className="text-slate-300">{String(item.tenant_id)}</span></span>
+                        <span>
+                          租户：<span className="text-slate-300">{String(item.tenant_id)}</span>
+                        </span>
                       ) : null}
-                      <span>创建: {formatDateTime(String(item.created_at || ''))}</span>
-                      {item.resolved_at ? (
-                        <span>解决: {formatDateTime(String(item.resolved_at))}</span>
-                      ) : null}
+                      <span>创建：{formatDateTime(String(item.created_at || ''))}</span>
+                      {item.resolved_at ? <span>解决：{formatDateTime(String(item.resolved_at))}</span> : null}
                       {item.resolved_by ? (
-                        <span>处理人: <span className="text-slate-300">{String(item.resolved_by)}</span></span>
+                        <span>
+                          处理人：<span className="text-slate-300">{String(item.resolved_by)}</span>
+                        </span>
                       ) : null}
                     </div>
 
                     {item.note ? (
-                      <div className="mt-2 rounded-xl bg-slate-900/60 px-3 py-2 text-xs text-slate-400">
-                        备注: {String(item.note)}
-                      </div>
+                      <div className="mt-2 rounded-xl bg-slate-900/60 px-3 py-2 text-xs text-slate-400">备注：{String(item.note)}</div>
                     ) : null}
                   </div>
                 );
               })
             ) : (
-              <EmptyState text="当前筛选条件下没有升级事件。龙虾触发人工干预后会自动出现在这里。" />
+              <EmptyState text="当前筛选条件下没有升级事件。龙虾触发人工介入后会自动出现在这里。" />
             )}
           </div>
         </section>
       </div>
 
-      {/* Resolve Modal */}
       {resolveTarget ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div
-            className="w-full max-w-md rounded-[24px] border p-6"
-            style={{ backgroundColor: '#16243b', borderColor: BORDER }}
-          >
+          <div className="w-full max-w-md rounded-[24px] border p-6" style={{ backgroundColor: '#16243b', borderColor: BORDER }}>
             <h2 className="text-lg font-semibold text-white">
               确认执行 <span className="text-cyan-300">{resolveTarget.resolution}</span>
             </h2>
             <p className="mt-2 text-sm text-slate-400">
-              升级 ID: <span className="font-mono text-slate-200">{resolveTarget.id}</span>
+              升级 ID：<span className="font-mono text-slate-200">{resolveTarget.id}</span>
             </p>
 
             <textarea
               value={resolveNote}
-              onChange={(e) => setResolveNote(e.target.value)}
+              onChange={(event) => setResolveNote(event.target.value)}
               placeholder="可选备注..."
               rows={3}
               className="mt-4 w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500"
             />
 
-            {resolveMutation.isError ? (
-              <div className="mt-3 text-sm text-rose-300">操作失败，请重试</div>
-            ) : null}
+            {resolveMutation.isError ? <div className="mt-3 text-sm text-rose-300">操作失败，请重试。</div> : null}
 
             <div className="mt-4 flex justify-end gap-3">
               <button
                 type="button"
-                onClick={() => { setResolveTarget(null); setResolveNote(''); }}
+                onClick={() => {
+                  setResolveTarget(null);
+                  setResolveNote('');
+                }}
                 className="rounded-2xl border border-slate-700 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800/70"
               >
                 取消

@@ -34,3 +34,11 @@ export interface FlagCheckResult {
   variant?: { name: string; enabled: boolean; payload?: unknown };
   matched_strategy?: FlagStrategy | null;
 }
+
+export interface FeatureFlagChangelogItem {
+  id?: string;
+  name?: string;
+  change_type?: string;
+  environment?: Environment | string;
+  changed_at?: string;
+}

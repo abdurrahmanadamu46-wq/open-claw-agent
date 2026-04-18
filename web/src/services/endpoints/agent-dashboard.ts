@@ -1,11 +1,23 @@
-﻿export interface ScopeAlertFeedItem {
+export interface ScopeAlertFeedStats {
+  queuedCount?: number;
+  handledCount?: number;
+  failedCount?: number;
+  simulatedCount?: number;
+}
+
+export interface ScopeAlertFeedLatest {
+  resultAt?: string | null;
+  resultStatus?: string | null;
+}
+
+export interface ScopeAlertFeedItem {
   title: string;
   severity: string;
   alertType: string;
   recommendedAction: string;
   message: string;
-  stats: Record<string, unknown>;
-  latest: Record<string, unknown>;
+  stats: ScopeAlertFeedStats;
+  latest: ScopeAlertFeedLatest;
   generatedAt: string;
   sourcePath: string;
 }

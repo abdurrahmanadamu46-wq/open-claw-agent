@@ -11,4 +11,6 @@ export interface KanbanTaskItem {
   error_msg?: string | null;
   task_type?: string | null;
   source?: string | null;
+  pack_id?: string | null;
+  queue_id?: string | null;
 }

@@ -5,7 +5,7 @@ import { AppSidebar } from '@/components/layout/AppSidebar';
 import { Header } from './Header';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const publicPrefixes = [
     '/login',
     '/register',
@@ -20,11 +20,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
   return (
-    <div className="flex min-h-screen bg-[#0F172A]">
+    <div className="flex h-screen bg-[#0F172A]">
       <AppSidebar />
-      <div className="flex flex-1 flex-col min-h-screen">
+      <div className="flex flex-1 flex-col min-w-0 min-h-0">
         <Header />
-        <main className="flex-1 p-4 md:p-6 pb-20 md:pb-6">{children}</main>
+        <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 md:p-6 pb-20 md:pb-6">{children}</main>
       </div>
     </div>
   );

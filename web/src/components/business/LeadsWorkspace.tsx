@@ -170,7 +170,7 @@ export function LeadsWorkspace() {
                   <td className="px-4 py-3 text-xs text-slate-300">{new Date(row.captured_at).toLocaleString('zh-CN')}</td>
                   <td className="px-4 py-3 text-xs text-slate-300">{row.webhook_status}</td>
                   <td className="px-4 py-3">
-                    <Button variant="ghost" onClick={() => setDetail({ open: true, lead: row })}>
+                    <Button data-testid={`lead-detail-${row.lead_id}`} variant="ghost" onClick={() => setDetail({ open: true, lead: row })}>
                       查看详情
                     </Button>
                   </td>
@@ -217,7 +217,7 @@ export function LeadsWorkspace() {
 
             <div className="mt-4 rounded-lg border border-slate-700 bg-slate-950 p-3 text-sm text-slate-200">
               {!reveal.data ? (
-                <Button onClick={() => detail.lead && reveal.mutate(detail.lead.lead_id)} disabled={reveal.isPending}>
+                <Button data-testid="lead-reveal-button" onClick={() => detail.lead && reveal.mutate(detail.lead.lead_id)} disabled={reveal.isPending}>
                   {reveal.isPending ? '解密中...' : '解密联系方式（审计留痕）'}
                 </Button>
               ) : (

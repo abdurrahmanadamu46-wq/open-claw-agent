@@ -4,19 +4,14 @@ import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { AlertTriangle, CheckCircle2, Mail, ShieldAlert, ShieldCheck, Wrench } from 'lucide-react';
-import { fetchCommercialReadiness } from '@/services/endpoints/ai-subservice';
+import {
+  fetchCommercialReadiness,
+  type CommercialReadinessBlocker,
+  type CommercialReadinessStatus,
+} from '@/services/endpoints/ai-subservice';
 import { fetchNotificationOutbox, sendNotificationTest } from '@/services/endpoints/billing';
 import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 import { MainlineStageHeader } from '@/components/business/MainlineStageHeader';
-
-type BlockerRow = {
-  id: string;
-  severity: 'high' | 'medium' | 'low';
-  domain: string;
-  title: string;
-  detail: string;
-  next_action: string;
-};
 
 function scoreTone(score: number) {
   if (score >= 90) return 'text-emerald-300 border-emerald-500/35 bg-emerald-500/10';
@@ -30,7 +25,7 @@ function severityTone(severity: string) {
   return 'border-slate-600 bg-slate-800/80 text-slate-200';
 }
 
-function readinessStatusLabel(status: string) {
+function readinessStatusLabel(status: CommercialReadinessStatus) {
   switch (status) {
     case 'ready':
       return '已就绪';
@@ -105,9 +100,54 @@ export default function CommercialReadinessPage() {
   });
 
   const readiness = readinessQuery.data?.readiness;
-  const blockers = useMemo(() => ((readiness?.blockers ?? []) as BlockerRow[]), [readiness?.blockers]);
+  const blockers = useMemo<CommercialReadinessBlocker[]>(() => readiness?.blockers ?? [], [readiness?.blockers]);
   const score = Number(readiness?.score ?? 0);
-  const status = String(readiness?.status ?? 'unknown');
+  const status = readiness?.status ?? 'unknown';
+  const deploySummary = useMemo(
+    () => ({
+      region: readiness?.deploy.region || '待确认',
+      mode: readiness?.deploy.mode || '待确认',
+    }),
+    [readiness?.deploy.mode, readiness?.deploy.region],
+  );
+  const paymentSummary = useMemo(
+    () => ({
+      provider: readiness?.payment.provider || '未配置',
+      checkout: readiness?.payment.checkout || '未配置',
+    }),
+    [readiness?.payment.checkout, readiness?.payment.provider],
+  );
+  const notificationSummary = useMemo(
+    () => ({
+      mode: notificationModeLabel(String(readiness?.notifications?.mode ?? '-')),
+      smtpConfigured: Boolean(readiness?.notifications?.smtp?.configured),
+      smtpHost: readiness?.notifications?.smtp?.host || '未配置',
+      fileOutbox: readiness?.notifications?.file_outbox || '未配置',
+      smsMockEnabled: Boolean(readiness?.notifications?.sms_mock_enabled),
+      smsWebhookConfigured: Boolean(readiness?.notifications?.sms_webhook_configured),
+    }),
+    [
+      readiness?.notifications?.file_outbox,
+      readiness?.notifications?.mode,
+      readiness?.notifications?.smtp?.configured,
+      readiness?.notifications?.smtp?.host,
+      readiness?.notifications?.sms_mock_enabled,
+      readiness?.notifications?.sms_webhook_configured,
+    ],
+  );
+  const feishuSummary = useMemo(
+    () => ({
+      enabled: Boolean(readiness?.feishu?.enabled),
+      callbackUrl: readiness?.feishu?.callback_url || '缺少 callback 地址',
+    }),
+    [readiness?.feishu?.callback_url, readiness?.feishu?.enabled],
+  );
+  const complianceSummary = useMemo(
+    () => ({
+      icpReady: readiness?.compliance?.icp_ready === true,
+    }),
+    [readiness?.compliance?.icp_ready],
+  );
 
   const [testTarget, setTestTarget] = useState('ops@example.com');
   const [testText, setTestText] = useState('Lobster Pool commercial readiness notification test');
@@ -129,22 +169,18 @@ export default function CommercialReadinessPage() {
       },
       {
         title: '通知模式',
-        value: notificationModeLabel(String((readiness?.notifications as Record<string, unknown> | undefined)?.mode ?? '-')),
-        subtitle: String(
-          (((readiness?.notifications as Record<string, unknown> | undefined)?.smtp as Record<string, unknown> | undefined)?.configured)
-            ? 'SMTP 已配置'
-            : 'SMTP 待配置',
-        ),
+        value: notificationSummary.mode,
+        subtitle: notificationSummary.smtpConfigured ? 'SMTP 已配置' : 'SMTP 待配置',
         icon: <Mail className="h-5 w-5" />,
       },
       {
         title: 'Feishu 回调',
-        value: String((readiness?.feishu as Record<string, unknown> | undefined)?.enabled ? '已启用' : '未启用'),
-        subtitle: String((readiness?.feishu as Record<string, unknown> | undefined)?.callback_url ?? '缺少 callback 地址'),
+        value: feishuSummary.enabled ? '已启用' : '未启用',
+        subtitle: feishuSummary.callbackUrl,
         icon: <Wrench className="h-5 w-5" />,
       },
     ],
-    [blockers, readiness?.blocker_count, readiness?.feishu, readiness?.notifications, score, status],
+    [blockers, feishuSummary.callbackUrl, feishuSummary.enabled, notificationSummary.mode, notificationSummary.smtpConfigured, readiness?.blocker_count, score, status],
   );
 
   async function handleNotificationTest() {
@@ -190,6 +226,42 @@ export default function CommercialReadinessPage() {
           </div>
         ))}
       </div>
+
+      <section className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <DomainCard
+          title="部署域"
+          rows={[
+            ['region', deploySummary.region],
+            ['mode', deploySummary.mode],
+          ]}
+        />
+        <DomainCard
+          title="支付域"
+          rows={[
+            ['provider', paymentSummary.provider],
+            ['checkout', paymentSummary.checkout],
+          ]}
+        />
+        <DomainCard
+          title="通知域"
+          rows={[
+            ['mode', notificationSummary.mode],
+            ['smtp', notificationSummary.smtpConfigured ? '已配置' : '未配置'],
+            ['smtp host', notificationSummary.smtpHost],
+            ['outbox', notificationSummary.fileOutbox],
+            ['sms mock', notificationSummary.smsMockEnabled ? '启用' : '关闭'],
+            ['sms webhook', notificationSummary.smsWebhookConfigured ? '已配置' : '未配置'],
+          ]}
+        />
+        <DomainCard
+          title="合规 / 回调域"
+          rows={[
+            ['feishu', feishuSummary.enabled ? '已启用' : '未启用'],
+            ['callback', feishuSummary.callbackUrl],
+            ['ICP', complianceSummary.icpReady ? '已就绪' : '待确认'],
+          ]}
+        />
+      </section>
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.2fr_0.9fr]">
         <section className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4">
@@ -302,6 +374,28 @@ export default function CommercialReadinessPage() {
           ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+function DomainCard({
+  title,
+  rows,
+}: {
+  title: string;
+  rows: Array<[string, string]>;
+}) {
+  return (
+    <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
+      <div className="text-sm font-semibold text-white">{title}</div>
+      <div className="mt-3 space-y-2">
+        {rows.map(([label, value]) => (
+          <div key={`${title}-${label}`} className="flex items-start justify-between gap-3 rounded-xl border border-white/8 bg-slate-950/40 px-3 py-2 text-sm">
+            <span className="text-slate-500">{label}</span>
+            <span className="max-w-[60%] text-right text-slate-100">{value}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

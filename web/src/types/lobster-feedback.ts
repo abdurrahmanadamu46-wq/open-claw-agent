@@ -29,6 +29,7 @@ export interface LobsterQualityStats {
 export interface LobsterFeedbackSubmitPayload {
   task_id: string;
   lobster_id: string;
+  skill_id?: string;
   rating: string;
   tags?: string[];
   comment?: string;

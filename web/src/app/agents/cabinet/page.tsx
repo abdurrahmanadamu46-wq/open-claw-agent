@@ -7,14 +7,14 @@ import { AgentPodIcon } from './AgentPodSvgs';
 import { CUSTOM_LOBSTER_AGENTS, type CustomLobsterAgentId } from '@/data/custom-lobster-agents';
 import { useTenant } from '@/contexts/TenantContext';
 import {
-  fetchAiLlmAgentBindings,
-  fetchAiLlmProviderConfigs,
-  fetchAiSkillsPoolOverview,
+  fetchControlPlaneSupervisorsOverview,
   getAiSubserviceStatus,
+  type AiSubserviceStatusResponse,
   updateAiLlmAgentBinding,
   type LlmAgentBindingRow,
   type LlmProviderConfigRow,
 } from '@/services/endpoints/ai-subservice';
+import type { ControlPlaneSupervisorsOverviewResponse } from '@/types/control-plane-overview';
 
 const AGENT_UI_TO_BACKEND: Record<CustomLobsterAgentId, string> = {
   radar: 'radar',
@@ -109,12 +109,6 @@ const AGENT_COPY: Record<string, { name: string; mission: string; capability: st
   },
 };
 
-type AiStatusPayload = {
-  status?: string;
-  registered_edges?: unknown[];
-  known_edge_skills?: unknown[];
-};
-
 function normalizeError(error: unknown): string {
   const maybe = error as { response?: { status?: number; data?: { message?: string } }; message?: string };
   const status = maybe?.response?.status;
@@ -147,7 +141,7 @@ export default function AgentsCabinetPage() {
   const { currentTenantId } = useTenant();
   const [providers, setProviders] = useState<LlmProviderConfigRow[]>([]);
   const [bindings, setBindings] = useState<Record<string, LlmAgentBindingRow>>({});
-  const [statusPayload, setStatusPayload] = useState<AiStatusPayload>({});
+  const [statusPayload, setStatusPayload] = useState<AiSubserviceStatusResponse>({});
   const [ragCountByAgent, setRagCountByAgent] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState('');
@@ -174,36 +168,58 @@ export default function AgentsCabinetPage() {
     setLoading(true);
     setErrorText('');
     try {
-      const [providerRes, bindingRes, statusRes, skillsRes] = await Promise.all([
-        fetchAiLlmProviderConfigs(currentTenantId),
-        fetchAiLlmAgentBindings(currentTenantId),
+      const [overviewRes, statusRes] = await Promise.all([
+        fetchControlPlaneSupervisorsOverview(currentTenantId),
         getAiSubserviceStatus(),
-        fetchAiSkillsPoolOverview(currentTenantId),
       ]);
+      const providerRows = (overviewRes.providers?.providers || []).map<LlmProviderConfigRow>((row) => ({
+        provider_id: row.provider_id,
+        label: row.label,
+        enabled: Boolean(row.enabled),
+        route: row.route === 'local' ? 'local' : 'cloud',
+        base_url: row.base_url || '',
+        default_model: row.default_model || '',
+        api_key_masked: row.api_key_masked,
+        api_key_configured: row.api_key_configured,
+        source: row.source === 'env_default' || row.source === 'tenant_override' ? row.source : undefined,
+        updated_at: row.updated_at,
+        updated_by: row.updated_by,
+        note: row.note,
+      }));
+      const bindingRows = (overviewRes.bindings?.bindings || []).map<LlmAgentBindingRow>((row) => ({
+        agent_id: row.agent_id,
+        enabled: Boolean(row.enabled),
+        task_type: row.task_type || DEFAULT_TASK_TYPE[row.agent_id] || 'strategy_planning',
+        provider_id: row.provider_id || '',
+        model_name: row.model_name || '',
+        temperature: typeof row.temperature === 'number' ? row.temperature : 0.3,
+        max_tokens: typeof row.max_tokens === 'number' ? row.max_tokens : 0,
+        note: row.note,
+        updated_by: row.updated_by,
+        updated_at: row.updated_at,
+        source: row.source === 'default' || row.source === 'tenant_override' ? row.source : undefined,
+      }));
+      const skillsRes = overviewRes.skills_pool as ControlPlaneSupervisorsOverviewResponse['skills_pool'];
 
       const bindingMap: Record<string, LlmAgentBindingRow> = {};
-      (bindingRes.bindings || []).forEach((row) => {
+      bindingRows.forEach((row) => {
         bindingMap[row.agent_id] = row;
       });
 
       const ragMap: Record<string, number> = {};
-      (skillsRes.overview?.agent_rag_pack_summary || []).forEach((row) => {
+      (skillsRes?.overview?.agent_rag_pack_summary || []).forEach((row) => {
         ragMap[row.agent_id] = Number(row.pack_count || 0);
       });
 
-      setProviders(providerRes.providers || []);
+      setProviders(providerRows);
       setBindings(bindingMap);
       setRagCountByAgent(ragMap);
       setStatusPayload({
-        status: String((statusRes as Record<string, unknown>)?.status ?? ''),
-        registered_edges: Array.isArray((statusRes as Record<string, unknown>)?.registered_edges)
-          ? ((statusRes as Record<string, unknown>).registered_edges as unknown[])
-          : [],
-        known_edge_skills: Array.isArray((statusRes as Record<string, unknown>)?.known_edge_skills)
-          ? ((statusRes as Record<string, unknown>).known_edge_skills as unknown[])
-          : [],
+        status: typeof statusRes?.status === 'string' ? statusRes.status : '',
+        registered_edges: Array.isArray(statusRes?.registered_edges) ? statusRes.registered_edges : [],
+        known_edge_skills: Array.isArray(statusRes?.known_edge_skills) ? statusRes.known_edge_skills : [],
       });
-      setSyncText(`同步完成 · 租户=${skillsRes.tenant_id}`);
+      setSyncText(`同步完成 · 租户=${overviewRes.tenant_id}`);
     } catch (error) {
       setErrorText(normalizeError(error));
       setSyncText('同步失败');
@@ -252,18 +268,24 @@ export default function AgentsCabinetPage() {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs text-cyan-100">
               <Sparkles className="h-4 w-4" />
-              龙虾岗位舱
+              主管龙虾总览
             </div>
             <h1 className="mt-5 text-4xl font-semibold leading-tight text-white md:text-5xl">
-              这里展示的是龙虾池的大脑组织，
+              这里展示的是主管龙虾组织，
               <br />
               而不是一堆孤立的 AI 节点。
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-8 text-slate-300 md:text-base">
-              每个岗位龙虾都有自己的职责、默认模型、知识包和执行边界。前端要表达的是它们如何协同工作，而不是把技术参数平铺在一页里。
+              每位主管龙虾都有自己的职责、默认模型、知识包、执行边界和下辖能力池。前端要表达的是“主管如何组织细化岗位”，而不是只把技术参数平铺在一页里。
             </p>
           </div>
           <div className="flex items-center gap-2">
+            <Link
+              href="/lobsters/capability-tree"
+              className="inline-flex items-center gap-2 rounded-2xl border border-cyan-400/25 bg-cyan-400/10 px-4 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/15"
+            >
+              能力树地图
+            </Link>
             <Link
               href="/dashboard/lobster-pool"
               className="inline-flex items-center gap-2 rounded-2xl border border-cyan-400/25 bg-cyan-400/10 px-4 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/15"

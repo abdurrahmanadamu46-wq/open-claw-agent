@@ -1,9 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Activity, RefreshCw, ShieldCheck, UserCircle2 } from 'lucide-react';
 import { fetchActivities } from '@/services/endpoints/ai-subservice';
+import type { ActivityStreamDetails, ActivityStreamItem } from '@/types/activity-stream';
 
 const BORDER = 'rgba(71,85,105,0.42)';
 const PANEL_BG = '#16243b';
@@ -23,10 +25,18 @@ function formatDateTime(value?: string | null): string {
 }
 
 export default function ActivitiesPage() {
-  const [activityType, setActivityType] = useState('');
+  const searchParams = useSearchParams();
+  const queryType = searchParams?.get('type') ?? '';
+  const [activityType, setActivityType] = useState(queryType);
   const [limit, setLimit] = useState(50);
   const [offset, setOffset] = useState(0);
   const [selectedActivityId, setSelectedActivityId] = useState('');
+
+  useEffect(() => {
+    setActivityType(queryType);
+    setOffset(0);
+    setSelectedActivityId('');
+  }, [queryType]);
 
   const activitiesQuery = useQuery({
     queryKey: ['activities', activityType, limit, offset],
@@ -44,7 +54,7 @@ export default function ActivitiesPage() {
   const actorCount = useMemo(() => Array.from(new Set(items.map((item) => item.actor_id || item.actor_name).filter(Boolean))).length, [items]);
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto max-w-7xl space-y-5">
         <section className="rounded-[30px] border p-6" style={{ borderColor: BORDER, backgroundColor: PANEL_BG }}>
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -88,6 +98,45 @@ export default function ActivitiesPage() {
               onChange={(event) => setOffset(Number(event.target.value || 0))}
               className="rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100"
               placeholder="offset"
+            />
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <QuickFilterButton
+              active={!activityType}
+              label="All activities"
+              onClick={() => {
+                setActivityType('');
+                setOffset(0);
+                setSelectedActivityId('');
+              }}
+            />
+            <QuickFilterButton
+              active={activityType === 'xhs_commander_queue'}
+              label="XHS Commander queue"
+              onClick={() => {
+                setActivityType('xhs_commander_queue');
+                setOffset(0);
+                setSelectedActivityId('');
+              }}
+            />
+            <QuickFilterButton
+              active={activityType === 'xhs_commander_task'}
+              label="XHS Commander task"
+              onClick={() => {
+                setActivityType('xhs_commander_task');
+                setOffset(0);
+                setSelectedActivityId('');
+              }}
+            />
+            <QuickFilterButton
+              active={activityType === 'xhs_commander_reminder_policy_change'}
+              label="XHS reminder policy"
+              onClick={() => {
+                setActivityType('xhs_commander_reminder_policy_change');
+                setOffset(0);
+                setSelectedActivityId('');
+              }}
             />
           </div>
         </section>
@@ -156,6 +205,18 @@ export default function ActivitiesPage() {
                   <Row label="Time" value={formatDateTime(selectedActivity.created_at)} />
                 </div>
 
+                {selectedActivity.activity_type === 'xhs_commander_queue' ? (
+                  <XhsCommanderActivityDetail activity={selectedActivity} />
+                ) : null}
+
+                {selectedActivity.activity_type === 'xhs_commander_task' ? (
+                  <XhsCommanderTaskActivityDetail activity={selectedActivity} />
+                ) : null}
+
+                {selectedActivity.activity_type === 'xhs_commander_reminder_policy_change' ? (
+                  <XhsReminderPolicyChangeActivityDetail activity={selectedActivity} />
+                ) : null}
+
                 <div className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
                   <div className="text-sm font-semibold text-white">Details JSON</div>
                   <pre className="mt-3 overflow-x-auto rounded-xl bg-black/20 p-3 text-xs text-slate-300">
@@ -189,6 +250,163 @@ function MetricCard({
         <span>{label}</span>
       </div>
       <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
+    </div>
+  );
+}
+
+function QuickFilterButton({
+  active,
+  label,
+  onClick,
+}: {
+  active: boolean;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded-2xl border px-4 py-2 text-sm ${
+        active
+          ? 'border-cyan-400/40 bg-cyan-400/15 text-cyan-100'
+          : 'border-slate-700 bg-slate-950/50 text-slate-200 hover:bg-slate-800/70'
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function XhsCommanderActivityDetail({ activity }: { activity: ActivityStreamItem }) {
+  const details = (activity.details ?? {}) as ActivityStreamDetails & {
+    priority?: string;
+    reason?: string;
+    latest_action?: string;
+    source_action_id?: string;
+    assignee?: string;
+    note?: string;
+    actor?: {
+      tenant_id?: string;
+      roles?: string[];
+      is_admin?: boolean;
+    };
+    updated_at?: string;
+  };
+
+  return (
+    <div className="rounded-2xl border border-rose-500/25 bg-rose-500/10 p-4">
+      <div className="text-sm font-semibold text-rose-100">XHS Commander Queue</div>
+      <div className="mt-3 grid gap-2 text-sm sm:grid-cols-[140px_minmax(0,1fr)]">
+        <Row label="Pack" value={activity.target_id} mono />
+        <Row label="Status" value={String(details.status || '-')} />
+        <Row label="Priority" value={String(details.priority || '-')} />
+        <Row label="Latest action" value={String(details.latest_action || '-')} />
+        <Row label="Assignee" value={String(details.assignee || '-')} />
+        <Row label="Updated" value={formatDateTime(details.updated_at)} />
+      </div>
+      {details.reason ? (
+        <div className="mt-3 rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-sm text-rose-50">
+          {String(details.reason)}
+        </div>
+      ) : null}
+      {details.note ? (
+        <div className="mt-3 rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-sm text-rose-50">
+          {String(details.note)}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function XhsCommanderTaskActivityDetail({ activity }: { activity: ActivityStreamItem }) {
+  const details = (activity.details ?? {}) as ActivityStreamDetails & {
+    status?: string;
+    priority?: string;
+    assignee?: string;
+    source?: string;
+    pack_id?: string;
+    queue_id?: string;
+    note?: string;
+    details?: {
+      queue_status?: string;
+      latest_action?: string;
+      latest_task_action?: string;
+      reason?: string;
+      source_action_id?: string;
+    };
+  };
+  const nested = details.details ?? {};
+
+  return (
+    <div className="rounded-2xl border border-violet-500/25 bg-violet-500/10 p-4">
+      <div className="text-sm font-semibold text-violet-100">XHS Commander Task</div>
+      <div className="mt-3 grid gap-2 text-sm sm:grid-cols-[140px_minmax(0,1fr)]">
+        <Row label="Task" value={activity.target_id} mono />
+        <Row label="Pack" value={String(details.pack_id || activity.trace_id || '-')} mono />
+        <Row label="Status" value={String(details.status || '-')} />
+        <Row label="Priority" value={String(details.priority || '-')} />
+        <Row label="Assignee" value={String(details.assignee || '-')} />
+        <Row label="Queue status" value={String(nested.queue_status || '-')} />
+        <Row label="Task action" value={String(nested.latest_task_action || '-')} />
+        <Row label="Updated" value={formatDateTime(activity.created_at)} />
+      </div>
+      {nested.reason ? (
+        <div className="mt-3 rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-sm text-violet-50">
+          {String(nested.reason)}
+        </div>
+      ) : null}
+      {details.note ? (
+        <div className="mt-3 rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-sm text-violet-50">
+          {String(details.note)}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function XhsReminderPolicyChangeActivityDetail({ activity }: { activity: ActivityStreamItem }) {
+  const details = (activity.details ?? {}) as ActivityStreamDetails & {
+    change_source?: string;
+    from_preset_id?: string;
+    to_preset_id?: string;
+    changed_fields?: Array<{
+      field?: string;
+      before?: unknown;
+      after?: unknown;
+    }>;
+    actor?: {
+      tenant_id?: string;
+      roles?: string[];
+      is_admin?: boolean;
+    };
+  };
+  const changedFields = Array.isArray(details.changed_fields) ? details.changed_fields : [];
+
+  return (
+    <div className="rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-4">
+      <div className="text-sm font-semibold text-cyan-100">XHS Reminder Policy Change</div>
+      <div className="mt-3 grid gap-2 text-sm sm:grid-cols-[140px_minmax(0,1fr)]">
+        <Row label="Source" value={String(details.change_source || '-')} />
+        <Row label="From preset" value={String(details.from_preset_id || '-')} />
+        <Row label="To preset" value={String(details.to_preset_id || '-')} />
+        <Row label="Actor roles" value={(details.actor?.roles ?? []).join(', ') || '-'} />
+        <Row label="Admin" value={details.actor?.is_admin ? 'yes' : 'no'} />
+        <Row label="Changed at" value={formatDateTime(activity.created_at)} />
+      </div>
+      <div className="mt-3 space-y-2">
+        {changedFields.length ? (
+          changedFields.map((field, index) => (
+            <div key={`${field.field || 'field'}-${index}`} className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-cyan-50">
+              {String(field.field || '-')} : {String(field.before)} to {String(field.after)}
+            </div>
+          ))
+        ) : (
+          <div className="rounded-xl border border-dashed border-white/10 px-3 py-3 text-sm text-cyan-100/70">
+            No changed field detail captured.
+          </div>
+        )}
+      </div>
     </div>
   );
 }

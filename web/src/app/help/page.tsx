@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { BookOpen, Bot, LifeBuoy, ShieldCheck, Sparkles, Wrench } from 'lucide-react';
+import { LEARNING_LOOP_ROUTES } from '@/lib/learning-loop-routes';
 import { fetchFeishuCallbackReadiness, fetchNotificationStatus } from '@/services/endpoints/billing';
 import { getCurrentUser } from '@/services/endpoints/user';
 import { getFleetMetrics } from '@/services/device-fleet';
@@ -32,6 +33,12 @@ const quickLinks = [
     title: '技能池',
     desc: '查看 9 龙虾岗位配置、行业知识资产和技能覆盖情况。',
     icon: <Sparkles className="h-5 w-5 text-fuchsia-300" />,
+  },
+  {
+    href: LEARNING_LOOP_ROUTES.report.href,
+    title: LEARNING_LOOP_ROUTES.report.title,
+    desc: LEARNING_LOOP_ROUTES.report.description,
+    icon: <Sparkles className="h-5 w-5 text-emerald-300" />,
   },
   {
     href: '/settings/commercial-readiness',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -45,6 +45,9 @@ export function FeatureFlagForm({
   onSubmit: (values: FeatureFlagFormValues) => Promise<void>;
   onCancel?: () => void;
 }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
   const defaultValues = useMemo<FeatureFlagFormValues>(() => {
     const firstStrategy = initialFlag?.strategies?.[0];
     const rollout = Number(firstStrategy?.parameters?.['rollout'] || 0);
@@ -64,6 +67,12 @@ export function FeatureFlagForm({
   });
 
   const strategyType = form.watch('strategyType');
+
+  // Avoid hydration mismatch: Switch/Slider render different DOM based on values
+  // which react-hook-form initializes client-side only.
+  if (!mounted) {
+    return <div className="space-y-5 animate-pulse"><div className="h-10 rounded-2xl bg-slate-800/60" /><div className="h-10 rounded-2xl bg-slate-800/60" /><div className="h-10 rounded-2xl bg-slate-800/60" /></div>;
+  }
 
   return (
     <Form {...form}>

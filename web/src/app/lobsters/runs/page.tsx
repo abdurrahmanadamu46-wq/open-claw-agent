@@ -7,14 +7,14 @@ import { expandColumn } from '@/components/data-table/columns';
 import { EntityListPage } from '@/components/layout/EntityListPage';
 import { RunDetailPanel } from '@/components/lobster/RunDetailPanel';
 import { useServerDataTable } from '@/hooks/useServerDataTable';
-import { fetchLobsters, fetchLobsterRunsPage } from '@/services/endpoints/ai-subservice';
+import { fetchLobsters, fetchLobsterRunsPage, type LobsterRuntimeRow } from '@/services/endpoints/ai-subservice';
 import type { LobsterRun } from '@/types/lobster';
 
 export default function LobsterRunsPage() {
   const [selectedLobsterId, setSelectedLobsterId] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
 
-  const lobstersQuery = useServerDataTable({
+  const lobstersQuery = useServerDataTable<LobsterRuntimeRow>({
     fetchFn: async ({ page_size }) => {
       const res = await fetchLobsters();
       return {
@@ -85,8 +85,8 @@ export default function LobsterRunsPage() {
               <select value={selectedLobsterId} onChange={(event) => setSelectedLobsterId(event.target.value)} className="ml-2 rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-white">
                 <option value="">全部</option>
                 {(lobstersQuery.data ?? []).map((item) => (
-                  <option key={String((item as Record<string, unknown>).id || '')} value={String((item as Record<string, unknown>).id || '')}>
-                    {String((item as Record<string, unknown>).zh_name || (item as Record<string, unknown>).display_name || (item as Record<string, unknown>).id)}
+                  <option key={item.id} value={item.id}>
+                    {String(item.zh_name || item.display_name || item.name || item.id)}
                   </option>
                 ))}
               </select>

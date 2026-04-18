@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import type { CalendarTask } from '@/types/calendar';
 import { PLATFORM_LABELS, PLATFORM_COLORS, getStatusDot } from '@/types/calendar';
@@ -38,11 +38,19 @@ function getMonthGrid(year: number, month: number): (Date | null)[][] {
 const WEEKDAYS = ['日', '一', '二', '三', '四', '五', '六'];
 
 export default function OperationsCalendarPage() {
-  const now = new Date();
-  const todayKey = formatDateKey(now);
+  const [mounted, setMounted] = useState(false);
+  const nowRef = useRef(new Date());
+  useEffect(() => { nowRef.current = new Date(); setMounted(true); }, []);
+  const now = nowRef.current;
+  const todayKey = mounted ? formatDateKey(now) : '';
   const { tasks, campaigns, selectedCampaignId, setSelectedCampaignId, updateTask } = useCampaignStore();
-  const [currentMonth, setCurrentMonth] = useState(now.getMonth());
-  const [currentYear, setCurrentYear] = useState(now.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(0);
+  const [currentYear, setCurrentYear] = useState(2026);
+  useEffect(() => {
+    const d = new Date();
+    setCurrentMonth(d.getMonth());
+    setCurrentYear(d.getFullYear());
+  }, []);
   const [hasConflict, setHasConflict] = useState(true);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [detailTask, setDetailTask] = useState<CalendarTask | null>(null);

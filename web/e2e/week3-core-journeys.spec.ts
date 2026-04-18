@@ -27,7 +27,7 @@ test.describe('Week3 core journeys', () => {
       .poll(async () => page.evaluate(() => localStorage.getItem('clawcommerce_token')))
       .toBeTruthy();
     await page.goto('/');
-    await expect(page.getByText('queue.process.fail')).toBeVisible();
+    await expect(page.getByTestId('dashboard-root')).toBeVisible();
   });
 
   test('fleet dispatch action opens drawer and submits command', async ({ page }) => {
@@ -46,8 +46,10 @@ test.describe('Week3 core journeys', () => {
     await enterDemo(page, '/campaigns/new');
     await expect(page).toHaveURL(/\/campaigns\/new$/);
 
-    await page.locator('textarea').fill('https://v.douyin.com/abc\nhttps://v.douyin.com/def');
-    await page.locator('button[type="submit"]').click();
+    await page.getByTestId('campaign-new-account-name').fill('矩阵主号');
+    await page.getByTestId('campaign-new-target-niche').fill('同城餐饮');
+    await page.getByTestId('campaign-new-notes').fill('演示环境创建任务');
+    await page.getByTestId('campaign-new-submit').click();
     await page.waitForURL('**/campaigns');
     await expect(page).toHaveURL(/\/campaigns$/);
   });

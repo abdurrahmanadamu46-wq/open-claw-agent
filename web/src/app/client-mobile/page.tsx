@@ -8,6 +8,7 @@ import {
   decideHitl,
   fetchCommercialReadiness,
   fetchHitlPending,
+  type HitlPendingScope,
 } from '@/services/endpoints/ai-subservice';
 import { getCurrentUser } from '@/services/endpoints/user';
 import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
@@ -38,6 +39,10 @@ function readinessStatusLabel(score?: number, blockers?: number): string {
   return '待确认';
 }
 
+function compactState(ok: boolean): 'ok' | 'warn' {
+  return ok ? 'ok' : 'warn';
+}
+
 export default function ClientMobilePage() {
   const [busyApprovalId, setBusyApprovalId] = useState('');
   const [reasonById, setReasonById] = useState<Record<string, string>>({});
@@ -63,6 +68,39 @@ export default function ClientMobilePage() {
   const pendingItems = useMemo(() => approvalsQuery.data?.items ?? [], [approvalsQuery.data?.items]);
   const readiness = readinessQuery.data?.readiness;
   const currentUser = currentUserQuery.data;
+  const readinessDomainItems = useMemo(
+    () => [
+      {
+        label: '部署',
+        value: readiness?.deploy.mode || '待确认',
+        tone: compactState(Boolean(readiness?.deploy.mode && readiness.deploy.mode !== 'preview')),
+      },
+      {
+        label: '支付',
+        value: readiness?.payment.provider || '未配置',
+        tone: compactState(Boolean(readiness?.payment.provider && readiness?.payment.checkout && readiness.payment.checkout !== 'sandbox')),
+      },
+      {
+        label: '通知',
+        value: readiness?.notifications.mode || '待确认',
+        tone: compactState(Boolean(readiness?.notifications.smtp?.configured || readiness?.notifications.mode === 'file')),
+      },
+      {
+        label: 'Feishu',
+        value: readiness?.feishu.enabled ? '已启用' : '未启用',
+        tone: compactState(Boolean(readiness?.feishu.enabled && readiness?.feishu.callback_url)),
+      },
+    ],
+    [
+      readiness?.deploy.mode,
+      readiness?.feishu.callback_url,
+      readiness?.feishu.enabled,
+      readiness?.notifications.mode,
+      readiness?.notifications.smtp?.configured,
+      readiness?.payment.checkout,
+      readiness?.payment.provider,
+    ],
+  );
   const filteredPendingItems = useMemo(
     () =>
       approvalIdFilter
@@ -88,7 +126,7 @@ export default function ClientMobilePage() {
       {
         title: '上线就绪度',
         value: String(readiness?.score ?? 0),
-        desc: `${readinessStatusLabel(readiness?.score, readiness?.blocker_count)} · ${readiness?.blocker_count ?? 0} 个阻塞项`,
+        desc: `${readinessStatusLabel(readiness?.score, readiness?.blocker_count)} · 通知 ${readiness?.notifications.mode || '待确认'} · Feishu ${readiness?.feishu.enabled ? '已启用' : '未启用'}`,
         tone: Number(readiness?.blocker_count ?? 0) > 0 ? 'warn' : 'ok',
       },
       {
@@ -98,7 +136,16 @@ export default function ClientMobilePage() {
         tone: currentUser?.isAdmin ? 'ok' : 'hot',
       },
     ],
-    [currentUser?.isAdmin, currentUser?.tenantId, currentUser?.tenantName, filteredPendingItems.length, readiness?.blocker_count, readiness?.score],
+    [
+      currentUser?.isAdmin,
+      currentUser?.tenantId,
+      currentUser?.tenantName,
+      filteredPendingItems.length,
+      readiness?.blocker_count,
+      readiness?.feishu.enabled,
+      readiness?.notifications.mode,
+      readiness?.score,
+    ],
   );
 
   async function handleDecision(approvalId: string, decision: 'approved' | 'rejected') {
@@ -142,6 +189,21 @@ export default function ClientMobilePage() {
       </div>
 
       <article className="rounded-2xl border border-white/10 bg-slate-900/55 p-4">
+        <h2 className="text-sm font-semibold text-white">切真状态速览</h2>
+        <p className="mt-1 text-xs leading-5 text-slate-300">
+          移动端只保留客户最需要知道的四个状态：部署、支付、通知和 Feishu 回调。
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          {readinessDomainItems.map((item) => (
+            <div key={item.label} className={`rounded-xl border p-3 ${toneClass(item.tone)}`}>
+              <div className="text-[11px] opacity-80">{item.label}</div>
+              <div className="mt-1 text-sm font-semibold">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="rounded-2xl border border-white/10 bg-slate-900/55 p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-white">待处理 HITL 审批</h2>
           <button
@@ -174,7 +236,7 @@ export default function ClientMobilePage() {
           ) : (
             filteredPendingItems.map((item) => {
               const approvalId = String(item.approval_id ?? '');
-              const scope = (item.scope as Record<string, unknown> | undefined) ?? {};
+              const scope: HitlPendingScope = item.scope ?? {};
               return (
                 <div key={approvalId} className="rounded-lg border border-white/10 bg-slate-950/50 p-3">
                   <div className="flex items-center justify-between text-xs text-slate-300">

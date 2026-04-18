@@ -68,6 +68,7 @@ env/
 # Next.js standalone
 web/.next/standalone/
 web/.next/cache/
+web/.next-*/
 
 # Docker volumes (local)
 .docker-volumes/
@@ -75,3 +76,4 @@ docker-data/
 
 # Playwright browsers (large binaries)
 web/.playwright-browsers/
+web/.ms-playwright/

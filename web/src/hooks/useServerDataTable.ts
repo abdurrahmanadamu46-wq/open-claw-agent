@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ColumnFiltersState, PaginationState, SortingState } from '@tanstack/react-table';
 
 export interface PaginatedResponse<T> {
@@ -36,15 +36,25 @@ export function useServerDataTable<T>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const externalFiltersKey = JSON.stringify(externalFilters);
+  const fetchFnRef = useRef(fetchFn);
+  const externalFiltersRef = useRef(externalFilters);
+
+  useEffect(() => {
+    fetchFnRef.current = fetchFn;
+  }, [fetchFn]);
+
+  useEffect(() => {
+    externalFiltersRef.current = externalFilters;
+  }, [externalFiltersKey, externalFilters]);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const filters = {
-        ...externalFilters,
+        ...externalFiltersRef.current,
         ...Object.fromEntries(columnFilters.map((item) => [item.id, item.value])),
       };
-      const result = await fetchFn({
+      const result = await fetchFnRef.current({
         page: pageIndex + 1,
         page_size: pageSize,
         sort_by: sorting[0]?.id,
@@ -56,7 +66,7 @@ export function useServerDataTable<T>({
     } finally {
       setLoading(false);
     }
-  }, [columnFilters, externalFilters, fetchFn, pageIndex, pageSize, sorting]);
+  }, [columnFilters, pageIndex, pageSize, sorting]);
 
   useEffect(() => {
     void fetchData();

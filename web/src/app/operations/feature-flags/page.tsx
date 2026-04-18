@@ -13,7 +13,7 @@ import {
   updateFeatureFlagStrategies,
 } from '@/services/endpoints/feature-flags';
 import { FeatureFlagForm, type FeatureFlagFormValues } from '@/components/feature-flags/FeatureFlagForm';
-import type { FeatureFlag, FlagStrategy } from '@/types/feature-flags';
+import type { FeatureFlag, FeatureFlagChangelogItem, FlagStrategy } from '@/types/feature-flags';
 
 function buildStrategies(values: FeatureFlagFormValues): FlagStrategy[] {
   if (values.strategyType === 'gradualRollout') {
@@ -32,7 +32,7 @@ function buildStrategies(values: FeatureFlagFormValues): FlagStrategy[] {
 
 export default function FeatureFlagsPage() {
   const [flags, setFlags] = useState<FeatureFlag[]>([]);
-  const [changelog, setChangelog] = useState<Array<Record<string, unknown>>>([]);
+  const [changelog, setChangelog] = useState<FeatureFlagChangelogItem[]>([]);
   const [message, setMessage] = useState('');
   const [checkResult, setCheckResult] = useState('');
   const [editingFlag, setEditingFlag] = useState<FeatureFlag | null>(null);
@@ -208,10 +208,10 @@ export default function FeatureFlagsPage() {
             <div className="mb-4 text-lg font-semibold text-white">变更历史</div>
             <div className="space-y-3">
               {changelog.map((row, index) => (
-                <div key={`${row['id'] || index}`} className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                <div key={`${row.id || index}`} className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
                   <div className="flex items-center gap-2 text-sm font-semibold text-white">
                     <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-                    {String(row['name'] || '')}
+                    {String(row.name || '')}
                   </div>
                   <div className="mt-1 text-xs text-slate-400">
                     {String(row['change_type'] || '')} · {String(row['environment'] || '')} · {String(row['changed_at'] || '')}
