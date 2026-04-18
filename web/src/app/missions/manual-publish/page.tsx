@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useMemo, useState, useCallback, useRef } from 'react';
+import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { RemoteNode, RemoteNodeStatus } from '@/types';
 import { getFleetNodes } from '@/services/node.service';
@@ -61,10 +61,11 @@ export default function TacticalLaunchConsolePage() {
   const [aiPolishLoading, setAiPolishLoading] = useState(false);
   const [selectedNodeIds, setSelectedNodeIds] = useState<Set<string>>(new Set());
   const [launchMode, setLaunchMode] = useState<'immediate' | 'scheduled'>('immediate');
-  const [scheduledDate, setScheduledDate] = useState(() => {
+  const [scheduledDate, setScheduledDate] = useState('');
+  useEffect(() => {
     const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  });
+    setScheduledDate(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`);
+  }, []);
   const [scheduledTime, setScheduledTime] = useState('14:00');
   const [jitterMinutes, setJitterMinutes] = useState(10);
   const [accordionOpen, setAccordionOpen] = useState<Record<string, boolean>>({

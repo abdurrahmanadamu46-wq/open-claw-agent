@@ -4,7 +4,7 @@ import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Boxes, Clock3, GitBranchPlus, Radar, ShieldCheck } from 'lucide-react';
 import { triggerErrorToast } from '@/services/api';
-import { previewPipelineMode } from '@/services/endpoints/ai-subservice';
+import { previewPipelineMode, type PipelineModePreview } from '@/services/endpoints/ai-subservice';
 
 const BORDER = 'rgba(71,85,105,0.4)';
 const CARD_BG = '#1E293B';
@@ -15,7 +15,7 @@ export default function PipelineModesPage() {
   const [taskDescription, setTaskDescription] = useState('做一轮本地生活增长方案，只做策略和内容规划，不做外部执行');
   const [industryTag, setIndustryTag] = useState('local-services');
   const [competitorHandles, setCompetitorHandles] = useState('');
-  const [preview, setPreview] = useState<Record<string, unknown> | null>(null);
+  const [preview, setPreview] = useState<PipelineModePreview | null>(null);
   const [loading, setLoading] = useState(false);
 
   async function handlePreview() {
@@ -139,7 +139,7 @@ export default function PipelineModesPage() {
                 <SummaryCard
                   label="Est. Duration"
                   value={`${String(preview.estimated_duration_sec || '-')}s`}
-                  detail={`band ${String((preview.estimated_duration_band_sec as Record<string, unknown> | undefined)?.low ?? '-')}-${String((preview.estimated_duration_band_sec as Record<string, unknown> | undefined)?.high ?? '-') }s`}
+                  detail={`band ${String(preview.estimated_duration_band_sec?.low ?? '-')}-${String(preview.estimated_duration_band_sec?.high ?? '-')}s`}
                   icon={<Clock3 className="h-4 w-4" />}
                 />
                 <SummaryCard

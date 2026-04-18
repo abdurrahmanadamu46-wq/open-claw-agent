@@ -643,7 +643,7 @@
         "descriptionField": "Briefly explain why this rule exists",
         "target": "Required when effect is dispatch",
         "tags": "comma,separated,tags",
-        "conditions": "[{\"field\":\"lead.score\",\"op\":\"gte\",\"value\":80}]",
+      "conditions": "Condition JSON example",
         "notes": "Why are you publishing this bundle?"
       },
       "evaluate": {

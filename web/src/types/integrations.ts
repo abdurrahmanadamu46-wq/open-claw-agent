@@ -95,6 +95,41 @@ export interface TenantIntegrationsAiCustomerService {
   botId: string;
 }
 
+export type GroupChannelProvider = 'mock' | 'feishu' | 'wechat_work' | 'wechat' | 'dingtalk' | 'custom';
+export type GroupRespondMode = 'always' | 'intent' | 'mention_only';
+export type GroupCollabObjectType = 'message' | 'report' | 'approval' | 'confirmation' | 'reminder' | 'receipt';
+export type GroupCollabAdapterMode = 'mock' | 'live';
+export type GroupCollabKnowledgeCaptureMode = 'none' | 'approved_excerpt';
+
+export interface GroupCollabAdapterConfig {
+  id: string;
+  label: string;
+  provider: GroupChannelProvider;
+  enabled: boolean;
+  mode: GroupCollabAdapterMode;
+  capabilities: GroupCollabObjectType[];
+  webhookUrl?: string;
+  secret?: string;
+  defaultChatId?: string;
+  defaultTargetName?: string;
+  notes?: string;
+}
+
+export interface TenantGroupCollabConfig {
+  enabled: boolean;
+  provider: GroupChannelProvider;
+  respondMode: GroupRespondMode;
+  approvalNotifications: boolean;
+  placeholderEnabled: boolean;
+  placeholderThresholdMs: number;
+  knowledgeCaptureMode: GroupCollabKnowledgeCaptureMode;
+  knowledgeTargetLayer: 'tenant_private';
+  allowPlatformKnowledgeBackflow: false;
+  mockDataEnabled: boolean;
+  defaultAdapterId: string;
+  adapters: GroupCollabAdapterConfig[];
+}
+
 export interface TenantIntegrationsVoiceAgent {
   provider: 'vapi' | 'retell';
   apiKey: string;
@@ -120,6 +155,7 @@ export interface TenantIntegrations {
   storage?: TenantIntegrationsStorage;
   cloud_phone?: TenantIntegrationsCloudPhone;
   ai_customer_service?: TenantIntegrationsAiCustomerService;
+  group_collab?: TenantGroupCollabConfig;
   voice_agent?: TenantIntegrationsVoiceAgent;
   custom_tools?: TenantCustomTools;
   plugin_hub?: TenantPluginHub;

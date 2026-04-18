@@ -7,7 +7,9 @@ import {
   fetchAiAgentRagCatalog,
   fetchAiAgentRagPacks,
   type AgentRagPackItem,
+  type AgentRagPackPayload,
 } from '@/services/endpoints/ai-subservice';
+import { getKnowledgeLayerTerm } from '@/lib/knowledge-layer-language';
 
 type AgentInfo = {
   id: string;
@@ -53,12 +55,12 @@ function formatTime(value?: string): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-function readPackSummary(payload: Record<string, unknown>) {
+function readPackSummary(payload: AgentRagPackPayload) {
   const summary = String(payload.summary ?? payload.brief ?? payload.description ?? '').trim();
   return summary || '该知识包已入库，可用于策略推理与内容生成。';
 }
 
-function readPackTags(payload: Record<string, unknown>) {
+function readPackTags(payload: AgentRagPackPayload) {
   const direct = Array.isArray(payload.tags) ? payload.tags : [];
   const tags = direct.map((item) => String(item).trim()).filter(Boolean);
   if (tags.length > 0) return tags.slice(0, 4);
@@ -74,6 +76,7 @@ function profileLabel(profile: string): string {
 
 export default function PromptLabPage() {
   const { currentTenantId } = useTenant();
+  const roleActivationTerm = getKnowledgeLayerTerm('role_activation');
 
   const [profile, setProfile] = useState(DEFAULT_PROFILE);
   const [profileOptions, setProfileOptions] = useState<string[]>([DEFAULT_PROFILE]);
@@ -159,16 +162,19 @@ export default function PromptLabPage() {
   }, [currentTenantId]);
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] text-slate-50">
+    <div className="relative text-slate-50">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(245,158,11,0.12),transparent_22%),linear-gradient(180deg,rgba(10,15,28,0.98),rgba(7,17,31,1))]" />
 
       <div className="relative space-y-5 p-6">
         <section className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl">云端大脑 RAG 中心</h1>
+              <div className="inline-flex rounded-full border border-fuchsia-400/25 bg-fuchsia-400/10 px-4 py-2 text-xs text-fuchsia-100">
+                {roleActivationTerm.title} · {roleActivationTerm.scopeLabel}
+              </div>
+              <h1 className="mt-5 text-4xl font-semibold leading-tight text-white md:text-5xl">把知识挂到具体主管角色上，而不是再造一个知识归属层</h1>
               <p className="mt-4 max-w-3xl text-sm leading-8 text-slate-300 md:text-base">
-                这页用来确认元老院总脑、9 个元老和反馈内核的知识包覆盖情况。重点不是看数据库有多少条，而是看：哪个岗位已经站在足够厚的知识上工作，哪个岗位还需要继续补料。
+                {roleActivationTerm.description} 这页用来确认元老院总脑、9 个元老和反馈内核的知识包覆盖情况。重点不是看数据库有多少条，而是看哪个岗位已经站在足够厚的知识上工作。
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -198,6 +204,10 @@ export default function PromptLabPage() {
             <SummaryCard title="当前配置档" value={profileLabel(profile)} subtitle={`最近同步：${lastSyncAt || '-'}`} />
             <SummaryCard title="元老院覆盖" value={`${coverage.ready}/${coverage.total}`} subtitle={`覆盖率 ${coverage.percent}%`} />
             <SummaryCard title="当前查看岗位" value={selectedAgent?.name || '-'} subtitle={selectedAgent?.duty || '-'} />
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/35 px-4 py-3 text-sm leading-7 text-slate-300">
+            这页只表达“角色如何消费知识”。知识归属仍然要回到平台通用知识、平台行业知识和租户私有知识三层，不能把 RAG 包当成新的知识所有权层。
           </div>
 
           {error ? <div className="mt-4 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-3 text-sm text-rose-200">{error}</div> : null}
@@ -248,7 +258,7 @@ export default function PromptLabPage() {
                 </div>
               ) : (
                 selectedAgentPacks.map((item) => {
-                  const payload = (item.payload_json || item.payload || {}) as Record<string, unknown>;
+                  const payload = item.payload_json || item.payload;
                   const tags = readPackTags(payload);
                   const packId = item.pack_id || item.knowledge_pack_id;
                   const packName = item.title || item.knowledge_pack_name || packId;

@@ -1,16 +1,26 @@
 'use client';
 
 import type { LobsterRun } from '@/types/lobster';
+import {
+  KnowledgeContextEvidence,
+  resolveKnowledgeContext,
+} from '@/components/knowledge/KnowledgeContextEvidence';
 
 export function RunDetailPanel({ run }: { run: LobsterRun }) {
-  const extendedRun = run as unknown as Record<string, unknown>;
-  const input = extendedRun['input'];
-  const output = extendedRun['output'];
-  const breakdown = extendedRun['quality_breakdown'] as Record<string, number> | undefined;
+  const input = run.input;
+  const output = run.output;
+  const breakdown = run.quality_breakdown ?? undefined;
+  const knowledgeContext =
+    resolveKnowledgeContext(run.knowledge_context)
+    ?? resolveKnowledgeContext(run.result)
+    ?? resolveKnowledgeContext(output)
+    ?? resolveKnowledgeContext(input);
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="space-y-4">
+        <KnowledgeContextEvidence context={knowledgeContext} compact />
+
         <div>
           <div className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">输入</div>
           <pre className="max-h-56 overflow-auto rounded-2xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-300">

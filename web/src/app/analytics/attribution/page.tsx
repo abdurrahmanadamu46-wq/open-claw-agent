@@ -35,14 +35,15 @@ export default function AttributionAnalyticsPage() {
   const totals = data?.totals ?? {};
   const series = data?.series ?? [];
   const highlights = data?.highlights ?? [];
+  const windowLabel = formatWindowLabel(data);
 
   const summaryFields = useMemo(
     () => [
       { label: t('summary.model'), value: data?.model ?? t('summary.unknown') },
-      { label: t('summary.window'), value: formatWindowLabel(data) },
+      { label: t('summary.window'), value: windowLabel },
       { label: t('summary.channels'), value: String(series.length) },
     ],
-    [data?.model, data?.start, data?.end, series.length, t],
+    [data?.model, series.length, t, windowLabel],
   );
 
   return (

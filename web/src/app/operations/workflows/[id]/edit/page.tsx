@@ -79,7 +79,7 @@ export default function WorkflowEditPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto grid max-w-7xl gap-6 xl:grid-cols-[480px_minmax(0,1fr)]">
         <section className="rounded-[28px] border p-5" style={{ background: 'linear-gradient(180deg, rgba(19,34,56,0.98), rgba(12,22,37,0.98))', borderColor: BORDER }}>
           <div>

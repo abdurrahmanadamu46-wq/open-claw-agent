@@ -37,6 +37,7 @@ export interface VoiceProfile {
   reviewed_at: string;
   revoked_at: string;
   tags: string[];
+  default_voice_control?: Record<string, unknown>;
   meta: Record<string, unknown>;
   created_at: string;
   updated_at: string;
@@ -72,6 +73,8 @@ export interface VoiceJob {
   subtitle_srt_path: string;
   voice_artifact_id: string;
   voice_profile_id: string;
+  effective_voice_prompt?: string;
+  voice_control?: Record<string, unknown>;
   quality_report: VoiceQualityReport | Record<string, unknown>;
   content_preview: string;
   created_at: string;
@@ -146,6 +149,8 @@ export interface VoiceSynthesizeResponse {
   subtitle_srt_path: string;
   duration_sec: number;
   fallback_used: boolean;
+  effective_voice_prompt?: string;
+  voice_control?: Record<string, unknown>;
   quality_report: VoiceQualityReport | Record<string, unknown>;
   artifact_ids: string[];
 }
@@ -160,6 +165,7 @@ export interface VoiceProfileCreatePayload {
   owner_type: string;
   reference_audio_path: string;
   voice_prompt?: string;
+  default_voice_control?: Record<string, unknown>;
   language?: string;
   sample_rate?: number;
   consent_doc_id?: string;
@@ -186,6 +192,7 @@ export interface VoiceSynthesizePayload {
   voice_prompt?: string;
   voice_profile_id?: string;
   voice_profile?: Record<string, unknown>;
+  voice_control?: Record<string, unknown>;
   subtitle_required?: boolean;
   step_index?: number;
   triggered_by?: string;

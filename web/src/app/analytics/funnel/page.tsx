@@ -17,8 +17,8 @@ export default function FunnelAnalyticsPage() {
     staleTime: 30 * 1000,
   });
 
-  const stages = data?.stages ?? [];
-  const totals = data?.totals ?? {};
+  const stages = useMemo(() => data?.stages ?? [], [data?.stages]);
+  const totals = useMemo(() => data?.totals ?? {}, [data?.totals]);
 
   const summaryFields = useMemo(
     () => [

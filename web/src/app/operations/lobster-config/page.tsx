@@ -8,7 +8,7 @@ import {
   fetchLobsterConfigs,
   updateLobsterConfig,
 } from '@/services/endpoints/ai-subservice';
-import type { LobsterConfigDetail, LobsterConfigSummary } from '@/types/lobster-config-center';
+import type { LobsterConfigDetail, LobsterConfigSummary, LobsterConfigUpdatePayload } from '@/types/lobster-config-center';
 
 export default function LobsterConfigPage() {
   const t = useTranslations('operations.lobsterConfig');
@@ -78,7 +78,7 @@ export default function LobsterConfigPage() {
     setSaving(true);
     setErrorMessage('');
     try {
-      const payload: Record<string, unknown> = {};
+      const payload: LobsterConfigUpdatePayload = {};
       if (strategyDraft.trim()) payload.strategy_level = strategyDraft.trim();
       if (autonomyDraft.trim()) payload.autonomy_level = autonomyDraft.trim();
       payload.custom_prompt = promptDraft.trim();
@@ -106,7 +106,7 @@ export default function LobsterConfigPage() {
   const detailSkills = detail?.skills ?? detail?.defaultSkills ?? [];
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#050d16] px-6 py-6 text-slate-100">
+    <div className="px-6 py-6 text-slate-100">
       <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
         <section className="rounded-[28px] border border-white/10 bg-[#0c1628] p-5">
           <div className="flex items-center justify-between gap-3">

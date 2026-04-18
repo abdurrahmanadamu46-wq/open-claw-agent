@@ -59,6 +59,8 @@ function normalizeError(error: unknown, fallback: string): string {
 }
 
 export default function WorkflowsPage() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const t = useTranslations('operations.workflows');
   const common = useTranslations('common');
   const { currentTenantId } = useTenant();
@@ -232,8 +234,10 @@ export default function WorkflowsPage() {
     [],
   );
 
+  if (!mounted) return <div className="p-6"><div className="h-96 animate-pulse rounded-[28px] bg-slate-900/60" /></div>;
+
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto mb-4 flex max-w-7xl flex-wrap items-center justify-between gap-3">
         <ConcurrencyStatusBar />
       </div>

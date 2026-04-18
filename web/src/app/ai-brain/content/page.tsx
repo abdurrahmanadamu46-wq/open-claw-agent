@@ -34,7 +34,7 @@ export default function AiContentPage() {
   });
 
   const workflowTemplates = useMemo(() => {
-    return (skillsQuery.data?.overview?.workflow_templates || []) as Array<Record<string, unknown>>;
+    return skillsQuery.data?.overview?.workflow_templates || [];
   }, [skillsQuery.data]);
 
   const storage = integrationsQuery.data?.storage;

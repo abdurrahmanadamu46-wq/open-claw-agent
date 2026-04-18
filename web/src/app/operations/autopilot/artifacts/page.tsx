@@ -7,10 +7,17 @@ import { useQuery } from '@tanstack/react-query';
 import { Boxes } from 'lucide-react';
 import { ArtifactRenderer, extractArtifactRenderableContent } from '@/components/ArtifactRenderer';
 import {
+  type ArtifactJobResponse,
+  type ArtifactIndexRow,
+  type ArtifactMissionJobRow,
+  type ArtifactMissionResponse,
+  type ArtifactRecentJobRow,
   fetchArtifactsIndex,
   fetchArtifactsByJob,
   fetchArtifactsByMission,
   type ArtifactEnvelope,
+  type IndustryKnowledgePackReadiness,
+  type PipelineExplainSummary,
 } from '@/services/endpoints/ai-subservice';
 
 const BORDER = 'rgba(71,85,105,0.4)';
@@ -42,16 +49,7 @@ const STAGE_ORDER = [
   'FollowUpActionPlan',
 ] as const;
 
-type ArtifactCenterData = {
-  job_id?: string;
-  mission_id?: string;
-  pipeline_mode?: string | null;
-  pipeline_explain?: Record<string, unknown>;
-  artifact_count?: number;
-  artifact_index?: Array<Record<string, unknown>>;
-  artifacts?: Record<string, ArtifactEnvelope>;
-  jobs?: Array<Record<string, unknown>>;
-};
+type ArtifactCenterData = Partial<ArtifactJobResponse & ArtifactMissionResponse>;
 
 export default function ArtifactCenterPage() {
   return (
@@ -63,10 +61,10 @@ export default function ArtifactCenterPage() {
 
 function ArtifactCenterPageInner() {
   const searchParams = useSearchParams();
-  const [jobIdInput, setJobIdInput] = useState(searchParams.get('job_id') || '');
-  const [activeJobId, setActiveJobId] = useState(searchParams.get('job_id') || '');
-  const [missionIdInput, setMissionIdInput] = useState(searchParams.get('mission_id') || '');
-  const [activeMissionId, setActiveMissionId] = useState(searchParams.get('mission_id') || '');
+  const [jobIdInput, setJobIdInput] = useState(searchParams?.get('job_id') || '');
+  const [activeJobId, setActiveJobId] = useState(searchParams?.get('job_id') || '');
+  const [missionIdInput, setMissionIdInput] = useState(searchParams?.get('mission_id') || '');
+  const [activeMissionId, setActiveMissionId] = useState(searchParams?.get('mission_id') || '');
 
   const jobQuery = useQuery({
     queryKey: ['artifact-center', 'job', activeJobId],
@@ -113,7 +111,7 @@ function ArtifactCenterPageInner() {
     if (!activeData?.artifact_index?.length) return null;
     const items = orderedStages;
     const riskRank: Record<string, number> = { L0: 0, L1: 1, L2: 2, L3: 3 };
-    const highestRisk = items.reduce<Record<string, unknown> | null>((prev, item) => {
+    const highestRisk = items.reduce<ArtifactIndexRow | null>((prev, item) => {
       if (!prev) return item;
       const prevRank = riskRank[String(prev.risk_level || 'L0')] ?? 0;
       const nextRank = riskRank[String(item.risk_level || 'L0')] ?? 0;
@@ -133,6 +131,28 @@ function ArtifactCenterPageInner() {
       nextAction: String(finalStage?.next_action || '-'),
     };
   }, [activeData, orderedStages]);
+  const industryKnowledgePacks = (activeData?.industry_knowledge_packs || {}) as IndustryKnowledgePackReadiness;
+  const rolePackRows = useMemo(() => {
+    const rolePacks = industryKnowledgePacks.role_packs ?? {};
+    return Object.entries(rolePacks).map(([roleId, row]) => {
+      const packs = row?.packs ?? {};
+      const packCount = Object.keys(packs).length;
+      const itemCount = Object.values(packs).reduce((sum, pack) => sum + Number(pack?.item_count ?? 0), 0);
+      const caseCount = Object.values(packs).reduce((sum, pack) => sum + Number(pack?.case_count ?? 0), 0);
+      return {
+        roleId,
+        ready: Boolean(row?.ready),
+        path: String(row?.path ?? ''),
+        packCount,
+        itemCount,
+        caseCount,
+      };
+    });
+  }, [industryKnowledgePacks.role_packs]);
+  const rolePackMap = useMemo(() => {
+    const rolePacks = industryKnowledgePacks.role_packs ?? {};
+    return rolePacks;
+  }, [industryKnowledgePacks.role_packs]);
 
   function loadJob() {
     setActiveJobId(jobIdInput.trim());
@@ -213,7 +233,7 @@ function ArtifactCenterPageInner() {
               Mission jobs
             </div>
             <div className="space-y-2">
-              {missionQuery.data.jobs.map((job) => (
+                {missionQuery.data.jobs.map((job) => (
                 <div key={String(job.job_id || '')} className="rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-xs text-slate-300">
                   <div>job_id: {String(job.job_id || '-')}</div>
                   <div className="mt-1">status: {String(job.status || '-')}</div>
@@ -257,6 +277,50 @@ function ArtifactCenterPageInner() {
                     ? missionSummary.pipelineExplain.reasons.map((item) => String(item)).join(' | ')
                     : '-'}
                 </div>
+              </div>
+            ) : null}
+          </section>
+        ) : null}
+
+        {activeData?.industry_knowledge_packs ? (
+          <section className="rounded-xl border p-4" style={{ borderColor: BORDER, backgroundColor: CARD_BG }}>
+            <div className="mb-3 text-sm font-semibold uppercase tracking-wider" style={{ color: GOLD }}>
+              Industry knowledge packs
+            </div>
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <SummaryCard label="Matched Industry" value={String(industryKnowledgePacks.matched_industry || '-')} />
+              <SummaryCard label="Lobsters" value={`${Number(industryKnowledgePacks.roles_ready ?? 0)}/${Number(industryKnowledgePacks.roles_total ?? 9)}`} />
+              <SummaryCard label="Files" value={`${Number(industryKnowledgePacks.files_ready ?? 0)}/${Number(industryKnowledgePacks.files_expected ?? 36)}`} />
+              <SummaryCard
+                label="Status"
+                value={industryKnowledgePacks.ok ? 'Ready' : 'Need attention'}
+                detail={Array.isArray(industryKnowledgePacks.missing) ? `缺口 ${industryKnowledgePacks.missing.length}` : '-'}
+              />
+            </div>
+            {rolePackRows.length ? (
+              <div className="mt-4 max-h-72 overflow-auto rounded-lg border border-slate-700 bg-slate-950/60">
+                <table className="w-full text-left text-xs">
+                  <thead className="sticky top-0 bg-slate-950/95 text-slate-300">
+                    <tr>
+                      <th className="px-3 py-2 font-medium">Role</th>
+                      <th className="px-3 py-2 font-medium">Ready</th>
+                      <th className="px-3 py-2 font-medium">Packs</th>
+                      <th className="px-3 py-2 font-medium">Items/Cases</th>
+                      <th className="px-3 py-2 font-medium">Path</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rolePackRows.map((row) => (
+                      <tr key={row.roleId} className="border-t border-slate-800 text-slate-200">
+                        <td className="px-3 py-2 font-medium text-slate-100">{row.roleId}</td>
+                        <td className="px-3 py-2">{row.ready ? 'ready' : 'missing'}</td>
+                        <td className="px-3 py-2">{row.packCount}</td>
+                        <td className="px-3 py-2">{row.itemCount}/{row.caseCount}</td>
+                        <td className="max-w-[240px] truncate px-3 py-2 text-slate-400" title={row.path}>{row.path || '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             ) : null}
           </section>
@@ -345,6 +409,25 @@ function ArtifactCenterPageInner() {
                 <summary className="cursor-pointer text-sm font-semibold text-slate-100">
                   {artifact?.artifact_type || key} | {artifact?.produced_by?.role_id || '-'}
                 </summary>
+                {(() => {
+                  const roleId = String(artifact?.produced_by?.role_id || '');
+                  const rolePack = rolePackMap[roleId];
+                  const packs = rolePack?.packs ?? {};
+                  const packCount = Object.keys(packs).length;
+                  const itemCount = Object.values(packs).reduce((sum, pack) => sum + Number(pack?.item_count ?? 0), 0);
+                  const caseCount = Object.values(packs).reduce((sum, pack) => sum + Number(pack?.case_count ?? 0), 0);
+                  return roleId ? (
+                    <div className="mt-4 rounded-lg border border-emerald-400/20 bg-emerald-400/10 p-4 text-xs text-emerald-100">
+                      <div className="font-medium text-emerald-50">Artifact industry knowledge support</div>
+                      <div className="mt-3 grid gap-3 md:grid-cols-4">
+                        <SummaryCard label="Role" value={roleId} />
+                        <SummaryCard label="Ready" value={rolePack?.ready ? 'ready' : 'missing'} />
+                        <SummaryCard label="Packs" value={String(packCount)} detail={`${itemCount} items / ${caseCount} cases`} />
+                        <SummaryCard label="Path" value={String(rolePack?.path || '-')} />
+                      </div>
+                    </div>
+                  ) : null;
+                })()}
                 <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_1fr]">
                   <div className="rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-xs text-slate-300">
                     <div>artifact_id: {artifact?.artifact_id || '-'}</div>
@@ -380,7 +463,7 @@ function ArtifactCenterPageInner() {
 
 function ArtifactCenterFallback() {
   return (
-    <div className="min-h-[calc(100vh-6rem)] bg-[#0F172A] p-6 text-slate-300">
+    <div className="p-6 text-slate-300">
       <div className="mx-auto max-w-6xl rounded-xl border border-slate-700 bg-slate-900/70 p-6">
         正在加载 artifact center...
       </div>

@@ -6,7 +6,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { OnboardingStep1Form, type OnboardingStep1Values } from '@/components/onboarding/OnboardingStep1Form';
 import { useTenant } from '@/contexts/TenantContext';
-import { INDUSTRY_TAXONOMY, findSubIndustryByTag } from '@/lib/industry-taxonomy';
+import {
+  fetchLiveFirstIndustryTaxonomy,
+  flattenIndustryTaxonomy,
+  formatIndustryDisplayValue,
+  LOCAL_INDUSTRY_TAXONOMY_SNAPSHOT,
+  resolveIndustryDisplay,
+} from '@/lib/live-industry-taxonomy';
 import {
   bootstrapIndustryKbProfiles,
   fetchCommercialReadiness,
@@ -82,14 +88,11 @@ const PIPELINE_STEPS: PipelineStep[] = [
   },
 ];
 
-function industryLabel(tag: string | undefined | null) {
-  const row = findSubIndustryByTag(tag);
-  if (row?.name) return row.name;
-  return String(tag || '-');
-}
-
-function categoryLabel(categoryTag: string | undefined | null) {
-  const row = INDUSTRY_TAXONOMY.find((item) => item.category_tag === categoryTag);
+function categoryLabel(
+  categoryTag: string | undefined | null,
+  taxonomy: Awaited<ReturnType<typeof fetchLiveFirstIndustryTaxonomy>>['taxonomy'],
+) {
+  const row = taxonomy.find((item) => item.category_tag === categoryTag);
   if (row?.category_name) return row.category_name;
   return String(categoryTag || '-');
 }
@@ -141,8 +144,17 @@ function profileCompletion(profile: ClientProfile) {
 
 export default function OnboardPage() {
   const { currentTenant, currentTenantId, updateTenant } = useTenant();
-  const defaultCategory = INDUSTRY_TAXONOMY[0]?.category_tag ?? '';
-  const defaultIndustry = INDUSTRY_TAXONOMY[0]?.sub_industries[0]?.tag ?? '';
+  const taxonomyQuery = useQuery({
+    queryKey: ['onboard', 'industry-taxonomy'],
+    queryFn: fetchLiveFirstIndustryTaxonomy,
+    placeholderData: LOCAL_INDUSTRY_TAXONOMY_SNAPSHOT,
+    staleTime: 5 * 60 * 1000,
+    retry: false,
+  });
+  const taxonomy = useMemo(() => taxonomyQuery.data?.taxonomy ?? [], [taxonomyQuery.data?.taxonomy]);
+  const taxonomySource = taxonomyQuery.data?.source ?? 'local';
+  const defaultCategory = taxonomy[0]?.category_tag ?? '';
+  const defaultIndustry = taxonomy[0]?.sub_industries[0]?.tag ?? '';
 
   const readinessQuery = useQuery({
     queryKey: ['onboard', 'commercial-readiness'],
@@ -150,8 +162,33 @@ export default function OnboardPage() {
     retry: false,
   });
 
-  const [selectedCategoryTag, setSelectedCategoryTag] = useState<string>(currentTenant?.industryCategoryTag || defaultCategory);
-  const [selectedIndustryTag, setSelectedIndustryTag] = useState<string>(currentTenant?.industryType || defaultIndustry);
+  const [selectedCategoryTag, setSelectedCategoryTag] = useState<string>('');
+  const [selectedIndustryTag, setSelectedIndustryTag] = useState<string>('');
+
+  // Sync from tenant context once it loads on the client (avoids SSR hydration mismatch)
+  useEffect(() => {
+    if (currentTenant?.industryCategoryTag) {
+      setSelectedCategoryTag(currentTenant.industryCategoryTag);
+      return;
+    }
+    if (!selectedCategoryTag && defaultCategory) {
+      setSelectedCategoryTag(defaultCategory);
+    }
+  }, [currentTenant?.industryCategoryTag, defaultCategory, selectedCategoryTag]);
+
+  useEffect(() => {
+    if (currentTenant?.industryType) {
+      setSelectedIndustryTag(currentTenant.industryType);
+      return;
+    }
+    const activeCategory =
+      taxonomy.find((group) => group.category_tag === (selectedCategoryTag || defaultCategory))
+      ?? taxonomy[0];
+    const nextIndustry = activeCategory?.sub_industries[0]?.tag ?? defaultIndustry;
+    if (!selectedIndustryTag && nextIndustry) {
+      setSelectedIndustryTag(nextIndustry);
+    }
+  }, [currentTenant?.industryType, defaultIndustry, defaultCategory, selectedCategoryTag, selectedIndustryTag, taxonomy]);
   const [profile, setProfile] = useState<ClientProfile>(EMPTY_PROFILE);
   const [savingIndustry, setSavingIndustry] = useState(false);
   const [starterKitBusy, setStarterKitBusy] = useState(false);
@@ -161,10 +198,25 @@ export default function OnboardPage() {
   const [profileError, setProfileError] = useState('');
 
   const selectedCategory = useMemo(
-    () => INDUSTRY_TAXONOMY.find((group) => group.category_tag === selectedCategoryTag) ?? INDUSTRY_TAXONOMY[0],
-    [selectedCategoryTag],
+    () => taxonomy.find((group) => group.category_tag === selectedCategoryTag) ?? taxonomy[0],
+    [selectedCategoryTag, taxonomy],
   );
-  const selectedIndustry = useMemo(() => findSubIndustryByTag(selectedIndustryTag), [selectedIndustryTag]);
+  const taxonomySubIndustries = useMemo(() => flattenIndustryTaxonomy(taxonomy), [taxonomy]);
+  const selectedIndustry = useMemo(
+    () => taxonomySubIndustries.find((row) => row.tag === selectedIndustryTag) ?? null,
+    [selectedIndustryTag, taxonomySubIndustries],
+  );
+  const selectedIndustryDisplay = resolveIndustryDisplay({
+    tag: selectedIndustryTag,
+    taxonomy,
+    source: taxonomySource,
+    fallbackLabel: selectedIndustryTag,
+  });
+  const selectedIndustryLabel = formatIndustryDisplayValue(selectedIndustryDisplay, {
+    localFallbackLabel: '本地回退',
+    rawFallbackLabel: '未映射标签',
+    emptyLabel: '待选择',
+  });
   const profileKey = `${currentTenantId || 'default'}::${selectedIndustryTag || 'general'}`;
   const readiness = readinessQuery.data?.readiness;
   const blockerCount = Number(readiness?.blocker_count ?? 0);
@@ -210,7 +262,7 @@ export default function OnboardPage() {
         selected_industry_tag: selectedIndustryTag,
         force: true,
       });
-      setSaveMessage(`已绑定行业：${industryLabel(selectedIndustryTag)}，并刷新 ${result.saved_count} 条行业知识配置。`);
+      setSaveMessage(`已绑定行业：${selectedIndustryDisplay.name || selectedIndustryTag}，并刷新 ${result.saved_count} 条行业知识配置。`);
     } catch (error) {
       setSaveError(error instanceof Error ? error.message : '行业知识初始化失败');
     } finally {
@@ -369,25 +421,34 @@ export default function OnboardPage() {
               <p className="mt-1 text-sm text-slate-400">行业很多时，不要平铺所有卡片。先缩小到当前分类，再在这一组里做选择。</p>
             </div>
             <div className="rounded-xl border border-amber-400/20 bg-amber-400/10 px-3 py-2 text-xs text-amber-200">
-              当前：{industryLabel(selectedIndustryTag)}
+              当前：{selectedIndustryLabel}
             </div>
           </div>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            {INDUSTRY_TAXONOMY.map((group) => {
+            {taxonomy.map((group) => {
               const active = selectedCategoryTag === group.category_tag;
               return (
                 <button
                   key={group.category_tag}
                   type="button"
-                  onClick={() => setSelectedCategoryTag(group.category_tag)}
+                  onClick={() => {
+                    setSelectedCategoryTag(group.category_tag);
+                    const nextIndustry =
+                      group.sub_industries.find((item) => item.tag === selectedIndustryTag)?.tag
+                      ?? group.sub_industries[0]?.tag
+                      ?? '';
+                    if (nextIndustry) {
+                      setSelectedIndustryTag(nextIndustry);
+                    }
+                  }}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
                     active
                       ? 'border-cyan-400/45 bg-cyan-500/12 text-cyan-100'
                       : 'border-white/10 bg-white/[0.03] text-slate-300 hover:border-white/20 hover:text-white'
                   }`}
                 >
-                  {group.category_name || categoryLabel(group.category_tag)}
+                  {group.category_name || categoryLabel(group.category_tag, taxonomy)}
                 </button>
               );
             })}
@@ -395,7 +456,7 @@ export default function OnboardPage() {
 
           <div className="mt-5 rounded-[24px] border border-white/8 bg-slate-950/35 p-4">
             <div className="mb-3 flex items-center justify-between gap-3">
-              <div className="text-sm font-semibold text-white">{selectedCategory?.category_name || categoryLabel(selectedCategoryTag)}</div>
+              <div className="text-sm font-semibold text-white">{selectedCategory?.category_name || categoryLabel(selectedCategoryTag, taxonomy)}</div>
               <div className="text-xs text-slate-500">{selectedCategory?.sub_industries.length || 0} 个行业</div>
             </div>
 
@@ -419,7 +480,7 @@ export default function OnboardPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className={`font-medium ${active ? 'text-cyan-100' : 'text-slate-100'}`}>
-                          {sub.name || industryLabel(sub.tag)}
+                          {sub.name || sub.tag}
                         </div>
                         <div className="mt-1 text-xs text-slate-500">{sub.tag}</div>
                       </div>
@@ -457,12 +518,12 @@ export default function OnboardPage() {
                 <div className="mt-1 text-sm text-slate-400">当前行业会决定 starter kit、行业知识包和策略骨架的加载方向。</div>
               </div>
               <div className="rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-100">
-                {selectedIndustry?.schema?.industry_name || industryLabel(selectedIndustryTag)}
+                {selectedIndustry?.schema?.industry_name || selectedIndustryDisplay.name || selectedIndustryTag || '-'}
               </div>
             </div>
             <div className="mt-4 space-y-3">
-              <SummaryField label="行业分类" value={selectedCategory?.category_name || categoryLabel(selectedCategoryTag)} />
-              <SummaryField label="行业标签" value={selectedIndustry?.name || industryLabel(selectedIndustryTag)} />
+              <SummaryField label="行业分类" value={selectedCategory?.category_name || categoryLabel(selectedCategoryTag, taxonomy)} />
+              <SummaryField label="行业标签" value={selectedIndustryLabel} />
               <SummaryField label="知识加载" value="starter kit、行业知识包、策略骨架" />
               <SummaryField label="当前目标" value="先把行业语境绑定正确，再进入客户画像和首批任务生成" />
             </div>

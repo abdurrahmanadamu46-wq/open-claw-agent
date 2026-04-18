@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/Button';
 import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 import { fetchAutopilotStatus, resetAutopilotCircuit, triggerAutopilotProbe } from '@/services/endpoints/autopilot';
 import {
+  type AiKernelRolloutPolicy,
+  type AiKernelRolloutRiskEntry,
   deleteAiKernelRolloutTemplate,
   exportAiKernelRolloutTemplates,
   fetchAiKernelMetricsDashboard,
@@ -75,17 +77,15 @@ function asPercent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
 
-function normalizeRollout(raw: unknown): RiskRollout {
-  const source = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>;
+function normalizeRollout(raw?: Record<string, AiKernelRolloutRiskEntry>): RiskRollout {
   const next: RiskRollout = { ...DEFAULT_ROLLOUT };
   for (const level of RISK_LEVELS) {
-    const entry = source[level];
-    if (!entry || typeof entry !== 'object') continue;
-    const obj = entry as Record<string, unknown>;
+    const entry = raw?.[level];
+    if (!entry) continue;
     next[level] = {
-      rollout_ratio: Math.max(0, Math.min(100, Number(obj.rollout_ratio ?? next[level].rollout_ratio))),
-      strategy_version: String(obj.strategy_version ?? next[level].strategy_version),
-      block_mode: String(obj.block_mode ?? next[level].block_mode) === 'deny' ? 'deny' : 'hitl',
+      rollout_ratio: Math.max(0, Math.min(100, Number(entry.rollout_ratio ?? next[level].rollout_ratio))),
+      strategy_version: String(entry.strategy_version ?? next[level].strategy_version),
+      block_mode: String(entry.block_mode ?? next[level].block_mode) === 'deny' ? 'deny' : 'hitl',
     };
   }
   return next;
@@ -166,7 +166,7 @@ export default function AutopilotPage() {
   const currentTenantId = String(policyQuery.data?.tenant_id ?? templatesQuery.data?.tenant_id ?? '').trim();
 
   useEffect(() => {
-    const policy = policyQuery.data?.policy as Record<string, unknown> | undefined;
+    const policy: AiKernelRolloutPolicy | undefined = policyQuery.data?.policy;
     if (!policy) return;
     setDraft({
       enabled: Boolean(policy.enabled ?? true),
@@ -345,7 +345,7 @@ export default function AutopilotPage() {
         templates?: Array<{
           template_key?: string;
           template_name: string;
-          risk_rollout?: Record<string, unknown>;
+          risk_rollout?: Record<string, AiKernelRolloutRiskEntry>;
           note?: string;
         }>;
       };

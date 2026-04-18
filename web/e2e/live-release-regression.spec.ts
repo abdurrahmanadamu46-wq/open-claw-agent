@@ -57,9 +57,9 @@ test.describe('Live release regression (real chain)', () => {
     await expect(page.getByTestId('dashboard-root')).toBeVisible();
 
     await page.goto('/campaigns/new');
-    await page.getByTestId('campaign-new-target-urls').fill(
-      'https://v.douyin.com/liveA\nhttps://v.douyin.com/liveB',
-    );
+    await page.getByTestId('campaign-new-account-name').fill('直播主号');
+    await page.getByTestId('campaign-new-target-niche').fill('同城餐饮');
+    await page.getByTestId('campaign-new-notes').fill('live regression flow');
     const createCampaignRespPromise = waitForApiResponse(
       page,
       (response) =>

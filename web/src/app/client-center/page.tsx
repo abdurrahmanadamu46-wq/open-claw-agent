@@ -44,6 +44,12 @@ const customerFlows = [
   '客户可从移动端一键跳转回控制台，查看上下文、结果和责任路径。',
 ];
 
+function statusTone(ok: boolean): string {
+  return ok
+    ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-100'
+    : 'border-amber-400/25 bg-amber-400/10 text-amber-100';
+}
+
 function readinessLabel(status?: string) {
   switch (status) {
     case 'ready':
@@ -78,6 +84,32 @@ export default function ClientCenterPage() {
   const readiness = readinessQuery.data?.readiness;
   const pendingApprovals = approvalsQuery.data?.items ?? [];
   const topBlockers = readiness?.blockers?.slice(0, 3) ?? [];
+  const domainCards = [
+    {
+      title: '部署',
+      value: readiness?.deploy.mode || '待确认',
+      detail: `区域 ${readiness?.deploy.region || '待确认'}`,
+      ok: Boolean(readiness?.deploy.mode && readiness.deploy.mode !== 'preview'),
+    },
+    {
+      title: '支付',
+      value: readiness?.payment.provider || '未配置',
+      detail: `checkout ${readiness?.payment.checkout || '未配置'}`,
+      ok: Boolean(readiness?.payment.provider && readiness.payment.checkout && readiness.payment.checkout !== 'sandbox'),
+    },
+    {
+      title: '通知',
+      value: readiness?.notifications.mode || '待确认',
+      detail: readiness?.notifications.smtp?.configured ? 'SMTP 已配置' : 'SMTP 待配置',
+      ok: Boolean(readiness?.notifications.smtp?.configured || readiness?.notifications.mode === 'file'),
+    },
+    {
+      title: 'Feishu',
+      value: readiness?.feishu.enabled ? '已启用' : '未启用',
+      detail: readiness?.feishu.callback_url || '缺少 callback 地址',
+      ok: Boolean(readiness?.feishu.enabled && readiness?.feishu.callback_url),
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#07111f] text-slate-50">
@@ -188,6 +220,30 @@ export default function ClientCenterPage() {
           </article>
         </section>
 
+        <section className="mt-10 rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Cutover Snapshot</div>
+              <h2 className="mt-2 text-xl font-semibold text-white">客户侧能看懂的切真状态</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-300">
+                这里不展示后端原始 payload，而是把上线前最重要的四个域压成客户能理解的状态：部署、支付、通知和 Feishu 回调。
+              </p>
+            </div>
+            <Link
+              href="/settings/commercial-readiness"
+              className="rounded-2xl border border-cyan-400/25 bg-cyan-400/10 px-4 py-2.5 text-sm font-medium text-cyan-100"
+            >
+              查看完整闸门
+            </Link>
+          </div>
+
+          <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {domainCards.map((item) => (
+              <DomainStatusCard key={item.title} {...item} />
+            ))}
+          </div>
+        </section>
+
         <section className="mt-12 grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
           <article className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
             <div className="flex items-center gap-2 text-white">
@@ -283,6 +339,26 @@ function KpiCard({ label, value, detail }: { label: string; value: string; detai
       <div className="text-xs uppercase tracking-[0.2em] text-slate-500">{label}</div>
       <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
       <div className="mt-2 text-sm leading-6 text-slate-400">{detail}</div>
+    </div>
+  );
+}
+
+function DomainStatusCard({
+  title,
+  value,
+  detail,
+  ok,
+}: {
+  title: string;
+  value: string;
+  detail: string;
+  ok: boolean;
+}) {
+  return (
+    <div className={`rounded-2xl border p-4 ${statusTone(ok)}`}>
+      <div className="text-[11px] uppercase tracking-[0.2em] opacity-80">{title}</div>
+      <div className="mt-2 text-lg font-semibold">{value}</div>
+      <div className="mt-2 text-sm leading-6 opacity-85">{detail}</div>
     </div>
   );
 }

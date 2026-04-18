@@ -15,6 +15,13 @@ function getBrowserOrigin(): string {
   return window.location.origin;
 }
 
+function shouldUseLocalWidgetPreview(): boolean {
+  if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') return true;
+  if (typeof window === 'undefined') return false;
+  const { hostname, port } = window.location;
+  return (hostname === '127.0.0.1' || hostname === 'localhost') && ['3000', '3001', '3002', '3003', '3005', '3101'].includes(port || '');
+}
+
 export default function WidgetPage() {
   const t = useTranslations('settings.widget');
   const common = useTranslations('common');
@@ -145,6 +152,28 @@ const [launcherPosition, setLauncherPosition] = useState<LauncherPosition>('bott
     if (!config?.widgetId) return '<!doctype html><html><body style="background:#0f172a;color:#cbd5e1;font-family:system-ui;padding:24px;">Widget 预览将在保存配置后显示。</body></html>';
     const scriptSrc = `${getBrowserOrigin()}/api/v1/widget/script/${config.widgetId}`;
     const pinTop = launcherPosition === 'top-right';
+    const shouldInlineMock = shouldUseLocalWidgetPreview();
+    const previewWidgetMarkup = `
+      <div id="mock-widget" style="
+        position:fixed;
+        right:20px;
+        ${pinTop ? 'top:20px;' : 'bottom:20px;'}
+        width:320px;
+        border-radius:20px;
+        border:1px solid rgba(255,255,255,0.12);
+        background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(30,41,59,0.96));
+        box-shadow:0 24px 70px rgba(2,6,23,0.55);
+        color:#e2e8f0;
+        overflow:hidden;
+        z-index:2147483000;
+      ">
+        <div style="padding:16px 18px;border-bottom:1px solid rgba(255,255,255,0.08);background:${themeColor};color:${accentColor};font-weight:600;">
+          ${callToAction || welcomeMessage || '龙虾池助手'}
+        </div>
+        <div style="padding:16px 18px;font-size:13px;line-height:1.7;">
+          ${welcomeMessage || '这是本地预览模式下的静态 Widget 占位，用来检查主题、文案和悬浮位置。'}
+        </div>
+      </div>`;
     return `<!doctype html>
 <html>
   <head>
@@ -159,6 +188,7 @@ const [launcherPosition, setLauncherPosition] = useState<LauncherPosition>('bott
     <div class="stage">
       <div class="chrome">Widget Preview</div>
     </div>
+    ${shouldInlineMock ? previewWidgetMarkup : ''}
     <script>
       const targetTop = ${pinTop ? "'20px'" : "null"};
       const targetBottom = ${pinTop ? "null" : "'20px'"};
@@ -180,10 +210,10 @@ const [launcherPosition, setLauncherPosition] = useState<LauncherPosition>('bott
       observer.observe(document.body, { childList: true, subtree: true });
       window.addEventListener('load', reposition);
     </script>
-    <script async src="${scriptSrc}"></script>
+    ${shouldInlineMock ? '' : `<script async src="${scriptSrc}"></script>`}
   </body>
 </html>`;
-  }, [config?.widgetId, launcherPosition]);
+  }, [accentColor, callToAction, config?.widgetId, launcherPosition, themeColor, welcomeMessage]);
 
   const handleCopy = async () => {
     if (!embedCode) return;
@@ -200,7 +230,7 @@ const [launcherPosition, setLauncherPosition] = useState<LauncherPosition>('bott
   };
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#050d16] px-6 py-6 text-slate-100">
+    <div className="px-6 py-6 text-slate-100">
       <div className="mx-auto grid max-w-5xl gap-6 rounded-[28px] border border-white/10 bg-[#0b1628] p-6 shadow-2xl">
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>

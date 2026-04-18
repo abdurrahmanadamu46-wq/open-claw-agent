@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const targets = [path.join(process.cwd(), '.next')];
+const targets = [
+  path.join(process.cwd(), process.env.NEXT_DIST_DIR || '.next'),
+  path.join(process.cwd(), 'tsconfig.tsbuildinfo'),
+];
 
 for (const target of targets) {
   try {

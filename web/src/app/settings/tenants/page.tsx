@@ -17,7 +17,13 @@ import { DangerActionGuard } from '@/components/DangerActionGuard';
 import { useTenant, type Tenant } from '@/contexts/TenantContext';
 import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 import { getCurrentUser } from '@/services/endpoints/user';
-import { INDUSTRY_TAXONOMY, findSubIndustryByTag, flattenSubIndustries } from '@/lib/industry-taxonomy';
+import {
+  fetchLiveFirstIndustryTaxonomy,
+  flattenIndustryTaxonomy,
+  formatIndustryDisplayValue,
+  LOCAL_INDUSTRY_TAXONOMY_SNAPSHOT,
+  resolveIndustryDisplay,
+} from '@/lib/live-industry-taxonomy';
 
 const BG = '#0F172A';
 const CARD_BG = 'rgba(30,41,59,0.72)';
@@ -25,8 +31,6 @@ const BORDER = 'rgba(71,85,105,0.45)';
 const MUTED = '#94A3B8';
 const TITLE = '#F8FAFC';
 const GOLD = '#E5A93D';
-
-const SUB_INDUSTRIES = flattenSubIndustries();
 
 type TenantDraft = {
   name: string;
@@ -47,7 +51,7 @@ function toDraft(tenant: Tenant): TenantDraft {
     quota: tenant.quota,
     inactive: !!tenant.inactive,
     industryType: tenant.industryType || '',
-    industryCategoryTag: tenant.industryCategoryTag || INDUSTRY_TAXONOMY[0]?.category_tag || '',
+    industryCategoryTag: tenant.industryCategoryTag || '',
     businessKeywords: (tenant.businessKeywords || []).join(', '),
     deploymentRegion: tenant.deploymentRegion || 'cn-shanghai',
     storageRegion: tenant.storageRegion || 'cn-shanghai',
@@ -58,11 +62,21 @@ function toDraft(tenant: Tenant): TenantDraft {
 
 export default function TenantsSettingsPage() {
   const { tenants, addTenant, removeTenant, updateTenant, isHydrated } = useTenant();
+  const taxonomyQuery = useQuery({
+    queryKey: ['settings', 'tenants', 'industry-taxonomy'],
+    queryFn: fetchLiveFirstIndustryTaxonomy,
+    placeholderData: LOCAL_INDUSTRY_TAXONOMY_SNAPSHOT,
+    staleTime: 5 * 60 * 1000,
+    retry: false,
+  });
   const { data: currentUser } = useQuery({
     queryKey: ['settings', 'tenants', 'current-user'],
     queryFn: getCurrentUser,
     staleTime: 5 * 60 * 1000,
   });
+  const taxonomy = useMemo(() => taxonomyQuery.data?.taxonomy ?? [], [taxonomyQuery.data?.taxonomy]);
+  const taxonomySource = taxonomyQuery.data?.source ?? 'local';
+  const subIndustries = useMemo(() => flattenIndustryTaxonomy(taxonomy), [taxonomy]);
   const [search, setSearch] = useState('');
   const [editingTenantId, setEditingTenantId] = useState<string | null>(null);
   const [drafts, setDrafts] = useState<Record<string, TenantDraft>>({});
@@ -176,6 +190,9 @@ export default function TenantsSettingsPage() {
                 <p className="mt-1 text-sm" style={{ color: MUTED }}>
                   这里是控制面真实的租户源，不再依赖浏览器本地存储。行业标签、部署地域和 ICP 状态会直接影响后续商业化交付。
                 </p>
+                <p className="mt-2 text-xs" style={{ color: MUTED }}>
+                  行业目录来源：{taxonomySource === 'live' ? 'live contract' : '本地回退'}
+                </p>
               </div>
             </div>
 
@@ -213,10 +230,20 @@ export default function TenantsSettingsPage() {
             <div className="space-y-2">
               {filteredTenants.map((tenant) => {
                 const expanded = editingTenantId === tenant.id;
-                const industry = findSubIndustryByTag(tenant.industryType);
+                const industry = resolveIndustryDisplay({
+                  tag: tenant.industryType,
+                  taxonomy,
+                  source: taxonomySource,
+                  fallbackLabel: tenant.industryType,
+                });
+                const industryValue = formatIndustryDisplayValue(industry, {
+                  localFallbackLabel: '本地回退',
+                  rawFallbackLabel: '未映射标签',
+                  emptyLabel: '未设置',
+                });
                 const keywords = tenant.businessKeywords || [];
                 const draft = drafts[tenant.id] ?? toDraft(tenant);
-                const subIndustryOptions = SUB_INDUSTRIES.filter(
+                const subIndustryOptions = subIndustries.filter(
                   (item) => !draft.industryCategoryTag || item.category_tag === draft.industryCategoryTag,
                 );
 
@@ -235,7 +262,7 @@ export default function TenantsSettingsPage() {
                           </span>
                         </div>
                         <div className="mt-1 text-xs" style={{ color: MUTED }}>
-                          {tenant.inactive ? '已停用' : '已启用'} · 配额 {tenant.quota} · 行业 {industry?.name || '未设置'} · 地域 {tenant.deploymentRegion || 'cn-shanghai'} · ICP {tenant.icpFilingStatus || 'pending'}
+                          {tenant.inactive ? '已停用' : '已启用'} · 配额 {tenant.quota} · 行业 {industryValue} · 地域 {tenant.deploymentRegion || 'cn-shanghai'} · ICP {tenant.icpFilingStatus || 'pending'}
                         </div>
                         <div className="mt-1 text-xs" style={{ color: MUTED }}>
                           关键词：{keywords.length > 0 ? keywords.join('、') : '未设置'}
@@ -292,7 +319,7 @@ export default function TenantsSettingsPage() {
                               value={draft.industryCategoryTag}
                               onChange={(event) => {
                                 const categoryTag = event.target.value;
-                                const category = INDUSTRY_TAXONOMY.find((item) => item.category_tag === categoryTag);
+                                const category = taxonomy.find((item) => item.category_tag === categoryTag);
                                 const nextSub = category?.sub_industries[0];
                                 setDrafts((prev) => ({
                                   ...prev,
@@ -304,7 +331,7 @@ export default function TenantsSettingsPage() {
                                 }));
                               }}
                             >
-                              {INDUSTRY_TAXONOMY.map((item) => (
+                              {taxonomy.map((item) => (
                                 <option key={item.category_tag} value={item.category_tag}>
                                   {item.category_name}
                                 </option>
@@ -320,7 +347,7 @@ export default function TenantsSettingsPage() {
                               value={draft.industryType}
                               onChange={(event) => {
                                 const subTag = event.target.value;
-                                const sub = findSubIndustryByTag(subTag);
+                                const sub = subIndustries.find((item) => item.tag === subTag);
                                 setDrafts((prev) => ({
                                   ...prev,
                                   [tenant.id]: {

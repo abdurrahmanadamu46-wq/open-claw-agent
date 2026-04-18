@@ -40,8 +40,9 @@ import type {
   FlagStrategy,
   FlagVariant,
 } from '@/types/feature-flags';
-import type { WorkflowTrace } from '@/types/distributed-tracing';
+import type { ObservabilityDashboard, ObservabilityOrlaSummary, WorkflowTrace } from '@/types/distributed-tracing';
 import type { Lifecycle, LifecycleChangeEvent, LobsterEntity, LobsterRun, LobsterSkill } from '@/types/lobster';
+import type { RuntimeKnowledgeContext } from '@/types/control-plane-overview';
 import type {
   LobsterConfigDetail,
   LobsterConfigSummary,
@@ -70,7 +71,8 @@ import type { KnowledgeBaseDetail, KnowledgeBaseSearchHit, KnowledgeBaseSummary 
 import type { LobsterFeedbackItem, LobsterFeedbackSubmitPayload, LobsterQualityStats } from '@/types/lobster-feedback';
 import type { LobsterMetricsHistoryPoint } from '@/types/lobster-metrics-history';
 import type { LeadConversionHistoryItem, LeadConversionStatus } from '@/types/lead-conversion';
-import type { ActivityStreamItem } from '@/types/activity-stream';
+import type { ActivityStreamDetailResponse, ActivityStreamListResponse } from '@/types/activity-stream';
+import type { FleetEdgeEventListResponse } from '@/types/xhs-events';
 import type {
   MCPCallRecord,
   MCPServer,
@@ -83,7 +85,16 @@ import type {
   ToolMarketplaceSubscription,
 } from '@/types/mcp-gateway';
 import type { EventBusPrefixSummary, EventBusSubjectStat } from '@/types/event-bus-traffic';
+import type {
+  DualTrackMemoryContextResponse,
+  DualTrackMemoryRememberPayload,
+  DualTrackMemoryRememberResponse,
+  DualTrackMemoryStatsResponse,
+} from '@/types/dual-track-memory';
 import type { HybridMemorySearchResponse } from '@/types/hybrid-memory-search';
+import type { RuntimeCapabilityOverviewResponse } from '@/types/runtime-capabilities';
+import type { RuntimeCompactionStatsResponse } from '@/types/runtime-compaction';
+import type { TenantMemoryEntriesResponse, TenantMemoryStatsResponse } from '@/types/tenant-memory';
 import type { TenantConcurrencyStats } from '@/types/tenant-concurrency';
 import type { VectorBackupHistoryItem, VectorBackupSnapshot } from '@/types/vector-snapshot-backup';
 import type {
@@ -96,6 +107,11 @@ import type {
   WorkflowWebhook,
 } from '@/types/workflow-engine';
 import type { WidgetConfig, WidgetConfigPayload, WidgetScript } from '@/types/embed-widget';
+import type {
+  ControlPlaneKnowledgeOverviewResponse,
+  ControlPlaneMonitorOverviewResponse,
+  ControlPlaneSupervisorsOverviewResponse,
+} from '@/types/control-plane-overview';
 
 export type AiEdgeTarget = {
   edge_id: string;
@@ -116,6 +132,7 @@ export type RunDragonTeamPayload = {
   edge_targets?: AiEdgeTarget[];
   client_preview?: Record<string, unknown>;
   industry_workflow_context?: Record<string, unknown>;
+  knowledge_context_only?: boolean;
   execution_mode?: 'assistive' | 'auto';
   meta?: Record<string, unknown>;
 };
@@ -151,16 +168,45 @@ export type RunDragonTeamAsyncStatus = {
   thread_id?: string | null;
   mission_id?: string | null;
   pipeline_mode?: string | null;
-  pipeline_explain?: Record<string, unknown>;
+  pipeline_explain?: PipelineExplainSummary;
   execution_elapsed_sec?: number | null;
   variance_analysis?: Record<string, unknown>;
   artifact_count?: number;
-  artifact_index?: Array<Record<string, unknown>>;
+  artifact_index?: ArtifactIndexRow[];
   stage?: string;
   progress?: number;
   summary?: string;
-  result?: Record<string, unknown> | null;
+  result?: (Record<string, unknown> & { knowledge_context?: RuntimeKnowledgeContext }) | null;
   error?: Record<string, unknown> | null;
+};
+
+export type IndustryKnowledgePackReadiness = {
+  ok?: boolean;
+  industry_tag?: string | null;
+  matched_industry?: string | null;
+  roles_total?: number;
+  roles_ready?: number;
+  files_expected?: number;
+  files_ready?: number;
+  missing?: Array<Record<string, unknown>>;
+  role_packs?: Record<string, {
+    ready?: boolean;
+    path?: string;
+    packs?: Record<string, {
+      file_name?: string;
+      path?: string;
+      item_count?: number;
+      case_count?: number;
+      preview?: Array<Record<string, unknown>>;
+    }>;
+  }>;
+};
+
+export type IndustryKnowledgePackReadinessResponse = {
+  ok: boolean;
+  tenant_id?: string;
+  industry_tag: string;
+  readiness: IndustryKnowledgePackReadiness;
 };
 
 export type StrategyIntensity = {
@@ -233,8 +279,40 @@ export type AnalyzeCompetitorPayload = {
   competitor_handles?: string[];
 };
 
+export type RunDragonTeamSyncResult = {
+  ok?: boolean;
+  mission_id?: string;
+  pipeline_mode?: string;
+  artifact_count?: number;
+  industry_knowledge_packs?: IndustryKnowledgePackReadiness;
+  knowledge_context?: RuntimeKnowledgeContext;
+  kernel_report?: Record<string, unknown> & {
+    knowledge_context?: RuntimeKnowledgeContext;
+    industry_knowledge_packs?: IndustryKnowledgePackReadiness;
+  };
+};
+
 export async function runDragonTeam(payload: RunDragonTeamPayload) {
-  const { data } = await api.post('/api/v1/ai/run-dragon-team', payload);
+  const { data } = await api.post<RunDragonTeamSyncResult>('/api/v1/ai/run-dragon-team', payload);
+  return data;
+}
+
+export async function fetchIndustryKnowledgePackReadiness(industryTag: string) {
+  const { data } = await api.get<IndustryKnowledgePackReadinessResponse>('/api/v1/ai/industry-knowledge-packs/readiness', {
+    params: { industry_tag: industryTag },
+  });
+  return data;
+}
+
+export async function fetchFleetEdgeEvents(input?: {
+  platform?: string;
+  event_type?: string;
+  account_id?: string;
+  limit?: number;
+}) {
+  const { data } = await api.get<FleetEdgeEventListResponse>('/api/v1/fleet/events', {
+    params: input,
+  });
   return data;
 }
 
@@ -516,6 +594,97 @@ export async function fetchMemoryStats(tenantId?: string) {
     tenant_id: string;
     stats: MemoryStats;
   };
+}
+
+export async function fetchTenantMemoryStats(tenantId: string) {
+  const { data } = await api.get('/api/v1/tenant-memory/stats', {
+    params: { tenant_id: tenantId },
+  });
+  return data as TenantMemoryStatsResponse;
+}
+
+export async function fetchTenantMemoryEntries(input: {
+  tenant_id: string;
+  scope?: string;
+  category?: string;
+  query?: string;
+  limit?: number;
+}) {
+  const { data } = await api.get('/api/v1/tenant-memory/entries', {
+    params: {
+      tenant_id: input.tenant_id,
+      ...(input.scope ? { scope: input.scope } : {}),
+      ...(input.category ? { category: input.category } : {}),
+      ...(input.query ? { query: input.query } : {}),
+      ...(typeof input.limit === 'number' ? { limit: input.limit } : {}),
+    },
+  });
+  return data as TenantMemoryEntriesResponse;
+}
+
+export async function fetchDualTrackMemoryStats(tenantId: string) {
+  const { data } = await api.get('/api/v1/tenant-memory/dual-track/stats', {
+    params: { tenant_id: tenantId },
+  });
+  return data as DualTrackMemoryStatsResponse;
+}
+
+export async function fetchDualTrackMemoryContext(input: {
+  tenant_id: string;
+  query?: string;
+  top_k?: number;
+  resident_max_chars?: number;
+}) {
+  const { data } = await api.get('/api/v1/tenant-memory/dual-track/context', {
+    params: {
+      tenant_id: input.tenant_id,
+      ...(input.query ? { query: input.query } : {}),
+      ...(typeof input.top_k === 'number' ? { top_k: input.top_k } : {}),
+      ...(typeof input.resident_max_chars === 'number' ? { resident_max_chars: input.resident_max_chars } : {}),
+    },
+  });
+  return data as DualTrackMemoryContextResponse;
+}
+
+export async function rememberDualTrackMemory(payload: DualTrackMemoryRememberPayload) {
+  const { data } = await api.post('/api/v1/tenant-memory/dual-track/remember', payload);
+  return data as DualTrackMemoryRememberResponse;
+}
+
+export async function fetchRuntimeCapabilityOverview(tenantId: string) {
+  const { data } = await api.get('/api/v1/runtime-capabilities/overview', {
+    params: { tenant_id: tenantId },
+  });
+  return data as RuntimeCapabilityOverviewResponse;
+}
+
+export async function fetchRuntimeCompactionStats(sessionId: string) {
+  const { data } = await api.get(`/api/v1/tasks/runtime/compaction/${encodeURIComponent(sessionId)}`);
+  return data as RuntimeCompactionStatsResponse;
+}
+
+export async function fetchControlPlaneSupervisorsOverview(tenantId?: string) {
+  const { data } = await api.get('/api/v1/control-plane/supervisors/overview', {
+    params: tenantId ? { tenant_id: tenantId } : undefined,
+  });
+  return data as ControlPlaneSupervisorsOverviewResponse;
+}
+
+export async function fetchControlPlaneKnowledgeOverview(tenantId: string) {
+  const { data } = await api.get('/api/v1/control-plane/knowledge/overview', {
+    params: { tenant_id: tenantId },
+  });
+  return data as ControlPlaneKnowledgeOverviewResponse;
+}
+
+export async function fetchControlPlaneMonitorOverview(tenantId: string, subjectPrefix?: string) {
+  const { data } = await api.get('/api/v1/control-plane/monitor/overview', {
+    params: {
+      tenant_id: tenantId,
+      ...(subjectPrefix ? { subject_prefix: subjectPrefix } : {}),
+    },
+  });
+  return data as ControlPlaneMonitorOverviewResponse;
 }
 
 export async function fetchLobsterMemoryStats(tenantId: string, lobsterId: string) {
@@ -1182,24 +1351,154 @@ export async function globalSearch(input: { q: string; types?: string; limit?: n
   return data as ({ ok: boolean; query: string } & SearchResults);
 }
 
+type RawLobsterRuntimeRow = {
+  id?: string;
+  lobster_id?: string;
+  zh_name?: string;
+  display_name?: string;
+  name?: string;
+  status?: string;
+  lifecycle?: string;
+  score?: number;
+  avg_quality_score?: number;
+};
+
+function readRuntimeString(...values: unknown[]): string | undefined {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim()) {
+      return value.trim();
+    }
+  }
+  return undefined;
+}
+
+function readRuntimeNumber(...values: unknown[]): number | undefined {
+  for (const value of values) {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+      return value;
+    }
+  }
+  return undefined;
+}
+
+function normalizeLobsterRuntimeRow(raw: RawLobsterRuntimeRow, index: number): LobsterRuntimeRow {
+  const canonicalId = readRuntimeString(
+    raw.id,
+    raw.lobster_id,
+    raw.name,
+    raw.display_name,
+    raw.zh_name,
+    `lobster-${index + 1}`,
+  ) || `lobster-${index + 1}`;
+  const score = readRuntimeNumber(raw.score, raw.avg_quality_score);
+  const avgQualityScore = readRuntimeNumber(raw.avg_quality_score, raw.score);
+
+  return {
+    id: canonicalId,
+    lobster_id: canonicalId,
+    zh_name: readRuntimeString(raw.zh_name),
+    display_name: readRuntimeString(raw.display_name, raw.zh_name, raw.name, canonicalId) || canonicalId,
+    name: readRuntimeString(raw.name, raw.display_name, raw.zh_name, canonicalId) || canonicalId,
+    status: readRuntimeString(raw.status, raw.lifecycle, 'unknown') || 'unknown',
+    lifecycle: readRuntimeString(raw.lifecycle, 'production') || 'production',
+    score,
+    avg_quality_score: avgQualityScore,
+  };
+}
+
 export async function fetchLobsters(input?: { lifecycle?: Lifecycle | '' }) {
   const { data } = await api.get('/api/v1/lobsters', {
     params: input?.lifecycle ? { lifecycle: input.lifecycle } : undefined,
   });
-  return data as {
-    ok: boolean;
-    count: number;
-    items: Array<Record<string, unknown>>;
+  const rawItems = Array.isArray(data?.items) ? (data.items as RawLobsterRuntimeRow[]) : [];
+  const items = rawItems.map((item, index) => normalizeLobsterRuntimeRow(item, index));
+  return {
+    ok: Boolean(data?.ok),
+    count: typeof data?.count === 'number' ? Math.max(data.count, items.length) : items.length,
+    items,
+  };
+}
+
+type RawLobsterEntityRow = {
+  id?: string;
+  lobster_id?: string;
+  name?: string;
+  display_name?: string;
+  zh_name?: string;
+  description?: string;
+  role?: string;
+  lifecycle?: string;
+  status?: string;
+  system?: string;
+  run_count_24h?: number;
+  score?: number;
+  avg_latency_ms?: number;
+  tags?: unknown[];
+  annotations?: Record<string, unknown>;
+  skills?: LobsterSkill[];
+  icon?: string;
+  default_model_tier?: string;
+};
+
+function normalizeLobsterAnnotations(raw: RawLobsterEntityRow['annotations']): Record<string, string> {
+  if (!raw || typeof raw !== 'object') return {};
+  return Object.entries(raw).reduce<Record<string, string>>((acc, [key, value]) => {
+    if (typeof value === 'string' && value.trim()) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {});
+}
+
+function normalizeLobsterTags(raw: RawLobsterEntityRow['tags']): string[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((item): item is string => typeof item === 'string' && item.trim().length > 0)
+    .map((item) => item.trim());
+}
+
+function normalizeLobsterEntityRow(raw: RawLobsterEntityRow, fallbackId: string): LobsterEntityRow {
+  const canonicalId = readRuntimeString(
+    raw.id,
+    raw.lobster_id,
+    raw.name,
+    raw.display_name,
+    raw.zh_name,
+    fallbackId,
+  ) || fallbackId;
+
+  return {
+    id: canonicalId,
+    name: readRuntimeString(raw.name, raw.display_name, raw.zh_name, canonicalId) || canonicalId,
+    display_name: readRuntimeString(raw.display_name, raw.zh_name, raw.name, canonicalId) || canonicalId,
+    zh_name: readRuntimeString(raw.zh_name),
+    description: readRuntimeString(raw.description, raw.role, '') || '',
+    role: readRuntimeString(raw.role),
+    lifecycle: readRuntimeString(raw.lifecycle, 'production') || 'production',
+    status: readRuntimeString(raw.status, 'idle') || 'idle',
+    system: readRuntimeString(raw.system, 'follow-growth') || 'follow-growth',
+    run_count_24h: readRuntimeNumber(raw.run_count_24h),
+    score: readRuntimeNumber(raw.score),
+    avg_latency_ms: readRuntimeNumber(raw.avg_latency_ms),
+    tags: normalizeLobsterTags(raw.tags),
+    annotations: normalizeLobsterAnnotations(raw.annotations),
+    skills: Array.isArray(raw.skills) ? raw.skills : [],
+    icon: readRuntimeString(raw.icon),
+    default_model_tier: readRuntimeString(raw.default_model_tier),
   };
 }
 
 export async function fetchLobsterEntity(lobsterId: string) {
   const { data } = await api.get(`/api/v1/lobsters/${encodeURIComponent(lobsterId)}`);
-  return data as {
-    ok: boolean;
-    lobster: Record<string, unknown>;
-    recent_runs: LobsterRun[];
-    hourly_usage: Array<Record<string, unknown>>;
+  const rawLobster =
+    data?.lobster && typeof data.lobster === 'object'
+      ? (data.lobster as RawLobsterEntityRow)
+      : {};
+  return {
+    ok: Boolean(data?.ok),
+    lobster: normalizeLobsterEntityRow(rawLobster, lobsterId),
+    recent_runs: Array.isArray(data?.recent_runs) ? (data.recent_runs as LobsterRun[]) : [],
+    hourly_usage: Array.isArray(data?.hourly_usage) ? (data.hourly_usage as LobsterHourlyUsageRow[]) : [],
   };
 }
 
@@ -1452,6 +1751,25 @@ export async function fetchObservabilityTrace(traceId: string) {
   return data as WorkflowTrace;
 }
 
+export async function fetchObservabilityDashboard(input?: {
+  tenant_id?: string;
+  days?: number;
+}) {
+  const { data } = await api.get('/api/observability/dashboard', { params: input });
+  return data as ObservabilityDashboard;
+}
+
+export async function fetchObservabilityOrlaDispatcher(input?: {
+  tenant_id?: string;
+  days?: number;
+}) {
+  const { data } = await api.get('/api/observability/orla/dispatcher', { params: input });
+  return data as {
+    ok: boolean;
+    orla_dispatcher: ObservabilityOrlaSummary;
+  };
+}
+
 export async function fetchAlertRules() {
   const { data } = await api.get('/api/v1/alerts/rules');
   return data as { ok: boolean; tenant_id: string; items: AlertRule[] };
@@ -1565,9 +1883,25 @@ export async function fetchEscalations(input?: { status?: string; limit?: number
   return data as {
     ok: boolean;
     tenant_id: string;
-    items: Array<Record<string, unknown>>;
+    items: EscalationItem[];
   };
 }
+
+export type EscalationItem = {
+  id?: string;
+  escalation_id?: string;
+  tenant_id?: string;
+  lobster_id?: string;
+  task_id?: string;
+  status?: string;
+  resolution?: 'continue' | 'skip' | 'retry' | string;
+  reason?: string;
+  message?: string;
+  note?: string;
+  created_at?: string;
+  resolved_at?: string;
+  resolved_by?: string;
+};
 
 export async function resolveEscalation(payload: {
   escalation_id: string;
@@ -1582,7 +1916,7 @@ export async function resolveEscalation(payload: {
   });
   return data as {
     ok: boolean;
-    escalation: Record<string, unknown>;
+    escalation: EscalationItem;
   };
 }
 
@@ -1861,6 +2195,31 @@ export type ChannelAccountSummary = {
   options?: Record<string, unknown>;
 };
 
+export type EdgeAdapterManifestSummary = {
+  platform: string;
+  version: string;
+  display_name: string;
+  owner: string;
+  status: string;
+  actions: string[];
+  required_primitives: string[];
+  risk_level: 'low' | 'medium' | 'high' | string;
+  requires_local_session: boolean;
+  supports_replay: boolean;
+  supports_canary: boolean;
+  supports_network_capture?: boolean;
+  requires_manual_review_for_publish?: boolean;
+  supported_browser_backends?: string[];
+  known_limitations?: string[];
+  source_path?: string;
+  scan_status?: 'safe' | 'warn' | 'block' | 'not_scanned' | string;
+  scan_report?: {
+    risk_level?: string;
+    issues?: string[];
+    confidence?: number;
+  };
+};
+
 export async function fetchChannelStatus() {
   const { data } = await api.get('/api/v1/ai/channels/status');
   return data as Record<
@@ -1878,6 +2237,24 @@ export async function fetchChannelAccounts(channel: string) {
   return data as {
     channel: string;
     accounts: ChannelAccountSummary[];
+  };
+}
+
+export async function fetchEdgeAdapterManifests() {
+  const { data } = await api.get('/api/v1/ai/edge/adapters');
+  return data as {
+    ok: boolean;
+    count: number;
+    items: EdgeAdapterManifestSummary[];
+  };
+}
+
+export async function fetchEdgeAdapterManifestDetail(platform: string) {
+  const { data } = await api.get(`/api/v1/ai/edge/adapters/${encodeURIComponent(platform)}`);
+  return data as {
+    ok: boolean;
+    platform: string;
+    adapter: EdgeAdapterManifestSummary;
   };
 }
 
@@ -1902,32 +2279,101 @@ export async function runDragonTeamAsync(payload: RunDragonTeamPayload) {
   return data;
 }
 
+export type PipelineModePreview = {
+  mode: string;
+  description: string;
+  selected_lineup: string[];
+  awakened_roles: string[];
+  stage_path: string[];
+  skipped_nodes: string[];
+  reasons: string[];
+  estimated_duration_sec: number;
+  estimated_duration_band_sec: {
+    low: number;
+    high: number;
+  };
+  approval_likely: boolean;
+  estimated_artifact_count: number;
+  recommended_submit_path: 'sync' | 'async';
+  estimated_cost_tier: string;
+  edge_target_count: number;
+  competitor_handle_count: number;
+  industry_tag: string;
+};
+
+export type PipelineExplainSummary = Partial<Pick<
+  PipelineModePreview,
+  'description' | 'skipped_nodes' | 'reasons'
+>>;
+
+export type ArtifactIndexRow = {
+  key?: string;
+  artifact_id?: string;
+  artifact_type?: string;
+  role_id?: string;
+  status?: string;
+  risk_level?: string;
+  dependencies?: string[];
+  next_action?: string;
+};
+
+export type ArtifactMissionJobRow = {
+  job_id?: string;
+  status?: string;
+  pipeline_mode?: string | null;
+  updated_at?: string;
+  artifact_count?: number;
+};
+
+export type ArtifactRecentJobRow = {
+  job_id?: string;
+  mission_id?: string;
+  task_description?: string;
+  pipeline_mode?: string | null;
+  status?: string;
+  artifact_count?: number;
+};
+
+export type ArtifactJobResponse = {
+  ok: boolean;
+  job_id: string;
+  mission_id: string;
+  pipeline_mode?: string | null;
+  pipeline_explain?: PipelineExplainSummary;
+  status: string;
+  artifact_count: number;
+  industry_knowledge_packs?: IndustryKnowledgePackReadiness;
+  artifact_index: ArtifactIndexRow[];
+  artifacts: Record<string, ArtifactEnvelope>;
+};
+
+export type ArtifactIndexResponse = {
+  ok: boolean;
+  tenant_id: string;
+  count: number;
+  items: ArtifactRecentJobRow[];
+};
+
+export type ArtifactMissionResponse = {
+  ok: boolean;
+  mission_id: string;
+  pipeline_mode?: string | null;
+  pipeline_explain?: PipelineExplainSummary;
+  job_count: number;
+  jobs: ArtifactMissionJobRow[];
+  latest_job_id: string;
+  artifact_count: number;
+  industry_knowledge_packs?: IndustryKnowledgePackReadiness;
+  artifact_index: ArtifactIndexRow[];
+  artifacts: Record<string, ArtifactEnvelope>;
+};
+
 export async function previewPipelineMode(payload: PipelineModePreviewPayload) {
   const { data } = await api.post('/api/v1/ai/pipeline-modes/preview', payload);
   return data as {
     ok: boolean;
     tenant_id: string;
-    preview: {
-      mode: string;
-      description: string;
-      selected_lineup: string[];
-      awakened_roles: string[];
-      stage_path: string[];
-      skipped_nodes: string[];
-      reasons: string[];
-      estimated_duration_sec: number;
-      estimated_duration_band_sec: {
-        low: number;
-        high: number;
-      };
-      approval_likely: boolean;
-      estimated_artifact_count: number;
-      recommended_submit_path: 'sync' | 'async';
-      estimated_cost_tier: string;
-      edge_target_count: number;
-      competitor_handle_count: number;
-      industry_tag: string;
-    };
+    preview: PipelineModePreview;
   };
 }
 
@@ -1938,45 +2384,19 @@ export async function fetchRunDragonTeamAsyncStatus(jobId: string) {
 
 export async function fetchArtifactsByJob(jobId: string) {
   const { data } = await api.get(`/api/v1/ai/artifacts/job/${encodeURIComponent(jobId)}`);
-  return data as {
-    ok: boolean;
-    job_id: string;
-    mission_id: string;
-    pipeline_mode?: string | null;
-    pipeline_explain?: Record<string, unknown>;
-    status: string;
-    artifact_count: number;
-    artifact_index: Array<Record<string, unknown>>;
-    artifacts: Record<string, ArtifactEnvelope>;
-  };
+  return data as ArtifactJobResponse;
 }
 
 export async function fetchArtifactsIndex(limit = 20) {
   const { data } = await api.get('/api/v1/ai/artifacts/index', {
     params: { limit },
   });
-  return data as {
-    ok: boolean;
-    tenant_id: string;
-    count: number;
-    items: Array<Record<string, unknown>>;
-  };
+  return data as ArtifactIndexResponse;
 }
 
 export async function fetchArtifactsByMission(missionId: string) {
   const { data } = await api.get(`/api/v1/ai/artifacts/mission/${encodeURIComponent(missionId)}`);
-  return data as {
-    ok: boolean;
-    mission_id: string;
-    pipeline_mode?: string | null;
-    pipeline_explain?: Record<string, unknown>;
-    job_count: number;
-    jobs: Array<Record<string, unknown>>;
-    latest_job_id: string;
-    artifact_count: number;
-    artifact_index: Array<Record<string, unknown>>;
-    artifacts: Record<string, ArtifactEnvelope>;
-  };
+  return data as ArtifactMissionResponse;
 }
 
 export async function createApprovalGateRequest(payload: {
@@ -1993,9 +2413,38 @@ export async function createApprovalGateRequest(payload: {
   const { data } = await api.post('/api/v1/ai/approval-gate/request', payload);
   return data as {
     ok: boolean;
-    approval: Record<string, unknown>;
+    approval: ApprovalGateItem;
   };
 }
+
+export type ApprovalGateTimelineItem = {
+  ts?: string;
+  event?: string;
+  actor?: string;
+};
+
+export type ApprovalGateItem = {
+  approval_id: string;
+  trace_id?: string;
+  request_id?: string;
+  user_id?: string;
+  agent_id?: string;
+  tool_id?: string;
+  risk_level?: string;
+  action_summary?: string;
+  approval_channel?: string;
+  approval_state?: string;
+  result?: Record<string, unknown>;
+  context?: Record<string, unknown>;
+  timeline?: ApprovalGateTimelineItem[];
+};
+
+export type HitlStatusPayload = {
+  decision?: 'pending' | 'approved' | 'rejected';
+  reason?: string;
+  operator?: string;
+  updated_at?: string;
+};
 
 export async function fetchApprovalGatePending(input?: { tenant_id?: string; limit?: number }) {
   const { data } = await api.get('/api/v1/ai/approval-gate/pending', {
@@ -2008,7 +2457,7 @@ export async function fetchApprovalGatePending(input?: { tenant_id?: string; lim
     ok: boolean;
     tenant_id: string;
     count: number;
-    items: Array<Record<string, unknown>>;
+    items: ApprovalGateItem[];
   };
 }
 
@@ -2016,7 +2465,7 @@ export async function fetchApprovalGateStatus(approvalId: string) {
   const { data } = await api.get(`/api/v1/ai/approval-gate/${encodeURIComponent(approvalId)}`);
   return data as {
     ok: boolean;
-    approval: Record<string, unknown>;
+    approval: ApprovalGateItem;
   };
 }
 
@@ -2028,7 +2477,7 @@ export async function decideApprovalGate(payload: {
   const { data } = await api.post('/api/v1/ai/approval-gate/decide', payload);
   return data as {
     ok: boolean;
-    approval: Record<string, unknown>;
+    approval: ApprovalGateItem;
   };
 }
 
@@ -2131,7 +2580,7 @@ export async function fetchIndustryStarterTasks(payload: {
 
 export async function getAiSubserviceStatus() {
   const { data } = await api.get('/api/v1/ai/status');
-  return data;
+  return data as AiSubserviceStatusResponse;
 }
 
 export async function getAiSubserviceHealth() {
@@ -2143,30 +2592,172 @@ export async function getAiSubserviceHealth() {
   };
 }
 
+export type CommercialReadinessStatus = 'ready' | 'warning' | 'blocked' | 'unknown';
+export type CommercialReadinessSeverity = 'high' | 'medium' | 'low' | 'unknown';
+
+export type CommercialReadinessBlocker = {
+  id: string;
+  severity: CommercialReadinessSeverity;
+  domain: string;
+  title: string;
+  detail: string;
+  next_action: string;
+};
+
+export type CommercialReadinessDeploy = {
+  region?: string;
+  mode?: string;
+};
+
+export type CommercialReadinessPayment = {
+  provider?: string;
+  checkout?: string;
+};
+
+export type CommercialReadinessNotifications = {
+  mode?: string;
+  file_outbox?: string;
+  smtp?: {
+    configured: boolean;
+    host?: string;
+    from_email?: string;
+  };
+  sms_mock_enabled?: boolean;
+  sms_webhook_configured?: boolean;
+};
+
+export type CommercialReadinessFeishu = {
+  enabled: boolean;
+  callback_url?: string;
+};
+
+export type CommercialReadinessCompliance = {
+  icp_ready?: boolean;
+};
+
+export type CommercialReadinessPayload = {
+  score: number;
+  status: CommercialReadinessStatus;
+  blocker_count: number;
+  blockers: CommercialReadinessBlocker[];
+  deploy: CommercialReadinessDeploy;
+  payment: CommercialReadinessPayment;
+  notifications: CommercialReadinessNotifications;
+  feishu: CommercialReadinessFeishu;
+  compliance: CommercialReadinessCompliance;
+};
+
+export type CommercialReadinessResponse = {
+  ok: boolean;
+  tenant_id: string;
+  readiness: CommercialReadinessPayload;
+};
+
+function normalizeCommercialReadinessStatus(value: unknown): CommercialReadinessStatus {
+  return value === 'ready' || value === 'warning' || value === 'blocked' ? value : 'unknown';
+}
+
+function normalizeCommercialReadinessSeverity(value: unknown): CommercialReadinessSeverity {
+  return value === 'high' || value === 'medium' || value === 'low' ? value : 'unknown';
+}
+
+function readCommercialString(value: unknown): string | undefined {
+  return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+}
+
+function readCommercialBoolean(value: unknown): boolean | undefined {
+  return typeof value === 'boolean' ? value : undefined;
+}
+
+function readCommercialNumber(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
+function normalizeCommercialReadinessBlockers(value: unknown): CommercialReadinessBlocker[] {
+  if (!Array.isArray(value)) return [];
+  return value.map((item, index) => {
+    const row = item && typeof item === 'object' ? (item as Record<string, unknown>) : {};
+    return {
+      id: readCommercialString(row.id) || `blocker-${index + 1}`,
+      severity: normalizeCommercialReadinessSeverity(row.severity),
+      domain: readCommercialString(row.domain) || 'unknown',
+      title: readCommercialString(row.title) || '未命名阻塞项',
+      detail: readCommercialString(row.detail) || '',
+      next_action: readCommercialString(row.next_action) || '待补充下一步动作',
+    };
+  });
+}
+
+function normalizeCommercialReadinessDeploy(value: unknown): CommercialReadinessDeploy {
+  const row = value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
+  return {
+    region: readCommercialString(row.region),
+    mode: readCommercialString(row.mode),
+  };
+}
+
+function normalizeCommercialReadinessPayment(value: unknown): CommercialReadinessPayment {
+  const row = value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
+  return {
+    provider: readCommercialString(row.provider),
+    checkout: readCommercialString(row.checkout),
+  };
+}
+
+function normalizeCommercialReadinessNotifications(value: unknown): CommercialReadinessNotifications {
+  const row = value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
+  const smtp = row.smtp && typeof row.smtp === 'object' ? (row.smtp as Record<string, unknown>) : {};
+  return {
+    mode: readCommercialString(row.mode),
+    file_outbox: readCommercialString(row.file_outbox),
+    smtp: {
+      configured: Boolean(readCommercialBoolean(smtp.configured)),
+      host: readCommercialString(smtp.host),
+      from_email: readCommercialString(smtp.from_email),
+    },
+    sms_mock_enabled: readCommercialBoolean(row.sms_mock_enabled),
+    sms_webhook_configured: readCommercialBoolean(row.sms_webhook_configured),
+  };
+}
+
+function normalizeCommercialReadinessFeishu(value: unknown): CommercialReadinessFeishu {
+  const row = value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
+  return {
+    enabled: Boolean(readCommercialBoolean(row.enabled)),
+    callback_url: readCommercialString(row.callback_url),
+  };
+}
+
+function normalizeCommercialReadinessCompliance(value: unknown): CommercialReadinessCompliance {
+  const row = value && typeof value === 'object' ? (value as Record<string, unknown>) : {};
+  return {
+    icp_ready: readCommercialBoolean(row.icp_ready),
+  };
+}
+
 export async function fetchCommercialReadiness() {
   const { data } = await api.get('/api/v1/ai/commercial/readiness');
-  return data as {
-    ok: boolean;
-    tenant_id: string;
+  const readinessRow = data?.readiness && typeof data.readiness === 'object'
+    ? (data.readiness as Record<string, unknown>)
+    : {};
+  const blockers = normalizeCommercialReadinessBlockers(readinessRow.blockers);
+
+  const response: CommercialReadinessResponse = {
+    ok: Boolean(data?.ok),
+    tenant_id: readCommercialString(data?.tenant_id) || '',
     readiness: {
-      score: number;
-      status: string;
-      blocker_count: number;
-      blockers: Array<{
-        id: string;
-        severity: string;
-        domain: string;
-        title: string;
-        detail: string;
-        next_action: string;
-      }>;
-      deploy: Record<string, unknown>;
-      payment: Record<string, unknown>;
-      notifications: Record<string, unknown>;
-      feishu: Record<string, unknown>;
-      compliance: Record<string, unknown>;
-    };
+      score: readCommercialNumber(readinessRow.score) ?? 0,
+      status: normalizeCommercialReadinessStatus(readinessRow.status),
+      blocker_count: readCommercialNumber(readinessRow.blocker_count) ?? blockers.length,
+      blockers,
+      deploy: normalizeCommercialReadinessDeploy(readinessRow.deploy),
+      payment: normalizeCommercialReadinessPayment(readinessRow.payment),
+      notifications: normalizeCommercialReadinessNotifications(readinessRow.notifications),
+      feishu: normalizeCommercialReadinessFeishu(readinessRow.feishu),
+      compliance: normalizeCommercialReadinessCompliance(readinessRow.compliance),
+    },
   };
+  return response;
 }
 
 export async function fetchHitlPending(limit = 20) {
@@ -2176,9 +2767,27 @@ export async function fetchHitlPending(limit = 20) {
   return data as {
     ok: boolean;
     count: number;
-    items: Array<Record<string, unknown>>;
+    items: HitlPendingItem[];
   };
 }
+
+export type HitlPendingScope = {
+  risk_level?: string;
+  task_description?: string;
+  score?: string | number;
+  lead_count?: string | number;
+  trace_id?: string;
+};
+
+export type HitlPendingItem = {
+  approval_id?: string;
+  status?: string;
+  approval_channel?: string;
+  approval_state?: string;
+  action_summary?: string;
+  task_description?: string;
+  scope?: HitlPendingScope;
+};
 
 export async function decideHitl(payload: {
   approval_id: string;
@@ -2189,7 +2798,7 @@ export async function decideHitl(payload: {
   const { data } = await api.post('/api/v1/ai/hitl/decide', payload);
   return data as {
     approval_id: string;
-    status: Record<string, unknown>;
+    status: HitlStatusPayload;
   };
 }
 
@@ -2203,14 +2812,82 @@ export type KernelApprovalJournalItem = {
   approval_id?: string;
 };
 
+export type AiKernelRiskTaxonomy = {
+  primary_family?: string;
+};
+
+export type AiKernelAutonomy = {
+  route?: string;
+  approval_latency_sec?: number;
+};
+
+export type AiKernelRuntime = {
+  score?: number;
+};
+
+export type AiKernelIndustryKbReference = {
+  entry_type?: string;
+  title?: string;
+  effect_score?: number;
+  source_account?: string;
+};
+
+export type AiKernelIndustryKbMetrics = {
+  industry_tag?: string;
+  industry_kb_hits?: number;
+  industry_kb_requested?: number;
+  industry_kb_hit_rate?: number;
+  industry_kb_effect_delta?: number;
+  references?: AiKernelIndustryKbReference[];
+};
+
+export type AiKernelIndustryKbSnapshot = {
+  metrics?: AiKernelIndustryKbMetrics;
+};
+
+export type AiKernelReportPayload = {
+  risk_level?: string;
+  risk_taxonomy?: AiKernelRiskTaxonomy;
+  autonomy?: AiKernelAutonomy;
+  runtime?: AiKernelRuntime;
+  score?: number;
+  leads?: unknown[];
+  edge_targets?: unknown[];
+  industry_knowledge_packs?: IndustryKnowledgePackReadiness;
+};
+
+export type AiKernelPersistedReport = AiKernelReportPayload & {
+  trace_id?: string;
+  stage?: string;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export type AiKernelTraceSnapshot = {
+  trace_id?: string;
+  workflow_id?: string;
+  spans?: unknown[];
+  activities?: unknown[];
+  [key: string]: unknown;
+};
+
+export type AiKernelReplaySnapshot = {
+  replay_id?: string;
+  trace_id?: string;
+  status?: string;
+  events?: unknown[];
+  [key: string]: unknown;
+};
+
 export type KernelReportResponse = {
   ok: boolean;
   trace_id: string;
-  kernel_report: Record<string, unknown>;
-  kernel_report_persisted?: Record<string, unknown>;
+  kernel_report: AiKernelReportPayload;
+  industry_kb?: AiKernelIndustryKbSnapshot;
+  kernel_report_persisted?: AiKernelPersistedReport;
   approval_journal?: KernelApprovalJournalItem[];
-  trace?: Record<string, unknown>;
-  replay?: Record<string, unknown>;
+  trace?: AiKernelTraceSnapshot;
+  replay?: AiKernelReplaySnapshot;
 };
 
 export async function fetchAiKernelReport(traceId: string, userId?: string) {
@@ -2259,20 +2936,53 @@ export async function rollbackAiKernelReport(
   }, {
     params: payload?.user_id ? { user_id: payload.user_id } : undefined,
   });
-  return data as {
-    ok: boolean;
-    dry_run: boolean;
-    pending_approval?: boolean;
-    approval_id?: string;
-    stage: 'preflight' | 'postgraph';
-    rollback_trace_id: string;
-    storage?: Record<string, unknown>;
-    approval_status?: Record<string, unknown>;
-    rollback_report?: Record<string, unknown>;
-    replay_payload?: Record<string, unknown>;
-    result?: Record<string, unknown>;
-  };
+  return data as KernelRollbackResponse;
 }
+
+export type KernelRollbackStorage = {
+  persisted?: boolean;
+  path?: string;
+  uri?: string;
+  [key: string]: unknown;
+};
+
+export type KernelRollbackApprovalStatus = HitlStatusPayload & {
+  approval_id?: string;
+  [key: string]: unknown;
+};
+
+export type KernelRollbackReport = AiKernelReportPayload & {
+  trace_id?: string;
+  stage?: 'preflight' | 'postgraph' | string;
+  [key: string]: unknown;
+};
+
+export type KernelRollbackReplayPayload = {
+  trace_id?: string;
+  stage?: 'preflight' | 'postgraph' | string;
+  replay_id?: string;
+  [key: string]: unknown;
+};
+
+export type KernelRollbackResult = {
+  status?: string;
+  approval_id?: string;
+  [key: string]: unknown;
+};
+
+export type KernelRollbackResponse = {
+  ok: boolean;
+  dry_run: boolean;
+  pending_approval?: boolean;
+  approval_id?: string;
+  stage: 'preflight' | 'postgraph';
+  rollback_trace_id: string;
+  storage?: KernelRollbackStorage;
+  approval_status?: KernelRollbackApprovalStatus;
+  rollback_report?: KernelRollbackReport;
+  replay_payload?: KernelRollbackReplayPayload;
+  result?: KernelRollbackResult;
+};
 
 export async function getAiKernelRolloutPolicy(tenantId?: string) {
   const { data } = await api.get('/api/v1/ai/kernel/rollout/policy', {
@@ -2281,17 +2991,31 @@ export async function getAiKernelRolloutPolicy(tenantId?: string) {
   return data as {
     ok: boolean;
     tenant_id: string;
-    policy: Record<string, unknown>;
+    policy: AiKernelRolloutPolicy;
     window_active: boolean;
   };
 }
+
+export type AiKernelRolloutRiskEntry = {
+  rollout_ratio?: number;
+  strategy_version?: string;
+  block_mode?: 'hitl' | 'deny' | string;
+};
+
+export type AiKernelRolloutPolicy = {
+  enabled?: boolean;
+  rollout_ratio?: number;
+  block_mode?: 'hitl' | 'deny' | string;
+  note?: string;
+  risk_rollout?: Record<string, AiKernelRolloutRiskEntry>;
+};
 
 export async function updateAiKernelRolloutPolicy(payload: {
   tenant_id?: string;
   enabled: boolean;
   rollout_ratio: number;
   block_mode: 'hitl' | 'deny';
-  risk_rollout?: Record<string, unknown>;
+  risk_rollout?: Record<string, AiKernelRolloutRiskEntry>;
   window_start_utc?: string;
   window_end_utc?: string;
   note?: string;
@@ -2300,7 +3024,7 @@ export async function updateAiKernelRolloutPolicy(payload: {
   return data as {
     ok: boolean;
     tenant_id: string;
-    policy: Record<string, unknown>;
+    policy: AiKernelRolloutPolicy;
     window_active: boolean;
   };
 }
@@ -2405,7 +3129,7 @@ export type AiKernelRolloutTemplate = {
   tenant_id: string;
   template_key: string;
   template_name: string;
-  risk_rollout: Record<string, unknown>;
+  risk_rollout: Record<string, AiKernelRolloutRiskEntry>;
   note?: string;
   updated_by?: string;
   created_at?: string;
@@ -2442,7 +3166,7 @@ export async function saveAiKernelRolloutTemplate(payload: {
   tenant_id?: string;
   template_key?: string;
   template_name: string;
-  risk_rollout: Record<string, unknown>;
+  risk_rollout: Record<string, AiKernelRolloutRiskEntry>;
   note?: string;
 }) {
   const { data } = await api.post('/api/v1/ai/kernel/rollout/templates', payload);
@@ -2462,7 +3186,7 @@ export async function importAiKernelRolloutTemplates(payload: {
   templates: Array<{
     template_key?: string;
     template_name: string;
-    risk_rollout?: Record<string, unknown>;
+    risk_rollout?: Record<string, AiKernelRolloutRiskEntry>;
     note?: string;
   }>;
 }) {
@@ -2516,13 +3240,8 @@ export async function fetchAiHitlStatus(approvalId: string) {
   return data as {
     ok: boolean;
     approval_id: string;
-    status: {
-      decision?: 'pending' | 'approved' | 'rejected';
-      reason?: string;
-      operator?: string;
-      updated_at?: string;
-    };
-    record?: Record<string, unknown>;
+    status: HitlStatusPayload;
+    record?: ApprovalGateItem;
   };
 }
 
@@ -2553,6 +3272,17 @@ export type LlmAgentBindingRow = {
   updated_by?: string;
   updated_at?: string | null;
   source?: 'default' | 'tenant_override';
+};
+
+export type WorkflowTemplateOverviewItem = {
+  template_name?: string;
+  name?: string;
+  industry_tag?: string;
+  industry?: string;
+  version?: string;
+  template_version?: string;
+  updated_at?: string;
+  created_at?: string;
 };
 
 export async function fetchAiLlmModelCatalog() {
@@ -2745,6 +3475,119 @@ export type AgentExtensionProfile = {
   updated_by?: string | null;
 };
 
+export type AiSkillsPoolProfileSummaryRow = {
+  agent_id: string;
+  enabled: boolean;
+  profile_version: string;
+  runtime_mode: string;
+  skills_count: number;
+  nodes_count: number;
+  updated_at?: string | null;
+};
+
+export type AiSkillsPoolProfileRow = AgentExtensionProfile & {
+  skills_count: number;
+  nodes_count: number;
+};
+
+export type AiSkillsPoolOverviewPayload = {
+  summary: {
+    agents_total: number;
+    agents_enabled: number;
+    skills_total: number;
+    nodes_total: number;
+    kb_profiles_total: number;
+    rag_packs_total: number;
+    workflow_templates_total: number;
+  };
+  profiles: AiSkillsPoolProfileSummaryRow[];
+  agent_profiles: AgentExtensionProfile[];
+  catalog: {
+    agent_ids: string[];
+    capabilities: string[];
+    default_profiles: AgentExtensionProfile[];
+    schema_version: string;
+  };
+  llm_bindings: LlmAgentBindingRow[];
+  llm_providers: LlmProviderConfigRow[];
+  industry_kb_profiles: Array<Record<string, unknown>>;
+  industry_kb_stats: Array<Record<string, unknown>>;
+  industry_kb_metrics: Record<string, unknown>;
+  agent_rag_pack_summary: Array<{
+    agent_id: string;
+    pack_count: number;
+    last_updated?: string | null;
+  }>;
+  workflow_templates: WorkflowTemplateOverviewItem[];
+  workflow_templates_by_industry: Record<string, number>;
+};
+
+export type AiSkillsPoolOverview = Omit<AiSkillsPoolOverviewPayload, 'profiles' | 'agent_profiles'> & {
+  profiles: AiSkillsPoolProfileRow[];
+  agent_profiles: AiSkillsPoolProfileRow[];
+};
+
+function normalizeRuntimeMode(value?: string): 'local' | 'cloud' | 'hybrid' {
+  return value === 'local' || value === 'cloud' || value === 'hybrid' ? value : 'hybrid';
+}
+
+function normalizeAiSkillsPoolProfileRow(input: {
+  agentId: string;
+  summary?: AiSkillsPoolProfileSummaryRow;
+  detail?: AgentExtensionProfile;
+}): AiSkillsPoolProfileRow {
+  const skills = Array.isArray(input.detail?.skills) ? input.detail.skills : [];
+  const nodes = Array.isArray(input.detail?.nodes) ? input.detail.nodes : [];
+
+  return {
+    agent_id: input.agentId,
+    enabled: input.detail?.enabled ?? input.summary?.enabled ?? false,
+    profile_version: input.detail?.profile_version ?? input.summary?.profile_version ?? 'openclaw-native-v1',
+    runtime_mode: normalizeRuntimeMode(input.detail?.runtime_mode ?? input.summary?.runtime_mode),
+    role_prompt: input.detail?.role_prompt,
+    identity_card: input.detail?.identity_card,
+    collaboration_contract: input.detail?.collaboration_contract,
+    run_contract: input.detail?.run_contract,
+    skills,
+    nodes,
+    hooks: input.detail?.hooks,
+    limits: input.detail?.limits,
+    tags: Array.isArray(input.detail?.tags) ? input.detail.tags : [],
+    source: input.detail?.source,
+    updated_at: input.detail?.updated_at ?? input.summary?.updated_at,
+    updated_by: input.detail?.updated_by,
+    skills_count:
+      typeof input.summary?.skills_count === 'number'
+        ? input.summary.skills_count
+        : skills.length,
+    nodes_count:
+      typeof input.summary?.nodes_count === 'number'
+        ? input.summary.nodes_count
+        : nodes.length,
+  };
+}
+
+function normalizeAiSkillsPoolOverview(raw: AiSkillsPoolOverviewPayload): AiSkillsPoolOverview {
+  const summaryRows = Array.isArray(raw.profiles) ? raw.profiles : [];
+  const detailRows = Array.isArray(raw.agent_profiles) ? raw.agent_profiles : [];
+  const summaryMap = new Map(summaryRows.map((row) => [row.agent_id, row]));
+  const detailMap = new Map(detailRows.map((row) => [row.agent_id, row]));
+  const agentIds = Array.from(new Set([...summaryMap.keys(), ...detailMap.keys()]));
+  const mergedProfiles = agentIds.map((agentId) =>
+    normalizeAiSkillsPoolProfileRow({
+      agentId,
+      summary: summaryMap.get(agentId),
+      detail: detailMap.get(agentId),
+    }),
+  );
+
+  return {
+    ...raw,
+    profiles: mergedProfiles,
+    agent_profiles: mergedProfiles,
+  };
+}
+
 export async function fetchAiAgentExtensions(tenantId?: string) {
   const { data } = await api.get('/api/v1/ai/agent/extensions', {
     params: tenantId ? { tenant_id: tenantId } : undefined,
@@ -2803,50 +3646,26 @@ export async function fetchAiSkillsPoolOverview(tenantId?: string) {
   const { data } = await api.get('/api/v1/ai/skills-pool/overview', {
     params: tenantId ? { tenant_id: tenantId } : undefined,
   });
-  return data as {
+  const payload = data as {
     ok: boolean;
     tenant_id: string;
-    overview: {
-      summary: {
-        agents_total: number;
-        agents_enabled: number;
-        skills_total: number;
-        nodes_total: number;
-        kb_profiles_total: number;
-        rag_packs_total: number;
-        workflow_templates_total: number;
-      };
-      profiles: Array<{
-        agent_id: string;
-        enabled: boolean;
-        profile_version: string;
-        runtime_mode: string;
-        skills_count: number;
-        nodes_count: number;
-        updated_at?: string | null;
-      }>;
-      agent_profiles: AgentExtensionProfile[];
-      catalog: {
-        agent_ids: string[];
-        capabilities: string[];
-        default_profiles: AgentExtensionProfile[];
-        schema_version: string;
-      };
-      llm_bindings: LlmAgentBindingRow[];
-      llm_providers: LlmProviderConfigRow[];
-      industry_kb_profiles: Array<Record<string, unknown>>;
-      industry_kb_stats: Array<Record<string, unknown>>;
-      industry_kb_metrics: Record<string, unknown>;
-      agent_rag_pack_summary: Array<{
-        agent_id: string;
-        pack_count: number;
-        last_updated?: string | null;
-      }>;
-      workflow_templates: Array<Record<string, unknown>>;
-      workflow_templates_by_industry: Record<string, number>;
-    };
+    overview: AiSkillsPoolOverviewPayload;
+  };
+  return {
+    ok: Boolean(payload?.ok),
+    tenant_id: payload?.tenant_id || '',
+    overview: normalizeAiSkillsPoolOverview(payload?.overview),
   };
 }
+
+export type AgentRagPackPayload = {
+  summary?: string;
+  brief?: string;
+  description?: string;
+  tags?: string[];
+  keywords?: string[];
+  [key: string]: unknown;
+};
 
 export type AgentRagPackItem = {
   tenant_id: string;
@@ -2854,13 +3673,13 @@ export type AgentRagPackItem = {
   agent_id: string;
   knowledge_pack_id: string;
   knowledge_pack_name: string;
-  payload: Record<string, unknown>;
+  payload: AgentRagPackPayload;
   created_at?: string;
   updated_at?: string;
   pack_id?: string;
   title?: string;
   scope?: string;
-  payload_json?: Record<string, unknown>;
+  payload_json?: AgentRagPackPayload;
 };
 
 export async function fetchAiAgentRagCatalog(tenantId?: string) {
@@ -2902,12 +3721,66 @@ export async function fetchSkillEffectiveness(skillId: string, tenantId?: string
 }
 
 export async function approveSkill(skillId: string) {
-  const { data } = await api.patch(`/api/v1/skills/${encodeURIComponent(skillId)}/status`, {
+  const { data } = await api.patch(`/api/v1/ai/skills/${encodeURIComponent(skillId)}/status`, {
     status: 'approved',
   });
   return data as {
     ok: boolean;
-    skill: Record<string, unknown>;
+    skill_id: string;
+    status: string;
+    scan_status?: string;
+    scan_report?: {
+      risk_level?: string;
+      issues?: string[];
+      confidence?: number;
+    };
+  };
+}
+
+export async function updateSkillStatus(skillId: string, status: 'draft' | 'review' | 'approved' | 'deprecated') {
+  const { data } = await api.patch(`/api/v1/ai/skills/${encodeURIComponent(skillId)}/status`, {
+    status,
+  });
+  return data as {
+    ok: boolean;
+    skill_id: string;
+    status: string;
+    scan_status?: string;
+    scan_report?: {
+      risk_level?: string;
+      issues?: string[];
+      confidence?: number;
+    };
+  };
+}
+
+export async function fetchSkills(input?: {
+  lobster_id?: string;
+  category?: string;
+  enabled_only?: boolean;
+}) {
+  const { data } = await api.get('/api/v1/ai/skills', {
+    params: input,
+  });
+  return data as {
+    ok: boolean;
+    count?: number;
+    skills: LobsterSkill[];
+  };
+}
+
+export async function rescanSkill(skillId: string) {
+  const { data } = await api.post(`/api/v1/ai/skills/${encodeURIComponent(skillId)}/scan`);
+  return data as {
+    ok: boolean;
+    skill_id: string;
+    publish_status: string;
+    scan_status?: string;
+    scan_report?: {
+      risk_level?: string;
+      issues?: string[];
+      confidence?: number;
+    };
   };
 }
 
@@ -2917,6 +3790,56 @@ export async function fetchExecutionMonitorSnapshot(tenantId?: string) {
   });
   return data as ExecutionMonitorSnapshot;
 }
+
+export type LobsterRuntimeRow = {
+  id: string;
+  lobster_id: string;
+  zh_name?: string;
+  display_name: string;
+  name: string;
+  status: string;
+  lifecycle: string;
+  score?: number;
+  avg_quality_score?: number;
+};
+
+export type LobsterHourlyUsageRow = {
+  hour?: string;
+  date?: string;
+  created_at?: string;
+  input_tokens?: number;
+  output_tokens?: number;
+  total_tokens?: number;
+  cost?: number;
+  cost_cny?: number;
+  estimated_cost_cny?: number;
+};
+
+export type LobsterEntityRow = {
+  id: string;
+  name: string;
+  display_name: string;
+  zh_name?: string;
+  description: string;
+  role?: string;
+  lifecycle: string;
+  status: string;
+  system: string;
+  run_count_24h?: number;
+  score?: number;
+  avg_latency_ms?: number;
+  tags: string[];
+  annotations: Record<string, string>;
+  skills: LobsterSkill[];
+  icon?: string;
+  default_model_tier?: string;
+};
+
+export type AiSubserviceStatusResponse = {
+  status?: string;
+  registered_edges?: unknown[];
+  known_edge_skills?: unknown[];
+};
 
 function normalizeLobsterToolSummary(raw: Record<string, unknown>): LobsterToolSummary {
   return {
@@ -3074,7 +3997,17 @@ export async function fetchLobsterQualityStats(lobsterId: string, days = 30) {
 
 export async function submitLobsterFeedback(payload: LobsterFeedbackSubmitPayload) {
   const { data } = await api.post('/api/v1/feedbacks', payload);
-  return data as { ok: boolean; feedback_id: string; status: string };
+  return data as {
+    ok: boolean;
+    feedback_id: string;
+    status: string;
+    skill_improvement_signal?: {
+      created: boolean;
+      reason?: string;
+      resolved_skill_id?: string;
+      proposal?: Record<string, unknown> | null;
+    } | null;
+  };
 }
 
 export async function fetchTaskFeedback(taskId: string) {
@@ -3102,19 +4035,12 @@ export async function fetchLeadConversionHistory(tenantId: string, leadId: strin
 
 export async function fetchActivities(input?: { limit?: number; offset?: number; type?: string }) {
   const { data } = await api.get('/api/v1/activities', { params: input });
-  return data as {
-    ok: boolean;
-    total: number;
-    items: ActivityStreamItem[];
-  };
+  return data as ActivityStreamListResponse;
 }
 
 export async function fetchActivity(activityId: string) {
   const { data } = await api.get(`/api/v1/activities/${encodeURIComponent(activityId)}`);
-  return data as {
-    ok: boolean;
-    activity: ActivityStreamItem;
-  };
+  return data as ActivityStreamDetailResponse;
 }
 
 export async function fetchKnowledgeBases() {

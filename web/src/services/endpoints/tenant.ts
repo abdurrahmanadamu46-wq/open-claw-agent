@@ -1,4 +1,9 @@
-﻿import api from '../api';
+import api from '../api';
+import type {
+  XhsCompetitiveIngestResponse,
+  XhsCompetitiveNoteSample,
+  XhsCompetitivePreviewResponse,
+} from '@/types/xhs-intel';
 
 export type LeadScoringWords = {
   highIntent: string[];
@@ -78,4 +83,34 @@ export async function archiveTenantRegistry(tenantId: string): Promise<TenantReg
     `/api/v1/tenant/registry/${encodeURIComponent(tenantId)}`,
   );
   return data.data;
+}
+
+export async function ingestXhsCompetitiveNote(
+  payload: XhsCompetitiveNoteSample & {
+    tenantId?: string;
+    upsertAsCorpus?: boolean;
+    targetAgents?: string[];
+    maxFormulaLibrary?: number;
+  },
+) {
+  const { data } = await api.post<XhsCompetitiveIngestResponse>(
+    '/api/v1/tenant/rag-brain-profiles/competitive-intel/xhs-ingest',
+    payload,
+  );
+  return data;
+}
+
+export async function previewXhsCompetitiveNote(input: {
+  note_url: string;
+  industry?: string;
+  niche?: string;
+  scenario?: string;
+}) {
+  const { data } = await api.get<XhsCompetitivePreviewResponse>(
+    '/api/v1/ai/xhs/competitive-intel/preview',
+    {
+      params: input,
+    },
+  );
+  return data;
 }

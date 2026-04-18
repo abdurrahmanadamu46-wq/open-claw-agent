@@ -26,6 +26,7 @@
     "evidence:knowledge-context:local:context": "node scripts/knowledge-context-local-evidence.cjs --mode context_only",
     "evidence:execution-monitor:live": "node scripts/execution-monitor-live-evidence.cjs",
     "evidence:execution-monitor:real": "node scripts/execution-monitor-real-evidence.cjs",
+    "evidence:execution-monitor:real:preflight": "node scripts/execution-monitor-real-evidence.cjs --preflight",
     "evidence:release-data": "node scripts/release-data-evidence.cjs",
     "evidence:release-data:local": "node scripts/release-data-local-evidence.cjs",
     "verify:closeout:frontend": "node scripts/verify-frontend-closeout.cjs",

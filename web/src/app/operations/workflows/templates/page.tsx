@@ -82,7 +82,7 @@ export default function WorkflowTemplatesPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto max-w-7xl space-y-5">
         <section
           className="rounded-[30px] border p-6"

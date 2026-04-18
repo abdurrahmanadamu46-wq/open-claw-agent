@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { fetchObservabilityTrace, fetchObservabilityTraces } from '@/services/endpoints/ai-subservice';
-import type { TraceSpan, WorkflowTrace } from '@/types/distributed-tracing';
+import type { DispatcherOrlaStageEvent, TraceSpan, WorkflowTrace } from '@/types/distributed-tracing';
 
 export default function TracesPage() {
   const [traces, setTraces] = useState<WorkflowTrace[]>([]);
@@ -91,10 +91,42 @@ export default function TracesPage() {
                 <div className="text-lg font-semibold text-white">{selectedTrace.workflow_name || selectedTrace.trace_id}</div>
                 <div className="mt-1 text-xs text-slate-400">{selectedTrace.trace_id} · {selectedTrace.status || 'unknown'}</div>
               </div>
+              {selectedTrace.dispatcher_orla?.event_count ? <DispatcherOrlaPanel stages={selectedTrace.dispatcher_orla.stages} /> : null}
               <WorkflowTraceViewer spans={selectedTrace.spans ?? []} totalMs={totalMs} />
             </div>
           )}
         </section>
+      </div>
+    </div>
+  );
+}
+
+function DispatcherOrlaPanel({ stages }: { stages: DispatcherOrlaStageEvent[] }) {
+  return (
+    <div className="rounded-2xl border border-cyan-400/15 bg-cyan-500/[0.06] p-4">
+      <div className="text-sm font-semibold text-cyan-100">Dispatcher Orla Timeline</div>
+      <div className="mt-2 text-xs text-slate-300">
+        选中 trace 后，这里展示 dispatcher 的阶段路由、tier 和升档触发，方便判断 pilot 是否真正按阶段做调度。
+      </div>
+      <div className="mt-4 space-y-2">
+        {stages.map((stage, index) => (
+          <div key={`${stage.stage_id}-${stage.created_at || index}`} className="rounded-xl border border-white/10 bg-black/20 px-3 py-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-100">{stage.stage_id || 'unknown'}</span>
+              <span className="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-200">{stage.applied_tier || '-'}</span>
+              {stage.promotion_trigger ? (
+                <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs text-amber-200">{stage.promotion_trigger}</span>
+              ) : null}
+              {stage.shared_state_hit ? (
+                <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200">shared state hit</span>
+              ) : null}
+            </div>
+            <div className="mt-2 text-xs text-slate-400">
+              reason: <span className="text-slate-200">{stage.reason || '-'}</span>
+              {stage.created_at ? <span className="ml-3">{new Date(stage.created_at).toLocaleString('zh-CN', { hour12: false })}</span> : null}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

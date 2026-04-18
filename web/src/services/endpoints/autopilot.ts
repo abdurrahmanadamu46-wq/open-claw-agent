@@ -3,6 +3,7 @@
  */
 
 import api from '../api';
+import type { AiKernelIndustryKbSnapshot } from './ai-subservice';
 
 export interface AutopilotStatus {
   circuitOpen: boolean;
@@ -127,6 +128,7 @@ export interface AutopilotTraceSnapshotResponse {
   replayAudits: AutopilotTraceReplayAuditItem[];
   behavior: { snapshots: AutopilotTraceBehaviorSnapshotItem[] };
   fleet: { taskIds: string[]; snapshots: AutopilotTraceFleetSnapshotItem[] };
+  industry_kb?: AiKernelIndustryKbSnapshot;
 }
 
 export type AutopilotAuditLogLevel = 'INFO' | 'WARN' | 'ERROR' | 'SECURITY';

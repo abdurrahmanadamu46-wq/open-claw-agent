@@ -10,6 +10,9 @@ import {
   deescalateStrategyIntensity,
   escalateStrategyIntensity,
   fetchIndustryList,
+  fetchIndustryKnowledgePackReadiness,
+  type PipelineModePreview,
+  type RunDragonTeamSyncResult,
   fetchRunDragonTeamAsyncStatus,
   fetchStrategyIntensity,
   fetchStrategyIntensityHistory,
@@ -21,6 +24,10 @@ import { getCurrentUser } from '@/services/endpoints/user';
 import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 import { IndustrySelector } from '@/components/business/IndustrySelector';
 import { MainlineStageHeader } from '@/components/business/MainlineStageHeader';
+import {
+  KnowledgeContextEvidence,
+  resolveKnowledgeContext,
+} from '@/components/knowledge/KnowledgeContextEvidence';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/Dialog';
 import { AnalyticsEvent, trackEvent } from '@/lib/analytics';
@@ -95,11 +102,11 @@ export default function StrategyPage() {
   const [industryTag, setIndustryTag] = useState('');
   const [competitorHandlesText, setCompetitorHandlesText] = useState('openalex\ngithub_projects');
   const [activeJobId, setActiveJobId] = useState('');
-  const [syncResult, setSyncResult] = useState<Record<string, unknown> | null>(null);
+  const [syncResult, setSyncResult] = useState<RunDragonTeamSyncResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [preview, setPreview] = useState<Record<string, unknown> | null>(null);
+  const [preview, setPreview] = useState<PipelineModePreview | null>(null);
   const [selectedSubmitPath, setSelectedSubmitPath] = useState<'sync' | 'async'>('async');
   const [intensityAction, setIntensityAction] = useState<'escalate' | 'deescalate' | null>(null);
   const [industryWorkflowContext, setIndustryWorkflowContext] = useState<IndustryWorkflowHandoff | null>(null);
@@ -121,10 +128,23 @@ export default function StrategyPage() {
 
   const competitorHandles = useMemo(() => splitLines(competitorHandlesText), [competitorHandlesText]);
   const normalizedIndustryTag = industryTag.trim();
+  const knowledgePackReadinessQuery = useQuery({
+    queryKey: ['strategy-page', 'industry-knowledge-pack-readiness', normalizedIndustryTag],
+    queryFn: () => fetchIndustryKnowledgePackReadiness(normalizedIndustryTag),
+    enabled: normalizedIndustryTag.length > 0,
+    staleTime: 60 * 1000,
+    retry: false,
+  });
   const industryOptions = industryListQuery.data?.items ?? [];
   const industryCategories = industryListQuery.data?.categories ?? [];
   const intensity = intensityQuery.data;
   const autonomyPolicy = autonomyPolicyQuery.data;
+  const knowledgePackReadiness = knowledgePackReadinessQuery.data?.readiness;
+  const knowledgePackReady = Boolean(knowledgePackReadiness?.ok);
+  const knowledgePackFilesReady = Number(knowledgePackReadiness?.files_ready ?? 0);
+  const knowledgePackFilesExpected = Number(knowledgePackReadiness?.files_expected ?? 0);
+  const knowledgePackRolesReady = Number(knowledgePackReadiness?.roles_ready ?? 0);
+  const knowledgePackRolesTotal = Number(knowledgePackReadiness?.roles_total ?? 9);
   const autonomyOverrideCount = Array.isArray(autonomyPolicy?.per_lobster_overrides)
     ? autonomyPolicy.per_lobster_overrides.length
     : Object.keys(autonomyPolicy?.per_lobster_overrides || {}).length;
@@ -135,13 +155,12 @@ export default function StrategyPage() {
     const rows = intensityHistoryQuery.data?.history ?? [];
     return rows
       .map((item, index) => {
-        const row = item as Record<string, unknown>;
-        const ts = String(row.changed_at ?? row.updated_at ?? row.ts ?? '');
-        const previousLevel = Number(row.previous_level ?? row.old_level ?? row.current_level ?? 0);
-        const nextLevel = Number(row.next_level ?? row.new_level ?? row.current_level ?? 0);
-        const changedBy = String(row.changed_by ?? row.updated_by ?? row.triggered_by ?? '-');
+        const ts = String(item.changed_at ?? item.updated_at ?? '');
+        const previousLevel = Number(item.previous_level ?? item.current_level ?? 0);
+        const nextLevel = Number(item.next_level ?? item.current_level ?? 0);
+        const changedBy = String(item.changed_by ?? item.updated_by ?? '-');
         return {
-          id: String(row.id ?? `${ts || 'history'}-${index}`),
+          id: String(item.id ?? `${ts || 'history'}-${index}`),
           label: formatHistoryTime(ts),
           previousLevel,
           nextLevel,
@@ -221,7 +240,7 @@ export default function StrategyPage() {
         industry_workflow_context: industryWorkflowContext ?? undefined,
         meta: normalizedIndustryTag ? { industry: normalizedIndustryTag } : undefined,
       });
-      setSyncResult(result as Record<string, unknown>);
+      setSyncResult(result);
       trackEvent(AnalyticsEvent.STRATEGY_SUBMITTED, {
         submit_path: 'sync',
         tenant_id: currentUser?.tenantId,
@@ -299,6 +318,13 @@ export default function StrategyPage() {
   }
 
   const status = statusQuery.data;
+  const runtimeKnowledgeContext = useMemo(
+    () =>
+      resolveKnowledgeContext(syncResult)
+      ?? resolveKnowledgeContext(status?.result)
+      ?? resolveKnowledgeContext(status?.result?.kernel_report),
+    [status?.result, syncResult],
+  );
 
   return (
     <div className="space-y-6">
@@ -466,6 +492,38 @@ export default function StrategyPage() {
               />
             </Field>
 
+            <div className={`rounded-2xl border p-4 text-sm ${
+              knowledgePackReady
+                ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-50'
+                : 'border-amber-400/25 bg-amber-400/10 text-amber-50'
+            }`}>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="font-medium">行业知识包就绪状态</div>
+                  <div className="mt-1 text-xs opacity-80">
+                    {normalizedIndustryTag
+                      ? '提交前检查当前行业是否已有 9 只龙虾的专属知识包。'
+                      : '选择行业后自动检查知识包。'}
+                  </div>
+                </div>
+                <span className="rounded-full border border-white/15 bg-black/20 px-3 py-1 text-xs">
+                  {knowledgePackReadinessQuery.isLoading
+                    ? '检查中'
+                    : knowledgePackReady
+                      ? 'Ready'
+                      : normalizedIndustryTag
+                        ? 'Need attention'
+                        : 'Waiting'}
+                </span>
+              </div>
+              <div className="mt-3 grid gap-3 sm:grid-cols-4">
+                <PreviewMetric label="匹配行业" value={String(knowledgePackReadiness?.matched_industry || normalizedIndustryTag || '-')} />
+                <PreviewMetric label="龙虾就绪" value={`${knowledgePackRolesReady}/${knowledgePackRolesTotal}`} />
+                <PreviewMetric label="文件就绪" value={`${knowledgePackFilesReady}/${knowledgePackFilesExpected || 36}`} />
+                <PreviewMetric label="缺口" value={String(knowledgePackReadiness?.missing?.length ?? (normalizedIndustryTag ? '-' : 0))} />
+              </div>
+            </div>
+
             <div className="grid gap-4 md:grid-cols-2">
               <Field label="行业标签（高级）" value={industryTag} onChange={setIndustryTag} helper="如需手工填写自定义行业 tag，可在这里覆盖选择器结果。" />
               <ReadonlyField label="当前操作者" value={currentUser?.name || currentUser?.id || '未识别'} helper="系统会把操作者身份写入策略链和审计链。" />
@@ -485,6 +543,7 @@ export default function StrategyPage() {
 
             <button
               type="button"
+              data-testid="strategy-preview-submit"
               onClick={() => void handlePreview()}
               disabled={submitting || previewLoading}
               className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-medium text-slate-950 disabled:opacity-50"
@@ -522,6 +581,8 @@ export default function StrategyPage() {
                 <StatusCard label="任务编号" value={activeJobId || String(syncResult?.mission_id || '-')} mono />
                 <StatusCard label="执行模式" value={String(status?.pipeline_mode ?? syncResult?.pipeline_mode ?? '-')} />
                 <StatusCard label="产物数量" value={String(status?.artifact_count ?? syncResult?.artifact_count ?? 0)} />
+
+                <KnowledgeContextEvidence context={runtimeKnowledgeContext} />
 
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Link href="/campaigns" className="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-2.5 text-sm text-white">
@@ -592,6 +653,7 @@ export default function StrategyPage() {
               </button>
               <button
                 type="button"
+                data-testid="strategy-confirm-submit"
                 onClick={() => {
                   setPreviewOpen(false);
                   if (selectedSubmitPath === 'sync') {

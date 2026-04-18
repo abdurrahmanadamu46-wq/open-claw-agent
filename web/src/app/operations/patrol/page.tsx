@@ -93,7 +93,8 @@ const DEFAULT_RULES: PatrolRule[] = [
   },
 ];
 
-function nextRunText(intervalMinutes: number): string {
+function nextRunText(intervalMinutes: number, mounted = true): string {
+  if (!mounted) return '--:--';
   const dt = new Date(Date.now() + intervalMinutes * 60 * 1000);
   const hh = String(dt.getHours()).padStart(2, '0');
   const mm = String(dt.getMinutes()).padStart(2, '0');
@@ -124,6 +125,8 @@ function statusTone(status: PatrolStatus) {
 }
 
 export default function PatrolPage() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const [rules, setRules] = useState<PatrolRule[]>(DEFAULT_RULES);
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -185,12 +188,12 @@ export default function PatrolPage() {
         .map((rule) => ({
           id: rule.id,
           name: rule.name,
-          nextRunAt: nextRunText(rule.intervalMinutes),
+          nextRunAt: nextRunText(rule.intervalMinutes, mounted),
           interval: `${rule.intervalMinutes} 分钟`,
           threshold: `${rule.triggerPercent}%`,
           platform: rule.targetPlatform,
         })),
-    [rules],
+    [rules, mounted],
   );
 
   const targetPreview = useMemo(() => parseTargets(formTargetUrls), [formTargetUrls]);
@@ -422,7 +425,7 @@ export default function PatrolPage() {
                           {rule.name}
                         </h3>
                         <p className="mt-1 text-xs" style={{ color: MUTED }}>
-                          平台：{rule.targetPlatform} · 目标：{rule.targetCount} 个 · 下次执行：{nextRunText(rule.intervalMinutes)}
+                          平台：{rule.targetPlatform} · 目标：{rule.targetCount} 个 · 下次执行：{nextRunText(rule.intervalMinutes, mounted)}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
@@ -700,7 +703,7 @@ export default function PatrolPage() {
               </div>
 
               <div className="rounded-lg border p-3 text-xs" style={{ borderColor: BORDER, backgroundColor: '#0b1220', color: '#cbd5e1' }}>
-                预览：该策略将在 <span className="text-cyan-300">{nextRunText(formInterval)}</span> 首次执行，
+                预览：该策略将在 <span className="text-cyan-300">{nextRunText(formInterval, mounted)}</span> 首次执行，
                 监控 <span className="text-cyan-300">{targetPreview.length || 1}</span> 个目标，
                 命中概率达到 <span className="text-cyan-300">{formTriggerPercent}%</span> 才会触发下一步动作。
               </div>

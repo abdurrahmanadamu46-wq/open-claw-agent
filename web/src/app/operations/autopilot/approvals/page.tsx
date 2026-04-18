@@ -8,6 +8,7 @@ import {
   decideApprovalGate,
   fetchApprovalGatePending,
   fetchApprovalGateStatus,
+  type ApprovalGateItem,
 } from '@/services/endpoints/ai-subservice';
 import { MainlineStageHeader } from '@/components/business/MainlineStageHeader';
 
@@ -42,10 +43,10 @@ export default function ApprovalGatePage() {
   });
 
   const pendingItems = pendingQuery.data?.items ?? [];
-  const selectedApproval = statusQuery.data?.approval as Record<string, unknown> | undefined;
-  const selectedResult = selectedApproval?.result as Record<string, unknown> | undefined;
-  const selectedContext = selectedApproval?.context as Record<string, unknown> | undefined;
-  const selectedTimeline = Array.isArray(selectedApproval?.timeline) ? (selectedApproval?.timeline as Array<Record<string, unknown>>) : [];
+  const selectedApproval: ApprovalGateItem | undefined = statusQuery.data?.approval;
+  const selectedResult = selectedApproval?.result;
+  const selectedContext = selectedApproval?.context;
+  const selectedTimeline = selectedApproval?.timeline ?? [];
   const traceId = String(selectedApproval?.trace_id || '');
 
   const counts = useMemo(

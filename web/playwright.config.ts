@@ -1,6 +1,6 @@
 ﻿import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 3001;
+const PORT = Number(process.env.PW_PORT || 3001);
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const USE_EXTERNAL_SERVER = process.env.PW_EXTERNAL_SERVER === '1';
 

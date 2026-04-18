@@ -18,12 +18,19 @@ import {
 } from 'lucide-react';
 import { ArtifactRenderer } from '@/components/ArtifactRenderer';
 import { DangerActionGuard } from '@/components/DangerActionGuard';
+import {
+  KnowledgeContextEvidence,
+  resolveKnowledgeContext,
+} from '@/components/knowledge/KnowledgeContextEvidence';
 import { LobsterRadarChart } from '@/components/charts/LobsterRadarChart';
 import { QualityScoreChart } from '@/components/charts/QualityScoreChart';
+import { SupervisorCapabilityTree } from '@/components/lobster/SupervisorCapabilityTree';
+import { useTenant } from '@/contexts/TenantContext';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { LobsterConfigForm, type LobsterConfigValues } from '@/components/lobster/forms/LobsterConfigForm';
 import { LobsterEntityHeader } from '@/components/lobster/LobsterEntityHeader';
 import { StatusCard } from '@/components/lobster/StatusCard';
+import { getLobsterCapabilityProfile } from '@/lib/lobster-capability-tree';
 import {
   fetchLobsterEntity,
   fetchLobsterEntityDocs,
@@ -33,10 +40,15 @@ import {
   fetchLobsterMetricsHistory,
   fetchLobsterQualityStats,
   submitLobsterFeedback,
+  type LobsterEntityRow,
   updateLobsterLifecycle,
 } from '@/services/endpoints/ai-subservice';
+import {
+  fetchControlPlaneTenantPrivateKnowledgeSummaries,
+} from '@/services/endpoints/control-plane-overview';
 import { triggerSuccessToast } from '@/services/api';
-import type { LobsterEntity, LobsterRun, LobsterSkill } from '@/types/lobster';
+import type { ControlPlaneCollabSummaryEntry as GroupCollabTenantPrivateSummaryEntry } from '@/types/control-plane-overview';
+import type { Lifecycle, LobsterEntity, LobsterRun, LobsterSkill } from '@/types/lobster';
 
 const TABS = [
   { id: 'overview', label: '概览' },
@@ -48,7 +60,6 @@ const TABS = [
 ] as const;
 
 type TabId = (typeof TABS)[number]['id'];
-type RunRecord = LobsterRun & Record<string, unknown>;
 
 function formatNumber(value: number, digits = 0) {
   if (!Number.isFinite(value)) return '-';
@@ -80,6 +91,12 @@ function formatDate(value?: string | null) {
     hour: '2-digit',
     minute: '2-digit',
   });
+}
+
+function normalizeLifecycle(value: unknown): Lifecycle {
+  return value === 'experimental' || value === 'deprecated' || value === 'production'
+    ? value
+    : 'production';
 }
 
 function getRunStatusTone(status?: string) {
@@ -199,9 +216,28 @@ function SkillCard({ skill }: { skill: LobsterSkill }) {
   );
 }
 
+function CollabKnowledgeEvidenceCard({ item }: { item: GroupCollabTenantPrivateSummaryEntry }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+      <div className="flex items-center justify-between gap-3">
+        <div className="text-sm font-semibold text-white">{item.sourceType}</div>
+        <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-slate-300">
+          {item.objectType}
+        </span>
+      </div>
+      <div className="mt-3 text-sm leading-7 text-slate-300">{item.insight}</div>
+      <div className="mt-3 text-xs text-slate-500">
+        refs: {item.evidenceRefs.map((ref) => ref.recordId).join(', ') || 'none'}
+      </div>
+    </div>
+  );
+}
+
 export default function LobsterEntityPage() {
   const params = useParams<{ id: string }>();
   const lobsterId = String(params?.id || 'radar');
+  const { currentTenantId } = useTenant();
+  const tenantId = currentTenantId || 'tenant_main';
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<TabId>('overview');
   const [expandedRunId, setExpandedRunId] = useState('');
@@ -239,37 +275,39 @@ export default function LobsterEntityPage() {
     queryKey: ['lobster-entity', 'quality-stats', lobsterId],
     queryFn: () => fetchLobsterQualityStats(lobsterId, 30),
   });
+  const collabKnowledgeQuery = useQuery({
+    queryKey: ['lobster-entity', 'tenant-private-collab', tenantId, lobsterId],
+    queryFn: () => fetchControlPlaneTenantPrivateKnowledgeSummaries({ tenant_id: tenantId, limit: 4 }),
+  });
 
   const lobster = useMemo<LobsterEntity | null>(() => {
     const detail = detailQuery.data;
     const stats = statsQuery.data?.stats;
     if (!detail?.lobster) return null;
-    const row = detail.lobster as Record<string, unknown>;
-    const annotations =
-      row.annotations && typeof row.annotations === 'object'
-        ? (row.annotations as Record<string, string>)
-        : {};
+    const row: LobsterEntityRow = detail.lobster;
+    const annotations = row.annotations ?? {};
+    const detailSkills = Array.isArray(row.skills) ? row.skills : [];
     return {
-      id: String(row.id || lobsterId),
-      name: String(row.name || row.display_name || lobsterId),
-      display_name: String(row.display_name || row.name || lobsterId),
-      zh_name: row.zh_name ? String(row.zh_name) : undefined,
-      description: String(row.description || row.role || ''),
-      lifecycle: String(row.lifecycle || 'production') as LobsterEntity['lifecycle'],
-      status: String(row.status || 'idle') as LobsterEntity['status'],
-      system: String(row.system || 'follow-growth'),
-      skill_count: (skillsQuery.data?.items || (row.skills as LobsterSkill[] | undefined) || []).length,
+      id: row.id,
+      name: row.name,
+      display_name: row.display_name,
+      zh_name: row.zh_name,
+      description: row.description,
+      lifecycle: normalizeLifecycle(row.lifecycle),
+      status: row.status as LobsterEntity['status'],
+      system: row.system,
+      skill_count: (skillsQuery.data?.items || detailSkills).length,
       weekly_runs: Number(stats?.weekly_runs || row.run_count_24h || 0),
       avg_quality_score: Number(stats?.avg_quality_score || row.score || 0),
       p95_latency_ms: Number(stats?.p95_latency_ms || row.avg_latency_ms || 0),
       active_edge_nodes: Number(stats?.active_edge_nodes || 0),
-      tags: Array.isArray(row.tags) ? (row.tags as string[]) : [],
+      tags: row.tags ?? [],
       annotations,
-      skills: skillsQuery.data?.items || [],
+      skills: skillsQuery.data?.items || detailSkills,
       recent_runs: runsQuery.data?.items || detail.recent_runs || [],
-      icon: typeof row.icon === 'string' ? row.icon : undefined,
-      role: typeof row.role === 'string' ? row.role : undefined,
-      default_model_tier: typeof row.default_model_tier === 'string' ? row.default_model_tier : undefined,
+      icon: row.icon,
+      role: row.role,
+      default_model_tier: row.default_model_tier,
       active_experiment:
         typeof annotations['openclaw/ab-experiment'] === 'string'
           ? {
@@ -278,7 +316,7 @@ export default function LobsterEntityPage() {
             }
           : undefined,
     };
-  }, [detailQuery.data, lobsterId, runsQuery.data, skillsQuery.data, statsQuery.data]);
+  }, [detailQuery.data, runsQuery.data, skillsQuery.data, statsQuery.data]);
 
   const feedbackMutation = useMutation({
     mutationFn: async () => {
@@ -302,7 +340,7 @@ export default function LobsterEntityPage() {
 
   const recentRuns = useMemo(() => lobster?.recent_runs ?? [], [lobster?.recent_runs]);
   const skills = useMemo(() => lobster?.skills ?? [], [lobster?.skills]);
-  const runRecords = recentRuns as RunRecord[];
+  const capabilityProfile = useMemo(() => getLobsterCapabilityProfile(lobster?.id ?? lobsterId), [lobster?.id, lobsterId]);
 
   const qualityTrend = recentRuns
     .slice()
@@ -435,7 +473,7 @@ export default function LobsterEntityPage() {
         <div className="space-y-6">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <StatusCard title="本周执行" value={formatNumber(lobster.weekly_runs)} />
-            <StatusCard title="平均质量评分" value={lobster.avg_quality_score.toFixed(1)} subtitle="满分 10" />
+            <StatusCard title="平均质量评分" value={Number(lobster.avg_quality_score || 0).toFixed(1)} subtitle="满分 10" />
             <StatusCard title="P95 响应时间" value={formatDuration(lobster.p95_latency_ms)} />
             <StatusCard title="在线边缘节点" value={formatNumber(lobster.active_edge_nodes)} />
           </div>
@@ -492,6 +530,25 @@ export default function LobsterEntityPage() {
                 </div>
               </div>
             </div>
+          </SectionPanel>
+
+          <SupervisorCapabilityTree profile={capabilityProfile} compact />
+
+          <SectionPanel
+            title="Tenant-private collaboration summaries"
+            subtitle="主管详情页只消费脱敏后的 tenant-private 协作摘要，不直接消费原始审批、提醒或回执正文。"
+          >
+            {collabKnowledgeQuery.isLoading ? (
+              <EmptyPanel title="正在加载协作摘要" description="加载完成后，这里会展示当前租户已沉淀的协作摘要证据。" />
+            ) : (collabKnowledgeQuery.data?.items ?? []).length > 0 ? (
+              <div className="grid gap-3 md:grid-cols-2">
+                {(collabKnowledgeQuery.data?.items ?? []).map((item) => (
+                  <CollabKnowledgeEvidenceCard key={item.captureId} item={item} />
+                ))}
+              </div>
+            ) : (
+              <EmptyPanel title="暂无协作摘要" description="当前还没有可供主管消费的 tenant-private 协作摘要。" />
+            )}
           </SectionPanel>
 
           <SectionPanel
@@ -625,8 +682,8 @@ export default function LobsterEntityPage() {
           </div>
 
           <div className="mt-4 space-y-3">
-            {runRecords.length ? (
-              runRecords.map((run, index) => {
+            {recentRuns.length ? (
+              recentRuns.map((run, index) => {
                 const runId = String(run.run_id || run.id || `run_${index}`);
                 const expanded = expandedRunId === runId;
                 const outputText =
@@ -697,6 +754,18 @@ export default function LobsterEntityPage() {
                             <div className="mt-2 text-sm text-rose-100/90">{String(run.error)}</div>
                           </div>
                         ) : null}
+
+                        <div className="mt-4">
+                          <KnowledgeContextEvidence
+                            context={
+                              resolveKnowledgeContext(run.knowledge_context)
+                              ?? resolveKnowledgeContext(run.result)
+                              ?? resolveKnowledgeContext(run.output)
+                              ?? resolveKnowledgeContext(run.input)
+                            }
+                            compact
+                          />
+                        </div>
 
                         {outputText ? (
                           <div className="mt-4">

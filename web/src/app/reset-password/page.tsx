@@ -9,7 +9,7 @@ import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 
 function ResetPasswordPageInner() {
   const searchParams = useSearchParams();
-  const [token, setToken] = useState(searchParams.get('token') ?? '');
+  const [token, setToken] = useState(searchParams?.get('token') ?? '');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 

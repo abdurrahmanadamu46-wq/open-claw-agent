@@ -3,16 +3,34 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { LobsterBindingPanel } from '@/components/lobster/LobsterBindingPanel';
 import { DimensionRadar } from '@/components/lobster/DimensionRadar';
 import { ScorerForm, type LobsterScorerFormValue } from '@/components/lobster/ScorerForm';
-import { formatCurrencyCny, simulateLobsterScoring, tierColor, tierLabel, type LobsterScoringResponse } from '@/lib/lobster-api';
+import { SurfaceStateCard } from '@/components/operations/SurfacePrimitives';
+import { getLobsterScoringBindingPlan, simulateLobsterScoring, tierColor, tierLabel } from '@/lib/lobster-api';
+import { triggerErrorToast } from '@/services/api';
 
 export default function LobsterPoolScorerPage() {
-  const [result, setResult] = useState<LobsterScoringResponse | null>(null);
+  const [result, setResult] = useState<Awaited<ReturnType<typeof simulateLobsterScoring>> | null>(null);
+  const [errorText, setErrorText] = useState('');
+  const plannedBinding = getLobsterScoringBindingPlan();
+
+  function normalizeError(error: unknown) {
+    const maybe = error as { response?: { data?: { message?: string; detail?: string } }; message?: string };
+    return maybe?.response?.data?.message || maybe?.response?.data?.detail || maybe?.message || '评分请求失败';
+  }
 
   const mutation = useMutation({
     mutationFn: (payload: LobsterScorerFormValue) => simulateLobsterScoring(payload),
-    onSuccess: (data) => setResult(data),
+    onSuccess: (data) => {
+      setErrorText('');
+      setResult(data);
+    },
+    onError: (error) => {
+      const message = normalizeError(error);
+      setErrorText(message);
+      triggerErrorToast(message);
+    },
   });
 
   return (
@@ -24,6 +42,30 @@ export default function LobsterPoolScorerPage() {
           先输入任务描述、竞品数量、边缘目标数和风险等级，系统会估算任务层级、置信度以及应该路由给哪只龙虾。
         </p>
       </section>
+
+      {errorText ? (
+        <SurfaceStateCard
+          kind="error"
+          title="评分模拟器当前不可用"
+          description={`当前页面已经优先走 live backend 评分接口，不再 silently fallback。错误信息：${errorText}`}
+        />
+      ) : null}
+
+      <LobsterBindingPanel
+        title="评分模拟器接线计划"
+        items={[
+          { label: 'simulation', binding: result?.binding ?? plannedBinding },
+        ]}
+      />
+
+      {result ? (
+        <LobsterBindingPanel
+          title="评分模拟器接线深度"
+          items={[
+            { label: 'simulation', binding: result.binding },
+          ]}
+        />
+      ) : null}
 
       <div className="grid gap-6 xl:grid-cols-[0.96fr_1.04fr]">
         <ScorerForm onSubmit={(value) => mutation.mutate(value)} submitting={mutation.isPending} />

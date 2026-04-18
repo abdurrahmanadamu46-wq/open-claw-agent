@@ -13,7 +13,6 @@ import {
   type TenantRegistryPatch,
   updateTenantRegistry,
 } from '@/services/endpoints/tenant';
-import { INDUSTRY_TAXONOMY } from '@/lib/industry-taxonomy';
 
 export type IndustryType = string;
 export type NodeWorkflowStepId = 'S1' | 'S2' | 'S3' | 'S4' | 'S5';
@@ -49,8 +48,8 @@ const DEFAULT_LEAD_SCORING: LeadScoringWords = {
   painPoints: ['成本高', '转化低', '复购差'],
 };
 
-const DEFAULT_INDUSTRY = INDUSTRY_TAXONOMY[0]?.sub_industries[0]?.tag ?? 'food_chinese_restaurant';
-const DEFAULT_CATEGORY = INDUSTRY_TAXONOMY[0]?.category_tag ?? 'food_service';
+const DEFAULT_INDUSTRY = '';
+const DEFAULT_CATEGORY = '';
 const CURRENT_TENANT_STORAGE_KEY = 'clawcommerce.currentTenantId.v1';
 
 export const INITIAL_TENANTS: Tenant[] = [

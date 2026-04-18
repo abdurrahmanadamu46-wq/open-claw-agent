@@ -160,7 +160,7 @@ export default function WorkflowExecutionsPage() {
   }, [selectedExecution?.steps, stream.events]);
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] bg-[#07111f] p-6 text-slate-100">
+    <div className="p-6 text-slate-100">
       <div className="mx-auto space-y-4">
         <section className="rounded-[28px] border p-5" style={{ background: 'linear-gradient(180deg, rgba(19,34,56,0.98), rgba(12,22,37,0.98))', borderColor: BORDER }}>
           <div className="flex flex-wrap items-start justify-between gap-4">

@@ -105,18 +105,22 @@ export default function OperationsCostPage() {
     return t('ranges.d7');
   }, [rangeDays, t]);
 
-  const summaryItems = summaryQuery.data?.items ?? [];
+  const summaryItems = useMemo(() => summaryQuery.data?.items ?? [], [summaryQuery.data?.items]);
   const budget = summaryQuery.data?.budget;
   const detail = detailQuery.data?.summary;
-  const topCalls = detailQuery.data?.top_calls ?? [];
+  const topCalls = useMemo(() => detailQuery.data?.top_calls ?? [], [detailQuery.data?.top_calls]);
   const selectedCall = topCalls.find((item) => item.call_id === selectedCallId) ?? topCalls[0] ?? null;
-  const timeseries = (timeseriesQuery.data?.data ?? []).map((item) => ({
-    date: item.timestamp.slice(5),
-    cost: Number(item.cost_usd || 0),
-    calls: Number(item.call_count || 0),
-    input: Number(item.input_tokens || 0),
-    output: Number(item.output_tokens || 0),
-  }));
+  const timeseries = useMemo(
+    () =>
+      (timeseriesQuery.data?.data ?? []).map((item) => ({
+        date: item.timestamp.slice(5),
+        cost: Number(item.cost_usd || 0),
+        calls: Number(item.call_count || 0),
+        input: Number(item.input_tokens || 0),
+        output: Number(item.output_tokens || 0),
+      })),
+    [timeseriesQuery.data?.data],
+  );
 
   const visibleSummaryItems = useMemo(() => {
     const normalized = search.trim().toLowerCase();

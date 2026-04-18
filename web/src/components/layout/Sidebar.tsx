@@ -1,5 +1,8 @@
 'use client';
 
+// Deprecated shell. Keep only as a compatibility layer while AppSidebar
+// becomes the sole navigation surface for the operator console.
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -53,7 +56,7 @@ const GROUPS: NavGroup[] = [
     items: [
       { href: '/agents/cabinet', labelKey: 'nav.agents_cabinet', icon: Bot },
       { href: '/dashboard/lobster-pool', labelKey: 'nav.lobster_pool', icon: Gauge },
-      { href: '/dashboard/lobster-skills', labelKey: 'nav.lobster_skills', icon: Sparkles },
+      { href: '/lobsters/capability-tree', labelKey: 'nav.lobster_skills', icon: Sparkles },
       { href: '/operations/control-panel', labelKey: 'nav.control_panel', icon: Database },
       { href: '/operations/monitor', labelKey: 'nav.monitor', icon: Network },
       { href: '/ai-brain/studio', labelKey: 'nav.ai_studio', icon: Layers3 },
@@ -96,7 +99,7 @@ function isActive(pathname: string, href: string, exact = false): boolean {
 }
 
 export function Sidebar() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const t = useTranslations();
   const [isMobile, setIsMobile] = useState(false);
 

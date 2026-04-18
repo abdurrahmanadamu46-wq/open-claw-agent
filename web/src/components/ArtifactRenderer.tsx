@@ -10,6 +10,19 @@ type ArtifactBlock = {
   metadata?: Record<string, unknown>;
 };
 
+type ArtifactRenderableRecord = {
+  content?: string;
+  markdown?: string;
+  report_markdown?: string;
+  html?: string;
+  svg?: string;
+  mermaid?: string;
+  text?: string;
+  body?: string;
+  summary?: string;
+  [key: string]: unknown;
+};
+
 function parseCsv(content: string): { headers: string[]; rows: string[][] } {
   const lines = content.split(/\r?\n/).filter((line) => line.trim().length > 0);
   if (lines.length === 0) return { headers: [], rows: [] };
@@ -172,6 +185,7 @@ export function ArtifactRenderer({ content }: { content: string }) {
           return (
             <section key={key} className="rounded-xl border border-slate-700 bg-slate-950/70 p-3">
               <div className="mb-2 text-xs text-slate-400">{block.title || 'Image'}</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={block.content} alt={block.title || 'artifact-image'} className="max-h-[320px] rounded-xl border border-slate-700 object-contain" />
             </section>
           );
@@ -190,7 +204,7 @@ export function ArtifactRenderer({ content }: { content: string }) {
 export function extractArtifactRenderableContent(payload: unknown): string {
   if (typeof payload === 'string') return payload;
   if (!payload || typeof payload !== 'object') return '';
-  const record = payload as Record<string, unknown>;
+  const record: ArtifactRenderableRecord = payload as ArtifactRenderableRecord;
   const candidateKeys = ['content', 'markdown', 'report_markdown', 'html', 'svg', 'mermaid', 'text', 'body', 'summary'];
   for (const key of candidateKeys) {
     const value = record[key];

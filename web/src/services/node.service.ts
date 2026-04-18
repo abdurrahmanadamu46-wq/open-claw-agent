@@ -1,5 +1,5 @@
 ﻿import api from '@/services/api';
-import type { EdgeNodeGroupMapItem, EdgeNodeGroupTreeNode, RemoteNode, TaskCommand, TaskCommandActionType } from '@/types';
+import type { EdgeDoctorDetailResponse, EdgeNodeGroupMapItem, EdgeNodeGroupTreeNode, RemoteNode, TaskCommand, TaskCommandActionType } from '@/types';
 
 type FleetNodeApiRow = {
   nodeId: string;
@@ -108,6 +108,22 @@ export async function createEdgeGroup(payload: {
 }) {
   const { data } = await api.post('/api/v1/ai/edge/groups', payload);
   return data as { ok: boolean; group: EdgeNodeGroupTreeNode };
+}
+
+export async function fetchEdgeDoctor(nodeId: string) {
+  const { data } = await api.get(`/api/v1/edges/${encodeURIComponent(nodeId)}/doctor`);
+  return data as EdgeDoctorDetailResponse;
+}
+
+export async function requestEdgeDoctorRun(nodeId: string) {
+  const { data } = await api.post(`/api/v1/edges/${encodeURIComponent(nodeId)}/doctor/run`);
+  return data as {
+    ok: boolean;
+    edge_id: string;
+    requested: boolean;
+    request: Record<string, unknown>;
+    doctor: Record<string, unknown>;
+  };
 }
 
 export const TASK_TEMPLATES = [

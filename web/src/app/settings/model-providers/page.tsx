@@ -19,6 +19,13 @@ import {
 } from '@/services/endpoints/ai-subservice';
 import type { ProviderConfig } from '@/types/provider-registry';
 import { MainlineStageHeader } from '@/components/business/MainlineStageHeader';
+import {
+  downloadGovernanceExport,
+  formatGovernanceExportNotice,
+  GOVERNANCE_COPY_REPORT_LABEL,
+  GOVERNANCE_ISSUES_FILTER_LABEL,
+  GOVERNANCE_VIEW_REPORT_LABEL,
+} from '@/lib/governance';
 
 const BORDER = 'rgba(71,85,105,0.35)';
 
@@ -99,10 +106,33 @@ function statusTone(status: ProviderConfig['status']): string {
   }
 }
 
+function scanTone(status?: string): string {
+  switch (status) {
+    case 'block':
+      return 'border-rose-400/25 bg-rose-400/10 text-rose-100';
+    case 'warn':
+      return 'border-amber-400/25 bg-amber-400/10 text-amber-100';
+    case 'safe':
+      return 'border-emerald-400/25 bg-emerald-400/10 text-emerald-100';
+    default:
+      return 'border-slate-400/20 bg-slate-400/10 text-slate-200';
+  }
+}
+
 function providerSummary(provider: ProviderConfig): string {
   return provider.enabled
     ? `${statusLabel(provider.status)} · ${provider.default_model || '未设置模型'}`
     : '已禁用';
+}
+
+function summarizeProviderScan(provider: ProviderConfig): string {
+  const status = String(provider.scan_status || 'not_scanned');
+  const issueCount = provider.scan_report?.issues?.length ?? 0;
+  const confidence =
+    typeof provider.scan_report?.confidence === 'number'
+      ? '，置信度 ' + (provider.scan_report.confidence * 100).toFixed(0) + '%'
+      : '';
+  return 'scan=' + status + '，问题 ' + issueCount + ' 个' + confidence;
 }
 
 function toModelsArray(input: string, fallbackModel: string): string[] {
@@ -131,6 +161,8 @@ export default function ModelProvidersSettingsPage() {
   const [busyProviderAction, setBusyProviderAction] = useState<Record<string, string>>({});
   const [creatingProvider, setCreatingProvider] = useState(false);
   const [editingProviderId, setEditingProviderId] = useState<string | null>(null);
+  const [selectedProviderScanStatus, setSelectedProviderScanStatus] = useState<string>('all');
+  const [activeProviderReport, setActiveProviderReport] = useState<ProviderConfig | null>(null);
 
   const providerOptions = useMemo(
     () =>
@@ -142,6 +174,14 @@ export default function ModelProvidersSettingsPage() {
         })),
     [bindingProviders],
   );
+  const filteredProviders = useMemo(() => {
+    return providers.filter((provider) => {
+      const scanStatus = String(provider.scan_status || 'not_scanned');
+      if (selectedProviderScanStatus === 'all') return true;
+      if (selectedProviderScanStatus === 'issues') return scanStatus === 'warn' || scanStatus === 'block';
+      return scanStatus === selectedProviderScanStatus;
+    });
+  }, [providers, selectedProviderScanStatus]);
 
   const refresh = async () => {
     setLoading(true);
@@ -319,6 +359,72 @@ export default function ModelProvidersSettingsPage() {
     } finally {
       setBusyProviderAction((prev) => ({ ...prev, [providerId]: '' }));
     }
+  };
+
+  const handleCopyProviderIssues = async (provider: ProviderConfig) => {
+    const issues = (provider.scan_report?.issues || []).filter(Boolean);
+    if (issues.length === 0) {
+      setSyncMessage(`Provider ${provider.id} 当前没有可复制的问题。`);
+      return;
+    }
+    const content = [`${provider.name} (${provider.id})`, ...issues.map((issue, index) => `${index + 1}. ${issue}`)].join('\n');
+    try {
+      await navigator.clipboard.writeText(content);
+      setSyncMessage(`已复制 Provider ${provider.id} 的 ${issues.length} 条问题。`);
+    } catch {
+      setSyncMessage(`复制 Provider ${provider.id} 的问题失败，请检查浏览器剪贴板权限。`);
+    }
+  };
+
+  const handleCopyProviderJson = async (provider: ProviderConfig) => {
+    const payload = provider.scan_report || {};
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      setSyncMessage(`已复制 Provider ${provider.id} 的 scan JSON。`);
+    } catch {
+      setSyncMessage(`复制 Provider ${provider.id} 的 scan JSON 失败，请检查浏览器剪贴板权限。`);
+    }
+  };
+
+  const handleCopyProviderReport = async (provider: ProviderConfig) => {
+    const issues = (provider.scan_report?.issues || []).filter(Boolean);
+    const content = [
+      `Provider: ${provider.name}`,
+      `ID: ${provider.id}`,
+      `Type: ${provider.type}`,
+      `Route: ${provider.route}`,
+      `Status: ${provider.status}`,
+      `Scan: ${provider.scan_status || 'not_scanned'}`,
+      typeof provider.scan_report?.confidence === 'number'
+        ? `Confidence: ${(provider.scan_report.confidence * 100).toFixed(0)}%`
+        : null,
+      '',
+      'Issues:',
+      ...(issues.length ? issues.map((issue, index) => `${index + 1}. ${issue}`) : ['(none)']),
+      '',
+      'Raw JSON:',
+      JSON.stringify(provider.scan_report || {}, null, 2),
+    ]
+      .filter((line) => line !== null)
+      .join('\n');
+    try {
+      await navigator.clipboard.writeText(content);
+      setSyncMessage(`已复制 Provider ${provider.id} 的完整 scan 报告。`);
+    } catch {
+      setSyncMessage(`复制 Provider ${provider.id} 的完整 scan 报告失败，请检查浏览器剪贴板权限。`);
+    }
+  };
+
+  const handleExportProviders = () => {
+    downloadGovernanceExport({
+      filename: `providers-${selectedProviderScanStatus}.json`,
+      surface: 'model_providers',
+      filters: {
+        scan_status: selectedProviderScanStatus,
+      },
+      items: filteredProviders,
+    });
+    setSyncMessage(formatGovernanceExportNotice(filteredProviders.length));
   };
 
   const saveBinding = async (agentId: string, patch: Partial<LlmAgentBindingRow>) => {
@@ -591,8 +697,45 @@ export default function ModelProvidersSettingsPage() {
           Provider 列表
         </div>
 
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
+          <span className="text-slate-400">当前过滤：</span>
+          <select
+            value={selectedProviderScanStatus}
+            onChange={(e) => setSelectedProviderScanStatus(e.target.value)}
+            className="rounded border border-white/10 bg-slate-950 px-2 py-1 text-xs text-slate-100"
+          >
+            <option value="all">全部</option>
+            <option value="issues">{GOVERNANCE_ISSUES_FILTER_LABEL}</option>
+            <option value="not_scanned">not_scanned</option>
+            <option value="safe">safe</option>
+            <option value="warn">warn</option>
+            <option value="block">block</option>
+          </select>
+          <button
+            type="button"
+            onClick={() => setSelectedProviderScanStatus('issues')}
+            className="rounded border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs text-amber-100 hover:bg-amber-500/15"
+          >
+            只看有问题 Provider
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedProviderScanStatus('all')}
+            className="rounded border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-200 hover:bg-white/10"
+          >
+            清空过滤
+          </button>
+          <button
+            type="button"
+            onClick={handleExportProviders}
+            className="rounded border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-100 hover:bg-cyan-500/15"
+          >
+            导出当前结果
+          </button>
+        </div>
+
         <div className="space-y-3">
-          {providers.map((provider) => {
+          {filteredProviders.map((provider) => {
             const form = providerForms[provider.id];
             if (!form) return null;
 
@@ -618,6 +761,9 @@ export default function ModelProvidersSettingsPage() {
                       <span className={`rounded-full border px-2 py-0.5 text-[11px] ${statusTone(provider.status)}`}>
                         {statusLabel(provider.status)}
                       </span>
+                      <span className={`rounded-full border px-2 py-0.5 text-[11px] ${scanTone(provider.scan_status)}`}>
+                        scan {provider.scan_status || 'not_scanned'}
+                      </span>
                       <span className="rounded-full border border-white/10 px-2 py-0.5 text-[11px] text-slate-300">
                         {typeLabel(provider.type)}
                       </span>
@@ -628,6 +774,27 @@ export default function ModelProvidersSettingsPage() {
                       <span>成功率 {provider.success_rate_1h ?? 0}%</span>
                       <span>24h 调用 {provider.total_calls_24h ?? 0}</span>
                       <span>延迟 {provider.avg_latency_ms ?? 0} ms</span>
+                      {provider.scan_report?.issues?.[0] ? <span className="text-amber-200">scan：{provider.scan_report.issues[0]}</span> : null}
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                      {provider.scan_report?.issues?.length ? (
+                        <button
+                          type="button"
+                          onClick={() => void handleCopyProviderIssues(provider)}
+                          className="rounded-full border border-white/10 px-3 py-1 text-slate-200 hover:bg-white/5"
+                        >
+                          复制问题
+                        </button>
+                      ) : null}
+                      {provider.scan_report ? (
+                        <button
+                          type="button"
+                          onClick={() => setActiveProviderReport(provider)}
+                          className="rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-violet-100 hover:bg-violet-400/15"
+                        >
+                          {GOVERNANCE_VIEW_REPORT_LABEL}
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                   {isEditing ? <ChevronUp size={16} className="text-slate-300" /> : <ChevronDown size={16} className="text-slate-300" />}
@@ -768,6 +935,47 @@ export default function ModelProvidersSettingsPage() {
                       <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300">
                         更新时间
                         <div className="mt-2 text-xs text-slate-100">{provider.updated_at || '-'}</div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4">
+                      <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] text-slate-400">
+                        <span>Governance Scan</span>
+                        <span className={`rounded-full border px-2 py-0.5 normal-case ${scanTone(provider.scan_status)}`}>
+                          {provider.scan_status || 'not_scanned'}
+                        </span>
+                        {typeof provider.scan_report?.confidence === 'number' ? (
+                          <span className="rounded-full border border-white/10 px-2 py-0.5 normal-case text-slate-300">
+                            confidence {(provider.scan_report.confidence * 100).toFixed(0)}%
+                          </span>
+                        ) : null}
+                        {provider.scan_report?.issues?.length ? (
+                          <button
+                            type="button"
+                            onClick={() => void handleCopyProviderIssues(provider)}
+                            className="rounded-full border border-white/10 px-2 py-0.5 normal-case text-slate-300"
+                          >
+                            复制问题
+                          </button>
+                        ) : null}
+                        {provider.scan_report ? (
+                          <button
+                            type="button"
+                            onClick={() => setActiveProviderReport(provider)}
+                            className="rounded-full border border-violet-400/20 bg-violet-400/10 px-2 py-0.5 normal-case text-violet-200"
+                          >
+                            {GOVERNANCE_VIEW_REPORT_LABEL}
+                          </button>
+                        ) : null}
+                      </div>
+                      <div className="mt-3 space-y-2">
+                        {provider.scan_report?.issues?.length ? (
+                          provider.scan_report.issues.map((item) => (
+                            <div key={item} className="rounded-xl bg-slate-950/45 px-3 py-2 text-sm text-slate-200">{item}</div>
+                          ))
+                        ) : (
+                          <div className="text-sm text-slate-500">未扫描到明显 provider 配置风险。</div>
+                        )}
                       </div>
                     </div>
 
@@ -928,6 +1136,110 @@ export default function ModelProvidersSettingsPage() {
           ))}
         </div>
       </section>
+      {activeProviderReport ? (
+        <ProviderScanReportDialog
+          provider={activeProviderReport}
+          onClose={() => setActiveProviderReport(null)}
+          onCopyIssues={() => void handleCopyProviderIssues(activeProviderReport)}
+          onCopyJson={() => void handleCopyProviderJson(activeProviderReport)}
+          onCopyFullReport={() => void handleCopyProviderReport(activeProviderReport)}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function ProviderScanReportDialog({
+  provider,
+  onClose,
+  onCopyIssues,
+  onCopyJson,
+  onCopyFullReport,
+}: {
+  provider: ProviderConfig;
+  onClose: () => void;
+  onCopyIssues: () => void;
+  onCopyJson: () => void;
+  onCopyFullReport: () => void;
+}) {
+  const report = provider.scan_report || {};
+  const issues = Array.isArray(report.issues) ? report.issues : [];
+  const confidence = typeof report.confidence === 'number' ? report.confidence : null;
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-3xl rounded-[28px] border border-white/10 bg-[#0f172a] p-5 text-slate-100 shadow-2xl">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-xs uppercase tracking-[0.16em] text-violet-300">Provider Scan Report</div>
+            <div className="mt-2 text-xl font-semibold text-white">{provider.name}</div>
+            <div className="mt-1 text-xs text-slate-400">
+              {provider.id} / {provider.route} / {provider.scan_status || 'not_scanned'}
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={onCopyJson}
+              className="rounded-xl border border-white/12 px-3 py-2 text-sm text-slate-200"
+            >
+              复制 JSON
+            </button>
+            <button
+              type="button"
+              onClick={onCopyFullReport}
+              className="rounded-xl border border-white/12 px-3 py-2 text-sm text-slate-200"
+            >
+              {GOVERNANCE_COPY_REPORT_LABEL}
+            </button>
+            {issues.length ? (
+              <button
+                type="button"
+                onClick={onCopyIssues}
+                className="rounded-xl border border-white/12 px-3 py-2 text-sm text-slate-200"
+              >
+                复制问题
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-xl border border-white/12 px-3 py-2 text-sm text-slate-200"
+            >
+              关闭
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <span className={`rounded-full border px-2 py-0.5 ${scanTone(provider.scan_status)}`}>{provider.scan_status || 'not_scanned'}</span>
+          <span className={`rounded-full border px-2 py-0.5 ${statusTone(provider.status)}`}>{statusLabel(provider.status)}</span>
+          {confidence !== null ? (
+            <span className="rounded-full bg-white/10 px-2 py-0.5 text-slate-300">confidence {(confidence * 100).toFixed(0)}%</span>
+          ) : null}
+          <span className="rounded-full bg-white/10 px-2 py-0.5 text-slate-300">issues {issues.length}</span>
+        </div>
+
+        <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_0.95fr]">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="text-xs uppercase tracking-[0.16em] text-slate-400">Issues</div>
+            <div className="mt-3 space-y-2">
+              {issues.length ? (
+                issues.map((issue) => (
+                  <div key={issue} className="rounded-xl bg-slate-950/40 px-3 py-2 text-sm text-slate-200">{issue}</div>
+                ))
+              ) : (
+                <div className="text-sm text-slate-500">当前没有 scan issues。</div>
+              )}
+            </div>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="text-xs uppercase tracking-[0.16em] text-slate-400">Raw JSON</div>
+            <pre className="mt-3 max-h-[360px] overflow-auto rounded-xl bg-slate-950/40 p-3 text-xs text-slate-300">
+              {JSON.stringify(report, null, 2)}
+            </pre>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

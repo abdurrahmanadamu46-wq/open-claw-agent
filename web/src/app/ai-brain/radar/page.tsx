@@ -46,16 +46,21 @@ export default function CompetitorRadarPage() {
     queryFn: () => fetchCompetitiveFormulaLibrary({ limit: 100 }),
   });
 
+  const libraryItems = useMemo(
+    () => (Array.isArray(libraryQuery.data) ? libraryQuery.data : []),
+    [libraryQuery.data],
+  );
+
   const trendData = useMemo<TrendPoint[]>(() => {
     const map = new Map<string, number>();
-    for (const item of libraryQuery.data ?? []) {
+    for (const item of libraryItems) {
       const key = toDateLabel(item.extractedAt);
       map.set(key, (map.get(key) ?? 0) + 1);
     }
     return Array.from(map.entries())
       .map(([date, count]) => ({ date, count }))
       .sort((a, b) => a.date.localeCompare(b.date));
-  }, [libraryQuery.data]);
+  }, [libraryItems]);
 
   const handleAnalyze = async () => {
     if (!form.postUrl.trim()) {
@@ -241,14 +246,14 @@ export default function CompetitorRadarPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(libraryQuery.data ?? []).length === 0 ? (
+                  {libraryItems.length === 0 ? (
                     <tr>
                       <td className="px-4 py-6 text-slate-400" colSpan={6}>
                         暂无记录，请先执行上方“开始拆解并入库”。
                       </td>
                     </tr>
                   ) : (
-                    (libraryQuery.data ?? []).map((item) => (
+                    libraryItems.map((item) => (
                       <tr key={item.id} className="border-b border-white/5">
                         <td className="px-4 py-3 text-xs text-slate-400">{new Date(item.extractedAt).toLocaleString()}</td>
                         <td className="px-4 py-3 text-xs text-amber-300">{item.category}</td>

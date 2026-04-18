@@ -5,6 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import { AlertTriangle, Bot, CheckCircle2, Clock, Kanban, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { fetchKanbanTasks } from '@/services/endpoints/tasks';
+import { createTenantXhsCommanderTaskAction } from '@/services/endpoints/tenant-xhs';
+import { triggerErrorToast, triggerSuccessToast } from '@/services/api';
 import type { KanbanTaskItem, KanbanTaskStatus } from '@/types/kanban';
 
 const BORDER = 'rgba(71,85,105,0.42)';
@@ -68,15 +70,27 @@ function priorityTone(priority: string): string {
   }
 }
 
-function KanbanCard({ task }: { task: KanbanTaskItem }) {
+function KanbanCard({
+  task,
+  onXhsTaskAction,
+  busy,
+}: {
+  task: KanbanTaskItem;
+  onXhsTaskAction: (packId: string, action: 'start' | 'complete') => Promise<void>;
+  busy: boolean;
+}) {
   const status = normalizeStatus(task.status);
   const lobsterLabel = normalizeLobsterLabel(task.lobster_name);
   const progress = progressForTask(task);
+  const isXhsCommanderTask = task.task_type === 'xhs_commander_task';
 
   return (
     <div
       className="rounded-xl border p-3 transition hover:border-cyan-400/30 hover:bg-white/[0.03]"
-      style={{ borderColor: BORDER, backgroundColor: 'rgba(15,23,42,0.5)' }}
+      style={{
+        borderColor: isXhsCommanderTask ? 'rgba(244,63,94,0.5)' : BORDER,
+        backgroundColor: isXhsCommanderTask ? 'rgba(127,29,29,0.28)' : 'rgba(15,23,42,0.5)',
+      }}
     >
       <div className="flex items-start justify-between gap-2">
         <div>
@@ -98,6 +112,40 @@ function KanbanCard({ task }: { task: KanbanTaskItem }) {
         <span>{formatElapsed(task)}</span>
       </div>
 
+      {isXhsCommanderTask ? (
+        <div className="mt-3 rounded-lg border border-rose-400/20 bg-rose-400/10 px-2 py-2 text-xs text-rose-100">
+          <div>XHS Commander Queue</div>
+          {task.pack_id ? <div className="mt-1 break-all">pack: {task.pack_id}</div> : null}
+          {task.queue_id ? <div className="mt-1 break-all">queue: {task.queue_id}</div> : null}
+          <Link
+            href="/operations/channels/xiaohongshu"
+            className="mt-2 inline-flex rounded-lg border border-rose-300/30 px-2 py-1 text-[11px] text-rose-50"
+          >
+            Open XHS supervisor
+          </Link>
+          {task.pack_id ? (
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={busy || normalizeStatus(task.status) !== 'pending'}
+                onClick={() => void onXhsTaskAction(task.pack_id!, 'start')}
+                className="rounded-lg border border-cyan-300/30 px-2 py-1 text-[11px] text-cyan-50 disabled:opacity-60"
+              >
+                {busy ? 'Saving...' : 'Start'}
+              </button>
+              <button
+                type="button"
+                disabled={busy || normalizeStatus(task.status) === 'done'}
+                onClick={() => void onXhsTaskAction(task.pack_id!, 'complete')}
+                className="rounded-lg border border-emerald-300/30 px-2 py-1 text-[11px] text-emerald-50 disabled:opacity-60"
+              >
+                {busy ? 'Saving...' : 'Complete'}
+              </button>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       {task.error_msg ? (
         <div className="mt-2 rounded-lg border border-rose-500/20 bg-rose-500/10 px-2 py-2 text-xs text-rose-200">
           {task.error_msg}
@@ -109,6 +157,7 @@ function KanbanCard({ task }: { task: KanbanTaskItem }) {
 
 export default function KanbanPage() {
   const [refreshTick, setRefreshTick] = useState(0);
+  const [busyTaskId, setBusyTaskId] = useState('');
 
   const kanbanQuery = useQuery({
     queryKey: ['kanban', 'tasks', refreshTick],
@@ -139,6 +188,23 @@ export default function KanbanPage() {
     }),
     [columns, kanbanQuery.data?.items],
   );
+
+  const runXhsTaskAction = async (packId: string, action: 'start' | 'complete') => {
+    setBusyTaskId(packId);
+    try {
+      await createTenantXhsCommanderTaskAction({
+        pack_id: packId,
+        action,
+        note: action === 'complete' ? 'Completed from global Kanban.' : 'Started from global Kanban.',
+      });
+      await kanbanQuery.refetch();
+      triggerSuccessToast(`XHS Commander task ${action} recorded`);
+    } catch (error) {
+      triggerErrorToast(error instanceof Error ? error.message : 'XHS Commander task action failed');
+    } finally {
+      setBusyTaskId('');
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -211,7 +277,14 @@ export default function KanbanPage() {
                     加载中...
                   </div>
                 ) : items.length > 0 ? (
-                  items.map((item) => <KanbanCard key={item.task_id} task={item} />)
+                  items.map((item) => (
+                    <KanbanCard
+                      key={item.task_id}
+                      task={item}
+                      busy={busyTaskId === item.pack_id}
+                      onXhsTaskAction={runXhsTaskAction}
+                    />
+                  ))
                 ) : (
                   <div className="flex items-center justify-center rounded-xl border border-dashed py-8 text-xs text-slate-600" style={{ borderColor: 'rgba(71,85,105,0.3)' }}>
                     暂无

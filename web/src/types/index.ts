@@ -22,6 +22,7 @@ export interface RemoteNodeSystemMetrics {
   platforms: RemoteNodePlatform[];
 }
 export * from './autonomy-policy';
+export * from './edge-doctor';
 export * from './edge-terminal';
 export * from './execution-monitor';
 export * from './edge-node-group';
@@ -29,6 +30,13 @@ export * from './memory-compression';
 export * from './session-isolation';
 export * from './skill-effectiveness';
 export * from './strategy-intensity';
+export * from './tenant-cockpit';
+export * from './tenant-memory';
+export * from './xhs-intel';
+export * from './xhs-events';
+export * from './runtime-capabilities';
+export * from './runtime-compaction';
+export * from './control-plane-overview';
 
 /**
  * RemoteNode — 远端节点（一台客户电脑上的 OpenClaw 工作节点）

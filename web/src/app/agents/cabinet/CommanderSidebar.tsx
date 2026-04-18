@@ -11,19 +11,21 @@ import {
   Settings,
   Plug,
 } from 'lucide-react';
+import { LEARNING_LOOP_ROUTES } from '@/lib/learning-loop-routes';
 
 const NAV_ITEMS = [
   { href: '/agents/cabinet', label: '岗位总览', icon: LayoutDashboard },
   { href: '/operations/strategy', label: '策略工作台', icon: Sparkles },
   { href: '/ai-brain/prompt-lab', label: '云端大脑', icon: UserCircle },
   { href: '/operations/skills-pool', label: '技能池', icon: Cpu },
+  { href: LEARNING_LOOP_ROUTES.skillsImprovements.href, label: LEARNING_LOOP_ROUTES.skillsImprovements.title, icon: Cpu },
   { href: '/operations/mcp', label: 'MCP Gateway', icon: Plug },
   { href: '/operations/log-audit', label: '日志审核', icon: FileText },
   { href: '/settings/model-providers', label: '模型设置', icon: Settings },
 ];
 
 export function CommanderSidebar() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
 
   return (
     <aside

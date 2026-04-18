@@ -16,7 +16,7 @@ import {
   updatePolicy,
 } from '@/services/endpoints/policy-engine';
 import { getCurrentUser } from '@/services/endpoints/user';
-import type { PolicyCondition, PolicyDecision, PolicyRulePayload } from '@/types/policy-engine';
+import type { PolicyCondition, PolicyDecision, PolicyEvaluatePayload, PolicyRulePayload } from '@/types/policy-engine';
 
 type DraftState = {
   ruleId: string;
@@ -44,7 +44,7 @@ function emptyDraft(): DraftState {
     enabled: true,
     conditionLogic: 'AND',
     tags: '',
-    conditionsText: '[]',
+    conditionsText: '[{"field":"lead.score","op":"gte","value":80}]',
   };
 }
 
@@ -85,6 +85,7 @@ export default function PoliciesPage() {
   const [evalTrace, setEvalTrace] = useState(true);
   const [decisionResult, setDecisionResult] = useState<PolicyDecision | null>(null);
   const [decisionLogId, setDecisionLogId] = useState('');
+  const conditionsPlaceholder = '[{"field":"lead.score","op":"gte","value":80}]';
 
   const currentUserQuery = useQuery({ queryKey: ['currentUser'], queryFn: getCurrentUser, staleTime: 60_000 });
   const currentUser = currentUserQuery.data;
@@ -171,7 +172,7 @@ export default function PoliciesPage() {
   );
   const parsedDraftConditions = useMemo(() => {
     try {
-      const parsed = JSON.parse(draft.conditionsText) as Array<Record<string, unknown>>;
+      const parsed = JSON.parse(draft.conditionsText) as PolicyCondition[];
       return Array.isArray(parsed) ? parsed : [];
     } catch {
       return [];
@@ -237,9 +238,9 @@ export default function PoliciesPage() {
 
   const evaluateMutation = useMutation({
     mutationFn: async () => {
-      let parsedInput: Record<string, unknown> = {};
+      let parsedInput: PolicyEvaluatePayload['input'] = {};
       try {
-        parsedInput = JSON.parse(evaluateInputText) as Record<string, unknown>;
+        parsedInput = JSON.parse(evaluateInputText) as PolicyEvaluatePayload['input'];
       } catch {
         throw new Error(t('messages.invalidInput'));
       }
@@ -341,7 +342,7 @@ export default function PoliciesPage() {
             <label className="text-sm text-slate-300">{t('fields.tags')}<input value={draft.tags} onChange={(event) => setDraft((prev) => ({ ...prev, tags: event.target.value }))} disabled={!isAdmin} className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-white disabled:opacity-60" placeholder={t('placeholders.tags')} /></label>
           </div>
           <label className="mt-4 inline-flex items-center gap-2 text-sm text-slate-300"><input type="checkbox" checked={draft.enabled} onChange={(event) => setDraft((prev) => ({ ...prev, enabled: event.target.checked }))} disabled={!isAdmin} />{t('fields.enabled')}</label>
-          <label className="mt-4 block text-sm text-slate-300">{t('fields.conditions')}<textarea value={draft.conditionsText} onChange={(event) => setDraft((prev) => ({ ...prev, conditionsText: event.target.value }))} disabled={!isAdmin} rows={10} className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 font-mono text-sm text-white disabled:opacity-60" placeholder={t('placeholders.conditions')} /></label>
+          <label className="mt-4 block text-sm text-slate-300">{t('fields.conditions')}<textarea value={draft.conditionsText} onChange={(event) => setDraft((prev) => ({ ...prev, conditionsText: event.target.value }))} disabled={!isAdmin} rows={10} className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 font-mono text-sm text-white disabled:opacity-60" placeholder={conditionsPlaceholder} /></label>
           <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4">
             <div className="text-xs uppercase tracking-[0.18em] text-slate-500">{t('fields.conditionsPreview')}</div>
             <div className="mt-3 space-y-2">

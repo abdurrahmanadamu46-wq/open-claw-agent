@@ -19,6 +19,12 @@ export interface ProviderConfig {
   success_rate_1h?: number;
   total_calls_24h?: number;
   avg_latency_ms?: number;
+  scan_status?: 'safe' | 'warn' | 'block' | 'not_scanned' | string;
+  scan_report?: {
+    risk_level?: string;
+    issues?: string[];
+    confidence?: number;
+  };
 }
 
 export interface ProviderHealth {
